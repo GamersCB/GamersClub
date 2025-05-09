@@ -1,0 +1,370 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Call of Duty: Black Ops III</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('c24fb5c7-161e-40a8-b337-21bf0eeb6c7a/1c283930-ef59-4d92-a8d7-a0b4aabdb007.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="c24fb5c7-161e-40a8-b337-21bf0eeb6c7a/d9abd48d-0201-49a7-9e48-d645b371c2a8.png"/> Call of Duty: Black Ops III</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="c24fb5c7-161e-40a8-b337-21bf0eeb6c7a/be087a55-68ff-42a5-a183-27d3c6131651.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 14:41:31</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/8/2024">11/8/2024</a> 17:34:59</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-6TB STORE">6TB STORE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-Macintosh">Macintosh</a><br/><a href="#quicklink-Microsoft Xbox 360">Microsoft Xbox 360</a><br/><a href="#quicklink-Microsoft Xbox One">Microsoft Xbox One</a><br/><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/><a href="#quicklink-Sony PlayStation 3">Sony PlayStation 3</a><br/><a href="#quicklink-Sony PlayStation 4">Sony PlayStation 4</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-11/6/2015">11/6/2015</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-77">77</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-First-person shooter">First-person shooter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Treyarch">Treyarch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Activision">Activision</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single-player">Single-player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/Call_of_Duty:_Black_Ops_III" target="_blank">Wikipedia</a><br/><a href="https://www.callofduty.com/blackops3/" target="_blank">Official website</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-[Game Engine] IW 3.0 (heavily modified)">[Game Engine] IW 3.0 (heavily modified)</a><br/><a href="#quicklink-[People] artist: Colin Whitney">[People] artist: Colin Whitney</a><br/><a href="#quicklink-[People] composer: Jack Wall">[People] composer: Jack Wall</a><br/><a href="#quicklink-[People] designer: Gavin Locke">[People] designer: Gavin Locke</a><br/><a href="#quicklink-[People] director: Corky Lehmkuhl">[People] director: Corky Lehmkuhl</a><br/><a href="#quicklink-[People] director: Dan Bunting">[People] director: Dan Bunting</a><br/><a href="#quicklink-[People] director: Jason Blundell">[People] director: Jason Blundell</a><br/><a href="#quicklink-[People] producer: Ben Brinkman">[People] producer: Ben Brinkman</a><br/><a href="#quicklink-[People] producer: Max Hutson">[People] producer: Max Hutson</a><br/><a href="#quicklink-[People] producer: Pat Dwyer">[People] producer: Pat Dwyer</a><br/><a href="#quicklink-[People] producer: Sam Nouriani">[People] producer: Sam Nouriani</a><br/><a href="#quicklink-[People] programmer: David King">[People] programmer: David King</a><br/><a href="#quicklink-[People] programmer: Martin Donlon">[People] programmer: Martin Donlon</a><br/><a href="#quicklink-[People] programmer: Trevor Walker">[People] programmer: Trevor Walker</a><br/><a href="#quicklink-[People] writer: Craig Houston">[People] writer: Craig Houston</a><br/><a href="#quicklink-[People] writer: Dan Laufer">[People] writer: Dan Laufer</a><br/><a href="#quicklink-[People] writer: Jason Blundell">[People] writer: Jason Blundell</a><br/><a href="#quicklink-[People] writer: Joe Puralewski">[People] writer: Joe Puralewski</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>Call of Duty: Black Ops III</b></i> is a 2015 <a href="https://en.wikipedia.org/wiki/First-person_shooter_game">first-person shooter game</a> developed by <a href="https://en.wikipedia.org/wiki/Treyarch">Treyarch</a> and published by <a href="https://en.wikipedia.org/wiki/Activision">Activision</a>. It is the twelfth entry in the <i><a href="https://en.wikipedia.org/wiki/Call_of_Duty">Call of Duty</a></i> series and the sequel to the 2012 video game <i><a href="https://en.wikipedia.org/wiki/Call_of_Duty:_Black_Ops_II">Call of Duty: Black Ops II</a></i>. It was released on <a href="https://en.wikipedia.org/wiki/PlayStation_4">PlayStation 4</a>, <a href="https://en.wikipedia.org/wiki/Windows">Windows</a>, and <a href="https://en.wikipedia.org/wiki/Xbox_One">Xbox One</a> on November 6, 2015. A feature-limited version developed by <a href="https://en.wikipedia.org/wiki/Beenox">Beenox</a> and Mercenary Technology that only supports multiplayer modes was released on <a href="https://en.wikipedia.org/wiki/PlayStation_3">PlayStation 3</a> and <a href="https://en.wikipedia.org/wiki/Xbox_360">Xbox 360</a> and was also the final <i>Call of Duty</i> title released on those platforms.</p>
+
+<p><i>Black Ops III</i> takes place in 2065, 40 years after the events of <i>Black Ops II</i>, amidst the transformative effects of climate change and the emergence of advanced technologies, including cybernetic enhancements. Similar to its predecessors, the story follows a group of <a href="https://en.wikipedia.org/wiki/Black_ops">black ops</a> soldiers. The game's campaign is designed to support 4-player <a href="https://en.wikipedia.org/wiki/Cooperative_video_game">cooperative gameplay</a>, allowing for bigger, more open level design and less corridor shooting. As the player character is cybernetically enhanced, players have access to various special activities. The game also features a standalone Zombies campaign mode, and a "Nightmares" mode which replaces all enemies as zombies.</p>
+
+<p>Announced in late April 2015, the game is the first <i>Call of Duty</i> video game released after Activision ended its partnership with <a href="https://en.wikipedia.org/wiki/Microsoft_Studios">Microsoft Studios</a> and instead partnered with <a href="https://en.wikipedia.org/wiki/Sony_Computer_Entertainment">Sony Computer Entertainment</a>, which secured the timed exclusivity of the game's <a href="https://en.wikipedia.org/wiki/Downloadable_content">downloadable content</a>. Upon release, the game received generally positive reviews from critics, praising the gameplay, Zombies mode, and amount of content. However, it was also criticized for its story and lack of innovation. The seventh-generation console versions in particular were singled-out for their lack of a campaign and numerous features, as well as them being online-only. It was a commercial success, with it becoming the top-selling retail game in the US in 2015, and one of the most successful titles released for the <a href="https://en.wikipedia.org/wiki/Eighth_generation_of_video_game_consoles">eighth generation of video game consoles</a>.</p>
+
+<p>Following the years after its release, <i>Black Ops III</i> has gained a <a href="https://en.wikipedia.org/wiki/Cult_following">cult following</a> and the online modes still remain active; as of 2023, the game saw an average of over 10,000 players a month. A prequel, <i><a href="https://en.wikipedia.org/wiki/Call_of_Duty:_Black_Ops_4">Call of Duty: Black Ops 4</a></i>, was released on October 12, 2018.</p>
+
+<h2>Gameplay</h2>
+
+<p>The campaign in <i>Black Ops III</i> is designed to support 4-player <a href="https://en.wikipedia.org/wiki/Cooperative_video_game">cooperative gameplay</a>, allowing for bigger, more open and free level design and less corridor shooting. In addition, the player can customize their character's appearance and clothing. The campaign features its own progression system, featuring unlock tokens which must be used to acquire different weapons and gears as they progress through the campaign. The game features a "realistic" difficulty mode, in which players will get defeated if they are hit by one bullet. Finishing all campaign missions will also unlock "Nightmares" mode, where players can replay the entire campaign with a new narrative, as well as zombies replacing most of the normal enemies.</p>
+
+<p>The multiplayer mode introduces a new momentum based movement system, which utilizes thruster packs to allow players to perform slow boosts into the air, as well as perform wall running and sliding, all the while giving players complete gun control. In addition to the Pick 10 class system from <i>Black Ops II</i>, Treyarch implemented a character system called "Specialists", where players can pick from 9 different soldiers, each with either a special weapon or ability unique to them. In a later update, a tenth specialist named Blackjack was added to the game. Blackjack is able to mimic the abilities of other specialists, and is only playable for a short amount of time upon completing a set of challenges. A new "Gunsmith" feature offers aesthetic variations in weapon attachments, allowing various weapon customization combinations. The Paintshop feature allows players to create their own custom prints onto specific portions of a gun, further emphasizing the depth of customization in the game.</p>
+
+<p>The Zombies mode features a new <a href="https://en.wikipedia.org/wiki/Experience_(gaming)">XP</a> progression system, which allows players to unlock items in a similar fashion to multiplayer and campaign. Unlockable items include "Gobblegums", which grant players with temporary bonuses, and weapon kits that allow players to modify the appearance and attributes of the guns with various camos and attachments.</p>
+
+<p><i>Black Ops III</i> features several bonus game modes in addition to the three main offerings: Nightmares, an alternate retelling of the campaign that incorporates zombies; Dead Ops Arcade, a top-down shooter mode that acts as a sequel to the original iteration from <i>Call of Duty: Black Ops</i>, and Freerun, a parkour-inspired game mode where players utilize advanced movement mechanics to navigate the levels and reach the goal.</p>
+
+<h2>Plot</h2>
+
+<h3>Setting and characters</h3>
+
+<p><i>Call of Duty: Black Ops III</i> takes place in 2065, 40 years after the events of <i>Black Ops II</i>, in a world facing upheaval from conflicts, <a href="https://en.wikipedia.org/wiki/Climate_change">climate change</a> and new technologies. A Third <a href="https://en.wikipedia.org/wiki/Cold_war_(general_term)">Cold War</a> is ongoing between two global alliances, known as the Winslow Accord and the Common Defense Pact. In response to the drone assaults caused by the Nicaraguan narco-terrorist Raul Menendez on June 19, 2025, several countries around the world have developed <a href="https://en.wikipedia.org/wiki/Directed-energy_weapon">Directed Energy Air Defense</a> systems that render conventional air forces virtually useless. As such, most of the warfare between countries is done by covert operatives fighting behind enemy lines. <a href="https://en.wikipedia.org/wiki/Military_technology">Military technology</a> has progressed to the point where <a href="https://en.wikipedia.org/wiki/Robotics">robotics</a> play a major role in combat, and both fully robotic humanoid drones and cyborg <a href="https://en.wikipedia.org/wiki/Supersoldier">supersoldiers</a> have been developed to fight in the battlefield. There is speculation and fear about an eventual robotic takeover.</p>
+
+<p>Like previous installments in the <i>Black Ops</i> series, the campaign follows a team of black ops soldiers, who work for Winslow Accord. The player character (voiced by <a href="https://en.wikipedia.org/wiki/Ben_Browder">Ben Browder</a> if male and <a href="https://en.wikipedia.org/wiki/Abby_Brammell">Abby Brammell</a> if female) and Jacob Hendricks (Sean Douglas) are members of the faction's <a href="https://en.wikipedia.org/wiki/Wetwork">wetwork</a> team, while Commander John Taylor (<a href="https://en.wikipedia.org/wiki/Christopher_Meloni">Christopher Meloni</a>) and his team Sebastian Diaz (Reynaldo Gallegos), Sarah Hall (<a href="https://en.wikipedia.org/wiki/Katee_Sackhoff">Katee Sackhoff</a>), and Peter Maretti (Ary Katz), compose the faction's <a href="https://en.wikipedia.org/wiki/Cybernetics">cybernetics</a> division. Additional characters include: Rachel Kane (<a href="https://en.wikipedia.org/wiki/Rachel_Kimsey">Rachel Kimsey</a>), a <a href="https://en.wikipedia.org/wiki/Central_Intelligence_Agency">CIA</a> agent who was romantically involved with Taylor; Sebastian Krueger (<a href="https://en.wikipedia.org/wiki/Robert_Picardo">Robert Picardo</a>), CEO of the Coalescence Corporation; Yousef Salim (<a href="https://en.wikipedia.org/wiki/Tony_Amendola">Tony Amendola</a>), a therapist who once worked for Coalescence; and Goh Xiulan (<a href="https://en.wikipedia.org/wiki/Lynn_Chen">Lynn Chen</a>), leader of the Singaporean criminal organization 54 Immortals. <a href="https://en.wikipedia.org/wiki/National_Football_League">NFL</a> running back <a href="https://en.wikipedia.org/wiki/Marshawn_Lynch">Marshawn Lynch</a> makes a cameo appearance in the game as a 54 Immortals mercenary.</p>
+
+<p>Included in the game is the "Nightmares" campaign mode, which is a retelling of the main campaign with the plot changed to incorporate zombies and other supernatural beings. In this campaign, the lethal <a href="https://en.wikipedia.org/wiki/Virus">Virus</a> 61-15 is released in various cities around the world, turning whoever it infects into zombies. In response, the governments of the world seal off the worst infected areas into <a href="https://en.wikipedia.org/wiki/Quarantine">Quarantine</a> Zones and form the Deadkillers, cybernetic soldiers trained to exterminate zombies.</p>
+
+<p>The Zombies story in <i>Black Ops III</i> is told in an episodic format, with the launch map, "Shadows of Evil", focusing on a new group of characters: Nero Blackstone (<a href="https://en.wikipedia.org/wiki/Jeff_Goldblum">Jeff Goldblum</a>), Jessica Rose (<a href="https://en.wikipedia.org/wiki/Heather_Graham">Heather Graham</a>), Jack Vincent (<a href="https://en.wikipedia.org/wiki/Neal_McDonough">Neal McDonough</a>) and Floyd Campbell (<a href="https://en.wikipedia.org/wiki/Ron_Perlman">Ron Perlman</a>), who reside in the fictional Morg City. The four characters are thrown into a twisted version of the city, overrun by zombies, and are guided by a mysterious, unreliable figure called the Shadowman (<a href="https://en.wikipedia.org/wiki/Robert_Picardo">Robert Picardo</a>). "Shadows of Evil" acts as a prologue that leads into the core storyline, focusing on the Dimension 63 version of the original characters: "Tank" Dempsey (<a href="https://en.wikipedia.org/wiki/Steve_Blum">Steve Blum</a>), Nikolai Belinski (<a href="https://en.wikipedia.org/wiki/Fred_Tatasciore">Fred Tatasciore</a>), Takeo Masaki (<a href="https://en.wikipedia.org/wiki/Tom_Kane">Tom Kane</a>) and Edward Richtofen (<a href="https://en.wikipedia.org/wiki/Nolan_North">Nolan North</a>), who were introduced in the <i>Black Ops II</i> map "Origins", referred to collectively as Primis. Their story continues from where "Origins" left off, as they attempt to prevent the events of the original timeline from ever occurring across the multiverse. Other characters include the leader of Group 935, Doctor Ludvig Maxis (also voiced by Tatasciore), and his daughter Samantha. The downloadable content maps feature the original versions of Primis, referred to as Ultimis, and reintroduce various minor characters mentioned/featured in previous games, including Group 935 scientist Doctor Groph (also voiced by Blum), the <a href="https://en.wikipedia.org/wiki/Office_of_Strategic_Services">OSS</a> spy Peter McCain, Dr. Maxis' assistant Sophia (Christa Lewis), the Ascension Group scientist Gersh, as well as introduces the mysterious omnipotent being Doctor Monty (<a href="https://en.wikipedia.org/wiki/Malcolm_McDowell">Malcolm McDowell</a>). Robert Picardo also briefly reprises his role from <i>Call of Duty: Black Ops</i> as United States Secretary of Defense <a href="https://en.wikipedia.org/wiki/Robert_McNamara">Robert McNamara</a>.</p>
+
+<h2>Development</h2>
+
+<p><i>Call of Duty: Black Ops III</i> is the twelfth game in the <i>Call of Duty</i> franchise, and the fourth entry in the <i><a href="https://en.wikipedia.org/wiki/Call_of_Duty#Black_Ops_story_arc">Black Ops</a></i> series. The game was the second to benefit under publisher <a href="https://en.wikipedia.org/wiki/Activision">Activision</a>'s three-year development cycle, the first being <i><a href="https://en.wikipedia.org/wiki/Call_of_Duty:_Advanced_Warfare">Call of Duty: Advanced Warfare</a></i>. The cycle allows each of the development teams of the <i>Call of Duty</i> series (<a href="https://en.wikipedia.org/wiki/Infinity_Ward">Infinity Ward</a>, <a href="https://en.wikipedia.org/wiki/Treyarch">Treyarch</a>, and <a href="https://en.wikipedia.org/wiki/Sledgehammer_Games">Sledgehammer Games</a>) to develop games in a three-year timespan, as opposed to the two allowed previously. <i>Black Ops III</i> uses a heavily modified version of the <a href="https://en.wikipedia.org/wiki/IW_engine">IW engine</a> used previously in <i>Black Ops II</i>.</p>
+
+<p>On June 9, 2015, versions for the PlayStation 3 and Xbox 360 were confirmed to be under development by <a href="https://en.wikipedia.org/wiki/Beenox">Beenox</a> and Mercenary Technology. These versions lack some features available on other platforms, such as the game's campaign mode and the remaining DLC contents. On June 15, 2015, it was announced that as part of a new exclusivity deal with <a href="https://en.wikipedia.org/wiki/Sony_Computer_Entertainment">Sony Computer Entertainment</a>, all downloadable content for future <i>Call of Duty</i> games, beginning with <i>Black Ops III</i>, would be released first on PlayStation platforms as timed exclusives. This ends a similar exclusivity deal with Microsoft dating back to <i><a href="https://en.wikipedia.org/wiki/Call_of_Duty_4:_Modern_Warfare">Call of Duty 4: Modern Warfare</a></i>.</p>
+
+<p>According to gaming journalist Jason Schreier, <i>Call of Duty: Black Ops III</i> was initially intended to include an open-world campaign, but was scrapped during development, resulting in a period of <a href="https://en.wikipedia.org/wiki/Crunch_(video_games)">crunch</a> for employees.</p>
+
+<p>A multiplayer beta was released for the <a href="https://en.wikipedia.org/wiki/PlayStation_4">PlayStation 4</a> on August 18, 2015, and was released for <a href="https://en.wikipedia.org/wiki/Windows">Windows</a> and the <a href="https://en.wikipedia.org/wiki/Xbox_One">Xbox One</a> on August 26, 2015. All versions of the multiplayer beta ran for six days.</p>
+
+<h3>Music</h3>
+
+<p><a href="https://en.wikipedia.org/wiki/Jack_Wall_(composer)">Jack Wall</a>, who previously composed the score for <i><a href="https://en.wikipedia.org/wiki/Call_of_Duty:_Black_Ops_II">Call of Duty: Black Ops II</a></i>, returned along with Treyarch's Audio Director Brian Tuey to compose the score for the game. The game also featured an instrumental score entitled "Jade Helm", provided by <a href="https://en.wikipedia.org/wiki/Avenged_Sevenfold">Avenged Sevenfold</a>, for use in the multiplayer mode. Additionally, both Wall, Tuey and Treyarch's Sound Designer Kevin Sherwood contributed to the composition of the Zombies mode's soundtrack, including several new songs performed by <a href="https://en.wikipedia.org/wiki/Elena_Siegman">Elena Siegman</a> and <a href="https://en.wikipedia.org/wiki/Malukah">Malukah</a> for each of the maps.</p>
+
+<p>To promote, the DJ and producer <a href="https://en.wikipedia.org/wiki/Afrojack">Afrojack</a> did a song for the game, called "Unstoppable".</p>
+
+<h2>Marketing</h2>
+
+<h3>Reveal</h3>
+
+<p>Teasers were released beginning with <a href="https://en.wikipedia.org/wiki/Snapchat">Snapchat</a> links appearing in the gameplay of <i>Black Ops II</i> as well as a teaser video released by Treyarch. On April 26, 2015, the first reveal trailer for the game was released and revealed the return of the Zombies mode and beta access for people that pre-order the game for the PC, PS4, and Xbox One. The full game was released on November 6, 2015.</p>
+
+<p>On September 29, 2015, the official <a href="https://en.wikipedia.org/wiki/Twitter">Twitter</a> account of <i>Call of Duty</i> was temporarily renamed to "Current Events Aggregate". It then began tweeting messages about real-life fashion, movies and a terrorist attack that takes place in Singapore. Activision later revealed that these tweets are fake, and served to promote the game's story campaign. This marketing campaign was strongly criticized for faking news, and publisher Activision was blamed for being "irresponsible". The game's director <a href="https://en.wikipedia.org/wiki/Jason_Blundell">Jason Blundell</a> said that the team was "shocked" by the negative reaction of the marketing campaign, and offered an apology.</p>
+
+<p><i>Seize Glory</i> is an official live action trailer for <i>Call of Duty: Black Ops 3</i> that was directed by Wayne McClammy and starring <a href="https://en.wikipedia.org/wiki/Michael_B._Jordan">Michael B. Jordan</a>, <a href="https://en.wikipedia.org/wiki/Cara_Delevingne">Cara Delevingne</a> and Marshawn Lynch. The trailer features Michael B. Jordan following a man named Kevin as he runs through warfare while destroying zombies and robots. The trailer first aired during November 2015.</p>
+
+<p>The trailer begins with “Paint It Black” by The Rolling Stones as the background music. The setting is a war zone of explosions, soldiers, and a demolished city. Michael B. Jordan standing on a tower, watching over the battle, looks at the camera and says, “What? Y’all don't know about Kevin?” Kevin, a younger man, explodes onto the battle field with a large assault rifle. Kevin runs through the chaotic city enjoying himself as he shoots at everything and Michael B. Jordan builds up Kevin's character. Kevin performs exciting moves like sliding down stairs and running on walls. Kevin even eats a sandwich while setting off explosives on enemies. Then, Marshawn Lynch, a star running back in the National Football League, fully geared with weapons and armor slides in, ready to take out a whole room of zombies. Kevin flies in and steals Marshawn's glory. Kevin makes the classic cool guy move by setting of explosives behind him without looking while he walks away. Suddenly, a girl that Michael B. Jordan introduces as Cara, jumps down from the sky and sends Kevin off the screen. Cara, a young woman, takes Kevin's spotlight and starts wreaking havoc on the battle field. Cara, smiling, throws her handguns to the side while walking away from explosions in the background. In the middle of the screen, in bold white letters, appears the slogan, “There's a Soldier in All of Us.”</p>
+
+<p>Activision hired Wayne McClammy as the director. Wayne has been the director of many <i>Call of Duty</i> advertisements. According to Activision Publishing CMO Tim Ellis, the trailer's intent was to show that “The gaming population is so much bigger and more diverse than people may think". Actors Michael B. Jordan and Cara Delevingne were chosen to star in the trailer as both were known by Activision to be fans of the <i>Call of Duty</i> series.</p>
+
+<p><i>Call of Duty: Black Ops III</i> and the Digital Deluxe Edition counterpart were available to pre-order on PlayStation 4, Xbox One, and PC. The Digital Deluxe Edition comes with the season pass, which can also be ordered separately. Pre-ordering provided access to the <i>Call of Duty: Black Ops III</i> multiplayer beta and in-game items for <i>Call of Duty: Advanced Warfare</i>, such as custom reticles, an emblem, a calling card, and Advanced Supply Drops. Sony also announced that the <i>Black Ops III</i> beta would come to the PS4 first on August 19 through August 23, 2015. The beta for the PS4 went live on August 18, 2015, several hours earlier than originally announced. After the beta period ended, it was announced that all pre-orders would include the bonus multiplayer map "NUK3TOWN", a remake of the original "Nuketown" map, featured in <i>Call of Duty: Black Ops</i>, and in <i>Call of Duty: Black Ops II</i> as "Nuketown 2025". Owing to the lack of the campaign mode, the PlayStation 3 and Xbox 360 versions included a digital copy of <i>Black Ops</i> as an added bonus, as well as having their price reduced by 10 dollars compared to the PlayStation 4 and Xbox One versions.</p>
+
+<p>A <a href="https://en.wikipedia.org/wiki/Comic_book">comic book</a> titled <i>Call of Duty: Black Ops III</i> was announced on July 1, 2015. Serving as a prequel to the game, the first issue was released worldwide on November 4, 2015, and was published by <a href="https://en.wikipedia.org/wiki/Dark_Horse_Comics">Dark Horse Comics</a>. The story is written by <a href="https://en.wikipedia.org/wiki/Larry_Hama">Larry Hama</a>, while <a href="https://en.wikipedia.org/wiki/Marcelo_Ferreira">Marcelo Ferreira</a> served as the artist for the comic book. The story takes place several years prior to the main events of the game, and stars Jacob Hendricks and John Taylor along with their black ops squadmates in an attempt to stop a Russian terrorist plot. Subsequent issues were released throughout 2016.</p>
+
+<p>On July 11, 2016, Treyarch announced a new comic book series titled <i><a href="https://en.wikipedia.org/wiki/Call_of_Duty:_Zombies_(comic_series)">Call of Duty: Zombies</a></i>, to expand upon the story of the Zombies mode. The story features the return of the TranZit team: Abigail "Misty" Briarton, Marlton Johnson, Russman and Samuel Stuhlinger, previously the main protagonists of <i><a href="https://en.wikipedia.org/wiki/Call_of_Duty:_Black_Ops_II">Call of Duty: Black Ops II</a></i>, as they embark on a search for an artifact known as the Kronorium, while discovering the truth behind Edward Richtofen's reappearance. The miniseries, also published by Dark Horse, features Justin Jordan as the writer and Jonathan Wayshak as the main artist, while Simon Bisley draws the cover art of each issue. The first issue was released on October 28, 2016, and subsequent issues were released throughout 2017.</p>
+
+<p>In addition to the Digital Deluxe Edition, other special editions include the <i>Hardened Edition</i> and the <i>Juggernog Edition</i>. The <i>Juggernog Edition</i> includes a mini-refrigerator, a season pass and multiple in-game content. A Collector's Edition bonus map for the Zombie mode, "The Giant" was announced. It is a remake of the <i><a href="https://en.wikipedia.org/wiki/Call_of_Duty:_World_at_War">Call of Duty: World at War</a></i> map "Der Riese", and features the original characters, Dempsey, Nikolai, Takeo, and Richtofen. A multiplayer-only starter pack for Windows was announced and released on February 16, 2016. It features the multiplayer mode's core mechanics, though certain features, such as the Zombie mode and the Nightmare mode, were excluded. This version of the game is available for players to purchase until the end of February 2016, though it has been made available permanently since.</p>
+
+<p>In December 2015, during Sony's PlayStation Experience event, Activision announced the first downloadable content map pack for <i>Black Ops III</i>, titled "Awakening", and was released first on PlayStation 4 on February 2, 2016. Releases for <a href="https://en.wikipedia.org/wiki/Windows">Windows</a> and <a href="https://en.wikipedia.org/wiki/Xbox_One">Xbox One</a> happened in March 2016. The map pack contains four new multiplayer maps: "Skyjacked" (a remake of the <i>Black Ops II</i> multiplayer map "Hijacked"), "Rise", "Splash", and "Gauntlet", a new Zombies map, Der Eisendrache, and several new gumballs for the Zombie mode. In March 2016, Treyarch revealed the second map pack, titled "Eclipse". The map pack has four new multiplayer maps, including a remake of the <i>World at War</i> map "Bonzai" and a new Zombies map, "Zetsubou no Shima". The map pack was released on April 19 for PlayStation 4 and May 19 for Xbox One and PC.</p>
+
+<p>The third map pack, Descent, was revealed on June 28, 2016, featuring four new MP maps, including a remake of the <i>Black Ops II</i> map "Raid" and a new Zombies map, "Gorod Krovi". The map pack was released on July 12 for PlayStation 4 and August 11 for Xbox One and PC. The PC release of Descent received controversy, for Activision and Treyarch announced that the map packs would no longer be sold separately, and PC players must purchase the season pass to receive all map packs, while owners of Awakening and/or Eclipse would receive discounts upon purchasing the season pass. The fourth map pack, Salvation, was revealed on August 25, 2016, with remakes of the MP maps "Standoff" from <i>Black Ops II</i> and "Outskirt" from <i>World at War</i>, along with the final Zombies map, "Revelations". The map pack was released on September 6 for PlayStation 4, and October 6 for Xbox One and PC.</p>
+
+<p>A fifth and final map pack, Zombies Chronicles, contains remastered versions of 8 Zombies maps from previous games: "Nacht Der Untoten", "Verrückt", and "Shi no Numa" from <i>World at War</i>, "<a href="https://en.wikipedia.org/wiki/Kino_Der_Toten">Kino Der Toten</a>", "Ascension", "Shangri-La", and "Moon" from <i>Black Ops</i>, and "Origins" from <i>Black Ops II</i>, and is not included in the season pass of the game. The map pack was released on May 16, 2017, for PlayStation 4, and June 16 for Xbox One and PC.</p>
+
+<p>On May 24, 2017, Activision and Treyarch announced a Multiplayer DLC Trial Pack for the PC version of <i>Black Ops III</i>, allowing all players to play on all multiplayer maps from the four map packs for free for a limited time, while also offering XP bonuses to players who previously owned the map packs and/or the season pass. On March 20, 2018, the Zombies maps from the four map packs were made available for separate purchase on PlayStation 4 and Xbox One, with PC to follow on May 2. On June 11, 2018, Activision and Treyarch announced the "Back in Black" map pack, which contains four remastered versions of fan-favorite multiplayer maps from <i>Black Ops</i> and <i>Black Ops II</i>: "Summit", "Jungle", "Firing Range", and "Slums". These four maps, which are also included in <i><a href="https://en.wikipedia.org/wiki/Call_of_Duty:_Black_Ops_4">Call of Duty: Black Ops 4</a></i> at launch, are offered exclusively to the PlayStation 4 version of the game for players who pre-order <i>Black Ops 4</i> on the aforementioned platform.</p>
+
+<h2>Reception</h2>
+
+<h3>Critical response</h3>
+
+<p>According to review aggregator <a href="https://en.wikipedia.org/wiki/Metacritic">Metacritic</a>, <i>Call of Duty: Black Ops III</i> received "generally favorable" critic reviews for PlayStation 4 and Xbox One, and "mixed or average" critic reviews for PC. <i><a href="https://en.wikipedia.org/wiki/GameSpot">GameSpot</a></i> awarded it a score of 7 out of 10, saying, "<i>Black Ops III</i> doesn't offer anything remarkable to the series, but does just enough to maintain the <i>Call of Duty</i> status quo. The franchise, however slowly, continues its inexorable march." <i><a href="https://en.wikipedia.org/wiki/Polygon_(website)">Polygon</a></i> also gave the game a score of 7 out of 10, saying "<i>Black Ops III</i>'s biggest point of recommendation may be the breadth of content there, and that's a valid point of view. But Treyarch doesn't meaningfully move the series forward here." <i><a href="https://en.wikipedia.org/wiki/IGN">IGN</a></i> awarded it a score of 9.2 out of 10, saying "With fun 4-player co-op, new powers, and a fleshed out Zombies mode, <i>Black Ops 3</i> is the biggest <i>Call of Duty</i> game yet." Stuart Andrews of <i>Trusted Reviews</i> criticized the setting and narrative, writing "<i>Black Ops 3</i> is a solid installment that will please the series' hardcore fans, but it's not a mainstream crowd-pleaser in the way that last year's <i>Advanced Warfare</i> was", and unfavorably compared it to its predecessors, disparaging that it "focuses entirely on the sci-fi stuff, loses most of its conspiracy theory trappings and brings augmented super-soldiers in. The result sometimes feels less like a third <i>Black Ops</i> game than <i>Call of Duty</i>: Even More <i>Advanced Warfare</i>."</p>
+
+<p>The PS3 and Xbox 360 versions received less praise than the other versions. <i>IGN'</i>s Brian Albert criticised the lack of the campaign in these versions, as well as the poor graphics and long waiting times, but concluded that despite these versions issues, they were still very fun to play.</p>
+
+<p><i>Black Ops III</i> sold over 6.6 million copies in its first week of sales (not including digital) and grossed over $550 million in sales during its first three days of release. In the United Kingdom, the game bested <i><a href="https://en.wikipedia.org/wiki/Halo_5:_Guardians">Halo 5: Guardians</a></i> to become the top selling game. <i>Black Ops III</i> was the top best selling game in the US according to NPD's figures. <i>Black Ops III</i> later became the top selling game of 2015. According to Activision, <i>Black Ops III</i> was one of the best-selling games released for the <a href="https://en.wikipedia.org/wiki/Eighth_generation_of_video_game_consoles">eighth generation of video game consoles</a>, and that its financial performance is significantly better than its predecessor, <i><a href="https://en.wikipedia.org/wiki/Call_of_Duty:_Advanced_Warfare">Call of Duty: Advanced Warfare</a></i>.</p>
+
+
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

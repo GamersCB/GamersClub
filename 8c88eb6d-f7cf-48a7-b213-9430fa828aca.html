@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Manor Lords</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('8c88eb6d-f7cf-48a7-b213-9430fa828aca/dadb738e-5dc6-4889-b8c6-ce41aa614c10.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="8c88eb6d-f7cf-48a7-b213-9430fa828aca/4294efbd-a4ef-4120-bfd5-ce6cc765864d.png"/> Manor Lords</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="8c88eb6d-f7cf-48a7-b213-9430fa828aca/eac9e61a-8c23-4f60-b1d8-df7990ebd558.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 14:41:31</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/8/2024">11/8/2024</a> 17:36:46</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-6TB STORE">6TB STORE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-4/26/2024">4/26/2024</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-86">86</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acceso anticipado">Acceso anticipado</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Estrategia">Estrategia</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Simuladores">Simuladores</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Slavic Magic">Slavic Magic</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Hooded Horse">Hooded Horse</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1363080" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1363080/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1363080/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1363080" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1363080" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1363080" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/1363080/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acceso anticipado">Acceso anticipado</a><br/><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Bélicos">Bélicos</a><br/><a href="#quicklink-Construcción de ciudades">Construcción de ciudades</a><br/><a href="#quicklink-Estrategia">Estrategia</a><br/><a href="#quicklink-Fantasía oscura">Fantasía oscura</a><br/><a href="#quicklink-Históricos">Históricos</a><br/><a href="#quicklink-Medievales">Medievales</a><br/><a href="#quicklink-Modificables">Modificables</a><br/><a href="#quicklink-Mundo abierto">Mundo abierto</a><br/><a href="#quicklink-Personalización de personajes">Personalización de personajes</a><br/><a href="#quicklink-Primera persona">Primera persona</a><br/><a href="#quicklink-Realistas">Realistas</a><br/><a href="#quicklink-Rol">Rol</a><br/><a href="#quicklink-Sandbox">Sandbox</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Supervivencia">Supervivencia</a><br/><a href="#quicklink-Tercera persona">Tercera persona</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1363080/extras/image_01_loop.gif?t=1729164559" /><br><br>Manor Lords es un juego de estrategia que te hará experimentar la vida de un señor medieval. Convierte tu aldea en una ciudad próspera, encárgate de los recursos y las cadenas de producción y sírvete de la conquista para expandir tus tierras.<br><br>Manor Lords se inspira en el arte y la arquitectura de la Franconia del s. XIV y mantiene el rigor histórico en la medida de lo posible tanto en los gráficos como en las mecánicas jugables. Se han descartado los temas medievales recurrentes en favor de la precisión histórica para lograr una sensación más auténtica, variopinta y creíble.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1363080/extras/headline_01-ESP.png?t=1729164559" /><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1363080/extras/image_02_loop.gif?t=1729164559" /><br><br>Manor Lords es un juego de construcción de ciudades sin cuadrícula ni límites en la colocación y la rotación. Las mecánicas de construcción se basan en el crecimiento natural de pueblos y ciudades medievales reales, donde las rutas comerciales importantes y el paisaje influyeron en la forma en que estos asentamientos surgieron y se desarrollaron.<br><br><ul class="bb_ul"><li>Construye tus distritos industriales, comerciales y residenciales partiendo de un mercado central y siguiendo la disposición natural del terreno. Presta atención a la fertilidad del suelo a la hora de crear granjas, determina tus terrenos de caza de acuerdo con las poblaciones animales y asegúrate de tener acceso a suficientes bosques y yacimientos de recursos para contar con las materias primas necesarias para crecer.<br></li><li>Delimita las zonas residenciales y observa cómo los lugareños construyen sus casas en el burgo siguiendo un sistema histórico de división territorial por parcelas. Cada área estará subdividida según tus carreteras y el espacio disponible, y los hogares se ajustarán en consecuencia.<br></li><li>Crea ampliaciones en los patios traseros de las casas más grandes para generar recursos que no estarían disponibles de otro modo. Los propietarios no se limitan a pagar impuestos, sino que también cultivan hortalizas, crían pollos y cabras y se abastecen a sí mismos y a los vecinos con todo lo que tus granjas, pastos e industrias personales no puedan proporcionar.<br></li><li>Guía a tus asentamientos a través de las peculiaridades y oportunidades que brindan las distintas estaciones y disfruta de la abundancia que traen las lluvias primaverales, pero no olvides prepararte para las inhóspitas nevadas invernales.</li></ul><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1363080/extras/headline_02-ESP.png?t=1729164559" /><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1363080/extras/image_03_loop.gif?t=1729164559" /><br><br>Desde botas a cebada, pasando por pieles y mieles, Manor Lords tiene una gran variedad de bienes típicos de la era. Hay que transportar los materiales y transformarlos en productos finales por medio de cadenas de producción. Tendrás que buscar un equilibrio entre las necesidades básicas de tu pueblo y la producción de artículos de lujo que garanticen la felicidad, así como en la elaboración de bienes comerciales para su exportación o la forja de armas y armaduras que te ayuden en tus conquistas.<br><br><ul class="bb_ul"><li>Los recursos diseminados por todo el mapa te animarán a expandirte y crear múltiples asentamientos especializados. Extrae minerales valiosos de tus colonias mineras y alimenta a tu creciente población con la carne y los cereales que obtienes de las aldeas destinadas a la agricultura, la ganadería o la caza. ¿Cómo usarás la influencia que tanto te ha costado conseguir? ¿La usarás para hacerte con una buena fuente de oro para tus forjas o darás prioridad a las regiones con suelos fértiles para tener las despensas llenas?<br></li><li>La expansión descontrolada tendrá un impacto directo en el entorno. Las manadas de ciervos se alejarán de la civilización invasora, el suelo perderá fertilidad si no practicas la rotación de cultivos y la tala excesiva acabará en deforestación.<br></li><li>Crea rutas comerciales para que los mercaderes ambulantes se interesen en comprar tus excedentes. Fabricar y exportar recursos variados te ayudará a obtener riquezas con las que mejorar las viviendas de tu población, importar recursos que no produces e incluso llenar las arcas personales con los impuestos generados por el comercio.</li></ul><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1363080/extras/headline_03-ESP.png?t=1729164559" /><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1363080/extras/image_04_loop.gif?t=1729164559" /><br><br>Cuentas con una pequeña porción de tierra en un amplio territorio, pero el choque entre tus ambiciones y la de los señores rivales desembocará en un conflicto inevitable. Lidera a los tuyos en la batalla, no como unidades prescindibles que puedan reemplazarse con facilidad, sino como a tus fieles súbditos. Cada muerte importa.<br><br><ul class="bb_ul"><li>Entrena una hueste de hábiles guerreros para que luchen junto a las levas que reclutes de la milicia local. Algunas veces, tendrás que pedirle a tus hombres que se encarguen de los bandidos, mientras que en otras ocasiones los liderarás para conquistar territorio, o defenderlo. Los mercenarios pueden servirte para engrosar tus filas, aunque no son baratos. ¿Llamarás a la milicia a la primera señal de problema a sabiendas de que paralizas la economía cuando ordenas a tus campesinos que tomen las armas, o usarás tus ingresos personales para contratar mercenarios?<br></li><li>Libra batallas tácticas en tiempo real, condicionadas por la fatiga, las condiciones atmosféricas y el equipo. Posiciona a tus tropas con cuidado: bien organizada, una fuerza pequeña puede derrotar a un enemigo claramente superior.<br></li><li>Siente el peso de la muerte incluso en la victoria. Cada soldado que cae es una persona menos en tu ciudad.</li></ul><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1363080/extras/headline_04-ESP.png?t=1729164559" /><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1363080/extras/image_05_loop.gif?t=1729164559" /><br><br>Este juego es un proyecto personal que comenzó con un solo desarrollador. No dudes en ponerte en contacto conmigo y compartir tus comentarios, ideas y críticas: tu opinión me importa.
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

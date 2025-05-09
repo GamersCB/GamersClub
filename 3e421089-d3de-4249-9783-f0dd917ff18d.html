@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title> The Last Case of Benedict Fox Definitive Edition</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('3e421089-d3de-4249-9783-f0dd917ff18d/c05f0eb8-fbce-412d-bc7e-e7146c5c58bd.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="3e421089-d3de-4249-9783-f0dd917ff18d/45b6d847-aea9-4145-9e0f-84a9a0291987.png"/>  The Last Case of Benedict Fox Definitive Edition</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="3e421089-d3de-4249-9783-f0dd917ff18d/0568dd39-63d8-4f75-a9a6-872512480109.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/5/2024">11/5/2024</a> 22:37:13</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/17/2024">11/17/2024</a> 15:26:03</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-1 TB 1">1 TB 1</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-4/27/2023">4/27/2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-73">73</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Rol">Rol</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Plot Twist">Plot Twist</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Plot Twist">Plot Twist</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/2023360" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/2023360/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/2023360/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=2023360" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/2023360" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=2023360" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/2023360/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-3D">3D</a><br/><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Acción y aventura">Acción y aventura</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Cinematográficos">Cinematográficos</a><br/><a href="#quicklink-Combate">Combate</a><br/><a href="#quicklink-Difíciles">Difíciles</a><br/><a href="#quicklink-Fantasía">Fantasía</a><br/><a href="#quicklink-Fantasía oscura">Fantasía oscura</a><br/><a href="#quicklink-Lovecraftianos">Lovecraftianos</a><br/><a href="#quicklink-Metroidvania">Metroidvania</a><br/><a href="#quicklink-Misterio">Misterio</a><br/><a href="#quicklink-Noir">Noir</a><br/><a href="#quicklink-Plataformas">Plataformas</a><br/><a href="#quicklink-Plataformas 2D">Plataformas 2D</a><br/><a href="#quicklink-Psicológicos">Psicológicos</a><br/><a href="#quicklink-Roguelite">Roguelite</a><br/><a href="#quicklink-Sobrenaturales">Sobrenaturales</a><br/><a href="#quicklink-Tipo «Dark Souls»">Tipo «Dark Souls»</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					Experimente El último caso de Benedict Fox: Definitive Edition, que presenta combates reinventados y recorridos intensos y emocionantes. Junto con nuevas animaciones ultrarrápidas y una IA sustancialmente mejorada, coronada por secretos terroríficos y nuevas historias por descubrir llenas de acertijos completamente nuevos, ¡prepárate para una emoción que te hará escalofríos!<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2023360/extras/BenFox_Steam_Gifs_Story.gif?t=1711466659" /><br><br>Desciende a un limbo de recuerdos decadentes con Benedict Fox, un autoproclamado detective que viaja con su compañero demonio. Usa ese vínculo profano para explorar las mentes de quienes han fallecido recientemente y, así, buscar pistas mientras descubres los misterios de una enorme y decrépita mansión: el lugar del espeluznante asesinato de una joven pareja, así como la desaparición de su hijo. Sumérgete en un mundo oscuro e intrigante lleno de organizaciones secretas, rituales prohibidos y crímenes a sangre fría en una aventura arcana que cobra vida a través de un fascinante estilo artístico inspirado en Tim Burton.<h2 class="bb_tag">METROIDVANIA EVOCATIVO Y ELABORADO</h2>Lucha contra demonios, explora el subconsciente y resuelve elaborados rompecabezas en una aventura laberíntica inspirada en las pesadillas de Lovecraft, la ficción negra y la música jazz de principios del siglo XX.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2023360/extras/BenFox_Steam_Gifs_ElaborateMetroidvania.gif?t=1711466659" /><h2 class="bb_tag">DESCIENDE AL LIMBO</h2>Usa tu vínculo con el demonio para explorar las mentes de quienes han fallecido recientemente en tu última oportunidad de obtener un «testimonio». Viaja a mundos surrealistas donde los recuerdos, las emociones y los traumas toman forma física.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2023360/extras/BenFox_Steam_Gifs_Limbo.gif?t=1711466659" /><h2 class="bb_tag">UN MISTERIO SOMBRÍO</h2>Descubre los secretos de una antigua mansión donde se ha encontrado a una pareja asesinada y su hijo ha desaparecido. Sumérgete en una intriga tan oscura como íntima que hará que te enfrentes a los demonios de la familia, tanto en sentido figurado como literal.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2023360/extras/BenFox_Steam_Gifs_Mystery.gif?t=1711466659" /><h2 class="bb_tag">COMBATE CON DEMONIOS</h2>Usa tus armas, poderes demoníacos y tu entorno en combinaciones creativas para vencer a demonios, monstruos y sectarios, pero recuerda que la concentración y el enfoque táctico son tus mejores armas.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2023360/extras/BenFox_Steam_Gifs_DemonCombat.gif?t=1711466659" />
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Medieval Dynasty</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('6f5a1f4c-dcf8-4081-8a05-455af42ef5e0/4e16d006-08ea-470d-a00a-fb6cb0e3f0ea.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="6f5a1f4c-dcf8-4081-8a05-455af42ef5e0/3895ca95-6a24-4278-ae04-ec3f188a0d63.png"/> Medieval Dynasty</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="6f5a1f4c-dcf8-4081-8a05-455af42ef5e0/9fe99b49-1d76-48f7-b360-077be94c71e5.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 15:35:16</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/8/2024">11/8/2024</a> 12:01:06</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB GAS">2TB GAS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-9/23/2021">9/23/2021</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-89">89</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-73">73</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Rol">Rol</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Simuladores">Simuladores</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Render Cube">Render Cube</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Toplitz Productions">Toplitz Productions</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Cooperativo">Cooperativo</a><br/><a href="#quicklink-Cooperativo En Línea">Cooperativo En Línea</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1129580" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1129580/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1129580/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1129580" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1129580" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1129580" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/1129580/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Agricultura">Agricultura</a><br/><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Construcción">Construcción</a><br/><a href="#quicklink-Construcción de bases">Construcción de bases</a><br/><a href="#quicklink-Cooperativos">Cooperativos</a><br/><a href="#quicklink-Fabricación">Fabricación</a><br/><a href="#quicklink-Gestión">Gestión</a><br/><a href="#quicklink-Históricos">Históricos</a><br/><a href="#quicklink-Medievales">Medievales</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Mundo abierto">Mundo abierto</a><br/><a href="#quicklink-Primera persona">Primera persona</a><br/><a href="#quicklink-Realistas">Realistas</a><br/><a href="#quicklink-Rol">Rol</a><br/><a href="#quicklink-Sandbox">Sandbox</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Simulador inmersivo">Simulador inmersivo</a><br/><a href="#quicklink-Supervivencia">Supervivencia</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1129580/extras/intro.gif?t=1730800677" /><br><br><strong>Encuentra un trozo de tierra donde construir tu hogar. Empiezas como un simple granjero o cazador, pero después de acumular experiencia, aprender y afinar tus habilidades, puedes convertirte en líder de una ciudad próspera. Diseña, construye y mejora tu casa, desde una sencilla cabaña hasta una extensa granja. Convence a la gente de que se una a tu aldea. Encuentra el amor verdadero y forma una familia para garantizar la continuidad de tu dinastía. Juega en solitario o únete a tus amigos para explorar juntos el bello pero duro mundo medieval en el modo cooperativo.</strong><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1129580/extras/build.gif?t=1730800677" /><br><br>Te aguarda un enorme mundo abierto. Afronta los calurosos meses de verano y los fríos inviernos y asegúrate de que no os falte de nada tanto a tu pueblo como a ti.<br><br>Medieval Dynasty te cautivará con su exclusiva combinación de géneros que ofrece la experiencia medieval definitiva.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1129580/extras/hunt.gif?t=1730800677" /><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1129580/extras/01_PNG_ES.png?t=1730800677" /><br>Desafía a las estaciones: asegúrate de que tu población y tú no muráis de hambre o sed. Caza animales salvajes, planta cultivos o intercambia recursos para prepararte para todo.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1129580/extras/02_PNG_ES.png?t=1730800677" /><br>Está en tus manos: no llegarás lejos sin las herramientas adecuadas, ya sea cazando, talando árboles, cosechando o construyendo. Pero presta atención al desgaste para que tu pico no se quede inutilizable en mitad de la nada.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1129580/extras/03_PNG_ES.png?t=1730800677" /><br>Vive y aprende: desarrolla tu personaje, especialízate o conviértete en un auténtico comodín mientras interactúas con los PNJ, cuidas de tu familia, exploras el exuberante mundo o realizas tareas para otros.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1129580/extras/04_PNG_ES.png?t=1730800677" /><br>Funda una aldea: eres planificador urbano, constructor y guardabosques, ¡todo en uno! Coordina la distribución, gestiona a los residentes, reúne recursos, produce mercancías y comercia para ayudar a la comunidad a crecer y prosperar.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1129580/extras/harvest.gif?t=1730800677" /><br><br><strong><i>El mundo medieval, con sus peligros desafiantes y sus preciosos paisajes, está a tu alcance.</i></strong><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1129580/extras/city.gif?t=1730800677" /><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1129580/extras/05_PNG_ES.png?t=1730800677" /><br><ul class="bb_ul"><li><strong>Mundo abierto realista:</strong> explora dos extensos mapas, el Valle (en solitario) y el Meandro (en solitario y cooperativo) en un bello mundo abierto.<br></li><li><strong>Multijugador cooperativo:</strong> únete a hasta 4 amigos para una experiencia de juego cooperativo.<br></li><li><strong>Personalización del personaje:</strong> personaliza tu avatar con un detallado creador de personajes.<br></li><li><strong>Realismo ambiental dinámico:</strong> sumérgete en un completo ciclo de 4 estaciones con transiciones dinámicas de día/noche y meteorología realista, siempre interactuando de forma activa con el entorno, desde talar árboles hasta explorar cuevas.<br></li><li><strong>Diversidad estructural y de interiores:</strong> crea una gama diversa de más de 25 edificios, desde humildes chozas hasta robustas casas de piedra, y personalízalos con una selección de más de 120 muebles y piezas de decoración.<br></li><li><strong>Fabricación exhaustiva:</strong> fabrica más de 300 piezas, incluyendo armas, herramientas, muebles y ropa.<br></li><li><strong>Interacción con la fauna:</strong> enfréntate a lobos, jabalíes, ciervos, bisontes y otros animales salvajes que pueblan los bosques.<br></li><li><strong>Mecánicas de supervivencia:</strong> vigila tus niveles de comida, agua, salud y aguante.<br></li><li><strong>Árbol de habilidades:</strong> desarrolla tu personaje adquiriendo nuevas habilidades.<br></li><li><strong>Eventos únicos:</strong> experimenta eventos dinámicos y decisiones con impacto directo en el juego.<br></li><li><strong>Misiones y economía:</strong> lleva a cabo misiones y actividades comerciales y económicas.<br></li><li><strong>Dinámica social y creación de familia:</strong> establece conexiones con PNJ, funda tu propia familia y desarrolla relaciones que pueden llevar a la alegría de la paternidad en el juego y ofrecerte la oportunidad de dejar tu legado a la siguiente generación.<br></li><li><strong>Entorno interactivo:</strong> te cautivará el extenso paisaje que cambia de forma dinámica con tus acciones. Tala árboles, recoge recursos o explora cuevas misteriosas: en todas partes encontrarás algo nuevo que descubrir.</li></ul><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1129580/extras/family.gif?t=1730800677" />
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Taxi Life A City Driving Simulator </title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('8c52339a-b6d7-4ecc-9cf6-d6d351eb8515/1a379bfd-3591-4786-ba34-8e6da146b096.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="8c52339a-b6d7-4ecc-9cf6-d6d351eb8515/c20d8bc2-d2ca-425d-a5a3-7105b6c6bbcd.png"/> Taxi Life A City Driving Simulator </h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="8c52339a-b6d7-4ecc-9cf6-d6d351eb8515/423125bd-9479-4e03-8703-9f0690901b01.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 15:27:56</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/17/2024">11/17/2024</a> 14:37:55</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-1 TB 1">1 TB 1</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-3/7/2024">3/7/2024</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-58">58</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Simuladores">Simuladores</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Simteract">Simteract</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Nacon">Nacon</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Parcial Con Mando">Compat. Parcial Con Mando</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1351240" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1351240/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1351240/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1351240" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1351240" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1351240" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/1351240/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-3D">3D</a><br/><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-Casuales">Casuales</a><br/><a href="#quicklink-Conducción">Conducción</a><br/><a href="#quicklink-Exploración">Exploración</a><br/><a href="#quicklink-Física">Física</a><br/><a href="#quicklink-Gestión">Gestión</a><br/><a href="#quicklink-Mundo abierto">Mundo abierto</a><br/><a href="#quicklink-Para mando">Para mando</a><br/><a href="#quicklink-Primera persona">Primera persona</a><br/><a href="#quicklink-Realistas">Realistas</a><br/><a href="#quicklink-Relajantes">Relajantes</a><br/><a href="#quicklink-Sandbox">Sandbox</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Simulador de automóviles">Simulador de automóviles</a><br/><a href="#quicklink-Simulador de vida">Simulador de vida</a><br/><a href="#quicklink-Simulador inmersivo">Simulador inmersivo</a><br/><a href="#quicklink-Tercera persona">Tercera persona</a><br/><a href="#quicklink-Transportes">Transportes</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1351240/extras/MASTER_GIF.gif?t=1729756866" /> <br><br><i>Taxi Life es compatible con los volantes y mandos más populares.</i><br><br>¡Ponte al volante de tu coche y tu negocio, lleva pasajeros por toda Barcelona y desarrolla tu empresa de transporte!<br>Tras llegar a Barcelona con solo un coche y un sueño, conduce por las bulliciosas calles de la famosa ciudad y transporta pasajeros ofreciéndoles un servicio impecable. Tendrás que seguir las normas de tráfico, lidiar con turistas impacientes, la meteorología cambiante y hora punta. Adapta tus rutas para evitar atascos y accidentes y, sobre todo, asegúrate de que tus clientes estén contentos con tu servicio para obtener las mejores valoraciones y las propinas más suculentas.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1351240/extras/TITLE1_ES.gif?t=1729756866" /> <br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1351240/extras/GIF1.gif?t=1729756866" /><br><br><ul class="bb_ul"><li>Transporta a tus pasajeros por 460 km de calles en una escala 1:1 del juego de una gran área de Barcelona.<br></li><li>Muévete entre dos tarifas y explora la ciudad descubriendo características ocultas y nuevos puntos de interés. <br></li><li>Consigue puntos de experiencia conduciendo, explorando e interactuando con los clientes para desbloquear nuevas habilidades, como la posibilidad de aceptar carreras más largas.</li></ul><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1351240/extras/TITLE2_ES.gif?t=1729756866" /> <br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1351240/extras/GIF2.gif?t=1729756866" /><br><br><ul class="bb_ul"><li>Recoge a clientes y llévalos a su destino<br></li><li>Sigue las normas de tráfico y evita chocarte con vehículos y peatones<br></li><li>Adapta tu ruta en función de eventos aleatorios (accidentes, obras, desfiles, etc.)<br></li><li>Aumenta la distancia de frenado cuando la calzada esté mojada para evitar colisiones <br></li><li>Controla las luces de advertencia del salpicadero y reabastece o recarga tu vehículo, o llévalo a mantenimiento siempre que lo necesite</li></ul><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1351240/extras/TITLE3_ES.gif?t=1729756866" /> <br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1351240/extras/GIF3.gif?t=1729756866" /><br><br><ul class="bb_ul"><li>Compra coches nuevos con los beneficios de las carreras<br></li><li>Contrata a empleados en función de su perfil y asígnales coches, barrios y horarios<br></li><li>¡Toma las decisiones correctas para sacar el máximo provecho a tus beneficios!</li></ul><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1351240/extras/TITLE4_ES.gif?t=1729756866" /> <br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1351240/extras/GIF4.gif?t=1729756866" /><br><br>Si te gustan los retos, acepta misiones especiales de dos categorías:<br><ul class="bb_ul"><li>Conduce lo más rápido posible (sin multas por exceso de velocidad)<br></li><li>No infrinjas ninguna norma de tráfico</li></ul><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1351240/extras/TITLE5_ES.gif?t=1729756866" /> <br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1351240/extras/GIF5.gif?t=1729756866" /><br><br><ul class="bb_ul"><li>Cubre las peticiones de tus pasajeros: charla, cambia la emisora de radio, baja la ventanilla, etc.<br></li><li>Ofrece un servicio impecable para conseguir propinas y reseñas excelentes</li></ul><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1351240/extras/TITLE6_ES.gif?t=1729756866" /> <br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1351240/extras/GIF6.gif?t=1729756866" /><br><br><ul class="bb_ul"><li>Selecciona tu estilo de conducción y modelos de coche, como eléctricos o de combustión, y de transmisión automática, semiautomática o manual<br></li><li>Personaliza tus coches: color, cabina del conductor, llantas, accesorios, etc.<br></li><li>¡Mejora tus vehículos usando tus beneficios y experiencia!</li></ul>
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

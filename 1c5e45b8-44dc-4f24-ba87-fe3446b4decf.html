@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>EC112_ The_Fire_Fighting_Simulation_2</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('1c5e45b8-44dc-4f24-ba87-fe3446b4decf/cb20e556-556b-42d9-b995-1f5d0110ff1a.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="1c5e45b8-44dc-4f24-ba87-fe3446b4decf/8038cd36-8cce-490a-9f24-f83a294de47a.png"/> EC112_ The_Fire_Fighting_Simulation_2</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="1c5e45b8-44dc-4f24-ba87-fe3446b4decf/4e5c2272-00e7-4582-9642-1a5adfc4286e.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-3/6/2025">3/6/2025</a> 23:24:56</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-3/7/2025">3/7/2025</a> 2:22:15</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB GAS">2TB GAS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-3/18/2021">3/18/2021</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-59">59</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Casual">Casual</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Simuladores">Simuladores</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Crenetic">Crenetic</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Aerosoft GmbH">Aerosoft GmbH</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/785770" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/785770/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/785770/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=785770" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/785770" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=785770" target="_blank">PCGamingWiki</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-3D">3D</a><br/><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-Casuales">Casuales</a><br/><a href="#quicklink-Coloridos">Coloridos</a><br/><a href="#quicklink-Conducción">Conducción</a><br/><a href="#quicklink-Cooperativos">Cooperativos</a><br/><a href="#quicklink-Cooperativos en línea">Cooperativos en línea</a><br/><a href="#quicklink-Estrategia">Estrategia</a><br/><a href="#quicklink-Juegos de azar">Juegos de azar</a><br/><a href="#quicklink-Modificables">Modificables</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Mundo abierto">Mundo abierto</a><br/><a href="#quicklink-Primera persona">Primera persona</a><br/><a href="#quicklink-Realistas">Realistas</a><br/><a href="#quicklink-Sandbox">Sandbox</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Tácticos">Tácticos</a><br/><a href="#quicklink-Tercera persona">Tercera persona</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/_newNotruf_de.gif?t=1726492895" /><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/en_long_name.png?t=1726492895" /> simulates the working methods of the German professional firefighters. Experience how they work, how they proceed tactically and which tools they use. You can expect a variety of tasks in the areas of rescue, extinguishing, recovery and protection.<br><br>Experience 24-hour shifts with varied assignments at one of the most beautiful and modern fire stations in Germany. The station, its work methods and emergency vehicles were implemented in close cooperation with the professional fire department.<br><br>Be there when the entire fire brigade of the station goes out. Change into the role of any firefighter at any time and master the daily challenges. In order not to lose the overview at the scene, you can distribute orders in a tactical mode, which are processed by the AI independently.<br><br>Play alone or with other firefighting enthusiasts in multiplayer mode and experience the firefighting profession in all its exciting facets.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/new_de_features.png?t=1726492895" /><br><br>Various features turn the simulation into a realistic gaming experience with challenging tasks.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Open game world without loading times for a smooth gaming experience<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Working in a team with AI-controlled emergency services<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Possibility to take on the role of another emergency worker at any time<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Multiplayer with hot-join function and optional dedicated servers<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Control over the operational process through tactical overview<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Challenging fire truck operations with special traffic rights<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Diverse missions from the areas of save-extinguish-rescue-protect<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Simulation of 24-hour operations with line up and vehicle takeover<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Radio traffic during the mission and on site<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Replica of guard 1 of the Mülheim an der Ruhr fire department<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Modding support such as vehicle paintwork and much more<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/new_en_Missions.png?t=1726492895" /><br><br>Become acquainted with the job of a firefighter and experience in different employments the multifaceted everyday life of the professional fire-brigade<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Container fires<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Small scale fires<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Car and truck fires<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Apartment fires<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Roof truss fires<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Traffic accidents<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Emergency doorways<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Pump usage<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Pruning saw usage<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Animal rescue<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Oil traces<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Roadway cleaning<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Formwork<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/new_en_Vehicles.png?t=1726492895" /><br><br>The listed vehicles can be controlled by the player. Further vehicles are also in the game and support the player during missions. <br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Command car (KdoW)<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Command vehicle (ELW)<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Laddertruck (DLK)<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Extinguishing group vehicle (LF24)<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Tank fire engine (TLF)<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Small emergency vehicle (KEF)<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/icon_flamme.png?t=1726492895" /> Ambulance (RTW)    <br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/785770/extras/new_de_logos.png?t=1726492895" />
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Kingdom Rush 5: Alliance TD</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('7132600a-6977-43ec-a028-2eb685dab894/aa691e4e-cefc-4553-989e-683172f8eff3.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="7132600a-6977-43ec-a028-2eb685dab894/96f6b621-0db1-4455-832a-af51cf724054.png"/> Kingdom Rush 5: Alliance TD</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="7132600a-6977-43ec-a028-2eb685dab894/3543930b-08bc-4f9e-9c65-0ad483ea192c.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/13/2024">11/13/2024</a> 0:35:38</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/13/2024">11/13/2024</a> 1:05:48</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-PORCHE">PORCHE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-7/25/2024">7/25/2024</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-85">85</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Estrategia">Estrategia</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Indie">Indie</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Ironhide Game Studio">Ironhide Game Studio</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Ironhide Game Studio">Ironhide Game Studio</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Parcial Con Mando">Compat. Parcial Con Mando</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/2849080" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/2849080/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/2849080/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=2849080" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/2849080" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=2849080" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/2849080/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-2D">2D</a><br/><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Caricaturescos">Caricaturescos</a><br/><a href="#quicklink-Comedia">Comedia</a><br/><a href="#quicklink-Construcción">Construcción</a><br/><a href="#quicklink-Defensa de torres">Defensa de torres</a><br/><a href="#quicklink-Dibujos animados">Dibujos animados</a><br/><a href="#quicklink-Divertidos">Divertidos</a><br/><a href="#quicklink-Dragones">Dragones</a><br/><a href="#quicklink-Estrategia">Estrategia</a><br/><a href="#quicklink-Fantasía">Fantasía</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Magia">Magia</a><br/><a href="#quicklink-Medievales">Medievales</a><br/><a href="#quicklink-Oscuros">Oscuros</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph">Con mayor poder y amenaza que nunca,<strong>Kingdom Rush 5: Alliance</strong> ofrece una experiencia fresca y apasionante, basándose en las partidas ultra dinámicas y atrapantes que llevaron a sus predecesores al estatus de ganadores de premios. </p><p class="bb_paragraph"></p><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2849080/extras/welcome_ES.png?t=1727970018" /></p><p class="bb_paragraph">Mientras emerge un mal formidable, ¡se está formando una alianza inesperada! Se necesitarán a los mejores guerreros de Linirea y al implacable Ejército Oscuro para detenerlo. ¡Cuidado! Aunque puedan viajar juntos, los vientos cambiantes del destino podrían alterar rápidamente su rumbo. </p><p class="bb_paragraph"></p><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2849080/extras/bring_ES.png?t=1727970018" /></p><p class="bb_paragraph"><strong>¡Prepárate para aprovechar el formidable poder de héroes duales en el campo de batalla!</strong> </p><p class="bb_paragraph"><strong>SÍ, ahora no sólo puedes jugar con un dragón, ¡sino con DOS!</strong> El doble de poder incendiario, el doble de caos - sólo asegúrate de que no discutan sobre quién acumula más oro. </p><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2849080/extras/gameplay_1.gif?t=1727970018" /></p><p class="bb_paragraph"></p><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2849080/extras/combine_ES.png?t=1727970018" /></p><p class="bb_paragraph">Todos los pesos pesados como Paladines, Arqueros, Magos, Nigromantes, y muchos más están a tu disposición para mandar. Pero ten cuidado, ¡podrían empezar a discutir sobre quién es el verdadero héroe del grupo mientras los enemigos pasan desapercibidos!  </p><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2849080/extras/gameplay_2.gif?t=1727970018" /></p><p class="bb_paragraph"></p><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2849080/extras/defeat_ES.png?t=1727970018" /></p><p class="bb_paragraph">¿Estás listo para la batalla definitiva? Embarca en un viaje épico junto a los valientes guerreros de Linirea y el implacable Ejército Oscuro mientras se unen para conquistar un colosal enemigo.</p><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2849080/extras/gameplay_3.gif?t=1727970018" /></p><p class="bb_paragraph"></p><h2 class="bb_tag"><strong>Características:</strong></h2><ul class="bb_ul"><li><p class="bb_paragraph"><strong>30 personajes a potenciar:</strong> </p></li><li><p class="bb_paragraph"><strong>16 torres con habilidades especiales.</strong> Puedes crear una amplia gama de estrategias utilizando torres como las que tienen arqueros precisos, paladines letales e incluso fosas de demonios.  </p></li><li><p class="bb_paragraph"><strong>14 Héroes Épicos;</strong> ahora, puedes jugar con 2 héroes en cada batalla, actualizándolos para desatar todo su poder y habilidades para reforzar su defensa. ¿Quién iba a decir que los héroes podrían ser compañeros de cuarto tan cercanos? ¡Es como una comedia de amigos con más magia y monstruos!  </p></li><li><p class="bb_paragraph">Enfréntate a desafíos llenos de acción en <strong>4 diferentes entornos impredecibles</strong> </p></li><li><p class="bb_paragraph"><strong>19 niveles de campaña,</strong> con diferentes terrenos y desafíos. Explora paisajes diversos mientras defiendes contra hordas de enemigos. ¡Cada etapa ofrece una nueva aventura!  </p></li><li><p class="bb_paragraph"><strong>3 modos de juego diferentes.</strong> ¿A quién no le gusta un buen desafío? </p></li><li><p class="bb_paragraph"><strong>54+ Méritos Especiales,</strong> ¡demuestra tus habilidades y desbloquea recompensas!  </p></li><li><p class="bb_paragraph"><strong>32+ diferentes enemigos</strong> para poner a prueba tu valor: 4 razas enemigas y 5 peleas épicas con jefes. Es como un monstruoso enfrentamiento de proporciones épicas. ¿Quién prevalecerá? ¿Tú o los malos?  </p></li><li><p class="bb_paragraph">Guiños secretos y el habitual humor ligero de Ironhide. Porque, ¿qué sería un juego sin unas cuantas sorpresas ocultas y unas buenas risas?</p></li></ul>
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

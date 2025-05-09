@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Watch Dogs  </title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('a016c999-ccd7-4f8a-8a99-46b116f19a27/26b69034-19d9-4476-8302-cafcbaa50467.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="a016c999-ccd7-4f8a-8a99-46b116f19a27/eeaae444-b3bb-4bac-9f3a-f8e164f3fa12.png"/> Watch Dogs  </h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="a016c999-ccd7-4f8a-8a99-46b116f19a27/3af8f5b4-71c7-413c-b0f9-04cf023adca2.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 14:41:31</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-2/3/2025">2/3/2025</a> 19:32:20</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-1 TB EXT">1 TB EXT</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-5/26/2014">5/26/2014</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-76">76</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-77">77</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Ubisoft">Ubisoft</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Ubisoft">Ubisoft</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Compat. Parcial Con Mando">Compat. Parcial Con Mando</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/243470" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/243470/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/243470/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=243470" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/243470" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=243470" target="_blank">PCGamingWiki</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Conducción">Conducción</a><br/><a href="#quicklink-Cooperativos">Cooperativos</a><br/><a href="#quicklink-Disparos">Disparos</a><br/><a href="#quicklink-Disparos en tercera persona">Disparos en tercera persona</a><br/><a href="#quicklink-Épico">Épico</a><br/><a href="#quicklink-Estrategia">Estrategia</a><br/><a href="#quicklink-Futuristas">Futuristas</a><br/><a href="#quicklink-Hackeo">Hackeo</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Mundo abierto">Mundo abierto</a><br/><a href="#quicklink-Parkour">Parkour</a><br/><a href="#quicklink-Preciosos">Preciosos</a><br/><a href="#quicklink-Rol">Rol</a><br/><a href="#quicklink-Sigilo">Sigilo</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Tercera persona">Tercera persona</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					Solo hace falta mover un dedo para hacerlo todo. Conectarse con amigos. Comprar los últimos juguetes tecnológicos. Saber lo que pasa en el mundo… Pero ese simple gesto de mover el dedo no solo arroja sombra sobre la pantalla. Con cada conexión dejamos una huella en el mundo digital y dejamos rastros de nuestros movimientos, de lo que buscamos, de lo que nos gusta y nos disgusta. Y no solo dejan huella las personas. Hoy día todas las ciudades están conectadas, las infraestructuras urbanas están monitorizadas y todo se controla con un complejo sistema operativo. <br><br>En Watch_Dogs este sistema se denomina CTOS (Central Operating System), controla casi todos los elementos tecnológicos de la ciudad y guarda los datos de todos sus  habitantes.<br><br>Juegas como Aiden Pearce, un brillante hacker y antiguo matón, cuyo pasado delictivo le ha conducido a una terrible tragedia familiar. Ahora, persiguiendo a los que hirieron a tu familia, podrás hackear todo lo que te rodea, manipulando la red de conexiones de la ciudad. Accede a las cámaras de seguridad que hay por todas partes, descarga información personal que te lleve a tu objetivo, controla los semáforos y el transporte público para detener al enemigo… y mucho más. <br><br>Usa la ciudad de Chicago como tu propia arma, y crea tu propio estilo de venganza.<h2 class="bb_tag">KEY FEATURES</h2><br><strong>HACKEA LA CIUDAD</strong><br><br>Watch_Dogs se desarrolla en una ciudad viva, totalmente simulada, en la que usas tu Smartphone para controlar en tiempo real toda la infraestructura de la ciudad. Atrapa a tu enemigo en un atasco de 30 coches manipulando los semáforos. Detén un tren y abórdalo para evitar a las autoridades.  Escapa por los pelos de tus perseguidores elevando con rapidez un puente… Todo lo que esté conectado al sistema CTOS de la ciudad puede ser tu arma.<br><br><strong>JUSTICIA CALLEJERA</strong><br><br>Vivir en el sórdido centro de Chicago, donde la violencia solo se responde con violencia, te ha dado las habilidades que necesitas para luchar en la calle. Acaba con tus enemigos con la porra, participa en un tiroteo cuya simulación física no tiene nada que envidiar a un shooter y combina las armas de fuego con el hackeo para tener ventaja en cualquier situación. Las calles están ahí para que tú crees tu propia forma de atacar, con más de 30 armas tradicionales.<br><br><strong>CONDUCCIÓN DE ALTA VELOCIDAD</strong><br><br>Ubisoft Montreal ha trabajado con estudios como Ubisoft Reflections, famosos creadores de la premiada serie Driver, para que Watch_Dogs pudiera ofrecer un espectáculo en caballos de potencia. Ponte al volante de más de 65 vehículos, cada uno con física y control muy avanzados, y muévete por toda la ciudad mientras completas misiones a toda velocidad.<br>	<br><strong>TODO BAJO CONTROL</strong><br><br>Disrupt, el nuevo motor de juego diseñado para Watch_Dogs, usa los procesos y gráficos más avanzados para ofrecer un espectáculo visual y una experiencia realista increíbles. Disrupt te permite modificar la historia, alterar la ciudad y cambiar las vidas de sus habitantes con cada elección que realizas, que afecta a toda la ciudad.<br><br><strong>NAVEGACIÓN DINÁMICA</strong><br><br>Watch_Dogs te da la oportunidad de no solo aprovecharte del control de la ciudad a través del ctOS,  sino también de las propias calles. En la fiel reproducción de la ciudad de Chicago, toma atajos entre edificios o asciende a los más alto de los edificios para atrapar a tu objetivo.<br><br><strong>EXPERIENCIA MULTIJUGADOR SIN RUPTURAS</strong><br><br>Descubre un nuevo nivel de interacción, cooperación y enfrentamiento entre jugadores, gracias al nuevo sistema multijugador que enlaza los modos de un jugador y multijugador en una única experiencia sin costuras. Eso significa que no hay menús, no hay pantallas de carga, solo hay acción multijugador en un mundo abierto.
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

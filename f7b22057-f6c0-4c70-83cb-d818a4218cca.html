@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Echoes of Yi : Samsara</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('f7b22057-f6c0-4c70-83cb-d818a4218cca/ad97c7e0-1fb5-4b0b-a224-ceb240c6f0ed.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="f7b22057-f6c0-4c70-83cb-d818a4218cca/cc212468-655a-40d6-996e-33ade00dd68c.png"/> Echoes of Yi : Samsara</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="f7b22057-f6c0-4c70-83cb-d818a4218cca/c7bed3ef-a256-4782-9806-836db51d8feb.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-5/1/2025">5/1/2025</a> 11:33:05</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-5/1/2025">5/1/2025</a> 11:45:58</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB DATOS">2TB DATOS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-"></a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-57">57</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Rol">Rol</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Runmeng">Runmeng</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Runmeng">Runmeng</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/2776940" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/2776940/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/2776940/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=2776940" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/2776940" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=2776940" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/2776940/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-3D">3D</a><br/><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Acción y aventura">Acción y aventura</a><br/><a href="#quicklink-Artes marciales">Artes marciales</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Combate">Combate</a><br/><a href="#quicklink-Drama">Drama</a><br/><a href="#quicklink-Exploración">Exploración</a><br/><a href="#quicklink-Fantasía">Fantasía</a><br/><a href="#quicklink-Finales múltiples">Finales múltiples</a><br/><a href="#quicklink-Hack and slash">Hack and slash</a><br/><a href="#quicklink-Lineales">Lineales</a><br/><a href="#quicklink-Luchador en 3D">Luchador en 3D</a><br/><a href="#quicklink-Realistas">Realistas</a><br/><a href="#quicklink-Roguelike de acción">Roguelike de acción</a><br/><a href="#quicklink-Rol">Rol</a><br/><a href="#quicklink-Rol de acción">Rol de acción</a><br/><a href="#quicklink-Tercera persona">Tercera persona</a><br/><a href="#quicklink-Tipo «Dark Souls»">Tipo «Dark Souls»</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph">&quot;Yìwénlù: Lúnhuí&quot; es un juego de aventuras de acción con estilo chino que tiene como núcleo la batalla, la exploración y la resolución de enigmas. En el juego, llevas el poder de la &quot;Semilla Sagrada&quot; del Árbol Sagrado, y posees la capacidad de renacer infinitas veces. Después de que el Árbol Sagrado apareció en el mundo y causó un gran desastre en la humanidad, decidiste seguir y buscar a tu maestro, y cortar el Árbol Sagrado.</p><p class="bb_paragraph"></p><p class="bb_paragraph">Entraste en Lingxu, el lugar donde se encuentra el Árbol Sagrado de Jianmu. Sentiste un mundo en el que, después de que el ciclo del Árbol Sagrado fue destruido, las emociones estaban desordenadas, la maldad se desató y las raíces del árbol se pudrieron. Este camino está lleno de exploraciones y retos. Debes recopilar habilidades de artes marciales y ofrendas, y utilizar la energía que cayó del Árbol Sagrado para mejorar constantemente a ti mismo. Finalmente, en el camino de buscar a tu maestro, conociste sobre las guerras de la Tribú Wu, los sucesos pasados del Árbol Sagrado y el misterio de tu propia ascendencia.</p><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2776940/extras/背景.gif?t=1745489112" /></p><p class="bb_paragraph">Cortar el Árbol Sagrado con la espada, la reencarnación de la Semilla Sagrada, la oscuridad que devora para siempre.</p><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>Ritmo preciso y duro enfrentamiento</strong></p><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2776940/extras/斗技.gif?t=1745489112" /></p><p class="bb_paragraph">A través del rápido cambio entre ataque y defensa y del contraataque preciso, acumulas la barra de aire del enemigo, haciendo que su defensa se derrumbe. Una vez que capturas la oportunidad, el jugador puede lanzar un ataque mortal y sentir la intensa experiencia de batalla en la que el ataque y la defensa son uno solo.</p><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>Presentación perfecta del tesoro cultural</strong></p><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2776940/extras/场景.gif?t=1745489112" /></p><p class="bb_paragraph">El juego está profundamente integrado en la cultura tradicional china, como los sitios arqueológicos de Sanxingdui y la cultura del ópera de Pekín, entre otros. El diseño de los Jefes (BOSS) y la disposición de las escenas están llenos del sabor único de la cultura tradicional.</p><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>Artes tradicionales y esplendor en la batalla</strong></p><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2776940/extras/武术.gif?t=1745489112" /></p><p class="bb_paragraph">Los jugadores pueden aprender y utilizar una variedad de artes marciales tradicionales, como el Taichi, la técnica de la espada y la técnica de la lanza. Además, en el juego también se integran ricos relatos populares, costumbres tradicionales y patrimonios culturales.</p><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>Características del juego:</strong><br>Batalla con ritmo de alta velocidad:<br>Al enfrentarse a poderosos enemigos, experimentar una batalla con un gran sentido de presión y sentir la lucha de vida o muerte entre los destellos de espadas y dagas.<br>Contenido de exploración abundante:<br>En el juego se integran elementos como anécdotas populares, costumbres tradicionales y patrimonios culturales. Durante el proceso de explorar el Árbol Sagrado de Jianmu en Sanxingdui, los jugadores se sumergirán en una variedad de costumbres tradicionales y maravillas culturales, sintiendo un mundo cargado de historia.<br>Diseño musical único:<br>La música de fondo del juego utiliza instrumentos tradicionales chinos como el suona, el pipa, el guqin y el guzheng, combinados con los sonidos únicos de los instrumentos de percusión, presentando el encanto de la música tradicional china.<br>Sistema de adiestramiento sencillo y fácil de entender:<br>Los jugadores pueden aprender habilidades y, en el juego, experimentar de verdad los estilos y técnicas de las artes marciales chinas, convirtiéndose paulatinamente en maestros de las artes marciales y enfrentándose a enemigos cada vez más poderosos.<br>Experiencia de argumento profunda: Seguir los pasos del Maestro de la Espada, emprender un viaje de aventuras y experimentar una historia en la que la humanidad y las emociones están entretejidas.</p><p class="bb_paragraph"></p><p class="bb_paragraph">Yìwénlù: Lúnhuí&quot; es un juego de acción de wuxia oscuro que integra la cultura tradicional china. Los jugadores interpretarán al primer discípulo del Maestro de la Espada, derrotarán a poderosos enemigos en batallas de ataque y defensa de alta velocidad, y desvelarán la conspiración debajo del Árbol Sagrado de Jianmu. ¿Elegir enfrentarse frontalmente a las dificultades o dejarse llevar por las corrientes? Todas las decisiones están en tus manos.</p>
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

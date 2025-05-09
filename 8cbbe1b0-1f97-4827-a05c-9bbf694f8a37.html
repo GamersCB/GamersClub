@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Fallout 3 - Game of the Year Edition</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('8cbbe1b0-1f97-4827-a05c-9bbf694f8a37/9ccdbac4-6908-4c90-8903-1b5e4077e75b.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="8cbbe1b0-1f97-4827-a05c-9bbf694f8a37/c2b7198d-c584-4c45-b2d9-be864c0f6f53.png"/> Fallout 3 - Game of the Year Edition</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="8cbbe1b0-1f97-4827-a05c-9bbf694f8a37/33e42d7c-b239-40fc-a1f7-4a7507602b59.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 14:41:31</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/8/2024">11/8/2024</a> 17:36:44</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-6TB STORE">6TB STORE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-10/28/2008">10/28/2008</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-91">91</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Rol">Rol</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Bethesda Game Studios">Bethesda Game Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Bethesda Softworks">Bethesda Softworks</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/22370" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/22370/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/22370/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=22370" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/22370" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=22370" target="_blank">PCGamingWiki</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Buena trama">Buena trama</a><br/><a href="#quicklink-Ciencia ficción">Ciencia ficción</a><br/><a href="#quicklink-Clásico de culto">Clásico de culto</a><br/><a href="#quicklink-Disparos">Disparos</a><br/><a href="#quicklink-Exploración">Exploración</a><br/><a href="#quicklink-FPS">FPS</a><br/><a href="#quicklink-Gran banda sonora">Gran banda sonora</a><br/><a href="#quicklink-Modificables">Modificables</a><br/><a href="#quicklink-Mundo abierto">Mundo abierto</a><br/><a href="#quicklink-Posapocalípticos">Posapocalípticos</a><br/><a href="#quicklink-Primera persona">Primera persona</a><br/><a href="#quicklink-Rol">Rol</a><br/><a href="#quicklink-Rol de acción">Rol de acción</a><br/><a href="#quicklink-Sandbox">Sandbox</a><br/><a href="#quicklink-Tercera persona">Tercera persona</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/><a href="#quicklink-Valor continuo">Valor continuo</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<strong>Prepárate para el Futuro™</strong><br><br><br>Con Fallout 3: Edición Juego del Año, disfruta del juego más aclamado del 2008 como nunca. Crea un personaje a tu elección e introdúcete en un sobrecogedor mundo post-apocalíptico, donde debes luchar por la supervivencia en cada momento. Fallout 3: Edición Juego del Año incluye las 5 ampliaciones de Fallout 3: <br><ul class="bb_ul"><li><strong>Operation: Anchorage</strong> - Entra en un entorno de simulación militar y lucha en la liberación de Anchorage, Alaska de las manos de los invasores Comunistas Chinos.<br><br></li><li><strong>The Pitt</strong> - Viaja a las ruinas post-apocalípticas de Pittsburgh y dejate enredar por el conflicto entre esclavos y sus amos Raider.<br><br></li><li><strong>Broken Steel</strong> - Aumenta tu nivel hasta 30, y arrasa los restos del Enclave junto con Liberty Prime.<br><br></li><li><strong>Point Lookout</strong> - Embárcate en una misteriosa aventura en un vasto cenagal a lo largo de la costa de Maryland.<br><br></li><li><strong>Mothership Zeta</strong> - Desafía a los hostiles alienigenas y escapa de la nave nodriza alien que orbita a kilómetros de distancia de la Capital Wasteland.</li></ul><h2 class="bb_tag">Características Destacadas</h2><br><ul class="bb_ul"><li><strong>Libertad Sin Límites</strong> - ¡Explora los parajes de la enorme Capital Wasteland! ¡Visita los grandiosos monumentos de los Estados Unidos en las post-apocalípticas ruinas de la capital del país! Toma las decisiones que te definiran como personaje y cambia el mundo. Pero ten cuidado, ¡tendrás que estar atento a tu Rad Meter!<br><br></li><li><strong>Vive la experiencia S.P.E.C.I.A.L.</strong> - Los ingenieros de Vault-Tec te brindan el último grito en simulación de destrezas humanas — ¡el Sistema de Creación de Personajes SPECIAL! Gracias a un nuevo sistema de representación basado en reparto de puntos, SPECIAL ofrece una personalización de tu personaje ilimitada. También están incluidas docenas de destrezas y ventajas, ¡cada una con una variada gama de efectos!<br><br></li><li><strong>Fantásticos Puntos de Vista</strong> - ¡Los genios de Vault-Tec lo han vuelto a conseguir! No volverás a estar atado a un solo punto de vista, vive la acción desde primera o tercera persona. ¡Personaliza tu punto de vista con tocar un botón!<br><br></li><li><strong>El Poder de la Elección</strong> - ¿Cómo te has levantado hoy? ¿Cómo un cobarde villano o cómo un Buen Samaritano? Escoge un lado o mantente al margen; cada situación puede superarse de diferentes maneras. Soluciona tus problemas de forma civilizada o, simplemente, dispara tu Plasma Rifle.<br><br></li><li><strong>Volatilízalos con V.A.T.S.</strong> - ¡Supera los más duros combates con el Vault-Tec Assisted Targeting System para tu Pip-Boy Model 3000! V.A.T.S. te permite pausar el tiempo en el combate, apuntar a partes especificas del cuerpo de tu objetivo, encolar ataques, y dejar que Vault-Tec se encargue del combate por ti. Escupe muerte y destrucción en una novedosa y espectacular presentación cinematográfica.<br><br></li><li><strong>Impresionante Inteligencia Artificial</strong> - En Vault-Tec nos hemos dado cuenta de que la clave para recuperar la civilización después de una guerra nuclear son las personas. Nuestras mejores cabezas pensantes unieron esfuerzos para producir una versión mejorada de Radiant AI, La Simulación Humana Interactiva Preferida de América. Expresiones faciales, gestos, diálogos únicos, y un comportamiento vital impresionante de la mano de la última tecnología de Vault-Tec.<br><br></li><li><strong>Belleza Deslumbrante*</strong> - Presencia la cruda realidad del apocalipsis nuclear, renderizado con unos gráficos de lujo en HD como nunca antes se ha hecho. Desde el árido Wasteland, a las peligrosas oficinas y túneles del metro de DC, a la asquerosa piel podrida de la cara de un mutante.</li></ul>*Protección ocular altamente recomendada.
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

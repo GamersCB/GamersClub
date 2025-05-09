@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Park Beyond </title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('882c6d32-3c71-4dcf-9c2d-d9b53fe775a7/37b8c9a8-5396-4c8f-9866-ed9c5cad561c.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="882c6d32-3c71-4dcf-9c2d-d9b53fe775a7/eca10a94-303b-4cf8-ac38-010caff8d671.png"/> Park Beyond </h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="882c6d32-3c71-4dcf-9c2d-d9b53fe775a7/e99c3ebc-961d-4fa3-8c9c-16ebe46c344e.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 15:35:16</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/8/2024">11/8/2024</a> 12:01:02</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB GAS">2TB GAS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-6/15/2023">6/15/2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-59">59</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Casual">Casual</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Estrategia">Estrategia</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Simuladores">Simuladores</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Limbic Entertainment">Limbic Entertainment</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Bandai Namco Europe S.A.S.">Bandai Namco Europe S.A.S.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Estadísticas">Estadísticas</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1368130" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1368130/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1368130/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1368130" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1368130" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1368130" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/1368130/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-3D">3D</a><br/><a href="#quicklink-Caricaturescos">Caricaturescos</a><br/><a href="#quicklink-Casuales">Casuales</a><br/><a href="#quicklink-Coloridos">Coloridos</a><br/><a href="#quicklink-Construcción">Construcción</a><br/><a href="#quicklink-Construcción de ciudades">Construcción de ciudades</a><br/><a href="#quicklink-Dibujos animados">Dibujos animados</a><br/><a href="#quicklink-Divertidos">Divertidos</a><br/><a href="#quicklink-Economía">Economía</a><br/><a href="#quicklink-Estrategia">Estrategia</a><br/><a href="#quicklink-Gestión">Gestión</a><br/><a href="#quicklink-Gestión de recursos">Gestión de recursos</a><br/><a href="#quicklink-Inmersivo">Inmersivo</a><br/><a href="#quicklink-Para toda la familia">Para toda la familia</a><br/><a href="#quicklink-Primera persona">Primera persona</a><br/><a href="#quicklink-Relajantes">Relajantes</a><br/><a href="#quicklink-Sandbox">Sandbox</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1368130/extras/PB_GIF_Steam_1.gif?t=1727343145" /><br>En Park Beyond eres la fuerza creativa detrás de una serie de parques de atracciones. Desempeñas un rol de visionario, una potente combinación de creador, gestor y diseñador que tendrá bajo su control hasta el último aspecto del desarrollo y mantenimiento de exitosos parques de atracciones.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1368130/extras/Create_GIF_SP.gif?t=1727343145" /><br>Como la fuerza creativa del parque, ¡puedes dar rienda suelta a tu imaginación! Diseña rizos y bucles salvajes para una montaña rusa tan única que atraiga a los adolescentes ávidos de emociones, investiga las emocionantes atracciones estándar para que sean del agrado de los adultos y coloca adorables y animadas atracciones perfectas para las familias. Pero también puedes ir un paso más allá con módulos increíbles que le darán un toque único al parque.<br>Además, podrás adaptar el mundo a tu imaginación utilizando las herramientas de terraformación para erigir montañas imponentes por donde circulen tus montañas rusas o diseñar el escenario a tu gusto con el sistema de construcción modular que puede agruparse, guardarse y duplicarse para desatar tu creatividad de forma rápida y fácil.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1368130/extras/Manage_GIF_SP.gif?t=1727343145" /><br>Dentro de la gestión del parque, podrás descubrir cómo complacer a tu público y perfeccionar la colocación de atracciones, los precios y las tiendas para satisfacer a cada tipo de usuario. Los visitantes necesitarán la ayuda de personal especializado que contratarás y dirigirás. También podrás decidir si quieres que tu parque beba del lado realista de los parques temáticos o si deseas sobrepasar los límites en busca de beneficios. Conoce en profundidad las complejas dinámicas del disfrute de los visitantes usando potentes herramientas de mapas de calor, que te permitirán ajustar con precisión la experiencia en tu provecho.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1368130/extras/Design_GIF_SP.gif?t=1727343145" /><br>Por último, dentro del diseño del parque, gozarás de libertad sin límites para personalizar todos los aspectos de este. Decora el parque, crea zonas temáticas y disfruta de las posibilidades casi infinitas de personalización. Crea una experiencia cómoda y agradable para los visitantes con elegantes caminos que atraviesen los divertidos escenarios que puedes disponer mediante los miles de elementos temáticos disponibles en el juego base.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1368130/extras/Sandbox_GIF_SP.gif?t=1727343145" /><br>Si acabas de ponerte manos a la obra con tu nuevo rol, podrás aprender cuáles son las funciones de un visionario mientras juegas en el modo Campaña. ¿Te va más la creación o la gestión? Tus compañeros de Cloudstormer te ayudarán a entender todos los detalles para hacer que tus parques funcionen a la perfección. También unirás fuerzas con ellos para abordar las tareas de renovación de ciertos parques y resistir a los planes descabellados del principal rival de Cloudstormer, Hemlock.<br>Sea cual sea tu rol favorito, podrás elegir cómo jugar en el modo Cajón de sastre, que se puede ajustar para eliminar todas las limitaciones, ya sea con dinero infinito o desactivando la necesidad de investigar nuevas atracciones. No obstante, también puedes ponerte las cosas más difíciles recortando tu presupuesto inicial o requiriendo la compra de cada parcela de terreno que quieras usar, ¡como los magnates de los parques temáticos!<br><br>Visita Park Beyond hoy mismo; elige cuál será tu visión ¡y disfruta de los parques de atracciones de una forma que nunca olvidarás!
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

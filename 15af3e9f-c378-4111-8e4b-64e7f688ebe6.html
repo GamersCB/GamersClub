@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Assetto Corsa Competizione </title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('15af3e9f-c378-4111-8e4b-64e7f688ebe6/6a4d23d5-2f37-4664-8020-002cdb2425c8.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="15af3e9f-c378-4111-8e4b-64e7f688ebe6/3b185dd6-c4de-4462-9b21-66d78d6ebffc.png"/> Assetto Corsa Competizione </h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="15af3e9f-c378-4111-8e4b-64e7f688ebe6/321b7822-c60b-4285-8d94-6fd7894c1f3c.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 14:41:31</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-2/5/2025">2/5/2025</a> 1:34:32</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-1 TB EXT">1 TB EXT</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-5/29/2019">5/29/2019</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-91">91</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-77">77</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Carreras">Carreras</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Deportes">Deportes</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Simuladores">Simuladores</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Kunos Simulazioni">Kunos Simulazioni</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-505 Games">505 Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Compat. Parcial Con Mando">Compat. Parcial Con Mando</a><br/><a href="#quicklink-Compatible Con RV">Compatible Con RV</a><br/><a href="#quicklink-Jcj">Jcj</a><br/><a href="#quicklink-Jcj En LAN">Jcj En LAN</a><br/><a href="#quicklink-Jcj En Línea">Jcj En Línea</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/><a href="#quicklink-VR">VR</a><br/><a href="#quicklink-VR Gamepad">VR Gamepad</a><br/><a href="#quicklink-VR Keyboard / Mouse">VR Keyboard / Mouse</a><br/><a href="#quicklink-VR Seated">VR Seated</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/805550" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/805550/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/805550/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=805550" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/805550" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=805550" target="_blank">PCGamingWiki</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acceso anticipado">Acceso anticipado</a><br/><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-Carreras">Carreras</a><br/><a href="#quicklink-Competitivos">Competitivos</a><br/><a href="#quicklink-Conducción">Conducción</a><br/><a href="#quicklink-Cooperativos en línea">Cooperativos en línea</a><br/><a href="#quicklink-Deportes">Deportes</a><br/><a href="#quicklink-Difíciles">Difíciles</a><br/><a href="#quicklink-e-sports">e-sports</a><br/><a href="#quicklink-Modificables">Modificables</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Mundo abierto">Mundo abierto</a><br/><a href="#quicklink-Para mando">Para mando</a><br/><a href="#quicklink-Primera persona">Primera persona</a><br/><a href="#quicklink-Realistas">Realistas</a><br/><a href="#quicklink-RV">RV</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Simulador de automóviles">Simulador de automóviles</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					Las imágenes o tráileres podrían mostrar contenido que puede que aún no esté disponible. Este contenido, una vez esté disponible, será ofrecido a todos los poseedores de ACC sin coste adicional. Aquí podrás revisar nuestro plan completo de lanzamientos: <br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/805550/extras/004.jpg?t=1730743191" /><br><br><strong>Assetto Corsa Competizione es el nuevo juego oficial de la Blancpain GT Series.</strong><br>La excelente calidad de la simulación del juego te permitirá experimentar la auténtica atmósfera de un campeonato homologado por la FIA GT3, en el que te enfrentarás a circuitos, vehículos, equipos y pilotos oficiales. Todos ellos han sido recreados con un nivel de precisión nunca antes visto en ningún juego.<br>Las carreras de velocidad, resistencia y Spa 24 horas cobrarán vida con un nivel de realismo increíble, tanto en el modo para un jugador como en el multijugador.<br>Assetto Corsa Competizione incluirá la temporada 2018 de la Blancpain GT Series, así como también incluirá la temporada 2019, que se ofrecerá a modo de descarga gratuita durante el verano de 2019.<br>Assetto Corsa Competizione nace de la longeva experiencia de KUNOS Simulazioni y aprovecha el Unreal Engine 4 para ofrecer gráficos y condiciones climatológicas fotorrealistas, carreras nocturnas, animaciones capturadas del mundo real y grandes mejoras a nivel de modelos aerodinámicos y de ruedas. Todo esto le permite alcanzar un nuevo estándar en lo que respecta a inmersión y realismo al volante.<br>Diseñado para innovar, Assetto Corsa Competizione está pensado para promocionar el deporte electrónico y poner a los jugadores en el corazón de la Blancpain GT Series. Es una ocasión única para ponerse al volante de Ferraris, Lamborghinis, McLarens y muchos otros vehículos famosos de GT, todos ellos recreados con un increíble nivel de detalle.<br><br><strong>SIMULACIÓN REALISTA</strong><br>Assetto Corsa Competizione está diseñado para recrear, con la máxima fidelidad posible, el rendimiento y la experiencia de conducción de los vehículos reales de la Blancpain GT Series. Esto se consigue a través de un sofisticado modelo matemático que replica con precisión el agarre de las ruedas, los impactos aerodinámicos, los parámetros del motor, las suspensiones y los sistemas electrónicos que determinan el equilibrio del vehículo, así como el modo en el que influyen en la conducción los daños mecánicos del vehículo.<br><br><strong>EFECTOS VISUALES Y GRÁFICOS DE NUEVA GENERACIÓN</strong><br>El motor Unreal Engine 4 garantiza una recreación fotorrealista y precisa de los escenarios, los materiales de los vehículos y las condiciones climatológicas. Gracias a las grabaciones multicanal del sonido de coches GT reales, el juego consigue presentar entornos acústicos cautivadores y envolventes, además de efectos realistas del entorno.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/805550/extras/001.jpg?t=1730743191" /><br><br><strong>ATENCIÓN A LOS DETALLES</strong><br>Incluso los detalles secundarios están fielmente reproducidos para hacerte sentir toda la emoción de estar a los mandos de un coche de competición real. Puertas, limpiaparabrisas, faros, luces de competición, equipo de carrera y dispositivos de control tales como ABS, control de tracción, encendido del motor, unidad de control del motor... Todo está bajo el control del piloto, para asegurar el mejor rendimiento y ofrecer al jugador el control total del coche.<br><br><strong>LOS CIRCUITOS MÁS REALES</strong><br>Gracias a la tecnología de escaneado láser, todos los circuitos oficiales están recreados con la máxima precisión. Todas las curvas y todos los detalles son totalmente fieles a sus homólogos reales, para garantizar así una experiencia de juego lo más fiel posible a la realidad.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/805550/extras/003.jpg?t=1730743191" /><br><br><strong>FUNCIONALIDAD MULTIJUGADOR AVANZADA</strong><br>Un sistema de marcadores muy bien estructurado evaluará el rendimiento individual y el comportamiento al volante, con el fin de recompensar a los pilotos más virtuosos y de promover el juego limpio en las competiciones online. El sistema de emparejamientos se asegura de que compitas contra rivales de un nivel de habilidad similar y de que puedas encontrar fácilmente carreras online a las que unirte. Por su parte, los marcadores te permitirán comparar tu actuación en vueltas individuales con la de otros pilotos virtuales de todo el mundo que hayan usado el mismo coche, el mismo circuito y las mismas condiciones climatológicas.<br><br><strong>ENVOLVENTE EXPERIENCIA PARA UN JUGADOR</strong><br>Los modos Carrera, Campeonato y Juego libre ofrecen una experiencia de juego completa y personalizable. Además, gracias a los tutoriales y a los niveles de ayuda progresivos, podrás determinar la dificultad de tus rivales de la IA y la adaptar el control del vehículo a tus habilidades. Los eventos especiales te permitirán experimentar de primera mano los desafíos reales más destacables de la Blancpain GT Series.<br><br><strong>COMPATIBLE CON HARDWARE DE GAMA ALTA</strong><br>Assetto Corsa Competizione te asegura compatibilidad total con un amplio abanico de periféricos, desde mandos hasta volantes profesionales.<br><br><strong>CAPTURA DE MOVIMIENTO PARA ANIMACIONES REALISTAS</strong><br>La tecnología de captura de movimiento se usa para crear las animaciones más realistas posibles para mecánicos y pilotos y, de este modo, garantizar que el jugador se sumerja completamente en las carreras, en las paradas en boxes y en los cambios de piloto.<br><br><strong>BLANCPAIN GT SERIES</strong><br>Tras el éxito de la Blancpain Endurance Series, que no tardó en convertirse en la referencia mundial de GT tras su creación en 2011, la famosa fabricante de relojes suizos Blancpain y el SRO Motorsports Group decidieron, a finales de 2013, ampliar su colaboración con la Blancpain Sprint Series. Además, desde 2015, equipos y pilotos tienen la oportunidad de competir por el título general de la Blancpain GT Series. El resultado fueron parrillas de lo más variado al inicio de las carreras, con pilotos y equipos de GT de renombre. La Blancpain GT Series también vivió la llegada de muchos pilotos jóvenes y talentosos, convirtiéndose en un emblema de la competición de GT3.<br><br>Ahora que la Blancpain GT Series Sprint Cup y la Blancpain GT Series Endurance Cup comparten el mismo sistema de puntos y las mismas categorías de pilotos, la temporada de la Blancpain GT Series (de diez rondas, con cinco eventos de velocidad y cinco eventos de resistencia) corona a los pilotos más completos de GT.<br><br>El evento Blancpain GT Series Sprint Cup consta de dos carreras de una hora cada una, mientras que las carreras de la Blancpain GT Series Endurance Cup van desde eventos de tres horas hasta una carrera de 1000 kilómetros. Eso, sin contar las 24 Horas de Spa, una de las carreras de 24 horas más importantes del mundo.
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

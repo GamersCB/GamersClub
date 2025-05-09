@@ -1,0 +1,330 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Need for Speed: Shift</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('3f642cfb-b48f-440a-a48a-b80b5725fece/31832526-4565-4d02-b342-ceb170ac64f7.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="3f642cfb-b48f-440a-a48a-b80b5725fece/68224d80-49fc-473a-96bb-11380bc42798.png"/> Need for Speed: Shift</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="3f642cfb-b48f-440a-a48a-b80b5725fece/cc959c7f-9b22-40f6-a6b0-e69943376ac3.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 14:41:31</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-2/6/2025">2/6/2025</a> 16:09:56</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-1 TB 1">1 TB 1</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-9/15/2009">9/15/2009</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-83">83</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Racing">Racing</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-EA Bright Light">EA Bright Light</a><br/><a href="#quicklink-IronMonkey Studios">IronMonkey Studios</a><br/><a href="#quicklink-Slightly Mad Studios">Slightly Mad Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Electronic Arts">Electronic Arts</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single-player">Single-player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/Need_for_Speed:_Shift" target="_blank">Wikipedia</a><br/><a href="https://www.ea.com/games/need-for-speed/need-for-speed-shift" target="_blank">Official website</a><br/><a href="https://www.mobygames.com/game/need-for-speed-shift" target="_blank">MobyGames</a><br/><a href="https://www.mobygames.com/game/need-for-speed-shift_" target="_blank">MobyGames</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-[People] composer: Mark Morgan">[People] composer: Mark Morgan</a><br/><a href="#quicklink-[People] composer: Mick Gordon">[People] composer: Mick Gordon</a><br/><a href="#quicklink-[People] composer: Stephen Baysted">[People] composer: Stephen Baysted</a><br/><a href="#quicklink-[People] designer: Andy Tudor">[People] designer: Andy Tudor</a><br/><a href="#quicklink-[People] director: Andy Garton">[People] director: Andy Garton</a><br/><a href="#quicklink-[People] producer: Suzy Wallace">[People] producer: Suzy Wallace</a><br/><a href="#quicklink-[People] programmer: Ged Keaveney">[People] programmer: Ged Keaveney</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>Need for Speed: Shift</b></i> is a 2009 <a href="https://en.wikipedia.org/wiki/Racing_video_game">racing video game</a> developed by <a href="https://en.wikipedia.org/wiki/Slightly_Mad_Studios">Slightly Mad Studios</a> and published by <a href="https://en.wikipedia.org/wiki/Electronic_Arts">Electronic Arts</a> for <a href="https://en.wikipedia.org/wiki/PlayStation_3">PlayStation 3</a>, <a href="https://en.wikipedia.org/wiki/Windows">Windows</a>, and <a href="https://en.wikipedia.org/wiki/Xbox_360">Xbox 360</a>. Developed by <a href="https://en.wikipedia.org/wiki/EA_Bright_Light">EA Bright Light</a>, a distinct version of the game was simultaneously released for <a href="https://en.wikipedia.org/wiki/PlayStation_Portable">PlayStation Portable</a>. Two mobile adaptations were developed by <a href="https://en.wikipedia.org/wiki/IronMonkey_Studios">IronMonkey Studios</a> for <a href="https://en.wikipedia.org/wiki/Java_ME">Java</a>-compatible devices and <a href="https://en.wikipedia.org/wiki/IOS">iOS</a> and released in 2009, with the latter version subsequently being made available for several other mobile devices. <i>Need for Speed: Shift</i> is the thirteenth installment in the  <i><a href="https://en.wikipedia.org/wiki/Need_for_Speed">Need for Speed</a></i> franchise.</p>
+
+<p><i>Shift</i>'s gameplay focuses on <a href="https://en.wikipedia.org/wiki/Sim_racing">simulation</a>, rather than the <a href="https://en.wikipedia.org/wiki/Arcade_racing">arcade racing</a> of previous titles. It was followed by a sequel, <i><a href="https://en.wikipedia.org/wiki/Shift_2:_Unleashed">Shift 2: Unleashed</a></i>, in 2011.</p>
+
+<p>As of 2021, <i>Shift</i> is no longer available for purchase in any online stores.</p>
+
+<h2>Gameplay</h2>
+
+<p>Aimed at a hardcore gamer-style audience, <i>Shift</i> reverts to the <a href="https://en.wikipedia.org/wiki/Sports_car_racing">sports car racing</a> simulation style of its 2007 predecessor, <i><a href="https://en.wikipedia.org/wiki/Need_for_Speed:_ProStreet">Need for Speed: ProStreet</a></i>. Although the gameplay of these two titles are similar, <i>Shift</i> recreates car handling much more realistically than its predecessor, and does not contain a story. Upon starting the career mode, the player performs two laps around the <a href="https://en.wikipedia.org/wiki/Brands_Hatch">Brands Hatch</a> circuit to determine their skill. Once completed, the player is welcomed to the NFS Live World Series, and must earn stars in races to earn money, and unlock new races and tiers.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/G-force">G-force</a> plays an important role in the game, as it affects both the player and the <a href="https://en.wikipedia.org/wiki/Artificial_intelligence">AI</a> opponents. The in-car view also returns, making its first appearance in a <i>Need for Speed</i> game since <i><a href="https://en.wikipedia.org/wiki/Need_for_Speed:_Porsche_Unleashed">Porsche Unleashed</a></i>. The in-car view is highly detailed, and it is possible to see the driver changing gears and moving his head to get a better view of the mirror. The crashes affect the player's visuals. While crashing, there is a temporary blur on screen. The sound aspects have detailed car crash sound, as well as a sharp gasp of breath from the driver before a collision.</p>
+
+<p>There are 60+ cars which are divided into 4 tiers. Tier 1 refers to entry-level sports and luxury cars like the <a href="https://en.wikipedia.org/wiki/Audi_TT">Audi TT</a> and <a href="https://en.wikipedia.org/wiki/Infiniti_G35">Infiniti G35</a>, tier 2 refers to mid-level performance cars like the <a href="https://en.wikipedia.org/wiki/BMW_M3">BMW M3</a>, tier 3 refers to <a href="https://en.wikipedia.org/wiki/Supercar">supercars</a> like the <a href="https://en.wikipedia.org/wiki/Lamborghini_Gallardo">Lamborghini Gallardo</a>, and tier 4 refers to hypercars like the <a href="https://en.wikipedia.org/wiki/Bugatti_Veyron">Bugatti Veyron</a> and <a href="https://en.wikipedia.org/wiki/Pagani_Zonda_R">Pagani Zonda R</a>. The car customisation options include cosmetics as well as performance mods and is more in depth than previous titles, affecting aspects such as alignment, aerodynamics, tyres, brakes, differential, and gears. Nitrous is also an option for tuning, but different from previous <i>Need for Speed</i> titles as it is simulated more realistically. There are body kits which affect the aerodynamics and weight reduction. There are visual customisation options like rims, vinyls and paints.</p>
+
+<p>There are 19 tracks in total including real world circuits such as Brands Hatch, <a href="https://en.wikipedia.org/wiki/Nürburgring#Layout">Nürburgring Nordschleife</a>, <a href="https://en.wikipedia.org/wiki/Road_America">Road America</a>, <a href="https://en.wikipedia.org/wiki/Circuit_de_Spa-Francorchamps">Spa</a>, <a href="https://en.wikipedia.org/wiki/Silverstone_Circuit">Silverstone</a>, <a href="https://en.wikipedia.org/wiki/Willow_Springs_International_Motorsports_Park">Willow Springs</a>, <a href="https://en.wikipedia.org/wiki/Donington_Park">Donington Park</a>, <a href="https://en.wikipedia.org/wiki/Autopolis">Autopolis</a>, and <a href="https://en.wikipedia.org/wiki/Laguna_Seca">Laguna Seca</a>.</p>
+
+<p>The <a href="https://en.wikipedia.org/wiki/PlayStation_Portable">PlayStation Portable</a> version of the game offers local, <a href="https://en.wikipedia.org/wiki/Ad_hoc">ad hoc</a> multiplayer, with no online multiplayer support.</p>
+
+<h2>Development and release</h2>
+
+<p>The game spent two years in development. The game was unveiled as part of a three-game announcement that included <i><a href="https://en.wikipedia.org/wiki/Need_for_Speed:_Nitro">Need for Speed: Nitro</a></i> and <i><a href="https://en.wikipedia.org/wiki/Need_for_Speed:_World">Need for Speed: World</a></i>.</p>
+
+<p>The soundtrack of <i>Shift</i> remains similar to that of <i>Need for Speed: ProStreet</i>, featuring a scored soundtrack rather than a general track list as is seen in previous titles such as <i><a href="https://en.wikipedia.org/wiki/Need_for_Speed:_Most_Wanted_(2005_video_game)">Need for Speed: Most Wanted</a></i>, and <i><a href="https://en.wikipedia.org/wiki/Need_for_Speed:_Carbon">Need for Speed: Carbon</a></i>.</p>
+
+<p>In addition to the standard edition, a "Special Edition" of the game was released exclusive to Europe. The Special Edition features numerous bonuses over the standard edition, including exclusive packaging, a poster of the game, and an unlockable car and race which are redeemable online. <i>Shift</i> was released as a bundle with the <a href="https://en.wikipedia.org/wiki/PlayStation_3">PlayStation 3</a> Slim 250GB to promote the game in Europe.</p>
+
+<h3>Patches and downloadable content</h3>
+
+<p>EA released patches with new features in addition to bug fixes. Patch 1.01 added LAN (Local Area Network) play and mouse support, providing full menu navigation to the game, to the PC version. Patch 1.02 added 5 cars (<a href="https://en.wikipedia.org/wiki/Toyota_Supra">Toyota Supra</a> Mk IV, 1971 <a href="https://en.wikipedia.org/wiki/Dodge_Challenger">Dodge Challenger</a> R/T, 1969 <a href="https://en.wikipedia.org/wiki/Dodge_Charger_R/T">Dodge Charger R/T</a>, 1967 <a href="https://en.wikipedia.org/wiki/Chevrolet_Corvette_(C2)">Corvette</a> and 1967 <a href="https://en.wikipedia.org/wiki/Shelby_Mustang">Shelby</a> GT-500) and a new online "Team Racing" game mode, where a Blue team of racers runs against a Red Team. In addition, the 1.02 patch fixed several performance issues (especially with ATI video cards), improved gameplay, and increased the maximum number of players online from 8 to 12.</p>
+
+<p>In February 2010, EA released Ferrari <a href="https://en.wikipedia.org/wiki/Downloadable_content">DLC</a> pack for Xbox 360 that contains 10 Ferraris, also extends the <i>Shift</i>'s career mode with 46 new Ferrari specific challenges designed for the Ferrari cars to participate in including hot laps, eliminators, endurance races and a world tour. Completing the perfect Ferrari package are an additional 125 gamerpoints as a reward for undertaking various challenges. Available on <a href="https://en.wikipedia.org/wiki/Xbox_360">Xbox 360</a> for 800 Microsoft Points the Ferraris available include the <a href="https://en.wikipedia.org/wiki/Ferrari_575">575 Superamerica</a>, <a href="https://en.wikipedia.org/wiki/Ferrari_F430">F430 Scuderia Spider 16M</a>, <a href="https://en.wikipedia.org/wiki/Ferrari_California">California</a>, <a href="https://en.wikipedia.org/wiki/Ferrari_599_GTB_Fiorano">599 GTB Fiorano</a>, <a href="https://en.wikipedia.org/wiki/Ferrari_F430">F430 Spider, 430 Scuderia, F430 GTC, F430 Challenge</a>, <a href="https://en.wikipedia.org/wiki/Ferrari_F50">F50 GT</a> &amp; <a href="https://en.wikipedia.org/wiki/Ferrari_FXX">Ferrari FXX</a>. An Exotic Racing Pack was also released for PS3 and Xbox 360 which features cars like the <a href="https://en.wikipedia.org/wiki/McLaren_MP4-12C">McLaren MP4-12C</a>, the <a href="https://en.wikipedia.org/wiki/BMW_M1">BMW M1</a>, the <a href="https://en.wikipedia.org/wiki/Gumpert_Apollo">Gumpert Apollo</a>, the <a href="https://en.wikipedia.org/wiki/Acura_NSX">Acura NSX</a>, the <a href="https://en.wikipedia.org/wiki/Alfa_Romeo_8C_Competizione">Alfa Romeo 8C Competizione</a>, the <a href="https://en.wikipedia.org/wiki/Maserati_GranTurismo">Maserati GranTurismo S</a> and the <a href="https://en.wikipedia.org/wiki/Mercedes-Benz_SLR_McLaren">Mercedes Benz SLR McLaren Stirling Moss</a>.</p>
+
+<h2>Reception</h2>
+
+<p>The console versions of <i>Need for Speed: Shift</i> received "generally favorable" reviews, while the PlayStation Portable version received "mixed or average" reviews, according to <a href="https://en.wikipedia.org/wiki/Review_aggregator">review aggregator</a> <a href="https://en.wikipedia.org/wiki/Metacritic">Metacritic</a>.</p>
+
+<p><i><a href="https://en.wikipedia.org/wiki/IGN">IGN</a></i> awarded it an Editor's Choice award and scored it a 9/10, citing among other things the exceptional quality of its driving experience and sound design. <i><a href="https://en.wikipedia.org/wiki/Official_Xbox_Magazine">Official Xbox Magazine</a></i> awarded <i>Shift</i> with a 9/10, praising its driver's view and the variety and depth presented in its career mode, as well as its multiplayer component which positively impacted single-player progression. <i><a href="https://en.wikipedia.org/wiki/Eurogamer">Eurogamer</a></i> gave it a 7/10, also noting that it could be a good competitor to other simulation racing games such as <i><a href="https://en.wikipedia.org/wiki/Gran_Turismo_(series)">Gran Turismo</a></i> and <i><a href="https://en.wikipedia.org/wiki/Forza#Motorsport">Forza Motorsport</a></i>.</p>
+
+<p>During the <a href="https://en.wikipedia.org/wiki/13th_Annual_Interactive_Achievement_Awards">13th Annual Interactive Achievement Awards</a>, the <a href="https://en.wikipedia.org/wiki/Academy_of_Interactive_Arts_&amp;_Sciences">Academy of Interactive Arts &amp; Sciences</a> nominated <i>Need for Speed: Shift</i> for "<a href="https://en.wikipedia.org/wiki/D.I.C.E._Award_for_Racing_Game_of_the_Year">Racing Game of the Year</a>".</p>
+
+<p><i>Need for Speed: Shift</i> sold 309,000 units in the United States in September 2009.</p>
+
+<h2>Mobile adaptations</h2>
+
+<p>Two mobile iterations of <i>Need for Speed: Shift</i> were released between 2009 and 2010. One iteration bearing <i><a href="https://en.wikipedia.org/wiki/Out_Run">Out Run</a></i>-style <a href="https://en.wikipedia.org/wiki/Arcade_racer">arcade racing</a> gameplay was released for <a href="https://en.wikipedia.org/wiki/Java_ME">Java ME</a>-compatible devices in 2009. Developed by <a href="https://en.wikipedia.org/wiki/IronMonkey_Studios">IronMonkey Studios</a>, another adaptation for <a href="https://en.wikipedia.org/wiki/IOS">iOS</a> featuring gameplay more akin to the console versions was released on December 18, 2009, to "universal acclaim" based on six reviews, according to <a href="https://en.wikipedia.org/wiki/Review_aggregator">review aggregator</a> <a href="https://en.wikipedia.org/wiki/Metacritic">Metacritic</a>. The game was also made available for <a href="https://en.wikipedia.org/wiki/BlackBerry_OS">BlackBerry OS</a> via the <a href="https://en.wikipedia.org/wiki/BlackBerry_Storm_2">BlackBerry Storm 2 9550</a> under the title <i>Need for Speed: Shift 3D</i> in the United States, Canada, and Japan on March 19, 2010. This version was released for the <a href="https://en.wikipedia.org/wiki/Bada_OS">Bada OS</a>-based <a href="https://en.wikipedia.org/wiki/Samsung_Wave">Samsung Wave</a> alongside the launch of the device on May 24, 2010. Additionally, a port for <a href="https://en.wikipedia.org/wiki/Android_(operating_system)">Android</a> compatible devices was released on June 4, 2010. <i>Shift</i> was released as a launch title for the <a href="https://en.wikipedia.org/wiki/Symbian">Symbian</a>-based <a href="https://en.wikipedia.org/wiki/Nokia_N8">Nokia N8</a> in Europe on October 15, 2010. A version for the <a href="https://en.wikipedia.org/wiki/MeeGo">MeeGo</a>-compatible <a href="https://en.wikipedia.org/wiki/Nokia_N9">Nokia N9</a> came <a href="https://en.wikipedia.org/wiki/Preload_(engineering)">preloaded</a> with the device alongside its launch on September 27, 2011.</p>
+
+
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

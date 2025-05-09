@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Grand Theft Auto V Enhanced</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('e8942277-bde5-445f-9b8e-2ea30c88d90f/67579df4-1c2d-4ed3-bc2f-cf3145566e07.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="e8942277-bde5-445f-9b8e-2ea30c88d90f/b401008d-f47f-4926-b10b-993f094f2277.png"/> Grand Theft Auto V Enhanced</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="e8942277-bde5-445f-9b8e-2ea30c88d90f/e22db8e6-2ad3-4c92-80c1-23d7d3ff789e.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-3/7/2025">3/7/2025</a> 2:01:49</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-3/18/2025">3/18/2025</a> 15:24:41</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-4TB TANK">4TB TANK</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-3/4/2025">3/4/2025</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-50">50</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Carreras">Carreras</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Rockstar North">Rockstar North</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Rockstar Games">Rockstar Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Compat. Parcial Con Mando">Compat. Parcial Con Mando</a><br/><a href="#quicklink-Compras Dentro De La Aplicación">Compras Dentro De La Aplicación</a><br/><a href="#quicklink-Cooperativo">Cooperativo</a><br/><a href="#quicklink-Cooperativo En Línea">Cooperativo En Línea</a><br/><a href="#quicklink-Jcj">Jcj</a><br/><a href="#quicklink-Jcj En Línea">Jcj En Línea</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Remote Play En Móvil">Remote Play En Móvil</a><br/><a href="#quicklink-Remote Play En Tableta">Remote Play En Tableta</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/3240220" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/3240220/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/3240220/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=3240220" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/3240220" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=3240220" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/3240220/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<h2 class="bb_tag">Te damos la bienvenida a Los Santos</h2><p class="bb_paragraph">Cuando un joven estafador callejero, un ladrón de bancos retirado y un psicópata aterrador se ven involucrados con lo peor y más desquiciado del mundo criminal, el gobierno de los EE. UU. y la industria del espectáculo, deberán llevar a cabo una serie de peligrosos golpes para sobrevivir en una ciudad implacable en la que no pueden confiar en nadie. Y mucho menos los unos en los otros.</p><p class="bb_paragraph">Los jugadores actuales de PC pueden transferir su progreso del Modo Historia de GTAV y sus personajes y progreso de GTA Online mediante una tranferencia única desde la versión original de GTAV a GTAV Enhanced. </p><h2 class="bb_tag">Gráficos impresionantes</h2><p class="bb_paragraph">Niveles de fidelidad y rendimiento mejorados, con nuevos modos de gráficos que ofrecen funciones de trazado de rayos, tales como oclusión ambiental e iluminación global, sombras y reflejos con trazado de rayos, compatibilidad con AMD FSR y NVIDIA DLSS, y mucho más*.</p><h2 class="bb_tag">Carga más rápida</h2><p class="bb_paragraph">Entra en la acción rápidamente, ya que el mundo de Los Santos y el condado de Blaine ahora se carga más rápido que nunca mediante SSD y DirectStorage en dispositivos compatibles.</p><h2 class="bb_tag">Controles inmersivos</h2><p class="bb_paragraph">Experimenta nuevos niveles de reacción con la resistencia dinámica gracias a los gatillos adaptativos del mando inalámbrico DualSense™: siente desde el daño direccional hasta los efectos atmosféricos, los baches de las carreteras, las explosiones y mucho más*.</p><h2 class="bb_tag">Audio 3D</h2><p class="bb_paragraph">Audio mejorado con soporte para Dolby Atmos y mayor fidelidad de voz, cinemáticas y música*. Oye los sonidos del mundo con una precisión milimétrica, desde la aceleración de un supercoche robado hasta los disparos de un tiroteo cercano, el estruendo de un helicóptero sobre tu cabeza y mucho más.</p><h2 class="bb_tag">Grand Theft Auto Online</h2><p class="bb_paragraph">Disfruta de la experiencia de GTA Online, un universo dinámico y en constante evolución para hasta 30 jugadores, donde podrás pasar de ser un estafador callejero a convertirte en el capo de tu propio imperio criminal.</p><p class="bb_paragraph">Disfruta de nuevas mejoras para vehículos de alto rendimiento y del creador de profesiones. Además, podrás acceder a todas las actualizaciones, expansiones y contenidos de GTA Online publicados desde el lanzamiento, tanto en solitario como con tus amigos. Lleva a cabo elaborados golpes cooperativos, participa en carreras acrobáticas llenas de adrenalina, compite en Modos Adversario especiales o pasa el tiempo en espacios sociales como clubes nocturnos, salones recreativos, fiestas en áticos, reuniones automovilísticas y mucho más.</p><h2 class="bb_tag">Contenido exclusivo</h2><p class="bb_paragraph">Visita Hao's Special Works en el Car Meet de LS, donde encontrarás nuevas mejoras para vehículos de élite y modificaciones exclusivas. Después, participa con estos vehículos de alto rendimiento en nuevas carreras, contrarrelojes y mucho más.</p><h2 class="bb_tag">Nuevo creador de profesiones</h2><p class="bb_paragraph">Ponte en marcha en GTA Online con las herramientas del oficio. Accede rápidamente a uno de los cuatro negocios (Motero, Ejecutivo, Propietario de un club nocturno o Traficante de armas) y elige entre una selección de propiedades, potentes vehículos y armamento para poner en marcha tu negocio.</p><h2 class="bb_tag">Nuevo diseño del menú</h2><p class="bb_paragraph">Accede al instante a todo lo que te ofrece GTA Online directamente desde el menú principal, incluidas las actualizaciones más recientes y populares.</p><h2 class="bb_tag">Accede a todas las actualizaciones actuales y previas</h2><p class="bb_paragraph">Sumérgete en más de 40 actualizaciones masivas y las que vendrán, que incluyen desde dirigir una instalación de operaciones encubiertas en Agents of Sabotage, rastrear y atrapar a los más buscados del sur de San Andreas en Bottom Dollar Bounties, desenmascarar a policías corruptos y cárteles de asesinos en Asalto a Cluckin' Bell, hasta robar los vehículos más codiciados de Los Santos en The Chop Shop. Todo esto y más disponible junto con una amplia variedad de carreras, modos, actividades y espacios sociales para disfrutar solo o con amigos, que incluyen clubes nocturnos, salones recreativos, fiestas en áticos, encuentros automovilísticos y mucho más.</p>
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

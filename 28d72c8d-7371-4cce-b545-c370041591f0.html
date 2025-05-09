@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>F1 22</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('28d72c8d-7371-4cce-b545-c370041591f0/9bcb2bbf-97b1-4fc9-9fca-7e3abbe3ced3.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="28d72c8d-7371-4cce-b545-c370041591f0/f1358789-fc91-4aa7-8f8d-e62874eb02bb.png"/> F1 22</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="28d72c8d-7371-4cce-b545-c370041591f0/542d858e-dcce-4209-a664-70a9f746f591.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 14:41:31</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/8/2024">11/8/2024</a> 17:34:06</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-6TB STORE">6TB STORE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-Microsoft Xbox One">Microsoft Xbox One</a><br/><a href="#quicklink-Microsoft Xbox Series">Microsoft Xbox Series</a><br/><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/><a href="#quicklink-Sony PlayStation 4">Sony PlayStation 4</a><br/><a href="#quicklink-Sony PlayStation 5">Sony PlayStation 5</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-7/1/2022">7/1/2022</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-81">81</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Racing">Racing</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Codemasters">Codemasters</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-EA Sports">EA Sports</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single-player">Single-player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/F1_22" target="_blank">Wikipedia</a><br/><a href="https://www.ea.com/games/f1/f1-22" target="_blank">Official website at EA</a><br/><a href="https://www.codemasters.com/game/f1-22/" target="_blank">Official website at Codemasters</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-[Game Engine] EGO Engine 4.0">[Game Engine] EGO Engine 4.0</a><br/><a href="#quicklink-[People] composer: Brian Tyler">[People] composer: Brian Tyler</a><br/><a href="#quicklink-[People] composer: Ethan Livingstone">[People] composer: Ethan Livingstone</a><br/><a href="#quicklink-[People] composer: Ian Livingstone">[People] composer: Ian Livingstone</a><br/><a href="#quicklink-[People] composer: Miktek">[People] composer: Miktek</a><br/><a href="#quicklink-[People] composer: Rory Hay">[People] composer: Rory Hay</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>F1 22</b></i> is a <a href="https://en.wikipedia.org/wiki/Racing_video_game">racing video game</a> developed by <a href="https://en.wikipedia.org/wiki/Codemasters">Codemasters</a> and published by <a href="https://en.wikipedia.org/wiki/EA_Sports">EA Sports</a>. It is the fifteenth  entry in the <i><a href="https://en.wikipedia.org/wiki/F1_(video_game_series)">F1</a></i> series by Codemasters. The game holds an official licence of the 2022 <a href="https://en.wikipedia.org/wiki/2022_Formula_One_World_Championship">Formula One</a> and <a href="https://en.wikipedia.org/wiki/2022_FIA_Formula_2_Championship">Formula 2</a> championships. The game was released for <a href="https://en.wikipedia.org/wiki/PlayStation_4">PlayStation 4</a>, <a href="https://en.wikipedia.org/wiki/PlayStation_5">PlayStation 5</a>, <a href="https://en.wikipedia.org/wiki/Windows">Windows</a>, <a href="https://en.wikipedia.org/wiki/Xbox_One">Xbox One</a>, and <a href="https://en.wikipedia.org/wiki/Xbox_Series_X/S">Xbox Series X/S</a> on 1 July. It would also make its debut on <a href="https://en.wikipedia.org/wiki/EA">EA</a>'s <a href="https://en.wikipedia.org/wiki/Origin_(service)">Origin</a> platform as their main platform, which is also playable in the EA Desktop app, as well as the <a href="https://en.wikipedia.org/wiki/Epic_Games_Store">Epic Games Store</a>. In previous entries, <a href="https://en.wikipedia.org/wiki/Steam_(service)">Steam</a> was the only platform available for PC players. The game was delisted in March 2024 following the announcement of the forthcoming <i>F1 24</i>.</p>
+
+<p>The game received mostly positive reviews from critics, with most user criticism aimed at the lack of innovation compared to previous titles and the new "F1 Life" mode, as well as the revised in-game vehicle handling model which caused controversy over its new traction system, linked to the real-life regulation change Formula 1 saw for the 2022 season.</p>
+
+<h2>Gameplay</h2>
+
+<p>Due to new technical regulations for the <a href="https://en.wikipedia.org/wiki/2022_Formula_One_World_Championship">2022 Formula One World Championship</a>, <i>F1 22</i> features new car models with updated physics. The game also features an updated track list, including the revised layouts of <a href="https://en.wikipedia.org/wiki/Circuit_de_Barcelona-Catalunya">Circuit de Barcelona-Catalunya</a> for the <a href="https://en.wikipedia.org/wiki/Spanish_Grand_Prix">Spanish Grand Prix</a>, <a href="https://en.wikipedia.org/wiki/Yas_Marina_Circuit">Yas Marina Circuit</a> for the <a href="https://en.wikipedia.org/wiki/Abu_Dhabi_Grand_Prix">Abu Dhabi Grand Prix</a> and <a href="https://en.wikipedia.org/wiki/Albert_Park_Circuit">Albert Park Circuit</a> for the <a href="https://en.wikipedia.org/wiki/Australian_Grand_Prix">Australian Grand Prix</a>, as well as adding the new <a href="https://en.wikipedia.org/wiki/Miami_International_Autodrome">Miami International Autodrome</a> for the new <a href="https://en.wikipedia.org/wiki/Miami_Grand_Prix">Miami Grand Prix</a>. The <a href="https://en.wikipedia.org/wiki/Algarve_International_Circuit">Algarve International Circuit</a>, home of the <a href="https://en.wikipedia.org/wiki/Portuguese_Grand_Prix">Portuguese Grand Prix</a>, along with the <a href="https://en.wikipedia.org/wiki/Shanghai_International_Circuit">Shanghai International Circuit</a>, hosting the <a href="https://en.wikipedia.org/wiki/Chinese_Grand_Prix">Chinese Grand Prix</a>, was subsequently added to the game with an update.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Formula_One_sprint">Formula One sprints</a>, a new addition to the sport, are also included in the game. <i>F1 22</i> features adaptive <a href="https://en.wikipedia.org/wiki/AI">AI</a>, which would adjust the pace of AI cars according to the performance of players to ensure players are competitive from race-to-race. The game also introduces a customisable hub mode called <i>F1 Life</i> to allow players to collect <a href="https://en.wikipedia.org/wiki/Supercar">supercars</a>, clothing and accessories. The game is also confirmed to support <a href="https://en.wikipedia.org/wiki/Virtual_reality">virtual reality</a> for PC via <a href="https://en.wikipedia.org/wiki/Oculus_Rift">Oculus Rift</a>, or <a href="https://en.wikipedia.org/wiki/HTC_Vive">HTC Vive</a>, <a href="https://en.wikipedia.org/wiki/Virtual_reality_headset">virtual reality headsets</a>. <i>F1 22</i> also features immersive broadcast options, based on televised Formula One broadcasts, as well as interactive <a href="https://en.wikipedia.org/wiki/Pit_stop">pit stops</a>.</p>
+
+<p>EA and Codemasters also added Supercars to Formula One with "<a href="https://en.wikipedia.org/wiki/Pirelli">Pirelli</a> Hot Laps", which is accessible through the new "F1 Life" mode, as well as a licensed soundtrack in the main menu. Furthermore, an option to choose either <a href="https://en.wikipedia.org/wiki/David_Croft_(broadcaster)">David Croft</a> from <a href="https://en.wikipedia.org/wiki/Sky_Sports_F1">Sky Sports</a> or Alex Jacques from <a href="https://en.wikipedia.org/wiki/Channel_4_F1">Channel 4</a> as the main English commentator for F1 races is also added.</p>
+
+<p>In a post-launch update, <i>F1 22</i> features the <a href="https://en.wikipedia.org/wiki/2023_Formula_One_World_Championship">2023</a> <a href="https://en.wikipedia.org/wiki/Alfa_Romeo_in_Formula_One">Alfa Romeo</a> <a href="https://en.wikipedia.org/wiki/Alfa_Romeo_C43">C43</a>.</p>
+
+<h2>Development and release</h2>
+
+<p><i>F1 22</i> was revealed in April 2022, with both <a href="https://en.wikipedia.org/wiki/Codemasters">Codemasters</a> and <a href="https://en.wikipedia.org/wiki/EA_Sports">EA Sports</a> returning to work on the game. It is an official video game of the 2022 <a href="https://en.wikipedia.org/wiki/2022_Formula_One_World_Championship">Formula One</a> and <a href="https://en.wikipedia.org/wiki/2022_FIA_Formula_2_Championship">Formula 2</a> championships, alongside <i><a href="https://en.wikipedia.org/wiki/F1_Manager_2022">F1 Manager 2022</a></i> of <a href="https://en.wikipedia.org/wiki/Frontier_Developments">Frontier Developments</a>. The game was launched on 1 July, for <a href="https://en.wikipedia.org/wiki/PlayStation_4">PlayStation 4</a>, <a href="https://en.wikipedia.org/wiki/PlayStation_5">PlayStation 5</a>, <a href="https://en.wikipedia.org/wiki/Windows">Windows</a>, <a href="https://en.wikipedia.org/wiki/Xbox_One">Xbox One</a>, and <a href="https://en.wikipedia.org/wiki/Xbox_Series_X/S">Xbox Series X/S</a> platforms via <a href="https://en.wikipedia.org/wiki/Steam_(service)">Steam</a>, <a href="https://en.wikipedia.org/wiki/Epic_Games_Store">Epic Games Store</a> and <a href="https://en.wikipedia.org/wiki/Origin_(service)">Origin</a>, which is on the weekend of the <a href="https://en.wikipedia.org/wiki/2022_Formula_One_World_Championship">2022 British Grand Prix</a>. The Champions Edition of the game was released three days earlier, on 28 June.</p>
+
+<h2>Reception</h2>
+
+<p><i>F1 22</i> received "generally favorable" reviews, according to <a href="https://en.wikipedia.org/wiki/Review_aggregator">review aggregator</a> <a href="https://en.wikipedia.org/wiki/Metacritic">Metacritic</a>.</p>
+
+<p><i><a href="https://en.wikipedia.org/wiki/Eurogamer">Eurogamer</a></i> praised Codemasters' implementation of simulation elements such as dynamic weather and wrote in favor of their exclusion of <a href="https://en.wikipedia.org/wiki/Porpoising">porpoising</a> but called the game "overly familiar" and "overly bloated", writing that "there's a feeling 2022's regulations have introduced as many problems as they have fixed, and that the positive impact of the new ruleset will not really be seen for some years to come". <i><a href="https://en.wikipedia.org/wiki/GameSpot">GameSpot</a></i> praised the increased level of player agency, host of assist settings, and the authentic recreation of the new era of Formula One but criticized the lack of iteration, hollow <i>F1 Life</i> mode, and the inclusion of <a href="https://en.wikipedia.org/wiki/Microtransactions">microtransactions</a>. <i><a href="https://en.wikipedia.org/wiki/IGN">IGN</a></i> liked the inclusion of the Formula One sprint race format, <a href="https://en.wikipedia.org/wiki/Virtual_reality">virtual reality</a> support, and the game's rejuvenation of the franchise's stagnating elements but panned the "vapid" <i>F1 Life</i> mode's replacement of the predecessors' <i>Braking Point</i> mode and the game's monetization. <i><a href="https://en.wikipedia.org/wiki/PC_Gamer">PC Gamer</a></i> praised the inclusion of real-world standings updates, sprint races, the skill tree system, damage models, and wealth of player choice but criticized the aging graphics, inconsistent <a href="https://en.wikipedia.org/wiki/Artificial_intelligence_in_video_games">AI</a>, console controls, and lackluster addition of super cars, while noting that "the annual release has not felt this unnecessary since <i>F1 2014</i>".</p>
+
+<p><i><a href="https://en.wikipedia.org/wiki/PCGamesN">PCGamesN</a></i> found itself "dulled to [<i>F1 22's</i>] charms" and lamented the "cumulative fatigue of having been through this experience so many times before in previous iterations, and having so little meaningful new content in <i>F1 22</i> to relieve it". <i><a href="https://en.wikipedia.org/wiki/Polygon_(website)">Polygon</a></i> stated that "<i>F1 22</i> is not a transformative work, but it did not need to be one — creating new cars, and the organic challenge of learning how to drive them on the limit, was transformation enough". <i><a href="https://en.wikipedia.org/wiki/Push_Square">Push Square</a></i> gave praise to the quality handling, good visuals, deep career modes, novel supercars, and robust customization while criticizing the numerous bugs, crashes, and screen tearing, as well as the aging game engine and insubstantial <i>F1 Life</i> mode. <i><a href="https://en.wikipedia.org/wiki/Shacknews">Shacknews</a></i> lauded the overhauled racetracks, new circuits, remixed audio, new commentary, VR support, and the integration of new regulations and car designs but disliked the "terrible" feel of the supercars, difficult AI, and persistent series issues. <i><a href="https://en.wikipedia.org/wiki/The_Guardian">The Guardian</a></i> gave the game a score of 3/5 stars, praising the graphics and the ability to drive this year's cars on this year's tracks, but panned <i>F1 Life</i> as "egregious".</p>
+
+<p>During the <a href="https://en.wikipedia.org/wiki/26th_Annual_D.I.C.E._Awards">26th Annual D.I.C.E. Awards</a>, the <a href="https://en.wikipedia.org/wiki/Academy_of_Interactive_Arts_&amp;_Sciences">Academy of Interactive Arts &amp; Sciences</a> nominated <i>F1 22</i> for "<a href="https://en.wikipedia.org/wiki/D.I.C.E._Award_for_Racing_Game_of_the_Year">Racing Game of the Year</a>".</p>
+
+<p>The game topped in the United Kingdom sales charts.</p>
+
+
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

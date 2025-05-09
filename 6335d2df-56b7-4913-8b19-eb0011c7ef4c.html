@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Land of the Vikings</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('6335d2df-56b7-4913-8b19-eb0011c7ef4c/77d7a11b-10c0-428d-a761-a72749879b28.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="6335d2df-56b7-4913-8b19-eb0011c7ef4c/98dbed46-f617-427c-bf85-3e6b6d0a1b06.png"/> Land of the Vikings</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="6335d2df-56b7-4913-8b19-eb0011c7ef4c/5ac0cecc-a6c7-417b-a28c-ec551655c649.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/13/2024">11/13/2024</a> 0:35:38</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/13/2024">11/13/2024</a> 1:06:03</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-PORCHE">PORCHE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-10/9/2023">10/9/2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-74">74</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-76">76</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Estrategia">Estrategia</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Laps Games">Laps Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Iceberg Interactive">Iceberg Interactive</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/><a href="#quicklink-Workshop">Workshop</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1981570" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1981570/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1981570/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1981570" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1981570" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1981570" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/1981570/achievements" target="_blank">Logros</a><br/><a href="https://steamcommunity.com/app/1981570/workshop/" target="_blank">Workshop</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-3D">3D</a><br/><a href="#quicklink-Acceso anticipado">Acceso anticipado</a><br/><a href="#quicklink-Construcción">Construcción</a><br/><a href="#quicklink-Construcción de bases">Construcción de bases</a><br/><a href="#quicklink-Construcción de ciudades">Construcción de ciudades</a><br/><a href="#quicklink-Economía">Economía</a><br/><a href="#quicklink-Estrategia">Estrategia</a><br/><a href="#quicklink-Gestión">Gestión</a><br/><a href="#quicklink-Gestión de recursos">Gestión de recursos</a><br/><a href="#quicklink-Históricos">Históricos</a><br/><a href="#quicklink-Mitología">Mitología</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Realistas">Realistas</a><br/><a href="#quicklink-Sandbox">Sandbox</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Simulador de colonias">Simulador de colonias</a><br/><a href="#quicklink-Supervivencia">Supervivencia</a><br/><a href="#quicklink-Tácticos">Tácticos</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/><a href="#quicklink-Vikingos">Vikingos</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1981570/extras/LOTV_-_Cinematic_Zoom_-_borderrip.gif?t=1728484392" /> </p><p class="bb_paragraph"> </p><h2 class="bb_tag"><strong>Gestiona tu aprovisionamiento</strong></h2><p class="bb_paragraph"> Tala árboles, planta y cosecha cultivos, caza animales, extrae minerales y pesca en los mares y fiordos cercanos. Planifica bien la gestión de recursos para garantizar la supervivencia de tu aldea en invierno y expande tu asentamiento cada vez más con el paso de las estaciones.</p><p class="bb_paragraph"> </p><p class="bb_paragraph"> <img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1981570/extras/LOTV_-_Day_Night_Cycle_-_borderrip.gif?t=1728484392" /> </p><p class="bb_paragraph"> </p><h2 class="bb_tag"><strong>Conoce a tus vikingos</strong></h2><p class="bb_paragraph"> Cada uno de tus aldeanos es único. Podrás encontrar a todo tipo de personajes en tu aldea con más de 20 características distintas. Desde fornidas mujeres de gran musculatura a dramáticos socarrones de lengua sibilina. Ten en cuenta las habilidades y capacidades de tus aldeanos al asignarles las labores: ¡cada vikingo tiene sus puntos fuertes, y eso repercutirá en su eficacia en distintas tareas!</p><p class="bb_paragraph"> </p><p class="bb_paragraph"> A medida que el asentamiento crezca, habrá más vikingos que quieran unirse a tu aldea. La decisión de darles la bienvenida o rechazarlos será tuya. Con el paso del tiempo, tus vikingos también comenzarán formarán familias y darán a luz a nuevas generaciones, lo que prolongará su linaje y reforzará tu asentamiento.</p><p class="bb_paragraph"> </p><p class="bb_paragraph"> </p><p class="bb_paragraph"> </p><h2 class="bb_tag"><strong>Sobrevive al clima adverso y supera los eventos</strong></h2><p class="bb_paragraph"> Tu asentamiento afrontará numerosos desafíos en esta tierra: desde terremotos a rayos caídos desde Asgard que provoquen incendios. Mantén la unidad entre tus vikingos para superar los diversos desastres que pueden ocurrir.</p><p class="bb_paragraph"> </p><p class="bb_paragraph"> <img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1981570/extras/LOTV_-Winter_-_borderrip.gif?t=1728484392" /> Cada estación plantea sus propios retos, igual que los eventos y los desastres. Prepárate para enfrentarte a tormentas y ventiscas, o al letal y prolongado frío del invierno. ¡Aprovisiónate de leña y alimentos para que tus vikingos no pasen hambre ni frío!</p><p class="bb_paragraph"> </p><p class="bb_paragraph"> </p><p class="bb_paragraph"> </p><h2 class="bb_tag"><strong>Comercia con asentamientos vecinos</strong></h2><p class="bb_paragraph"> Los asentamientos vecinos serán un gran medio para obtener mercancía y desarrollar vuestra economía. Una vez construyas un muelle comercial, comenzarán a llegar barcos con distinta mercancía. También podrás enviar tus propias expediciones comerciales mientras tengas suficientes aldeanos para gobernar la embarcación, ¡y suficiente cerveza como combustible para la tripulación!</p><p class="bb_paragraph"> </p><p class="bb_paragraph"> </p><p class="bb_paragraph"> </p><h2 class="bb_tag"><strong>Ataca y saquea a tus enemigos</strong></h2><p class="bb_paragraph"> Todo jarl sabe que la violencia es el camino más corto a la gloria. Reúne a tus vikingos y ordena atacar a otras aldeas para haceros con su oro, plata y aumentar vuestros puntos de fama. Adiestra y fortalece a tus vikingos y dirígelos hasta la victoria con el nuevo sistema de combate. ¡Y no olvides defender tu propio asentamiento de los ataques de otras aldeas!</p><p class="bb_paragraph"> </p><p class="bb_paragraph"> <img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1981570/extras/LOTV-Battle-System-Final.gif?t=1728484392" /> Una vez tu asentamiento florezca, diversos adalides vikingos querrán unir sus hachas a tu causa. Los adalides dirigirán a tus tropas a la batalla, inspirarán a tus guerreros y les otorgarán otras bonificaciones.</p><p class="bb_paragraph"> </p><p class="bb_paragraph"> </p><p class="bb_paragraph"> </p><h2 class="bb_tag"><strong>Celebra fiestas y decora el lugar</strong></h2><p class="bb_paragraph"> ¡Olvídate de las cuadrículas! Podrás construir donde quieras y diseñar el asentamiento a tu gusto para tener a tus vikingos satisfechos. Construye monumentos en honor de Odín o Freya y personaliza tus barcos vikingos. ¡Incluso puedes modificar el aspecto de las casas con el editor de construcción! ¡Este potente editor te permitirá construir y personalizar montones de edificios y ornamentos!</p><p class="bb_paragraph"> </p><p class="bb_paragraph"> <img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1981570/extras/LOTV_-_Building_Good_House_Winter_-_borderrop.gif?t=1728484392" /> </p><p class="bb_paragraph"> </p><h2 class="bb_tag"><strong>Yggdrasil, el árbol de la vida</strong></h2><p class="bb_paragraph"> Desbloquea nuevos edificios y bonificaciones gastando los puntos de fama en el árbol de la vida. Descubre la producción de cerveza y construye una taberna en la que tus aldeanos puedan relajarse. Invierte en ranchos de cabras para conseguir lana y tejer telas con las que hacer prendas de mejor calidad. Si mejoras las condiciones de vida y los recursos disponibles en el lugar, la salud y satisfacción de sus habitantes también mejorará, y tu asentamiento prosperará. </p>
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Rise of the Ronin</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('a5029ebe-cd04-4ace-a13e-d022a7691eb5/c7d189ce-8c2c-45e4-8610-b01527caee02.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="a5029ebe-cd04-4ace-a13e-d022a7691eb5/7dcad873-1b93-41e3-b862-2a22d09ed03b.png"/> Rise of the Ronin</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="a5029ebe-cd04-4ace-a13e-d022a7691eb5/567e77a6-d55d-43fa-b02f-f46b4f8fb397.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-3/7/2025">3/7/2025</a> 2:01:28</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-3/7/2025">3/7/2025</a> 2:26:25</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-6TB STORE">6TB STORE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-3/10/2025">3/10/2025</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Rol">Rol</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-KOEI TECMO GAMES CO., LTD.">KOEI TECMO GAMES CO., LTD.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-KOEI TECMO GAMES CO., LTD.">KOEI TECMO GAMES CO., LTD.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Parcial Con Mando">Compat. Parcial Con Mando</a><br/><a href="#quicklink-Cooperativo">Cooperativo</a><br/><a href="#quicklink-Cooperativo En Línea">Cooperativo En Línea</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Subtítulos Disponibles">Subtítulos Disponibles</a><br/><a href="#quicklink-Tablas De Clasificación De">Tablas De Clasificación De</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1340990" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1340990/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1340990/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1340990" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1340990" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1340990" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/1340990/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-3D">3D</a><br/><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Cooperativos">Cooperativos</a><br/><a href="#quicklink-Cooperativos en línea">Cooperativos en línea</a><br/><a href="#quicklink-Espadas">Espadas</a><br/><a href="#quicklink-Finales múltiples">Finales múltiples</a><br/><a href="#quicklink-Históricos">Históricos</a><br/><a href="#quicklink-Multijugador asíncrono">Multijugador asíncrono</a><br/><a href="#quicklink-Mundo abierto">Mundo abierto</a><br/><a href="#quicklink-Personalización de personajes">Personalización de personajes</a><br/><a href="#quicklink-Rol">Rol</a><br/><a href="#quicklink-Rol de acción">Rol de acción</a><br/><a href="#quicklink-Sangriento">Sangriento</a><br/><a href="#quicklink-Tercera persona">Tercera persona</a><br/><a href="#quicklink-Tipo «Dark Souls»">Tipo «Dark Souls»</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/><a href="#quicklink-Violentos">Violentos</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<h2 class="bb_tag">Contenido del juego</h2>Un RPG ambientado en el período Bakumatsu en el que los jugadores asumen el papel de un ronin, forjando su propio destino en un mundo abierto. El juego incorpora un sistema de finales múltiples, lo que permite a cada jugador elegir a qué facción apoya, ya sea &quot;contraria al shogunato&quot;, &quot;a favor del shogunato&quot; o las &quot;fuerzas occidentales&quot;, lo que cambia drásticamente el desenlace de la historia.<br><br>El juego añade numerosas funciones de PC, como las pantallas ultraanchas. También incorpora mejoras como resolución 8K, 120 FPS, sonido 3D y configuración personalizable de teclado y ratón, lo que enriquecerá tu experiencia de juego.<br><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1340990/extras/party.gif?t=1741320119" /></p><h2 class="bb_tag">Historia</h2>Japón, 1863. Tras tres siglos bajo el gobierno del shogunato Tokugawa, los barcos negros de Occidente llegan al país, que se sume en un estado de caos. En medio de la guerra, las enfermedades y la inestabilidad política, un guerrero sin nombre forja su propio camino con el futuro de Japón en sus manos.<h2 class="bb_tag">Funciones del juego<br>Nuevas funciones exclusivas para la versión de Steam®:</h2>- Compatibilidad con resolución 8K<br>- Compatibilidad con DirectX 12 Ultimate<br>- Compatibilidad con pantallas ultraanchas y superultranchas<br>- Compatibilidad con 120 FPS<br>- Compatibilidad con Ray tracing<br>- Compatibilidad con sonido 3D<br>- Controles de teclado y ratón personalizables<br>- Compatibilidad con AMD Fidelity FX Super Resolution<br>- Compatibilidad con NVIDIA DLSS y Reflex<br>- Menú de interfaz compatible con ratón<br>- Compatibilidad con tecnología de gráficos Intel XeSS<h2 class="bb_tag">Da forma a tu propia historia con numerosas decisiones y múltiples finales.</h2>En el papel de un guerrero sin nombre, un ronin, tu destino depende de las decisiones que tomes. Te cruzarás con figuras históricas y facciones con ideologías enfrentadas, como el líder de la facción contraria al shogunato, Ryoma Sakamoto, y el &quot;Shinsengumi&quot;, una organización afiliada al shogunato liderada por Isami Kondo, experimentando el caos del período Bakumatsu. Tendrás que tomar decisiones vitales como si asesinar o proteger a figuras clave como Naosuke Ii, creando así tu propia historia gracias al sistema de finales múltiples.<br><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1340990/extras/マルチエンディング.png?t=1741320119" /></p><h2 class="bb_tag">Personaliza tus armas y estilos de combate como prefieras y disfruta de un combate accesible a la par que profundo.</h2>Emplea diversas clases de armas cuerpo a cuerpo, como katanas, lanzas y odachis, cada una con distintos estilos de combate disponibles. Elige tu combinación en función de las armas de tus oponentes y tu estilo de combate personal para disfrutar de un amplio abanico de tácticas. Además hay numerosas armas de largo alcance, incluyendo armas de fuego y arcos, que podrás usar cuando la situación lo requiera.<br><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1340990/extras/action.gif?t=1741320119" /></p><h2 class="bb_tag">Explora las bellas ciudades de Edo, Yokohama y Kioto en forma de mundo abierto.</h2>En el paisaje multicultural de Edo, Yokohama, y Kioto durante el período Bakumatsu, podrás explorar paisajes espectaculares que cambian con el paso de las estaciones, mostrando maravillas como la floración de los cerezos o las hojas en otoño. Usa una cuerda para subir a tejados y surca los aires con el planeador &quot;Avicula.&quot; Además, guarda tus vistas favoritas en el &quot;modo foto&quot;.<br><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1340990/extras/city.gif?t=1741320119" /></p><h2 class="bb_tag">Da un aspecto único a tu personaje</h2>Elige sus rasgos, su pelo y su maquillaje, así como la forma de su cuerpo y su voz. Tu protagonista, tu Filo Velado, está en tus manos. Ten en cuenta que obtendrás más ropa y objetos con los que personalizar tu aspecto conforme avances en el juego.<br><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1340990/extras/キャラクリ_1（英）.png?t=1741320119" /></p>
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

@@ -1,0 +1,370 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Forza Horizon 3</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('d4dc7270-49ab-4941-8aae-3d9ab0a1de18/9b4ebe41-b0f9-4b50-86e7-f3b8a0daadda.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="d4dc7270-49ab-4941-8aae-3d9ab0a1de18/0b32ef5f-4ba8-4056-b0e5-31010e15fd96.png"/> Forza Horizon 3</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="d4dc7270-49ab-4941-8aae-3d9ab0a1de18/7f9828f4-0d1c-48a9-a698-cad48cf60657.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 14:41:31</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/8/2024">11/8/2024</a> 17:34:53</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-6TB STORE">6TB STORE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-Microsoft Xbox One">Microsoft Xbox One</a><br/><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-9/27/2016">9/27/2016</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-89">89</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Racing">Racing</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Playground Games">Playground Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Microsoft Studios">Microsoft Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single-player">Single-player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/Forza_Horizon_3" target="_blank">Wikipedia</a><br/><a href="https://playground-games.com/projects/forza-horizon-3/" target="_blank">Official website</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-[People] artist: Benjamin Penrose">[People] artist: Benjamin Penrose</a><br/><a href="#quicklink-[People] designer: Martin Conner">[People] designer: Martin Conner</a><br/><a href="#quicklink-[People] director: Ralph Fulton">[People] director: Ralph Fulton</a><br/><a href="#quicklink-[People] producer: Adam Askew">[People] producer: Adam Askew</a><br/><a href="#quicklink-[People] programmer: Alan Roberts">[People] programmer: Alan Roberts</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>Forza Horizon 3</b></i> is a 2016 <a href="https://en.wikipedia.org/wiki/Racing_video_game">racing video game</a> developed by <a href="https://en.wikipedia.org/wiki/Playground_Games">Playground Games</a> and published by <a href="https://en.wikipedia.org/wiki/Microsoft_Studios">Microsoft Studios</a> for the <a href="https://en.wikipedia.org/wiki/Xbox_One">Xbox One</a> and <a href="https://en.wikipedia.org/wiki/Windows">Windows</a>. It is the ninth instalment in the <i><a href="https://en.wikipedia.org/wiki/Forza">Forza</a></i> series and the third instalment in the <i>Forza Horizon</i> sub-series. The game is set in a fictionalised Australia, where the player is the leader of the titular Horizon car festival and has to expand the festival by completing events to earn fans. Like previous <i>Forza Horizon</i> games, it features an <a href="https://en.wikipedia.org/wiki/Open_world">open world</a> environment where players can freely roam the map.</p>
+
+<p><i>Forza Horizon 3</i> began development in 2014 after the release of <i><a href="https://en.wikipedia.org/wiki/Forza_Horizon_2">Forza Horizon 2</a></i>. <a href="https://en.wikipedia.org/wiki/Turn_10_Studios">Turn 10 Studios</a> assisted with the game's development, as they did with other <i>Forza Horizon</i> games. Over the course of development, Playground Games tested different technological concepts for the game, while also trying to improve more features over the previous title. The Australian setting was chosen for its variety of regions, and a team was sent to Australia to conduct research for the game.</p>
+
+<p><i>Forza Horizon 3</i> was released in September 2016. At release, critics praised the map design, graphics, and amount of content, while most criticism was directed towards the monotony of races. The game won and was nominated for multiple awards and sold over 2.5 million copies in 2017. <a href="https://en.wikipedia.org/wiki/Downloadable_content">Downloadable content</a> had also been released periodically, including two <a href="https://en.wikipedia.org/wiki/Expansion_packs">expansion packs</a>. The game was followed by <i><a href="https://en.wikipedia.org/wiki/Forza_Horizon_4">Forza Horizon 4</a></i>, released in 2018.</p>
+
+<h2>Gameplay</h2>
+
+<p><i>Forza Horizon 3</i> is a <a href="https://en.wikipedia.org/wiki/Racing_video_game">racing video game</a> set in an <a href="https://en.wikipedia.org/wiki/Open_world">open world</a> environment based in a fictional representation of Australia. The gameplay world is about twice the size of <i><a href="https://en.wikipedia.org/wiki/Forza_Horizon_2">Forza Horizon 2</a></i>, and the game contains locales and regions based upon their real-life Australian counterparts. While previous <i>Forza Horizon</i> games have depicted the player as being one of the racers of the Horizon Festival, the player is now the director of the festival, and their role is to expand it throughout Australia by completing races, challenges, and stunts to earn fans. If enough fans are earned at a certain threshold, the player can set up new festival locations and unlock more events.</p>
+
+<p>Three types of racing <a href="https://en.wikipedia.org/wiki/Game_mode">modes</a> are available in the game: Exhibition, Championship, and Rivals. Exhibition is a single race at one location, whereas Championship contains multiple races dispersed throughout the gameplay world. Rivals is a versus race against the player and an <a href="https://en.wikipedia.org/wiki/AI">AI</a> opponent, where the player has to compete in a <a href="https://en.wikipedia.org/wiki/Time_trial">time trial</a> to beat the time set by the opponent. Added in <i>Forza Horizon 2</i>, the player can also participate in Bucket List Challenges, where they are given a task to complete with a specific vehicle. The newly introduced Horizon Blueprint feature lets the player customise races and Bucket List Challenges.</p>
+
+<p>Apart from races and Bucket List Challenges, the player can engage in several other activities. Breakable boards called "bonus boards" can be discovered around the gameplay world, and when driven over, they award the player with <a href="https://en.wikipedia.org/wiki/Experience_points">experience points</a> or a discount on <a href="https://en.wikipedia.org/wiki/Fast_travel">fast travelling</a>. As the player progresses through the game, they can receive rumours of <a href="https://en.wikipedia.org/wiki/Barn_find">barn finds</a> to uncover and restore. When performing stunts with a vehicle, the player is awarded "skill points". If enough skill points are acquired, they can be used to purchase <a href="https://en.wikipedia.org/wiki/Experience_point#Perks">perks</a> that may award cars, experience points, in-game currency, and driving advantages, among other benefits. The player may participate in Forzathon competitions, which provide weekly challenges and give awards once completed.</p>
+
+<p>Returning from previous <i>Forza</i> games, <i>Forza Horizon 3</i> features a vehicle AI called Drivatars, which learns and mimics the driving abilities of <i>Forza</i> players. Drivatars are found throughout the gameplay world, and they appear in races as opponents, where they can be adjusted by <a href="https://en.wikipedia.org/wiki/Game_difficulty">game difficulty</a> via the player. Apart from standard races, Drivatars can be challenged to a head-to-head race. If the player wins the race, they will be able to recruit that Drivatar onto their racing team, which allows the player to earn additional experience points, fans, and in-game currency. The player can also recruit Drivatars in a car convoy. When in a car convoy, Drivatars will follow the player, and they can be upgraded by skill points to perform certain tasks throughout the game.</p>
+
+<p>The player can upgrade and <a href="https://en.wikipedia.org/wiki/Car_tuning">tune</a> individual parts of their vehicles, with <a href="https://en.wikipedia.org/wiki/Body_kits">body kits</a> being available as well. Additionally, the game includes a vehicle cutsomisation option called "Upgrade Heroes", which utilises both tuning and body kits to alter both a vehicle's performance and appearance, although the cutomisation preset is limited to a certain number of vehicles. The colour of vehicles and their collective parts can be changed, and the player can also design <a href="https://en.wikipedia.org/wiki/Livery#Modern_usage">liveries</a> for vehicles. These liveries can be sold through the in-game shop, which further includes an auction system to bid on cars from other players. A total of 350 vehicles were available at the game's launch.</p>
+
+<p><i>Forza Horizon 3</i> offers open world multiplayer modes including an online <a href="https://en.wikipedia.org/wiki/Cooperative_video_game">cooperative</a> mode for up to four players and a competitive mode for up to twelve, where players can compete in races and <a href="https://en.wikipedia.org/wiki/Minigames">minigames</a> with their vehicles. As from previous <i>Forza</i> games, the player can join clubs, where they have the ability to compete against players of other clubs in races and minigames.</p>
+
+<p>Due to the licensing issues, vehicles manufactured by <a href="https://en.wikipedia.org/wiki/Volkswagen">Volkswagen</a> are absent from the game.</p>
+
+<h2>Development</h2>
+
+<p><i>Forza Horizon 3</i> was developed by UK-based <a href="https://en.wikipedia.org/wiki/Playground_Games">Playground Games</a>, the creators behind previous <i>Forza Horizon</i> titles. Additional work was provided by <a href="https://en.wikipedia.org/wiki/Turn_10_Studios">Turn 10 Studios</a>, who made the <i><a href="https://en.wikipedia.org/wiki/Forza_Motorsport_(series)">Forza Motorsport</a></i> series. The game was designed using the <a href="https://en.wikipedia.org/wiki/ForzaTech">ForzaTech</a> <a href="https://en.wikipedia.org/wiki/Game_engine">game engine</a>, which is used for most other <i>Forza</i> games. The development team started conceptualizing the creation of <i>Forza Horizon 3</i> in 2014 initially after <i><a href="https://en.wikipedia.org/wiki/Forza_Horizon_2">Forza Horizon 2</a></i> was released. The team desired to give players more freedom in <i>Forza Horizon 3</i> compared to its predecessor. They also aimed for the game to be of better quality, therefore they sought to optimise more gameplay and graphical aspects over the previous title. One of these changes was minimizing the amount of loading screen time, as it could damage the game's impression of being persistently high quality. <a href="https://en.wikipedia.org/wiki/Creative_director">Creative director</a> Ralph Fulton felt that <i>Forza Horizon 3</i> was a "generational leap" over its predecessor because of the work the development team put in to better improve the game.</p>
+
+<h3>Setting</h3>
+
+<p>Playground Games started with a broad range of locations for <i>Forza Horizon 3</i>, narrowing the list of locations with more research. Because of Australia's largely diverse environment, the development team ultimately made the decision to have the game set there, as they also considered the country to be a possible setting for future <i>Forza Horizon</i> games. Mike Brown, a game designer at Playground Games, thought that the team made the correct decision to select Australia as the setting, describing the country's diverse scenery as "perfect".</p>
+
+<p>To help create a convincing gameplay world, a team was sent to Australia to take reference photos to aid in the game design. These photos consisted of plants, rocks, and road details, among others. A significant amount of work was put into simulating landmarks of the country, such as <a href="https://en.wikipedia.org/wiki/The_Twelve_Apostles">the Twelve Apostles</a>. Minor details were also implemented into the game, like the colours of Australian phone boxes and garbage bins, as well as including native wildlife. Playground Games stated that they explored and represented every ecologically distinct part of the country in <i>Forza Horizon 3</i>; the gameplay world consists of six distinct regions. However, the world is somewhat geographically inaccurate, with locations in real life existing in different geographic areas in the game. According to Brown, the explanation for this inconsistency was to create a better gameplay experience for the player.</p>
+
+<p>Ralph Fulton explained that Playground Games desired to help celebrate Australian car culture and familiarise the culture to people in other parts of the world, thus multiple Australian car models were incorporated into the game. He added, "[Australia's] culture of <a href="https://en.wikipedia.org/wiki/Ford_Motor_Company">Ford</a> vs <a href="https://en.wikipedia.org/wiki/Holden">Holden</a>, and <a href="https://en.wikipedia.org/wiki/V8_engine">V8s</a> and <a href="https://en.wikipedia.org/wiki/Ute_(vehicle)">Utes</a> isn't immediately familiar to everybody north of the equator, but we did feel it was really interesting and colourful and would add to the game."</p>
+
+<p>The Australian locations include the desert town of <a href="https://en.wikipedia.org/wiki/Coober_Pedy">Coober Pedy</a>, in <a href="https://en.wikipedia.org/wiki/South_Australia">South Australia</a>; the <a href="https://en.wikipedia.org/wiki/Great_Ocean_Road">Great Ocean Road</a> in <a href="https://en.wikipedia.org/wiki/Victoria,_Australia">Victoria</a>; <a href="https://en.wikipedia.org/wiki/Byron_Bay">Byron Bay</a>, in <a href="https://en.wikipedia.org/wiki/New_South_Wales">New South Wales</a>; <a href="https://en.wikipedia.org/wiki/Ormiston_Gorge">Ormiston Gorge</a> in the <a href="https://en.wikipedia.org/wiki/Northern_Territory">Northern Territory</a>; and <a href="https://en.wikipedia.org/wiki/Surfers_Paradise">Surfers Paradise</a> in <a href="https://en.wikipedia.org/wiki/Queensland">Queensland</a>.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/High-dynamic-range">High-dynamic-range</a> (HDR) played a key role in the visuals of <i>Forza Horizon 3</i>. Originally, there was not any thought of incorporating HDR into the game during development, but due to the development team discovering the HDR <a href="https://en.wikipedia.org/wiki/Input/output">output</a> of the <a href="https://en.wikipedia.org/wiki/Xbox_One_S">Xbox One S</a>, it was decided to start programming the feature. ForzaTech was found to be a good match for HDR, as the light rendering of the game engine was adequately set up the incorporate the brightness <a href="https://en.wikipedia.org/wiki/Gamut">gamut</a> of HDR. Multiple televisions were then bought for investigation of the feature. The development team later discovered that the televisions displayed HDR variously, which added more difficulty to the process of adding the feature to the game.</p>
+
+<p>Over the course of development, the team talked about and tested new technology prototypes for several months to help enhance the visuals for the game. Among these prototypes was an HDR sky system. As an idea, the team thought of pointing a high-resolution camera at the sky for hours as a time-lapse. A test was then conducted in <a href="https://en.wikipedia.org/wiki/Leamington_Spa">Leamington Spa</a>, England. Lighting artist Jamie Wood admitted that during the test, there was more variety in shooting a camera at a sky than the sky design system that was used in <i>Forza Horizon 2</i>. Three teams of two were then sent to <a href="https://en.wikipedia.org/wiki/Braidwood,_New_South_Wales">Braidwood, New South Wales</a> to capture Australia's more distinguishing skies, clouds, and weather patterns. For a few months, the teams performed the shooting process using HDR cameras. The cameras took thousands of photos with <a href="https://en.wikipedia.org/wiki/Frame_interpolation">frame interpolation</a> over 24 hour periods, alongside the lenses and <a href="https://en.wikipedia.org/wiki/Photodetector">light sensors</a> needing to be cleaned regularly. Videos of the sky were also taken, with the footage being about 30 days long overall. The shooting process took place through various weather conditions and times of day to resemble a "dynamic weather system" in the game. This further meant that <a href="https://en.wikipedia.org/wiki/Camera_exposure">camera exposures</a> and <a href="https://en.wikipedia.org/wiki/Camera_filter">filters</a> had to be changed frequently to adjust to each time of day. The footage of the sky was then imported into the game. Because of the sky footage, days were longer in <i>Forza Horizon 3</i> than its predecessor, and clouds also correlate with weather systems in-game.</p>
+
+<p>The lighting effects in <i>Forza Horizon 3</i> are calculated with <a href="https://en.wikipedia.org/wiki/Real-time_computing">real-time computing</a>, which helps simulate a realistic sun in the game. Shadows are generated based on how light is distributed and <a href="https://en.wikipedia.org/wiki/Ambient_occlusion">occluded</a> depending on the locations of surrounding objects and substances. Real-time computing is also used in the game's voxel-based global illumination system to calculate the bouncing of light. The sky, other sources of light, and occlusion data is used to determine surfaces light bounces onto. This helps light accurately blend into areas that have varying degrees of brightness.</p>
+
+<p>Playground Games wanted the beach to be an important racing area in the game, therefore much effort was put into allowing the sea to realistically interact with the beach to make the location look lifelike. To help assist in developing the sea, Playground Games contacted game developer <a href="https://en.wikipedia.org/wiki/Rare_(company)">Rare</a>, who was working on <i><a href="https://en.wikipedia.org/wiki/Sea_of_Thieves">Sea of Thieves</a></i> at the time. As both developers were working on creating the sea in their games, they decided to share computer code, which both developers improved on.</p>
+
+<p>Car models were mainly designed with <a href="https://en.wikipedia.org/wiki/CAD_data_exchange">CAD data exchange</a> between the developers and the car manufacturer. However, for cars that didn't support CAD data exchange, especially rarer and older cars, designers had to track them down for modelling details, sometimes taking upwards of weeks to locate some of them. As with the <a href="https://en.wikipedia.org/wiki/Lamborghini_Centenario">Lamborghini Centenario</a>, the cover car of the game, a photographer was sent to Italy to take photos and measurements of the car. Since the Centenario was made of hundreds of different types of materials, Playground Games desired to simulate the car at the "sub-pixel level". Using data from the images and measurements, a <a href="https://en.wikipedia.org/wiki/Polygon_mesh">mesh</a> of the car was modelled with <a href="https://en.wikipedia.org/wiki/3D_Studio_Max">3D Studio Max</a>, while designers had to figure out where materials needed to be simulated in the mesh.</p>
+
+<p>The sound team recorded actual cars for the game, capturing intake, engine, and exhaust sounds. They employed the looping model from <i><a href="https://en.wikipedia.org/wiki/Forza_Motorsport_6">Forza Motorsport 6</a></i> in conjunction with a <a href="https://en.wikipedia.org/wiki/Granular_synthesis">granular synthesis</a> model to implement car engine sounds in-game. The looping model shifts the pitch of cross-faded loops over the rev range, and was created from recordings of a car on a <a href="https://en.wikipedia.org/wiki/Chassis_dynamometer">dyno</a> making full-throttle runs. The granular model is made of audio tracks of a car under acceleration and deceleration, and was built by recordings of cars driven on track from idle to redline and back. Vehicle recording was done by Warner Bros. Post Production. The team used <a href="https://en.wikipedia.org/wiki/Lavalier_microphone">lavalier</a> and <a href="https://en.wikipedia.org/wiki/Microphone#Omnidirectional">omni</a> mics around the car to capture audio, relying on high <a href="https://en.wikipedia.org/wiki/Sound_pressure#Sound_pressure_level">SPL</a> mics and pre-amp <a href="https://en.wikipedia.org/wiki/Attenuator_(electronics)#Audio_attenuators">attenuators</a> for certain race cars can reach 130 dB SPL.</p>
+
+<p>Ralph Fulton explained that "humans form their first impressions incredibly quickly", elaborating that the first few minutes of playing a video game can drastically change how a player thinks of it. Playground Games later conducting a study of first impressions before developing <i>Forza Horizon 3</i>. Two groups of test subjects both played the same <i>Forza</i> game for the same amount of time, except one group played in a sports car and the other played in a regular car. When asked about their experiences playing the game, the group that played in the sports car rated the game generally better. As a result, Playground Games spent a large part of their development cycle (about eighteen months) developing and curating the first few scenes of the game. In February 2015, it was decided that the first few scenes would be split between the opening drive and the first of the game's events, with the decided route for the opening drive being finalizsed a month later. By June 2015, the route was being tested and concept art was drawn for the scenery that the player would see during the opening drive, although some concepts had to be adjusted or removed, such as the rainforest being made less dense. Problems also emerged with the car that the player would be driving in during the opening sequence, the Centenario. The Centenario resulted in being too fast for the player to observe the scenery as intended, requiring changes in the route and terrain. As the opening drive also went off-road, a cutscene had to be instituted to switch the Centenario to a <a href="https://en.wikipedia.org/wiki/Buggy_(automobile)">buggy</a> to accompany the harsher terrain. Additionally, the first event after the opening drive had to be pushed back for further improvement, prompting modifications to be made to the opponent vehicle.</p>
+
+<p>During the development process of the four-player <a href="https://en.wikipedia.org/wiki/Cooperative_video_game">cooperative</a> <a href="https://en.wikipedia.org/wiki/Campaign_(role-playing_games)">campaign</a>, the goal was to enable all players to play with "as little friction as possible", with the development team then generating a list of goals for an organised campaign. After assessing the campaign layout, the team created a list of problems that could negatively influence the gameplay and came to the conclusion that there four major issues that could affect gameplay the most. With each issue, the team brainstormed a list of possible solutions, picking the solution that produced the least conflict between players. The first issue, where players could be hours apart in campaign progress, made a screen appear that informs the player of how many fans they earned, and the festivals they can upgrade or open whenever they leave a cooperative session. If players also completed races in a cooperative session that have not yet been unlocked in their single-player session, the race will appear as "completed" on the <a href="https://en.wikipedia.org/wiki/User_interface">user interface</a> in single-player. The second issue was that races could have specific requirements for cars based on the restrictions the session leader has created, players with fewer cars may not reach those specifications. The solution was considered more straightforward, which introduced a rental feature that allowed players to borrow the session leader's car during a race. For the third issue, where players with less skill may finish races in lower positions, every race was converted into a team race between the players and the AI opponents. A point system was then added for every opponent beaten. This created a structure that let inexperienced players to contribute to the campaign even if they beat only one opponent. Although the fourth issue wasn't part of the team's original goals, it did come up often during testing phases, which was that the leader of the session had to guide other players through the game, even if there was not any sort of communication between players. To resolve the problem, a feature was implemented that notified the session leader's actions to all other players whenever the leader did something, such as starting an event.</p>
+
+<h2>Release</h2>
+
+<p><i>Forza Horizon 3</i> was announced on 13 June 2016 during Microsoft's <a href="https://en.wikipedia.org/wiki/E3_2016">E3</a> press conference, where Ralph Fulton displayed a gameplay demo during the briefing. The game was released on 27 September 2016. Players were able to purchase three different editions of the game: the Standard, Deluxe, or Ultimate editions. The Deluxe and Ultimate editions gave players several <a href="https://en.wikipedia.org/wiki/Downloadable_content">downloadable content</a> car packs and other exclusive content, while players that pre-ordered the Ultimate Edition were also able to earn <a href="https://en.wikipedia.org/wiki/Early_access">early access</a> to the game on 23 September. <i>Forza Horizon 3</i> supports <a href="https://en.wikipedia.org/wiki/Cross-platform_play">cross-platform play</a> and is part of the <a href="https://en.wikipedia.org/wiki/Xbox_Play_Anywhere">Xbox Play Anywhere</a> program, allowing the game to be playable both on Xbox and Windows if purchased digitally.</p>
+
+<p>Initially after the game was released, there were various in-game performance problems that occurred concerning the game's <a href="https://en.wikipedia.org/wiki/Computer_compatibility">compatibility</a> with Windows. An issue also arose involving the game's wheelspin feature, an award system that offers the chance for players to earn a new car or a certain amount of in-game currency, which may sometimes give players the maximum amount of currency that could be acquired in the game. These issues were later addressed and promptly fixed by Playground Games. Some players had also claimed that they were falsely banned after Playground Games issued bans to players using <a href="https://en.wikipedia.org/wiki/Cheating_in_online_games">hacking clients</a>. A Microsoft spokesperson later stated that players who felt that they were falsely punished can email them for investigation and removal of the bans. In January 2017, an update had the potential to <a href="https://en.wikipedia.org/wiki/Data_corruption">corrupt</a> the game for Windows users. The corrupted update was later removed by Playground Games.</p>
+
+<p>In January 2018, <i>Forza Horizon 3</i> was <a href="https://en.wikipedia.org/wiki/Port_(video_gaming)">ported</a> to the <a href="https://en.wikipedia.org/wiki/Xbox_One_X">Xbox One X</a>, enabling the graphics of the game to be changed on the console, including adding <a href="https://en.wikipedia.org/wiki/4K_resolution">4K resolution</a>, higher <a href="https://en.wikipedia.org/wiki/Polygonal_modeling">polygon models</a>, increasing <a href="https://en.wikipedia.org/wiki/Sample_(graphics)">sample quality</a>, and enhancing other graphical features. The game made use of <a href="https://en.wikipedia.org/wiki/Groove_Music">Groove Music</a> to play custom soundtracks, however, the ability to stream music to the game was stopped on 31 March 2019, after Groove Music was discontinued, limiting players to the in-game soundtrack as with the other <i>Forza Horizon</i> games. On 27 September 2020, the game and all its downloadable content were removed from the <a href="https://en.wikipedia.org/wiki/Microsoft_Store_(digital)">Microsoft Store</a> after reaching <a href="https://en.wikipedia.org/wiki/End-of-life_product">end-of-life status</a>.</p>
+
+<h3>Downloadable content</h3>
+
+<p>Several downloadable content (DLC) car packs were released periodically. While most packs featured a small collection of cars, some packs had themes, such as being type specific or manufacturer specific. Examples include the "Motorsport All-Stars Pack", which includes several racing cars, and the "Porsche Car Pack", consisting of cars made by vehicle manufacturer <a href="https://en.wikipedia.org/wiki/Porsche">Porsche</a>. In addition, the "Hoonigan Car Pack" includes in-game versions of cars that were used by the <a href="https://en.wikipedia.org/wiki/Hoonigan_Racing_Division">Hoonigan Racing Division</a>.</p>
+
+<p>On 13 December 2016, the <a href="https://en.wikipedia.org/wiki/Expansion_pack">expansion pack</a> <i>Blizzard Mountain</i> was released. The pack added a new location to the game, characterised by a mountainous landscape and having harsh, snowy weather conditions. The severe weather conditions added a challenging feature to driving, as aspects like icy roads and <a href="https://en.wikipedia.org/wiki/Whiteout_(weather)">whiteout</a> affected the ability of the player to control the vehicle. Instead of accumulating fans, as is synonymous in the Australian location, players had the goal of collecting stars instead. Similar to earning fans, acquiring certain amounts of stars unlocks more events around the region. Additionally, three racing <a href="https://en.wikipedia.org/wiki/Game_modes">game modes</a> were added to the DLC, and players received a <a href="https://en.wikipedia.org/wiki/Rallying">rally</a>/<a href="https://en.wikipedia.org/wiki/Off-roading">off-road</a> car pack that is able to be customisable with <a href="https://en.wikipedia.org/wiki/Snow_tires">snow tires</a> with the purchase of <i>Blizzard Mountain</i>.</p>
+
+<p>On 9 May 2017, in collaboration with <a href="https://en.wikipedia.org/wiki/Mattel">Mattel</a>'s <a href="https://en.wikipedia.org/wiki/Hot_Wheels">Hot Wheels</a>, Playground Games released a second expansion pack titled <i>Forza Horizon 3: Hot Wheels</i>. Like <i>Blizzard Mountain</i>, the pack added a new area to the game, portrayed as an <a href="https://en.wikipedia.org/wiki/Archipelago">archipelago</a> connected by real-world scale Hot Wheels stunt track pieces instead of regular roads. The game's track acts similarly to an actual Hot Wheels course, illustrated by different kinds of stunt sections, such as <a href="https://en.wikipedia.org/wiki/Vertical_loops">vertical loops</a> and <a href="https://en.wikipedia.org/wiki/Half-pipes">half-pipes</a>. Races can be customised with the Horizon Blueprint feature, where individual pieces of track are able to be swapped with other pieces. Continuing from <i>Blizzard Mountain</i>, stars have to be earned in races to unlock more events, and players were given a car pack with the purchase of the expansion, of which some of the vehicles are life-scale Hot Wheels cars.</p>
+
+<p>There have been two <a href="https://en.wikipedia.org/wiki/Crossover_(fiction)">crossovers</a> between <i>Forza Horizon 3</i> and other video game franchises. During the game's release, players were able to obtain <i><a href="https://en.wikipedia.org/wiki/Halo_(franchise)">Halo</a></i>'s fictitious <a href="https://en.wikipedia.org/wiki/Warthog_(Halo)">Warthog</a> if they played either <i><a href="https://en.wikipedia.org/wiki/Halo_5">Halo 5</a></i> or <i><a href="https://en.wikipedia.org/wiki/The_Master_Chief_Collection">The Master Chief Collection</a></i> on the Xbox One. Players may also win the car by completing challenges in the game. On 1 August 2017, <i>Forza Horizon 3</i> players received the Quartz Regalia from <i><a href="https://en.wikipedia.org/wiki/Final_Fantasy_XV">Final Fantasy XV</a></i> through the in-game message system, while <i>Final Fantasy XV</i> players received an <a href="https://en.wikipedia.org/wiki/Xbox_Live">Xbox Live</a> message with a code to redeem the car. The DLC was free for those who've played <i>Forza Horizon 3</i> on Windows or either game on Xbox prior to that date. It took about 1,500 hours to program the Regalia into the game, since there was no real-world data that the game designers could take reference from.</p>
+
+<h2>Reception</h2>
+
+<p><i>Forza Horizon 3</i> received "universal acclaim" from critics for the Xbox One version, while the Windows version received "generally favorable" reviews, according to <a href="https://en.wikipedia.org/wiki/Review_aggregator">review aggregator</a> <a href="https://en.wikipedia.org/wiki/Metacritic">Metacritic</a>.</p>
+
+<p>The choice of an Australian setting was well received by critics. Colin Campbell of <i><a href="https://en.wikipedia.org/wiki/Polygon_(website)">Polygon</a></i> admired the realistic portrayal of Australia and enjoyed exploring the various locales, particularly noting the <a href="https://en.wikipedia.org/wiki/Outback">Outback</a>, where he felt was the most enjoyable region. Miguel Concepcion of <i><a href="https://en.wikipedia.org/wiki/GameSpot">GameSpot</a></i> thought that Australia was a good fit for the <i>Forza Horizon</i> series and further remarked that off-road activities were more prominent as a result of the location. <i><a href="https://en.wikipedia.org/wiki/IGN">IGN</a></i>'s Luke Reilly praised the game for its attention to detail towards specific aspects such as street signs and road markings, and for its variety of landscapes, calling it an improvement from <i>Forza Horizon 2</i>, where he felt the terrain felt largely the same. <a href="https://en.wikipedia.org/wiki/Jeff_Gerstmann">Jeff Gerstmann</a> of <i><a href="https://en.wikipedia.org/wiki/Giant_Bomb">Giant Bomb</a></i> agreed and also thought the world was better to drive through than its predecessor. Nicholas Tan of <i><a href="https://en.wikipedia.org/wiki/GameRevolution">GameRevolution</a></i> was fond of the details of the landmarks and visuals of the gameplay world, calling it a "sight to behold".</p>
+
+<p>The races received mixed reviews. Concepcion felt that the races were thrilling and stated that they are "never bereft of split-second moments of gratification." <i><a href="https://en.wikipedia.org/wiki/USgamer">USgamer</a></i>'s <a href="https://en.wikipedia.org/wiki/Jaz_Rignall">Jaz Rignall</a> praised the game for its variety of races set across different types of terrain, and concluded that they were a "step up" from its predecessor. Andrew Reiner of <i><a href="https://en.wikipedia.org/wiki/Game_Informer">Game Informer</a></i> appreciated the race course layouts and thought that most races felt intense and were "awesome adrenaline rushes," but criticised head-to-head races against Drivatars, stating that they are rarely enjoyable and sometimes have imbalance problems between vehicles. Towell also criticised head-to-head races for being too easy to win. Towell further remarked that generally, races were tedious, and in contrast to Reiner, felt that track layouts were uninteresting. Gerstmann thought that completing races felt repetitive, and remarked that the Championship game mode was "overly redundant", Phil Savage of <i><a href="https://en.wikipedia.org/wiki/PC_Gamer">PC Gamer</a></i> liked the Drivatar opponents in the game, calling the AI system "broadly effective." He also enjoyed that players that he knows sometimes appear in races, as Drivatars are usually people on a player's <a href="https://en.wikipedia.org/wiki/Friend_list">friend list</a> or game club. Concepcion agreed, and considered them a good alternative to "traditional catch-up or <a href="https://en.wikipedia.org/wiki/Dynamic_game_difficulty_balancing">rubber-band</a> AI". The Horizon Blueprint feature, a new race customisation feature, was better received. Rignall appreciated the feature, and liked how the feature allowed him to race any type of vehicle against similar types, letting him choose the vehicles he wants to race with. Reilly praised the feature for the amount of creativity it provides for players, stating that races can be recreated in "dozens and dozens of different ways". Reiner liked the feature for letting play events in the way they want and called the Horizon Blueprint a "smart move" to be added by Playground Games.</p>
+
+<p>Critics praised the game for its variety of content and freedom of choice for the player. Concepcion acclaimed <i>Forza Horizon 3</i> for the amount of content available in the game's campaign, comparing it to <i><a href="https://en.wikipedia.org/wiki/Burnout_Paradise">Burnout Paradise</a></i>. Campbell appreciated the variety of activities that he could partake in, and felt that exploring the world and participating in other activities were more enjoyable than completing races. Both Tan and Brett Makedonski of <i><a href="https://en.wikipedia.org/wiki/Destructoid">Destructoid</a></i> liked the fact that they had the choice to engage in various activities or drive around the gameplay world without repercussions. However, Tan criticised the game for having little incentive to explore the gameplay world. Rignall was impressed by the large array of different types of vehicles the player was able to use, further stating that they offer "an exceptionally broad spectrum of driving experiences". Reilly applauded the game for having a large range of car customisation options.</p>
+
+<p>The game's graphics were positively received by critics. Towell praised the game for its realistic day and night cycles and rainy weather. Rignall was impressed by the graphics of cars and landscapes, stating that <i>Forza Horizon 3</i> is one of the "best-looking" games on the Xbox One. Concepcion appreciated that the graphics of the game were able to be customised on the Windows version to a large extent. Reilly praised the game's <a href="https://en.wikipedia.org/wiki/Global_illumination">global illumination</a> system, and acknowledged that the system's lighting made the world feel more unique and realistic.</p>
+
+<h3>Commercial performance</h3>
+
+<p>Ralph Fulton commented that the success of <i>Forza Horizon 3</i> exceeded the expectations of Playground Games. The game was the seventh best-selling in Australia and the tenth best-selling in the United Kingdom in 2016. In the same year, it was the ninth best-selling on the Xbox One in the United States. More than 2.5 million copies of <i>Forza Horizon 3</i> were sold in February 2017, effectively bringing the <i>Forza</i> series to amassing $1 billion in sales. In September 2018, the game surpassed 10 million players.</p>
+
+
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

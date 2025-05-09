@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>AI LIMIT</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('c78714fd-39ab-46c3-9edc-9af8ab0bfe1f/f904a181-1eb0-46c6-8d48-e8875b7c92eb.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="c78714fd-39ab-46c3-9edc-9af8ab0bfe1f/e2b4fd9d-6165-4cb5-95b6-f90ceaa41db5.png"/> AI LIMIT</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="c78714fd-39ab-46c3-9edc-9af8ab0bfe1f/c4f9f793-6ec0-443e-83a9-87684a9d0868.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-4/1/2025">4/1/2025</a> 15:35:47</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-4/2/2025">4/2/2025</a> 17:01:30</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-4TB TANK">4TB TANK</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-3/27/2025">3/27/2025</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-86">86</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-75">75</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Rol">Rol</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Sense Games">Sense Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-CE-Asia">CE-Asia</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/2407270" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/2407270/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/2407270/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=2407270" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/2407270" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=2407270" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/2407270/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-3D">3D</a><br/><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Acción y aventura">Acción y aventura</a><br/><a href="#quicklink-Adorables">Adorables</a><br/><a href="#quicklink-Anime">Anime</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Combate">Combate</a><br/><a href="#quicklink-Desnudos">Desnudos</a><br/><a href="#quicklink-Distopías">Distopías</a><br/><a href="#quicklink-Drama">Drama</a><br/><a href="#quicklink-Exploración de mazmorras">Exploración de mazmorras</a><br/><a href="#quicklink-Fantasía">Fantasía</a><br/><a href="#quicklink-Hack and slash">Hack and slash</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Posapocalípticos">Posapocalípticos</a><br/><a href="#quicklink-Protagonista femenina">Protagonista femenina</a><br/><a href="#quicklink-Rol">Rol</a><br/><a href="#quicklink-Rol de acción">Rol de acción</a><br/><a href="#quicklink-Tipo «Dark Souls»">Tipo «Dark Souls»</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<h2 class="bb_tag">Explorata un mundo post-apocalíptico desconocido</h2><br>Después de que el ecosistema artificial se había colapsado repentinamente por razones desconocidas, los desastres naturales y las guerras siguieron, la civilización fue destruida en un instante… Y durante cientos de años, una anormal sustancia llamada “El Fluido” se extendió por todas partes, y varios tipos de monstruos emergieron en la tierra.<br>Se adentrará en la última ciudad humana, Haven’s Well, y explorará los sombríos y húmedos túneles subterráneos, los intrincados barrios y la ciudad flotante sobre el lago… Buscará las verdaderas razones de la destrucción de la civilización en las ruinas infestadas de monstruos. Atravesará diversos fenómenos anormales enfrentando a enemigos misteriosos y peligrosos, poniendo punto final a una historia extraña y desesperada.<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2407270/extras/G01.gif?t=1743290781" /><h2 class="bb_tag">Emprende un viaje con una misteriosa misión con gran compromiso.</h2><br>Los “Bio-Androides” tienen apariencia humana, pero son una nueva forma de vida creada a través de una tecnología misteriosa. Con sus propias misiones, ellas comienzan sus viajes solitarios y peligrosos, y con la ayuda de “Ramas de cristal ”, pueden renacer una y otra vez.<br>Pero ahora, Ramas de cristal ya han sido destruidas y una de los Bio-Androides, usted debe buscar y reparar las Ramas de cristal en diferentes partes de la ciudad. Se encontrará con humanos y compañeros Bio-Androides que también están en situaciones desesperadas y experimentará sus alegrías, tristezas y las creencias que mantienen incluso en la desesperación, descubriendo así la verdad oculta detrás de los desastres y los fenómenos anormales.<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2407270/extras/G02.gif?t=1743290781" /><h2 class="bb_tag">Enfrenta a enemigos misteriosos y poderosos.</h2><br>Guerreros que se han perdido a sí mismos y se han convertido en bestias salvajes locas;<br>Soldados que caminan por el cielo cubiertos de agudos filos en todo su cuerpo;<br>Enormes monstruos que masacran y destrozan la ciudad con embestidas y explosiones…<br>En las innumerables muertes y renacimientos, deberá desafiar a enemigos poderosos y monstruos anormales de múltiples facciones, encontrar los debilidades bajo sus violentos ataques y luchar con todas las fuerzas para lograr la victoria y continuar el viaje en el apocalipsis.<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2407270/extras/G03.gif?t=1743290781" /><h2 class="bb_tag">Experimenta un combate de acción emocionante y variada.</h2><br>◆	Con amplia variedad de armas y másabundancia de tipos!<br>◆	Las habilidades de combate con armas pueden sustituirse libremente y combinarse con flexibilidad!<br>◆	El sistema de “Sincronización” que mejora con el comportamiento en batalla, le permiten más acciones en la batalla para que sea cada vez más poderoso en ataque y defensa!<br>◆	El dispositivo de teconología en tu mano izquierda puede aplicar hasta docenas de “Spell” para realizar habilidades de ataque, defensa y apoyo!<br>◆	Con varios sistemas exclusivos para conseguir una rica combinación de movimientos y aprovecha la primera oportunidad de ataques y defensas en cada batalla!<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2407270/extras/G04.gif?t=1743290781" /><h2 class="bb_tag">Explora ruinas de la ciudad y obtiene poderosas armas, armaduras y artefactos de antigua civilización.</h2><br>Avance paso a paso en las ruinas misteriosas y magníficas de la ciudad, y busque armas y armaduras con diferentes estilos y capacidades: algunas ya están dominadas por poderosos monstruos y otras se encuentran en lo más profundo pasaje complejo. Aparte de sus atributos de combate, estas armas y armaduras también proporcionan cambios únicos en sus apariencias, ¡así que luche con una postura única!<br>Además, durante su exploración, también encontrará artefactos de antigua civilización dispersos por todas partes. Utiliza las habilidades de los Bio-Androides para leer los recuerdos conservados en ellos y obtener una visión de la historia de la ciudad de Haven’s Well.<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2407270/extras/G05.gif?t=1743290781" />
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

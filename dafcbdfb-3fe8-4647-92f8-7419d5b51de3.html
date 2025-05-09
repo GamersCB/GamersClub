@@ -1,0 +1,378 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Borderlands: The Pre-Sequel</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('dafcbdfb-3fe8-4647-92f8-7419d5b51de3/6fc65502-b010-48e0-80cc-9f5222066413.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="dafcbdfb-3fe8-4647-92f8-7419d5b51de3/a4e05e5d-93d1-44ab-b0bb-55266d1f235a.png"/> Borderlands: The Pre-Sequel</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="dafcbdfb-3fe8-4647-92f8-7419d5b51de3/2264ab56-b134-4bbd-bc53-bd0d7fed270a.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 14:41:31</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/8/2024">11/8/2024</a> 17:35:04</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-6TB STORE">6TB STORE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-Android">Android</a><br/><a href="#quicklink-Macintosh">Macintosh</a><br/><a href="#quicklink-Microsoft Xbox 360">Microsoft Xbox 360</a><br/><a href="#quicklink-Microsoft Xbox One">Microsoft Xbox One</a><br/><a href="#quicklink-Nintendo Switch">Nintendo Switch</a><br/><a href="#quicklink-PC (Linux)">PC (Linux)</a><br/><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/><a href="#quicklink-Sony PlayStation 3">Sony PlayStation 3</a><br/><a href="#quicklink-Sony PlayStation 4">Sony PlayStation 4</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-10/14/2014">10/14/2014</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-76">76</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Action role-playing">Action role-playing</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-First-person shooter">First-person shooter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-2K Australia">2K Australia</a><br/><a href="#quicklink-Gearbox Software">Gearbox Software</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-2K">2K</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single-player">Single-player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/Borderlands:_The_Pre-Sequel" target="_blank">Wikipedia</a><br/><a href="https://borderlands.com/" target="_blank">Official website</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-[Game Engine] Unreal Engine 3">[Game Engine] Unreal Engine 3</a><br/><a href="#quicklink-[People] composer: Des Shore">[People] composer: Des Shore</a><br/><a href="#quicklink-[People] composer: Jesper Kyd">[People] composer: Jesper Kyd</a><br/><a href="#quicklink-[People] composer: Justin Mullins">[People] composer: Justin Mullins</a><br/><a href="#quicklink-[People] writer: Anthony Burch">[People] writer: Anthony Burch</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>Borderlands: The Pre-Sequel</b></i> is a 2014 <a href="https://en.wikipedia.org/wiki/Action_role-playing_video_game">action role-playing</a> <a href="https://en.wikipedia.org/wiki/First-person_shooter">first-person shooter</a> video game developed by <a href="https://en.wikipedia.org/wiki/2K_Australia">2K Australia</a>, with assistance from <a href="https://en.wikipedia.org/wiki/Gearbox_Software">Gearbox Software</a> and published by <a href="https://en.wikipedia.org/wiki/2K_(company)">2K</a>. It is the third game in the <a href="https://en.wikipedia.org/wiki/Borderlands_(series)"><i>Borderlands</i> series</a>, and is a spin-off set after 2009's <i><a href="https://en.wikipedia.org/wiki/Borderlands_(video_game)">Borderlands</a></i> and before 2012's <i><a href="https://en.wikipedia.org/wiki/Borderlands_2">Borderlands 2</a></i>. It was released for <a href="https://en.wikipedia.org/wiki/Linux">Linux</a>, <a href="https://en.wikipedia.org/wiki/OS_X">OS X</a>, <a href="https://en.wikipedia.org/wiki/PlayStation_3">PlayStation 3</a>, <a href="https://en.wikipedia.org/wiki/Windows">Windows</a>, and <a href="https://en.wikipedia.org/wiki/Xbox_360">Xbox 360</a> on 14 October 2014. Updated ports for Windows, <a href="https://en.wikipedia.org/wiki/PlayStation_4">PlayStation 4</a> and <a href="https://en.wikipedia.org/wiki/Xbox_One">Xbox One</a> were released as part of <i><a href="https://en.wikipedia.org/wiki/Borderlands:_The_Handsome_Collection">Borderlands: The Handsome Collection</a></i> on 24 March 2015.</p>
+
+<p>The storyline of <i>The Pre-Sequel</i> focuses on <a href="https://en.wikipedia.org/wiki/Handsome_Jack">Jack</a>, an employee of the Hyperion corporation; after the company's Helios space station is captured by a military unit known as the Lost Legion, he leads a group of four Vault Hunters—all of whom were <a href="https://en.wikipedia.org/wiki/Non-playable_character">non-playable characters</a> and bosses in previous <i>Borderlands</i> games—on an expedition to re-gain control of Helios, defeat the Lost Legion, and find the hidden vault on Pandora's moon Elpis. The game expands upon the engine and gameplay of <i>Borderlands 2</i> and introduces new gameplay mechanics, including low-gravity environments, freeze weapons, and <a href="https://en.wikipedia.org/wiki/Oxygen_tank">oxygen tanks</a>, which are used to navigate and perform ground slamming attacks.</p>
+
+<p><i>The Pre-Sequel</i> received positive reviews, being praised for its new gameplay features and character classes, but was criticised for its confusing level design and not providing enough significant deviations from the core mechanics and gameplay of <i>Borderlands 2</i>.</p>
+
+<h2>Gameplay</h2>
+
+<p>Gameplay in <i>The Pre-Sequel</i> is similar to <i><a href="https://en.wikipedia.org/wiki/Borderlands_2#Gameplay">Borderlands 2</a></i>, but with the addition of new mechanics. Two varieties of items have been added, including <a href="https://en.wikipedia.org/wiki/Laser_gun">laser guns</a>, and items possessing a <a href="https://en.wikipedia.org/wiki/Cryogenic">cryogenic</a> elemental effect, which can be used to slow down and freeze enemies. Enemies that are frozen take increased damage from explosive, melee or critical attacks and are smashed into pieces when killed. The game features low-gravity environments, causing players to jump higher but slower, and items such as loot and dead bodies to float away. O2 kits are added to supply air while in space; oxygen supplies can be replenished using generators, vents, and through oxygen tank items dropped by enemies. The kits can be used like a <a href="https://en.wikipedia.org/wiki/Jetpack">jetpack</a> to perform double jumps, hovering, and ground slamming attacks; as with other items, different types of O2 kits can provide stat bonuses and affect how ground slams deal damage. A new "Grinder" machine allows players to deposit combinations of existing weapons to receive one of higher rarity. Vehicles were introduced, including a <a href="https://en.wikipedia.org/wiki/Lunar_Roving_Vehicle">Moon buggy</a>, and the "Stingray"—a type of <a href="https://en.wikipedia.org/wiki/Hoverbike">hoverbike</a>.</p>
+
+<p>As with <i>Borderlands 2</i>, completing the main campaign with a character unlocks "True Vault Hunter Mode", a <a href="https://en.wikipedia.org/wiki/New_Game_Plus">second playthrough</a> that is higher in difficulty, while beating the mode and reaching level 50 unlocks the third playthrough "Ultimate Vault Hunter Mode".</p>
+
+<h2>Synopsis</h2>
+
+<h3>Characters</h3>
+
+<p><i>The Pre-Sequel</i> features four playable characters, each with a different <a href="https://en.wikipedia.org/wiki/Character_class">class</a> and abilities. All four of <i>The Pre-Sequel</i>'s protagonists were <a href="https://en.wikipedia.org/wiki/Non-player_character">non-player characters</a> (NPCs) or <a href="https://en.wikipedia.org/wiki/Boss_(video_gaming)">bosses</a> in previous <i>Borderlands</i> games.</p>
+
+<p>Athena, "the Gladiator", is a rogue assassin from the Atlas Corporation introduced in the <i>Borderlands</i> DLC campaign <i>The Secret Armory of General Knoxx</i>. As her primary skill, Athena can temporarily use a shield to absorb damage; her skill trees revolve around upgrading the shield, allowing it to be thrown at enemies, and absorb and reflect elemental damage, or towards melee attacks or elemental damage.</p>
+
+<p>Nisha, "the Lawbringer", first appeared in <i>Borderlands 2</i> as Handsome Jack's girlfriend and the sheriff of the town of Lynchwood. Her primary skill, "Showdown", allows her to automatically aim at enemies for a period of time, increasing gun performance for the duration. Her skill trees revolve around increasing her survivability, Showdown performance, or gun damage.</p>
+
+<p>Claptrap, "the Fragtrap", is the last remaining robot of its kind as of <i>Borderlands 2</i>; his skill "VaultHunter.exe" generates random effects depending on the current situation. These effects can have a positive or negative impact on the player and their party members; among these effects are versions of skills used by the previous playable characters in the franchise.</p>
+
+<p>Wilhelm, "the Enforcer", is a mercenary who becomes increasingly <a href="https://en.wikipedia.org/wiki/Supersoldier">augmented</a> with technology and weaponry over the course of the game, transforming him into Jack's <a href="https://en.wikipedia.org/wiki/Cybernetic">cybernetic</a> minion who is fought in <i>Borderlands 2</i>. He can summon a pair of <a href="https://en.wikipedia.org/wiki/Unmanned_aerial_vehicle">drones</a>, Wolf and Saint; Wolf serves an offensive role by attacking other enemies, while Saint defends Wilhelm by providing shields and health regeneration.</p>
+
+<p>Two additional playable characters have been released as <a href="https://en.wikipedia.org/wiki/Downloadable_content">downloadable content</a>. The first character, Jack, "the Doppelganger", is a man called Timothy Lawrence working as a body double of Jack who can summon digital copies of himself to help in battle. The second, Aurelia, "the Baroness", is the sister of Sir Hammerlock who uses an experimental "Frost Diadem Shard" to deal ice elemental damage to enemies.</p>
+
+<p>Multiple characters from past <i>Borderlands</i> titles also appear. Handsome Jack, the main antagonist of <i>Borderlands 2</i>, appears as a key non-playable character, with the game's story mainly centered around his descent into villainy and rise to power. Additional returning characters include Miss Mad Moxxi, Tiny Tina, Sir Hammerlock, Professor Nakayama, Crazy Earl, and Mr. Torgue. The four playable Vault Hunters from the first game, Lilith, Roland, Brick, and Mordecai, also appear in supporting roles. <i>The Pre-Sequel</i>'s DLC includes appearances from <i>Borderlands 2</i>'s playable Vault Hunters Gaige and Axton, Patricia Tannis, Dr. Zed, Mr. Blake, and T.K. Baha.</p>
+
+<p><i>The Pre-Sequel</i> begins on Sanctuary after the events of <i><a href="https://en.wikipedia.org/wiki/Borderlands_(video_game)">Borderlands</a></i> and Episode 3 of <i><a href="https://en.wikipedia.org/wiki/Tales_from_the_Borderlands">Tales from the Borderlands</a></i>, where Lilith, Brick, and Mordecai interrogate the captured Athena. Athena recounts her story via <a href="https://en.wikipedia.org/wiki/Flashback_(narrative)">flashback</a>, starting after <a href="https://en.wikipedia.org/wiki/Borderlands_(video_game)#The_Secret_Armory_of_General_Knoxx">the death of General Knoxx</a>, when she received an offer to find a Vault on Pandora's moon, Elpis, from a Hyperion programmer named Jack. She joins fellow Vault Hunters Claptrap, Nisha, Wilhelm, Timothy, and Aurelia on a spaceship headed for the Hyperion moon base Helios. On the way they are ambushed by the Lost Legion, an army of former Dahl marines led by Tungsteena Zarpedon, and crash-land onto Helios. After meeting up with Jack, they try to use Helios' defense system against the Lost Legion, but there is a jamming signal coming from Elpis. They attempt to escape but are stopped by Zarpedon and a mysterious alien, so Jack stays behind and sends the Vault Hunters to Elpis via a moonshot rocket.</p>
+
+<p>On Elpis, the Vault Hunters are guided by the junk dealer Janey Springs to the spaceport town Concordia. There, they request help from Jack's ex-girlfriend Moxxi to disable the jamming signal. They discover that the signal was put up by the Meriff, a former subordinate of Jack who is now in charge of Concordia. Meanwhile, Zarpedon uses Helios' primary weapon, the Eye of Helios, to fire upon Elpis, intending to destroy it to stop Jack from opening the Vault. Jack kills the Meriff, then decides to build a robot army to retake Helios.</p>
+
+<p>The team infiltrates a Lost Legion base run by two Dahl officers, the Bosun and the Skipper, in search of a military artificial intelligence. After defeating the Bosun, the Skipper, who renames herself Felicity, is revealed to be the A.I. they seek. The Vault Hunters travel to a robot production facility, where Jack enlists Gladstone, a Hyperion scientist, to build his army. Gladstone suggests using his prototype robot, the Constructor, which can build an infinite number of robots. Felicity agrees to become the A.I. for the Constructor, but hesitates upon witnessing the violence she has to go through. She is forced into the Constructor, but takes control of it and battles the Vault Hunters. Felicity is defeated and her personality is deleted from the Constructor.</p>
+
+<p>With his robot army, Jack and the Vault Hunters travel to Helios with the aid of Moxxi and former Vault Hunters Roland and Lilith. On Helios, Jack kills Gladstone and his team of scientists, suspecting one of them to be a Lost Legion spy. The Vault Hunters defeat Zarpedon and proceed to reboot the Eye of Helios, which is revealed to be the eye of the Destroyer from the <a href="https://en.wikipedia.org/wiki/Borderlands_(video_game)">first game</a>, turned into a weapon by Jack. Moxxi, Roland, and Lilith betray Jack and destroy the Eye to prevent him from gaining its power. Seeking revenge, Jack and the Vault Hunters travel back to Elpis, where they find its Vault already opened. They battle the Vault's alien forces and defeat its guardian, the Empyrean Sentinel.</p>
+
+<p>Jack enters the Vault but finds nothing of value, other than a mysterious floating symbol. As he interacts with it, the symbol shows Jack a vision of <a href="https://en.wikipedia.org/wiki/Borderlands_2#Story">the Warrior</a>. However, he is interrupted by Lilith who destroys the Vault symbol, burning it onto Jack's face and disfiguring him. She teleports away, leaving a scarred and insane Jack behind, who swears vengeance on Lilith and all the "bandits" on Pandora. Seeing how low Jack has fallen, Athena leaves his employ.</p>
+
+<p>After listening to Athena's story, Lilith orders the Crimson Raiders to execute her against Brick and Mordecai's protests. However, as they open fire on her, Athena is saved by the alien previously seen on Helios, revealed to be an Eridian. The Eridian warns the Vault Hunters of an imminent war, and that they will need "all the Vault Hunters they can get".</p>
+
+<p>During the credits, several scenes reveal what became of the Vault Hunters afterwards. Wilhelm and Nisha join Jack; Wilhelm is transformed further into a machine and destroys the settlement of New Haven while Nisha is made Lynchwood's sheriff and hooks up with Jack; Athena discards the money given to her by Jack and leaves Elpis; Claptrap is dismantled and left for dead by Jack. In a post-credit scene, Jack, now calling himself "Handsome Jack" and wearing a synthetic mask, murders his CEO Harold Tassiter and replaces him as the new head of Hyperion.</p>
+
+<p>The <i>Claptastic Voyage</i> story add-on continues shortly after Handsome Jack's takeover of Hyperion, as he discovers a secret program called the H-Source, containing all of Hyperion's secrets. However, it was hidden inside the "Fragtrap" unit by Tassiter. Jack employs his Vault Hunters once more to be digitally scanned and sent into Claptrap's mind in order to retrieve the H-Source. In the process, the Vault Hunters are tricked into releasing 5H4D0W-TP, a subroutine representing Claptrap's inner evil side, who attempts to use the H-Source for his own gains. As the group pursues 5H4D0W-TP, they delve deeper into Claptrap's mind, learning of his origin and the reasons for his quirky behavior. Eventually, the group defeats 5H4D0W-TP and retrieve the H-Source for Jack. Jack reveals his plan to use the H-Source to wipe out all existing CL4P-TP units, including Claptrap himself. All CL4P-TP units are disabled and dumped in Windshear Waste; however, 5H4D0W-TP, who still remains alive within Claptrap, sacrifices himself to revive Claptrap, allowing him to be <a href="https://en.wikipedia.org/wiki/Borderlands_2">found and saved by Sir Hammerlock</a>.</p>
+
+<h2>Development</h2>
+
+<p><i><a href="https://en.wikipedia.org/wiki/Borderlands_2">Borderlands 2</a></i>, developed by <a href="https://en.wikipedia.org/wiki/Gearbox_Software">Gearbox Software</a> and released in late 2012, was one of the most successful video games in 2K's history. Speaking in February 2013, Gearbox CEO Randy Pitchford stated that there were no plans for a third installment in the franchise, as the company believed that a sequel to <i>Borderlands 2</i> would have to be "massive", but that "when you think of what <i>Borderlands 3</i> should be... No, we don't know what that is yet. We can imagine what it must achieve, but we don't know what it is yet". The company also cited a desire to focus its attention onto new games for next-generation consoles, such as <i><a href="https://en.wikipedia.org/wiki/Brothers_in_Arms_(series)">Brothers in Arms: Furious Four</a></i>, <i>Homeworld: Shipbreakers</i> (a new game in the <i><a href="https://en.wikipedia.org/wiki/Homeworld">Homeworld</a></i> franchise, which Gearbox had recently acquired in <a href="https://en.wikipedia.org/wiki/THQ">THQ</a>'s bankruptcy auction), and new properties such as <i><a href="https://en.wikipedia.org/wiki/Battleborn_(video_game)">Battleborn</a></i>. Despite this, the company still believed that they had not yet met the demands of fans, or even its own staff, in regards to the franchise (even with the overall success of <i>Borderlands 2</i> and the large amount of <a href="https://en.wikipedia.org/wiki/Downloadable_content">downloadable content</a> that had been released), prompting the creation of spin-offs such as <i><a href="https://en.wikipedia.org/wiki/Tales_from_the_Borderlands">Tales from the Borderlands</a></i>, an episodic <a href="https://en.wikipedia.org/wiki/Adventure_game">adventure game</a> being developed by <a href="https://en.wikipedia.org/wiki/Telltale_Games">Telltale Games</a>, and a port of <i>Borderlands 2</i> for <a href="https://en.wikipedia.org/wiki/PlayStation_Vita">PlayStation Vita</a>.</p>
+
+<p>A few months after the release of <i>Borderlands 2</i> (and shortly after it had concluded its contributions to <i><a href="https://en.wikipedia.org/wiki/BioShock_Infinite">BioShock Infinite</a></i>), Gearbox began working with <a href="https://en.wikipedia.org/wiki/2K_Australia">2K Australia</a> to develop a prequel to the game which would take place directly after the events of the <a href="https://en.wikipedia.org/wiki/Borderlands_(video_game)">original</a>. The decision to make the game a prequel to <i>Borderlands 2</i> was centered around a desire to use the Hyperion moonbase (a location alluded to, and visible in <i>Borderlands 2</i>) as a playable location; the development team felt that going to the moonbase in a sequel to <i>Borderlands 2</i> would be too "boring" for players since the relevant conflict was already resolved, and because "if we're going to go to the moonbase anyway, what if we try something completely different that people aren't expecting[?]". Pitchford noted that this setting would allow the game to address plot elements and events alluded to in the first two games that were not yet completely addressed—on the possibility that the game could introduce <a href="https://en.wikipedia.org/wiki/Plot_hole">holes</a> in the continuity of the franchise, he joked that the franchise already contained many plot holes to begin with. He suggested that working on <i>The Pre-Sequel</i> could be a breakout role for 2K Australia, similar to Gearbox's own <i><a href="https://en.wikipedia.org/wiki/Half-Life:_Opposing_Force">Half-Life: Opposing Force</a></i>. As for the size of the game, Pitchford stated that <i>The Pre-Sequel</i>'s playable world would be in between the size of the original and <i>Borderlands 2</i>.</p>
+
+<p>2K Australia performed the majority of development on <i>The Pre-Sequel</i>, but worked in collaboration with Gearbox on certain aspects of the game. The studio also provided its writing staff—including <a href="https://en.wikipedia.org/wiki/Anthony_Burch">Anthony Burch</a>, lead writer of <i>Borderlands 2</i>—as a complement to 2K Australia's own writers. The engine of <i>Borderlands 2</i> was used as a starting point, allowing the 2K Australia team to quickly prototype and implement features on top of the existing functionality already provided by <i>Borderlands 2</i>. Most of the new mechanics in the game, such as ice weaponry, were conceived by the 2K Australia team; Gearbox's developers had shown concerns that freezing weapons were illogical in comparison to the other elemental weapon types, such as incendiary and acid, but Pitchford excused their inclusion in <i>The Pre-Sequel</i> because <a href="https://en.wikipedia.org/wiki/Cryogenic">cryogenic</a> technology was more "natural" in the space-oriented setting of the game.</p>
+
+<p>The four playable characters have an increased amount of dialogue in comparison to their equivalents in previous instalments; NPC dialogue can change depending on the characters present. The Moon's inhabitants were portrayed as being <a href="https://en.wikipedia.org/wiki/Australians">Australians</a>, allowing for references to <a href="https://en.wikipedia.org/wiki/Australian_comedy">Australian comedy</a> and <a href="https://en.wikipedia.org/wiki/Australian_culture">culture</a>, including missions referencing <a href="https://en.wikipedia.org/wiki/Cricket">cricket</a>, the folk song "<a href="https://en.wikipedia.org/wiki/Waltzing_Matilda">Waltzing Matilda</a>", and a talking shotgun based upon the <a href="https://en.wikipedia.org/wiki/Bogan">bogan</a> stereotype. <a href="https://en.wikipedia.org/wiki/Bruce_Spence">Bruce Spence</a>, a New Zealand actor known for his role as the Gyro Captain in <i><a href="https://en.wikipedia.org/wiki/Mad_Max_2">Mad Max 2</a></i> (the second film in the <a href="https://en.wikipedia.org/wiki/Mad_Max_(franchise)"><i>Mad Max</i> franchise</a> that was cited as an influence on the setting of <i>Borderlands</i> as a whole), is among the game's voice actors–voicing a <a href="https://en.wikipedia.org/wiki/Gyrocopter">gyrocopter</a> pilot in reference to his role from the film.</p>
+
+<p><i>The Pre-Sequel</i> would be the final video game developed by 2K Australia, as the studio was shut down on 16 April 2015.</p>
+
+<h2>Release</h2>
+
+<p><i>Borderlands: The Pre-Sequel</i> was released in North America on 14 October 2014. Initially, the game was not released on <a href="https://en.wikipedia.org/wiki/History_of_video_game_consoles_(eighth_generation)">eighth-generation consoles</a> such as <a href="https://en.wikipedia.org/wiki/PlayStation_4">PlayStation 4</a> or <a href="https://en.wikipedia.org/wiki/Xbox_One">Xbox One</a>. As porting <i>The Pre-Sequel</i> to next-generation consoles would require rebuilding the engine (and thus defeating the purpose of retaining the engine used by <i>Borderlands 2</i>), developers instead targeted the game to the same console platforms that previous installments in the <i>Borderlands</i> franchise were released for. In July 2014, 2K Australia's head Tony Lawrence stated that there was a possibility that <i>The Pre-Sequel</i> could be ported to next-generation consoles, gauged by fan demand and sales. In August 2014, financial statements by <a href="https://en.wikipedia.org/wiki/Take-Two_Interactive">Take-Two Interactive</a> disclosed that a <a href="https://en.wikipedia.org/wiki/Linux">Linux</a> port of the game was also in development; these details were confirmed by 2K in a statement to gaming news site <a href="https://en.wikipedia.org/wiki/IGN.com">IGN.com</a>. The port, which was accompanied by a port of <i>Borderlands 2</i> released in late-September 2014, was released for Linux through <a href="https://en.wikipedia.org/wiki/Steam_(service)">Steam</a>.</p>
+
+<p>As part of pre-release promotional efforts for the game, Gearbox began releasing <i>Pre-Sequel</i>-inspired character skins for <i>Borderlands 2</i> in July 2014, and at <a href="https://en.wikipedia.org/wiki/San_Diego_Comic-Con">San Diego Comic-Con</a>, Gearbox partnered with <i><a href="https://en.wikipedia.org/wiki/The_Nerdist">The Nerdist</a></i> to set up a <i>Borderlands</i>-themed <a href="https://en.wikipedia.org/wiki/Laser_tag">laser tag</a> field at <a href="https://en.wikipedia.org/wiki/Petco_Park">Petco Park</a> during the convention.</p>
+
+<p>On 18 September 2014, an extended 10-minute trailer featuring Sir Hammerlock and Mr. Torgue was released. On 30 September 2014, Pitchford confirmed that the game had gone <a href="https://en.wikipedia.org/wiki/Software_release_life_cycle#Release_to_manufacturing_(RTM)">gold</a>.</p>
+
+<p>On 20 January 2015, 2K announced that it would release a compilation of <i>Borderlands 2</i> and <i>The Pre-Sequel</i>, <i><a href="https://en.wikipedia.org/wiki/Borderlands:_The_Handsome_Collection">Borderlands: The Handsome Collection</a></i>, for PlayStation 4 and Xbox One on 24 March 2015. It includes both games and all of their respective DLC. On 3 April 2019, an update was released to add <a href="https://en.wikipedia.org/wiki/4K_resolution">4K resolution</a> support on the PC version of <i>The Pre-Sequel</i>, and to <i>The Handsome Collection</i> on <a href="https://en.wikipedia.org/wiki/PlayStation_4_Pro">PlayStation 4 Pro</a> and <a href="https://en.wikipedia.org/wiki/Xbox_One_X">Xbox One X</a>.</p>
+
+<p>On 26 March 2020, 2K announced that both games, as well as the original <i>Borderlands</i> game, would be released for <a href="https://en.wikipedia.org/wiki/Nintendo_Switch">Nintendo Switch</a> as part of <i>Borderlands Legendary Collection</i> on 29 May 2020.</p>
+
+<h3>Downloadable content</h3>
+
+<p>As with <i><a href="https://en.wikipedia.org/wiki/Borderlands_2">Borderlands 2</a></i>, <a href="https://en.wikipedia.org/wiki/Downloadable_content">downloadable content</a> (DLC), including new characters and story campaigns, were made for <i>The Pre-Sequel</i>, which can be purchased separately or together as a "Season Pass". The <i>Shock Drop Slaughter Pit</i> was released at launch as a pre-order exclusive.</p>
+
+<p>The first DLC character, released on 11 November 2014, is a body double of Handsome Jack, "the Doppelganger"; he can summon clones of himself known as "digi-Jacks" to fight alongside him. Jack's skill trees mainly focus on granting bonuses to himself, as well as his Digi-Jacks.</p>
+
+<p>The first DLC campaign, <i>The Holodome Onslaught</i>, was released on 14 December 2014; it includes missions in the titular challenge arena, which features Athena re-telling a shortened version of the game's story to <i>Borderlands 2</i>'s Axton and Gaige. <i>The Holodome Onslaught</i> DLC was received poorly by the playerbase on release. The third playthrough, "Ultimate Vault Hunter Mode", raises the character level cap to 60, and includes an additional mission that ties into Handsome Jack's presence in <i>Tales from the Borderlands</i>.</p>
+
+<p>The second DLC character, Lady Aurelia Hammerlock, "the Baroness", was released on 27 January 2015; she is the elder sister of supporting character Sir Hammerlock. Her action skill is a homing ice shard which can cycle between enemies as they are killed by it: her skill trees provide enhancements to the shard, can increase cryo damage, and the ability to assign a teammate as her "servant"—allowing both players to benefit from bonuses granted by each other's kills.</p>
+
+<p>The second DLC campaign, <i>Claptastic Voyage</i> and <i>Ultimate Vault Hunter Upgrade Pack 2</i>, was released on 24 March 2015, coinciding with the release of <i>The Handsome Collection</i>. The DLC's title is a reference to the film <i><a href="https://en.wikipedia.org/wiki/Fantastic_Voyage">Fantastic Voyage</a></i>, which has a similar plotline involving miniaturisation and travel through a body. It features the player characters being sent into the mind of Claptrap by Handsome Jack to retrieve a mysterious piece of software known as the "H-Source", hidden within it by Hyperion's former CEO Harold Tassiter, resulting in the release of Shadowtrap, the digital manifestation of Claptrap's FR4G-TP program. The story also features the CL4P-TP genocide and a deeper look into Claptrap's depression. 2K Australia's creative director Jonathan Pelling cited <i><a href="https://en.wikipedia.org/wiki/Fantastic_Voyage">Fantastic Voyage</a></i>, <i><a href="https://en.wikipedia.org/wiki/Tron">Tron</a></i>, and the <a href="https://en.wikipedia.org/wiki/Holodeck">holodeck</a> of <i><a href="https://en.wikipedia.org/wiki/Star_Trek">Star Trek</a></i> as influences on the campaign, explaining that "We thought the best way to get to know Claptrap a little bit more was to actually go inside his mind and see what he thinks. To get those perspectives, recover those memories, and dig through his dirty laundry." The DLC also raises the character level cap to 70, and features a customisable challenge arena.</p>
+
+<h2>Reception</h2>
+
+<p><i>Borderlands: The Pre-Sequel</i> received positive reviews from critics. Aggregating review website <a href="https://en.wikipedia.org/wiki/Metacritic">Metacritic</a> gave the PlayStation 3 version 77/100 based on 24 reviews, the Windows version 75/100 based on 55 reviews and the Xbox 360 version 74/100 based on 16 reviews.</p>
+
+<p>Daniel Bloodworth from <a href="https://en.wikipedia.org/wiki/GameTrailers">GameTrailers</a> gave the game an 8.4/10. He praised the characters and the new gameplay mechanics introduced in <i>The Pre-Sequel</i>. He ended the review by saying that "new playable characters are worth exploring and the tweaks to the formula have an impact across the entire breadth of the game." David Roberts from <a href="https://en.wikipedia.org/wiki/GamesRadar">GamesRadar</a> gave the game an 8/10, praising its diverse character classes, hilarious writing and the core combat which he stated, "has maintained the series'  weird, satisfying mix of anarchic, tactical gunplay and compulsive RPG overtones". However, he criticised the weak story, as well as non-drastic changes when compared with <i><a href="https://en.wikipedia.org/wiki/Borderlands_2">Borderlands 2</a></i>. He described the general experience as "a hilarious, fan-focused continuation of the series' core values, but lacking any true evolution, which made it a fun diversion rather than a meaningful new chapter."</p>
+
+<p>Vince Ingenito from <a href="https://en.wikipedia.org/wiki/IGN">IGN</a> gave the game an 8/10. He praised the gearing options and the low-gravity mechanics, which made the game "a fresh experience". He also praised the entertaining Jack-focused story, but criticised its poor pacing. Jessica Conditt from <a href="https://en.wikipedia.org/wiki/Joystiq">Joystiq</a> gave the game a 7/10, praising its new gameplay mechanics, well-defined classes, as well as the interesting and comedic bosses encountered and unique environments, but criticising the confusing level design, frustrating death and predictable missions which lack variety. Evan Lahti from <a href="https://en.wikipedia.org/wiki/PCGamer">PCGamer</a> gave the game a 77/100, praising its new gameplay features, which he stated had brought novelty and a gracefulness to Borderlands' combat, but criticising the mission design, which seldom made use of the gameplay mechanics introduced in <i>Pre-Sequel</i>. He stated that "<i>The Pre-Sequel</i> feels like a super-sized <i>Borderlands 2</i> DLC. While the new setting, classes, and weapon types reinvigorate the experience, <i>The Pre-Sequel</i> doesn't deviate much from the feel and format of <i>Borderlands 2</i>."</p>
+
+<p>Darren Nakamura from <a href="https://en.wikipedia.org/wiki/Destructoid">Destructoid</a> gave the game a 6/10, praising its fast yet tactical combat, but criticising the disappointing ending, number of bugs, as well as boring and uninteresting environmental art direction, but he still summarised the game as a "solid entry to the series." Jim Sterling from <a href="https://en.wikipedia.org/wiki/The_Escapist_(magazine)">The Escapist</a> gave the game an 8/10. He praised the combination of weapons with the use of the Grinder, a new machine introduced in <i>The Pre-Sequel</i>, as well as the new vehicles available, but criticised the map design, frustrating encounters with enemies, as well as being too similar to the previous installments. Adam Beck from Hardcore Gamer gave the game a 2.5/5, criticising its bugs, loot system, script, campaign, world design and performance of characters. He summarised the game as "an unpolished, uninspired adventure where fun can be had with friends, but that time could be better spent elsewhere."</p>
+
+<p><i>IGN</i> gave the <i>Claptastic Voyage</i> campaign an 8.4 out of 10, praising it for its "whimsical" setting, new mechanics, making better use of the anti-gravity mechanics that were introduced by <i>The Pre-Sequel</i>, and for not containing the "excessive backtracking and pacing problems" faced by the game's main storyline. Ingenito concluded that it "[still] doesn't quite match the towering success of <i><a href="https://en.wikipedia.org/wiki/Borderlands_2:_Tiny_Tina's_Assault_on_Dragon_Keep">Tiny Tina’s Assault on Dragon Keep</a></i> for <i>Borderlands 2</i>, but it still handily sets a high watermark for <i>The Pre-Sequel</i>. It's lean and focused in a way the main game it belongs to sometimes wasn't, and yet it still feels substantial and complete."</p>
+
+
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

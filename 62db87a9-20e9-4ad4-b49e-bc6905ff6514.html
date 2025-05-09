@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Pandemic Train</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('62db87a9-20e9-4ad4-b49e-bc6905ff6514/a70a96c8-c7c9-4572-95cc-42c782c9627a.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="62db87a9-20e9-4ad4-b49e-bc6905ff6514/449ecb0a-331d-49f9-9aa3-e82b96f2f978.png"/> Pandemic Train</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="62db87a9-20e9-4ad4-b49e-bc6905ff6514/cdadc5a6-8273-4080-8938-c95021c64f4e.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/13/2024">11/13/2024</a> 0:35:38</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/13/2024">11/13/2024</a> 1:06:03</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-PORCHE">PORCHE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-10/18/2023">10/18/2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-60">60</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Estrategia">Estrategia</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Simuladores">Simuladores</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Trigger Labs">Trigger Labs</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Games Operators">Games Operators</a><br/><a href="#quicklink-PlayWay S.A.">PlayWay S.A.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1379600" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1379600/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1379600/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1379600" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1379600" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1379600" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/1379600/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-2.5D">2.5D</a><br/><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-Bélicos">Bélicos</a><br/><a href="#quicklink-Buena trama">Buena trama</a><br/><a href="#quicklink-Construcción de bases">Construcción de bases</a><br/><a href="#quicklink-Estrategia">Estrategia</a><br/><a href="#quicklink-Exploración">Exploración</a><br/><a href="#quicklink-Fabricación">Fabricación</a><br/><a href="#quicklink-Gestión de inventario">Gestión de inventario</a><br/><a href="#quicklink-Historia alternativa">Historia alternativa</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Las elecciones importan">Las elecciones importan</a><br/><a href="#quicklink-Posapocalípticos">Posapocalípticos</a><br/><a href="#quicklink-Roguelike">Roguelike</a><br/><a href="#quicklink-Sandbox">Sandbox</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Supervivencia">Supervivencia</a><br/><a href="#quicklink-Trenes">Trenes</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<h2 class="bb_tag">¿Qué es el Pandemic Train?  </h2>En el Pandemic Train, diriges la tripulación de un tren que atraviesa el desierto postapocalíptico, diezmado por la guerra y la plaga mortal. Tu objetivo es sobrevivir lo suficiente para descubrir la cura...o morir en el intento. ¡El destino de la humanidad está en tus manos! ¡Comienza tu viaje hoy!<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1379600/extras/What_is_pandemic_trainN.gif?t=1726298720" /><h2 class="bb_tag">¡Aquí diriges tú!</h2>Pandemic Train es un juego de supervivencia con elementos roguelike y de estrategia en el que diriges a la tripulación y a los pasajeros a bordo de un viejo tren propulsado por una máquina de vapor. La trama tiene lugar en una línea temporal alternativa del siglo XX, cuando una catastrófica epidemia de virus diezma la población mundial. Una misteriosa plaga mata a las personas infectadas en 24 horas, lo que provoca pánico generalizado, disturbios y guerra. El mundo está en ruinas y tú eres la única esperanza para su supervivencia. ¡Explora los páramos, recolecta recursos, lucha contra bandidos y encuentra una cura para una enfermedad mortal!<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1379600/extras/You_are_in_chargeN.gif?t=1726298720" /><h2 class="bb_tag">¡Sobrevive!</h2>En Pandemic Train el mundo se ha convertido en un lugar muy inhóspito. La gente morirá en el camino y hay que minimizar el daño. Los recursos son escasos, por lo que hay que distribuirlos con mucho cuidado. Y lo peor de todo es que hay muchos lobos hambrientos por ahí. Y por &quot;lobos hambrientos&quot; nos referimos a personas desesperadas que harán cualquier cosa para derrotarte y detener tu búsqueda de la cura. Para derrotar a tus oponentes, cuida los recursos que adquieres y produce. Son limitados, así que úselos con cuidado. Desafortunadamente, este no es el final de las malas noticias...<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1379600/extras/SurviveN.gif?t=1726298720" /><h2 class="bb_tag">¡Gestiona los recursos!</h2>En la dura realidad de Pandemic Train, debes ser autosuficiente: cultivas tus propios alimentos, crías el ganado, recolectas y purificas tu propia agua potable y te encargas de un suministro adecuado de municiones. Tienes que utilizar cada pedazo de chatarra o basura a tu disposición y convertirlo en algo útil. Esto a menudo conduce a decisiones difíciles, por ejemplo: rara vez hay suficientes medicamentos para todos, por lo que tendrás que decidir quién merece el tratamiento y quién sufrirá o incluso se dejará morir.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1379600/extras/Manage_the_resourcesN.gif?t=1726298720" /><h2 class="bb_tag">¡Lucha contra la plaga!</h2>El objetivo principal de tus acciones es crear una vacuna y salvar a los restos de la humanidad de la extinción. Cuanto más tiempo consigas mantener el tren en movimiento, menos probabilidades habrá de que la tripulación entre en contacto con el virus y tus científicos tendrán más tiempo para trabajar en la medicación. Puede personalizar el tren según sus necesidades: decida cuántas personas hay en él y cuántos vagones se conectarán a la locomotora. Pero recuerda: cuanto más grande sea la fiesta, más difícil será mantenerla bajo control. Eres la única esperanza para la humanidad. Eres la última esperanza… para la humanidad.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1379600/extras/Fight_the_plagueN.gif?t=1726298720" />
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>It Takes Two</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('fb8b6256-3a4a-46bd-8bde-6d8a68f13b00/c3c753e9-4d1b-4eff-a139-fc8d8bdbb54e.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="fb8b6256-3a4a-46bd-8bde-6d8a68f13b00/bfe67521-3492-441c-948e-77a2039bef65.png"/> It Takes Two</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="fb8b6256-3a4a-46bd-8bde-6d8a68f13b00/408b6917-e968-4e34-905b-7b1fa82b7c27.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 14:41:31</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/8/2024">11/8/2024</a> 17:34:18</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-6TB STORE">6TB STORE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-3/25/2021">3/25/2021</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-94">94</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-89">89</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Hazelight Studios">Hazelight Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Electronic Arts">Electronic Arts</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Coop. A Pantalla (Com)Partida">Coop. A Pantalla (Com)Partida</a><br/><a href="#quicklink-Cooperativo">Cooperativo</a><br/><a href="#quicklink-Cooperativo En Línea">Cooperativo En Línea</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Pantalla Partida/Compartida">Pantalla Partida/Compartida</a><br/><a href="#quicklink-Remote Play Together">Remote Play Together</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1426210" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1426210/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1426210/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1426210" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1426210" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1426210" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/1426210/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Acción y aventura">Acción y aventura</a><br/><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Buena trama">Buena trama</a><br/><a href="#quicklink-Campañas cooperativas">Campañas cooperativas</a><br/><a href="#quicklink-Cooperativos">Cooperativos</a><br/><a href="#quicklink-Cooperativos en línea">Cooperativos en línea</a><br/><a href="#quicklink-Cooperativos locales">Cooperativos locales</a><br/><a href="#quicklink-Emocionales">Emocionales</a><br/><a href="#quicklink-Exploración">Exploración</a><br/><a href="#quicklink-Minijuegos">Minijuegos</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Multijugador local">Multijugador local</a><br/><a href="#quicklink-Pantalla dividida">Pantalla dividida</a><br/><a href="#quicklink-Plataformas">Plataformas</a><br/><a href="#quicklink-Plataformas 3D">Plataformas 3D</a><br/><a href="#quicklink-Plataformas de puzles">Plataformas de puzles</a><br/><a href="#quicklink-Protagonista femenina">Protagonista femenina</a><br/><a href="#quicklink-Puzles">Puzles</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					Embárcate en la aventura más loca de tu vida con It Takes Two, un juego de plataformas multigénero exclusivamente cooperativo. Invita a un amigo a acompañarte gratis con el Pase de amigo* para colaborar en una gran variedad de desafíos deliciosamente rompedores. Métete en la piel de Cody y May, una conflictiva pareja de humanos convertidos en muñecos por un hechizo. Juntos, atrapados en un mundo fantástico donde lo impredecible aguarda a cada paso, deberán intentar a regañadientes salvar su relación rota. <br><br>Domina habilidades de personaje únicas y conectadas en cada nuevo nivel. Colabora para superar numerosos obstáculos inesperados y comparte momentos tronchantes. Enfréntate a ardillas gánsteres, pilota unos calzoncillos, haz de DJ en un animado club nocturno y lánzate en trineo por el interior de una bola de nieve mágica. Disfruta de una historia emotiva y desternillante que entrelaza narrativa y juego en una experiencia única y metafórica.    <br><br>It Takes Two es obra del galardonado estudio Hazelight, líder de la industria en juegos cooperativos. Estás a punto de embarcarte en una experiencia alocada y maravillosa en la que solo hay una cosa segura: juntos somos mejores.<br><br><strong>CARACTERÍSTICAS PRINCIPALES</strong><br><br><ul class="bb_ul"><li><strong>Pura perfección cooperativa</strong>: invita a un amigo a acompañarte gratis con la función Remote Play Together** y disfrutad de una emocionante aventura creada para dos. Elige entre cooperativo local y online en pantalla dividida y enfréntate a toda una variedad de desafíos en los que solo podréis avanzar colaborando.<br><br></li><li><strong>Mecánicas deliciosamente rompedoras</strong>: desde violentas aspiradoras hasta horteras gurús del amor... Nunca sabes a qué te enfrentarás en cada momento. Con un montón de desafíos en diferentes géneros de juego y nuevas habilidades de personaje que dominar en cada nivel: descubre una combinación metafórica de juego e historia que desafía los límites de la narrativa interactiva. <br><br></li><li><strong>Una historia universal sobre relaciones</strong>: descubre una conmovedora y emotiva historia sobre las dificultades de llevarse bien. Ayuda a Cody y May a superar sus diferencias. Conoce a un variopinto reparto de personajes extraños y entrañables. Unid fuerzas y lanzaos a una aventura que recordaréis para siempre... ¡juntos!</li></ul><strong>ACERCA DE HAZELIGHT</strong><br>Hazelight es un galardonado estudio independiente de videojuegos con sede en Estocolmo, Suecia. La empresa, fundada en 2014 por Josef Fares (director de cine y creador del galardonado juego Brothers: A Tale of Two Sons), está decidida a desafiar los límites creativos dentro del mundo de los videojuegos. En 2018, Hazelight publicó como parte del programa EA Originals el juego ganador de un BAFTA A Way Out, la primera aventura de acción en tercera persona exclusivamente cooperativa de la historia.   <br><br><strong>ACERCA DE EA ORIGINALS</strong><br>EA Originals pretende dar a conocer a algunos de los desarrolladores más apasionados, independientes y de mayor talento del mundo. Descubre experiencias de juego innovadoras e inolvidables de la mano de creadores de gran creatividad, que te apasionarán e inspirarán.
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

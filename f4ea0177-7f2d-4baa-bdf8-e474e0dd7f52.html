@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Super Mario Party Jamboree</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('f4ea0177-7f2d-4baa-bdf8-e474e0dd7f52/5712d9b0-0bcf-43ff-81c4-b5a3a7b16c43.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="f4ea0177-7f2d-4baa-bdf8-e474e0dd7f52/26f07017-ca6a-4f3c-8842-56f4acf981c3.png"/> Super Mario Party Jamboree</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="f4ea0177-7f2d-4baa-bdf8-e474e0dd7f52/d4ac1c0d-1589-4ce9-b6ab-d0ee0c42320f.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 12:24:38</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 22:30:18</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-4TB TANK">4TB TANK</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-Nintendo Switch">Nintendo Switch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-10/17/2024">10/17/2024</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-82">82</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Party">Party</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Nintendo Cube">Nintendo Cube</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Nintendo">Nintendo</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single-player">Single-player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/Super_Mario_Party_Jamboree" target="_blank">Wikipedia</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-[People] composer: Shigenobu Okawa">[People] composer: Shigenobu Okawa</a><br/><a href="#quicklink-[People] composer: Yuta Yamaguchi">[People] composer: Yuta Yamaguchi</a><br/><a href="#quicklink-[People] designer: Atsushi Nakao">[People] designer: Atsushi Nakao</a><br/><a href="#quicklink-[People] designer: Fumihisa Sato">[People] designer: Fumihisa Sato</a><br/><a href="#quicklink-[People] designer: Hayato Minigawa">[People] designer: Hayato Minigawa</a><br/><a href="#quicklink-[People] designer: Hirotaka Uchida">[People] designer: Hirotaka Uchida</a><br/><a href="#quicklink-[People] designer: Hiroyuki Seki">[People] designer: Hiroyuki Seki</a><br/><a href="#quicklink-[People] designer: Rina Wegner">[People] designer: Rina Wegner</a><br/><a href="#quicklink-[People] designer: Ryo Yokomizo">[People] designer: Ryo Yokomizo</a><br/><a href="#quicklink-[People] designer: Satoru Imamura">[People] designer: Satoru Imamura</a><br/><a href="#quicklink-[People] designer: Takaki Kobayashi">[People] designer: Takaki Kobayashi</a><br/><a href="#quicklink-[People] designer: Tsutomu Komiyama">[People] designer: Tsutomu Komiyama</a><br/><a href="#quicklink-[People] designer: Yuya Rokuyuma">[People] designer: Yuya Rokuyuma</a><br/><a href="#quicklink-[People] director: Takeru Sugimoto">[People] director: Takeru Sugimoto</a><br/><a href="#quicklink-[People] producer: Kenji Kikuchi">[People] producer: Kenji Kikuchi</a><br/><a href="#quicklink-[People] producer: Shinya Saito">[People] producer: Shinya Saito</a><br/><a href="#quicklink-[People] producer: Toshiaki Suzuki">[People] producer: Toshiaki Suzuki</a><br/><a href="#quicklink-[People] programmer: Akira Matsumoto">[People] programmer: Akira Matsumoto</a><br/><a href="#quicklink-[People] programmer: Haruhiko Tanuma">[People] programmer: Haruhiko Tanuma</a><br/><a href="#quicklink-[People] programmer: Hatsushi Hamada">[People] programmer: Hatsushi Hamada</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>Super Mario Party Jamboree</b></i> is a 2024 <a href="https://en.wikipedia.org/wiki/Party_video_game">party video game</a> developed by <a href="https://en.wikipedia.org/wiki/Nintendo_Cube">Nintendo Cube</a> (previously known as NDcube) and published by <a href="https://en.wikipedia.org/wiki/Nintendo">Nintendo</a> for the <a href="https://en.wikipedia.org/wiki/Nintendo_Switch">Nintendo Switch</a>. It is the thirteenth <a href="https://en.wikipedia.org/wiki/Home_video_game_console">home console</a> installment in the <i><a href="https://en.wikipedia.org/wiki/Mario_Party">Mario Party</a></i> series, the third on the Nintendo Switch, and a sequel to <i><a href="https://en.wikipedia.org/wiki/Super_Mario_Party">Super Mario Party</a>,</i> albeit with many similarities to <i><a href="https://en.wikipedia.org/wiki/Mario_Party_Superstars">Mario Party Superstars</a></i>.</p>
+
+<p>Like most installments in the <i>Mario Party</i> series, the main gameplay loop features players, either human or computer controlled, using characters from the <a href="https://en.wikipedia.org/wiki/Mario_(franchise)"><i>Mario</i></a> franchise to compete in a <a href="https://en.wikipedia.org/wiki/Board_game">board game</a> with <a href="https://en.wikipedia.org/wiki/Minigame">minigames</a> after each turn. The game features a <a href="https://en.wikipedia.org/wiki/Single-player_video_game">single-player</a> mission mode as well as several other <a href="https://en.wikipedia.org/wiki/Game_mechanics">game modes</a>, some of which require the use of <a href="https://en.wikipedia.org/wiki/Motion_controller">motion controls</a>. Typically up to four human players can compete at a time, but depending on the game mode, up to twenty human players can compete via online matchmaking.</p>
+
+<p><i>Super Mario Party Jamboree</i> received positive reviews, with general praise for its <a href="https://en.wikipedia.org/wiki/Game_board">game board</a> selection, <a href="https://en.wikipedia.org/wiki/Multiplayer_video_game">multiplayer</a> functionality, and general polish, but criticism for some of its game modes. Many critics have stated it to be one of the best <i>Mario Party</i> games to date.</p>
+
+<h2>Gameplay</h2>
+
+<p><i>Super Mario Party Jamboree</i>'s gameplay is split between numerous different modes, most of which require the usage of <a href="https://en.wikipedia.org/wiki/Joy-Con">Joy-Con</a> controllers and all of which can be accessed in the game's hub area called the "Party Plaza". In the hub, the player can access their game data and settings, listen to the game's selection of music, customize different aspects of the hub and change their <a href="https://en.wikipedia.org/wiki/Player_character">player character</a>. The game boasts 22 playable characters (<a href="https://en.wikipedia.org/wiki/Mario">Mario</a>, <a href="https://en.wikipedia.org/wiki/Luigi">Luigi</a>, <a href="https://en.wikipedia.org/wiki/Princess_Peach">Peach</a>, <a href="https://en.wikipedia.org/wiki/Princess_Daisy">Daisy</a>, <a href="https://en.wikipedia.org/wiki/Wario">Wario</a>, <a href="https://en.wikipedia.org/wiki/Waluigi">Waluigi</a>, <a href="https://en.wikipedia.org/wiki/Yoshi">Yoshi</a>, <a href="https://en.wikipedia.org/wiki/Toadette">Toadette</a>, <a href="https://en.wikipedia.org/wiki/Toad_(Mario)">Toad</a>, <a href="https://en.wikipedia.org/wiki/Rosalina_(Mario)">Rosalina</a>, <a href="https://en.wikipedia.org/wiki/Donkey_Kong_(character)">Donkey Kong</a>, <a href="https://en.wikipedia.org/wiki/Birdo">Birdo</a>, <a href="https://en.wikipedia.org/wiki/Bowser">Bowser</a>, <a href="https://en.wikipedia.org/wiki/Goomba">Goomba</a>, <a href="https://en.wikipedia.org/wiki/Shy_Guy_(Mario)">Shy Guy</a>, <a href="https://en.wikipedia.org/wiki/Koopa_Troopa">Koopa Troopa</a>, <a href="https://en.wikipedia.org/wiki/List_of_Mario_franchise_characters#Enemy_characters">Monty Mole</a>, <a href="https://en.wikipedia.org/wiki/Bowser_Jr.">Bowser Jr.</a>, <a href="https://en.wikipedia.org/wiki/Boo_(Mario)">Boo</a>, <a href="https://en.wikipedia.org/wiki/Spike_(Mario)">Spike</a>, and newcomers <a href="https://en.wikipedia.org/wiki/Pauline_(Nintendo)">Pauline</a> and <a href="https://en.wikipedia.org/wiki/List_of_Mario_franchise_characters#Enemy_characters">Ninji</a>) which makes for the current largest roster of playable characters in the <i><a href="https://en.wikipedia.org/wiki/Mario_Party">Mario Party</a></i> series. These characters can be controlled by human players as well as <a href="https://en.wikipedia.org/wiki/Artificial_intelligence">artificial intelligence</a> (AI).</p>
+
+<p>Much like other games in the <i><a href="https://en.wikipedia.org/wiki/Mario_Party">Mario Party</a></i> series, <i>Super Mario Party Jamboree's</i> main mode, dubbed simply "Mario Party", is an interactive board game that allows up to four players, human or <a href="https://en.wikipedia.org/wiki/Artificial_intelligence">computer controlled</a>, to compete to collect the most stars by the end of a set number of turns (ten through thirty), with different items and board mechanics that either help or harm the players chances of success. After each turn has ended the players play a minigame. A majority of minigames use <a href="https://en.wikipedia.org/wiki/Motion_controller">motion controls</a>, though it is possible to turn off the motion-controlled minigames to allow for minigames only using button controls. The board mechanic of allies from <i><a href="https://en.wikipedia.org/wiki/Super_Mario_Party">Super Mario Party</a></i> makes a revamped return in the form of "Jamboree Buddies". Modeled after ten of the available player characters, Jamboree Buddies appear on the board after a certain amount of turns and, when passed, will trigger a minigame to see which player will obtain them. Jamboree Buddies last for up to three turns, activate a board space effect twice and grant players different abilities that vary depending on the one obtained. For example, Waluigi steals coins from opponents that he passes. Alongside the traditional set of rules, a more competitive ruleset called "Pro Rules" is available to select which is designed to remove most luck-based aspects found in traditional play.</p>
+
+<p><i>Super Mario Party Jamboree</i> contains a single player mission mode called the "Party Planner Trek", in which players help various <a href="https://en.wikipedia.org/wiki/Non-player_character">NPC's</a> by either talking to them, fetching an item or playing a minigame in exchange for Mini-Stars which are then used to further progress in the mode and unlock hub customization options. After collecting a certain number of Mini-Stars in an area, the player must complete a boss minigame in order to progress to the next area. In Boss Minigames, the players goal is to deplete a large enemy's health bar in a similar vain to traditional video game <a href="https://en.wikipedia.org/wiki/Boss_fight">boss fights</a>. In the "Minigame Bay" mode, players can freely play any of the minigames or play a set number of minigames that are pre-selected based off their specific type or theme, such as 1 vs 3. A Boss Rush sub-mode, which is unlocked after earning thirty in-game achievements, makes players compete in every boss minigame with the final goal of having the highest score by the end.</p>
+
+<p>Three <a href="https://en.wikipedia.org/wiki/Motion_controller">motion controlled</a> modes are present and require the usage of singular <a href="https://en.wikipedia.org/wiki/Joy-Con">Joy-Con</a> controllers to function. "Rhythm Kitchen" lets players work together in <a href="https://en.wikipedia.org/wiki/Rhythm">rhythm</a> based minigames themed around <a href="https://en.wikipedia.org/wiki/Cooking">cooking</a>. "Toad's Factory" is a ball <a href="https://en.wikipedia.org/wiki/Physics-based_puzzle_video_game">physics-based puzzler</a> which tasks players to work together in moving different contraptions to get a ball to a goal. "Paratroopa Flight School" requires players to use two singular Joy-Con controllers in order to mimic flapping wings and flight. Paratroopa Flight School has various sub-modes which allow players to compete in time-based collection matches, cooperate in carrying characters to destinations or freely fly around a map without any predetermined objective.</p>
+
+<p>Two multiplayer focused modes are present. "Bowser Kaboom Squad" is a cooperative mode where eight players race to defeat <a href="https://en.wikipedia.org/wiki/Bowser">Imposter Bowser</a> by collecting bombs, occasionally playing a minigame to obtain items which help the players defeat him quicker. "Koopathlon" is a race where twenty different players compete to complete a set number of laps around a board via collecting coins in minigames. After three minigames, a themed Bowser minigame will be played where if a player loses, they will be sent backwards a different number of spaces, the number of spaces being determined on their current position.<sup>[<i><a href="https://en.wikipedia.org/wiki/Wikipedia:Citation_needed">citation needed</a></i>]</sup></p>
+
+<p>The game supports both <a href="https://en.wikipedia.org/wiki/Multiplayer_video_game#Local_multiplayer">local</a> and <a href="https://en.wikipedia.org/wiki/Online_multiplayer">online multiplayer</a>, with most modes being able to support the former or the latter in some capacity. Players can set up private online lobbies protected by a passcode in order to play with friends. The game also contains an online leaderboard where minigame highscores are logged.</p>
+
+<h2>Development</h2>
+
+<p><i>Super Mario Party Jamboree</i> was first announced on June 18, 2024, during a <a href="https://en.wikipedia.org/wiki/Nintendo_Direct">Nintendo Direct</a>. Described to be "the biggest Mario Party to date", the presentation announced 112 minigames, seven boards (including Mario's Rainbow Castle and Western Land, which previously appeared in <i><a href="https://en.wikipedia.org/wiki/Mario_Party_(video_game)">Mario Party</a></i> and <i><a href="https://en.wikipedia.org/wiki/Mario_Party_2">Mario Party 2</a></i>, respectively), and thirty-seven <a href="https://en.wikipedia.org/wiki/Item_(game_terminology)">items</a>. Also announced during the presentation was the online twenty-player "Koopathlon" mode. An overview trailer, released on September 24, 2024, showed off all the motion-based modes (Paratroopa Flight School, Toad’s Item Factory, and Rhythm Kitchen) and the online eight-player "Bowser Kaboom Squad" mode.</p>
+
+<p>This is the first time that <a href="https://en.wikipedia.org/wiki/Kevin_Afghani">Kevin Afghani</a> voices <a href="https://en.wikipedia.org/wiki/Waluigi">Waluigi</a>, as <a href="https://en.wikipedia.org/wiki/Charles_Martinet">Charles Martinet</a> had stepped down from voicing the character and others.</p>
+
+<h2>Reception</h2>
+
+<p><i>Super Mario Party Jamboree</i> received "generally favorable" reviews from critics, according to the <a href="https://en.wikipedia.org/wiki/Review_aggregator">review aggregation</a> website <a href="https://en.wikipedia.org/wiki/Metacritic">Metacritic</a>, and is currently the highest rated <i>Mario Party</i> game on the website. <i><a href="https://en.wikipedia.org/wiki/IGN">IGN</a></i>'s Logan Plant lauded the game as "an amazing followup to <i>Mario Party Superstars</i> and easily one of the best games in the series". <i><a href="https://en.wikipedia.org/wiki/Gamer_Network#Partnered">Nintendo Life</a></i>'s PJ O'Reilly likewise praised <i>Super Mario Party Jamboree</i> as "the best <i>Mario Party</i> to date". Ozzie Mejia of <i><a href="https://en.wikipedia.org/wiki/Shacknews">Shacknews</a></i> agreed that the game is "one of the most polished entries in the series yet". Writing for <i><a href="https://en.wikipedia.org/wiki/GameSpot">GameSpot</a></i>, <a href="https://en.wikipedia.org/wiki/Dan_Ryckert">Dan Ryckert</a> complimented the game boards, though criticized some of the game modes and minigames. In a more critical review, <i><a href="https://en.wikipedia.org/wiki/Eurogamer">Eurogamer</a></i>'s Katharine Castle wrote that <i>Super Mario Party Jamboree</i> "has the misfortune of not being very fun, and mistakes the volatility of chance and happenstance for being the same thing as competitive satisfaction that comes from playing a good game well".</p>
+
+
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

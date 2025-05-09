@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>No Rest for the Wicked</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('135cb553-8973-4ea8-90eb-0c6dff86af05/00f94638-c78a-4c0a-b7f2-90faa141dd41.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="135cb553-8973-4ea8-90eb-0c6dff86af05/6f73b6e5-7626-46eb-8c50-58d1a8afa5ee.png"/> No Rest for the Wicked</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="135cb553-8973-4ea8-90eb-0c6dff86af05/9cb5c6d4-de91-4932-a21e-3547da080713.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 14:41:31</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/8/2024">11/8/2024</a> 17:36:55</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-6TB STORE">6TB STORE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-4/18/2024">4/18/2024</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-76">76</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acceso anticipado">Acceso anticipado</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Rol">Rol</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Moon Studios GmbH">Moon Studios GmbH</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Private Division">Private Division</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Parcial Con Mando">Compat. Parcial Con Mando</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1371980" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1371980/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1371980/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1371980" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1371980" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1371980" target="_blank">PCGamingWiki</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-3D">3D</a><br/><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-Cinematográficos">Cinematográficos</a><br/><a href="#quicklink-Coloridos">Coloridos</a><br/><a href="#quicklink-Combate">Combate</a><br/><a href="#quicklink-Drama">Drama</a><br/><a href="#quicklink-Estilizados">Estilizados</a><br/><a href="#quicklink-Exploración">Exploración</a><br/><a href="#quicklink-Fantasía oscura">Fantasía oscura</a><br/><a href="#quicklink-Góticos">Góticos</a><br/><a href="#quicklink-Hack and slash">Hack and slash</a><br/><a href="#quicklink-Isométricos">Isométricos</a><br/><a href="#quicklink-Para mando">Para mando</a><br/><a href="#quicklink-Personalización de personajes">Personalización de personajes</a><br/><a href="#quicklink-Rol">Rol</a><br/><a href="#quicklink-Rol de acción">Rol de acción</a><br/><a href="#quicklink-Simulador inmersivo">Simulador inmersivo</a><br/><a href="#quicklink-Sobrenaturales">Sobrenaturales</a><br/><a href="#quicklink-Tipo «Dark Souls»">Tipo «Dark Souls»</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1371980/extras/SteamHeader_Extra.png?t=1723482971" /><br><br>Moon Studios, los desarrolladores galardonados por su trabajo en Ori and the Blind Forest y Ori and the Will of the Wisps, nos traen No Rest for the Wicked, un RPG visceral repleto de Acción certera que revolucionará el género.<br><br>Año 841, el rey Harol ha muerto. La noticia de su fallecimiento se propaga por todo el reino y la corona pasa a Magnus, su arrogante hijo, que no ha pisado nunca el campo de batalla.<br><br>Para empeorar las cosas, la pestilencia, una plaga maldita que llevaba mil años erradicada, ha regresado y lo corrompe todo y a todos los que toca, asolando la tierra por la que pasa. La madrigal Seline, una figura ambiciosa e implacable de la iglesia, cree que la pestilencia le brindará la ocasión de demostrar su valía ante los ojos de su dios.<br><br>Todas estas fuerzas convergen en Sacra, donde los grupos rebeldes y el gobierno local luchan por hacerse con el control de las ruinas decadentes de la isla.<br><br>Tú formas parte de los cerim, un grupo de guerreros místicos sagrados con poderes increíbles que han jurado acabar con la pestilencia cueste lo que cueste. No obstante, tu misión se volverá cada vez más complicada al involucrarte en los aprietos de la gente y los enormes problemas políticos de esta tierra oprimida. El caos te arrastrará en todas direcciones mientras intentas eliminar la maldad de la tierra y dar forma al destino del reino.<br><br>Características principales:<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1371980/extras/NRFTW_Steam_Combat.gif?t=1723482971" /><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1371980/extras/NRFTW_Steam_KeyFeature_ES-01.png?t=1723482971" /><br>Perfecciona tus habilidades de batalla con un sistema que desafía tu capacidad para la estrategia y planificación. Enfréntate a monstruos horribles, soldados enemigos y jefes complicados en combates tensos y viscerales. Siente el peso y la velocidad de cada arma a través de sus propios tipos de movimientos. Hechiza tu armamento con runas, fabrica armaduras inusuales y crea a medida el perfil de tu personaje para que se adapte a tu estilo.<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1371980/extras/NRFTW_Steam_KeyFeature_ES-02.png?t=1723482971" /><br>Descubre la oscura y cruda historia que se esconde en las áridas orillas de la isla de Sacra. Los gobernantes más avispados y un grupo de rebeldes de lo más violentos se disputan el trono mientras una antigua plaga asola la tierra y convierte a sus habitantes en versiones monstruosas de ellos mismos.<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1371980/extras/NRFTW_Steam_KeyFeature_ES-03.png?t=1723482971" /><br>Explora un cuadro con vida propia. Disfruta del mundo pictórico y diseñado hasta el mínimo detalle con un estilo artístico único y atemporal. Cada fotograma exuda belleza, desde los destellos de luz de los sotoprados hasta las sombras retorcidas salpicadas de vísceras del paso Innombrable. En cada sitio vive gente distinta con sus propios problemas, tesoros ocultos y secretos que desvelar.<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1371980/extras/NRFTW_Steam_KeyFeature_ES-04.png?t=1723482971" /><br>Descansa en la ciudad de Sacramenta, donde podrás comprarte una casa y decorarla a tu gusto. Pasa el rato pescando en las orillas, labra la tierra y recoge los ingredientes que coseches para cocinar platos que restablezcan tu salud y mejoren tus atributos. Entabla amistad con los diversos mercaderes y vecinos de Sacramenta y colabora para que recupere su gloria.<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1371980/extras/NRFTW_Steam_KeyFeature_ES-05.png?t=1723482971" /><br>Comparte tu mundo y tu progreso con hasta tres amigos aliados en el modo cooperativo en línea de la campaña. Podréis compartir las misiones, los jefes y vuestra exploración de Sacra... o hacerlo todo por separado y a vuestro ritmo.<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1371980/extras/NRFTW_Steam_Activities.gif?t=1723482971" />
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

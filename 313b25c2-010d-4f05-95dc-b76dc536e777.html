@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Wolfenstein II The New Colossus </title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('313b25c2-010d-4f05-95dc-b76dc536e777/5c89f5fe-5ceb-4891-9613-8a878e82cb19.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="313b25c2-010d-4f05-95dc-b76dc536e777/5ca0a14e-efa9-4d26-9eac-9b1e2629cda6.png"/> Wolfenstein II The New Colossus </h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="313b25c2-010d-4f05-95dc-b76dc536e777/65ead81d-0d21-4dc2-ae7a-8c3cc2bad2da.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/5/2024">11/5/2024</a> 22:37:13</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 22:30:18</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-4TB TANK">4TB TANK</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-10/26/2017">10/26/2017</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-79">79</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-86">86</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Machine Games">Machine Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Bethesda Softworks">Bethesda Softworks</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Remote Play En TV">Remote Play En TV</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/612880" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/612880/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/612880/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=612880" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/612880" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=612880" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/612880/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Buena trama">Buena trama</a><br/><a href="#quicklink-Ciencia ficción">Ciencia ficción</a><br/><a href="#quicklink-Comedia">Comedia</a><br/><a href="#quicklink-Desnudez">Desnudez</a><br/><a href="#quicklink-Disparos">Disparos</a><br/><a href="#quicklink-Distopías">Distopías</a><br/><a href="#quicklink-FPS">FPS</a><br/><a href="#quicklink-Gran banda sonora">Gran banda sonora</a><br/><a href="#quicklink-Historia alternativa">Historia alternativa</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Mundo abierto">Mundo abierto</a><br/><a href="#quicklink-Primera persona">Primera persona</a><br/><a href="#quicklink-Sangriento">Sangriento</a><br/><a href="#quicklink-Segunda Guerra Mundial">Segunda Guerra Mundial</a><br/><a href="#quicklink-Sigilo">Sigilo</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/><a href="#quicklink-Violentos">Violentos</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					Wolfenstein® II: The New Colossus™ es la esperadísima secuela de Wolfenstein®: The New Order™, el shooter en primera persona aclamado por la crítica y desarrollado por el galardonado estudio MachineGames. <br><br>Wolfenstein® II, una emocionante aventura hecha realidad gracias al motor id Tech® 6, líder en el sector, enviará a los jugadores a unos Estados Unidos que se encuentran bajo el control nazi, en una misión para reclutar a los líderes más audaces de la resistencia que queden con vida. Combate a los nazis en lugares emblemáticos tales como la pequeña ciudad de Roswell, Nuevo México, las inundadas calles de Nueva Orleans y un Manhattan posnuclear. Equípate con un arsenal de armas brutales y desata nuevas habilidades para abrirte paso a través de legiones de avanzados soldados, cíborgs y über-soldados en este shooter en primera persona definitivo.<h2 class="bb_tag">HISTORIA:</h2><br>América, 1961. El asesinato del general nazi Calavera que llevaste a cabo fue una victoria breve. A pesar del revés, los nazis mantienen su dominio sobre el mundo. Eres BJ Blazkowicz, alias &quot;Terror Billy&quot;, miembro de la resistencia, azote del imperio nazi y la última esperanza de libertad para la humanidad. Solo tú tienes las agallas, las armas y la iniciativa necesarias para regresar a los Estados Unidos, matar a todo nazi con el que te encuentres e iniciar la Segunda Revolución Americana.<h2 class="bb_tag">CARACTERÍSTICAS:</h2><h2 class="bb_tag">La misión: liberar América de los nazis</h2>Ponte el cinturón y prepárate para un viaje emocionante en el que te enfrentarás a la maquinaria de guerra nazi en suelo estadounidense. En el papel de BJ Blazkowicz, deberás proteger a tu familia y amigos, forjar nuevas alianzas y enfrentarte a los demonios de tu turbulento pasado mientras reúnes al resto de la resistencia para acabar con la ocupación nazi.<h2 class="bb_tag">Los personajes: reúne a la resistencia</h2>Sumérgete en un mundo que cobra vida gracias a personajes inolvidables que aportan un nuevo nivel de caracterización a la franquicia. Reúnete con tus amigos y compañeros de la lucha por la libertad, como Anya, Caroline, Bombate, Set, Max Hass, Fergus o Wyatt, y traba amistad con nuevos personajes como Horton y Grace mientras te enfrentas a la malvada Frau Engel y a su ejército nazi.<h2 class="bb_tag">El arsenal: empuña devastadoras armas y tecnología futurista</h2>Haz pedazos a los nazis con armamento de alta tecnología como el Laserkraftwerk, un arma láser multifunción de alta intensidad que puede desintegrar a los enemigos, y el Dieselkraftwerk, un lanzagranadas de disparo rápido que se acciona por gas y que puede destrozar a grupos de enemigos; o tómatelo de una forma más personal y cercana con avanzadas pistolas, ametralladoras y hachas. Si necesitas más versatilidad, ¡consigue una mejora y empuña dos de tus armas favoritas!<h2 class="bb_tag">El plan: matar a todo nazi con el que te encuentres</h2>¡Todo el mundo tiene un pasatiempo favorito! Libera al héroe de guerra que llevas dentro y aniquila nazis de formas nuevas e hiperviolentas. Carga armas futuristas y descubre las nuevas habilidades de BJ a medida que luchas para liberar América. Independientemente de cuál sea tu estilo de juego, inventa formas completamente nuevas de apuñalar, disparar y matar nazis.
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

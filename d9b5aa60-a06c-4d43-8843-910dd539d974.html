@@ -1,0 +1,411 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Spec Ops: The Line</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('d9b5aa60-a06c-4d43-8843-910dd539d974/b3a81457-283c-4fb6-bce7-d47892ce5d09.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="d9b5aa60-a06c-4d43-8843-910dd539d974/0176cc19-8346-47a2-9c50-533159a8442d.png"/> Spec Ops: The Line</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="d9b5aa60-a06c-4d43-8843-910dd539d974/4254cbc7-3bf2-4363-8d66-676ae5219fd4.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 15:27:56</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/17/2024">11/17/2024</a> 14:37:09</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-1 TB 1">1 TB 1</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-6/26/2012">6/26/2012</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-77">77</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Third-person shooter">Third-person shooter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Yager Development">Yager Development</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-2K">2K</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single-player">Single-player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/Spec_Ops:_The_Line" target="_blank">Wikipedia</a><br/><a href="https://2k.com/en-US/game/spec-ops-the-line/" target="_blank">Official website</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-[Game Engine] Unreal Engine 3">[Game Engine] Unreal Engine 3</a><br/><a href="#quicklink-[People] artist: Jason Flanagan">[People] artist: Jason Flanagan</a><br/><a href="#quicklink-[People] artist: Mathias Wiese">[People] artist: Mathias Wiese</a><br/><a href="#quicklink-[People] composer: Elia Cmíral">[People] composer: Elia Cmíral</a><br/><a href="#quicklink-[People] designer: Cory Davis">[People] designer: Cory Davis</a><br/><a href="#quicklink-[People] director: Cory Davis">[People] director: Cory Davis</a><br/><a href="#quicklink-[People] director: Francois Coulon">[People] director: Francois Coulon</a><br/><a href="#quicklink-[People] producer: Tarl Raney">[People] producer: Tarl Raney</a><br/><a href="#quicklink-[People] programmer: André Dittrich">[People] programmer: André Dittrich</a><br/><a href="#quicklink-[People] programmer: Hendrik Hoenicke">[People] programmer: Hendrik Hoenicke</a><br/><a href="#quicklink-[People] writer: Richard Pearsey">[People] writer: Richard Pearsey</a><br/><a href="#quicklink-[People] writer: Walt Williams">[People] writer: Walt Williams</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>Spec Ops: The Line</b></i> is a 2012 <a href="https://en.wikipedia.org/wiki/Third-person_shooter">third-person shooter</a> <a href="https://en.wikipedia.org/wiki/Video_game">video game</a> developed by <a href="https://en.wikipedia.org/wiki/Yager_Development">Yager Development</a> and published by <a href="https://en.wikipedia.org/wiki/2K_(company)">2K</a>. It is the seventh title, as well as a <a href="https://en.wikipedia.org/wiki/Reboot_(fiction)">reboot</a>, of the <a href="https://en.wikipedia.org/wiki/Spec_Ops_(series)"><i>Spec Ops</i> series</a>. In the game, players can hide behind cover, vault over obstacles, and shoot enemies while utilizing a variety of gadgets. Included with the game is an <a href="https://en.wikipedia.org/wiki/Multiplayer_video_game">online multiplayer</a> mode, developed separately by Darkside Game Studios, allowing players to engage in both cooperative and competitive gameplay. The player controls <a href="https://en.wikipedia.org/wiki/Captain_Martin_Walker">Captain Martin Walker</a>, who is sent into a post-catastrophe <a href="https://en.wikipedia.org/wiki/Dubai">Dubai</a> with an elite <a href="https://en.wikipedia.org/wiki/Delta_Force">Delta Force</a> team on a recon mission. As the story progresses, Walker's sanity begins to deteriorate as he begins to experience <a href="https://en.wikipedia.org/wiki/Hallucination">hallucinations</a> and slowly realize the horror of war.</p>
+
+<p>Yager started the game's development in 2007, taking inspiration for the setting and story framework from various media, including <a href="https://en.wikipedia.org/wiki/Joseph_Conrad">Joseph Conrad</a>'s 1899 novella <i><a href="https://en.wikipedia.org/wiki/Heart_of_Darkness">Heart of Darkness</a></i> and the 1979 film <i><a href="https://en.wikipedia.org/wiki/Apocalypse_Now">Apocalypse Now</a></i>. The game was designed to be "physically opposing", causing players to question their thoughts about treating war in a video game as entertainment, and tasks players to make a variety of morally ambiguous decisions. The game suffered from multiple delays, and the development team used this time to refine the story and increase the gameplay's pace. The game's <a href="https://en.wikipedia.org/wiki/Soundtrack">soundtrack</a> is a mix of licensed music and original music composed by <a href="https://en.wikipedia.org/wiki/Elia_Cmíral">Elia Cmíral</a>. The game was banned in the <a href="https://en.wikipedia.org/wiki/United_Arab_Emirates">United Arab Emirates</a> for its depiction of Dubai in a state of destruction.</p>
+
+<p>Announced in December 2009, the game was released internationally in June 2012 for <a href="https://en.wikipedia.org/wiki/Windows">Windows</a>, <a href="https://en.wikipedia.org/wiki/PlayStation_3">PlayStation 3</a> and <a href="https://en.wikipedia.org/wiki/Xbox_360">Xbox 360</a>. <i>Spec Ops: The Line</i> received generally positive reviews from critics with praise given for the narrative and its themes, while criticism was targeted at the online multiplayer and aspects of the gameplay. It was also awarded and nominated for several end-of-the-year accolades, particularly for its story, and has garnered a <a href="https://en.wikipedia.org/wiki/Cult_following">cult following</a> in the years after its release and is considered an example of <a href="https://en.wikipedia.org/wiki/Video_games_as_an_art_form">video games as an art form</a> because of its meta narrative, political commentary and emotional impact.<sup>[<i><a href="https://en.wikipedia.org/wiki/Wikipedia:Citation_needed">citation needed</a></i>]</sup> Despite this, the game was a commercial failure, which led to the announcement that there would not be a sequel to the game, effectively ending the <i>Spec Ops</i> series. The game was delisted from sales in January 2024.</p>
+
+<h2>Gameplay</h2>
+
+<p>The player can select from four <a href="https://en.wikipedia.org/wiki/Difficulty_level">difficulty levels</a>: Walk on the Beach, Combat Op, Suicide Mission, and the hardest difficulty, <a href="https://en.wikipedia.org/wiki/FUBAR">FUBAR</a>, which is only unlocked after completing the game on Suicide Mission. Various new weapons and equipment become available as the game progresses, some dropped by downed enemies. These include several different <a href="https://en.wikipedia.org/wiki/Rifle">rifles</a>, <a href="https://en.wikipedia.org/wiki/Handgun">handguns</a>, and <a href="https://en.wikipedia.org/wiki/Machine_gun">machine guns</a>. Some offer alternate firing modes, like attaching a <a href="https://en.wikipedia.org/wiki/Suppressor">suppressor</a> or using a <a href="https://en.wikipedia.org/wiki/Telescopic_sight">telescopic sight</a>. Players can also acquire and make use of <a href="https://en.wikipedia.org/wiki/Grenade_launcher">grenade launchers</a>, <a href="https://en.wikipedia.org/wiki/Hand_grenade">hand grenades</a>, and <a href="https://en.wikipedia.org/wiki/Rocket_launcher">rocket launchers</a>. However, the player can only carry two weapons at a time. Supply caches can be found in different parts of the game, allowing the player to refill their ammo and grenades. Whenever the player successfully shoots an enemy in the head, the game enters a <a href="https://en.wikipedia.org/wiki/Slow-motion">slow-motion</a> mode for a short period of time. The player can also defeat enemies at close range via melee combat. Dying enemies can be executed, which grants the player additional ammo. Hiding behind cover can provide protection and prevents the player from being shot, as well as providing opportunities to blindfire or lean out to shoot enemies.</p>
+
+<p>As a third-person shooter with an emphasis on <a href="https://en.wikipedia.org/wiki/Man-to-man_wargame#Computer_games">squad-based</a> <a href="https://en.wikipedia.org/wiki/Military_tactics">tactics</a>, players can issue commands to Sergeant Lugo and Lieutenant Adams, who accompany the player for most of the game. Available commands include focusing fire on one particular target and ordering medical attention for an injured squad member. Adams can defeat enemies by using heavy gadgets or throwing grenades, while Lugo provides sniping assistance. <a href="https://en.wikipedia.org/wiki/Environmental_hazards">Environmental hazards</a> like <a href="https://en.wikipedia.org/wiki/Dust_storm">sandstorms</a> occasionally occur, drastically reducing the player's vision and visibility. Sand becomes a key gameplay mechanic and players can manipulate it at scripted moments in the game, such as triggering a sand <a href="https://en.wikipedia.org/wiki/Avalanche">avalanche</a> to bury enemies alive. When a grenade explodes on sand, dust clouds that can blind enemies are formed. Sand sometimes opens up new paths to allow players to progress.</p>
+
+<p>The player needs to make moral decisions at certain points during the game, including making choices that can determine the fate of both soldiers and civilians. These decisions affect the relationship between the player character Martin Walker and his squadmates, and will cause them to react differently. The game incorporates several subtle effects to visualize the lead character's increasing mental and physical distress; alongside the degradation of their <a href="https://en.wikipedia.org/wiki/Army_Combat_Uniform">combat uniforms</a>, Walker suffers visual and auditory hallucinations later in the game, and his executions of enemies become more violent. The orders and shouts to his team become increasingly angry and ragged in contrast to his stern but collected orders at the outset. His kill confirmations of enemies corrupts from professional in the beginning to psychotic. Similarly, <a href="https://en.wikipedia.org/wiki/Loading_screen">loading screens</a> initially display helpful gameplay hints for the player, but as the game progresses, the text becomes increasingly hostile towards Walker's actions, and sometimes breaks the <a href="https://en.wikipedia.org/wiki/Fourth_wall">fourth wall</a> by addressing the player directly.</p>
+
+<p>In nearly every level, players can collect Intel items that provide the player with information on the events preceding the main story, as well as insight into the psyche and motivations of certain characters.</p>
+
+<h3>Multiplayer</h3>
+
+<p>Set before the events of the campaign, the competitive multiplayer divides players into two different teams: The Exiles and The Damned. Both teams have their respective perks. Six classes are available for players to choose: Gunner, Medic, Scavenger, Breacher, Sniper and Officer. Each have their own upgrades and advantages. Environmental hazards, including sandstorms, may also occur during a multiplayer match. The game modes featured in the multiplayer include:</p>
+
+<ul>
+  <li>Chaos: A free-for-all mode, in which players eliminate other players.</li>
+  <li>Mutiny: A <a href="https://en.wikipedia.org/wiki/Team_deathmatch">team deathmatch</a> mode, in which a team of players eliminates the opposing team.</li>
+  <li>Rally Point: A "King of the Hill"-styled match, in which players secure a rally point and accumulate score for their team.</li>
+  <li>Uplink: Both teams are tasked to capture a central rally point, and disable the opposing team's COM Station to prevent them from receiving points.</li>
+  <li>Attrition: Players engage in three team elimination rounds with only one life per round and no <a href="https://en.wikipedia.org/wiki/Respawn">respawning</a> until the round is over.</li>
+  <li>Buried: A team of players is tasked to destroy the opposing team's Vital Points, which reveal their High Value Target upon destruction. Players are tasked to eliminate the opposing team's target in order to win the match.</li>
+</ul>
+
+<p>A two player <a href="https://en.wikipedia.org/wiki/Cooperative_video_game">cooperative</a> mode was added to the game after its launch with four missions to choose from. Players are tasked to defeat multiple waves of enemies and complete a series of objectives, similar to a <a href="https://en.wikipedia.org/wiki/Survival_mode">horde mode</a>.</p>
+
+<h2>Synopsis</h2>
+
+<h3>Setting</h3>
+
+<p>Six months prior to the game's events, the worst series of <a href="https://en.wikipedia.org/wiki/Sandstorm">sandstorms</a> in recorded history began across Dubai. The city's politicians and wealthy elite downplayed the situation before secretly evacuating, leaving countless <a href="https://en.wikipedia.org/wiki/Emiratis">Emiratis</a> and foreign migrant workers behind as the city was overwhelmed by the surrounding desert. Colonel John Konrad (<a href="https://en.wikipedia.org/wiki/Bruce_Boxleitner">Bruce Boxleitner</a>), the decorated but <a href="https://en.wikipedia.org/wiki/Post-traumatic_stress_disorder">PTSD</a>-troubled commander of the "Damned 33rd" Infantry Battalion of the <a href="https://en.wikipedia.org/wiki/United_States_Army">United States Army</a>, was returning home with his unit from <a href="https://en.wikipedia.org/wiki/War_in_Afghanistan_(2001–2021)">Afghanistan</a> when the storms struck. Konrad volunteered the 33rd to help relief efforts, defying orders by the Army to abandon the city and its refugees and <a href="https://en.wikipedia.org/wiki/Desertion">deserting</a> with the entire battalion. The storms intensified and a massive storm wall engulfed Dubai, disrupting surveillance, air travel, and all but the strongest of radio broadcasts. Struggling to maintain order amid 80 mph (128 km/h) winds, riots, and dwindling resources, the 33rd declared <a href="https://en.wikipedia.org/wiki/Martial_law">martial law</a> and began committing <a href="https://en.wikipedia.org/wiki/War_crime">atrocities</a> on the civilian population. Aggrieved by this, the <a href="https://en.wikipedia.org/wiki/Staff_(military)">staff</a> of the 33rd staged a <a href="https://en.wikipedia.org/wiki/Coup_d'etat">coup d'etat</a> against Konrad but were defeated, while the remnants are branded as "the Exiled". The <a href="https://en.wikipedia.org/wiki/Central_Intelligence_Agency">CIA</a> then sent in a <a href="https://en.wikipedia.org/wiki/Black_operation">black ops</a> squad to investigate, and as part of their plan organized the locals into <a href="https://en.wikipedia.org/wiki/Insurgency">insurgents</a> to attack the 33rd, eventually resulting in a <a href="https://en.wikipedia.org/wiki/Ceasefire">ceasefire</a>. The last communication from Dubai stated that the Exiled 33rd was attempting to lead a <a href="https://en.wikipedia.org/wiki/Convoy#Road_convoys">caravan</a> out of the city. The caravan never arrived, and soon afterward, the United Arab Emirates declared Dubai a <a href="https://en.wikipedia.org/wiki/No_man's_land">no-man's-land</a>. All travel to the city was barred, the 33rd was publicly disavowed for <a href="https://en.wikipedia.org/wiki/Treason">treason</a>, and no further news left the city.</p>
+
+<p>Two weeks before the start of the story, a looped radio signal finally penetrated the storm wall. Its message was brief: "This is Colonel John Konrad, United States Army. Attempted evacuation of Dubai ended in complete failure. Death toll... too many." The United States military decides to covertly send in an elite three-man <a href="https://en.wikipedia.org/wiki/Delta_Force">Delta Force</a> team to carry out <a href="https://en.wikipedia.org/wiki/Reconnaissance">reconnaissance</a>, led by <a href="https://en.wikipedia.org/wiki/Captain_Martin_Walker">Captain Martin Walker</a> (<a href="https://en.wikipedia.org/wiki/Nolan_North">Nolan North</a>), who served alongside Konrad in Afghanistan. Walker, First Lieutenant Alphonso Adams (<a href="https://en.wikipedia.org/wiki/Christopher_Reid_(rapper)">Christopher Reid</a>), and Staff Sergeant John Lugo (<a href="https://en.wikipedia.org/wiki/Omid_Abtahi">Omid Abtahi</a>), are ordered to confirm the presence of any survivors, then immediately radio for extraction.</p>
+
+<p>The game begins <i><a href="https://en.wikipedia.org/wiki/In_medias_res">in medias res</a></i> with Walker, Adams, and Lugo flying in a helicopter past the <a href="https://en.wikipedia.org/wiki/Skyscraper">skyscrapers</a> of Dubai, shooting down several pursuing helicopters until a sudden sandstorm forms, causing one of the pursuers to spin out of control and crash into the trio. The story then jumps back to the start, with Delta traversing the storm wall to the outskirts of a mostly buried Dubai. They later come into contact and engage a group of insurgents (who believe them to be with the Damned 33rd) led by CIA agents, who have renewed conflict with what remains of the 33rd. Delta attempts to aid the 33rd, but are mistaken for CIA and treated as hostiles. The team also hears broadcasts by the Radioman (<a href="https://en.wikipedia.org/wiki/Jake_Busey">Jake Busey</a>), a former journalist turned DJ who was once embedded with the 33rd and now speaks on their behalf. After seeing civilians rounded up by the 33rd, Walker elects to disobey orders and find Konrad.</p>
+
+<p>Receiving a broadcast of CIA agent Daniels being interrogated by the 33rd, the team chooses to intervene. Tracing the signal's origin, they find Daniels already dead; the broadcast was a trap set for fellow CIA agent, Rick Gould. Gould helps Delta escape, but is later captured and killed while assaulting a location called the Gate. The team heads there and continues the attack. Finding it heavily guarded by the 33rd, the team employs <a href="https://en.wikipedia.org/wiki/White_phosphorus_munitions">white phosphorus</a> to obliterate their opposition and advance further into the city. While walking through the aftermath, they realize they accidentally killed a group of civilians moved to the Gate for shelter by the Exiled 33rd, rather than the Damned 33rd. Vowing revenge, Walker blames Konrad and the 33rd.</p>
+
+<p>Finding Konrad's executed command team, Walker uses a small radio to communicate with who he believes to be Konrad himself, who challenges the morality of his actions throughout the story. Konrad then manipulates Walker into executing an Emirati survivor or a 33rd soldier, who both committed serious crimes. Delta subsequently meet CIA agent Jeff Riggs, who is leading a raid on the city's last water supply. Delta aids Riggs with the aim of crippling the 33rd's operations, but Riggs destroys the supply instead, admitting he wanted to wipe out the remaining population of Dubai to cover up the atrocities of the 33rd, fearing that their revelation would lead to the region declaring war on the United States.</p>
+
+<p>With the city's residents now facing death from dehydration, Delta heads to the radio tower to silence the Radioman. After Lugo executes the Radioman, Walker informs the city of Delta's planned evacuation effort. Adams commandeers a <a href="https://en.wikipedia.org/wiki/Sikorsky_UH-60_Black_Hawk">Black Hawk</a> helicopter to escape the building, and Walker destroys the radio tower as they flee the scene, leading to the helicopter sequence from the opening of the game (which Walker <a href="https://en.wikipedia.org/wiki/Déjà_vu">seems to remember</a>). After the aforementioned crash, Walker awakens in the middle of the desert and reunites with Adams, but is too late to stop Lugo from being <a href="https://en.wikipedia.org/wiki/Lynching">lynched</a> by a mob of civilians. Walker and Adams make their way to the Dubai Seaside tower (a fictional version of the <a href="https://en.wikipedia.org/wiki/Burj_Khalifa">Burj Khalifa</a>) to confront Konrad, but are soon pinned down by the last of his men. Walker, who surrenders, is pushed to safety by Adams, who <a href="https://en.wikipedia.org/wiki/Last_stand">fights to the death</a>. Walker stumbles inside the tower, where the remnants of the 33rd surrender to him.</p>
+
+<p>Walker finally meets Konrad at his <a href="https://en.wikipedia.org/wiki/Penthouse_apartment">penthouse</a>. Konrad appears to be the charismatic, villainous force behind the atrocities that Walker was hoping for, until Walker finds his decaying corpse on the penthouse deck. Walker finds that Konrad committed suicide after his failed evacuation effort, and he has been communicating with a hallucination of Konrad created in his mind following the white phosphorus strike. Rationalizing the actions he had witnessed and carried out, Walker distorted many subsequent events of the game to make Konrad look responsible. With this revelation, "Konrad" forces Walker, at gunpoint, to decide once and for all if he is to blame for his actions in Dubai.</p>
+
+<p>There are four possible endings. Walker shooting himself or allowing "Konrad" to shoot him will immediately end the story, with Walker's and Konrad's corpses shown together on the penthouse deck and Konrad's original broadcast playing as the camera pans over to a burning Dubai.</p>
+
+<p>If Walker instead shoots "Konrad", he disappears after telling Walker that he can still return home despite everything he has done. After the 33rd surrendering is shown to be a figment of Walker's imagination, Walker uses Konrad's radio to request immediate evacuation of Dubai. A post-credits <a href="https://en.wikipedia.org/wiki/Epilogue">epilogue</a> shows a convoy of Army rescue <a href="https://en.wikipedia.org/wiki/Humvee">Humvees</a> locating a <a href="https://en.wikipedia.org/wiki/Shell_shock">shellshocked</a> Walker sitting near the Dubai Seaside wearing Konrad's uniform and brandishing an <a href="https://en.wikipedia.org/wiki/Atchisson_Assault_Shotgun">AA-12</a>. Walker can either concede to the patrol or open fire on them. If Walker relinquishes his weapon, he evacuates with the patrol, and has a conversation with one of the soldiers where he questions his status. If Walker is killed by the patrol, he dies in a pool of blood, recalling a conversation between himself and Konrad during the War in Afghanistan where Walker casually remarked about returning home, but Konrad criticized him, claiming soldiers "do what's necessary" and then die. If Walker kills the entire patrol, he uses their radio to greet Army command with "Gentlemen, welcome to Dubai", one of the first statements Walker said to his team as well as one of the first statements "Konrad" said to Walker. Walker then returns to the Dubai Seaside as the camera pans to a ruined Dubai.</p>
+
+<h2>Development</h2>
+
+<h3>Background</h3>
+
+<p>Following the release of several <i><a href="https://en.wikipedia.org/wiki/Spec_Ops_(series)">Spec Ops</a></i> games in the late 1990s and early 2000s, the series met with low sales and poor reviews, causing a halt to the production of successive games. In 2003, <a href="https://en.wikipedia.org/wiki/Take-Two_Interactive">Take-Two</a> mentioned in their financial results that <a href="https://en.wikipedia.org/wiki/Rockstar_Games">Rockstar Games</a> was working on the franchise, but in 2004 the project was cancelled. It was later revealed that <a href="https://en.wikipedia.org/wiki/Rockstar_Vancouver">Rockstar Vancouver</a> would have developed the canceled project, with <a href="https://en.wikipedia.org/wiki/Queens_of_the_Stone_Age">Queens of the Stone Age</a> frontman <a href="https://en.wikipedia.org/wiki/Josh_Homme">Josh Homme</a> working on the soundtrack for the game.</p>
+
+<p>From 2005 to 2009, the series remained largely unmentioned, with the rights still fully belonging to Take-Two. In 2006, German-based <a href="https://en.wikipedia.org/wiki/Yager_Development">Yager Development</a> pitched a cover-based shooter to publisher <a href="https://en.wikipedia.org/wiki/2K_Games">2K Games</a>, who rejected the original concept of futuristic soldiers without Dubai as a setting. However, 2K offered them a chance to develop a reboot for the <i>Spec Ops</i> series, promising that they would have a lot of creative freedom. Development began in early 2007, with most other fundamentals of the initial game intact. While the game is an installment in the <i>Spec Ops</i> series, the team chose to use new ideas and intentionally avoided using existing elements of the franchise.</p>
+
+<p>The developers drew inspiration from multiple media. The set-up and the game's foundation was inspired by <i>Heart of Darkness</i>, whose story reveals the changes a person undergoes in chaotic times. The relationship between Walker and his squad mates was inspired by <a href="https://en.wikipedia.org/wiki/HBO">HBO</a>'s <i><a href="https://en.wikipedia.org/wiki/Generation_Kill_(miniseries)">Generation Kill</a></i>, and the post-war traumatic experience suffered by Walker was inspired by <i><a href="https://en.wikipedia.org/wiki/Jacob's_Ladder_(1990_film)">Jacob's Ladder</a></i>. The story of the <a href="https://en.wikipedia.org/wiki/Tower_of_Babel">Tower of Babel</a> was also an inspiration for the game. The story was originally set to be written by several German writers, but they were later replaced by American writers Richard Pearsey, who had worked on <a href="https://en.wikipedia.org/wiki/TimeGate_Studios">TimeGate Studios</a>' <i><a href="https://en.wikipedia.org/wiki/Section_8_(video_game)">Section 8</a></i>, and Walt Williams, who had previously worked on other 2K projects including <i><a href="https://en.wikipedia.org/wiki/BioShock_2">BioShock 2</a></i> and <i><a href="https://en.wikipedia.org/wiki/Mafia_II">Mafia II</a></i>. One of the game's core features is violence, but the team hoped that it would not be "cheesy" or excessive. This led the team to focus on creating the game's storyline to motivate players to take the actions they choose. Writing the story became uncomfortable and rough for Williams as time progressed, due to the game's dark themes. The game was meant to feature narrative gameplay, in which the game was to be played without any <a href="https://en.wikipedia.org/wiki/Cutscene">cutscenes</a> so that the entire story would be told through gameplay sequences only. However, the idea was downplayed as the development team realized that having cutscenes helps players to be more emotionally connected and allowed the team to create dramatic scripted sequences.</p>
+
+<p>Although the lead player character, Martin Walker, was designed to be as simple as possible in order to help players to engage in the game, and relate to the character, the team gave him some personality which was expressed through his body language and his reactions during the game's battles. It was felt that by reflecting his emotions to players, they would share them. The squad was designed so that room was left for character development. The transformation of the squad's mentality serves as an important <a href="https://en.wikipedia.org/wiki/Plot_device">plot device</a> during the game and has a significant narrative context. The changes in the cleanliness of their clothing, and their reactions toward each other, help to illustrate the story. According to Williams, the hope was that players would start the game with relatively low expectations, or they would consider the game another typical heroic war shooter, then by seeing the transformation of the characters, would be shocked by the game's narrative and be "engulfed by the darkness". To make the transformation process clear, the team found it necessary to show the characters' personality at the beginning of the game in order to create a strong contrast. A major theme of the game is heroism, where being a hero may bring more harm than help. During development, there was a point at the beginning of the game where players could choose to leave Dubai. This was cut from the game, as the team found it not effective enough, and it broke a player's immersion in the game.</p>
+
+<p>One of the main goals of the narrative was to depict war in a manner unlike it is portrayed in media such as TV and books. Williams believed that most games on the market failed to create a correct representation of the war experience, or express the psychological changes that some combatants experience after participating in a war. He added that war is not as straightforward and immature as it is often portrayed in various shooters. As a result, a central theme of the game revolves around the moral aspect of war. By using this theme, the team hoped to tell a story and provide an experience that feels realistic, covering the combatants' mental changes during and after a military conflict, similar to how movies in the 1970s and 1980s, such as <i><a href="https://en.wikipedia.org/wiki/Platoon_(film)">Platoon</a></i>, <i><a href="https://en.wikipedia.org/wiki/Full_Metal_Jacket">Full Metal Jacket</a></i> and <i>Apocalypse Now</i> convey these messages. The team had the intention to give players the opportunity to show that a shooter can also have a decent story capable of invoking emotions. To achieve this, the team simplified their original story setting of having Konrad as a "megalomaniac with messianic delusions" to a setting that is more similar to <i>Heart of Darkness</i>.</p>
+
+<p><i>Spec Ops: The Line</i> includes several choices for players to make. According to Williams, it was a key concept to be featured right from the start of the game's development. The game does not feature a morality system, but instead has situations that give players some freedom of choice. The consequences of some of these choices were deliberately made unclear in an attempt to make them more realistic, encouraging players to explore the other potential options not directly presented by the game. These choices were inspired by <i><a href="https://en.wikipedia.org/wiki/Fallout_3">Fallout 3</a></i>, and are often between: "what the character knows and what the player would maybe try and do". To make choices more realistic, and to increase the impact of the story, the team put in a lot of morally ambiguous choices and "bad or worse" decisions. Combat sequences sometimes force players to make split-second decisions and accept whatever the consequences are. Through these choices, the team hoped to have prompted players to examine their own inner emotions, and provided different experiences for players without having a branching storyline. Replay value was also considered when the development team was designing these choices.</p>
+
+<p>The game's moral choices do not have any connection to gameplay, as the team feared that players would view them as gameplay mechanics and disconnect them from the story. The consequences of each choice were designed to be unpredictable to create tension for the player. Both approaches are applied to let players make decisions based on their own will instead of "gaming the system". Williams also added that they attempted to make violence in the game "meaningful". While the game's basic premise is to have the Delta Squad rescue civilians in Dubai, the game by its nature tasks players to kill with their firearms. Therefore, the team added a lot of dialogue to justify and rationalize the characters' violent actions, creating complex plot points, drama and climaxes. The team also added conversations between enemy soldiers in an attempt to humanize them. The choice system was originally designed to be similar to <i><a href="https://en.wikipedia.org/wiki/Fable_II">Fable II</a></i>, where after a player makes a decision, they cannot reload the game and choose differently unless they start a new game. This was later removed due to the game's structure as a shooter, as the team feared that it might make the game unwinnable and cause players to feel frustrated. Williams later added that adding <a href="https://en.wikipedia.org/wiki/Achievement_(video_gaming)">achievements</a> to the game was a mistake, as it disrupts the game's narrative.</p>
+
+<p>Another goal was to use the scenarios presented to cause players to raise questions about their thoughts of killing people in a video game as a form of entertainment. To achieve this, the team made the hints at the game's loading screen increasingly aggressive, while the game's overall narrative was designed with the aim of being "physically opposing", so that players could project themselves into the protagonist's position, especially when making choices that involve the killing of innocents. They hoped that players would be able to feel angry at the developers who "forced" players into killing civilians in the game. The team had a lot of debates regarding the imagery used in depicting violence towards civilians, as many considered it excessive and unnecessary. However, 2K approved their vision even when the team thought they had pushed the narrative to extremes.</p>
+
+<p>Williams has stated that the game's events are open to interpretation. Many different theories have been discussed by the development staff. Davis described the game's pacing as "deliberate", but he added that there are moments where the pacing slows down significantly and allows the player to learn more about the game's story through inspecting environmental objects. The city of Dubai is filled with <a href="https://en.wikipedia.org/wiki/Graffiti">graffiti</a>, which is used to give players information regarding the factions and the backstory. According to Yager, the graffiti was designed to give players a perspective that is different from the main game, and to help make the location more realistic. The team also hoped to make players feel lost when playing the game. As a result, the team added hallucinations to the game. These hallucinations sometimes occur through the <a href="https://en.wikipedia.org/wiki/Subtext">subtext</a>, in which players may not realize their presence. Williams added that having subtext is important, and that the "best stories are the ones that have stuff hidden in them". The game fades to black when the game transitions from one scene to another, and it fades to white when Walker is hallucinating or otherwise deceiving himself.</p>
+
+<p>The game is set in Dubai, which has been ravaged by sandstorms, a story set-up inspired by Davis' and Williams' personal experience with <a href="https://en.wikipedia.org/wiki/Heat_wave">heat waves</a>, <a href="https://en.wikipedia.org/wiki/Hurricane">hurricanes</a>, and sandstorms in <a href="https://en.wikipedia.org/wiki/Louisiana">Louisiana</a> and <a href="https://en.wikipedia.org/wiki/Lubbock">Lubbock</a>, as well as <a href="https://en.wikipedia.org/wiki/Lost_Army_of_Cambyses">a story about a Persian army that vanished in an Egyptian desert during a sandstorm</a>. The two found that the chaotic forces behind sandstorms would help them to convey the message of how fragile humans are, as well as the harshness of war. The team believed that the location provided them with a "fantastic" real-world environment allowing them to produce great visuals. Using Dubai as a setting allowed the game's levels to have verticality and variety. The development team sent their art directors to Dubai to inspect the local environment. To prevent the game from featuring the typical "dirty, grungy brown environment", the team added more colors to the game, as well as objects such as glass, marble, gold, and crystals to make the location look vivid and vibrant.</p>
+
+<p>Using Dubai as a setting allowed them to incorporate sand as part of the game's key mechanics. Davis described the Dubai in the game as "a mix of fantasy and real-world environment". To prevent the sand mechanics from turning gimmicky, the team introduced multiple ways for players to use sand as a weapon, such as the player's ability to trigger dust clouds by throwing grenades on sand and cause a sand avalanche by shooting weak structures and supports. In addition, the team added several scripted sequences regarding sand to keep the game dynamic. The occurrence of these moments were decided based on the game's production value. The team also consulted Wil Makeneole for military advice.</p>
+
+<p>The game featured advanced <a href="https://en.wikipedia.org/wiki/Artificial_intelligence_in_video_games">artificial intelligence</a> due to the inclusion of the game's squad command system. Adams and Lugo will assist Walker in battles and react to the battle situation accordingly even if they are not given any orders. They will also analyse the situation when instructed and decide the best approach to defeat enemies. The battle command system was designed to be accessible and easy to use, so that players would not have to spend a lot of time managing the squad. Lugo and Adams may get severely injured and if either or both of them die, the game ends. This mechanic prompts the player to rescue them as quickly as possible, and the system is designed to create tense situations. The AI for enemies is affected by various factors, including visibility and hearing.</p>
+
+<p>The team did research on weapon sounds by consulting several military experts. The team spent a lot of time dealing with the audio mixing, so that the resulting sounds would not interfere with the narrative. To make the game's script unique, the team added more variety to character lines during gameplay moments, and had these lines correspond to scenarios the characters were facing in the game. <a href="https://en.wikipedia.org/wiki/Elia_Cmíral">Elia Cmíral</a> was hired to compose the music for the game, and the soundtrack was described as "unearthly" and "rock-orientated". The game's menu screen music is a live recording of "<a href="https://en.wikipedia.org/wiki/The_Star-Spangled_Banner#Adaptations">The Star-Spangled Banner</a>", performed by <a href="https://en.wikipedia.org/wiki/Jimi_Hendrix">Jimi Hendrix</a> at <a href="https://en.wikipedia.org/wiki/Woodstock">Woodstock</a>. To establish the character of the Radioman, the team added licensed music, including "<a href="https://en.wikipedia.org/wiki/Nowhere_to_Run_(song)">Nowhere to Run</a>" by <a href="https://en.wikipedia.org/wiki/Martha_and_the_Vandellas">Martha and the Vandellas</a> and <a href="https://en.wikipedia.org/wiki/Mogwai">Mogwai</a>'s "<a href="https://en.wikipedia.org/wiki/Glasgow_Mega-Snake">Glasgow Mega-Snake</a>".</p>
+
+<p>Although <i>Spec Ops: The Line</i> has a strong single-player focus, it also features multiplayer components. Yager was only responsible for the single-player campaign; the multiplayer was <a href="https://en.wikipedia.org/wiki/Outsourcing">outsourced</a> to Darkside Game Studios. The multiplayer team at 2K Games, which previously developed the multiplayer of <i>BioShock 2</i>, also assisted in creating the multiplayer.</p>
+
+<p>According to Davis, while 2K Games was supportive of Yager and "took a hell of a lot of risk with the project", they insisted that the game have multiplayer components to boost the sales. This was a decision that Yager thought would hurt the game. Davis described the project as a "waste of money" and a "low-quality <i><a href="https://en.wikipedia.org/wiki/Call_of_Duty">Call of Duty</a></i> clone". The president of Darkside Game Studios, Hugh Falk, responded by calling Davis' opinion "outlying". He added that Darkside participated in the project towards the end of the game's development cycle and that they had to revamp the entire multiplayer system within tight deadlines. Davis later claimed that his comments were not directed at Darkside Game Studios, and that he is satisfied with their final product after a long and troubled development cycle.</p>
+
+<p>The game originally did not have a cooperative multiplayer mode, as the development team thought that it would distract from the tonally darker levels of the single-player campaign, not matching the game's narrative. However, a cooperative mode was still added to the game in August 2012 as free <a href="https://en.wikipedia.org/wiki/Downloadable_content">downloadable content</a>; it does not follow the storyline of the campaign.</p>
+
+<h2>Release and marketing</h2>
+
+<p>On December 12, 2009, a ninth game in the series was announced at the <a href="https://en.wikipedia.org/wiki/Spike_Video_Game_Awards">Spike Video Game Awards</a>; a trailer depicted several minutes of gameplay and showed off the setting. A subsequent press release detailed the premise, other game features, and a possible 2011 release date. An official site was soon launched, and a new trailer was released in November 2011. The game was later delayed to the first or second <a href="https://en.wikipedia.org/wiki/Calendar_year">quarter</a> of 2012, before the final fixed release date was announced. <i>Spec Ops: The Line</i> was released on June 26, 2012, for Microsoft Windows, PlayStation 3 and Xbox 360. It was released on March 13, 2014, for <a href="https://en.wikipedia.org/wiki/OS_X">OS X</a>. This version of the game was developed by Digital Tribe Games.</p>
+
+<p>No news about the game was made available for 18 months after it was initially announced. Davis thought the game was announced too early, causing excitement for it to die down too far from the release date. The developers carried out <a href="https://en.wikipedia.org/wiki/Focus_group">focus tests</a> during this period, and the gameplay was found to be too slow-paced compared to competitors such as <i>Call of Duty</i>. As a result, the team spent time to speed up the game's action so that it would more closely match the narrative.</p>
+
+<p>In addition to the game's standard edition, players could purchase a Premium Edition at a higher price. Players who pre-ordered the game at selected retailers were able to have their games upgraded to the Premium Edition at no additional cost. The Premium Edition grants players additional advantages in the multiplayer segment of the game, including an <a href="https://en.wikipedia.org/wiki/Experience_(gaming)">experience points</a> boost and early access to the Officer class. A multiplayer beta for selected applicants on the Xbox 360 platform was held in 2010. A playable demo of the game, which featured two chapters from the beginning of the campaign, was released for PlayStation 3 and Xbox 360 on May 8, 2012.</p>
+
+<p>According to Williams, the game was difficult to market, as the team wanted to prevent spoiling the narrative yet encourage people to buy the game. He added that the demo they released was unrepresentative of the final game. Williams expected the game to be sold through <a href="https://en.wikipedia.org/wiki/Word_of_mouth">word of mouth</a> promotion and that it would eventually become a <a href="https://en.wikipedia.org/wiki/Cult_classic">cult classic</a>.</p>
+
+<h3>Delisting</h3>
+
+<p>Around the end of January 2024, 2K Games began delisting the game from sale on digital storefronts due to expiring licenses for some of the game content, with multiple outlets speculating it was in regards to in-game licensed music.</p>
+
+<h2>Reception</h2>
+
+<h3>Critical reception</h3>
+
+<p>Reviews of <i>Spec Ops: The Line</i> were mostly positive, with many critics praising the narrative, themes, and the provocative take on violence in video games, but noted that it failed to innovate, present a strong multiplayer component, and felt tonally uneven. Many critics consider the game to be underrated, or overlooked. Previews of the game, as well as the game itself, were banned in the United Arab Emirates for the depiction of Dubai in a state of destruction.</p>
+
+<p>The overall gameplay received mixed reviews. Some critics believed that the gameplay was enjoyable, serviceable and acceptable by modern standards, but most others agreed that some of the gameplay mechanics, such as the cover system, lacked polish and were flawed. Some critics considered the gameplay generic due to its inclusion of typical shooter elements such as on-rail and turret segments, and stated that such mechanics are unable to help the game differentiate itself from other shooters such as <i><a href="https://en.wikipedia.org/wiki/Gears_of_War">Gears of War</a></i>, and give the game an <a href="https://en.wikipedia.org/wiki/Identity_crisis">identity crisis</a>. Some critics lamented that gameplay occasionally disconnects players from the story, creating tonal dissonance. Many criticized the game for not having a <a href="https://en.wikipedia.org/wiki/Roll_(gymnastics)">roll</a> mechanic. The <a href="https://en.wikipedia.org/wiki/Artificial_intelligence_in_video_games">artificial intelligence</a> system was criticized for not being strong enough to make the game more gratifying, though some critics thought that the AI system for Adams and Lugo was well-crafted and did not suffer from severe or frequent technical problems, although they may not be able to carry out player's commands. Some critics criticized the game's low replay value, unbalanced <a href="https://en.wikipedia.org/wiki/Difficulty_level">difficulty level</a>, and sudden difficulty spike.</p>
+
+<p>Brandon Justice from <i><a href="https://en.wikipedia.org/wiki/Electronic_Gaming_Monthly">Electronic Gaming Monthly</a></i> stated that he expected the game to look "bland" due to its setting, but he was surprised at how much variety and color there was. The game's level design and vibrant colors were also praised. Critics agreed that the game's setting, Dubai, was excellent and well-realized; some critics praised Yager for adding different details to the game's world. The terrain and landscape was praised for being interesting, unique, and creating "fantastic set piece battles". Some commented that the sand mechanic became gimmicky. Many criticized the game's poor textures and the poor rendering of cutscenes.</p>
+
+<p>The game's overall narrative was highly praised by critics; many considered it compelling and mature, and viewed it as the standout feature of the game. Some believed that the story had an excellent presentation with decent voice-acting, memorable characters, and an atmospheric soundtrack. North's performance was particularly praised. Many critics thought it was a bold attempt by Yager and that the story about mistakes and consequences allowed the game's narrative to exceed its competitors in terms of quality. Some critics believed that Yager deserves respect for successfully creating a message through the story and delivering it to the player, and trying to do something different. Mitch Dyer of <a href="https://en.wikipedia.org/wiki/IGN">IGN</a> thought that the game's narrative made violence "meaningful", and that the story was unexpectedly good and personal. Some believed the story is impactful and at times shocking, and that the plot would make "<i><a href="https://en.wikipedia.org/wiki/Modern_Warfare_2">Modern Warfare 2</a></i>'s infamous <a href="https://en.wikipedia.org/wiki/No_Russian">No Russian</a> look pretty tame". The game's choices were praised for being "powerful" despite not offering a branching storyline. Some critics believed that these choices are provocative, organic, impactful, and upsetting, though also at times unsatisfying, hollow, and binary. The endings of the game were praised. Some critics noted that emotionally <i>Spec Ops: The Line</i> is not a pleasant game.</p>
+
+<p>Some critics believe that <i>Spec Ops: The Line</i> does not intend the combat to be a fun experience for the player, citing the contrast between its messaging and its rather formulaic gameplay, but rather that its aims were to engage the player by critiquing the shooter genre, claiming it to be removed from reality and providing players with an unrealistic, morally dichotomous, escapist fantasy. Curtis Silver, from <i><a href="https://en.wikipedia.org/wiki/Wired_(magazine)">Wired</a></i>, wrote that Captain Martin Walker was a "great vessel, in gameplay and proxy, to carry the human disaster of war". The scene depicting the use of white phosphorus has been the subject of much scrutiny due to imagery that includes the corpse of a mother clutching her child, and was described as "troubling". In response to complaints that the massacre was unnecessary or exploitative, Williams justified the scene by saying that the plot device was intended to evoke players' anger, and that a valid way to end the game is simply for the player to put the controller down and stop playing. Nonetheless, the sequence is considered to be a defining moment of the game's story, and is praised by many critics. Davis added that the game received a positive response from war veterans and their families for its depiction of <a href="https://en.wikipedia.org/wiki/Post-traumatic_stress_disorder">post-traumatic stress disorder</a> and its portrayals of soldiers and civilians.</p>
+
+<p>In 2014, Former IGN Senior Editor <a href="https://en.wikipedia.org/wiki/Colin_Moriarty">Colin Moriarty</a> included <i>Spec Ops: The Line</i> in his list of Top 25 Favourite Games of All Time. He wrote, "What I found underneath its bro-shooter façade was perhaps one of the best stories I've ever experienced in a game, all built around an entirely awesome third-person cover-based shooter. <i>Spec Ops</i> is underrated, and it will never see a sequel (nor should it), but it's a must-play for the story alone." In 2022, David Wildgoose from <i><a href="https://en.wikipedia.org/wiki/GameSpot">GameSpot</a></i> wrote that the game subverted genre expectations and described it as the "best exploration of bloodlust" in games, and wrote that "<i>Spec Ops: The Line</i> is unwavering in its commitment to the idea that not only is the protagonist of a military shooter a psychopath, but that our demand for and enjoyment of them reveals something deeply ugly about our culture". Retrospectively, <i>Spec Ops: The Line</i> was considered to be an influential game, and its release led to further critiques on modern military shooters.</p>
+
+<p>The game debuted at No. 3 in the UK retail sales chart during the game's first week of release, behind <i><a href="https://en.wikipedia.org/wiki/Lego_Batman_2:_DC_Super_Heroes">Lego Batman 2: DC Super Heroes</a></i> and <i><a href="https://en.wikipedia.org/wiki/The_Amazing_Spider-Man_(2012_video_game)">The Amazing Spider-Man</a></i>. <i>Spec Ops: The Line</i> was a commercial failure, selling less than anticipated by Take-Two. The sales of <i>Spec Ops: The Line</i>, combined with <i><a href="https://en.wikipedia.org/wiki/Max_Payne_3">Max Payne 3</a></i>, were lower than the combined sales of <i><a href="https://en.wikipedia.org/wiki/L.A._Noire">L.A. Noire</a></i> and <i><a href="https://en.wikipedia.org/wiki/Duke_Nukem_Forever">Duke Nukem Forever</a></i>. The low sales of the title contributed to Take-Two's disappointing financial results in <a href="https://en.wikipedia.org/wiki/Fiscal_year">fiscal year</a> 2013.</p>
+
+<p><i>Spec Ops: The Line</i> was nominated for Best Shooter, and the White Phosphorus scene was nominated for Best Gaming Moments at the <a href="https://en.wikipedia.org/wiki/Golden_Joystick_Awards">Golden Joystick Awards</a>. At the 2012 <a href="https://en.wikipedia.org/wiki/Inside_Gaming_Awards">Inside Gaming Awards</a>, the game won for Best Narrative and was nominated for Best Game Cinematography. At IGN's Best of 2012 Awards, the game won for Best PC Story and Best PS3 Story, and also received nominations for Best Overall Story, Best PS3 Action Game, Best Xbox 360 Shooter Game, and Best Xbox 360 Story. The <a href="https://en.wikipedia.org/wiki/Academy_of_Interactive_Arts_&amp;_Sciences">Academy of Interactive Arts &amp; Sciences</a> nominated <i>Spec Ops: The Line</i> for "<a href="https://en.wikipedia.org/wiki/D.I.C.E._Award_for_Outstanding_Achievement_in_Story">Outstanding Achievement in Story</a>" at the <a href="https://en.wikipedia.org/wiki/16th_Annual_D.I.C.E._Awards">16th Annual D.I.C.E. Awards</a>.</p>
+
+<h2>Future</h2>
+
+<p>According to Yager Development, 2K never discussed the chance of developing a sequel during the game's development. Timo Ullman, managing director of Yager stated that the game failed to compete with other shooters, and that market for games like <i>Spec Ops: The Line</i> is too small. As a result, the team would not return to the franchise. Team members expressed a desire to move on and develop a game that has a much lighter tone.</p>
+
+
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

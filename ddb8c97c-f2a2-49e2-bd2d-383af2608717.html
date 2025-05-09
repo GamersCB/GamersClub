@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title> Dune: Spice Wars</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('ddb8c97c-f2a2-49e2-bd2d-383af2608717/e218727c-2089-4c86-813c-d190ed02a88d.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="ddb8c97c-f2a2-49e2-bd2d-383af2608717/cee07894-9e13-45c0-bd1e-d2bf6eb19daf.png"/>  Dune: Spice Wars</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="ddb8c97c-f2a2-49e2-bd2d-383af2608717/e13c7b77-fa6b-48ac-a6da-5b593193e100.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 14:41:31</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/8/2024">11/8/2024</a> 17:33:57</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-6TB STORE">6TB STORE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-9/14/2023">9/14/2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-78">78</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Estrategia">Estrategia</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Shiro Games">Shiro Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Funcom">Funcom</a><br/><a href="#quicklink-Shiro Games">Shiro Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Cooperativo">Cooperativo</a><br/><a href="#quicklink-Cooperativo En Línea">Cooperativo En Línea</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Jcj">Jcj</a><br/><a href="#quicklink-Jcj En Línea">Jcj En Línea</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1605220" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1605220/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1605220/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1605220" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1605220" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1605220" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/1605220/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-4X">4X</a><br/><a href="#quicklink-Bélicos">Bélicos</a><br/><a href="#quicklink-Ciencia ficción">Ciencia ficción</a><br/><a href="#quicklink-Construcción">Construcción</a><br/><a href="#quicklink-Construcción de bases">Construcción de bases</a><br/><a href="#quicklink-Cooperativos">Cooperativos</a><br/><a href="#quicklink-Diplomacia">Diplomacia</a><br/><a href="#quicklink-Economía">Economía</a><br/><a href="#quicklink-Estrategia">Estrategia</a><br/><a href="#quicklink-ETR">ETR</a><br/><a href="#quicklink-Gestión">Gestión</a><br/><a href="#quicklink-Gran estrategia">Gran estrategia</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-JcE">JcE</a><br/><a href="#quicklink-JcJ">JcJ</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Tácticas en tiempo real">Tácticas en tiempo real</a><br/><a href="#quicklink-Tácticos">Tácticos</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1605220/extras/titre1_v2_spanish.png?t=1729591878" /><br><br><strong>Este es tu desierto, tu Dune.</strong><br><br>Lidera tu facción y lucha por el control y la dominación del duro planeta desértico de Arrakis. La especia es el recurso más preciado del universo. La especia prolonga la vida, expande la conciencia y hace posible el viaje interestelar. Solo presente en Arrakis, es buscada por las fuerzas más influyentes del Imperio... <br><br>Explora el paisaje en busca de señales de gusanos o corre el riesgo de perder tus tropas y cosechadoras de especia a manos de colosales gusanos de arena que irrumpirán a través de las dunas para devorarlos por completo. Aplasta a tus oponentes en combate, supéralos a través de intrigas políticas y mínalos con tu red de espías engañosos.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1605220/extras/GIF_INTRO3.gif?t=1729591878" /><br><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1605220/extras/titre2_v2_spanish.png?t=1729591878" /><br><br>Experimenta el universo único de Dune, uno de los escenarios de ciencia ficción más influyentes jamás creados. Lleva a tu facción a la victoria con personajes icónicos, como el duque Leto Atreides, el barón Vladimir Harkonnen, el emperador Padishah Shaddam IV, Esmar Tuek y Liet Kynes. Mantente alerta mientras las facciones opuestas buscan tomar la delantera y el propio planeta amenaza con vastos desiertos, enormes tormentas y los temidos gusanos de arena.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1605220/extras/gif2_alt_v2.gif?t=1729591878" /><br><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1605220/extras/titre3_v2_spanish.png?t=1729591878" /><br><br><strong>4X en tiempo real.</strong><br><br>Equilibra la guerra abierta, el subterfugio, la influencia política y la supremacía económica para prevalecer y hacerte con el control del planeta más importante del universo. Usa agentes secretos para sabotear los planes de tus oponentes. Vota sobre resoluciones políticas en el Landsraad para impulsar tu estrategia. O domina a tus oponentes abrumándolos con un asalto total. <br><br>Explora Arrakis con ornitópteros para descubrir recursos, aldeas y puntos de interés. Expándete con tus tropas para tomar el control de las regiones. Explota los recursos a través de edificios y cosechadoras de especia para dominar la economía. Despliega tus naves espaciales y aviones para exterminar a tus enemigos, pero ten cuidado, ya que la agresión directa puede tener grandes repercusiones políticas.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1605220/extras/gif2_v9.gif?t=1729591878" /><br><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1605220/extras/titre4_v2_spanish.png?t=1729591878" /><br><br>Embárcate en un viaje estratégico en el que puedes elegir el camino del honor y la política o abrazar la violencia y el engaño. Elige entre varias facciones con habilidades y estilos de juego únicos. Cada facción se puede personalizar seleccionando consejeros que mejoren sus fortalezas y mitiguen sus debilidades. <br><br>Ya sea que elijas tácticas de supervivencia, tratos turbios, poderío militar o dominar el comercio de especia, hay una combinación de facción y consejero para las preferencias de cada jugador. Explora las posibilidades y da forma a tu propio destino en Arrakis. <br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1605220/extras/gif4_v3.gif?t=1729591878" /><br><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1605220/extras/titre5_v2_spanish.png?t=1729591878" /><br><br><strong>Modo conquista.</strong><br><br>Toma el control de una de las casas principales y lucha en una serie de escenarios y situaciones únicos. Personaliza tu casa inicial con una variedad de ventajas y mejoras para abordar los muchos objetivos desafiantes del modo conquista, asegurándote una experiencia única cada vez que juegues.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1605220/extras/gif5_v3.gif?t=1729591878" /><br><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1605220/extras/titre6_v2_spanish.png?t=1729591878" /><br><br>Forma un grupo en partidas 2 contra 2 o enfréntate en solitario en combates de hasta cuatro jugadores. Ajusta los parámetros de tu partida multijugador a tus preferencias, incluidos la dificultad de la IA, el tamaño del mapa, las condiciones de victoria y la agresión de los gusanos de arena, las tormentas y el número de sietches. Forma un equipo y prueba diferentes combinaciones de facciones para identificar sinergias y dominar Arrakis.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1605220/extras/GIF_planet.gif?t=1729591878" />
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

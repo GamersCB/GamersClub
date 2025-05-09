@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Call of Duty: Ghosts</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('0f4c313c-8a3f-49ad-a5cc-d3cefece6127/666a6a55-e74f-4a73-a8b1-8dc7d72221a0.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="0f4c313c-8a3f-49ad-a5cc-d3cefece6127/dd226a67-a195-442e-a0dc-0dc2dcd64d1c.png"/> Call of Duty: Ghosts</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="0f4c313c-8a3f-49ad-a5cc-d3cefece6127/488f6a90-fe43-4b0b-bf21-86c78cc091b1.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/18/2024">11/18/2024</a> 16:24:20</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/20/2024">11/20/2024</a> 17:51:27</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB DATOS">2TB DATOS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-3/25/2014">3/25/2014</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-63">63</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-68">68</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Infinity Ward">Infinity Ward</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Activision">Activision</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Con Sist. Antitrampas De Valve">Con Sist. Antitrampas De Valve</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Remote Play En TV">Remote Play En TV</a><br/><a href="#quicklink-Tablas De Clasificación De">Tablas De Clasificación De</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/209160" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/209160/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/209160/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=209160" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/209160" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=209160" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/209160/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-América">América</a><br/><a href="#quicklink-Basados en equipos">Basados en equipos</a><br/><a href="#quicklink-Bélicos">Bélicos</a><br/><a href="#quicklink-Competitivos">Competitivos</a><br/><a href="#quicklink-Cooperativos">Cooperativos</a><br/><a href="#quicklink-Cooperativos en línea">Cooperativos en línea</a><br/><a href="#quicklink-De ritmo rápido">De ritmo rápido</a><br/><a href="#quicklink-Disparos">Disparos</a><br/><a href="#quicklink-FPS">FPS</a><br/><a href="#quicklink-Futuristas">Futuristas</a><br/><a href="#quicklink-Hackeo">Hackeo</a><br/><a href="#quicklink-Lineales">Lineales</a><br/><a href="#quicklink-Militares">Militares</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Perros">Perros</a><br/><a href="#quicklink-Primera persona">Primera persona</a><br/><a href="#quicklink-Supervivencia / Terror">Supervivencia / Terror</a><br/><a href="#quicklink-Tácticos">Tácticos</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					Superados en número y en armamento. Pero nunca vencidos.<br><br>Call of Duty®: Ghosts es un extraordinario paso adelante en una de las mayores sagas de todos los tiempos en el sector del entretenimiento. Este nuevo capítulo de Call of Duty® cuenta con una nueva dinámica en la que el jugador forma parte de una nación destrozada que no lucha por la libertad, sino por sobrevivir.<br><br>Un motor de nueva generación da vida a esta nueva experiencia de Call of Duty y ofrece unos niveles espectaculares de realismo y rendimiento, sin perder la velocidad y la fluidez de las 60 imágenes por segundo en todas las plataformas.<br><br><strong>Campaña individual</strong><br><br><ul class="bb_ul"><li>Diez años después de un acontecimiento devastador, el equilibrio de poder mundial y las fronteras de Estados Unidos han cambiado para siempre. Respecto a lo que queda de las fuerzas de operaciones especiales, un misterioso grupo conocido como &quot;Ghosts&quot; está al frente de la lucha contra una nueva potencia mundial tecnológicamente superior.<br><br></li><li>Un nuevo universo de Call of Duty: por primera vez en la historia de la saga, los jugadores asumen el papel de perdedores en Call of Duty: Ghosts. Superados en número y en armamento, tendrán que luchar para recuperar una nación destruida en una narrativa intensamente personal. Los jugadores conocerán a nuevos personajes y visitarán lugares en un mundo que ha cambiado como nunca se había visto en Call of Duty®.</li></ul><br><strong>Multijugador</strong><br><br><ul class="bb_ul"><li>En Call of Duty®: Ghosts no creas solo una clase, sino que, por primera vez, creas un soldado. El nuevo sistema Crear un soldado te permite cambiar el aspecto físico de tu soldado: puedes elegir la cabeza, el tipo de cuerpo, el equipo de la cabeza, los accesorios y, también por primera vez en Call of Duty®, su sexo. Con 20 000 combinaciones posibles, es el sistema de personalización de personajes más flexible y exhaustivo de la historia de Call of Duty.<br><br></li><li>Los nuevos mapas dinámicos son la evolución del multijugador. Incluyen elementos interactivos y eventos activados por el jugador que hacen evolucionar el entorno durante la partida. El escenario entero puede transformarse y obligar a los jugadores a cambiar sus tácticas y estrategias.<br><br></li><li>Call of Duty: Ghosts presenta nuevos movimientos tácticos de los jugadores. El nuevo sistema de apoyo del entorno te permite inclinarte sobre los obstáculos sin añadir combinaciones de botones ni abandonar del todo la cobertura. El sistema de saltar por encima de objetos te permite moverte con fluidez sobre los objetos sin perder impulso. Y el deslizamiento de rodilla te permite pasar con naturalidad de un sprint a una posición agachada o cuerpo a tierra.<br><br></li><li>Call of Duty: Ghosts ofrece más de 20 NUEVAS rachas de bajas, como Juggernaut Maniac, helicóptero explorador, Vulture y el ataque ODIN. Incluso puedes llamar al perro guardián Riley, de la campaña individual, para que te proteja y ataque a tus enemigos. También hay más de 30 NUEVAS armas, entre las que se incluye una nueva clase: el fusil de francotirador. </li></ul><br><strong>Pelotones</strong><br><br><ul class="bb_ul"><li>Forma equipo y lleva hasta a 6 soldados al combate en el nuevo modo Pelotones, que toma lo mejor del multijugador y te permite jugar de forma individual o cooperativa con los soldados personalizados que hayas creado y subido de nivel en el multijugador.<br><br></li><li>Las opciones de armamento que elijas para los miembros de tu pelotón incidirán directamente en el comportamiento IA de tus compañeros. Dale a un soldado un fusil de precisión y actuará como un francotirador, o dale un subfusil y optará por correr y disparar.</li></ul>
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

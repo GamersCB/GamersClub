@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Layers of Fear</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('ef97ef7e-10d5-4946-89f7-1135e8849bd1/f4d2358d-d445-4d06-8474-090d98070567.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="ef97ef7e-10d5-4946-89f7-1135e8849bd1/c165c98f-c566-44c0-b2af-53a89b361341.png"/> Layers of Fear</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="ef97ef7e-10d5-4946-89f7-1135e8849bd1/66eeb2f9-65a1-4e40-a795-6d87a727876a.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 14:41:31</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/8/2024">11/8/2024</a> 17:34:00</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-6TB STORE">6TB STORE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-6/15/2023">6/15/2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-76">76</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Anshar Studios">Anshar Studios</a><br/><a href="#quicklink-Bloober Team">Bloober Team</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Bloober Team SA">Bloober Team SA</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Parcial Con Mando">Compat. Parcial Con Mando</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1946700" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1946700/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1946700/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1946700" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1946700" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1946700" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/1946700/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Buena trama">Buena trama</a><br/><a href="#quicklink-Emocionales">Emocionales</a><br/><a href="#quicklink-Exploración">Exploración</a><br/><a href="#quicklink-Ficción interactiva">Ficción interactiva</a><br/><a href="#quicklink-Finales múltiples">Finales múltiples</a><br/><a href="#quicklink-Inmersivo">Inmersivo</a><br/><a href="#quicklink-Misterio">Misterio</a><br/><a href="#quicklink-Narrativos">Narrativos</a><br/><a href="#quicklink-Oscuros">Oscuros</a><br/><a href="#quicklink-Para adultos">Para adultos</a><br/><a href="#quicklink-Primera persona">Primera persona</a><br/><a href="#quicklink-Psicodélicos">Psicodélicos</a><br/><a href="#quicklink-Puzles">Puzles</a><br/><a href="#quicklink-Simulador de caminar">Simulador de caminar</a><br/><a href="#quicklink-Sobrenaturales">Sobrenaturales</a><br/><a href="#quicklink-Terror">Terror</a><br/><a href="#quicklink-Terror psicológico">Terror psicológico</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					El lienzo aguarda sus últimas pinceladas. El escenario espera a su actor principal. La novela necesita su último capítulo. Es hora de plantar cara al miedo una última vez.<br><br>La saga, que ha dejado huella en los juegos de terror psicológico en primera persona centrados en la narrativa, vuelve con su historia final en Layers of Fear. Esta versión es la manera definitiva de experimentar esta saga tan aclamada, pues incluye Layers of Fear y Layers of Fear 2, así como todo el contenido descargable (con el nuevo DLC, «The Final note», que te dará una nueva perspectiva de la historia de Layers of Fear) y la nueva historia de la escritora, que hará que todo encaje. Layers of Fear utiliza Unreal Engine 5 y es compatible con las tecnologías de trazado de rayos y HDR. También cuenta con resolución 4K para hacer que los gráficos te proporcionen una experiencia aún más terrorífica e inmersiva.<br><br><strong>Layers of Fear: crea tu obra maestra</strong><br><br>«Lo más preciado, lo que siempre deseaste... ACÁBALO».<br><br>Explora una mansión de la época victoriana repleta de arte en la piel del pintor, cuya cordura se resquebraja como el óleo de un cuadro antiguo. Busca los materiales que necesitas para acabar tu obra maestra por una casa que cambia constantemente mientras intentas escapar de tu pasado. <br>DLC «Inheritance»: enfréntate a tu pasado<br><br>«Una vez me dijeron que la locura corre por las venas de mi familia... Es hora de detener esto».<br><br>Ponte en la piel de la hija del pintor para encontrar respuestas. ¿Qué secretos esconde esta casa? ¿Entenderás en algún momento la locura que afectó a tu padre? ¿Podrás perdonarlo? Puede que consigas encontrar lo que buscas en la casa, pero... solo si soportas revivir tu pasado.<br><br><strong>DLC «The Final Note»: indaga aún más.</strong><br><br>Un nuevo DLC que revela más información sobre el pintor, su musa y la historia de la familia, todo desde la perspectiva de la mujer del pintor. Esta historia adicional puede cambiar cómo ves a los personajes del primer juego y ayudarte a comprender sus acciones.<br><br><strong>Layers of Fear 2: da en el clavo.</strong><br><br> «El tiempo no espera a nadie, actor. No malgastes el nuestro». <br><br>Eres el actor principal en una película que se está rodando a bordo de un transatlántico, pero no todo es lo que parece. Explora el barco y descubre por qué eres perfecto para la última película del director (interpretado por Tony Todd). Te despiertas y recibes una sola orden: «Actúa». Pero ¿lo harás?<br><br><strong>Layers of Fear 2: The Final Prologue</strong><br><br>La primera expansión para la historia de Layers of Fear 2 te pondrá en la piel del director, y como tal, tendrás que tomar las riendas de una problemática producción de Hollywood. Adéntrate en la mente del creador de la película mientras tratas de crear tu última obra maestra, todo ello mientras el set de rodaje se sume en el caos.<br><br>Solo tú podrás dirigir la acción y cerciorarte de que lo que está en el guion llegué a la pantalla grande. Intenta conseguir la mejor toma y haz que se plasme tu idea de película de terror perfecta, y al mismo tiempo, enfréntate a tu oscuridad tanto interior como exterior, ya que pone en peligro todo el proyecto.<br><br>Este último capítulo de la historia de Layers of Fear está disponible como una ACTUALIZACIÓN GRATUITA para todos aquellos que ya tengan Layers of Fear. The Final Prologue estará disponible como un capítulo independiente en el menú principal del juego.<br><br><strong>«The Lighthouse Chapter»: combina las capas</strong><br><br>Adéntrate en un faro solitario y terrorífico con una nueva protagonista, la escritora, y descubre una historia nunca antes contada que enlaza toda la saga. ¿Qué misterios te esperan? Tendrás que descubrirlo.<br><br>Características del juego:<br><ul class="bb_ul"><li>Explora escenarios de lo más inquietantes y resuelve puzles para descubrir la narrativa que esconde esta experiencia de terror psicológico en primera persona.</li></ul><ul class="bb_ul"><li>Tres historias diferentes de protagonistas obsesionados con el arte (el pintor, el actor y la escritora), todas interconectadas para crear una experiencia inmersiva con una historia fascinante.</li></ul><ul class="bb_ul"><li>Incluye la totalidad de la saga Layers of Fear y sus DLC, por lo que podrás encontrar la respuesta a todas tus preguntas.</li></ul><ul class="bb_ul"><li>Nuevas mecánicas base que serán implementadas en Layers of Fear y su secuela, así como funciones adicionales que harán que los capítulos e historias se complementen perfectamente.</li></ul><ul class="bb_ul"><li>Layers of Fear ha sido rediseñado en Unreal Engine 5, y es compatible con el trazado de rayos, el HDR y la resolución 4K, que hacen que los gráficos sean mucho más realistas. </li></ul><ul class="bb_ul"><li>El nuevo sistema Lumen ofrece la experiencia de terror más inmersiva y visceral.</li></ul><ul class="bb_ul"><li>Una banda sonora terroríficamente bella compuesta por el aclamado y galardonado compositor Arek Reikowski. Su hipnótica música añade una capa más de tensión al juego y hará que te estremezcas.</li></ul>
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

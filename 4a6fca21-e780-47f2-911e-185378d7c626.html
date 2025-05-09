@@ -1,0 +1,316 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Fallout: London</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('4a6fca21-e780-47f2-911e-185378d7c626/59e77f5c-79be-465c-b4e0-18a5329f080e.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="4a6fca21-e780-47f2-911e-185378d7c626/3ee5ce7c-6896-4917-8795-11f8393794c3.png"/> Fallout: London</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="4a6fca21-e780-47f2-911e-185378d7c626/fb387f28-2fc6-4893-8250-5d9b0afd57c4.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 14:41:31</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/8/2024">11/8/2024</a> 17:37:31</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-6TB STORE">6TB STORE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-7/25/2024">7/25/2024</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Action role-playing">Action role-playing</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Team FOLON">Team FOLON</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Single-player">Single-player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/Fallout:_London" target="_blank">Wikipedia</a><br/><a href="https://fallout4london.com/" target="_blank">Fallout: London official website</a><br/><a href="https://www.imdb.com/title/tt17074640/" target="_blank">IMDb</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-[Game Engine] Creation Engine">[Game Engine] Creation Engine</a><br/><a href="#quicklink-[People] artist: Daniel Krutak">[People] artist: Daniel Krutak</a><br/><a href="#quicklink-[People] artist: Emily Kemp">[People] artist: Emily Kemp</a><br/><a href="#quicklink-[People] artist: Jean Martel">[People] artist: Jean Martel</a><br/><a href="#quicklink-[People] artist: Jordan Albon">[People] artist: Jordan Albon</a><br/><a href="#quicklink-[People] artist: Joseph Wills">[People] artist: Joseph Wills</a><br/><a href="#quicklink-[People] artist: Matthew Espinosa">[People] artist: Matthew Espinosa</a><br/><a href="#quicklink-[People] artist: Matthew Gibbs">[People] artist: Matthew Gibbs</a><br/><a href="#quicklink-[People] composer: Daniel Morrison Neil">[People] composer: Daniel Morrison Neil</a><br/><a href="#quicklink-[People] director: Dean Carter">[People] director: Dean Carter</a><br/><a href="#quicklink-[People] programmer: Callum J. Quick">[People] programmer: Callum J. Quick</a><br/><a href="#quicklink-[People] programmer: Vladislav Butyrin">[People] programmer: Vladislav Butyrin</a><br/><a href="#quicklink-[People] writer: Benjamin McCoy">[People] writer: Benjamin McCoy</a><br/><a href="#quicklink-[People] writer: Callum J. Quick">[People] writer: Callum J. Quick</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>Fallout: London</b></i> is a 2024 <a href="https://en.wikipedia.org/wiki/Total_conversion_mod">total conversion mod</a> developed by Team FOLON. It is based off <i><a href="https://en.wikipedia.org/wiki/Fallout_4">Fallout 4</a></i>, the 2015 <a href="https://en.wikipedia.org/wiki/Action_role-playing_game">action role-playing game</a> by  <a href="https://en.wikipedia.org/wiki/Bethesda_Softworks">Bethesda Softworks</a>. The mod takes place in a <a href="https://en.wikipedia.org/wiki/Post-apocalyptic">post-apocalyptic</a> rendition of <a href="https://en.wikipedia.org/wiki/London">London</a>, and is notable for its departure from the series' typical United States setting. Reviewers praised the scope and detail of <i>Fallout: London</i> for a free project, praising its use of British locations, themes, and cultural references in the <i>Fallout</i> setting, whilst critiquing the mod's bugs and performance issues upon release.</p>
+
+<h2>Gameplay</h2>
+
+<p><i>Fallout: London</i> is an <a href="https://en.wikipedia.org/wiki/Open_world">open world</a> <a href="https://en.wikipedia.org/wiki/Action_role-playing_game">action role-playing game</a>. At its core the game plays similarly to <i>Fallout 4</i>, while borrowing other elements from prior games and including entirely new elements. Returning features from <i>Fallout 4</i> include a camera that can switch between a <a href="https://en.wikipedia.org/wiki/First_person_(video_games)">first-person</a> and <a href="https://en.wikipedia.org/wiki/Third-person_(video_games)">third-person perspective</a>, its combat gameplay, V.A.T.S., and settlement building. The expanded dialogue system from all games prior to <i>Fallout 4</i> returns, which gives the player the ability to view every possible dialogue option in its entirety as opposed to <i>Fallout 4</i>'s abbreviated responses. While in conversation dialogues the player character is silent, similar to older titles, but the camera interactions during the dialogue behave similarly to <i>Fallout 4</i>.</p>
+
+<p>The player character uses the ATTA-Boy, a <a href="https://en.wikipedia.org/wiki/Reverse_engineering">reverse engineered</a> <a href="https://en.wikipedia.org/wiki/Pip-Boy">Pip-Boy</a> created by Angel. It functions similar to the Pip-Boy in that it functions as the player character's digital assistant. Quests, inventory, the world and local maps and more are managed through it. <a href="https://en.wikipedia.org/wiki/Power_Armor_(Fallout)">Power armour</a> has been removed, as according to Fallout's canon it was an American invention. Weapons and armor feature intricate crafting and customization operations, which allow the player to tune their weapons and armor to their personal tastes.</p>
+
+<p>At the start of the game players choose their character's gender, physical characteristics, and choose from several attributes to initially assign <a href="https://en.wikipedia.org/wiki/Experience_point">experience points</a> to. These range from strength to luck, and each time the character levels up they can choose to further upgrade these attributes, or upgrade other perks, such as the ability to pick locks easier. As the player progresses they will encounter companions who can accompany the player character in their adventures. <i>Fallout: London</i> features a canine companion, as has been tradition in the series, with the exception of <i><a href="https://en.wikipedia.org/wiki/Fallout_76">Fallout 76</a></i>. In keeping with British themes within the mod, the dog is a <a href="https://en.wikipedia.org/wiki/Bulldog">British Bulldog</a> named Churchill instead of the usual <a href="https://en.wikipedia.org/wiki/Dogmeat_(Fallout)">Dogmeat</a> character.</p>
+
+<h2>Story and setting</h2>
+
+<p><i>Fallout: London</i> is set in 2237, placing it between the events of <i><a href="https://en.wikipedia.org/wiki/Fallout_(video_game)">Fallout</a></i> and <i><a href="https://en.wikipedia.org/wiki/Fallout_2">Fallout 2</a></i>. The story begins after a lab break-in, where the player must escape to the surface. There are a number of factions vying for control of London during the story. The Gentry are London's rulers, based out of <a href="https://en.wikipedia.org/wiki/Westminster">Westminster</a>, descended from the pre-war government of the <a href="https://en.wikipedia.org/wiki/United_Kingdom">United Kingdom</a>. The Tommies are a militia backed by the Gentry that have a self-imposed value to protect London. The <a href="https://en.wikipedia.org/wiki/5th_Column">5th Column</a> is a pseudo-fascistic <a href="https://en.wikipedia.org/wiki/Paramilitary_organization">paramilitary organization</a> who wishes to fight against the Gentry, creating an authoritarian state with their leader, Eve Varney as supreme leader. The Camelot Movement is a medieval-inspired organization fighting to free London from Gentry rule to replace it with a <a href="https://en.wikipedia.org/wiki/Republic">republic</a>. Two rival gangs, the Isle of Dogs Syndicate and the Vagabonds, fight for territory. Lastly, Angel is a secretive organization capable of creating humanoid pale clones. The player's interactions with these factions determines the flow of the game and ultimately, the outcome. The player is given a choice between siding with Angel, the 5th Column or Camelot.</p>
+
+<p>In addition to interactions with these factions, the player will interact with other characters in the game, who provide quests that may or may not affect the final outcome. Players also will interact with a new species known as Thamesfolk, who appear green and somewhat fish-like, having evolved from the extreme radiation found in the <a href="https://en.wikipedia.org/wiki/River_Thames">River Thames</a>. These interactions will take players to famous locations in London, including <a href="https://en.wikipedia.org/wiki/Buckingham_Palace">Buckingham Palace</a>, <a href="https://en.wikipedia.org/wiki/10_Downing_Street">10 Downing Street</a>, the <a href="https://en.wikipedia.org/wiki/London_Eye">London Eye</a>, and <a href="https://en.wikipedia.org/wiki/Westminster_Abbey">Westminster Abbey</a>.</p>
+
+<h2>Development and release</h2>
+
+<p><i>Fallout: London</i> had been in development since 2019. It has a main map around the same size as <i><a href="https://en.wikipedia.org/wiki/Fallout_4">Fallout 4</a></i>, with its five smaller hub areas combining to be roughly the same size as the <a href="https://en.wikipedia.org/wiki/Fallout_4:_Far_Harbor"><i>Far Harbor</i> DLC</a>. In a 2024 interview with the <a href="https://en.wikipedia.org/wiki/BBC_News">BBC News</a> Team FOLON's Dean Carter discussed the development of the mod and its origins. He stated that while it started small, <a href="https://en.wikipedia.org/wiki/COVID-19">COVID-19</a> affected the world and, according to Carter, "we suddenly all found ourselves everyone on the team found ourselves basically locked inside for two years with nothing to do so we decided let's make a game." Carter noted that the mod only had roughly 20 testers compared to 150 for Bethesda's <i>Fallout 4</i>, and that such a small sample size could not have covered the wide range of computers and situations where bugs could occur. He stated that the team is hard at work on continuing to patch the game. Regarding support from Bethesda, Carter stated that there was "zero correspondence" from the company, but that Team FOLON did not expect any. The team have no plans for further <i>Fallout</i> mods after <i>London</i>, but instead hope to create an entirely new IP as an indie game studio. The team consisted of almost 100 modders and over 100 voice actors. The <a href="https://en.wikipedia.org/wiki/Russo-Ukrainian_War">Russo-Ukrainian War</a> took its toll on the team, with multiple members needing to suddenly abandon their positions. Horses and bicycles were planned, but ultimately cut due to bugs and other issues.</p>
+
+<p>The mod features full voice acting provided primarily by volunteers, but also features <i><a href="https://en.wikipedia.org/wiki/Doctor_Who">Doctor Who</a></i> actors <a href="https://en.wikipedia.org/wiki/Colin_Baker">Colin Baker</a> (the <a href="https://en.wikipedia.org/wiki/Sixth_Doctor">Sixth Doctor</a>) and <a href="https://en.wikipedia.org/wiki/Sylvester_McCoy">Sylvester McCoy</a> (the <a href="https://en.wikipedia.org/wiki/Seventh_Doctor">Seventh Doctor</a>). Former UK <a href="https://en.wikipedia.org/wiki/Speaker_of_the_House_of_Commons_(United_Kingdom)">Speaker of the House of Commons</a> <a href="https://en.wikipedia.org/wiki/John_Bercow">John Bercow</a> also appears as a robotic Speaker of the House. Voice actor <a href="https://en.wikipedia.org/wiki/Neil_Newbon">Neil Newbon</a>, who has provided the voice for <a href="https://en.wikipedia.org/wiki/Astarion">Astarion</a> from <i><a href="https://en.wikipedia.org/wiki/Baldur's_Gate_3">Baldur's Gate 3</a></i> and various voices in <i><a href="https://en.wikipedia.org/wiki/Resident_Evil_(series)">Resident Evil</a></i> games, voices Barry the Boat. <a href="https://en.wikipedia.org/wiki/Anna_Demetriou">Anna Demetriou</a>, known for Sophia from a <i><a href="https://en.wikipedia.org/wiki/A_Plague_Tale:_Requiem">A Plague Tale: Requiem</a></i>, also provides voices. Four hours of original music were created for the mod.</p>
+
+<p>An 18-minute gameplay trailer for the mod was released on May 18, 2022. The mod was initially scheduled to be released in 2023, and then scheduled to be released April 23, 2024. The game's release date was then pushed back a second time due to Bethesda's next gen update to <i>Fallout 4</i>. It was released on July 25, 2024. Team FOLON partnered with <a href="https://en.wikipedia.org/wiki/GOG.com">GOG.com</a> who distributed the mod. The mod could not be hosted on typical mod sites due to its sheer size. Within 24 hours it was reported that it had been downloaded over 500,000 times, making it the fastest redeemed title ever on the platform. A hotfix patch was released on August 9, 2024 which addressed the most pressing issues with the mod. The team continue work on a larger update. The <a href="https://en.wikipedia.org/wiki/Fallout_4#Updates">next-gen update</a> for <i>Fallout 4</i> on April 25, 2024 caused an unexpected rescheduling of the release date while the team assessed compatibility with the mod. The <i>Fallout 4</i> update received mixed reception. Ultimately the team opted to keep the mod on the pre-next-gen version of the game. For users of the <a href="https://en.wikipedia.org/wiki/Steam_(service)">Steam</a> version this required reverting the next-gen update, whilst GOG.com players had not yet received the update, and could install <i>Fallout: London</i> without need to downgrade.</p>
+
+<h2>Reception</h2>
+
+<p>Upon release, <i>Fallout: London</i> received praise for its setting and <a href="https://en.wikipedia.org/wiki/Worldbuilding">worldbuilding</a>, although criticism was directed towards the mod's bugs and technical issues present upon release. Many reviewers applauded the scope and detail of the game for a free modification, with Joshua Wolens of <i><a href="https://en.wikipedia.org/wiki/PC_Gamer">PC Gamer</a></i> describing the project as an "impressive modding achievement", and Lewis White of <i><a href="https://en.wikipedia.org/wiki/PCGamesN">PCGamesN</a></i> remarking that the mod was "sprawling" and "deserved to be celebrated as a monument to fan dedication".</p>
+
+<p>Critics praised the mod's world, characters, and interpretation of <i>Fallout</i> within an English setting. Claus Larsen of <i>Gamereactor</i> considered its setting to be detailed and authentic, highlighting the game's "English charm and eccentricity" to be captured in its voice acting, cultural references, factions and landmarks. Ravi Sinha of <i>GamingBolt</i> commended the mod's "attention to detail" and "well-realized environments", describing the "darker mood" of the setting as immersive and evocative of "a retrofuturistic London that's gone to hell and back". White highlighted the mod's "anglicisation of key gameplay features, including items, weapons, easter eggs and its "meticulously thought-out" factions. Wolens praised the "fun, thoroughly British pastiches" of its setting and characters.</p>
+
+<p>However, <i>Fallout: London</i> received criticism for the bugs and technical issues upon its release. Many critics noted the game experienced frequent <a href="https://en.wikipedia.org/wiki/Crash_(computing)">crashes</a>, with Wolens describing the mod was "barely playable" and Sinha concurring the poor technical performance was a "hurdle" to enjoying the game. Larsen cited additional issues, including problems with quest design and inconsistencies in the voice recordings of characters. Nic Reuben of <i><a href="https://en.wikipedia.org/wiki/Rock_Paper_Shotgun">Rock Paper Shotgun</a></i> similarly expressed frustration with the mod, remarking that the "extra mods and settings" required to make <i>Fallout: London</i> stable exceeded his personal tolerance and recommended waiting for a patch.</p>
+
+
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

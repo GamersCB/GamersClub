@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Assassin&#39;s Creed Rogue </title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('4b2c34e5-fcad-49d8-ae19-16d7ab9a0fee/727f34db-9c04-4a24-ac21-083031cecf50.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="4b2c34e5-fcad-49d8-ae19-16d7ab9a0fee/3256eade-ddc9-4ba9-8754-6b27fd4a21ec.png"/> Assassin&#39;s Creed Rogue </h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="4b2c34e5-fcad-49d8-ae19-16d7ab9a0fee/4df93740-873b-405e-b0bc-69407030e324.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 14:41:31</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/8/2024">11/8/2024</a> 17:34:58</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-6TB STORE">6TB STORE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-3/9/2015">3/9/2015</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-83">83</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-74">74</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Ubisoft Kiev">Ubisoft Kiev</a><br/><a href="#quicklink-Ubisoft Sofia">Ubisoft Sofia</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Ubisoft">Ubisoft</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Compat. Parcial Con Mando">Compat. Parcial Con Mando</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/311560" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/311560/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/311560/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=311560" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/311560" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=311560" target="_blank">PCGamingWiki</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Acción y aventura">Acción y aventura</a><br/><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-Asesinos">Asesinos</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Buena trama">Buena trama</a><br/><a href="#quicklink-Cinematográficos">Cinematográficos</a><br/><a href="#quicklink-Cooperativos">Cooperativos</a><br/><a href="#quicklink-Eventos rápidos">Eventos rápidos</a><br/><a href="#quicklink-Históricos">Históricos</a><br/><a href="#quicklink-Lineales">Lineales</a><br/><a href="#quicklink-Marítimos">Marítimos</a><br/><a href="#quicklink-Mundo abierto">Mundo abierto</a><br/><a href="#quicklink-Parkour">Parkour</a><br/><a href="#quicklink-Piratas">Piratas</a><br/><a href="#quicklink-Puzles">Puzles</a><br/><a href="#quicklink-Sigilo">Sigilo</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Tercera persona">Tercera persona</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<h2 class="bb_tag">Argumento</h2>Siglo XVIII. América del Norte. Entre el caos y la violencia de la Guerra franco-india, Shay Patrick Cormac, un joven y valiente miembro de la orden de los Assassin, experimenta una oscura transformación que afectará de forma definitiva al devenir de la Hermandad. Tras una dura pelea por una misión que fracasa trágicamente, Shay decide acabar con todos aquellos que le traicionaron y convertirse por tanto en el cazador de Assasins más temido de la historia.<br><br>Presentamos Assassin’s Creed Rogue, el capítulo más oscuro de la franquicia Assassin's Creed hasta la fecha. Vivirás en la piel de Shay la lenta transformación que le llevará de ser un Assassin a un cazador de Assassins. Sigue tu propio credo y emprende un extraordinario viaje en el que recorrerás la ciudad de Nueva York, valles y ríos en plena naturaleza salvaje, hasta llegar a las heladas aguas del océano Atlántico Norte en busca de tu gran objetivo: acabar con los Assassins.<h2 class="bb_tag">Características principales</h2><ul class="bb_ul"><li> <strong>Conviértete en el cazador de Assassins definitivo</strong> - Experimenta por primera vez el universo de Assassin's Creed desde la perspectiva de un Templario. Adopta el rol de Shay, quien además de sus letales habilidades como Maestro Assassin posee también habilidades y armas nunca vistas hasta hoy:<br>o	Usa el letal rifle de aire de Shay en combates de corto y largo alcance. Distrae, elimina o confunde a tus enemigos usando distintos tipos de munición, incluyendo balas y granadas especiales.<br>o	Protégete de los Assassins ocultos entre la multitud con tu vista del águila mejorada. Usa tu vista del águila para controlar en todo momento el espacio a tu alrededor y detecta a los Assassins ocultos en las sombras, en los tejados, o entre la gente.<br><br></li><li> <strong>Adéntrate lentamente en la Oscuridad</strong> - Sé testigo de la transformación de Shay, de un Assassin fiel seguidor del credo a un sombrío y entregado templario. Experimenta en primera persona todas las vivencias que harán tomar a Shay un oscuro camino hacia una maldición que cambiará para siempre el destino de la Hermandad de los Assassins.<br><br></li><li> <strong>Estilo de juego naval nuevo y mejorado</strong> - Zarpa con tu navío, el Morrigan, y ábrete camino a través de los mares helados del Atlántico Norte y las estrechas aguas de los ríos de los valles norteamericanos. Assassin’s Creed® Rogue continúa la premiada experiencia naval de Assassin’s Creed® IV Black Flag™ con nuevas mecánicas de juego que incluyen:<br>o	Nuevas tácticas enemigas: defiéndete de las maniobras de abordaje de los Assassins cuando intenten atacar tu barco y derrotar a tus hombres. Lucha rápidamente contra ellos para evitar perder a muchos miembros de tu tripulación.<br>o	Dispondrás de nuevas armas, como el aceite hirviendo que deja tras de sí un reguero de fuego con el que quemarás a los barcos enemigos, o la ametralladora Puckle, capaz de mantener un fuego sostenido devastador.<br>o	Aprovéchate de los hielos árticos para ganar ventaja: destruye icebergs para encontrar más botines o embiste placas de hielo para dejar atrás a los barcos enemigos.<br><br></li><li> <strong>Un enorme y variado mundo abierto</strong> - La historia de Shay te permitirá explorar tres escenarios únicos:<br>o	El océano Atlántico Norte. Experimenta los vientos helados y contempla los impresionantes icebergs árticos en este nuevo escenario de combate naval.<br>o	El Valle del Río. Un escenario híbrido de la frontera nativa americana que combina la navegación sin límites por los ríos y la exploración del terreno que los rodea.<br>o	La ciudad de Nueva York. Una de las más conocidas del mundo, recreada al detalle tal y como era en el siglo XVIII.</li></ul><br>MEJORA TU EXPERIENCIA CON TOBII EYE TRACKING<br>Tus ojos guiarán el camino con Tobii Eye Tracking (sistema de seguimiento visual). Dirige el viaje de tu personaje a través de Norte America o el Atlántico Norte mientras te concentras en el camino que te espera por delante. La función de Auto-Pausa te ayudará a asegurarte de no perderte ni un Segundo de acción, eso en el caso poco probable de que logres quitar tu atención de la pantalla. <br>Dispositivos compatibles:  Tobii Eye Tracker 4C, Alienware 17 Notebook, Acer Predator Notebook 21 X, MSI GT72 Notebook, Acer Predator Monitors Z301CT, Z271T, XB271HUT
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

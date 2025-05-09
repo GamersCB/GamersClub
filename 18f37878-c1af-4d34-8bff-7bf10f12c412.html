@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hades II </title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('18f37878-c1af-4d34-8bff-7bf10f12c412/1ccb423d-241a-408d-8155-2382622782a4.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="18f37878-c1af-4d34-8bff-7bf10f12c412/ae50d320-e07c-425d-9cb1-ae53ad56cfcc.png"/> Hades II </h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="18f37878-c1af-4d34-8bff-7bf10f12c412/152636df-97d2-4f38-aafd-d92e3c933d5f.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 14:41:31</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/8/2024">11/8/2024</a> 17:33:41</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-6TB STORE">6TB STORE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-5/6/2024">5/6/2024</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-93">93</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acceso anticipado">Acceso anticipado</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Rol">Rol</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Supergiant Games">Supergiant Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Supergiant Games">Supergiant Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Subtítulos Disponibles">Subtítulos Disponibles</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1145350" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1145350/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1145350/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1145350" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1145350" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1145350" target="_blank">PCGamingWiki</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acceso anticipado">Acceso anticipado</a><br/><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-Buena trama">Buena trama</a><br/><a href="#quicklink-Dibujados a mano">Dibujados a mano</a><br/><a href="#quicklink-Difíciles">Difíciles</a><br/><a href="#quicklink-Exploración de mazmorras">Exploración de mazmorras</a><br/><a href="#quicklink-Hack and slash">Hack and slash</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Isométricos">Isométricos</a><br/><a href="#quicklink-Mitología">Mitología</a><br/><a href="#quicklink-Muerte permanente">Muerte permanente</a><br/><a href="#quicklink-Protagonista femenina">Protagonista femenina</a><br/><a href="#quicklink-Roguelike">Roguelike</a><br/><a href="#quicklink-Roguelike de acción">Roguelike de acción</a><br/><a href="#quicklink-Roguelite">Roguelite</a><br/><a href="#quicklink-Rol">Rol</a><br/><a href="#quicklink-Rol de acción">Rol de acción</a><br/><a href="#quicklink-Tipo «Dark Souls»">Tipo «Dark Souls»</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145350/extras/221130_IRIS_REVEAL_TRAILER_V14_forGIF_C.gif?t=1729834138" /><br>La primera continuación de Supergiant Games se basa en los mejores aspectos del juego de mazmorras <i>divino </i> de tipo <i>rogue-like</i> y ofrece una experiencia de juego totalmente nueva, llena de acción y con una rejugabilidad ilimitada, con el Inframundo de los mitos griegos y su conexión con los albores de la brujería como telón de fondo.<h2 class="bb_tag">ÁBRETE PASO MÁS ALLÁ DEL INFRAMUNDO</h2>Encarnarás a la Princesa inmortal del Inframundo, y explorarás un mundo más extenso y elaborado. Tendrás que derrotar a las fuerzas del Titán del Tiempo con la ayuda del Olimpo, en una historia desgarradora que se irá desgranando poco a poco con cada uno de tus logros o reveses.<h2 class="bb_tag">DOMINA LA BRUJERÍA Y LAS ARTES OSCURAS</h2>Imbuye de magia ancestral tus legendarias Armas de la Noche para que nadie pueda interponerse en tu camino. Poténciate con las bendiciones de más de una docena de dioses del Olimpo, desde Apolo hasta Zeus. Tendrás a tu disposición un sinfín de opciones para mejorar tus habilidades.<br> <br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145350/extras/Frinos2.gif?t=1729834138" /><h2 class="bb_tag">MÉZCLATE CON (MÁS) DIOSES, FANTASMAS Y MONSTRUOS</h2>Conoce a decenas de personajes totalmente desarrollados con un montón de caras nuevas y antiguas amistades. Además, contarás con varios tipos de interacciones que te servirán para estrechar tus lazos y vivir innumerables momentos narrativos generados por tus propias decisiones.<h2 class="bb_tag">CADA INTENTO FORMA UNA AVENTURA DIFERENTE</h2>Te esperan nuevas ubicaciones, desafíos, mejoras y sorpresas hechas a medida con cada uno de tus múltiples periplos por un Inframundo en constante cambio. Revela los misterios del Altar de los Arcanos, domina espíritus familiares y reúne materiales con tus Herramientas de los Ocultos para acercarte cada vez más a tu objetivo.<h2 class="bb_tag">LAS VENTAJAS DE LA INMORTALIDAD</h2>Gracias a la gran cantidad de mejoras permanentes y el regreso del modo Dios, no es necesario que tengas poderes divinos para disfrutar de todo lo que contiene <strong>Hades II</strong>. De todos modos, si resulta que los tienes, podrás enfrentarte a desafíos progresivos con mejores recompensas y la posibilidad de alardear de tus proezas.<br> <br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145350/extras/H2_EA_comp.png?t=1729834138" /><h2 class="bb_tag">CON LA FIRMA DE SUPERGIANT</h2>Los títulos de Supergiant se distinguen por su presentación rica y atmosférica y su narración estrechamente ligada a la acción. Gracias a sus magníficos nuevos entornos pintados a mano, sus personajes tridimensionales con movimientos en tiempo real más fluidos y su electrizante banda sonora original, el mundo mítico que sirve como marco para la historia se muestra rebosante de vida.<h2 class="bb_tag">CONCEBIDO CON EL ACCESO ANTICIPADO EN MENTE</h2>La primera entrega de <strong>Hades</strong> fue diseñada desde sus primeros pasos con el acceso anticipado en mente, y <strong>Hades II</strong> sigue la misma estela. Los comentarios de la comunidad de jugadores nos ayudarán a dar forma a varias actualizaciones de contenido en las que se incorporarán nuevas características, personajes, entornos y muchas cosas más, a medida que el juego va llegando poco a poco a su versión final.
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

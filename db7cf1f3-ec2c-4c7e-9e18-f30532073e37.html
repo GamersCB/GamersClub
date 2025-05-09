@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Coreborn</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('db7cf1f3-ec2c-4c7e-9e18-f30532073e37/5e12579f-ff6c-4965-91c5-1a9fe6edc197.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="db7cf1f3-ec2c-4c7e-9e18-f30532073e37/e3bfe2ce-ff41-4171-8945-0e6b5448a50f.png"/> Coreborn</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="db7cf1f3-ec2c-4c7e-9e18-f30532073e37/99ed6fb3-09b8-49cc-bf79-fe5a96b821bb.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/13/2024">11/13/2024</a> 0:35:38</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/13/2024">11/13/2024</a> 1:05:42</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-PORCHE">PORCHE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-6/19/2024">6/19/2024</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-63">63</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Casual">Casual</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Multijugador masivo">Multijugador masivo</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Rol">Rol</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Blankhans">Blankhans</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Blankhans">Blankhans</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cooperativo">Cooperativo</a><br/><a href="#quicklink-Cooperativo En Línea">Cooperativo En Línea</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1926090" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1926090/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1926090/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1926090" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1926090" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1926090" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/1926090/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-3D">3D</a><br/><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Acción y aventura">Acción y aventura</a><br/><a href="#quicklink-Casuales">Casuales</a><br/><a href="#quicklink-Coloridos">Coloridos</a><br/><a href="#quicklink-Combate">Combate</a><br/><a href="#quicklink-Construcción">Construcción</a><br/><a href="#quicklink-Exploración">Exploración</a><br/><a href="#quicklink-Fabricación">Fabricación</a><br/><a href="#quicklink-Fantasía">Fantasía</a><br/><a href="#quicklink-JcE">JcE</a><br/><a href="#quicklink-Mitos y leyendas">Mitos y leyendas</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Mundo abierto">Mundo abierto</a><br/><a href="#quicklink-Personalización de armas">Personalización de armas</a><br/><a href="#quicklink-Personalización de personajes">Personalización de personajes</a><br/><a href="#quicklink-Relajantes">Relajantes</a><br/><a href="#quicklink-Sandbox">Sandbox</a><br/><a href="#quicklink-Supervivencia">Supervivencia</a><br/><a href="#quicklink-Tercera persona">Tercera persona</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1926090/extras/completed_33frames.gif?t=1719331668" /><br><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1926090/extras/Break_Up_Lines_Header.png?t=1719331668" /><br><br><br>Embárcate en una divertida aventura de supervivencia: Adéntrate en el extenso mundo de Tormentosia, donde las antiguas tensiones entre varias razas han desembocado en un conflicto interminable. La situación alcanzó su punto álgido cuando Sorgoth el Devorador invadió el mundo, causando una destrucción casi total. En un último esfuerzo por salvar lo que queda, los seis reinos restantes unieron su poder y sus recursos para crear una nueva tecnología revolucionaria: el Ultracore.<br><br>Pero no te dejes engañar, ya que la oscuridad se filtra en los bordes de las tierras aparentemente seguras. Vuestra generación heredó este mundo. Todos sois Coreborn. ¿Vuestro objetivo? Reclamar. Reconstruir. Restaurar.<br><br><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1926090/extras/Break_Up_Lines_Reduced.png?t=1719331668" /><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1926090/extras/Divider_Survive.png?t=1719331668" /><br><br>Reclama la tierra como tuya: construye tus propias ciudades para crear un hogar próspero para ti y tus amigos. Repele a las fuerzas del mal, defiende tu ciudad de los esbirros de Sorgoth y no bajes nunca la guardia. Aprende una gran variedad de profesiones y habilidades, monta en monturas únicas y domina el combate en el mundo abierto. Conviértete en un miembro importante y valioso de tu comunidad, o juega en solitario o con un grupo elegido de amigos en servidores privados, reinos oficiales o tu propia sesión local.<br><br><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1926090/extras/Break_Up_Lines_Reduced.png?t=1719331668" /><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1926090/extras/Divider_Adventure.png?t=1719331668" /><br><br><br>Prepárate para desafiantes aventuras: Coopera con otros aventureros en partidas online PvE para recuperar la tierra de las fuerzas de Sorgoth o embárcate en aventuras en solitario. Recoge botín para crear nuevas armaduras y armas, haciendo progresar constantemente a tu personaje, tu equipo y tus asentamientos. Los más fuertes sobrevivirán para enfrentarse a los numerosos desafíos de la tierra, ¡incluidas emocionantes aventuras con valiosos premios!<br><br>Reúne recursos y aumenta tus defensas: Reunir recursos es clave para sobrevivir en Coreborn. Utiliza cientos de recetas individuales y construye estructuras para resistir las interminables oleadas de esbirros de Sorgoth. Reúnete con amigos para conseguir aún más recursos y recompensas.<br><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1926090/extras/Break_Up_Lines_Reduced.png?t=1719331668" /><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1926090/extras/Divider_Community.png?t=1719331668" /><br><br><br>Coopera con jugadores de todo el mundo: Únete a servidores públicos y conoce a jugadores de todo el planeta. Intercambia objetos, reúne recursos, encuentra nuevos compañeros de aventuras o simplemente disfruta de su compañía durante eventos y festividades estacionales.<br><br><br>Descubre la sabiduría de Tormentosia: Cuanto más explores, más descubrirás sobre esta tierra tan diversa. Descubre misiones, lugares ocultos con enemigos y recursos especiales, y reconstruye la historia de Tormentosia.<br><br>Vive nuestra propia aventura en Coreborn: Nations of the Ultracore. Sumérgete en un mundo donde reinan la colaboración, la creatividad y la exploración. Tanto si buscas un juego de supervivencia escalofriante como un emocionante juego cooperativo, Coreborn tiene algo para cada aventurero. ¿Estás listo para reclamar, reconstruir y restaurar?<br><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1926090/extras/Break_Up_Lines_Reduced.png?t=1719331668" /><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1926090/extras/halo_attack2.gif?t=1719331668" /><h2 class="bb_tag">Descubre aún más:</h2><br><ul class="bb_ul"><li>Construye tus propias ciudades, hazlas progresar y defiéndelas por todo el enorme mapa<br></li><li>Descubre lugares ocultos con enemigos y recursos especiales.<br></li><li>Enfréntate a los elementos y protégete de las influencias externas del duro entorno.<br></li><li>Desbloquea monturas únicas para recorrer el mundo y desbloquear nuevas zonas<br></li><li>Configura tus propios servidores privados para disfrutar del juego con amigos o jugar en cooperativo local<br></li><li>Únete a servidores públicos para participar en eventos y conocer gente<br></li><li>Evoluciona en tu profesión entrenada</li></ul>
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

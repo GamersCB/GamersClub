@@ -1,0 +1,408 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Battlefield: Bad Company 2</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('55eaeab5-045c-47f2-b2f2-0cfe59a96947/a4250d25-7e01-450e-a9d4-8b4eff71af42.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="55eaeab5-045c-47f2-b2f2-0cfe59a96947/8503040f-7804-46ad-85de-6d209d04c9b2.png"/> Battlefield: Bad Company 2</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="55eaeab5-045c-47f2-b2f2-0cfe59a96947/da8d90f9-da34-407e-8a88-d00bc509a2be.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 14:41:31</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/8/2024">11/8/2024</a> 17:35:20</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-6TB STORE">6TB STORE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-3/2/2010">3/2/2010</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-82">82</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-First-person shooter">First-person shooter</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Tactical shooter">Tactical shooter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-DICE">DICE</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Electronic Arts">Electronic Arts</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single-player">Single-player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/Battlefield:_Bad_Company_2" target="_blank">Wikipedia</a><br/><a href="http://www.battlefieldbadcompany2.com/" target="_blank">Official website</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-[Game Engine] Frostbite 1.5">[Game Engine] Frostbite 1.5</a><br/><a href="#quicklink-[People] artist: Gustav Tilleby">[People] artist: Gustav Tilleby</a><br/><a href="#quicklink-[People] composer: Joel Eriksson">[People] composer: Joel Eriksson</a><br/><a href="#quicklink-[People] composer: Mikael Karlsson">[People] composer: Mikael Karlsson</a><br/><a href="#quicklink-[People] designer: Alan Kertz">[People] designer: Alan Kertz</a><br/><a href="#quicklink-[People] designer: David Goldfarb">[People] designer: David Goldfarb</a><br/><a href="#quicklink-[People] producer: Anders Gyllenberg">[People] producer: Anders Gyllenberg</a><br/><a href="#quicklink-[People] producer: Djörn Johnsson">[People] producer: Djörn Johnsson</a><br/><a href="#quicklink-[People] producer: John Hargelid">[People] producer: John Hargelid</a><br/><a href="#quicklink-[People] producer: Patrick Bach">[People] producer: Patrick Bach</a><br/><a href="#quicklink-[People] programmer: Mikael Kalms">[People] programmer: Mikael Kalms</a><br/><a href="#quicklink-[People] programmer: Vidar Nygren">[People] programmer: Vidar Nygren</a><br/><a href="#quicklink-[People] writer: David Goldfarb">[People] writer: David Goldfarb</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>Battlefield: Bad Company 2</b></i> is a <a href="https://en.wikipedia.org/wiki/First-person_shooter">first-person shooter</a> <a href="https://en.wikipedia.org/wiki/Video_game">video game</a> developed by <a href="https://en.wikipedia.org/wiki/DICE_(company)">DICE</a> and published by <a href="https://en.wikipedia.org/wiki/Electronic_Arts">Electronic Arts</a> for <a href="https://en.wikipedia.org/wiki/Microsoft_Windows">Microsoft Windows</a>, <a href="https://en.wikipedia.org/wiki/PlayStation_3">PlayStation 3</a>, <a href="https://en.wikipedia.org/wiki/Xbox_360">Xbox 360</a>, <a href="https://en.wikipedia.org/wiki/IOS">iOS</a>, <a href="https://en.wikipedia.org/wiki/Android_(operating_system)">Android</a> and <a href="https://en.wikipedia.org/wiki/Kindle_Fire">Kindle Fire</a> systems. It is a direct <a href="https://en.wikipedia.org/wiki/Sequel">sequel</a> to <i><a href="https://en.wikipedia.org/wiki/Battlefield:_Bad_Company">Battlefield: Bad Company</a></i> and is part of the <i><a href="https://en.wikipedia.org/wiki/Battlefield_(video_game_series)">Battlefield</a></i> game series. It was released worldwide in March 2010. The iOS port was released on the <a href="https://en.wikipedia.org/wiki/App_Store_(iOS)">App Store</a> on December 16, 2010. The Android and Kindle Fire versions were released in June 2012.</p>
+
+<p>The game is primarily a <a href="https://en.wikipedia.org/wiki/Squad">squad</a>-level first-person shooter based in a contemporary <a href="https://en.wikipedia.org/wiki/Modern_warfare">modern warfare</a> setting. Additionally, the game includes a <a href="https://en.wikipedia.org/wiki/Single-player_video_game">single-player</a> campaign, where the player re-assumes the role of Preston Marlowe, the <a href="https://en.wikipedia.org/wiki/Protagonist">protagonist</a> of the original game, and his squad as they attempt to stop a Russian super-weapon. The game's <a href="https://en.wikipedia.org/wiki/Frostbite_(game_engine)">Frostbite 1.5</a> engine allows for destructible environments. <a href="https://en.wikipedia.org/wiki/Multiplayer_video_game">Multiplayer</a> maps, which allow for five different game modes, contain a wide selection of vehicles, aircraft and emplacements.</p>
+
+<p>The game was met with positive reception from critics, garnering a <a href="https://en.wikipedia.org/wiki/Weighted_arithmetic_mean">mean</a> of 88 from aggregator <a href="https://en.wikipedia.org/wiki/Metacritic">Metacritic</a> for the Xbox 360 and PS3 versions, and 87 for the PC version. It became a commercial success, selling more than twelve million units since its initial release. Seven VIP map packs, as well as a <a href="https://en.wikipedia.org/wiki/Downloadable_content">downloadable</a> game mode, were added after launch; an expansion pack, <i><a href="https://en.wikipedia.org/wiki/Battlefield:_Bad_Company_2:_Vietnam">Battlefield: Bad Company 2: Vietnam</a></i> (centered on the <a href="https://en.wikipedia.org/wiki/Vietnam_War">Vietnam War</a>), released on December 21, 2010.</p>
+
+<h2>Gameplay</h2>
+
+<p>While <i>Bad Company 2</i> is primarily a first-person shooter, it follows other games in the series by allowing the player to control certain vehicles, including <a href="https://en.wikipedia.org/wiki/All-terrain_vehicle">ATVs</a>, <a href="https://en.wikipedia.org/wiki/Armoured_personnel_carrier">APCs</a>, tanks, and helicopters. On foot, players are given access to a variety of real-world small arms such as <a href="https://en.wikipedia.org/wiki/Assault_rifle">assault rifles</a> and <a href="https://en.wikipedia.org/wiki/Machine_gun">machine guns</a>. Players can also jump, crouch, and sprint. They can carry one primary weapon and a <a href="https://en.wikipedia.org/wiki/Handgun">pistol</a> in multiplayer, or two primary weapons in single-player, as well as <a href="https://en.wikipedia.org/wiki/Hand_grenade">grenades</a> and other equipment. Players can fire "from the hip", but zooming in and using <a href="https://en.wikipedia.org/wiki/Iron_sight">iron sights</a>, <a href="https://en.wikipedia.org/wiki/Reflector_sight">reflex sights</a>, or <a href="https://en.wikipedia.org/wiki/Telescopic_sight">telescopic sights</a> (depending on the weapon) will provide much better accuracy when shooting.</p>
+
+<p><i>Bad Company 2</i> heavily emphasizes destructible environments. Large sections of most buildings can be destroyed by explosives, and some walls and fences break down under barrages of bullets, with the game's <a href="https://en.wikipedia.org/wiki/Physics_engine">physics engine</a> realistically simulating the destruction.</p>
+
+<p>The game utilizes a "<a href="https://en.wikipedia.org/wiki/Health_(gaming)#Recharging_health">regenerating health</a>" system, rather than giving players <a href="https://en.wikipedia.org/wiki/Health_(gaming)">health points</a> as older games in the <i>Battlefield</i> series have done. To accommodate this in multiplayer, the "Medic" equipment now accelerates health regeneration rather than directly restoring the player's health. If the player is wounded, they must take cover and avoid damage in order to regain health. A heavily wounded player will see dirt and blood around the edges of the screen, as an illustration of injury.</p>
+
+<h3>Single-player</h3>
+
+<p><i>Bad Company 2</i> features a story-driven single-player campaign. For most of the narrative, the player takes control of Preston Marlowe, one of the members of the titular "Bad Company". The exception to this is the first mission, which is set prior to the rest of the campaign. Each mission is divided into a series of objectives, often interspersed with <a href="https://en.wikipedia.org/wiki/Cutscene">cutscenes</a> which simulate the style of <a href="https://en.wikipedia.org/wiki/War_film">war films</a>. While the other members of Bad Company will engage in combat, the game relies upon the player to complete the objectives and kill most of the enemies. Although the player's <a href="https://en.wikipedia.org/wiki/Non-player_character">computer-controlled</a> allies can never die, they cannot carry out objectives. Aside from <a href="https://en.wikipedia.org/wiki/Infantry">infantry</a> combat, the campaign contains several missions in which the player controls a vehicle, or mans a weapon turret while a teammate controls the vehicle.</p>
+
+<p>Each weapon in the campaign is considered a collectible - the first time the player picks up that type of weapon, a "Collectable Unlocked" message appears. There are also sensor stations throughout the campaign which the player can find and destroy - this is also recorded in the campaign stats. "Supply Drop" crates are scattered throughout the missions, where the player can exchange weapons and replenish ammo. The Supply Drop crates will remember any weapon the player picks up and this weapon will then be available for the rest of the campaign.</p>
+
+<p>Multiplayer is class-based, with four classes: Assault, Engineer, Medic, and Recon. Each class has a variety of unique weapons and equipment, and serves a specific role in combat. There are also some weapons that can be used by any class, such as pistols and <a href="https://en.wikipedia.org/wiki/Shotgun">shotguns</a>. Each class gains experience and levels up separately.</p>
+
+<p>New items are unlocked by earning <a href="https://en.wikipedia.org/wiki/Experience_point">experience points</a>, which are gained for performing actions conducive to the goals of the player's team, such as eliminating enemy players, healing teammates, or capturing or defending points of interest. These points count towards a total of 50 ranks. Bonuses to the base number of points can be awarded under certain circumstances (such as eliminating an enemy by means of a headshot).</p>
+
+<p>Multiplayer mode features 15 vehicles, including new additions, such as the <a href="https://en.wikipedia.org/wiki/Sikorsky_UH-60_Black_Hawk">Sikorsky UH-60 Black Hawk</a>, a <a href="https://en.wikipedia.org/wiki/Quad_bike">quad bike</a>, a four-man <a href="https://en.wikipedia.org/wiki/Patrol_boat">patrol boat</a>, a personal <a href="https://en.wikipedia.org/wiki/Watercraft">watercraft</a>, a <a href="https://en.wikipedia.org/wiki/ZU-23-2">ZU-23-2</a> mounted on a <a href="https://en.wikipedia.org/wiki/BMD-3">BMD-3</a> armoured personnel carrier, and a <a href="https://en.wikipedia.org/wiki/Northrop_Grumman_MQ-8_Fire_Scout">Northrop Grumman MQ-8 Fire Scout</a>, controlled via remote computer terminals. The available maps are set in various environments such as <a href="https://en.wikipedia.org/wiki/South_America">South America</a> and <a href="https://en.wikipedia.org/wiki/Alaska">Alaska</a>, near the borders of <a href="https://en.wikipedia.org/wiki/Russia">Russia</a>, similar to those seen in the single-player.</p>
+
+<p>A <a href="https://en.wikipedia.org/wiki/Dog_tag">dog tag</a> system, as seen in <i><a href="https://en.wikipedia.org/wiki/Battlefield_2142">Battlefield 2142</a></i> and <i>Battlefield: Bad Company</i>, is also used, awarding players with their opponents' dog tags when they defeat them with a knife attack. Players can use party chat for each game mode. The game uses the <a href="https://en.wikipedia.org/wiki/PunkBuster">PunkBuster</a> anti-cheat program to protect from cheaters in online multiplayer matches.</p>
+
+<p><i>Bad Company 2</i> features several game types:</p>
+
+<p><b>Conquest:</b> Features the classic gameplay of the <i>Battlefield</i> series. Players must capture and defend flags for as long as possible. If a base is taken, it can be recaptured, and the cycle can repeat until the game's end. Every kill depletes one ticket, and tickets gradually decrease when one team controls more than half of the flags on the map. Vehicles can spawn once a flag is captured. When one team's tickets are depleted, that team will lose the game. Lost tickets can be regained by reviving fallen teammates.</p>
+
+<p><b>Onslaught:</b> Tasks one squad of up to four players to capture certain points on the map, allowing the squad to advance. The game is won by capturing all the points. Unlike other modes, the only enemies are <a href="https://en.wikipedia.org/wiki/Video_game_bot">bots</a>. This game mode features new lighting and time of day on existing maps, as well as new vehicles. It is available for Xbox 360 and PS3 only; a PC version was planned, but was cancelled.</p>
+
+<p><b>Rush:</b> Players must defend or destroy pairs of M-COM stations until either the attackers run out of <a href="https://en.wikipedia.org/wiki/Spawning_(video_gaming)">respawn</a> tickets or all of the stations are destroyed. Lost tickets can be regained by reviving fallen teammates. An M-COM station can be destroyed by planting a charge, using explosive weapons or ballistics, or simply by demolishing the building in which it is located. However, not all M-COM stations exist in destructible buildings, forcing players to use a variety of methods to achieve the same goal. When a charge is planted by the attacking team, an alarm is activated and the defenders have a limited amount of time to get to the M-COM station and disarm the bomb before it detonates.</p>
+
+<p><b>Squad Deathmatch:</b> Features up to four squads, each fighting against the other. An infantry support vehicle is available for any squad to claim, giving a significant advantage. The first squad to score fifty kills wins the match.</p>
+
+<p><b>Squad Rush:</b> Similar to Rush, but consists of only two squads, one defending and the other attacking. The maps used for Squad Rush are smaller versions of those for both Conquest and Rush modes. There are only 2 M-COM stations in each round.</p>
+
+<h2>Synopsis</h2>
+
+<h3>Setting</h3>
+
+<p><i>Bad Company 2</i> is set in the near future during the fictional Second Russo-American War between the <a href="https://en.wikipedia.org/wiki/United_States">United States</a> and <a href="https://en.wikipedia.org/wiki/Russian_Federation">Russian Federation</a>, the latter supporting the fictional Latin American Militia, a rebel group operating in <a href="https://en.wikipedia.org/wiki/South_America">South America</a>.</p>
+
+<p>The game begins in October 1944, as a group of U.S. <a href="https://en.wikipedia.org/wiki/Commando">commandos</a> infiltrate an <a href="https://en.wikipedia.org/wiki/Imperial_Japanese_Naval_Landing_Forces">Imperial Japanese Naval Landing Forces</a>-controlled island in the <a href="https://en.wikipedia.org/wiki/Sea_of_Japan">Sea of Japan</a> as part of "Operation Aurora." They secure a Japanese scientist who was working on a secret scalar weapon and escape the island on a submarine. However, as foreshadowed by the scientist's warnings, the commandos witness the weapon firing and subsequently perish from the resulting <a href="https://en.wikipedia.org/wiki/Tsunami">tsunami</a>, sparking a myth within the U.S. Army.</p>
+
+<p>In the present, Russia has invaded <a href="https://en.wikipedia.org/wiki/Europe">Europe</a> and <a href="https://en.wikipedia.org/wiki/Alaska">Alaska</a> while supporting <a href="https://en.wikipedia.org/wiki/China">China</a>'s fight in Asia and arming a South American militia. Privates Preston Marlowe, Terrence Sweetwater, George Haggard, and Sergeant Samuel Redford are fighting in Russia in an attempt to secure a top-secret device, a scalar weapon. Despite evading Russian soldiers and completing the mission successfully, the device is discovered to be a fake. Impressed with their previous activities, Army General Braidwood has the squad transferred into the <a href="https://en.wikipedia.org/wiki/Special_Activities_Division">Special Activities Division</a> and assigns them a new mission: to contact Agent James Wyatt (called Aguire in-game), much to the disappointment of Redford, who had hoped to retire after the previous mission.</p>
+
+<p>The squad travels to <a href="https://en.wikipedia.org/wiki/Bolivia">Bolivia</a> in search of the agent, and after many firefights, they eventually save Aguire. He sends them to retrieve his scalar technology intelligence from a French <a href="https://en.wikipedia.org/wiki/Weather_satellite">weather satellite</a> that can be controlled from a base in the <a href="https://en.wikipedia.org/wiki/Andes">Andes</a>. Sweetwater lands the satellite, and the squad successfully thwarts a Russian attempt to destroy it. Marlowe locates the data server and proceeds to descend the mountain during a blizzard while dodging Russian patrols. He survives and is extracted by the others.</p>
+
+<p>During extraction, Aguire briefs the squad about the man responsible for rebuilding scalar weaponry, Arkady Kirilenko, a Russian Army colonel the team encountered in Russia. Kirilenko is hoping to use scalar weaponry to disable America's <a href="https://en.wikipedia.org/wiki/Electrical_grid">power grid</a> and pave the way for a Russian <a href="https://en.wikipedia.org/wiki/Mainland_invasion_of_the_United_States?action=edit&amp;redlink=1">invasion</a>. He is believed to be hiding in <a href="https://en.wikipedia.org/wiki/Chile">Chile</a>. The squad heads there, aided by U.S. forces, and finds Kirilenko, who escapes again. Left with only Kirilenko's papers, Sweetwater discovers a shipping manifest for an abandoned ship called the <i>Sangre Del Toro</i>. Aided by the rest of the squad, Marlowe finds the ship and retrieves a compound essential to the use of the weapon while also discovering the truth behind Operation Aurora - the U.S. military knew it was a suicide mission, and the operation was planned to learn more about the weapon's capabilities.</p>
+
+<p>While attempting to meet Aguire in <a href="https://en.wikipedia.org/wiki/Ecuador">Ecuador</a>, the squad's helicopter is shot down, and they are separated. Along with their helicopter pilot, Flynn (<a href="https://en.wikipedia.org/wiki/Eric_Loren">Eric Loren</a>), they regroup and escape the local militia. Redford gives Aguire the compound before discovering that Aguire has double-crossed them by allying himself with Kirilenko. Aguire reveals that he wants revenge against the United States for what happened to his father, Thomas Wyatt (one of the commandos killed in 1944 during Operation Aurora). Despite this, Kirilenko betrays Aguire and kills him, taking the scalar weapon with him. Before he can kill the squad, however, Flynn intervenes and saves them at the cost of his own life.</p>
+
+<p>While the squad is mourning Flynn, they hear Kirilenko talking through a guard's radio. Marlowe knifes the guard, and the squad proceeds toward the city of <a href="https://en.wikipedia.org/wiki/Quito">Quito</a>. Here, after battling squads of South American and Russian troops, they find a large <a href="https://en.wikipedia.org/wiki/Antonov_An-124_Ruslan">An-124</a> <a href="https://en.wikipedia.org/wiki/Cargo_aircraft">cargo aircraft</a> that is believed to house the scalar weapon. This is confirmed as a powerful <a href="https://en.wikipedia.org/wiki/Electromagnetic_pulse">electromagnetic pulse</a> is suddenly released, disabling all electronic equipment in the city except the aircraft. Haggard and Sweetwater become disheartened, with Haggard going so far as suggesting the squad abort the mission. Angry at his allies for giving up, Marlowe is about to continue the mission alone before Redford stops him and then convinces the rest to continue. They then infiltrate the aircraft as it takes off. After a firefight to reach the cockpit, they find it empty. They return to the <a href="https://en.wikipedia.org/wiki/Loading_dock">cargo bay</a> to find Kirilenko attempting to fire the scalar weapon again, this time high over the southern United States. With the help of explosives from the plane's armory, they access and destroy the scalar weapon.</p>
+
+<p>The explosion sends the aircraft plummeting, forcing the squad to bail out, but Kirilenko grabs the last parachute before Marlowe. In <a href="https://en.wikipedia.org/wiki/Free_fall">free fall</a>, Marlowe kills Kirilenko and is then saved by Sweetwater, who hands Marlowe the parachute that Kirilenko stole. The squad lands in <a href="https://en.wikipedia.org/wiki/Texas">Texas</a>, Haggard's home state. Shortly after, General Braidwood arrives to inform them that they are to aid the U.S. Army against an incoming Russian invasion that is coming through <a href="https://en.wikipedia.org/wiki/Alaska">Alaska</a>, much to the squad's disappointment.</p>
+
+<h2>Development</h2>
+
+<p>The game was first announced in February 2009. On October 19, game developer DICE posted a <a href="https://en.wikipedia.org/wiki/Twitter">Twitter</a> announcement stating the game will have <a href="https://en.wikipedia.org/wiki/Dedicated_hosting_service">dedicated server</a> support. This was in response to <a href="https://en.wikipedia.org/wiki/Infinity_Ward">Infinity Ward</a>'s announcement on October 17 that <i><a href="https://en.wikipedia.org/wiki/Call_of_Duty:_Modern_Warfare_2">Call of Duty: Modern Warfare 2</a></i> would not support dedicated servers. A PS3 version of the <a href="https://en.wikipedia.org/wiki/Betaware">beta</a> began development on November 19, while the PC version was pushed back until February 2010 because of difficulties with PC varieties.</p>
+
+<p>The online multiplayer demo for the Xbox 360 and the <a href="https://en.wikipedia.org/wiki/Closed_beta">closed beta</a> for the PC were released on January 28, 2010, and <a href="https://en.wikipedia.org/wiki/Server_(computing)">servers</a> ran until February 25. The demo was released on the PS3 on February 4, 2010, in Europe and North America and February 11, 2010, in Asia. The PS3 beta featured the map "Arica Harbor", while the PC beta, Xbox 360 demo, and PS3 demo featured the map "Port Valdez".</p>
+
+<p>During an interview with GameZone's Dakota Grabowski in March 2010, Senior Producer Patrick Bach revealed that following the negative feedback from PC gamers after the first <i>Battlefield: Bad Company</i> was not released on the PC, Electronic Arts and DICE had a separate dedicated team working on the PC version of <i>Bad Company 2</i>. Bach stated "We see it as very, very hardcore and important part of our customers. So we put a lot of effort into making sure that everything worked perfect." Bach also commented on the use of peripherals such as a mouse and keyboard on consoles, saying "I don't think that we have any special connections to peripherals to the consoles [...] The biggest problem with peripherals for consoles is that the console itself is a level playground. It's even and you know the consumer has the same technology and have the same peripherals and same controls – which makes it easier for us to create a game that feels fair. By catering to a mouse and keyboard for the consoles, it would maybe skew the even playground."</p>
+
+<p>The PC version of the game was co-developed with fellow Swedish developer Coldwood Interactive.</p>
+
+<p>On March 21, 2023, it was announced that the game would be delisted from digital storefronts on April 28, along with its <a href="https://en.wikipedia.org/wiki/Battlefield:_Bad_Company">predecessor</a> and <i><a href="https://en.wikipedia.org/wiki/Battlefield_1943">Battlefield 1943</a></i>. The servers were shut down on the 8th of December 2023</p>
+
+<h3>Audio</h3>
+
+<p>The game uses <a href="https://en.wikipedia.org/wiki/Dolby_Digital">Dolby Digital</a> and Frostbite's High Definition Audio Range technology. The score was composed by <a href="https://en.wikipedia.org/wiki/Mikael_Karlsson_(composer)">Mikael Karlsson (composer)</a> and is featured on the <i>Battlefield: Bad Company 2 Official Soundtrack</i>, which was released on February 2, 2010.</p>
+
+<h2>Marketing and release</h2>
+
+<h3>Editions</h3>
+
+<p>As a pre-order promotion, EA offered the "Limited Edition" of <i>Bad Company 2</i> at normal pricing. By pre-ordering the Limited Edition, buyers of the PC version were given early access to the closed beta from January 28 to February 25. Owners of the Limited Edition on all systems were also given early access to numerous weapons and vehicle perks, which included the <a href="https://en.wikipedia.org/wiki/Thompson_submachine_gun">M1A1 Thompson</a> and an <a href="https://en.wikipedia.org/wiki/M1911_pistol">M1911 pistol</a>, as well as four vehicle perks.</p>
+
+<p>In addition to the six upgrades offered by EA on all pre-orders of the Limited Edition, select retailers offered their own incentives. Copies pre-ordered at <a href="https://en.wikipedia.org/wiki/GameStop">GameStop</a>, for example, came with an additional code, unlocking the <a href="https://en.wikipedia.org/wiki/AKS-74U">AKS-74U</a> <a href="https://en.wikipedia.org/wiki/Carbine">carbine</a> and giving access to the Squad Rush game mode 30 days early (North America only). All six Limited Edition upgrades, as well as the AKS-74U, are also available to owners of the Standard Edition of the game, but they must be acquired by accumulating points in-game.</p>
+
+<p>The "Ultimate Edition" was released on August 31, 2010, for the Xbox 360 and PlayStation 3. The package includes <i>Battlefield: Bad Company 2</i>, <i><a href="https://en.wikipedia.org/wiki/Battlefield_1943">Battlefield 1943</a></i>, "Onslaught" mode, and immediate access to four vehicle upgrades and two weapon unlocks from purchase, a bonus originally included only in the Limited Edition.</p>
+
+<p>As part of a program designed to encourage game purchases and reward the community, EA and DICE confirmed that they would periodically release additional "VIP" content for <i>Bad Company 2</i>. On Xbox 360 and PlayStation 3, this content is available free to "VIP" players who purchase a new copy of the game. Owners of used copies will be able to purchase a VIP code for an additional cost from their respective system's online store. Owners of the PC version will receive this content for free regardless of ownership status.</p>
+
+<p>On May 30, 2013, the VIP pass was made free for all Xbox 360 and PlayStation 3 users.</p>
+
+<p>As part of the "Battlefield Veterans" program, players gain access to the <a href="https://en.wikipedia.org/wiki/M1_Garand">M1 Garand</a> rifle if they have registered two or more <i>Battlefield</i> games with EA, or if they have joined the "EA Gun Club".</p>
+
+<p>On March 21, 2023, it was announced that the game will be removed from digital storefronts along with <a href="https://en.wikipedia.org/wiki/Battlefield:_Bad_Company">its predecessor</a> and <i><a href="https://en.wikipedia.org/wiki/Battlefield_1943">Battlefield 1943</a></i>, though its single-player campaign will remain playable. Despite this, the games' modding community will provide further support for online play for existing owners of the game through the use of "Project Rome", only for the <a href="https://en.wikipedia.org/wiki/Steam_(service)">Steam</a> version.</p>
+
+<h2>Downloadable content</h2>
+
+<p>Several map packs have been released for the game. "Map Pack 1" was released on March 2, 2010, as "Day One Map Pack". It added two new maps: <a href="https://en.wikipedia.org/wiki/Nelson_Bay,_New_South_Wales">Nelson Bay</a> for Rush mode and Laguna Alta for Conquest. "Map Pack 2" was released on March 30, and added two new maps: Laguna Presa for Rush and Arica Harbour for Conquest. "Map Pack 3" was released on June 9 for consoles, and June 30 for PC. The Laguna Alta map was made available for Squad Rush, and the Nelson Bay map was made available for Squad Deathmatch. "Map Pack 4" was released on July 7. The <a href="https://en.wikipedia.org/wiki/Atacama_Desert">Atacama Desert</a> map was made available for Rush and the Port Valdez map for Conquest. "Map Pack 5" was released on July 28. The White Pass map was made available for Rush and the Nelson Bay map for Conquest. "Map Pack 6" was released on August 18. The <a href="https://en.wikipedia.org/wiki/Panama_Canal">Panama Canal</a> map was made available for Squad Deathmatch and the Laguna Presa map for Squad Rush. "Map Pack 7" was released on December 1, and includes two maps ported from the first <i>Bad Company</i> game; "Oasis" and "Harvest Day", both of which are playable in all game modes. As well as these, two maps from the single-player campaign were ported to multiplayer; "Cold War" was made available for Rush, Squad Rush and Squad Deathmatch while "Heavy Metal" was made available for Conquest and Squad Deathmatch.</p>
+
+<p>Kit upgrades were released on April 21, 2010, for the Xbox 360, May 12 for the PlayStation 3 and December 1 for PC. Residents of the United States can retrieve unlock codes for the upgrades on the Xbox 360 by purchasing specially marked <a href="https://en.wikipedia.org/wiki/Dr_Pepper">Dr Pepper</a> bottles. The kit upgrades include two additional pins and one additional award for each class, as well as unique camouflage upgrades. Kit shortcuts were released on June 16 for consoles. The shortcuts are available for purchase for each separate class, or in a bundle pack for all four classes. Upon installation, the shortcuts will unlock all primary weapons, gadgets and specialisations for their respective class.</p>
+
+<p>A new mode, "Onslaught", was released on June 22 and 24 for the PlayStation 3 and Xbox 360 respectively. In Onslaught, up to four players co-operatively face endless waves of computer controlled enemies. <i>Bad Company 2</i> senior producer Patrick Bach said that DICE would "consistently support the fans playing <i>Bad Company 2</i> with new ways to get into multiplayer." He also said that the mode would "challenge the elite players with new experiences to improve their performance online."</p>
+
+<h3><i>Vietnam</i></h3>
+
+<p><i>Bad Company 2: Vietnam</i> is an <a href="https://en.wikipedia.org/wiki/Expansion_pack">expansion pack</a> for <i>Bad Company 2</i> which takes place during the <a href="https://en.wikipedia.org/wiki/Vietnam_War">Vietnam War</a>. It was released on December 18, 2010, for Microsoft Windows and on December 21 for PlayStation 3 and Xbox 360. It is available as a retail package and via download. The retail package, however, only includes product key for internet activation. The expansion has received positive reviews, with praise for its "fun, close encounters" and use of licensed music tracks from the Vietnam war era.</p>
+
+<p>The expansion pack contains 5<!-- Hill 137, Vantage Point, Phu Bai Valley, Cao Son Temple and the unlockable Battle for Hastings. --> new maps, 6 new vehicles, and 15 new weapons. The fifth map, Operation Hastings, was originally set to be unlocked when the playing community reached 69,000,000 team play actions (revives, resupplies, assists etc.) on each platform. While it was unlocked for PC on December 30, 2010, the map was released early on PlayStation 3 and Xbox 360 as a "new year's gift" from DICE. It also includes 49 contemporary music tracks which can be listened to via an in-game radio, as well as new voiceovers for both American and Vietnamese forces, based on authentic communication from the Vietnam war. Ten new <a href="https://en.wikipedia.org/wiki/Xbox_Live">Xbox Live</a> achievements/<a href="https://en.wikipedia.org/wiki/PlayStation_Network">PlayStation Network</a> trophies are also available to unlock.</p>
+
+<p><i>Battlefield: Bad Company 2: Vietnam</i> received generally positive reviews, with scores from Metacritic of 88 for the Xbox 360 and PlayStation 3 versions, and 86 for the PC version, and scores from GameRankings of 88.80% for the PlayStation 3 version, 88.00% for the Xbox 360 version, and 84.27% for the PC version. Most critics agreed that the expansion is worth buying for users who already enjoy the game's multiplayer component. IGN praised it as being one of the best multiplayer offerings of the year, scoring it 9.5 out of 10. <a href="https://en.wikipedia.org/wiki/Destructoid">Destructoid</a> gave it 9 out of 10, calling it a "no brainer" for active <i>Battlefield</i> fans. <a href="https://en.wikipedia.org/wiki/GameSpot">GameSpot</a> gave it 8.5 out of 10, praising the maps, atmosphere and the new vehicles and weapons, but criticizing the online stat-tracking and the reduced emphasis on player progression. <a href="https://en.wikipedia.org/wiki/Joystiq">Joystiq</a> stated that it plays differently from the original game, but called it a success nevertheless, awarding it 4 out of 5 stars.</p>
+
+<h2>Reception</h2>
+
+<p><i>Battlefield: Bad Company 2</i> received mostly positive reviews from game critics. Aggregating review website <a href="https://en.wikipedia.org/wiki/Metacritic">Metacritic</a> have the PlayStation 3 version at 88/100, the Xbox 360 version at 88/100, and the PC version at 87/100. The iOS version received generally poorer reviews and holds a score of 64/100.</p>
+
+<p><i>GameZone</i>'s Steven Hopper gave the game 9.25/10, saying, "Even though the single-player campaign still isn't where it needs to be, <i>Bad Company 2</i> is definitely a great sequel that builds on its predecessor in every way, making for one that no shooter fan will want to miss, especially if you go online for your gaming." <i><a href="https://en.wikipedia.org/wiki/Game_Informer">Game Informer</a></i> gave the game 9.5 out of 10, praising the improvements made over the first <i>Bad Company</i>. <i><a href="https://en.wikipedia.org/wiki/GameTrailers">GameTrailers</a></i> gave the game 9.1 out of 10, praising its use of an intertwining multiplayer in which "Purists will appreciate that you must earn every kill." Level design was also commended; "<i>Bad Company 2</i> features sprawling, densely populated environments with an excellent level of detail." However, they referred to the single-player mode as "predictable."</p>
+
+<p><i><a href="https://en.wikipedia.org/wiki/GameSpy">GameSpy</a></i> reviewer Anthony Gallegos gave the game 4.5 stars out of 5, describing the single-player campaign as "a blast" and concluding that "the staying power for BFBC2 lies in its multiplayer." Dan Whitehead from <i><a href="https://en.wikipedia.org/wiki/Eurogamer">Eurogamer</a></i> reviewed the game and gave it a score of 9/10, describing it as an "open challenge" to <a href="https://en.wikipedia.org/wiki/Activision">Activision</a>'s market leader, <i>Call of Duty: Modern Warfare 2</i>, and calling <i>Bad Company 2</i> a "way superior game" when compared to <i>Modern Warfare 2</i>. Whitehead also commented that it had "immediately evident" improvements over the previous game in the series, and concluded that <i>Bad Company 2</i> is "the online shooter at its most streamlined, most thoughtful, most exhilarating." <i><a href="https://en.wikipedia.org/wiki/IGN">IGN</a></i> gave the game 8.9 out of 10, praising the visuals as being "near-photo realistic" and calling it "one of the best looking games around."</p>
+
+<p>During the <a href="https://en.wikipedia.org/wiki/14th_Annual_Interactive_Achievement_Awards">14th Annual Interactive Achievement Awards</a>, the <a href="https://en.wikipedia.org/wiki/Academy_of_Interactive_Arts_&amp;_Sciences">Academy of Interactive Arts &amp; Sciences</a> nominated <i>Bad Company 2</i> for "<a href="https://en.wikipedia.org/wiki/D.I.C.E._Award_for_Action_Game_of_the_Year">Action Game of the Year</a>", "<a href="https://en.wikipedia.org/wiki/D.I.C.E._Award_for_Online_Game_of_the_Year">Outstanding Achievement in Online Gameplay</a>", and "<a href="https://en.wikipedia.org/wiki/D.I.C.E._Award_for_Outstanding_Achievement_in_Audio_Design">Outstanding Achievement in Sound Design</a>".</p>
+
+<h3>Sales</h3>
+
+<p><i>Bad Company 2</i> became the fourth best-selling title in March 2010 with 2.3 million copies sold in Europe and North America. By May 2010, it had sold more than 5 million copies, which had grown to "almost 6 million" by November. As of June 30, 2011, over 9 million copies of the game have been sold across all platforms. As of March 2012, this number had increased to over 12 million.</p>
+
+
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

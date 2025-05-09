@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Atelier Yumia: La alquimista de los recuerdos y la tierra imaginada</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('e4eb4d03-f719-4259-b8e5-132e54b88757/15936670-31f5-49bf-a431-1044e5d1ea42.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="e4eb4d03-f719-4259-b8e5-132e54b88757/1ef98ede-84c2-4c7e-bc0e-c00984dfa637.png"/> Atelier Yumia: La alquimista de los recuerdos y la tierra imaginada</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="e4eb4d03-f719-4259-b8e5-132e54b88757/07c13400-8cf5-499b-a163-0c269a23b11f.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-4/9/2025">4/9/2025</a> 4:25:07</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-4/12/2025">4/12/2025</a> 17:45:08</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB GAS">2TB GAS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-3/20/2025">3/20/2025</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-64">64</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Rol">Rol</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-KOEI TECMO GAMES CO., LTD.">KOEI TECMO GAMES CO., LTD.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-KOEI TECMO GAMES CO., LTD.">KOEI TECMO GAMES CO., LTD.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/3123410" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/3123410/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/3123410/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=3123410" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/3123410" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=3123410" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/3123410/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Adorables">Adorables</a><br/><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-Anime">Anime</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Buena trama">Buena trama</a><br/><a href="#quicklink-Exploración">Exploración</a><br/><a href="#quicklink-Fabricación">Fabricación</a><br/><a href="#quicklink-Fantasía">Fantasía</a><br/><a href="#quicklink-Gran banda sonora">Gran banda sonora</a><br/><a href="#quicklink-Hack and slash">Hack and slash</a><br/><a href="#quicklink-Mundo abierto">Mundo abierto</a><br/><a href="#quicklink-Protagonista femenina">Protagonista femenina</a><br/><a href="#quicklink-Recolectatlón">Recolectatlón</a><br/><a href="#quicklink-Rol">Rol</a><br/><a href="#quicklink-Rol de acción">Rol de acción</a><br/><a href="#quicklink-Rol en grupo">Rol en grupo</a><br/><a href="#quicklink-Rol japonés">Rol japonés</a><br/><a href="#quicklink-Tercera persona">Tercera persona</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					Recorre el camino prohibido, sin importar adónde te lleve.<br><br>Atelier Yumia es la historia de Yumia y sus amigos, que, a pesar de sus dudas, recorren el camino en el que creen.<h2 class="bb_tag">Sistema:</h2>Recoge, lucha, crea.<br>Vívelo todo en tu viaje con amigos.<h2 class="bb_tag">- Recorre libremente un gran mundo abierto.</h2>El continente es una tierra inexplorada en la que el jugador podrá usar toda clase de objetos y acciones para abrirse paso.<br><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3123410/extras/01_Yumia_exploration.gif?t=1743814845" /></p><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3123410/extras/02_Yumia_field.gif?t=1743814845" /></p><h2 class="bb_tag">- Combate<br>Las distancias y los objetos permiten diferentes acciones en combate.</h2>Tendrás que demostrar tu capacidad de tomar decisiones inmediatas durante el combate en tiempo real. Idea estrategias combinando dos tipos de alcances de ataque que cambian tus habilidades conforme cambias entre ellos. Además, los objetos sintetizados se transformarán en armas como espadas y lanzas que podrás usar para atacar. Puedes volver a usar los objetos tantas veces como quieras, así que no temas usarlos para eliminar cualquier obstáculo de tu camino.<br><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3123410/extras/05_Yumia_battle_1031.gif?t=1743814845" /></p><h2 class="bb_tag">- Síntesis<br>Combina el maná para crear objetos.</h2>Manipula el maná de los ingredientes para crear objetos a partir de recetas. Los objetos que crees tendrán poderosos efectos para las diferentes situaciones, ya sea durante la exploración o durante el combate. El poder de un objeto depende de los ingredientes usados en su síntesis, así que elige cuidadosamente tus ingredientes y evalúa el maná que contienen.<br><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3123410/extras/06_Yumia_synthesis.gif?t=1743814845" /></p><h2 class="bb_tag">- ¡Crea objetos sobre el terreno y personaliza tus bases como quieras!</h2>Puedes usar la síntesis sencilla para crear herramientas de exploración que usar para abrirte camino, así como objetos que te ayudarán durante el combate y la síntesis. También podrás usar la función de construcciones para crear bases y después decorarlas con los muebles que quieras.<br><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3123410/extras/04_Yumia_housing.gif?t=1743814845" /></p><h2 class="bb_tag">Historia</h2>El imperio aladissiano prosperó en su día en cierto continente, alcanzando un nivel de desarrollo considerable mediante la alquimia con la que mantenían a raya a otras naciones. Sin embargo, desapareció consumido por un cataclismo misterioso y repentino.<br><br>El tiempo siguió su curso, y siglos más tarde la alquimia se considera un arte peligroso que trae la destrucción, algo maligno y tabú.<br><br>Ahora una alquimista solitaria da sus primeros pasos en esta tierra peligrosa e inexplorada. Se llama Yumia Liessfeldt y perdió a su madre en un accidente hace tres años. Desde entonces, ha descubierto que desciende de una larga línea de alquimistas, lo que la deja llena de preguntas.<br><br>¿Por qué se destruyó Aladiss?<br>¿Por qué se convirtió la alquimia en un tabú?<br>¿Es verdaderamente maligna la alquimia?<br><br>Convencida de que las verdades que busca están en el continente caído, Yumia emprende una aventura para descubrir su historia olvidada.<br><br>Nota: Las imágenes son de una versión en desarrollo. El producto final puede ser diferente de lo que se muestra.<br><br>----<br><strong>Contenido de la versión de Steam®: Atelier Yumia: Conjunto de mochila</strong><br>Un conjunto de accesorios para cambiar el color de la mochila de Yumia y el humo de Flammi.<br><br>Contenido:<br>- Accesorio para Yumia «Mochila de Flammi»<br>- Accesorio para Yumia «Mochila de recuerdos»<br>- Accesorio para Flammi «Humo centelleante»<br>- Accesorio para Flammi «Humo chispeante»<br><br>Nota: Podrás acceder a este contenido tras desbloquear las construcciones de bases y colocar un vestidor.
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

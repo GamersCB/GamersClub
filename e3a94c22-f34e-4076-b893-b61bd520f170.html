@@ -1,0 +1,344 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Prototype 2</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('e3a94c22-f34e-4076-b893-b61bd520f170/c092953c-2842-4557-9c6c-45baf18a01b8.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="e3a94c22-f34e-4076-b893-b61bd520f170/9a9cf39a-a1fd-414b-9341-203f457e3630.png"/> Prototype 2</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="e3a94c22-f34e-4076-b893-b61bd520f170/a66509ac-51af-474c-9d79-c1e4c429af5e.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 15:27:56</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/17/2024">11/17/2024</a> 14:35:04</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-1 TB 1">1 TB 1</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-4/24/2012">4/24/2012</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-77">77</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Action-adventure">Action-adventure</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Radical Entertainment">Radical Entertainment</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Activision">Activision</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Single-player">Single-player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/Prototype_2" target="_blank">Wikipedia</a><br/><a href="https://www.mobygames.com/game/prototype-2" target="_blank">MobyGames</a><br/><a href="https://www.mobygames.com/game/prototype-2_" target="_blank">MobyGames</a><br/><a href="https://www.imdb.com/title/tt1866227/" target="_blank">IMDb</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-[People] artist: Christopher Sjöholm">[People] artist: Christopher Sjöholm</a><br/><a href="#quicklink-[People] composer: Scott R. Morgan">[People] composer: Scott R. Morgan</a><br/><a href="#quicklink-[People] designer: Matthew Armstrong">[People] designer: Matthew Armstrong</a><br/><a href="#quicklink-[People] director: Tom Legal">[People] director: Tom Legal</a><br/><a href="#quicklink-[People] producer: Kenneth Rosman">[People] producer: Kenneth Rosman</a><br/><a href="#quicklink-[People] programmer: Bryan Brandt">[People] programmer: Bryan Brandt</a><br/><a href="#quicklink-[People] writer: Dan Jolley">[People] writer: Dan Jolley</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>Prototype 2</b></i> (stylized as <i><b>[PROTOTYPE2]</b></i>) is a 2012 <a href="https://en.wikipedia.org/wiki/Action-adventure_game">action-adventure</a> <a href="https://en.wikipedia.org/wiki/Video_game">video game</a> developed by <a href="https://en.wikipedia.org/wiki/Radical_Entertainment">Radical Entertainment</a> and published by <a href="https://en.wikipedia.org/wiki/Activision">Activision</a>, and the sequel to 2009's <i><a href="https://en.wikipedia.org/wiki/Prototype_(video_game)">Prototype</a>.</i> First announced at the 2010 Spike VGA Awards, it was released in April 2012 for the <a href="https://en.wikipedia.org/wiki/PlayStation_3">PlayStation 3</a> and <a href="https://en.wikipedia.org/wiki/Xbox_360">Xbox 360</a>, and in July 2012 for <a href="https://en.wikipedia.org/wiki/Microsoft_Windows">Microsoft Windows</a>. In July 2015, the game was re-released alongside its predecessor as the <i>Prototype Biohazard Bundle</i> for the <a href="https://en.wikipedia.org/wiki/PlayStation_4">PlayStation 4</a> and <a href="https://en.wikipedia.org/wiki/Xbox_One">Xbox One</a>. Separate versions of the two games became available in August 2015. <i>Prototype 2</i> shifts the focus towards a new protagonist, former <a href="https://en.wikipedia.org/wiki/United_States_Marine_Corps">U.S. Marine</a> Sergeant James Heller, who seeks revenge on Alex Mercer, the protagonist of the original <i>Prototype</i>, after the death of his family during a new outbreak of the Blacklight virus in <a href="https://en.wikipedia.org/wiki/Manhattan">Manhattan</a>, which was started by Mercer. Heller is infected with a strain of the virus that allows him to keep his humanity while granting him powers similar to Mercer's, including <a href="https://en.wikipedia.org/wiki/Shapeshifting">shapeshifting</a> and consuming people, which he uses in his mission to stop Mercer and the Blacklight outbreak.</p>
+
+<p>Upon release, <i>Prototype 2</i> received generally positive reviews for the PlayStation 3 and Windows versions, and mixed reviews for the Xbox 360 version. Most critics praised it for its entertaining gameplay and improvements over its predecessor in certain areas, although the game's repetitive nature and the main storyline attracted criticism. While the game was a top seller at the time of release, its dwindling sales eventually resulted in the downsizing of Radical Entertainment. A tie-in <a href="https://en.wikipedia.org/wiki/Limited_series_(comics)">comic book miniseries</a>, which bridges the gap between the two <i>Prototype</i> games, was published by <a href="https://en.wikipedia.org/wiki/Dark_Horse_Comics">Dark Horse Comics</a>.</p>
+
+<h2>Gameplay</h2>
+
+<p>Similarly to its predecessor, <i>Prototype 2</i> is an <a href="https://en.wikipedia.org/wiki/Action-adventure_game">action-adventure</a> game played from a <a href="https://en.wikipedia.org/wiki/Third-person_(video_games)">third-person perspective</a> and set in an <a href="https://en.wikipedia.org/wiki/Open_world">open world</a> based on modern-day <a href="https://en.wikipedia.org/wiki/Manhattan">Manhattan</a>. Like Alex Mercer in the first game, the player character, James Heller, can shapeshift and assume other people's identities and memories by consuming them, although in the sequel this has become more tactical. Due to Blackwatch's actions in the Yellow Zone, if the player assumes the role of a soldier, people will react to him in a way that shows that they want nothing to do with him. To make sure that enemies do not overwhelm the player, a dodging system and new, more realistic AI were introduced. Heller is able to use weapons in the game, such as ripping the Gatling cannon off a tank and using it against enemies. He can also sneak up on unsuspecting human enemies and inject them with the Blacklight virus, turning them into a "BioBomb". Heller also possesses superhuman strength and agility, near-invulnerability to harm, near-flight leaping and gliding, infinite stamina, increased speed, and a sonar sense. The sonar includes a new pulse ability that highlights the key features of an environment to make it easier for the player to find someone, instead of looking in a large crowd for a person with an icon above their head. Before release, the developers stated that the powers in <i>Prototype 2</i> would be more meaningful than in the first game, appearing as mutations and upgrades that let players decide how they want to play as Heller.</p>
+
+<p>To give players more power in the game, the developers have added tendrils which sprout from Heller's arms and can be used for a variety of purposes, like smashing objects into other objects, such as a car into a tank, utilising the 'Black Hole' attack. Players are also able to dismember enemies, a force that becomes more useful as the game progresses. There are many more ways to kill enemies, ranging from throwing a car at a group of soldiers, hacking off a mutant's head or using powers. Consuming people has not changed since the original <i>Prototype</i>, with the exception of some enemies, which are consumed upon grabbing them (e.g. Supersoldiers, Brawlers). Heller can additionally control a pack of Brawlers (similar to <i>Prototype</i>'s Hunters) to attack anything he desires (note: this power is limited to main variant of Brawler). In the game, players can no longer find 'Events' throughout NYZ (New York Zero, the name given to New York after the Blacklight outbreak), instead starting side-missions by hacking into Blacknet, Blackwatch's system that details military operations in the three areas of NYZ. Heller can choose from a small list of missions at each terminal, allowing him to find operations that he can disrupt or take control of for his own purposes and find important people that will allow him to learn more about what he has become because of the Blacklight virus. It will also help him find out more about Alex Mercer and how he is connected to his family's death. The missions that are selectable can be sidequests or extensions to one of the main quests.</p>
+
+<h2>Plot</h2>
+
+<p>The story of <i>Prototype 2</i> begins in 2009, one year after the events of the first game, when <a href="https://en.wikipedia.org/wiki/United_States_Marine_Corps">U.S. Marine</a> Sergeant James Heller, returning from a tour in <a href="https://en.wikipedia.org/wiki/Iraq">Iraq</a>, discovers his wife and daughter to be declared dead, causing him to rejoin the military in the fight for NYZ against the Blacklight virus. Heller finds out that Alex Mercer, who stopped the original Blacklight infection in 2008, is behind the new outbreak, having lost his faith in humanity and wishing to wipe it out to usher in a new <a href="https://en.wikipedia.org/wiki/Golden_Age">golden age</a>. Heller pursues vengeance against Mercer for the death of his family, but during a confrontation between the two, Heller is infected with Mercer's strain of Blacklight that imbues him with superhuman abilities, and blacks out. He later awakens in a Yellow Zone lab where Gentek scientist Dr. Anton Koenig and Blackwatch Col. Douglas Rooks are experimenting on him. Heller escapes and is confronted by Mercer, who claims that the former should take his revenge on Gentek and Blackwatch, since they are responsible for recreating and cultivating the Blacklight virus. Revealing his plans to take down Gentek and Blackwatch, Mercer offers a truce to Heller. Unsure of Mercer's intentions, Heller goes to his local pastor, Father Luis Guerra, for advice and help.</p>
+
+<p>Using information supplied by Guerra, Heller hacks into Blacknet Terminals to find out about and sabotage their operations. Gradually consuming his way through Blackwatch, Heller eventually finds and confronts Koenig, who claims to be on his side and reveals Blackwatch's super-soldier program, codenamed "Project :Orion". Heller prevents the project's progress by killing a super-soldier who was injected with his DNA, as well as the DNA of the special infected type known as a "Hydra". After consuming one of the head scientists, Heller discovers that Koenig was observing him in order to find his weaknesses. Enraged at Koenig's betrayal, Heller tracks him down, and discovers that he has powers similar to his and Mercer's, and is one of several "Evolved" agents planted in Gentek and Blackwatch by Mercer. After defeating and consuming Koenig, Mercer reveals to Heller that he intends to recruit him in an attempt to control NYZ. His doubts growing, Guerra then shows Heller a video tape of Mercer releasing the virus for the second time in <a href="https://en.wikipedia.org/wiki/Pennsylvania_Station_(New_York_City)">Penn Station</a>.</p>
+
+<p>Enraged at Mercer's deception, Heller sets off to the Green Zone to hunt down Mercer's henchmen, including an Evolved agent in Gentek named Sabrina Galloway; upon confronting Galloway, however, Heller reluctantly teams up with her when she reveals she can help him take down Mercer. With Galloway's help, Heller finds that Mercer plans to infect the entire world through "Whitelight", a contaminated vaccine released by Gentek that accelerates the infection.</p>
+
+<p>Frustrated with Heller sabotaging his plans, Mercer confronts him. The two fight, and Mercer easily overpowers Heller. However, Mercer is unable to consume Heller due to his 'annoyingly resistant DNA', solidifying Heller's status as a virus-human hybrid. Mercer flees, and Heller receives a call from Guerra, who informs him that a horde of infected have amassed outside his apartment. Heller rushes to save Guerra, only to find him already dead. Heller uses Guerra's phone to reach Athena, Guerra's contact, who is revealed to be Mercer's sister Dana. Dana explains that Heller's daughter, Maya, is still alive, prompting Heller to head for the Red Zone to save her. After Heller prevents Blackwatch's second attempt to level Manhattan, Rooks takes Maya hostage in the Gentek Headquarters. Heller storms the base and confronts Rooks, who reveals that he also has a daughter and grants Heller free passage to leave NYZ.</p>
+
+<p>Before Heller can take Maya, Galloway arrives and kidnaps her, having joined forces with Mercer once more. Upon confronting Mercer, he reveals that he plans to solve international conflicts and world problems by infecting the entire human race, effectively creating a <a href="https://en.wikipedia.org/wiki/Superorganism">superorganism</a>, with Maya's unique DNA acting as the catalyst. After Mercer absorbs Galloway and the remaining Evolved, the two fight once more. Heller defeats Mercer, and consumes him. Subsequently, Heller wipes out the infected in NYZ along with most of the Blacklight virus; using Mercer's absorbed memories, Heller then locates and frees Maya and Dana from a vault. The game ends with the three overlooking New York, before Dana questions what to do next.</p>
+
+<h2>Development</h2>
+
+<p>Development of the game started soon after the success of the first game and was in development for three years. The game was first shown at the Spike 2010 VGA Awards in December. The game was revealed to be the main focus of the April 2011 EGM Issue. It was displayed in <i><a href="https://en.wikipedia.org/wiki/Electronic_Gaming_Monthly">EGM</a></i> and <i>EGMI</i> in 2011 revealing many new details about the game's plot, characters and gameplay. The game's graphics have been completely updated with buildings being much more detailed and deformation of vehicles, mutants and humans being much more visual. The game was also partially written by Dan Jolley.</p>
+
+<p><i>Prototype 2</i> was built using the Titanium 2.0 <a href="https://en.wikipedia.org/wiki/Game_engine">game engine</a>.</p>
+
+<h3>Radnet</h3>
+
+<p>Prior to the game's launch, Radical Entertainment announced Radnet for <i>Prototype 2</i> users who would either pre-order the game or buy a new copy. Radnet offers the player weekly in game abilities, events, challenges and avatar items. Upon the launch of the game, first-run copies and pre-ordered copies of the game would include 55 pieces of additional add-on <a href="https://en.wikipedia.org/wiki/Downloadable_content">downloadable content</a> (DLC) at no extra cost. Included in the pre-order/launch content was in-game events, additional and optional challenges, avatar items for the Xbox 360 and themes for the PlayStation 3 and behind the scenes videos. In order to make Radnet coherent to players, Activision announced that the events playable in Radnet would be outside of the game's main storyline.</p>
+
+<p>The 55 pieces of DLC would be launched by Radical weekly from April 24 until June 7, with content available forever once unlocked. To earn the rewards given for an event or a challenge for a given week of DLC, players had to achieve at least a bronze medal in events and a minimal score threshold in challenges. To make Radnet more accessible, content will be available to all profiles on the console where Radnet was unlocked.</p>
+
+<h2>Promotion</h2>
+
+<p>To promote the game, Radical Entertainment launched a <a href="https://en.wikipedia.org/wiki/Facebook">Facebook</a> app for the game. The app is called Blacknet, named after the game's mission system, and it allows fans to work together to "hack" the interface. Hacking it will allow the fans to uncover a series of videos, interviews and other behind the scenes content, all in the run up to the game's launch. Also via Facebook, Radical unveiled that they would announce something huge for Prototype 2 at <a href="https://en.wikipedia.org/wiki/ComicCon">ComicCon</a>. This was the ability to let people play the game, they also released the first of three trailers detailing the story of Prototype 2. At ComicCon, Activision held a raffle in which the winner won either the jacket worn by James Heller, or Alex Mercer's jacket; and a custom skinned <a href="https://en.wikipedia.org/wiki/Xbox_360">Xbox 360</a>. At ComicCon, Activision employees were handing out <i>Prototype 2</i> themed merchandise, including T-shirts, posters, giant foam Heller Blade Arms and more materials based on the game.<sup>[<i><a href="https://en.wikipedia.org/wiki/Wikipedia:Citation_needed">citation needed</a></i>]</sup> Activision released for <a href="https://en.wikipedia.org/wiki/IOS">iOS</a> an official game titled <i><b>ProtoSlice</b></i>, available free to download. Activision has released a couple of trailers, Radical Entertainment's team also went to Paris to promote the game in February 2012, and had a video interview with JeuxVideo Live.</p>
+
+<p>A popular commercial for the release of the game used the song "<a href="https://en.wikipedia.org/wiki/Hurt_(Nine_Inch_Nails_song)#Johnny_Cash_version">Hurt</a>", as sung by <a href="https://en.wikipedia.org/wiki/Johnny_Cash">Johnny Cash</a>, in the background.</p>
+
+<h3>Comic book</h3>
+
+<p>Ahead of the game's release, Radical Entertainment revealed that, just like the first game, <i>Prototype 2</i> would receive a comic book prequel <a href="https://en.wikipedia.org/wiki/Limited_series_(comics)">miniseries</a> that bridges the gap between the two games. Published by <a href="https://en.wikipedia.org/wiki/Dark_Horse_Comics">Dark Horse Comics</a>, the miniseries comprises three volumes, each consisting of two issues. The first volume, titled <i>The Anchor</i>, follows Alex Mercer as he travels across the globe to eradicate any remaining traces of the Blacklight virus while questioning his own morality and whether the virus has turned him into humanity's killer or its savior. Alex slowly begins to decide that he is the planet's savior and will usher it into a new age of prosperity once he wipes out humanity. While he temporarily changes his mind after falling for a woman, that woman ends up betraying him, causing Alex to vow to wipe out humanity. He then returns to New York City and turns it into New York Zero (NYZ) once again by unleashing the Blacklight virus upon its population.</p>
+
+<p>The second volume, titled <i>The Survivors</i>, focuses on a former police officer, Conrad, who joins up with Ami Levin, a religiously tolerant person, and Marcie, an art student. The three run afoul of Lieutenant Riley; he would, however, agree to let Conrad see his wife, so long he agrees to work for Gentek. Unbeknownst to Conrad, his wife is dead, and he ended up in a project called Orion. The third and final volume, titled <i>The Labyrinth</i>, introduces the characters of James Heller and Mike Marcos.</p>
+
+<h2>Reception</h2>
+
+<h3>Pre-release</h3>
+
+<p>Out of all Activision's titles displayed at Comic Con, <i>Prototype 2</i> was the most well received. Greg Miller of <i><a href="https://en.wikipedia.org/wiki/IGN">IGN</a></i> awarded <i>Prototype 2</i> as Activision's best game at Comic Con and did not mention anything negative in his preview for the game.</p>
+
+<p><i>Prototype 2</i> received "generally favorable reviews" on all platforms except the Xbox 360 version, which received "average" reviews, according to the <a href="https://en.wikipedia.org/wiki/Review_aggregator">review aggregation</a> website <a href="https://en.wikipedia.org/wiki/Metacritic">Metacritic</a>. PlanetXbox360 called the game a "wonderful sequel that surpasses the original". At the time of his departure from the show, <i><a href="https://en.wikipedia.org/wiki/Community_(TV_series)">Community</a></i> creator <a href="https://en.wikipedia.org/wiki/Dan_Harmon">Dan Harmon</a> considered <i>Prototype 2</i> a great game.</p>
+
+<p><i>GameZone</i> gave the PlayStation 3 version a score of nine out of ten and said it was "everything you could expect from a sequel, really. While there are certain elements that once again hunker back to the old days of Ultimate Destruction, Radical Entertainment has stepped up with a piece of sheer rollicking, do-whatever-you-want entertainment." <i><a href="https://en.wikipedia.org/wiki/Edge_(magazine)">Edge</a></i> gave the same console version eight out of ten and said, "There's a dazzling seamlessness to every aspect of <i>Prototype 2</i>. You feel it as you traverse the world, sprinting powerfully up buildings, bounding high into the air just as you reach the lip of the roof and then transitioning with a tap of the right trigger into a glide that will take you to the next rooftop." <i>411Mania</i> gave the game a score of eight out of ten and called it "a decent game. It's less frustrating than the first, with more options for customization, better abilities and more stuff to do. It's hampered though by a garbage storyline and a serious lack of Barry Pepper. It's worth a look if you liked the first game, or if you like super hero games at all." <i><a href="https://en.wikipedia.org/wiki/The_Guardian">The Guardian</a></i> gave the Xbox 360 version a similar score of four stars out of five and stated, "The very purity of purpose which makes the game such a fine arcade killbox also renders it unengaging on any level that isn't soggy and littered with stray organs. So while as a destruction simulator <i>Prototype 2</i> scores very highly, there's a chance that, just like those toddlers in the dirt, you'll get bored after a short while and wander away." <i>The Digital Fix</i> gave the same console version a score of seven out of ten and said, "It's really not the AAA title it wants to be but that said it's also far from bargain bin fodder, landing somewhere just above the middle." <i><a href="https://en.wikipedia.org/wiki/The_Escapist_(magazine)">The Escapist</a></i> gave it a similar score of three-and-a-half stars out of five and called it "a decent action-adventure with fun combat, but gets a little too samey here and there." <i><a href="https://en.wikipedia.org/wiki/Digital_Spy">Digital Spy</a></i> gave it three stars out of five and said that it "excels as an open-world killing field, in which you can wrench anyone asunder in gory cascades of blood and guts. Underneath, it's a pretty standard action game featuring mundane missions that offer no real challenge, wrapped in a story that lacks substance and originality. But those players who can turn off their brain and just enjoy the ride will find <i>Prototype 2</i>'s flavor of blood-soaked action a rather guilty pleasure." <i><a href="https://en.wikipedia.org/wiki/Metro_(British_newspaper)">Metro UK</a></i> similarly gave it a score of six out of ten and said, "In small doses <i>Prototype 2</i> is a perfectly enjoyable game but in the end, because Heller and Mercer don't care about anyone else you never end up caring about them."</p>
+
+<p>Although <i>Prototype 2</i> was the top seller for April 2012, beating <i><a href="https://en.wikipedia.org/wiki/Kinect_Star_Wars">Kinect Star Wars</a></i> and <i><a href="https://en.wikipedia.org/wiki/Call_of_Duty:_Modern_Warfare_3">Call of Duty: Modern Warfare 3</a></i>, its sales were considerably down from the sales of games released in April 2011. <i>Prototype 2</i> would continue its strong sales into the month of May, garnering more sales than the highly anticipated <i><a href="https://en.wikipedia.org/wiki/Dragon's_Dogma">Dragon's Dogma</a></i>, but failing to beat <i><a href="https://en.wikipedia.org/wiki/Max_Payne_3">Max Payne 3</a></i> and fellow Activision Blizzard game <i><a href="https://en.wikipedia.org/wiki/Diablo_III">Diablo III</a></i>.</p>
+
+<p>On June 28, 2012, Activision announced that despite the "substantial investment", the game "did not find a broad commercial audience", and as a result, developer Radical would encounter layoffs and the studio would be reduced to a supporting role towards other Activision projects.</p>
+
+
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

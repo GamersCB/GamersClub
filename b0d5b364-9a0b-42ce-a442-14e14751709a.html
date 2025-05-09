@@ -1,0 +1,448 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Disney Dreamlight Valley</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('b0d5b364-9a0b-42ce-a442-14e14751709a/daee5c57-1b2e-4120-86c7-f1ab2a04794c.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="b0d5b364-9a0b-42ce-a442-14e14751709a/57a42c1b-abeb-4a04-a60f-f84687435a18.png"/> Disney Dreamlight Valley</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="b0d5b364-9a0b-42ce-a442-14e14751709a/ec44e829-c854-47fe-9204-b53b33616aa8.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 14:41:31</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/8/2024">11/8/2024</a> 17:33:58</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-6TB STORE">6TB STORE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-12/5/2023">12/5/2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Adventure">Adventure</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Life simulation">Life simulation</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Gameloft Montreal">Gameloft Montreal</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Gameloft">Gameloft</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single-player">Single-player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/Disney_Dreamlight_Valley" target="_blank">Wikipedia</a><br/><a href="https://www.disneydreamlightvalley.com" target="_blank">Official website</a><br/><a href="https://www.imdb.com/title/tt21990100/" target="_blank">IMDb</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-[Game Engine] Unity">[Game Engine] Unity</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>Disney Dreamlight Valley</b></i> is a 2023<!-- Do not change to "2022". It was in early access in 2022, so the year of the full game should only be in the lead section of the article. --> <a href="https://en.wikipedia.org/wiki/Life_simulation_game">life simulation</a> <a href="https://en.wikipedia.org/wiki/Adventure_game">adventure game</a> developed by Gameloft Montreal and published by <a href="https://en.wikipedia.org/wiki/Gameloft">Gameloft</a>. The game has players tend to a magical valley populated by various <a href="https://en.wikipedia.org/wiki/Walt_Disney_Animation_Studios">Disney</a> and <a href="https://en.wikipedia.org/wiki/Pixar">Pixar</a> characters who previously underwent a curse that caused them to lose their memories of their lives in the valley.</p>
+
+<p>The game was released in <a href="https://en.wikipedia.org/wiki/Early_access">early access</a> for <a href="https://en.wikipedia.org/wiki/Nintendo_Switch">Nintendo Switch</a>, <a href="https://en.wikipedia.org/wiki/PlayStation_4">PlayStation 4</a>, <a href="https://en.wikipedia.org/wiki/PlayStation_5">PlayStation 5</a>, <a href="https://en.wikipedia.org/wiki/Microsoft_Windows">Windows</a>, <a href="https://en.wikipedia.org/wiki/Xbox_One">Xbox One</a>, and <a href="https://en.wikipedia.org/wiki/Xbox_Series_X_and_Series_S">Xbox Series X/S</a> on September 6, 2022, while the <a href="https://en.wikipedia.org/wiki/MacOS">macOS</a> version released in early access on December 6, 2022, alongside the game's second content update. It was initially planned to be a <a href="https://en.wikipedia.org/wiki/Free-to-play">free-to-play</a> game, with the purchase of a "Founder's Pack" or an active <a href="https://en.wikipedia.org/wiki/Xbox_Game_Pass">Xbox Game Pass</a> subscription needed to play the game in early access. However, its early access success led to Gameloft cancelling the free-to-play plans in October 2023, making the game a premium title permanently. The game was fully released on December 5, 2023, alongside its first paid expansion, <i>A Rift in Time</i>. An <i>Arcade Edition</i> for <a href="https://en.wikipedia.org/wiki/Apple_Arcade">Apple Arcade</a>, supporting <a href="https://en.wikipedia.org/wiki/IOS">iOS</a>, <a href="https://en.wikipedia.org/wiki/MacOS">macOS</a> and <a href="https://en.wikipedia.org/wiki/TV_Osaka">tvOS</a> was also released the same day.</p>
+
+<h2>Gameplay</h2>
+
+<p><i>Disney Dreamlight Valley</i> takes place in the titular "Dreamlight Valley", a magical valley with various biomes populated by Disney and Pixar characters. The game features <a href="https://en.wikipedia.org/wiki/Nonlinear_gameplay">nonlinear gameplay</a> similar to <a href="https://en.wikipedia.org/wiki/Nintendo">Nintendo</a>'s <i><a href="https://en.wikipedia.org/wiki/Animal_Crossing">Animal Crossing</a></i> games where players take control of a customizable human <a href="https://en.wikipedia.org/wiki/Player_character">player character</a> living in the valley. The valley is synced to <a href="https://en.wikipedia.org/wiki/Real_time_(media)">real time</a> based on the time set on the player's <a href="https://en.wikipedia.org/wiki/Video_game_console">console</a> or <a href="https://en.wikipedia.org/wiki/Computer">computer</a>. The game's multiplayer mode involves visiting other players' Valleys.</p>
+
+<p>The player can explore the valley to gather resources and use their <a href="https://en.wikipedia.org/wiki/Magic_(supernatural)">magic</a> to clear away "Night Thorns", unwanted plants with dark magic that spawn throughout the valley. Foods can be cooked into various meals at a cooking station such as an oven or a campfire, while other resources can be crafted into materials or furniture at a crafting station. The player can eat food to replenish energy, which is required to use magic-imbued tools including a pickaxe, a shovel, a fishing rod, and a watering can; meals can replenish greater amounts of energy than foods grown, harvested, or purchased in the valley, and can make the player "well fed", which gives them a movement speed boost, increased luck at getting resource bonuses, and the ability to sprint across the valley faster by gliding on magic (albeit at an energy cost). Furniture and certain objects can be placed and rearranged in the valley or inside the player's house, and the player can also move and rotate buildings in the valley to their liking. The player can also change their outfit and appearance at any time, clothing can be customized further by the player with a clothes and furniture designer option called "Touch of Magic". Unlike in the <i>Animal Crossing</i> games, the player's tools, clothing, and furniture do not take up space in their inventory; tools are selected using an option wheel and never break from use, while the inventory screen contains separate "wardrobe" and "furniture" options for clothing and furniture respectively.</p>
+
+<p>The player can earn a currency called "Star Coins" during gameplay, usually by selling most items in their inventory to <a href="https://en.wikipedia.org/wiki/Goofy">Goofy</a> at various stalls run by him throughout the valley. Star Coins can be spent on crops and seeds sold by Goofy at his stalls, materials sold by <a href="https://en.wikipedia.org/wiki/Kristoff_(Frozen)">Kristoff</a> at his stall, certain foods that are only available at <a href="https://en.wikipedia.org/wiki/Ratatouille_(film)">Remy's</a> restaurant Chez Remy or from <a href="https://en.wikipedia.org/wiki/Gaston_(Beauty_and_the_Beast)">Gaston's</a> stall (the latter found on the <i>A Rift in Time</i> expansion's Eternity Isle), or on clothes and furniture sold by <a href="https://en.wikipedia.org/wiki/Scrooge_McDuck">Scrooge McDuck</a> at his store. They can also be spent on new buildings or building upgrades (all handled in-universe by Scrooge's "McDuck Construction" company) that provide additional benefits, such as more items available at Goofy's stalls or more space in the player's house, or on wells strewn throughout the valley that allows the player to <a href="https://en.wikipedia.org/wiki/Fast_travel">fast travel</a> to different biomes.</p>
+
+<p>The player can interact with and befriend the villagers, including heroes and <a href="https://en.wikipedia.org/wiki/List_of_Disney_villain_characters">villains</a>. The player can build up a "friendship level" with that villager by having a daily discussion with them, giving them gifts, completing quests they assign the player, and (except for characters who can only swim in the valley's waters) hanging out with them and doing activities, including gardening, mining, digging, harvesting, and fishing; doing specific activities with a land-based villager, depending on the role the player assigns the villager at friendship level two, will earn the player more resources related to that activity. Raising a friendship level (up to level ten) with a villager will give the player rewards including Star Coins, exclusive furniture and clothes, and exclusive motifs for "Touch of Magic", as well as increased resources from hanging out with them and new quests.</p>
+
+<h2>Plot</h2>
+
+<h3>Main story</h3>
+
+<p>The game follows the player as they decide to spend some time away from the hustle and bustle of the city and return to their old rural home, falling asleep in their old backyard play area and entering a dream world as their memories of childhood return. Upon appearing in the titular Dreamlight Valley, the player is met by Merlin, who explains that Dreamlight Valley used to be full of villagers living in harmony, but after the valley's ruler disappeared, Night Thorns began growing and causing the villagers to lose their memories in an event known as "The Forgetting". While many villagers fled to their home realms for protection, others stayed and became trapped as Dreamlight Valley was overrun by Night Thorns and fell into disrepair. The player decides to help restore Dreamlight Valley and get rid of the Night Thorns.</p>
+
+<p>With Merlin's help, the player is able to use their own magic, known as "Dreamlight", to clear away the Giant Night Thorns blocking access to the house resembling their own from back in reality. Recovering a memory hidden in the Night Thorns inside, the player and Merlin decide to investigate the Dream Castle, only to find the entrance blocked by giant Night Thorns. After meeting some of the villagers who stayed behind and recovering the Royal Tools, the eternal night spell over the valley is broken and the player clears away the giant Night Thorns, regaining access to the Dream Castle. Inside, they find doorways to various realms where the other villagers had fled when The Forgetting came, all sealed by Night Thorns. The player collects more Dreamlight and unlocks the doors, visiting the realms and helping the characters there with their problems, bringing them back to Dreamlight Valley to help restore it. Along the way, they help restore Dreamlight's local businesses and provide housing for the characters returning to Dreamlight Valley.</p>
+
+<p>The player also opens up other regions of the valley blocked by giant Night Thorns, restoring them by returning the magic Orbs that protect the valley to their respective Pillars. As they restore Dreamlight Valley and help more villagers, the player gradually learns that they were the former ruler of Dreamlight Valley, having stopped visiting as they grew up and thus causing the Valley to fall into disrepair. The villagers also explain that the Forgetting and the appearance of the Night Thorns was caused by a dark being called the Forgotten.</p>
+
+<p>As the player is about to restore the final Pillar, the Forgotten appears and steals the Orb, revealing themselves to be the player character's inner child, who was corrupted by negative emotions and fell into a deep depression. The Forgotten intends to use the Orb in a spell to create a rift that could destroy the valley. The player follows the Forgotten to their dark castle and talks to them, reminding them of their past memories and helping them accept themselves. The Forgotten shows remorse and works with the player to close the rift, and they are forgiven by the villagers and reintegrate into Dreamlight Valley with the player's help.</p>
+
+<p>Jafar contacts the player, asking for their help to fix the damage he wrought on Eternity Isle, as his actions have severely damaged the space-time continuum there and he needs their help to undo it as he's trapped there until it is fixed. Merlin helps find the access route in the Dream Castle, which leads to the Stardust Port, where many docks are found that lead to other locations throughout Dreamlight Valley, and the player sets off for Eternity Isle. Once on Eternity Isle, the player gets to work under Jafar's direction to reopen the Ancient Gate that leads to more of Eternity Isle. The player also helps Goofy, Remy, and Scrooge reopen their Eternity Isle businesses that had been abandoned when The Forgetting happened. Mickey also reintroduces the player to Scramblecoin so they can play it with all the villagers.</p>
+
+<p>Upon reaching the main area of the isle, Jafar reveals that the area is split in two by a rift in time that needs to be fixed before it destroys everything, and he is confined to the palace at the other end. Jafar directs them to recover the Royal Hourglass, a new Royal Tool that will help mend all the damage on Eternity Isle, and anything that appears back in Dreamlight Valley. However, EVE is in possession of the Royal Hourglass and the player must gain her trust before she is willing to return it to them, as not even telling her the player is friends with WALL-E convinces her to hand it over as she was told by the player when they were younger to guard it until further notice. Once the player completes regaining EVE's trust, they get the Royal Hourglass, and after recovering the first of three Jewels of Time to help repair the bridge leading to the rest of the isle, they are granted access to the rest of Eternity Isle, including the biomes where Gaston and Rapunzel were stranded in the Glittering Dunes and the Wild Tangle, and continue to fix all the damage wrought on the isle by Jafar, and what has developed back in Dreamlight Valley as a result of recovering the new Royal Tool.</p>
+
+<p>Once the Royal Hourglass is fully repowered with the three Jewels of Time, the player clears away the time anomalies around the palace, freeing Jafar. Unfortunately, this was what he wanted as he was now free to hunt for the legendary treasure known as the Spark of Imagination. He escapes, for now, while the player prepares to deal with him in the future.</p>
+
+<h2>Characters</h2>
+
+<p><i>Disney Dreamlight Valley</i> features several Disney and Pixar characters who reside in the valley as "villagers".</p>
+
+<ul>
+  <li><i><b><a href="https://en.wikipedia.org/wiki/Aladdin_(1992_Disney_film)">Aladdin</a></b></i>
+<a href="https://en.wikipedia.org/wiki/Jafar_(Aladdin)">Jafar</a><sup><a href="https://en.wikipedia.org/wiki/Disney_Dreamlight_Valley#cite_note-ARIT-12">[lower-roman 1]</a></sup></li>
+  <li><i><b><a href="https://en.wikipedia.org/wiki/Beauty_and_the_Beast_(1991_film)">Beauty and the Beast</a></b></i>
+<a href="https://en.wikipedia.org/wiki/Belle_(Disney_character)">Belle</a>
+<a href="https://en.wikipedia.org/wiki/Beast_(Disney_character)">Beast</a>
+<a href="https://en.wikipedia.org/wiki/Gaston_(Beauty_and_the_Beast)">Gaston</a><sup><a href="https://en.wikipedia.org/wiki/Disney_Dreamlight_Valley#cite_note-ARIT-12">[lower-roman 1]</a></sup></li>
+  <li><i><b><a href="https://en.wikipedia.org/wiki/Cinderella_(1950_film)">Cinderella</a></b></i>
+<a href="https://en.wikipedia.org/wiki/Fairy_Godmother_(Disney)">Fairy Godmother</a></li>
+  <li><i><b><a href="https://en.wikipedia.org/wiki/Encanto">Encanto</a></b></i>
+<a href="https://en.wikipedia.org/wiki/Mirabel_Madrigal">Mirabel</a><sup><a href="https://en.wikipedia.org/wiki/Disney_Dreamlight_Valley#cite_note-Polygon_DDV_2023-13">[11]</a></sup></li>
+  <li><i><b><a href="https://en.wikipedia.org/wiki/Frozen_(2013_film)">Frozen</a></b></i>
+<a href="https://en.wikipedia.org/wiki/Anna_(Frozen)">Anna</a>
+<a href="https://en.wikipedia.org/wiki/Elsa_(Frozen)">Elsa</a>
+<a href="https://en.wikipedia.org/wiki/Kristoff_(Frozen)">Kristoff</a>
+<a href="https://en.wikipedia.org/wiki/Olaf_(Frozen)">Olaf</a><sup><a href="https://en.wikipedia.org/wiki/Disney_Dreamlight_Valley#cite_note-Polygon_DDV_2023-13">[11]</a></sup></li>
+  <li><i><b><a href="https://en.wikipedia.org/wiki/Lilo_&amp;_Stitch">Lilo &amp; Stitch</a></b></i>
+<a href="https://en.wikipedia.org/wiki/Stitch_(Lilo_&amp;_Stitch)">Stitch</a></li>
+  <li><i><b><a href="https://en.wikipedia.org/wiki/Mickey_Mouse_universe">Mickey &amp; Friends</a></b></i>
+<a href="https://en.wikipedia.org/wiki/Mickey_Mouse">Mickey Mouse</a>
+<a href="https://en.wikipedia.org/wiki/Minnie_Mouse">Minnie Mouse</a>
+<a href="https://en.wikipedia.org/wiki/Donald_Duck">Donald Duck</a>
+<a href="https://en.wikipedia.org/wiki/Goofy">Goofy</a>
+<a href="https://en.wikipedia.org/wiki/Daisy_Duck">Daisy Duck</a>
+<a href="https://en.wikipedia.org/wiki/Scrooge_McDuck">Scrooge McDuck</a></li>
+  <li><i><b><a href="https://en.wikipedia.org/wiki/Moana_(2016_film)">Moana</a></b></i>
+<a href="https://en.wikipedia.org/wiki/Moana_(character)">Moana</a>
+<a href="https://en.wikipedia.org/wiki/Maui_(Moana)">Maui</a></li>
+  <li><i><b><a href="https://en.wikipedia.org/wiki/Monsters,_Inc.">Monsters, Inc.</a></b></i>
+<a href="https://en.wikipedia.org/wiki/Mike_Wazowski">Mike Wazowski</a>
+<a href="https://en.wikipedia.org/wiki/Sulley_(Monsters,_Inc.)">Sulley</a></li>
+  <li><i><b><a href="https://en.wikipedia.org/wiki/Mulan_(1998_film)">Mulan</a></b></i>
+<a href="https://en.wikipedia.org/wiki/Mulan_(Disney_character)">Mulan</a>
+<a href="https://en.wikipedia.org/wiki/Mushu">Mushu</a></li>
+  <li><i><b><a href="https://en.wikipedia.org/wiki/Oswald_the_Lucky_Rabbit">Oswald</a></b></i>
+<a href="https://en.wikipedia.org/wiki/Oswald_the_Lucky_Rabbit">Oswald the Lucky Rabbit</a><sup><a href="https://en.wikipedia.org/wiki/Disney_Dreamlight_Valley#cite_note-ARIT-12">[lower-roman 1]</a></sup></li>
+  <li><i><b><a href="https://en.wikipedia.org/wiki/Ratatouille_(film)">Ratatouille</a></b></i>
+<a href="https://en.wikipedia.org/wiki/Remy_(Ratatouille)">Remy</a></li>
+  <li><i><b><a href="https://en.wikipedia.org/wiki/Tangled">Tangled</a></b></i>
+<a href="https://en.wikipedia.org/wiki/Rapunzel_(Tangled)">Rapunzel</a><sup><a href="https://en.wikipedia.org/wiki/Disney_Dreamlight_Valley#cite_note-ARIT-12">[lower-roman 1]</a></sup>
+<a href="https://en.wikipedia.org/wiki/Mother_Gothel">Mother Gothel</a></li>
+  <li><i><b><a href="https://en.wikipedia.org/wiki/The_Lion_King">The Lion King</a></b></i>
+<a href="https://en.wikipedia.org/wiki/Simba">Simba</a><sup><a href="https://en.wikipedia.org/wiki/Disney_Dreamlight_Valley#cite_note-Game_Rant_Nala-14">[12]</a></sup>
+<a href="https://en.wikipedia.org/wiki/Nala_(The_Lion_King)">Nala</a><sup><a href="https://en.wikipedia.org/wiki/Disney_Dreamlight_Valley#cite_note-Game_Rant_Nala-14">[12]</a></sup>
+<a href="https://en.wikipedia.org/wiki/Timon_and_Pumbaa">Timon</a>
+<a href="https://en.wikipedia.org/wiki/Timon_and_Pumbaa">Pumbaa</a>
+<a href="https://en.wikipedia.org/wiki/Scar_(The_Lion_King)">Scar</a></li>
+  <li><i><b><a href="https://en.wikipedia.org/wiki/The_Little_Mermaid_(1989_film)">The Little Mermaid</a></b></i>
+<a href="https://en.wikipedia.org/wiki/Ariel_(The_Little_Mermaid)">Ariel</a>
+<a href="https://en.wikipedia.org/wiki/Prince_Eric">Prince Eric</a>
+<a href="https://en.wikipedia.org/wiki/Ursula_(The_Little_Mermaid)">Ursula</a></li>
+  <li><i><b><a href="https://en.wikipedia.org/wiki/The_Princess_and_the_Frog">The Princess and the Frog</a></b></i>
+<a href="https://en.wikipedia.org/wiki/Tiana_(The_Princess_and_the_Frog)">Tiana</a></li>
+  <li><i><b><a href="https://en.wikipedia.org/wiki/The_Sword_in_the_Stone_(1963_film)">The Sword in the Stone</a></b></i>
+<a href="https://en.wikipedia.org/wiki/Merlin_(Disney)">Merlin</a></li>
+  <li><i><b><a href="https://en.wikipedia.org/wiki/The_Nightmare_Before_Christmas">The Nightmare Before Christmas</a></b></i>
+<a href="https://en.wikipedia.org/wiki/Jack_Skellington">Jack Skellington</a></li>
+  <li><i><b><a href="https://en.wikipedia.org/wiki/Toy_Story">Toy Story</a></b></i>
+<a href="https://en.wikipedia.org/wiki/Woody_(Toy_Story)">Woody</a>
+<a href="https://en.wikipedia.org/wiki/Buzz_Lightyear">Buzz Lightyear</a></li>
+  <li><i><b><a href="https://en.wikipedia.org/wiki/WALL-E">WALL-E</a></b></i>
+<a href="https://en.wikipedia.org/wiki/WALL-E_(character)">WALL·E</a>
+<a href="https://en.wikipedia.org/wiki/EVE_(WALL-E)">EVE</a><sup><a href="https://en.wikipedia.org/wiki/Disney_Dreamlight_Valley#cite_note-ARIT-12">[lower-roman 1]</a></sup></li>
+  <li><i><b><a href="https://en.wikipedia.org/wiki/Wreck-It_Ralph">Wreck-It Ralph</a></b></i>
+<a href="https://en.wikipedia.org/wiki/Vanellope_von_Schweetz">Vanellope</a></li>
+</ul>
+
+<p>Several other characters have been announced to be added in later updates:</p>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Aladdin_(Disney_character)">Aladdin</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Aurora_(Sleeping_Beauty)">Aurora</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Fairy_with_Turquoise_Hair">Blue Fairy</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Cheshire_Cat">Cheshire Cat</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Cinderella_(Disney_character)">Cinderella</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Flynn_Rider">Flynn Rider</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Hades_(Disney)">Hades</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Jasmine_(Aladdin)">Jasmine</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Maleficent">Maleficent</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Merida_(Brave)">Merida</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Peter_Pan">Peter Pan</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Pinocchio">Pinocchio</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Sally_(The_Nightmare_Before_Christmas)">Sally</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Wreck-It_Ralph">Ralph</a></li>
+</ul>
+
+<p>Additionally, Pua and Heihei from <i><a href="https://en.wikipedia.org/wiki/Moana_(2016_film)">Moana</a></i> and Figaro, originally from <i><a href="https://en.wikipedia.org/wiki/Pinocchio_(1940_film)">Pinocchio</a></i> and Minnie Mouse's pet in later media, all appear as unlockable companions (pets) for the player, with Pua unlocked during one of Moana's friendship quests, and Heihei and Figaro being premium purchases.</p>
+
+<h2>Development and release</h2>
+
+<p><i>Disney Dreamlight Valley</i> was developed by Gameloft Montreal as a life simulation adventure game. Manea Castet, Game Manager of <i>Disney Dreamlight Valley</i> at Gameloft Montreal explained, "Our development team is a big family of Disney and Pixar fans and have poured all of our passion into the development of Disney Dreamlight Valley, especially in the way we depict characters and their story arcs," and continued, "We can't wait for fans to join the Early Access this summer and help us bring this new ever-evolving Disney and Pixar-inspired world to our excited community."</p>
+
+<p>Announced in June 2022, the game was released in <a href="https://en.wikipedia.org/wiki/Early_access">early access</a> for <a href="https://en.wikipedia.org/wiki/Nintendo_Switch">Nintendo Switch</a>, <a href="https://en.wikipedia.org/wiki/PlayStation_4">PlayStation 4</a>, <a href="https://en.wikipedia.org/wiki/PlayStation_5">PlayStation 5</a>, <a href="https://en.wikipedia.org/wiki/Windows">Windows</a>, <a href="https://en.wikipedia.org/wiki/Xbox_One">Xbox One</a>, and <a href="https://en.wikipedia.org/wiki/Xbox_Series_X/S">Xbox Series X/S</a> on September 6, 2022, while the <a href="https://en.wikipedia.org/wiki/MacOS">macOS</a> version released in early access on December 6, 2022, alongside the game's second content update. A physical release for the console versions featuring exclusive content and physical extras, titled the <i>Cozy Edition</i>, was released for Nintendo Switch in North America on October 27, 2023, and will be globally released for Switch, PlayStation platforms, and Xbox platforms on November 10, 2023. The PlayStation and Xbox <i>Cozy Edition</i> releases contain a disc, while the Switch's <i>Cozy Edition</i> is a code-in-a-box release (containing a printed code instead of a <a href="https://en.wikipedia.org/wiki/Nintendo_Game_Card">Switch Game Card</a> in the box) due to platform limitations.</p>
+
+<p>The game was initially planned to be a <a href="https://en.wikipedia.org/wiki/Free-to-play">free-to-play</a> game after leaving early access. However, in a blog post published in October 2023, Gameloft announced that they had decided to reverse their free-to-play plans, leaving the game as a pay-for title upon full release on December 5, 2023. In the same post, Gameloft also announced that a new expansion titled <i>A Rift in Time</i> will be added on the same day as the full release, which will be included with a new <i>Gold Edition</i> digital release and will be a separate purchase for all other players.</p>
+
+<h3>Audio</h3>
+
+<p>The game features the voice acting of Ashley Adler, <a href="https://en.wikipedia.org/wiki/Tony_Anselmo">Tony Anselmo</a>, <a href="https://en.wikipedia.org/wiki/Tim_Allen">Tim Allen</a>, <a href="https://en.wikipedia.org/wiki/Jeff_Bennett">Jeff Bennett</a>, <a href="https://en.wikipedia.org/wiki/Jodi_Benson">Jodi Benson</a>, <a href="https://en.wikipedia.org/wiki/Danielle_Bisutti">Danielle Bisutti</a>, <a href="https://en.wikipedia.org/wiki/Abby_Trott">Abby Trott</a>, <a href="https://en.wikipedia.org/wiki/Ben_Burtt">Ben Burtt</a>, <a href="https://en.wikipedia.org/wiki/Cam_Clarke">Cam Clarke</a>, <a href="https://en.wikipedia.org/wiki/Chris_Sanders">Chris Sanders</a>, <a href="https://en.wikipedia.org/wiki/Pat_Carroll">Pat Carroll</a>, <a href="https://en.wikipedia.org/wiki/Kaitlyn_Robrock">Kaitlyn Robrock</a>, <a href="https://en.wikipedia.org/wiki/Auli'i_Cravalho">Auli'i Cravalho</a>, <a href="https://en.wikipedia.org/wiki/Enn_Reitel">Enn Reitel</a>, Barbara Dirickson, <a href="https://en.wikipedia.org/wiki/Patton_Oswalt">Patton Oswalt</a>, <a href="https://en.wikipedia.org/wiki/Bill_Farmer">Bill Farmer</a>, <a href="https://en.wikipedia.org/wiki/Donna_Murphy">Donna Murphy</a>, Jake Green, Matt Lowe, <a href="https://en.wikipedia.org/wiki/Jim_Hanks">Jim Hanks</a>, <a href="https://en.wikipedia.org/wiki/Moira_Kelly">Moira Kelly</a>, <a href="https://en.wikipedia.org/wiki/Jess_Harnell">Jess Harnell</a>, <a href="https://en.wikipedia.org/wiki/Bret_Iwan">Bret Iwan</a>, <a href="https://en.wikipedia.org/wiki/James_Horan_(actor)">James Horan</a>, <a href="https://en.wikipedia.org/wiki/Christopher_Daniel_Barnes">Christopher Daniel Barnes</a>, <a href="https://en.wikipedia.org/wiki/Jonathan_Freeman_(actor)">Jonathan Freeman</a>, <a href="https://en.wikipedia.org/wiki/Richard_White_(actor)">Richard White</a>, <a href="https://en.wikipedia.org/wiki/Mandy_Moore">Mandy Moore</a>, <a href="https://en.wikipedia.org/wiki/Chris_Sarandon">Chris Sarandon</a>, <a href="https://en.wikipedia.org/wiki/Stephanie_Beatriz">Stephanie Beatriz</a>, <a href="https://en.wikipedia.org/wiki/Carlos_Alazraqui">Carlos Alazraqui</a> &amp; <a href="https://en.wikipedia.org/wiki/John_Goodman">John Goodman</a> reprising their roles from <a href="https://en.wikipedia.org/wiki/List_of_Walt_Disney_Pictures_films">various Disney films</a> and television series. <i>Dreamlight Valley</i> marks the final appearance of Pat Carroll as Ursula, following her death in 2022.</p>
+
+<p>On September 6, 2022, Gameloft released a trailer announcing three "Founder's Packs", which were available during the game's early access period. The Founder's Packs, which were required for early access, included Moonstones (the game's premium currency), wearable items, decorative items, cosmetics animal companions (a "celestial" sea turtle animal companion for Deluxe and Ultimate and a "regal" fox animal companion for Ultimate only), a jersey, and a Mickey Mouse headband (for Deluxe and Ultimate). Additionally, Founder's Pack players received the <i>Gold Edition</i>'s exclusive cosmetic items (consisting of a "flowery" <a href="https://en.wikipedia.org/wiki/Capybara">capybara</a> companion, a "summer flowery <a href="https://en.wikipedia.org/wiki/Cottage">cottage</a>" house style, and wearable artist's overalls for the player) and an additional 2,500 Moonstones.</p>
+
+<p><i>Dreamlight Valley</i>'s first paid expansion, <i>A Rift in Time</i>, was released on December 5, 2023, alongside the full release of the game. It adds a new area called "Eternity Isle" featuring new biomes and new villagers.</p>
+
+<p>In October 2024, Disney Dreamlight Valley introduced several upcoming expansions and updates in a showcase. The <i>Storybook Vale</i> expansion, set to launch on November 20, 2024, will introduce new characters, including Flynn Rider, Merida, Hades, and Maleficent. A second content update, titled <i>The Unwritten Realms</i>, is scheduled for summer 2025. Additionally, the <i>Sew Delightful</i> free update, arriving on December 4, 2024, will add the <i>Frost &amp; Fairies Star Path</i> and floating islands to expand biome space. Future content planned for 2025 will feature characters and themes from <i>Aladdin</i>, <i>Alice in Wonderland</i>, and <i>Peter Pan</i>.</p>
+
+<h2>Reception</h2>
+
+<h3>Early access</h3>
+
+<p><i>Disney Dreamlight Valley</i> received a positive reception from critics upon its early access release in September 2022.</p>
+
+<p>Ivy Liscomb of <i><a href="https://en.wikipedia.org/wiki/Wirecutter_(website)">Wirecutter</a></i> complimented <i>Disney Dreamlight Valley</i> for not replicating the <i>Animal Crossing</i> series, appreciating the music, story and gameplay, calling <i>Disney Dreamlight Valley</i> "appealing for both kids and adults alike," and wrote positively about the amount of quests and the customizable content. Travis Northrup of <i><a href="https://en.wikipedia.org/wiki/IGN">IGN</a></i> called the game an "awesome life simulator that flexes its iconic characters to riveting, satisfying effect," asserted the story manages to be clever and creative, appreciated the relationships players can forge with the villagers across their different quests, and complimented the customization of the player character and their environment, stating, "<i>Disney Dreamlight Valley</i> feels impressively like a finished product for an early access game." Carrie Lambertsen of <i><a href="https://en.wikipedia.org/wiki/Screen_Rant">Screen Rant</a></i> said <i>Disney Dreamlight Valley</i> "quickly became one of the most popular of cozy games," found the gameplay to be entertaining and peaceful, saying the ability to farm, gather ressources, craft, and decorate make the game enjoyable, and called the player customization pleasant and immersive.</p>
+
+<p>Holly Alice of <i><a href="https://en.wikipedia.org/wiki/Pocket_Tactics">Pocket Tactics</a></i> named <i>Disney Dreamlight Valley</i> one of the best life simulation games available on <a href="https://en.wikipedia.org/wiki/Nintendo_Switch">Nintendo Switch</a> and <a href="https://en.wikipedia.org/wiki/Mobile_device">mobile devices</a>. Claire Crossman of <i><a href="https://en.wikipedia.org/wiki/Common_Sense_Media">Common Sense Media</a></i> praised the game's depiction of positive messages and role models, saying the game promotes the importance of helping others and encourages creative expression, applauding the diverse representations across the customization of the player character, and appreciating the interactions between the player character and their environment. Swapna Krishna of <i><a href="https://en.wikipedia.org/wiki/Wired_(magazine)">Wired</a></i> said <i>Disney Dreamlight Valley</i> succeeds to exceed the limits imposed by the life-simulation genre regarding what players can do through its quests, compared it to the life-simulation <a href="https://en.wikipedia.org/wiki/Indie_game">indie game</a> <i><a href="https://en.wikipedia.org/wiki/Cozy_Grove">Cozy Grove</a></i>, saying it manages to be the "perfect balance between binge-playing and pacing yourself" owing to the combination of the life-simulation genre and the adventure genre.</p>
+
+<p>Tom Steel of <i><a href="https://en.wikipedia.org/wiki/CBR.com">CBR.com</a></i> compared <i>Disney Dreamlight Valley</i> to <i><a href="https://en.wikipedia.org/wiki/Stardew_Valley">Stardew Valley</a></i>, saying while the game is immersive and nostalgic though Disney properties, it also depicts an "interesting" story and embodies the quality of being a "perfect game for whatever the player's mood requires" like <i>Stardew Valley</i>. Sam Loveridge of <i><a href="https://en.wikipedia.org/wiki/GamesRadar+">GamesRadar+</a></i> appreciated the quality-to-life improvements to the game's tools in contrast to <i>Animal Crossing</i> and liked the presence of the Disney characters that lived in the titular Dreamlight Valley, which she said had "some truly brilliant dialogue and narrative flourishes," while saying that certain resources were too scarce. Josh Broadwell of <i><a href="https://en.wikipedia.org/wiki/Nintendo_Life">Nintendo Life</a></i> wrote that he found the game to have "strong <a href="https://en.wikipedia.org/wiki/Worldbuilding">worldbuilding</a>", finding its plot to be "an unexpected and even poignant bit of commentary about growing up in general", but believed that the game's Switch optimization was subpar with significant menu <a href="https://en.wikipedia.org/wiki/Lag_(video_games)">lag</a> and game crashes.</p>
+
+<p><i>Disney Dreamlight Valley</i> received a positive reception from critics upon its full-release in December 2023.</p>
+
+<p>Alexandra O'Leary of <i><a href="https://en.wikipedia.org/wiki/Game_Rant">Game Rant</a></i> found <i>Disney Dreamlight Valley</i> to be a "great choice for cozy gamers" who want to experience a calm exploration-based game, said while the game is non-linear, the selection of quests remains substantial, and wrote the world and characters represent "Disney at its most immersive level so far." Christina Alexander of <i><a href="https://en.wikipedia.org/wiki/IGN">IGN</a></i> compared the game to the <i><a href="https://en.wikipedia.org/wiki/Animal_Crossing">Animal Crossing</a></i> series, found enjoyable how the player can interact with their inventory, complimented the outfits available to customize the player's avatar, and described the game as one of the best <a href="https://en.wikipedia.org/wiki/List_of_Disney_video_games">Disney games</a> released on Nintendo Switch.</p>
+
+<p>Jack Brassell of <i><a href="https://en.wikipedia.org/wiki/Pocket_Gamer">Pocket Gamer</a></i> gave <i>Disney Dreamlight Valley</i> <a href="https://en.wikipedia.org/wiki/Apple_Arcade"><i>Arcade Edition</i></a> a score of 4.5/5 stars and described it as an engaging life simulation experience, appreciated the setting, gameplay, and the cosmetics, saying the game offers the "best aspects" of <i><a href="https://en.wikipedia.org/wiki/The_Sims">The Sims</a></i> franchise to iPhone and iPad devices. Mikhail Madnani of <i><a href="https://en.wikipedia.org/wiki/TouchArcade">TouchArcade</a></i> also reviewed the Apple Arcade version of the game and gave it the score of 4/5 stars, calling it one of the "best additions to the service in a long time", found the gameplay to be relaxing, complimented the absence of in-app purchases, and described the expansion "A Rift in Time" as "pretty amazing so far".</p>
+
+<p>On September 6, 2022, <i>Disney Dreamlight Valley</i> topped the <a href="https://en.wikipedia.org/wiki/Steam_(service)">Steam</a> sales charts. On September 15, 2022, the official <i>Disney Dreamlight Valley</i> Twitter account announced that over one million players have played the game ten days after its release.</p>
+
+<p>In December 2023, Gameloft revealed that over five million players have played during the early access period of <i>Disney Dreamlight Valley</i>. <a href="https://en.wikipedia.org/wiki/Steam_(service)">Steam</a> later announced that <i>Disney Dreamlight Valley</i> was one of the top Early Access graduates by gross revenue on the service in 2023.</p>
+
+
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

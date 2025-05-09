@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>eFootball</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('be6d43fa-2791-434d-93f2-4e006c82ebb9/c2110fa3-9132-46fc-933e-49409226b968.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="be6d43fa-2791-434d-93f2-4e006c82ebb9/edc07b32-55f1-4ea7-9572-75b00915d937.png"/> eFootball</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="be6d43fa-2791-434d-93f2-4e006c82ebb9/69e94a3e-441c-4049-b15b-f69eeae3a11d.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-1/29/2025">1/29/2025</a> 14:44:06</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-1/29/2025">1/29/2025</a> 14:48:03</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-FREE TO PLAY">FREE TO PLAY</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-9/29/2021">9/29/2021</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-47">47</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Deportes">Deportes</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Free to Play">Free to Play</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Simuladores">Simuladores</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Konami">Konami</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Konami">Konami</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Compat. Parcial Con Mando">Compat. Parcial Con Mando</a><br/><a href="#quicklink-Compras Dentro De La Aplicación">Compras Dentro De La Aplicación</a><br/><a href="#quicklink-Coop. A Pantalla (Com)Partida">Coop. A Pantalla (Com)Partida</a><br/><a href="#quicklink-Cooperativo">Cooperativo</a><br/><a href="#quicklink-Cooperativo En Línea">Cooperativo En Línea</a><br/><a href="#quicklink-Jcj">Jcj</a><br/><a href="#quicklink-Jcj A Pantalla (Com)Partida">Jcj A Pantalla (Com)Partida</a><br/><a href="#quicklink-Jcj En Línea">Jcj En Línea</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Pantalla Partida/Compartida">Pantalla Partida/Compartida</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1665460" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1665460/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1665460/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1665460" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1665460" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1665460" target="_blank">PCGamingWiki</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Anime">Anime</a><br/><a href="#quicklink-Comedia">Comedia</a><br/><a href="#quicklink-Cooperativos">Cooperativos</a><br/><a href="#quicklink-Cooperativos en línea">Cooperativos en línea</a><br/><a href="#quicklink-Cooperativos locales">Cooperativos locales</a><br/><a href="#quicklink-Deportes">Deportes</a><br/><a href="#quicklink-Divertidos">Divertidos</a><br/><a href="#quicklink-e-sports">e-sports</a><br/><a href="#quicklink-Free to Play">Free to Play</a><br/><a href="#quicklink-Fútbol">Fútbol</a><br/><a href="#quicklink-JcJ">JcJ</a><br/><a href="#quicklink-LGBTQ+">LGBTQ+</a><br/><a href="#quicklink-Memes">Memes</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Multijugador local">Multijugador local</a><br/><a href="#quicklink-Para mando">Para mando</a><br/><a href="#quicklink-Realistas">Realistas</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/><a href="#quicklink-Violentos">Violentos</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph">■ &quot;eFootball™&quot; - Una evolución de &quot;PES&quot;</p><p class="bb_paragraph">Estamos en una nueva era del fútbol virtual: &quot;PES&quot; ha evolucionado para convertirse en &quot;eFootball™&quot;. ¡Disfruta ya de la nueva generación de juegos de fútbol con &quot;eFootball™&quot;!</p><p class="bb_paragraph"> </p><p class="bb_paragraph">■ Todos los recién llegados son bienvenidos</p><p class="bb_paragraph">Tras descargar el juego, podrás aprender los controles básicos a través de un tutorial paso a paso que incluye demostraciones prácticas. ¡Complétalos todos para recibir a Lionel Messi!</p><p class="bb_paragraph"> </p><p class="bb_paragraph">[Formas de jugar]</p><p class="bb_paragraph">■ Crea tu propio equipo ideal</p><p class="bb_paragraph">Puedes elegir como equipo base entre una gran cantidad de equipos, incluidos prestigiosos clubes europeos como el FC Barcelona, el Manchester United, el FC Bayern München, el AC Milan y el Internazionale Milano. ¡También puedes elegir clubes de Sudamérica, clubes de la J.League o tu selección nacional favorita!</p><p class="bb_paragraph"> </p><p class="bb_paragraph">■ Ficha jugadores</p><p class="bb_paragraph">Después de crear tu equipo, es el momento de hacer fichajes. ¡Desde superestrellas actuales a leyendas históricas, ficha jugadores y lleva a tu equipo a nuevas cotas!</p><p class="bb_paragraph"> </p><p class="bb_paragraph">・ Jugadores especiales</p><p class="bb_paragraph">Aquí puedes fichar jugadores especiales, como futbolistas que hayan tenido grandes actuaciones en partidos reales, futbolistas de ligas destacadas y leyendas del deporte rey.</p><p class="bb_paragraph"> </p><p class="bb_paragraph">・ Jugadores normales</p><p class="bb_paragraph">Aquí puedes fichar a los jugadores que tú elijas. Usando las funciones Ordenar y Filtrar podrás acotar tu búsqueda.</p><p class="bb_paragraph"> </p><p class="bb_paragraph">・ Directores técnicos</p><p class="bb_paragraph">Aquí puedes fichar directores técnicos adecuados para todo tipo de planteamientos tácticos y con distintas compatibilidades.</p><p class="bb_paragraph"> </p><p class="bb_paragraph">■ Juega partidos</p><p class="bb_paragraph">Una vez que hayas confeccionado un equipo con tus jugadores favoritos, será el momento de verlos en acción sobre el terreno de juego.</p><p class="bb_paragraph">¡Ya sea poniendo a prueba tus habilidades frente a la IA o compitiendo por la mejor posición en el ranking de partidos en línea, disfruta de eFootball™ de la manera que más te guste!</p><p class="bb_paragraph"> </p><p class="bb_paragraph">・ Perfecciona tus habilidades en partidos contra la IA</p><p class="bb_paragraph">Hay una gran diversidad de eventos que coinciden con el calendario futbolístico del mundo real, incluyendo un evento &quot;Starter&quot; para aquellos que están empezando y eventos en los que puedes jugar contra equipos de importantes ligas. ¡Confecciona un equipo ideal que se ajuste al tema de los eventos y participa!</p><p class="bb_paragraph"> </p><p class="bb_paragraph">・ Pon a prueba tu fortaleza en partidos de usuarios</p><p class="bb_paragraph">Disfruta de la competición en tiempo real con la &quot;Liga eFootball™&quot;, basada en divisiones, y con diversos eventos semanales. ¿Eres capaz de llevar a tu equipo ideal a lo más alto de la división 1?</p><p class="bb_paragraph"> </p><p class="bb_paragraph">・ Partidos de hasta 3 contra 3 con amigos</p><p class="bb_paragraph">Usa la función Partido de amigos para jugar contra tus amigos. ¡Demuéstrales la pasta de la que está hecho tu equipo!</p><p class="bb_paragraph">También están disponibles los partidos cooperativos de hasta 3 contra 3. ¡Júntate con tus amigos y disfruta de apasionantes enfrentamientos!</p><p class="bb_paragraph"> </p><p class="bb_paragraph">■ Desarrolla a los jugadores</p><p class="bb_paragraph">Los jugadores fichados se pueden desarrollar aún más según el tipo de jugador.</p><p class="bb_paragraph">Sube de nivel a tus jugadores poniéndolos a jugar partidos o usando &quot;Programas de entrenamiento de nivel&quot;. ¡Usa después los puntos de progresión obtenidos y desarrolla a tus jugadores para amoldarlos a tu estilo de juego! Los programas de entrenamiento de nivel se pueden obtener participando en eventos.</p><p class="bb_paragraph">Los puntos de progresión del jugador se asignarán automáticamente a categorías como [Disparo], [Regate] y [Defensa] de una forma que optimizará las estadísticas del jugador y maximizará su valoración general.</p><p class="bb_paragraph"> </p><p class="bb_paragraph">En caso de que prefieras personalizar al jugador para adaptarlo a tu gusto personal, tienes la opción de asignar los puntos de progresión manualmente.</p><p class="bb_paragraph">Si tienes dudas sobre cómo desarrollar al jugador, puedes usar la función [Recomendado] para asignar automáticamente sus puntos.</p><p class="bb_paragraph">¡Desarrolla a tus jugadores exactamente a tu gusto!</p><p class="bb_paragraph"> </p><p class="bb_paragraph">[Para una mayor diversión]</p><p class="bb_paragraph">■ Actualizaciones en vivo semanales</p><p class="bb_paragraph">Los datos de los partidos reales jugados en todo el mundo se recopilan semanalmente y se implementan en el juego a través de la función Actualización en vivo para crear una experiencia más auténtica. Estas actualizaciones afectan a varios aspectos del juego, incluidas la valoración de la forma física de los jugadores y las plantillas de los equipos.</p><p class="bb_paragraph"> </p><p class="bb_paragraph">*Los usuarios que residan en Bélgica no tendrán acceso a las cajas de botín que se compran con monedas de eFootball™.</p><p class="bb_paragraph">*Puedes comprar monedas de eFootball™ en el juego y usarlas de diversas maneras, como para fichar jugadores seleccionados al azar o desbloquear Pases de partido.</p><p class="bb_paragraph">*La descripción puede variar debido a futuras actualizaciones.</p>
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

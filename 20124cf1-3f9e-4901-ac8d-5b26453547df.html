@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>DOOM + DOOM II</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('20124cf1-3f9e-4901-ac8d-5b26453547df/f306d09d-cf25-470c-b029-64d17d628881.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="20124cf1-3f9e-4901-ac8d-5b26453547df/8b33b6fa-913e-4f31-ab48-1abad7fb4960.png"/> DOOM + DOOM II</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="20124cf1-3f9e-4901-ac8d-5b26453547df/46f0b4b7-6893-4692-bf02-3c4831f34097.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/13/2024">11/13/2024</a> 0:35:38</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/13/2024">11/13/2024</a> 1:09:10</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-PORCHE">PORCHE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-"></a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-94">94</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-id Software">id Software</a><br/><a href="#quicklink-Nightdive Studios">Nightdive Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Bethesda">Bethesda</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Coop. A Pantalla (Com)Partida">Coop. A Pantalla (Com)Partida</a><br/><a href="#quicklink-Cooperativo">Cooperativo</a><br/><a href="#quicklink-Jcj">Jcj</a><br/><a href="#quicklink-Jcj A Pantalla (Com)Partida">Jcj A Pantalla (Com)Partida</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Pantalla Partida/Compartida">Pantalla Partida/Compartida</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Remote Play Together">Remote Play Together</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/2280" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/2280/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/2280/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=2280" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/2280" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=2280" target="_blank">PCGamingWiki</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-2.5D">2.5D</a><br/><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Años 90">Años 90</a><br/><a href="#quicklink-Ciencia ficción">Ciencia ficción</a><br/><a href="#quicklink-Clásico">Clásico</a><br/><a href="#quicklink-De ritmo rápido">De ritmo rápido</a><br/><a href="#quicklink-Demonios">Demonios</a><br/><a href="#quicklink-Difíciles">Difíciles</a><br/><a href="#quicklink-Disparos">Disparos</a><br/><a href="#quicklink-Disparos clásicos">Disparos clásicos</a><br/><a href="#quicklink-FPS">FPS</a><br/><a href="#quicklink-Gran banda sonora">Gran banda sonora</a><br/><a href="#quicklink-Modificables">Modificables</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Primera persona">Primera persona</a><br/><a href="#quicklink-Retro">Retro</a><br/><a href="#quicklink-Sangriento">Sangriento</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/><a href="#quicklink-Vieja escuela">Vieja escuela</a><br/><a href="#quicklink-Violentos">Violentos</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					DOOM, desarrollado por id Software y publicado originalmente en 1993, fue el responsable de la aparición y popularización de los shooters en primera persona, lo que sentó las bases para todos los posteriores juegos del género. DOOM II, la secuela aclamada por la crítica, llegaría en 1994. Ahora, las versiones definitivas y recién renovadas de DOOM y DOOM II están disponibles en un único producto.<br><br><strong>Incluye: </strong><ul class="bb_ul"><li>- DOOM¹ <br></li><li>- DOOM II¹ <br></li><li>- TNT: Evilution <br></li><li>- The Plutonia Experiment <br></li><li>- Master Levels for DOOM II <br></li><li>- No Rest for the Living <br></li><li>- Sigil <br></li><li>- Legacy of Rust (un nuevo episodio creado en colaboración con id Software, Nightdive Studios y MachineGames) <br></li><li>- Nuevo paquete de mapas de Partida a muerte con 26 mapas </li></ul><br>En total, hay un total de 187 mapas de misión y 43 mapas de Partida a muerte para DOOM y DOOM II. <br><br><strong>Nuevas mejoras</strong><br>- Partidas a muerte y cooperativo online y multiplataforma para hasta 16 jugadores² <br><br>- Compatibilidad con mods publicados por la comunidad²'³<br><br>- Elige entre las bandas sonoras en MIDI de DOOM y DOOM II o las versiones modernas IDKFA de Andrew Hulshult (con nuevas grabaciones para DOOM II)<br><br>- Rendimiento mejorado con renderizado multihilo a una resolución máxima de 4K⁴ <br><br>- Ahora en KEX Engine <br><br>- La compatibilidad con el código fuente de BOOM permite que se publiquen mods creados por la comunidad en los últimos 25 años desde el mismo juego <br><br>- Opciones de accesibilidad, como una fuente moderna para mejorar la legibilidad, modo de alto contraste, texto a voz, chat multijugador con voz a texto y más <br><br>- Traducido a 8 nuevos idiomas: español de México, portugués de Brasil, polaco, ruso, japonés, coreano, chino tradicional y chino simplificado <br><br><strong>Mejoras ya incluidas </strong><br>- Gráficos mejorados<br><br>- Compatibilidad con mandos modernos<br><br>- Carrusel de armas para cambiarlas rápidamente<br><br>- Controles de teclado y ratón mejorados <br><br>- Partidas a muerte y cooperativas con pantalla partida para hasta 4 jugadores<br><br>- Mods destacados de la comunidad²'³, como REKKR, Revolution!, Syringe, Double Impact, Arrival ¡y muchos más! Prepárate para una lista cada vez más amplia de mods para un jugador que irán añadiendo los creadores de la comunidad.<br><br>- 60 FPS y 16:9 nativos a una resolución máxima de 1080p<br><br>- Música original del juego restaurada con hardware original<br><br>- Compatibilidad con guardado y carga rápida<br><br>- Compatibilidad con mods de DeHackEd<br><br><strong>Notas</strong><br>¹ Las versiones originales de DOOM (1993) y DOOM II para DOS están incluidas en Steam. <br><br>² Requiere una cuenta de .<br><br>³ La instalación de mods se realiza por separado y requiere almacenamiento del sistema adicional. <br><br>⁴ Requiere una pantalla compatible.<br><br><strong>Sobre los juegos incluidos: </strong><br><strong>Versión original de DOOM (1993)</strong><br>Llegaron los demonios y murieron todos los marines... salvo uno. Eres la última línea de defensa contra el infierno. Prepárate para la batalla más encarnizada que hayas vivido. Disfruta de la versión original y completa del juego lanzado en 1993, con todo el contenido oficial y el Episodio IV: Thy Flesh Consumed.<br><br><strong>Versión original de DOOM II</strong><br>El infierno ha invadido la Tierra y, para salvarla, deberás luchar contra demonios más poderosos aún usando armas más potentes todavía. En la fantástica secuela del revolucionario DOOM (1993) aparecían la brutal superescopeta, el infame jefe Icono del Pecado y más acción a raudales en forma de shooter en 1.ª persona.<br><br><strong>TNT: Evilution</strong><br>La UAC trasladó sus experimentos a una de las lunas de Júpiter. Dejaron pasar a una nave que confundieron con un transporte de suministros, pero cuando llegó a la base salieron de ella demonios a raudales. Todos tus compañeros terminaron aniquilados o convertidos en zombis. Esta vez no es por supervivencia. Esta vez es por venganza.<br><br><strong>The Plutonia Experiment</strong><br>Los mejores científicos de la nación han hecho todo lo posible por cerrar las siete puertas interdimensionales del infierno, pero queda un portal abierto. Deberás infiltrarte a solas en la base arrasada, derrotar al demonio Guardián y sellar el último portal al infierno antes de que los no muertos dominen el mundo. <br><br><strong>Master Levels for DOOM II</strong><br>Esta expansión incluye 20 niveles adicionales, todos ellos con los mismos engendros infernales y la acción frenética del juego base, que han sido creados por diseñadores independientes bajo la supervisión de id Software.<br><br><strong>Sigil</strong><br>Creado por John Romero, cofundador de id Software, y publicado en formato mod de un episodio con 18 mapas nuevos, SIGIL encaja entre los acontecimientos de DOOM (1993) y DOOM II. Bafomet, guardián de las puertas del infierno, “manipuló el teletransportador final con su símbolo oculto, cuyos arcanos poderes te llevan a las tenebrosas costas del infierno. Debes abrirte paso luchando por este núcleo de maldad estigia para enfrentarte a los heraldos supremos de Satán antes de regresar a la Tierra para salvarla”.<br><br><strong>Legacy of Rust</strong><br>Creado en colaboración con id Software, Nightdive Studios y MachineGames, Legacy of Rust es el nuevo episodio de DOOM y el primer episodio oficial desde DOOM II que incorpora nuevos demonios y armas. Contiene 16 mapas divididos en dos secciones: The Vulcan Abyss y Counterfeit Eden.
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

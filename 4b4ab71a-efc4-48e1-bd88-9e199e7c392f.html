@@ -1,0 +1,376 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Max Payne 3</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('4b4ab71a-efc4-48e1-bd88-9e199e7c392f/acc78187-bf47-4d41-9d79-4889584b5612.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="4b4ab71a-efc4-48e1-bd88-9e199e7c392f/f171ab3e-79c4-4c8e-a31f-de209f4a1b5e.png"/> Max Payne 3</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="4b4ab71a-efc4-48e1-bd88-9e199e7c392f/50585f8e-f98d-4144-8733-ed40d0c2fe3a.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 14:41:31</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-2/4/2025">2/4/2025</a> 23:51:29</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-1 TB EXT">1 TB EXT</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-5/15/2012">5/15/2012</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-87">87</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Third-person shooter">Third-person shooter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Rockstar Studios">Rockstar Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Rockstar Games">Rockstar Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single-player">Single-player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/Max_Payne_3" target="_blank">Wikipedia</a><br/><a href="http://www.rockstargames.com/maxpayne3/" target="_blank">Official website</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-[Game Engine] RAGE">[Game Engine] RAGE</a><br/><a href="#quicklink-[People] artist: Joshua Bass">[People] artist: Joshua Bass</a><br/><a href="#quicklink-[People] artist: Paul MacPherson">[People] artist: Paul MacPherson</a><br/><a href="#quicklink-[People] artist: Rob Nelson">[People] artist: Rob Nelson</a><br/><a href="#quicklink-[People] composer: Health">[People] composer: Health</a><br/><a href="#quicklink-[People] designer: Sergei Kuprejanov">[People] designer: Sergei Kuprejanov</a><br/><a href="#quicklink-[People] producer: Steve Martin">[People] producer: Steve Martin</a><br/><a href="#quicklink-[People] programmer: Hugues St. Pierre">[People] programmer: Hugues St. Pierre</a><br/><a href="#quicklink-[People] programmer: Kevin Hoare">[People] programmer: Kevin Hoare</a><br/><a href="#quicklink-[People] programmer: Lewis Gordon">[People] programmer: Lewis Gordon</a><br/><a href="#quicklink-[People] writer: Dan Houser">[People] writer: Dan Houser</a><br/><a href="#quicklink-[People] writer: Michael Unsworth">[People] writer: Michael Unsworth</a><br/><a href="#quicklink-[People] writer: Rupert Humphries">[People] writer: Rupert Humphries</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>Max Payne 3</b></i> is a 2012 <a href="https://en.wikipedia.org/wiki/Third-person_shooter">third-person shooter game</a> developed and published by <a href="https://en.wikipedia.org/wiki/Rockstar_Games">Rockstar Games</a>. The game was first released for <a href="https://en.wikipedia.org/wiki/PlayStation_3">PlayStation 3</a> and <a href="https://en.wikipedia.org/wiki/Xbox_360">Xbox 360</a> on May 15, 2012; a <a href="https://en.wikipedia.org/wiki/Windows">Windows</a> port was released on May 29, followed by an <a href="https://en.wikipedia.org/wiki/OS_X">OS X</a> port on June 20, 2013. It is the sequel to <i><a href="https://en.wikipedia.org/wiki/Max_Payne_2:_The_Fall_of_Max_Payne">Max Payne 2: The Fall of Max Payne</a></i> and is the third entry in the <i><a href="https://en.wikipedia.org/wiki/Max_Payne">Max Payne</a></i> series. It is also <a href="https://en.wikipedia.org/wiki/List_of_backward-compatible_games_for_Xbox_One_and_Series_X/S">backwards compatible</a> on <a href="https://en.wikipedia.org/wiki/Xbox_One">Xbox One</a> and <a href="https://en.wikipedia.org/wiki/Xbox_Series_X/S">Xbox Series X/S</a>.</p>
+
+<p><i>Max Payne 3</i> is played from a <a href="https://en.wikipedia.org/wiki/Third-person_view">third-person perspective</a>. Throughout the <a href="https://en.wikipedia.org/wiki/Single-player_mode">single-player mode</a>, players control <a href="https://en.wikipedia.org/wiki/Max_Payne_(character)">Max Payne</a>, a former <a href="https://en.wikipedia.org/wiki/NYPD">NYPD</a> detective. Nine years after the events of the second game, Max finds work as a private security contractor in <a href="https://en.wikipedia.org/wiki/São_Paulo">São Paulo</a>, <a href="https://en.wikipedia.org/wiki/Brazil">Brazil</a>, but becomes entangled in a quest filled with death and betrayal. An <a href="https://en.wikipedia.org/wiki/Online_multiplayer">online multiplayer</a> mode is included with the game, allowing up to 16 players to engage in both <a href="https://en.wikipedia.org/wiki/Cooperative_video_game">cooperative</a> and competitive gameplay in re-creations of multiple single-player settings.</p>
+
+<p>As part of their research for the <i>Max Payne 3</i>'s setting, the developers conducted field research around São Paulo throughout development and captured footage for the design team. Development duties were shared between many of Rockstar's studios worldwide.</p>
+
+<p><i>Max Payne 3</i> received positive reviews from critics, who praised its gameplay, narrative, and action themes, though some criticism was aimed at the change in style from its predecessors, its linear design, and depiction of São Paulo. The game had shipped 4 million units by May 2013. It was nominated for multiple year-end accolades from several gaming publications, winning a variety of them.</p>
+
+<h2>Gameplay</h2>
+
+<p><i>Max Payne 3</i> is a <a href="https://en.wikipedia.org/wiki/Third-person_shooter">third-person shooter</a> in which the player assumes the role of its titular character, <a href="https://en.wikipedia.org/wiki/Max_Payne_(character)">Max Payne</a>. A new feature to the series is the <a href="https://en.wikipedia.org/wiki/Cover_system">cover system</a>, which allows players to gain a <a href="https://en.wikipedia.org/wiki/Positional_advantage">tactical advantage</a>, and avoid taking damage from enemies. To progress through the linear story, players take on enemies throughout levels. The game features interactive cutscenes which transition seamlessly into continuing gameplay; there are no loading screens across gameplay and cutscenes.</p>
+
+<p>In combat, <a href="https://en.wikipedia.org/wiki/Auto-aim">auto-aim</a> and a <a href="https://en.wikipedia.org/wiki/Cover_system">cover system</a> can be used as assistance against enemies. Should players take damage, <a href="https://en.wikipedia.org/wiki/Analgesic">painkillers</a> can be used to regenerate health. Players use <a href="https://en.wikipedia.org/wiki/Melee#Use_in_gaming">melee</a> attacks, firearms and explosives to fight enemies. In action sequences, <a href="https://en.wikipedia.org/wiki/Bullet_time">bullet time</a> can be used; using this feature, it is possible to see every bullet strike an enemy in detail. The game also introduces a "Last Stand" mechanic, granting players a grace period when health is fully depleted that allows the player to kill the enemy that last wounded them in order to remain alive, so long as the player has at least one recovery item. When this feature is utilized, it does deplete all of the player's remaining "bullet time". Also new to the series is that after using the shoot-dodge mechanic, which enables players to dodge enemies by diving, players may shoot at any angle while remaining grounded.</p>
+
+<p>Unlike the previous games in the series, the player character can only hold three weapons at a time. There are two slots for handguns and one for a two-handed weapon. If the player chooses to equip both handguns at the same time, the two-handed weapon must be dropped. Otherwise, the player character holds the two-handed weapon under their arm.</p>
+
+<h3>Multiplayer</h3>
+
+<p>The online multiplayer mode features maps and modes that dynamically change within a match. Up to 16 players engage in <a href="https://en.wikipedia.org/wiki/Cooperative_video_game">cooperative</a> or competitive gameplay in re-creations of multiple single-player settings. Players may band together in organized player teams, called crews, to complete tasks together. Players can create their own crews, via the <a href="https://en.wikipedia.org/wiki/Rockstar_Games_Social_Club">Rockstar Games Social Club</a>, and join up to five players together in total. Together, crews can win multiplayer matches to earn experience points and climb online leaderboards. The online multiplayer mode and Social Club support for the console versions of the game were discontinued in September 2021.</p>
+
+<h2>Synopsis</h2>
+
+<h3>Setting</h3>
+
+<p>According to Rockstar's president <a href="https://en.wikipedia.org/wiki/Sam_Houser">Sam Houser</a>, it was their intention to start a new chapter of <a href="https://en.wikipedia.org/wiki/Max_Payne_(character)">Max Payne</a>'s life with the game: "This is Max as we've never seen him before, a few years older, more world-weary and cynical than ever." The press release states that since the last game, Max has left <a href="https://en.wikipedia.org/wiki/New_York_City">New York City</a> behind and "drifted from bad to worse." The press release goes on to say Max has been double-crossed in this new city and is searching for both the truth and a way out. The game is set in <a href="https://en.wikipedia.org/wiki/São_Paulo">São Paulo, Brazil</a>, several years after the events of the ending of the second game. Max Payne now works in executive protection for the wealthy Rodrigo Branco and his family in the hopes of escaping the memories of his troubled past. When a street gang kidnaps Rodrigo's wife, Fabiana, Max is pulled into a conspiracy of shadowy, warring factions threading every aspect of São Paulo society in a deadly web that threatens to engulf everyone and everything around him.</p>
+
+<p>Nine years after the events of the <a href="https://en.wikipedia.org/wiki/Max_Payne_2:_The_Fall_of_Max_Payne">second game</a>, <a href="https://en.wikipedia.org/wiki/Max_Payne_(character)">Max Payne</a> (<a href="https://en.wikipedia.org/wiki/James_McCaffrey_(actor)">James McCaffrey</a>) has retired from the <a href="https://en.wikipedia.org/wiki/New_York_City_Police_Department">NYPD</a> and spends his days nursing his alcoholism and addiction to painkillers. After an incident in a bar in <a href="https://en.wikipedia.org/wiki/Hoboken,_New_Jersey">Hoboken, New Jersey</a>, forces him to leave New York, Max accepts an offer from Raul Passos (<a href="https://en.wikipedia.org/wiki/Julián_Rebolledo">Julian Dean</a>), whom he met during the incident, to become a <a href="https://en.wikipedia.org/wiki/Private_security_contractor">private security contractor</a> in South America. Max finds himself working for the Branco family, consisting of Rodrigo Branco (Frank Rodriguez), a wealthy real-estate mogul; Fabiana Branco (<a href="https://en.wikipedia.org/wiki/Benedita_Pereira">Benedita Pereira</a>), Rodrigo's <a href="https://en.wikipedia.org/wiki/Trophy_wife">trophy wife</a>; Giovanna (<a href="https://en.wikipedia.org/wiki/Shirley_Rumierk">Shirley Rumierk</a>), Fabiana's sister;  Victor Branco (Robert Montano), a local politician; and Marcelo Branco (Dillon Porter), a hard-partying socialite. Operating in <a href="https://en.wikipedia.org/wiki/São_Paulo">São Paulo</a> a few months later, Max thwarts a kidnapping attempt on the Brancos by the Comando Sombra, a local street gang, during a private party. A week later, the gang manage to kidnap Fabiana at a nightclub while Max is overseeing her protection alongside Marcelo and Giovanna.</p>
+
+<p>Instructed to pay $3 million for her release, Rodrigo allows Max and Passos to handle the exchange at a local football stadium. However, the meeting between them and the Comando Sombra is ambushed by the Crachá Preto, an outlaw vigilante <a href="https://en.wikipedia.org/wiki/Brazilian_militias">militia</a>, who steal the money. Although the pair learn where the Comando Sombra took Fabiana, their attempt to rescue her is thwarted by the gang's leader Serrano (<a href="https://en.wikipedia.org/wiki/Babs_Olusanmokun">Babs Olusanmokun</a>). Meeting with the Branco brothers at Rodrigo's office, Victor recommends the police handle Fabiana's recovery. Shortly after Victor, Marcelo, and Passos leave, the Crachá Preto attack the office to kill Max. While he survives, Rodrigo is assassinated during the chaos. Blaming himself for the situation, Max swears off alcohol, shaves his head, and proceeds to seek out Serrano and Fabiana within the Nova Esperança <a href="https://en.wikipedia.org/wiki/Favela">favela</a>, based on information from a dying Crachá Preto operative.</p>
+
+<p>During his search of the favela, Max runs into Detective Wilson Da Silva (Stephen Girasuolo), who offers assistance in exchange for help in investigating the Crachá Preto, who he suspects have ties to Victor and the Unidade de Forças Especiais (UFE), São Paulo's <a href="https://en.wikipedia.org/wiki/Police_tactical_unit">police tactical unit</a>. Max eventually reaches Serrano's hideout, only to witness the Comando Sombra murder Fabiana. As the UFE raid the favela, Max finds himself forced to rescue Marcelo and Giovanna, who were captured by the Comando Sombra while attempting to save Fabiana. During his search for the pair, he finds the UFE to be corrupt upon witnessing them selling prisoners to the Crachá Preto. While Max eventually finds and rescues Giovanna, Marcelo is <a href="https://en.wikipedia.org/wiki/Necklacing#Other_countries">executed</a> by the Crachá Preto. After a shootout at a bus station while trying to hide from the Crachá Preto, Passos arrives to help, but flees with Giovanna, who is pregnant with his child. Angered at being abandoned, Max is picked up by Da Silva, and learns that Passos was on Victor's payroll.</p>
+
+<p>Questioned about an attack on Marcelo's <a href="https://en.wikipedia.org/wiki/Luxury_yacht">private yacht</a> in the <a href="https://en.wikipedia.org/wiki/Panama_Canal">Panama Canal</a> a few weeks earlier, Max recalls that Marcelo and Passos tried to drive away with cargo that the attackers sought to steal. Da Silva reveals the cargo was money that Victor needed laundered in <a href="https://en.wikipedia.org/wiki/Panama">Panama</a>, and that Max was recruited to be the <a href="https://en.wikipedia.org/wiki/Fall_guy">fall guy</a> for his illegal activities. At Da Silva's request, Max investigates a rundown hotel used by the Crachá Preto. His investigation reveals that the building is the base for a black market <a href="https://en.wikipedia.org/wiki/Organ_trade">organ theft ring</a>, which the UFE supplies with their prisoners. After releasing a number of detainees, including Serrano, Max plants explosives around the hotel to destroy it. The Crachá Preto's leader, Álvaro Neves (Gil Cardoso), tries to stop him, but Passos kills him and escapes with Max moments before the hotel is demolished, where he reveals that he was unaware of the organ trading and had been pressured into helping by Victor. Although angered at Passos' involvement in Victor's affairs, Max forgives him for coming back for him, and allows him to leave the city with Giovanna.</p>
+
+<p>To expose the involvement of Victor and the UFE with the organ thefts, Da Silva persuades Max to get arrested at the UFE's headquarters in order to search it for incriminating evidence while De Silva releases the cells to start a riot as a distraction. His search culminates in the discovery that Victor arranged for Rodrigo's murder to acquire his wealth, and that the sales of stolen organs were to fund his campaign in the upcoming mayoral elections. After a confrontation with Victor and the UFE's leader, Armando Becker (Ubirajara de Castro), leads to them escaping, Max pursues them to the airport, leading to an intense fight with the UFE. Max eventually catches up to both, mortally maiming Becker in a shootout, before destroying Victor's private jet with Da Silva's help. Although Max opts to spare Victor's life and leave him to be arrested by Da Silva, he breaks his leg to make him suffer. A week later in <a href="https://en.wikipedia.org/wiki/Bahia">Bahia</a>, Max overhears news in a bar that the UFE was disbanded, and Victor was found dead in prison. Choosing to move on with his life, Max takes a walk along the beach as the sun sets.</p>
+
+<h2>Development</h2>
+
+<p>The game was originally scheduled for release in late 2009. However, it was pushed back to 2010 alongside several other <a href="https://en.wikipedia.org/wiki/Take-Two_Interactive">Take-Two Interactive</a> franchises in order to "benefit from having more development time". In June 2010, the game was again pushed back to 2011. On December 21, it was not present on the 2011-2012 calendar year, and was pushed back again. The game was still in development and not canceled or indefinitely halted when Rockstar released two new screenshots for the game. On September 8, 2011, Rockstar announced a March 2012 release date for the game, with a debut trailer released on September 14. In January 2012, Take-Two delayed the game by two months from its original March release date to May 2012. The publisher said the decision was made in order to "ensure that <i>Max Payne 3</i> delivers the highest quality."</p>
+
+<p>The debut trailer was released on September 14, 2011. The writer for the series, <a href="https://en.wikipedia.org/wiki/Sam_Lake">Sam Lake</a>, commented that the game would "maintain its dark and gritty origins" and that fans of the series would be "in for a surprise". <a href="https://en.wikipedia.org/wiki/Remedy_Entertainment">Remedy Entertainment</a> head of franchise development, Oskari Häkkinen, praised Rockstar Games' take on the series, stating that it looked "brilliant". Remedy served as consultants for Rockstar when the game reached its final stage of development.</p>
+
+<p>Rockstar Games conducted research to ensure that the vibe, culture, police, weapons and every element of São Paulo was as authentic as possible. The research team visited São Paulo several times and went to lengths researching the local gangs, police and special forces, including each group's choice of equipment and firearms. The fictional UFE resembles Brazilian special police units such as <a href="https://en.wikipedia.org/wiki/Batalhão_de_Operações_Policiais_Especiais">BOPE</a>; the company suggests that fans of the game watch the 2007 Brazilian film <i><a href="https://en.wikipedia.org/wiki/Elite_Squad">Elite Squad</a></i> (<a href="https://en.wikipedia.org/wiki/Brazilian_Portuguese_language">Brazilian Portuguese</a>: <i>Tropa de Elite</i>), especially the "intense sequences of BOPE soldiers carefully raiding favela warzones and caught in deadly shootouts versus heavily-armed drug dealers and lookouts who wield assault rifles and Uzis as part of daily life." Some retailers bundled the game with the film and <a href="https://en.wikipedia.org/wiki/Elite_Squad:_The_Enemy_Within">its sequel</a>.</p>
+
+<p>In a November 2011 interview, <a href="https://en.wikipedia.org/wiki/Dan_Houser">Dan Houser</a> of Rockstar Games said that despite what the general public might think, Rockstar likes to "spend a bit of time" at the end of projects before deciding what to do next. "Basically we have been meaning to start [<i>Max Payne 3</i>] for a while, but we have limited bandwidth and limited studios, and more games to make than we've started. So suddenly it was a good slot," Houser said, explaining why it took eight years to follow up <i><a href="https://en.wikipedia.org/wiki/Max_Payne_2:_The_Fall_of_Max_Payne">Max Payne 2</a></i>. "Also, contrary to a lot of people, we like to take a little bit of time at the end of a game before starting a sequel, so we can wait for the excitement or disappointment and everything else of the experience to shake down and really see what we should do in the next game."</p>
+
+<p>The game runs on the proprietary <a href="https://en.wikipedia.org/wiki/Rockstar_Advanced_Game_Engine">Rockstar Advanced Game Engine</a> (RAGE), along with <a href="https://en.wikipedia.org/wiki/Euphoria_(software)">Euphoria</a> software. In February 2012, it was confirmed that the PC version of the game features <a href="https://en.wikipedia.org/wiki/Direct_X">DirectX 11</a> and <a href="https://en.wikipedia.org/wiki/Stereoscopy">stereoscopic</a> 3D rendering. The PC version of <i>Max Payne 3</i> is shipped on four DVDs and the Xbox 360 version on two discs due to the disc size limit; however, the PlayStation 3 version ships on one <a href="https://en.wikipedia.org/wiki/Blu-ray_Disc">Blu-ray Disc</a>.</p>
+
+<h2>Marketing and release</h2>
+
+<p><i>Max Payne 3</i> was Rockstar's "biggest and boldest marketing effort thus far". Highlights of the campaign included prominent TV spots during the <a href="https://en.wikipedia.org/wiki/2012_UEFA_Champions_League_Final">2012 UEFA Champions League Final</a> and other mainstream programming, as well as outdoor campaigns. Rockstar Games ran a competition where its Twitter followers who tweet using the #MaxPayne3 <a href="https://en.wikipedia.org/wiki/Hashtag">hashtag</a> through January 13, 2012, could see their likeness featured in the title's multiplayer. Rockstar also ran another competition to win a trip from <a href="https://en.wikipedia.org/wiki/New_York_City">New York City</a> to <a href="https://en.wikipedia.org/wiki/São_Paulo">São Paulo</a> to attend at Sonar São Paulo, get a one-off <i>Max Payne 3</i> Xbox 360 console, and play the game a week before its official release.</p>
+
+<p>Rockstar collaborated with several retail outlets on pre-order bonuses available through several store chains throughout the world. The Cemetery Multiplayer Map is a map pack, where pre-order customers received early access to the map. The Silent Killer Multiplayer Loadout Pack includes the "devastatingly destructive" <a href="https://en.wikipedia.org/wiki/Anti-tank_warfare">Light Anti-Tank Weapon</a>, the slippery character burst to quickly escape a deadly firefight, and the listening device item that amplifies hearing, allowing the player to hear approaching enemies from a greater distance. Those who pre-ordered the game from specified retailers received a code for the game's first paid Multiplayer DLC Pack for free. The "Special Edition" includes a 10" tall collectible Max Payne statue, series of game-inspired original still life art prints, bullet keychain (copper and brass-plated iron bullet-shaped) and <i>Max Payne 3</i> official soundtrack. Exclusive multiplayer content consists of Classic Multiplayer Character Pack and Disorderly Conduct Multiplayer Weapons Pack.</p>
+
+<p>A three-part <i>Max Payne</i> comic book series was released prior to and after the launch of the third game. Published in partnership with Marvel Custom Solutions, it explored the events of the original <i>Max Payne</i> game and its sequel, as well as delving a little further back in the protagonist's troubled past. Rockstar's vice president Dan Houser and Sam Lake of original developer Remedy authorized the books. The series was released as a digital graphic novel and in limited print editions. All three issues of the comic series combined were released for retail and online shops during October 2013, titled <i>Max Payne 3: The Complete Series</i>.</p>
+
+<p><i>Max Payne</i> themed avatar items are available for purchase on Xbox Live. The PlayStation 3 version features rewards for <a href="https://en.wikipedia.org/wiki/PlayStation_Home">PlayStation Home</a>. Rockstar re-released the original <i><a href="https://en.wikipedia.org/wiki/Max_Payne_(video_game)">Max Payne</a></i>, subtitled <i>Mobile</i>, for <a href="https://en.wikipedia.org/wiki/IOS">iOS</a> devices on April 12, 2012, with the <a href="https://en.wikipedia.org/wiki/Android_(operating_system)">Android</a> version launching later. <i>Max Payne Mobile</i> has been optimized for both iOS and Android devices and features HD graphics, high-resolution textures, <a href="https://en.wikipedia.org/wiki/Rockstar_Games_Social_Club">Social Club</a> connectivity and user-customizable controls. The Rockstar Games Social Club is a website that displays the gameplay statistics of registered users and feature competitions and awards based on player activity within the game, which will support both <i>Max Payne Mobile</i> and <i>Max Payne 3</i>.</p>
+
+<h2>Downloadable content</h2>
+
+<p>On May 1, 2012, Rockstar announced that through the year, seven packs of <a href="https://en.wikipedia.org/wiki/Downloadable_content">downloadable content</a> (DLC) would be released via <a href="https://en.wikipedia.org/wiki/PlayStation_Network">PlayStation Network</a> and <a href="https://en.wikipedia.org/wiki/Xbox_Live">Xbox Live</a>. Players could purchase DLC packs individually or get all add-on content at a discounted rate (over 35%) by purchasing a "Rockstar Pass". Rockstar released a free bonus downloadable multiplayer pack called <i>Gorilla Warfare</i> on May 17, 2012. The pack includes a Gorilla Mask, which gives extra adrenaline for melee kills from behind, the Lucky Coin, which gives extra cash when looting bodies, and the Booby Trap, an item that booby traps a corpse so that it explodes when looted.</p>
+
+<p>The first DLC <i>Local Justice</i> was released for the Xbox 360 and PlayStation 3 on July 3, with a subsequent release following for PC on August 8. The DLC includes three new maps, a new weapon, a new item, a new multiplayer faction, and achievements and trophies.<sup>[<i><a href="https://en.wikipedia.org/wiki/Wikipedia:Citation_needed">citation needed</a></i>]</sup> The second DLC, titled <i>Hostage Negotiation</i>, was originally slated to launch in September, but was pushed back to October 30. <i>Hostage Negotiation</i> adds four new multiplayer maps – Club Moderno, Estádio Do Galatians, Favelas of O Palácio Strip Club and Favela Heights – plus two new rifles, a new Explosive Burst booby trap, additional cosmetic options, and a new avatar faction.</p>
+
+<p>The third DLC, <i>Painful Memories</i>, was originally slated to launch in October, but was delayed to December 4, 2012. Four multiplayer maps are included – the Roscoe street subway map from the <a href="https://en.wikipedia.org/wiki/Max_Payne_(video_game)">first game</a>, the Hoboken dive Marty's Bar, a yacht level called Shoot First, and a Gang Wars map called Canal de Panama. Other additions include the IMG 5.56 and UAR-21 assault rifles, new avatars, and the Hangover Burst which makes enemies spawn with reduced stamina, health and blurred vision. The final DLC, titled <i>Deathmatch Made in Heaven</i>, was released on January 22, 2013. It adds four new multiplayer game modes: a survival mode called Dead Men Walking, Run and Stun, Marked Man and Time Attack, as well as a single player mini-game called New York Minute Arcade Challenge, which is very similar to the New York Minute minigames from previous iterations in the series. It also adds several new weapons and items, as well as a new Burst called Unstoppable, which adds to a player's defensive ability. In April 2021, all downloadable content became free and bundled with the base game via an <a href="https://en.wikipedia.org/wiki/Patch_(computing)">update</a> on Windows.</p>
+
+<h2>Soundtrack</h2>
+
+<p>The music was mainly composed by <a href="https://en.wikipedia.org/wiki/Noise_rock">noise rock</a> band <a href="https://en.wikipedia.org/wiki/Health_(band)">Health</a>, with minor collaborations from other artists such as composer <a href="https://en.wikipedia.org/wiki/Pedro_Bromfman">Pedro Bromfman</a>. Ivan Pavlovich, music director of Max Payne 3 said, “We wanted to give Max a sound that is really an identifiable sound and HEALTH as a band has an incredible sense of who they are and a very strong identity. When we saw HEALTH perform live it was very clear that they were the ones who were going to be able to capture this.” In an interview with Pitchfork, band member and vocalist Jake Duzsik said, “The number one reaction from HEALTH fans was, ‘What the fuck? You guys are doing a video game score?’ Just surprise. And very congratulatory.” Duzsik continued, “It was fun to make music that was atypical for that sort of entertainment.”</p>
+
+<p>The album was released digitally on May 23, 2012, and the original theme (titled "MAX: THEME") was included in the launch trailer, and was made available for free download on <a href="https://en.wikipedia.org/wiki/SoundCloud">SoundCloud</a>. The soundtrack as a whole was nominated for Best Score in a Game and "TEARS" was nominated for Best Song in a Game at the 2012 <a href="https://en.wikipedia.org/wiki/Spike_Video_Game_Awards">Spike Video Game Awards</a>.</p>
+
+<p>On May 13, 2022, just before the 10-year anniversary of the game's release, an expanded <b>Anniversary Edition</b> of the soundtrack was announced for release later that year. This would also mark the album's first release on <a href="https://en.wikipedia.org/wiki/Vinyl_record">Vinyl record</a>.</p>
+
+<h2>Reception</h2>
+
+<p><i>Max Payne 3</i> received "generally favorable" reviews from critics, according to <a href="https://en.wikipedia.org/wiki/Review_aggregator">review aggregator</a> website <a href="https://en.wikipedia.org/wiki/Metacritic">Metacritic</a>.</p>
+
+<p><i><a href="https://en.wikipedia.org/wiki/Game_Informer">Game Informer</a></i> gave the game 9.25/10, stating "As much as <i>Max Payne 3</i> is a fascinating portrait of a man, it tells a great, action-packed story that runs in-stride with Max's inner turmoil." <i><a href="https://en.wikipedia.org/wiki/GamesRadar">GamesRadar</a></i> gave a perfect score of 5 stars and stated, "Between its pacing, its presentation, and its excellent gunplay, <i>Max Payne 3</i> has raised the bar for other action games to follow. Welcome back." <i><a href="https://en.wikipedia.org/wiki/The_Guardian">The Guardian</a></i> gave a perfect score of 5 stars and they called it "A masterpiece of underworld carnality, depravity and violence."</p>
+
+<p><i><a href="https://en.wikipedia.org/wiki/IGN">IGN</a></i> gave 9/10, and stated "It touches on the disparity between rich and poor, and how resentment and desperation can fester in the slums and the penthouses alike." <i><a href="https://en.wikipedia.org/wiki/Destructoid">Destructoid</a></i> also gave 9/10, stating "Packed with fast action, brutal violence, and a striking cinematic style, all of the stops have been pulled out to make this the most exciting entry in the series to date." <i><a href="https://en.wikipedia.org/wiki/Polygon_(website)">Polygon</a></i> gave 9/10, stating "It is uncompromisingly excellent, with a sense of focus that has secured <i>Max Payne</i>'s legacy once again."</p>
+
+<p><i><a href="https://en.wikipedia.org/wiki/GameTrailers">GameTrailers</a></i> also reviewed it favorably, though slightly less so, giving it a 7.6/10, citing issues with the narrative structure, difficulty and minor gameplay bugs, but applauding the multiplayer modes. <a href="https://en.wikipedia.org/wiki/Eurogamer">Eurogamer</a> gave 7/10, stating "All the same, you can't escape the feeling that Rockstar just isn't as good at a pure third-person shooter as it is with the open worlds of <i><a href="https://en.wikipedia.org/wiki/Grand_Theft_Auto">Grand Theft Auto</a></i> or <i><a href="https://en.wikipedia.org/wiki/Red_Dead_Redemption">Red Dead Redemption</a></i>, and in this linear context it's much harder to put up with its usual missteps in mechanics and difficulty." <i><a href="https://en.wikipedia.org/wiki/Edge_(magazine)">Edge</a></i> also gave 7/10, stating "<i>Max Payne 3</i> might solve the problem of how you manage to reload when carrying more than one gun, but detailing alone can't change the fact that this is a surprisingly conservative game from Rockstar".</p>
+
+<p>The game's depiction of São Paulo was met with mixed opinions by Brazilian reviewers, with most criticizing the accent of some of the Brazilian characters. Rodrigo Guerra, from <a href="https://en.wikipedia.org/wiki/Universo_Online"><i>UOL Jogos</i></a>, said Max experiences things Brazilians are used to, such as the rich living near a slum, football being worshiped as a religion and corrupt cops finding ways of earning some "extra cash". He also commented that Rockstar's poetical depiction of São Paulo is compensated by the game's "great plot" and that "even the ones who live in São Paulo will believe there is a slum called Nova Esperança - and keep away from there, of course". Vanessa Lee, from <i>Canaltech</i>, criticized the game's depiction of São Paulo for being too similar to Rio de Janeiro, pointing out the "streets decorated with coconut trees, slums located in colossal hills (?), a tropical weather that is not part of the <a href="https://en.wikipedia.org/wiki/Paulistano">paulistano</a>'s day-to-day lives, booming <a href="https://en.wikipedia.org/wiki/Funk_carioca">funk</a> (São Paulo is more into <a href="https://en.wikipedia.org/wiki/Rapping">rap</a>), <a href="https://en.wikipedia.org/wiki/Carioca">carioca</a> slang and accent, cops that are more like <a href="https://en.wikipedia.org/wiki/Batalhão_de_Operações_Policiais_Especiais">BOPE</a> than <a href="https://en.wikipedia.org/wiki/Grupo_de_Ações_Táticas_Especiais">GATE</a>) ...". She also criticized the game's Portuguese lines, which she described as being similar to something taken from <a href="https://en.wikipedia.org/wiki/Google_Translate">Google Translator</a>. Alexandre Silva, from <i>TechTudo</i>, praised Rockstar's effort in recreating São Paulo, but also saw some Rio characteristics in it, besides criticizing the fact that Portuguese actors were hired to voice the main Brazilian characters, resulting in a noticeable accent. Érico Borgo, from <a href="https://en.wikipedia.org/wiki/Omelete">Omelete</a>, was not as critical of the characters' accents, adding that usage of strong profanity against Max makes the player feel personally offended and praised the fact that some enemies will comment negatively on Max's supposed attempt to be an American hero trying to fix Brazil.</p>
+
+<h3>Sales</h3>
+
+<p><i>Max Payne 3</i> shipped approximately 3 million units in its first week. In the United States, the game sold 440,000 units in its first month. In July 2012, Take-Two Interactive said that it had sold weaker than expected. By May 2013, it had shipped 4 million units.</p>
+
+<p><i>Max Payne 3</i> received Best Animation at the 2012 <a href="https://en.wikipedia.org/wiki/Machinima.com">Inside Gaming Awards</a>. It also received multiple nominations from other <a href="https://en.wikipedia.org/wiki/Video_game_journalism">gaming publications</a>, including Best Shooter, Top Gaming Moment (Hoboken Graveyard Shootout), and Ultimate Game of the Year by <a href="https://en.wikipedia.org/wiki/Golden_Joystick_Award">Golden Joystick Award</a>; Best Action/adventure Games of 2012 by <i><a href="https://en.wikipedia.org/wiki/Destructoid">Destructoid</a></i>; Best Shooter, Best Song in a Game ("Tears" by <a href="https://en.wikipedia.org/wiki/Health_(band)">Health</a>), Best Original Score, and Best Performance By a Human Male (James McCaffrey as Max Payne) by <a href="https://en.wikipedia.org/wiki/Spike_Video_Game_Awards">Spike Video Game Awards</a>; PS3 Game of the Year and Shooter of the Year by <i><a href="https://en.wikipedia.org/wiki/GameSpot">GameSpot</a></i>; and Best Animation by the National Academy of Video Game Trade Reviewers.</p>
+
+
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

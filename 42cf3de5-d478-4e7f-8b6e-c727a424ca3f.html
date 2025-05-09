@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Tennis Manager 2024 </title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('42cf3de5-d478-4e7f-8b6e-c727a424ca3f/879baca9-c6ae-44ca-8755-2e9576307625.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="42cf3de5-d478-4e7f-8b6e-c727a424ca3f/e87012f9-2525-47cc-b632-78c8e806d9d3.png"/> Tennis Manager 2024 </h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="42cf3de5-d478-4e7f-8b6e-c727a424ca3f/1afb270b-8897-4315-ab68-d161ca7d23a5.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/13/2024">11/13/2024</a> 0:35:38</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/13/2024">11/13/2024</a> 1:05:56</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-PORCHE">PORCHE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-5/23/2024">5/23/2024</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-73">73</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Deportes">Deportes</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Estrategia">Estrategia</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Simuladores">Simuladores</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Rebound CG">Rebound CG</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Rebound CG">Rebound CG</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/><a href="#quicklink-Workshop">Workshop</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/2870110" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/2870110/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/2870110/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=2870110" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/2870110" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=2870110" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/2870110/achievements" target="_blank">Logros</a><br/><a href="https://steamcommunity.com/app/2870110/workshop/" target="_blank">Workshop</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-3D">3D</a><br/><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Basados en texto">Basados en texto</a><br/><a href="#quicklink-Deportes">Deportes</a><br/><a href="#quicklink-e-sports">e-sports</a><br/><a href="#quicklink-Estrategia">Estrategia</a><br/><a href="#quicklink-Exploración">Exploración</a><br/><a href="#quicklink-Fútbol">Fútbol</a><br/><a href="#quicklink-Gestión">Gestión</a><br/><a href="#quicklink-Gestión de recursos">Gestión de recursos</a><br/><a href="#quicklink-Gestión del tiempo">Gestión del tiempo</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Inteligencia artificial">Inteligencia artificial</a><br/><a href="#quicklink-Realistas">Realistas</a><br/><a href="#quicklink-Rol estratégico">Rol estratégico</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Simulador de vida">Simulador de vida</a><br/><a href="#quicklink-Simulador inmersivo">Simulador inmersivo</a><br/><a href="#quicklink-Tenis">Tenis</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<strong>Descripción del juego:</strong><br><br>Toma las riendas de una academia de tenis y juega el mejor y más realista viaje tenístico. Navega a través de una amplia selección de torneos, con más de 2000 competiciones desde el circuito junior hasta la etapa profesional. Con 5000 jugadores a tu disposición, encuentra los talentos que catapultarán a tu academia a la fama.<br><br>En Tennis Manager, la gestión estratégica es esencial para el éxito. Asegúrate la estabilidad financiera, negocia contratos con prudencia y realiza inversiones estructurales para alcanzar tus objetivos a corto y largo plazo. Impresiona a tu exigente junta directiva con tu inteligente toma de decisiones y marca la pauta con tu estilo único de entrenamiento y gestión. Demuestre a su Federación que usted es la elección correcta para el puesto de capitán. Asume nuevas responsabilidades y lleva a la selección nacional a la gloria final. Gracias al motor 3D de última generación, sumérgete en el corazón de la acción y entrena a tu jugador en tiempo real durante los partidos.<br><br><strong>Novedades de TM24:</strong><br><br><u>Sistema de entrenamiento rediseñado y la nueva Forma</u><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2870110/extras/TM24_-_Training_ENG.gif?t=1718869175" /><br><br>Gestiona la progresión de tus jugadores con un detalle sin precedentes teniendo en cuenta todas las facetas del tenis moderno. Este enfoque te permite profundizar en los entresijos del desarrollo del jugador, asegurándote de que cada elemento, desde el acondicionamiento físico y las habilidades técnicas hasta la resiliencia mental y la inteligencia táctica, se cultiva meticulosamente. Gestione sus sesiones de entrenamiento para potenciar las habilidades globales o mejorar la forma del jugador. Prioriza los programas de entrenamiento según los distintos periodos de la temporada y tus objetivos principales.<br><br><u>Atributos de los nuevos jugadores</u><br>Crea tu jugador ideal aprovechando los innovadores atributos disponibles en TM24, que te permitirán personalizar cada aspecto de su juego para que se ajuste perfectamente a tu planteamiento estratégico. Esta característica introduce una profunda personalización, permitiéndote esculpir un jugador que no sólo refleje tu estilo de juego, sino que también destaque en las áreas que más valoras. <br><br><u>Nuevo sistema de lesiones</u><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2870110/extras/TM24_-_Injury_ENG.gif?t=1718869175" /><br><br>Presentamos un avanzado sistema de gestión de lesiones que añade una capa hiperrealista a la ya de por sí compleja tarea de gestionar a un tenista. Al simular escenarios del mundo real, el sistema obliga a los entrenadores a tomar decisiones informadas sobre la intensidad del entrenamiento, la programación de los partidos y las intervenciones médicas. Añade profundidad a la gestión de los jugadores al incorporar factores como los tiempos de recuperación, el riesgo de agravar las lesiones existentes y el impacto a largo plazo de las lesiones en el rendimiento de un jugador.<br><br><u>Jugadores, Torneos, Academias, Federaciones, Mundo global del tenis</u><br>La última actualización presenta las bases de datos de jugadores y torneos, ahora mejoradas con las actualizaciones de 2024 para las categorías de torneos y la distribución de puntos en los circuitos masculino y femenino. A partir de la generación de 2009, encuentra a la próxima estrella emergente o crea tu propio jugador. Nuevas opciones de personalización disponibles en TM24.<br><br><u>Match-Sim optimizado</u><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2870110/extras/TM24_-simu_ENG.gif?t=1718869175" /><br><br>Las mejoras en la simulación de partidos aportan un nuevo nivel de realismo y profundidad estratégica a la jugabilidad, centrándose en un mejor comportamiento en ataque y una toma de decisiones más inteligente en la red, incluyendo smashes, voleas o semivoleas. También se han mejorado los globos y los saques. Estas mejoras no son solo cosméticas, sino que reflejan un conocimiento más profundo de las tácticas de tenis y las capacidades de los jugadores, lo que permite una representación más auténtica del conjunto de habilidades y las preferencias estratégicas de un jugador. <br><br><u>Análisis 3D optimizado</u><br>Las herramientas de análisis 3D ayudan a desglosar las jugadas de los partidos, permitiendo a jugadores y entrenadores analizar todos los aspectos de una actuación, desde la colocación del saque y la selección del golpe hasta los patrones de movimiento y la duración de los peloteos. Los nuevos filtros ofrecen una mejora integral de la comprensión del juego, lo que supone una mejor ayuda estratégica para los entrenadores.<br><br><u>Corte Fantástica</u><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2870110/extras/TM24_-FC.gif?t=1718869175" /><br><br>Un nuevo modo de juego para elevar tu creatividad a cotas sin precedentes con la posibilidad de diseñar tu propio recorrido por torneos personalizados. Sumérgete en la recreación de los torneos más emblemáticos de la historia, aspirando a la victoria con tu giro único, o incluso altera el curso de la historia para presenciar enfrentamientos entre jugadores de distintas épocas, o simplemente crea tu propio mundo de fantasía, ¡tú decides! Comparte tu creación con tus amigos y toda la comunidad de TM.<br><br>Pero eso no es todo, hay muchos más cambios que te esperan para que los descubras en los próximos días.<br>Únete a nuestro Discord o a nuestras páginas en las redes sociales para seguir la revelación de todas las características detalladas.
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

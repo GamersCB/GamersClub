@@ -1,0 +1,320 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>The Legend of Korra</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('efdb552a-ded8-4677-8e50-c644cd6253b4/163886e3-2a5b-4ea5-b752-636f55d461a1.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="efdb552a-ded8-4677-8e50-c644cd6253b4/a4ed89ea-4277-463c-89b0-3ade37de0e32.png"/> The Legend of Korra</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="efdb552a-ded8-4677-8e50-c644cd6253b4/b9cb32c9-1298-4083-b71d-8c7c5e5b6458.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/13/2024">11/13/2024</a> 0:35:38</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/13/2024">11/13/2024</a> 1:06:11</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-PORCHE">PORCHE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-Microsoft Xbox 360">Microsoft Xbox 360</a><br/><a href="#quicklink-Microsoft Xbox One">Microsoft Xbox One</a><br/><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/><a href="#quicklink-Sony PlayStation 3">Sony PlayStation 3</a><br/><a href="#quicklink-Sony PlayStation 4">Sony PlayStation 4</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-10/21/2014">10/21/2014</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-56">56</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Action-adventure">Action-adventure</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-beat 'em up">beat 'em up</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-PlatinumGames">PlatinumGames</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Activision">Activision</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Single-player">Single-player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/The_Legend_of_Korra_(video_game)" target="_blank">Wikipedia</a><br/><a href="http://platinumgames.com/games/the-legend-of-korra" target="_blank">Official website</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-[People] composer: Hitomi Kurokawa">[People] composer: Hitomi Kurokawa</a><br/><a href="#quicklink-[People] composer: Naofumi Harada">[People] composer: Naofumi Harada</a><br/><a href="#quicklink-[People] designer: Isao Negishi">[People] designer: Isao Negishi</a><br/><a href="#quicklink-[People] director: Eiro Shirahama">[People] director: Eiro Shirahama</a><br/><a href="#quicklink-[People] producer: Atsushi Kurooka">[People] producer: Atsushi Kurooka</a><br/><a href="#quicklink-[People] producer: Robert Conkey">[People] producer: Robert Conkey</a><br/><a href="#quicklink-[People] writer: Tim Hedrick">[People] writer: Tim Hedrick</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>The Legend of Korra</b></i> is a 2014 <a href="https://en.wikipedia.org/wiki/Action-adventure_game">action-adventure game</a> developed by <a href="https://en.wikipedia.org/wiki/PlatinumGames">PlatinumGames</a> and published by <a href="https://en.wikipedia.org/wiki/Activision">Activision</a>, based on the animated television series <a href="https://en.wikipedia.org/wiki/The_Legend_of_Korra">of the same name</a> which aired on <a href="https://en.wikipedia.org/wiki/Nickelodeon">Nickelodeon</a> from 2012 to 2014. It was released in October 2014 for <a href="https://en.wikipedia.org/wiki/PlayStation_3">PlayStation 3</a>, <a href="https://en.wikipedia.org/wiki/PlayStation_4">PlayStation 4</a>, <a href="https://en.wikipedia.org/wiki/Windows">Windows</a>, <a href="https://en.wikipedia.org/wiki/Xbox_360">Xbox 360</a> and <a href="https://en.wikipedia.org/wiki/Xbox_One">Xbox One</a>, and received mixed reviews.</p>
+
+<p>The game is one of two video games based on the series. The other, <i><b>The Legend of Korra: A New Era Begins</b></i>, is a <a href="https://en.wikipedia.org/wiki/Turn-based_strategy">turn-based strategy</a> game  was developed by <a href="https://en.wikipedia.org/wiki/Webfoot_Technologies">Webfoot Technologies</a> for the <a href="https://en.wikipedia.org/wiki/Nintendo_3DS">Nintendo 3DS</a>.</p>
+
+<p>The game was removed from sale on all digital storefronts three years after its release on December 21, 2017.</p>
+
+<h2>Gameplay</h2>
+
+<p><i>The Legend of Korra</i> is a third-person action game, supporting <a href="https://en.wikipedia.org/wiki/Single-player_video_game">single-player</a> play only. Players control <a href="https://en.wikipedia.org/wiki/Korra">Korra</a>, the series' heroine, as she fights villains from the first two seasons of the series with the bending arts, a spiritual and physical practice similar in appearance to Eastern martial arts by which practitioners move and alter the elements of water, earth, fire and air. Korra can switch between four different elements on the fly, each with its own combat styles and special moves.</p>
+
+<p>Waterbending is acquired first and specializes in ranged attacks. Earthbending, acquired next, features slow attacks that are very powerful and cannot be blocked. Firebending is a balanced style that once upgraded, features all three forms of attacks: Fast <a href="https://en.wikipedia.org/wiki/Combo_(video_gaming)">combos</a>, slow but powerful, and ranged. Airbending, acquired late in the game, features fast and powerful attacks that can affect all surrounding targets. Korra also acquires the "avatar state" near the end of the game; it lasts a shorts period, but grants Korra powerful attacks that combine all four elements.</p>
+
+<p>The game tries to persuade the player into using counterattacks. The player can initiate a counterattack by blocking an enemy attack just before it connects. Counterattacks are orders of magnitude more powerful than direct attacks. Counterattacking is the only way of defeating <a href="https://en.wikipedia.org/wiki/Boss_(video_game)">bosses</a> in a reasonable amount of time, as defeating them with direct attacks can take hours. Electrical and earth-based attacks cannot be countered.</p>
+
+<p>The game takes about four to six hours to play through, but  contains "a <a href="https://en.wikipedia.org/wiki/New_Game+">New Game+</a> of sorts". These include an <a href="https://en.wikipedia.org/wiki/Endless_runner">endless runner</a> with Naga, and pro-bending matches, where teams of three try to bend each other out of an arena. This mode, which implements the pro-bending rules depicted in the series, is available after completing the game, with the player controlling the "Fire Ferrets" team made up of Korra and her friends Mako and Bolin.</p>
+
+<h2>Setting and plot</h2>
+
+<p>The game takes place in the two weeks between the <a href="https://en.wikipedia.org/wiki/The_Legend_of_Korra_(season_2)">second</a> and <a href="https://en.wikipedia.org/wiki/The_Legend_of_Korra_(season_3)">third seasons</a> of the series, which aired in 2013 and 2014 respectively. Korra is opposed by a "chi-blocker" who, at the start of the game, strips Korra of her bending abilities, which she has to regain over the course of the game. The game's main villain, Hundun, is named after a <a href="https://en.wikipedia.org/wiki/Hundun">chaotic entity in Chinese mythology</a>. An ancient, evil being previously trapped in the spirit world, he was released into the physical world by Korra's opening of the spirit portals at the end of the second season. The game sees him sow chaos in the world and pursue his grudge against the Avatar.</p>
+
+<h2>Development</h2>
+
+<p><i><a href="https://en.wikipedia.org/wiki/The_Legend_of_Korra">The Legend of Korra</a></i>, the <a href="https://en.wikipedia.org/wiki/Cartoon_series">animated</a> <a href="https://en.wikipedia.org/wiki/TV_drama">drama</a> TV series  on which the game is based, aired on <a href="https://en.wikipedia.org/wiki/Nickelodeon">Nickelodeon</a> and online from 2012 to 2014 as a sequel to the series <i><a href="https://en.wikipedia.org/wiki/Avatar:_The_Last_Airbender">Avatar: The Last Airbender</a></i>. It received critical acclaim, and was commissioned to run for four seasons and a total of 52 episodes.</p>
+
+<p>The game based on the series was announced in June 2014. It was developed by <a href="https://en.wikipedia.org/wiki/PlatinumGames">PlatinumGames</a>, known for the <i><a href="https://en.wikipedia.org/wiki/Bayonetta">Bayonetta</a></i> series of action games among others, and published by <a href="https://en.wikipedia.org/wiki/Activision">Activision</a>. The game is scripted by Tim Hedrick, a writer of the TV series, who collaborated with series creators <a href="https://en.wikipedia.org/wiki/Bryan_Konietzko">Bryan Konietzko</a> and <a href="https://en.wikipedia.org/wiki/Michael_Dante_DiMartino">Michael Dante DiMartino</a> on the plot and main villain. The cutscenes are animated by <a href="https://en.wikipedia.org/wiki/Titmouse,_Inc.">Titmouse, Inc.</a>, and the cover art (chosen by public vote) is by series character designer Christie Tseng. The game  made use of the voice actors and the music of the TV series.</p>
+
+<p>Robert Conkey of Activision explained that they chose Platinum on account of their record of developing action games, which he described as having a "very smooth, very flashy, and very cool" style.  Platinum producer Atsushi Kurooka said that Platinum chose to adapt <i>The Legend of Korra</i>, a series unknown in Japan, after watching it with the aid of translated scripts, and being impressed by the series's blend of "interesting action, a really good story, comedy, and romance". According to Kurooka, the studio aimed to make the game emulate the look and feel of the television series as closely as possible, including its visual and sound direction: Kurooka said that screenshots of the game were indistinguishable from those of the series.</p>
+
+<h2>Reception</h2>
+
+<h3>Pre-release</h3>
+
+<p>Appraisals of the game during development were positive. After playing an <a href="https://en.wikipedia.org/wiki/Software_release_life_cycle#Alpha">alpha</a> build of the game in June 2014, <i><a href="https://en.wikipedia.org/wiki/Destructoid">Destructoid</a></i> described the game as a "pretty solid action brawler". The reviewer praised the thorough implementation of the various bending styles, the detailed and fluid combat system, and the <a href="https://en.wikipedia.org/wiki/Cel-shaded">cel-shaded</a> art style. <i><a href="https://en.wikipedia.org/wiki/GameSpot">GameSpot</a></i>'s reporter was "encouraged by the art style and some aspects of the combat", but uncertain whether the developers would be able to balance the demands of faithfulness to a franchise and the expectations of quality combat gameplay raised by their previous titles. <a href="https://en.wikipedia.org/wiki/IGN">IGN</a> described the early version as having "all the depth I’d expect to see from this developer bundled with a faithful artistic interpretation" of the source material, noting the "surprisingly deep" combat system and the "tastefully re-created animations" from the series.</p>
+
+<p><i>The Legend of Korra</i> received "mixed or average" reviews, according to video game <a href="https://en.wikipedia.org/wiki/Review_aggregator">review aggregator</a> <a href="https://en.wikipedia.org/wiki/Metacritic">Metacritic</a>. It was panned by Dan Stapleton of <a href="https://en.wikipedia.org/wiki/IGN">IGN</a> as a "poorly made tie-in that can’t even stand up as a competent third-person action game". The reviewer noted the game's simplistic combat, the absence of the series' wit and charm, and the low-quality cutscenes. Kevin VanOrd of <a href="https://en.wikipedia.org/wiki/GameSpot">GameSpot</a> was also highly critical of the game, writing that it "tries its best to boot <a href="https://en.wikipedia.org/wiki/M._Night_Shyamalan">M. Night Shyamalan</a>'s <i><a href="https://en.wikipedia.org/wiki/The_Last_Airbender_(film)">The Last Airbender</a></i> film out of its rightful position as 'worst Avatar-related thing yet produced.'" Chris Carter at <i><a href="https://en.wikipedia.org/wiki/Destructoid">Destructoid</a></i> summed up the game as a "nice but brief romp" with no real narrative that "plays out like a 'light' version of Platinum's previous games". At <i><a href="https://en.wikipedia.org/wiki/Polygon_(website)">Polygon</a></i>, Philip Kollar described the game as a "shallow, short experience full of segments that feel poorly designed and ill-considered", with frustrating mechanics and annoying mini-games. Paul Tassi of <i><a href="https://en.wikipedia.org/wiki/Forbes">Forbes</a></i>, noting the "scathing" reviews the game received, wrote that, like other adaptations of the series, it showed "a fundamental misunderstanding of the source material, all but completely devoid of a plot and other characters outside Korra herself". For <i><a href="https://en.wikipedia.org/wiki/Eurogamer">Eurogamer</a></i>'s Simon Parkin, the game's shortcomings were the "hallmarks of a work-for-hire project rushed to meet a Christmas deadline", and he considered the game "a misfire that means Platinum's name no longer guarantees quality".</p>
+
+
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

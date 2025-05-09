@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>SURVIVING MARS </title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('a7c6c2dc-b906-4554-81c1-5f2a3cbf8794/90c87003-9bba-4ea8-af09-46b0e05ca29a.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="a7c6c2dc-b906-4554-81c1-5f2a3cbf8794/e54bdfa2-ba7b-495a-a331-463f7464ce67.png"/> SURVIVING MARS </h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="a7c6c2dc-b906-4554-81c1-5f2a3cbf8794/f688ea43-c648-4484-90cb-abd3056eab76.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/5/2024">11/5/2024</a> 22:37:13</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/17/2024">11/17/2024</a> 15:24:10</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-1 TB 1">1 TB 1</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-3/15/2018">3/15/2018</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-83">83</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-76">76</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Estrategia">Estrategia</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Simuladores">Simuladores</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Abstraction">Abstraction</a><br/><a href="#quicklink-Haemimont Games">Haemimont Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Paradox Interactive">Paradox Interactive</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Remote Play En TV">Remote Play En TV</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/><a href="#quicklink-Workshop">Workshop</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/464920" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/464920/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/464920/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=464920" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/464920" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=464920" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/464920/achievements" target="_blank">Logros</a><br/><a href="https://steamcommunity.com/app/464920/workshop/" target="_blank">Workshop</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Ciencia ficción">Ciencia ficción</a><br/><a href="#quicklink-Construcción">Construcción</a><br/><a href="#quicklink-Construcción de bases">Construcción de bases</a><br/><a href="#quicklink-Construcción de ciudades">Construcción de ciudades</a><br/><a href="#quicklink-Espacio">Espacio</a><br/><a href="#quicklink-Estrategia">Estrategia</a><br/><a href="#quicklink-ETR">ETR</a><br/><a href="#quicklink-Futuristas">Futuristas</a><br/><a href="#quicklink-Gestión">Gestión</a><br/><a href="#quicklink-Gestión de recursos">Gestión de recursos</a><br/><a href="#quicklink-Gran banda sonora">Gran banda sonora</a><br/><a href="#quicklink-Marte">Marte</a><br/><a href="#quicklink-Modificables">Modificables</a><br/><a href="#quicklink-Mundo abierto">Mundo abierto</a><br/><a href="#quicklink-Sandbox">Sandbox</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Simulador de colonias">Simulador de colonias</a><br/><a href="#quicklink-Simulador espacial">Simulador espacial</a><br/><a href="#quicklink-Supervivencia">Supervivencia</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<h2 class="bb_tag">Coloniza Marte y descubre tus secretos sufriendo el menor número de bajas posibles.</h2>  <br><br>¡Bienvenido a casa! ¡Ha llegado la hora de tomar posesión del Planeta Rojo y construir las primeras colonias humanas activas en Marte! Lo único que necesitas son provisiones, oxígeno, décadas de formación, experiencia con tormentas de arena y una actitud proactiva para descubrir la finalidad de esos extraños cubos negros que han aparecido de la nada. ¡Con unos cuantos arreglos, este lugar va a ser fantástico! <br>  <br>Surviving Mars es un constructor de ciudades de ciencia ficción que trata de colonizar Marte y sobrevivir al intento. Elige una agencia espacial para obtener recursos y apoyo financiero antes de decidir la ubicación de tu colonia. Construye cúpulas e infraestructuras, investiga nuevas posibilidades y utiliza drones para desbloquear maneras más elaboradas de modelar y ampliar tu asentamiento. Cultiva tus propios alimentos, extrae minerales o relájate en el bar después de una larga jornada de trabajo. Pero lo más importante es mantener con vida a tus colonos, una tarea harto compleja en este nuevo y extraño planeta.<br>  <br>Encontrarás desafíos que deberás superar. Ejecuta tu estrategia y mejora las probabilidades de supervivencia de tu colonia mientras desvelas los misterios de este mundo alienígena. ¿Preparado? Marte te está esperando.<br>  <br><strong>Características principales:</strong><h2 class="bb_tag">Construir una colonia sostenible en el espacio:</h2> Construir en un planeta que no es apto para la vida humana te presenta el desafío de desarrollar una colonia inteligente y funcional. Las consecuencias de un error de planificación no son simples con problemas de tráfico; está en juego la supervivencia de tus colonos. No te conviene nada sufrir un apagón en una ciudad edificada en un espacio sin oxígeno.<h2 class="bb_tag">Colonos con simulación individual: </h2>Cada colono es un individuo único con problemas y puntos fuertes que influyen en las necesidades y el comportamiento de los demás colonos. La cosa puede ponerse bien fea si tus principales científicos se dan a la bebida tras varias noches en vela en el laboratorio.<h2 class="bb_tag">Construcción de cúpulas espaciales futuristas: </h2>Superestructuras futuristas retro para alojar a los colonos, fábricas y edificios comerciales con su propia &quot;personalidad de barrio&quot;. Crea colonias que valoren la ciencia por encima de todo mientras los trabajadores agotados se beben la paga en el bar, o trata de desarrollar una utopía en medio de las estrellas.<h2 class="bb_tag">Exploración de los secretos de Marte:</h2> Surviving Mars está inspirado en el clásico de ciencia ficción de Asimov y Clarke, y encierra muchos secretos. Durante cada recorrido del juego, los jugadores pueden descubrir diferentes misterios específicos de Marte. Desvelar estos secretos podría granjearle una gran fortuna a tu colonia, o desencadenar su ruina.<h2 class="bb_tag">Árbol de investigación aleatorio:</h2> Combina la investigación estática y aleatoria a través de la exploración, que permite experimentar aspectos distintos en cada viaje a través del juego. Alcanza nuevos hitos científicos explorando el terreno desconocido de la superficie de Marte.<h2 class="bb_tag">Exclusivo ambiente futurista reto:</h2> Un elegante y moderno enfoque del brillante futurismo de los años 60. Una época de exploración y aventura.<h2 class="bb_tag">Ampliación de la compatibilidad con mods:</h2> diseña fantásticos edificios, parques o incluso un misterio, para compartirlos a través de las amplias y prácticas herramientas de modding de Surviving Mars. Comparte tus mejores creaciones con la comunidad para construir la sociedad perfecta.
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Monster Energy Supercross - The Official Videogame 6</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('6208a2ac-f238-439b-b626-8312848b21a6/2f0e6576-8525-4fd1-9489-d27670553e2d.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="6208a2ac-f238-439b-b626-8312848b21a6/8ba89019-b162-4a26-914f-75f431a8aa0f.png"/> Monster Energy Supercross - The Official Videogame 6</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="6208a2ac-f238-439b-b626-8312848b21a6/3165369a-d4fa-4d22-8ffd-0b6f01c97da9.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 15:35:16</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/8/2024">11/8/2024</a> 12:01:01</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB GAS">2TB GAS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-3/9/2023">3/9/2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-63">63</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Carreras">Carreras</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Deportes">Deportes</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Milestone S.r.l.">Milestone S.r.l.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Milestone S.r.l.">Milestone S.r.l.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Jcj">Jcj</a><br/><a href="#quicklink-Jcj A Pantalla (Com)Partida">Jcj A Pantalla (Com)Partida</a><br/><a href="#quicklink-Jcj En Línea">Jcj En Línea</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Pantalla Partida/Compartida">Pantalla Partida/Compartida</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/2058750" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/2058750/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/2058750/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=2058750" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/2058750" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=2058750" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/2058750/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Arcade">Arcade</a><br/><a href="#quicklink-Carreras">Carreras</a><br/><a href="#quicklink-Deportes">Deportes</a><br/><a href="#quicklink-e-sports">e-sports</a><br/><a href="#quicklink-Física">Física</a><br/><a href="#quicklink-JcJ">JcJ</a><br/><a href="#quicklink-Motocross">Motocross</a><br/><a href="#quicklink-Motos">Motos</a><br/><a href="#quicklink-Motos y bicicletas">Motos y bicicletas</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Multijugador local">Multijugador local</a><br/><a href="#quicklink-Pantalla dividida">Pantalla dividida</a><br/><a href="#quicklink-Para toda la familia">Para toda la familia</a><br/><a href="#quicklink-Personalización de personajes">Personalización de personajes</a><br/><a href="#quicklink-Realistas">Realistas</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					Barro, sudor, adrenalina y diversión: ¡saca tu lado más motero y pasa a la acción en el nuevo Monster Energy Supercross 6!<br>Vive todas las emociones del campeonato Monster Energy Supercross 2022 con las motos, pilotos y pistas oficiales.<br>Aprovecha el gran repertorio de opciones para personalizar cada detalle de tu experiencia de juego, elige libremente cuánto realismo y facilidad de conducción deseas. Este año Supercross 6 se basa en una perspectiva única y completamente nueva: ¡la tuya!<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2058750/extras/SX6_GIF_action_256.gif?t=1725033909" /><h2 class="bb_tag">TU ENTRENADOR PERSONAL</h2>Deja tu huella en el mundo de Supercross con la ayuda de tu entrenador y mentor, el legendario Jeremy McGrath.<br>Aprende todos sus trucos en la Supercross Academy y confía en sus consejos para llegar a lo más alto del campeonato en el modo Trayectoria, ahora más inmersivo que nunca.<br>Cosecha victorias, impresiona a los patrocinadores y compite contra rivales únicos, ¡conviértete en la leyenda mundial del Supercross! <br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2058750/extras/SX6_GIF_Coach_256.gif?t=1725033909" /><h2 class="bb_tag">VAMOS A DAR UNA VUELTA</h2>Del aeropuerto a la mina, desde la montaña al estadio... El nuevo Supercross Park te ofrece explorar ubicaciones únicas, ya sea por tu cuenta o con amigos.<br>Cada zona está conectada por los circuitos de Supercross y pistas de motocross que puedes utilizar para practicar, hacer trucos o simplemente disfrutar de las vistas.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2058750/extras/SX6_GIF_Park_256.gif?t=1725033909" /><h2 class="bb_tag">RHYTHM ATTACK</h2>Tú. Tu rival. Una carretera totalmente recta. Lo demás no importa.<br>Abre gas y sigue el camino marcado para cruzar la meta en primer lugar en el nuevo modo Rhythm Attack.<br>Demuestra lo que vales y compite una vez tras otra en torneos eliminatorios que se celebrarán en lugares asombrosos, como cañones y bosques.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2058750/extras/SX6_GIF_RhythmAttack_256.gif?t=1725033909" /><h2 class="bb_tag">TU DESAFÍO, TU VIAJE</h2>¡Personaliza cada parte de tu trayectoria hasta convertirte en la leyenda número uno mundial!<br>Conduce tu moto disfrutando de una sensación de lo más realista o sácale partido a las características de conducción asistida. Así siempre podrás enfrentarte a una carrera con el estilo que mejor cubra tus necesidades.<br>Elige cómo desarrollar tus habilidades como piloto y ajusta cada detalle de tu moto.<br>¡Y eso no es todo! Construye tu pista ideal con el Editor de pista, crea un estilo inconfundible con el editor de cascos y personaliza al piloto y a su moto utilizando un amplio abanico de accesorios.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2058750/extras/SX6_GIF_customization_256.gif?t=1725033909" /><h2 class="bb_tag">¿TU PRIMERA VEZ EN EL SILLÍN?</h2>¡No dejes que los baches y las curvas te asusten! Las asistencias al conducir te ayudarán a meterte de lleno en la acción desde la primera carrera.<br>Gracias a la frenada, viraje y aceleración asistida podrás familiarizarte con la pista y descubrir las mejores trayectorias a seguir para alcanzar el objetivo: ¡la victoria!<h2 class="bb_tag">COMPITE EN LÍNEA</h2> Cruza la meta antes que el resto, ejecuta maniobras impecables y conduce cientos de kilómetros con tu moto: todo ello gracias al nuevo sistema de clasificación con el que podrás ganar puntos y clasificarte con estas u otras actividades, o incluso especializarte en las que prefieras.
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

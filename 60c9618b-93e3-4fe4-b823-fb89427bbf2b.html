@@ -1,0 +1,381 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Call of Duty: World at War</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('60c9618b-93e3-4fe4-b823-fb89427bbf2b/41350942-3921-4484-822a-6d45d410fa8c.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="60c9618b-93e3-4fe4-b823-fb89427bbf2b/bbd2178b-57ac-4204-9644-dcca9991ee2c.png"/> Call of Duty: World at War</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="60c9618b-93e3-4fe4-b823-fb89427bbf2b/8624ad6e-e5f3-4667-9c40-f4bb8531519f.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 15:27:56</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/17/2024">11/17/2024</a> 14:28:56</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-1 TB 1">1 TB 1</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-11/11/2008">11/11/2008</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-84">84</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-First-person shooter">First-person shooter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Treyarch">Treyarch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Activision">Activision</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single-player">Single-player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/Call_of_Duty:_World_at_War" target="_blank">Wikipedia</a><br/><a href="http://www.callofduty.com/" target="_blank">Official website</a><br/><a href="https://www.mobygames.com/game/call-of-duty-world-at-war" target="_blank">MobyGames</a><br/><a href="https://www.imdb.com/title/tt1323508/" target="_blank">IMDb</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-[Game Engine] IW 3.0">[Game Engine] IW 3.0</a><br/><a href="#quicklink-[People] artist: Brian Anderson">[People] artist: Brian Anderson</a><br/><a href="#quicklink-[People] artist: Colin Whitney">[People] artist: Colin Whitney</a><br/><a href="#quicklink-[People] composer: Sean Murray">[People] composer: Sean Murray</a><br/><a href="#quicklink-[People] designer: Jeremy Luyties">[People] designer: Jeremy Luyties</a><br/><a href="#quicklink-[People] designer: Jesse Synder">[People] designer: Jesse Synder</a><br/><a href="#quicklink-[People] director: Corky Lehmkuhl">[People] director: Corky Lehmkuhl</a><br/><a href="#quicklink-[People] producer: Pat Dwyer">[People] producer: Pat Dwyer</a><br/><a href="#quicklink-[People] programmer: David King">[People] programmer: David King</a><br/><a href="#quicklink-[People] writer: Craig Houston">[People] writer: Craig Houston</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>Call of Duty: World at War</b></i> is a 2008 <a href="https://en.wikipedia.org/wiki/First-person_shooter">first-person shooter</a> <a href="https://en.wikipedia.org/wiki/Video_game">game</a> developed by <a href="https://en.wikipedia.org/wiki/Treyarch">Treyarch</a> and published by <a href="https://en.wikipedia.org/wiki/Activision">Activision</a>. It is the fifth main installment of the <i><a href="https://en.wikipedia.org/wiki/Call_of_Duty">Call of Duty</a></i> series and is the fourth entry in the series to be set during <a href="https://en.wikipedia.org/wiki/World_War_II">World War II</a>. The game was announced by Activision in June 2008 and was released in November 2008, for <a href="https://en.wikipedia.org/wiki/PlayStation_3">PlayStation 3</a>, <a href="https://en.wikipedia.org/wiki/Windows">Windows</a>, <a href="https://en.wikipedia.org/wiki/Xbox_360">Xbox 360</a>, and <a href="https://en.wikipedia.org/wiki/Wii">Wii</a>. Other games under the <i>World at War</i> title were published for the <a href="https://en.wikipedia.org/wiki/Call_of_Duty:_World_at_War_(Nintendo_DS)">Nintendo DS</a> and <a href="https://en.wikipedia.org/wiki/Call_of_Duty:_World_at_War_–_Final_Fronts">PlayStation 2</a>, featuring different storylines and missions.</p>
+
+<p><i>World at War</i>'s campaign focuses on the <a href="https://en.wikipedia.org/wiki/Pacific_War">Pacific</a> and <a href="https://en.wikipedia.org/wiki/Eastern_Front_(World_War_II)">Eastern Front</a> theaters of World War II; its story is told primarily from the perspectives of <a href="https://en.wikipedia.org/wiki/United_States">US</a> <a href="https://en.wikipedia.org/wiki/Marine_Raider">Marine Raider</a> <a href="https://en.wikipedia.org/wiki/Private_(rank)">Private</a> C. Miller and <a href="https://en.wikipedia.org/wiki/Soviet_Union">Soviet</a> <a href="https://en.wikipedia.org/wiki/Red_Army">Red Army</a> Private Dimitri Petrenko. The game's <a href="https://en.wikipedia.org/wiki/Multiplayer">multiplayer</a> component retains several features from <i><a href="https://en.wikipedia.org/wiki/Call_of_Duty_4:_Modern_Warfare">Call of Duty 4: Modern Warfare</a></i> (2007), such as the leveling, perk, and "killstreak" systems. Additionally, <i>World at War</i> marked the debut of the <a href="https://en.wikipedia.org/wiki/Cooperative_video_game">cooperative</a> <a href="https://en.wikipedia.org/wiki/Zombie">Zombies</a> mode, which would go on to become a mainstay in Treyarch's subsequent <i>Call of Duty</i> games.</p>
+
+<p>Development for <i>World at War</i> took two years and began after the release of Treyarch's previous entry in the series, <i><a href="https://en.wikipedia.org/wiki/Call_of_Duty_3">Call of Duty 3</a></i>, which was also set during World War II. The game is based on an enhanced version of <a href="https://en.wikipedia.org/wiki/Infinity_Ward">Infinity Ward</a>'s <a href="https://en.wikipedia.org/wiki/IW_(game_engine)">IW engine</a>, with increased development on audio and visual effects. Treyarch utilized the engine to make more parts of certain environments destructible and introduce limb dismemberment and realistic burns to character models.</p>
+
+<p>Upon release, <i>World at War</i> received positive reviews from critics, with praise directed at its intensity and violent nature, though it received criticism for its lack of innovation. It became one of the best-selling titles of 2008, selling 3 million copies in the United States within the first two months of its release. It also marked the beginning of the <a href="https://en.wikipedia.org/wiki/Call_of_Duty#Black_Ops_story_arc"><i>Black Ops</i></a> sub-series, as characters from <i>World at War</i> were carried over into its sequel, <i><a href="https://en.wikipedia.org/wiki/Call_of_Duty:_Black_Ops">Call of Duty: Black Ops</a></i> (2010).</p>
+
+<h2>Gameplay</h2>
+
+<h3>Overview</h3>
+
+<p><i>World at War</i> features more mature themes than previous <i>Call of Duty</i> installments and is open-ended, giving the player multiple ways to complete objectives, but otherwise generally plays like previous iterations of the franchise. Players fight alongside <a href="https://en.wikipedia.org/wiki/Artificial_intelligence">AI</a>-controlled teammates. They help during the game's missions by providing cover fire, shooting down enemies, and clearing rooms for entry. When playing the <a href="https://en.wikipedia.org/wiki/Wii">Wii</a> version of the game, the <a href="https://en.wikipedia.org/wiki/Wii_Remote">Wii Remote</a> and <a href="https://en.wikipedia.org/wiki/Wii_Nunchuk">Nunchuk</a> is used to aim at enemies with <a href="https://en.wikipedia.org/wiki/Motion_controller">motion controls</a>.</p>
+
+<p>The game features a variety of different <a href="https://en.wikipedia.org/wiki/List_of_World_War_II_weapons">weapons</a> and <a href="https://en.wikipedia.org/wiki/Technology_during_World_War_II">technology</a> from World War II. The player gains access to these over the course of the game, but may only carry up to two weapons in addition to <a href="https://en.wikipedia.org/wiki/Hand_grenade">hand grenades</a>. Weapons and ammo from fallen foes or friendlies can be picked up to replace weapons in a player's arsenal. Players can also find weapons with additional attachments, including guns equipped with <a href="https://en.wikipedia.org/wiki/Rifle_grenade">rifle grenades</a>, <a href="https://en.wikipedia.org/wiki/Telescopic_sight">telescopic sights</a>, and <a href="https://en.wikipedia.org/wiki/Bayonet">bayonets</a>.</p>
+
+<p>A character can be positioned in one of three stances – standing, crouching, or prone – with each affecting the character's rate of movement, accuracy, and stealth. Using cover helps the player avoid enemy fire or recover health after taking significant damage, as there are no armor or health powerups. When the character has taken damage, the edges of the screen glow red and the character's heartbeat increases. If the character stays out of fire, the character can recover. When the character is within the blast radius of a live grenade, a marker indicates the direction of the grenade, helping the player in deciding whether to flee or throw it back at the enemy.</p>
+
+<p>The single-player campaign includes thirteen hidden "death cards", denoted by playing cards attached to makeshift war graves. There is one in each level (barring those that take place in vehicles); collecting them unlocks cheats for Co-op mode, such as reduced enemy endurance and "paintball mode".</p>
+
+<p><i>World at War</i>'s multiplayer experience resembles the one established in <i><a href="https://en.wikipedia.org/wiki/Call_of_Duty_4:_Modern_Warfare">Call of Duty 4: Modern Warfare</a></i>. All versions of the game use a similar perk and ranking system and feature six multiplayer modes, including <a href="https://en.wikipedia.org/wiki/Team_Deathmatch">Team Deathmatch</a> and <a href="https://en.wikipedia.org/wiki/Capture_the_flag">capture the flag</a>. There are three "killstreak rewards" that can be used to turn the tide of battle: a recon plane, showing opposing players on the mini-map; an artillery strike upon an area; and attack dogs, which spawn and attack opposing players. These are gained with 3, 5, and 7 kills, respectively. They are available in all game modes, apart from team survival, and cannot be edited.</p>
+
+<p>The game also features a <a href="https://en.wikipedia.org/wiki/Cooperative_video_game">cooperative gameplay</a> mode with up to two players via <a href="https://en.wikipedia.org/wiki/Split_screen_(computer_graphics)">split-screen</a> on consoles, or four players online, for the first time in the franchise. The Wii version of the game does not include online co-op, but two players can play through a "squadmate co-op" mode which allows both players to experience the game through the same screen and point of view.</p>
+
+<p>The Xbox 360, PlayStation 3, and Windows versions of <i>World at War</i> feature the <a href="https://en.wikipedia.org/wiki/Minigame">minigame</a> <i>Nazi Zombies.</i> This is the first appearance of the "Zombies" mode in any <i>Call of Duty</i> game; the mode would eventually become a mainstay for any <i>Call of Duty</i> game developed by <a href="https://en.wikipedia.org/wiki/Treyarch">Treyarch</a>. On completion of the final campaign mission, the first Zombies map, "Nacht der Untoten", will launch automatically.</p>
+
+<p>In this mode, one to four players fight an unlimited number of waves of <a href="https://en.wikipedia.org/wiki/Nazi_zombie">Nazi zombies</a> (with exception for the map "Shi No Numa", which has undead members of the <a href="https://en.wikipedia.org/wiki/Imperial_Japanese_Army">IJA</a>), beginning with an <a href="https://en.wikipedia.org/wiki/M1911_pistol">M1911</a> <a href="https://en.wikipedia.org/wiki/Handgun">pistol</a>. Players earn points for killing zombies or repairing boarded-up windows, which are used to expand areas of the map to access more useful weapons. Zombies routinely break the windows to enter and attack the players; if a player is attacked enough times, they fall and will need to be "revived" by another player in a certain time, or wait until the next round occurs to play again. If all players are damaged enough to fall, the game is over. As the game's DLC cycle continued, three additional Zombies maps were released, which added several new features to the mode. These features included "Perk-a-Colas", which are soda themed player upgrades, traps based on <a href="https://en.wikipedia.org/wiki/Electro-shock_therapy">electro-shock therapy</a>, and the "Pack-a-Punch" machine, which is used to upgrade weapons.</p>
+
+<h2>Synopsis</h2>
+
+<h3>Characters and settings</h3>
+
+<p>During the single-player campaign, the player controls three characters from a <a href="https://en.wikipedia.org/wiki/First-person_narrative">first-person perspective</a>. The player first assumes the role of Private C. Miller of the <a href="https://en.wikipedia.org/wiki/United_States_Marine_Corps">United States Marine Corps</a>' <a href="https://en.wikipedia.org/wiki/1st_Marine_Division_(United_States)">1st Marine Division</a>, fighting with Corporal, later Sergeant, Roebuck (voiced by <a href="https://en.wikipedia.org/wiki/Kiefer_Sutherland">Kiefer Sutherland</a>), and his men from the <a href="https://en.wikipedia.org/wiki/Marine_Raiders">Marine Raiders</a>, during the <a href="https://en.wikipedia.org/wiki/Pacific_War">Pacific War</a>. Other notable non-playable characters of the Marine Raiders unit include Sergeant Tom Sullivan (voiced by Chris Fries) and Private Polonsky (voiced by <a href="https://en.wikipedia.org/wiki/Aaron_Stanford">Aaron Stanford</a>). The second playable character is Private Dimitri Petrenko of the <a href="https://en.wikipedia.org/wiki/Red_Army">Red Army</a>, who fights on the <a href="https://en.wikipedia.org/wiki/Eastern_Front_(World_War_II)">Eastern Front</a> with Sergeant <a href="https://en.wikipedia.org/wiki/Viktor_Reznov">Viktor Reznov</a> (voiced by <a href="https://en.wikipedia.org/wiki/Gary_Oldman">Gary Oldman</a>). They are joined by a third character, Private Chernov, Reznov's subordinate, who serves as a voice of reason throughout the campaign and regularly voices shock and disapproval at the brutal slaughter he witnesses. The third playable character in the campaign is Petty Officer Locke, a weapons operator on a <a href="https://en.wikipedia.org/wiki/PBY_Catalina">PBY Catalina</a>, who is only playable in the mission <i>"Black Cats"</i>.</p>
+
+<h2>Development</h2>
+
+<p><i>World at War</i> was announced on June 23, 2008, by Activision, who confirmed that the game was to be released in fall 2008, and that the series would revert to its customary World War II setting. The game took about two years to make, twice as long as Treyarch's previous entry to the series, <i><a href="https://en.wikipedia.org/wiki/Call_of_Duty_3">Call of Duty 3</a></i>. The game is powered by an improved version of the <a href="https://en.wikipedia.org/wiki/IW_engine"><i>Call of Duty 4: Modern Warfare</i> engine</a>, with several improvements made to the physics model. Environments are more destructible and can be set on fire with the flamethrower, whose fire propagates. Dismemberment, as well as realistic skin and clothes burning of the characters were added. <a href="https://en.wikipedia.org/wiki/Exakt_Entertainment">Exakt Entertainment</a> assisted in porting the game in this engine to the <a href="https://en.wikipedia.org/wiki/Wii">Wii</a> while <a href="https://en.wikipedia.org/wiki/Arkane_Studios">Arkane Studios</a> assisted in the creation of levels for the multiplayer mode under the direction of Austin based studio <a href="https://en.wikipedia.org/wiki/Certain_Affinity">Certain Affinity</a>.</p>
+
+<p>Not long after, Treyarch released the modding tools for <i>Call of Duty: World at War</i>. These tools were the same ones used to create all the other <i>Call of Duty</i> series games, but with slight changes version to version, which can be downloaded online. <a href="https://en.wikipedia.org/wiki/Kiefer_Sutherland">Kiefer Sutherland</a> and <a href="https://en.wikipedia.org/wiki/Gary_Oldman">Gary Oldman</a> were cast as <a href="https://en.wikipedia.org/wiki/Voice_acting">voice actors</a> for the game. Sutherland voices the narrator and squad leader of the American campaign, Sergeant Roebuck, while Oldman voices that of the Soviet campaign, Sergeant Reznov. A full-sized replica <a href="https://en.wikipedia.org/wiki/Consolidated_PBY_Catalina">PBY Catalina</a> was constructed for <a href="https://en.wikipedia.org/wiki/Motion_capture">motion capture</a> use.</p>
+
+<h3>Audio</h3>
+
+<p>The music for <i>Call of Duty: World at War</i> was composed by <a href="https://en.wikipedia.org/wiki/Sean_Murray_(composer)">Sean Murray</a>. He had worked with Brian Tuey, Treyarch's audio director, on <i><a href="https://en.wikipedia.org/wiki/True_Crime:_New_York_City">True Crime: New York City</a></i>, the sequel to the first <i><a href="https://en.wikipedia.org/wiki/True_Crime:_Streets_of_LA">True Crime: Streets of LA</a></i>. Murray said Tuey "knew I would bring a fresh approach to <i>Call of Duty: World at War</i>". Adam Levenson, the audio director of Activision, was called in to help them. Murray said that he wanted to make the music more fun and intense, but also "a specific musical path that follows the psyche of the gameplay".</p>
+
+<p>The new technology of <a href="https://en.wiktionary.org/wiki/occlusion">occlusion</a>, which changes the sound made by nearby object depending on objects blocking its path e.g. walls, has been added to <i>World at War</i>. The game has various levels of "muffled" sound depending on the objects it travels through e.g. a more muffled sound through a thick wall compared to a slightly muffled sound through a thin short wall. For the first time in a Call of Duty game, the player is able to tell the difference between someone walking next to the player and someone walking above or below the player, as well as telling the difference between a shot fired in the distance and a shot fired close by, but behind a solid object.</p>
+
+<p>The other technology of Flux was also developed using <a href="https://en.wikipedia.org/wiki/Field_recording">field recording</a> systems. The <i>World at War</i> crew traveled to a desert with mountains on both side of the range to test the <a href="https://en.wikipedia.org/wiki/Audio_frequency">frequencies</a> of sounds made by <a href="https://en.wikipedia.org/wiki/List_of_common_World_War_II_infantry_weapons">World War II weapons</a>. <a href="https://en.wikipedia.org/wiki/Microphone">Microphones</a> were placed 60 yards (55 m) behind and 60 yards in front of the gun to test the <a href="https://en.wikipedia.org/wiki/Echo_(phenomenon)">echoes</a>. This was later replicated and developed in the studio for the game software. It means that players will be able to pinpoint a <a href="https://en.wikipedia.org/wiki/Sniper_rifle">sniper rifle</a> shot, as it reflects off them, as well as hearing the initial 'pop' of a <a href="https://en.wikipedia.org/wiki/Hand_grenade">hand grenade</a> blowing up and then the grenade's loud "whoosh" sound that begins where the grenade blew up, and ends behind the player. The flux system also combines with the occlusion system.</p>
+
+<h2>Marketing</h2>
+
+<p>The first trailer for the game premiered on <a href="https://en.wikipedia.org/wiki/Xbox_Live">Xbox Live</a> on June 21, 2008, and arrived on <a href="https://en.wikipedia.org/wiki/PlayStation_Network">PlayStation Network</a> five days later. A beta of the game's online multiplayer mode was released for the Xbox 360 on October 10, 2008. A PC version of the beta was later released on October 28, 2008. Those who pre-ordered the game at <a href="https://en.wikipedia.org/wiki/GameStop">GameStop</a>, <a href="https://en.wikipedia.org/wiki/Game_(retailer)">Game</a> and <a href="https://en.wikipedia.org/wiki/EB_Games">EB Games</a> in Australia or North America or who are members of the <i>Call of Duty</i> official website were given codes which allowed them to download both beta versions of the game. Coinciding with the release of the game, <a href="https://en.wikipedia.org/wiki/McFarlane_Toys">McFarlane Toys</a> produced four action figures. Three are different varieties of US Marine Corps infantry, and the fourth is a British Special Ops soldier.</p>
+
+<p>A collector's edition of <i>World at War</i> was released on November 11, 2008 in North America and November 14, 2008 in Europe. It includes several bonus items, among them a stainless steel canteen imprinted with the <i>Call of Duty</i> series logo and a metal storage tin. The collector's edition also gives the player access to an unlockable weapon and the opportunity to earn double experience points in the online multiplayer mode, as well as a specially colored clan tag to denote the player's VIP status. This edition of the game is only available for the Microsoft Windows and Xbox 360 platforms.</p>
+
+<h3>Downloadable content</h3>
+
+<p>On February 26, 2009, an update was made available to the Xbox 360 and PlayStation 3 versions, as well as the addition of a new multiplayer map, Makin Day. The update included several bug fixes which removed glitches in several multiplayer maps and player movements, and provided more information in the stats display. The Makin Day map was released for Microsoft Windows on February 6, 2009, in the downloadable patch 1.2. Makin Day has a similar layout as the existing Makin map, but includes subtle changes such as daylight, reflected in the tide being out along the shoreline as well as some reworked areas of the map.</p>
+
+<p>On March 18, 2009, <a href="https://en.wikipedia.org/wiki/Activision">Activision</a> and <a href="https://en.wikipedia.org/wiki/Treyarch">Treyarch</a> announced that <a href="https://en.wikipedia.org/wiki/Downloadable_content">downloadable content</a> (DLC) was under development for <i>World at War</i>, titled Map Pack 1. This first installment of DLC was released on March 19, 2009, for the PlayStation 3 and Xbox 360, while the Windows version received the DLC at a later date. The map pack includes three new multiplayer maps and one new Nazi Zombies map, entitled "Zombie Verrückt" (<a href="https://en.wikipedia.org/wiki/German_language">German</a>: <i>zombie crazy</i>). The map is based on the multiplayer map Asylum, in turn based on the asylum in the campaign mission <i>Ring of Steel</i>. The map includes new weapons and power-ups intended to expand the experience. Players can turn on a power generator that reunites both sides of the map and enables "Perk-a-Cola" machines, which have been featured in every subsequent Treyarch Zombies map (excluding <i>Bus depot</i>). The new multiplayer map called "Nightfire" takes places at night in the streets of a bombed-out area of <a href="https://en.wikipedia.org/wiki/Berlin">Berlin</a>. The "Knee Deep" map is in the jungle of <a href="https://en.wikipedia.org/wiki/Peleliu">Peleliu</a> and contains fortified huts and streams. "Station" is located in a ruined underground train station in Berlin featuring subway cars and hidden passages. Reports stated that Map Pack 1 sold over 1 million copies in the first week of availability, setting an Xbox Live record for the number of downloads in a week.</p>
+
+<p>On April 30, 2009, Activision and Treyarch announced Map Pack 2, which was released on June 11. Map Pack 2 contains an additional four multiplayer maps. "Shi No Numa" (<a href="https://en.wikipedia.org/wiki/Japanese_language">Japanese</a>: "死の沼" 'swamp of death') is a new map on the Nazi Zombies co-op mode, set in a misty swamp-land surrounded by jungle. The map takes place in the <a href="https://en.wikipedia.org/wiki/Japanese_occupation_of_the_Dutch_East_Indies">Japanese occupied Dutch East Indies</a> and new features include flaming <a href="https://en.wikipedia.org/wiki/Hellhound">hellhounds</a>, the Wunderwaffe DG-2 weapon and ten new <a href="https://en.wikipedia.org/wiki/Achievement_(video_games)">achievements</a>/<a href="https://en.wikipedia.org/wiki/PS3_trophies">trophies</a>. The map also introduced four new playable characters who have appeared in many subsequent Treyarch Zombie maps: Tank Dempsey of the U.S.M.C, Nikolai Belinski of the Red Army, Nazi Doctor Edward Richtofen and Takeo Masaki of the Imperial Japanese Army. The multiplayer map "Banzai" is set in a jungle featuring a river bridge, villages, a waterfall and hidden caves. The "Corrosion" map is set in a run-down train yard in Russia, featuring broken pipelines and train cars. The "Sub Pens" map is located in a bombed-out Japanese <a href="https://en.wikipedia.org/wiki/Submarine_base">submarine base</a> with heavy rain.</p>
+
+<p>On July 20, 2009, Activision and Treyarch announced Map Pack 3, which was released on August 6, 2009. This DLC also consists of three new multiplayer maps and a new Nazi Zombies map. The three multiplayer maps are "Battery", which takes place on an abandoned coastal artillery battery Pacific; "Breach", which is set in the overcrowded streets of Berlin, Germany near the Brandenburg Gate; and "Revolution", which is based on an industrialized city in Russia. The new Nazi Zombies map, "<a href="https://en.wikipedia.org/wiki/Project_Riese">Der Riese</a>" which means "The Giant" in English, is based in a factory in <a href="https://en.wikipedia.org/wiki/Wrocław">Breslau</a> where "Element 115" is being processed and used to build teleporters and other mysterious devices, such as the "Pack-a-Punch Machine", which upgrades guns, such as the Wunderwaffe DG-2. New weapons such as Monkey Bombs were also added. This map also heavily expanded the official backstory to Zombies mode, which is continued into <i><a href="https://en.wikipedia.org/wiki/Call_of_Duty:_Black_Ops">Call of Duty: Black Ops</a></i>.</p>
+
+<p>All map packs were released for free on Microsoft Windows. The packs were paid DLC for the Xbox 360 and PS3.</p>
+
+<h2>Other versions</h2>
+
+<h3>Nintendo DS</h3>
+
+<p><i>Call of Duty: World at War</i> was released for the Nintendo DS on November 11, 2008 in North America, and on November 14 in Europe. It was published by Activision and developed by <a href="https://en.wikipedia.org/wiki/N-Space">n-Space</a>, who used the same <a href="https://en.wikipedia.org/wiki/Game_engine">game engine</a> as their previous title, <i><a href="https://en.wikipedia.org/wiki/Call_of_Duty_4:_Modern_Warfare_(Nintendo_DS)">Call of Duty 4: Modern Warfare</a></i>. The game's scenarios are also based on World War II's <a href="https://en.wikipedia.org/wiki/Pacific_Ocean_theatre_of_World_War_II">Pacific theater</a> and <a href="https://en.wikipedia.org/wiki/Eastern_Front_(World_War_II)">Eastern front</a> with American, British and Soviet campaigns. Up to four players can be supported online with four different types of game, as well as perks and rank-ups. Compared to <i>Modern Warfare</i>, it has improved in-level geometry, has more responsive sprints and crouches and 3D-modeled guns instead of 2D <a href="https://en.wikipedia.org/wiki/Sprite_(computer_graphics)">sprites</a>. However the flamethrower, which is new to the game series, is rendered with 2D sprites. The framerate is just under 30 and has much voice-over during the missions. Players are able to defuse mines and send Morse code with the touch screen, as well as using mortar rounds, an anti-air gun from a battleship, parachuting and using mounted guns. There is also a tank mode which allows the player to turn the main gun and fire machine gun rounds at the same time.</p>
+
+<p>The <a href="https://en.wikipedia.org/wiki/PlayStation_2">PlayStation 2</a> version, titled <i>Call of Duty: World at War: Final Fronts</i>, differs significantly from the main versions. Developed by <a href="https://en.wikipedia.org/wiki/Rebellion_Developments">Rebellion Developments</a>, it features 13 missions set near the end of World War II across three different campaigns. Aside from the two campaigns in the Pacific and Western to Central Europe, <i>Final Fronts</i> also includes a third campaign involving the British advance on the <a href="https://en.wikipedia.org/wiki/Rhine">Rhine River</a>. The missions range from infantry, infiltration, sniper, large-scale assaults, night fighting, and tank assaults.</p>
+
+<p>The U.S. campaign follows <a href="https://en.wikipedia.org/wiki/Private_(rank)">Pvt.</a> Miller and the squad from <i>World at War</i>, but here Miller is of the 2nd Marines Division instead of the 1st. The game includes his missions from <i>World at War</i>. The Western Europe campaign is from the perspective of infantry grunt Lucas Gibson, of the American 80th Infantry Division, with his missions set in Luxembourg and Austria. For most of the Europe campaign, the player controls Pvt. Tom Sharpe of the <a href="https://en.wikipedia.org/wiki/6th_Airborne_Division_(United_Kingdom)">British 6th Airborne</a>. <i>Final Fronts</i> does not feature online multiplayer or a Nazi Zombies mode. Like other versions, the game includes two flamethrower missions and a tank mission, however the latter is <a href="https://en.wikipedia.org/wiki/Shoot_'em_up">on-rails</a> rather than free roaming. The flamethrower in <i>Final Fronts</i> only fires on a small scale, whereas the main version allows the flamethrower to be used on a large scale in more missions and it is highly visible where it is fired. The tank mission is from the perspective of a tank gunner named Alex.</p>
+
+<p><i>Call of Duty: World at War Zombies</i> was released for the <a href="https://en.wikipedia.org/wiki/IPhone">iPhone</a> and <a href="https://en.wikipedia.org/wiki/IPod_Touch">iPod Touch</a> on November 16, 2009, by <a href="https://en.wikipedia.org/wiki/Activision">Activision</a>, <a href="https://en.wikipedia.org/wiki/Treyarch">Treyarch</a>, and <a href="https://en.wikipedia.org/wiki/Ideaworks_Game_Studio">Ideaworks Game Studio</a>. The game is based on the Nazi Zombies mode in Call of Duty: World at War, and featured a tutorial map and maps called Nacht der Untoten, Shi No Numa and Der Riese, with a downloadable map named Zombie Verrückt. In 2010, an HD iPad version was released with enhanced graphics and the Zombie Verrückt map free to play without buying, but without the Shi No Numa and Der Riese maps.
+The game was removed from the app store in 2018.</p>
+
+<p><i>Call of Duty: World at War</i> was released for the <a href="https://en.wikipedia.org/wiki/Windows_Mobile">Windows Mobile</a>. However, the game features a <a href="https://en.wikipedia.org/wiki/Run_and_gun_(video_game)">run and gun</a> genre similar to <i><a href="https://en.wikipedia.org/wiki/Commando_(video_game)">Commando</a></i> from <a href="https://en.wikipedia.org/wiki/Capcom">Capcom</a> rather than a <a href="https://en.wikipedia.org/wiki/First-person_shooter">first-person shooter</a>, a different <a href="https://en.wikipedia.org/wiki/Narrative_thread">storyline</a>, and a different set of characters. The game was developed by <a href="https://en.wikipedia.org/wiki/Glu_Mobile">Glu Mobile</a> and published by <a href="https://en.wikipedia.org/wiki/Activision">Activision</a>.</p>
+
+<h2>Reception</h2>
+
+<h3>Critical response</h3>
+
+<p><i>Call of Duty: World at War</i> received "generally favorable" reviews, according to <a href="https://en.wikipedia.org/wiki/Review_aggregator">review aggregator</a> <a href="https://en.wikipedia.org/wiki/Metacritic">Metacritic</a>. Describing the game as a whole, <a href="https://en.wikipedia.org/wiki/GameSpot">GameSpot</a> stated that by returning to the World War II setting, "<i>World at War</i> achieves greatness but falls short of excellence." <a href="https://en.wikipedia.org/wiki/IGN">IGN</a> concluded that <i>World at War</i> was a "solid, confident shooter with plenty to offer the casual and hardcore alike." Overall, the <i><a href="https://en.wikipedia.org/wiki/Official_Xbox_Magazine">Official Xbox Magazine</a></i> described the game as being more like an <a href="https://en.wikipedia.org/wiki/Expansion_pack">expansion pack</a> in the <i>Call of Duty</i> series rather than a full game.</p>
+
+<p>IGN applauded the developer Treyarch for its decision to stage <i>World at War</i> in the Pacific theater of World War II. The addition of a co-op mode was also complimented as helping to increase the game's replayability, and the multiplayer mode was described as "definitely an area where <i>World at War</i> shines." Some positive points noted by GameSpot include the "well-acted dialogue" of the characters Sgt. Roebuck and Sgt. Reznov, as well as the solid and fast-paced single-player/co-op campaign."</p>
+
+<p>IGN criticized that the scope of the campaign hurt the continuity of the plot, with some missions taking place several months after others and disrupting the flow of the narrative. <i>Official Xbox Magazine's</i> main criticism was that <a href="https://en.wikipedia.org/wiki/Treyarch">Treyarch</a> had not expanded upon the success of <i>Call of Duty 4: Modern Warfare</i>, but had instead created a "play-it-safe sequel" that used elements of <i>Call of Duty 4</i> but added "nothing noteworthy of its own." Other flaws pointed out by the reviewer included the lack of excitement in the campaign storyline and the few differences between the Pacific theater missions and European theater missions, stating "you could just be marching through another European town with a lot more trees." <i>GameSpot</i> criticized the game's use of "well-worn source material" and "déjà vu" game mechanics, also implying its similarity to the <i>Call of Duty</i> series' other games. <a href="https://en.wikipedia.org/wiki/1UP.com">1UP.com</a> stated that the horror of the game is "almost too much at times".</p>
+
+<p>GameSpot praised the darker, grittier portrayal of the World War II settings. 1UP.com noted the significantly increased graphic violence and gore (even over the <a href="https://en.wikipedia.org/wiki/Entertainment_Software_Rating_Board#Ratings">M-rated</a> <i>Call of Duty 4</i>) as a significant improvement in realism, saying, "While enemies died en masse in previous installments, dismemberment and gore were essentially nonexistent. That's no longer the case — here, legs are severed, men cry out in agony as they reach for lost body parts, and gouts of blood fly as bullets pierce flesh." and that "<i>World at War</i> portrays the horror of WWII more accurately than ever before..."</p>
+
+<p>During the <a href="https://en.wikipedia.org/wiki/12th_Annual_Interactive_Achievement_Awards">12th Annual Interactive Achievement Awards</a>, the <a href="https://en.wikipedia.org/wiki/Academy_of_Interactive_Arts_&amp;_Sciences">Academy of Interactive Arts &amp; Sciences</a> nominated <i>World at War</i> for "<a href="https://en.wikipedia.org/wiki/D.I.C.E._Award_for_Action_Game_of_the_Year">Action Game of the Year</a>" and "<a href="https://en.wikipedia.org/wiki/D.I.C.E._Award_for_Online_Game_of_the_Year">Outstanding Achievement in Online Gameplay</a>".</p>
+
+<p><i>Call of Duty: World at War</i> was the second best-selling game for November 2008 in the United States, selling over 1.41 million units. The Xbox 360 and PlayStation 3 versions were the second and ninth best-selling game of December 2008 in the United States, selling in excess of 1.33 million and 533,000 copies respectively. The Xbox 360 version was the sixth best-selling game of 2008, selling in excess of 2.75 million copies. The Wii version ranked as the 19th best-selling game and the seventh best-selling Wii game of December 2008 in the United States. It received particular interest in the United Kingdom, where it doubled the amount of first-week sales compared to <i>Modern Warfare</i> on the PS3 and Xbox 360. It also became the third fastest-selling video game in the UK behind <i><a href="https://en.wikipedia.org/wiki/Grand_Theft_Auto_IV">Grand Theft Auto IV</a></i> and <i><a href="https://en.wikipedia.org/wiki/Grand_Theft_Auto:_San_Andreas">Grand Theft Auto: San Andreas</a></i>. The Xbox 360 version of <i>World at War</i> received a "Double Platinum" sales award from the <a href="https://en.wikipedia.org/wiki/Entertainment_and_Leisure_Software_Publishers_Association">Entertainment and Leisure Software Publishers Association</a> (ELSPA), indicating sales of at least 600,000 copies in the United Kingdom. ELSPA gave the PlayStation 3 release a "Platinum" certification for sales of at least 300,000 copies in the region. As of November 2013, the game has sold 15.7 million copies.</p>
+
+
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

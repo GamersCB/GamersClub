@@ -1,0 +1,427 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>BioShock Infinite</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('55b0055e-242d-4bba-8b33-4b8384c7b605/005669f7-f813-4a52-a507-6861276f1c7d.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="55b0055e-242d-4bba-8b33-4b8384c7b605/12f4196d-58c3-47fb-887e-1d7a1d4bf9c4.png"/> BioShock Infinite</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="55b0055e-242d-4bba-8b33-4b8384c7b605/bdec1954-db38-40b4-836a-c9d5453b5c98.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 14:41:31</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/17/2024">11/17/2024</a> 15:02:04</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-1 TB 1">1 TB 1</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-Macintosh">Macintosh</a><br/><a href="#quicklink-Microsoft Xbox 360">Microsoft Xbox 360</a><br/><a href="#quicklink-PC (Linux)">PC (Linux)</a><br/><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/><a href="#quicklink-Sony PlayStation 3">Sony PlayStation 3</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-3/26/2013">3/26/2013</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-94">94</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-First-person shooter">First-person shooter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Irrational Games">Irrational Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-2K">2K</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Single-player">Single-player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/BioShock_Infinite" target="_blank">Wikipedia</a><br/><a href="https://bioshockinfinite.ghoststorygames.com/news" target="_blank">Official website</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-[Game Engine] Unreal Engine 3">[Game Engine] Unreal Engine 3</a><br/><a href="#quicklink-[People] artist: Scott Sinclair">[People] artist: Scott Sinclair</a><br/><a href="#quicklink-[People] composer: Garry Schyman">[People] composer: Garry Schyman</a><br/><a href="#quicklink-[People] director: Ken Levine">[People] director: Ken Levine</a><br/><a href="#quicklink-[People] producer: Adrian Murphy">[People] producer: Adrian Murphy</a><br/><a href="#quicklink-[People] programmer: Christopher Kline">[People] programmer: Christopher Kline</a><br/><a href="#quicklink-[People] writer: Ken Levine">[People] writer: Ken Levine</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>BioShock Infinite</b></i> is a <a href="https://en.wikipedia.org/wiki/First-person_shooter">first-person shooter</a> video game in the <a href="https://en.wikipedia.org/wiki/BioShock_(series)"><i>BioShock</i> series</a>, developed by <a href="https://en.wikipedia.org/wiki/Irrational_Games">Irrational Games</a> and published by <a href="https://en.wikipedia.org/wiki/2K_(company)">2K</a>. <i>Infinite</i> was released worldwide for the <a href="https://en.wikipedia.org/wiki/PlayStation_3">PlayStation 3</a>, <a href="https://en.wikipedia.org/wiki/Windows">Windows</a>, <a href="https://en.wikipedia.org/wiki/Xbox_360">Xbox 360</a>, and <a href="https://en.wikipedia.org/wiki/OS_X">OS X</a> platforms in 2013. The game is set in the year 1912 and follows its protagonist, <a href="https://en.wikipedia.org/wiki/Booker_DeWitt">Booker DeWitt</a>, who is sent to the airborne city <a href="https://en.wikipedia.org/wiki/Columbia_(BioShock)">Columbia</a> to retrieve <a href="https://en.wikipedia.org/wiki/Elizabeth_(BioShock)">Elizabeth</a>, a young woman held captive there. Booker and Elizabeth become involved in a class war between the <a href="https://en.wikipedia.org/wiki/Nativism_(politics)">nativist</a> Founders that rule Columbia and the rebel Vox Populi, representing the city's <a href="https://en.wikipedia.org/wiki/Underclass">underclass</a>. Elizabeth possesses the ability to manipulate "Tears" in the <a href="https://en.wikipedia.org/wiki/Space-time_continuum">space-time continuum</a>, and Booker and Elizabeth discover she is central to Columbia's dark secrets. The player controls Booker DeWitt throughout the game, fighting enemies and scavenging supplies, while the <a href="https://en.wikipedia.org/wiki/Artificial_intelligence_(video_games)">computer-controlled</a> Elizabeth provides assistance.</p>
+
+<p>After the 2007 release of <i><a href="https://en.wikipedia.org/wiki/BioShock">BioShock</a></i>, Irrational Games and creative director <a href="https://en.wikipedia.org/wiki/Ken_Levine_(game_developer)">Ken Levine</a> were initially uninterested in creating a sequel, but they later renegotiated with 2K to produce another <i>BioShock</i> game. Irrational based the game's setting on historical events at the turn of the 20th century, such as the 1893 <a href="https://en.wikipedia.org/wiki/World's_Columbian_Exposition">World's Columbian Exposition</a>, and based the story on the concept of <a href="https://en.wikipedia.org/wiki/American_exceptionalism">American exceptionalism</a> while also incorporating influences from more recent events at the time such as the 2011 <a href="https://en.wikipedia.org/wiki/Occupy_movement">Occupy movement</a>. The relationship between Booker and Elizabeth became central to the story, with the team working to make Elizabeth feel like a real character rather than a computer-controlled sidekick.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Development_of_BioShock_Infinite">The game's development</a> took five years and involved hundreds of employees at Irrational, in addition to support studios. The development process was troubled, with Levine's management style resulting in wasted work and missed deadlines. Outside help was brought in to make sure the game shipped. <i>BioShock Infinite</i> was supported post-launch with <a href="https://en.wikipedia.org/wiki/Downloadable_content">downloadable content</a>, including the story expansion <i><a href="https://en.wikipedia.org/wiki/BioShock_Infinite:_Burial_at_Sea">Burial at Sea</a></i>, which links <i>Infinite</i>'s story to that of the original <i>BioShock</i> game.</p>
+
+<p><i>BioShock Infinite</i> received critical acclaim, with praise particularly directed at its story, setting, visual design, and art direction. It is widely considered one of the <a href="https://en.wikipedia.org/wiki/List_of_video_games_considered_the_best">greatest video games ever made</a> and like its predecessors an example of <a href="https://en.wikipedia.org/wiki/Video_games_as_an_art_form">video games as an art form</a>. It has sold more than 11 million copies worldwide. <i>Infinite</i> was released on <a href="https://en.wikipedia.org/wiki/PlayStation_4">PlayStation 4</a>, <a href="https://en.wikipedia.org/wiki/Xbox_One">Xbox One</a>, and <a href="https://en.wikipedia.org/wiki/Nintendo_Switch">Nintendo Switch</a> as part of <i><a href="https://en.wikipedia.org/wiki/BioShock:_The_Collection">BioShock: The Collection</a></i>.</p>
+
+<h2>Synopsis</h2>
+
+<h3>Setting and characters</h3>
+
+<p><i>BioShock Infinite</i> is set in 1912 and takes place in a floating <a href="https://en.wikipedia.org/wiki/Steampunk">steampunk</a> city-state in the sky called "Columbia", named for the <a href="https://en.wikipedia.org/wiki/Columbia_(personification)">female personification of the United States</a>. The city of Columbia was founded by self-proclaimed <a href="https://en.wikipedia.org/wiki/Prophet">prophet</a> Zachary Hale Comstock, and funded by the United States government as a floating <a href="https://en.wikipedia.org/wiki/World's_fair">world's fair</a> and display of <a href="https://en.wikipedia.org/wiki/American_exceptionalism">American exceptionalism</a>. Tensions rose between Columbia and the government after the city intervened in the <a href="https://en.wikipedia.org/wiki/Boxer_Rebellion">Boxer Rebellion</a>, and Columbia ultimately <a href="https://en.wikipedia.org/wiki/Seceded">seceded</a> from the United States and disappeared into the clouds.<!-- EN find a non&#x2D;primary source --> Comstock transforms the city into a <a href="https://en.wikipedia.org/wiki/Theocracy">theocratic</a> <a href="https://en.wikipedia.org/wiki/Police_state">police state</a>, with Comstock worshipped as a prophet, and the <a href="https://en.wikipedia.org/wiki/Founding_Fathers_of_the_United_States">Founding Fathers of the United States</a> venerated as religious icons.<!-- EN needs more to cite --> <a href="https://en.wikipedia.org/wiki/Institutional_racism">Institutional racism</a> and <a href="https://en.wikipedia.org/wiki/Elitism">elitism</a> are widespread in the city, with minorities serving as a labor <a href="https://en.wikipedia.org/wiki/Underclass">underclass</a> of Columbia. By the events of the game, Columbia is on the verge of civil war; the Founders of Columbia are opposed by the Vox Populi, a <a href="https://en.wikipedia.org/wiki/Resistance_movement">resistance group</a> led by <a href="https://en.wikipedia.org/wiki/List_of_characters_in_the_BioShock_series#Daisy_Fitzroy">Daisy Fitzroy</a> who fight for the rights of the marginalized.</p>
+
+<p>Columbia is home to "Tears" in the <a href="https://en.wikipedia.org/wiki/Space-time_continuum">fabric of space-time</a>. These Tears reveal <a href="https://en.wikipedia.org/wiki/Parallel_universe_(fiction)">alternate universes</a>. Some individuals exploit the insight offered by the tears to create new weapons and technologies, while several others replicate futuristic media heard from the Tears, bringing <a href="https://en.wikipedia.org/wiki/Anachronism">anachronistic</a> elements into Columbia.</p>
+
+<p>The player controls protagonist <a href="https://en.wikipedia.org/wiki/Booker_DeWitt">Booker DeWitt</a>, a disgraced member of the <a href="https://en.wikipedia.org/wiki/Pinkerton_National_Detective_Agency">Pinkerton National Detective Agency</a> scarred from a life of violence. Faced with mounting gambling debts, he is sent to Columbia to find a young woman, <a href="https://en.wikipedia.org/wiki/Elizabeth_(BioShock)">Elizabeth</a>, who has the ability to open Tears. Elizabeth has been confined since childhood in the city and guarded by Songbird, a large, robotic bird-like creature who has been both her friend and her warden. Two individuals, <a href="https://en.wikipedia.org/wiki/Lutece_twins">Robert and Rosalind Lutece</a>, direct Booker to Columbia and appear throughout his travels. Though they appear as twins, they are revealed to be the same person from two different realities, having figured out how to communicate through and subsequently cross realities.</p>
+
+<p>In July 1912, Booker DeWitt arrives in Columbia, where he is pursued by authorities, who recognize him as a prophesied "False Shepherd" who will corrupt Elizabeth and overthrow Columbia. Freeing Elizabeth from her tower, Booker narrowly evades Songbird. Commandeering an <a href="https://en.wikipedia.org/wiki/Airship">airship</a>, Booker promises to take Elizabeth to <a href="https://en.wikipedia.org/wiki/Paris">Paris</a>; when she realizes they are going to <a href="https://en.wikipedia.org/wiki/New_York_City">New York City</a> to fulfill Booker's debts, Elizabeth knocks him out and flees. Booker awakens to find the airship under the control of Daisy Fitzroy, who offers to return the ship if Booker helps her arm the Vox Populi.</p>
+
+<p>Booker and Elizabeth join forces to secure weapons from a local gunsmith. Traveling through Tears, they arrive in a world where Booker is a Vox Populi martyr and open warfare has erupted in Columbia. Elizabeth kills Fitzroy to prevent her from executing a Founder boy. Songbird attacks the duo as they try to flee Columbia, and their airship crashes back to the city. Elizabeth and Booker discover a conspiracy behind the city's founding: Elizabeth is Comstock's adopted daughter, whom he plans to groom into Columbia's leader after his death. Comstock killed his wife and the Luteces to hide the truth, and installed a siphon in Elizabeth's tower to limit her power.</p>
+
+<p>Elizabeth is recaptured by Songbird. Pursuing her, Booker is brought forward in time to New Year's Eve of 1983 by an elderly Elizabeth as Columbia attacks New York City. This Elizabeth returns Booker to 1912 with information on controlling Songbird, in hopes he can save her younger self and erase the torture and brainwashing she suffered. Booker rescues Elizabeth, and the pair pursue Comstock to his airship. Comstock demands that Booker explain Elizabeth's past to her, and the two begin to argue; an enraged Booker drowns Comstock in a baptismal font. Booker denies knowledge of Elizabeth's past, but she asserts that he has simply forgotten. Booker and Elizabeth direct Songbird to destroy the Siphon, unlocking Elizabeth's full powers.</p>
+
+<p>Elizabeth opens a Tear and transports them to the underwater city of <a href="https://en.wikipedia.org/wiki/Rapture_(BioShock)">Rapture</a>. The newly aware Elizabeth explains there are countless alternate lighthouses and versions of Booker and Elizabeth; their reality is one of an infinite number depending on their choices. She shows that Robert Lutece approached Booker on behalf of Comstock to acquire Booker's infant daughter, Anna DeWitt, in exchange for erasing his debts, as Comstock was rendered aged and sterile as a result of exposure to Tears. Booker attempted to take Anna back from Comstock, but the closing Tear severed Anna's finger. Comstock raised Anna as his own daughter, Elizabeth; her severed finger, which caused her to exist in two realities simultaneously, is the source of her ability to create Tears. Robert Lutece, angry at Comstock's actions, convinced Rosalind to help him bring Booker to the reality where Columbia exists to rescue Elizabeth.</p>
+
+<p>Elizabeth explains that Comstock will always remain alive in alternate universes since the Luteces have enlisted the Bookers of numerous different universes to try to end the cycle. Since stopping Comstock requires intervening in his birth, Elizabeth takes Booker back in time to a baptism he attended, in the hope of atoning for the sins he committed at <a href="https://en.wikipedia.org/wiki/Wounded_Knee_Massacre">Wounded Knee</a>. She explains that, while Booker changed his mind, the Bookers in alternate universes who accepted the baptism were reborn as Zachary Comstock. Booker, joined by other universes' Elizabeths at the baptism, allows them to drown him at the moment of his choice, preventing Comstock's existence. One by one, the Elizabeths begin to disappear, the screen cutting to black on the last.</p>
+
+<p>In a <a href="https://en.wikipedia.org/wiki/Post-credits_scene">post-credits scene</a>, a<!--there is no confirmation that this Booker is the one we have been playing throughout the game--> Booker awakens in his apartment on October 8, 1893. He calls out for Anna and opens the door to her room before the screen cuts to black.</p>
+
+<h2>Gameplay</h2>
+
+<p><i>BioShock Infinite</i> is a <a href="https://en.wikipedia.org/wiki/First-person_shooter">first-person shooter</a> with <a href="https://en.wikipedia.org/wiki/Role-playing_video_game">role-playing</a> elements. <i>Infinite</i> adapts the gameplay formula of <i><a href="https://en.wikipedia.org/wiki/BioShock">BioShock</a></i>, with weapons, powers, and upgrades often functioning similar as those in the earlier game, albeit named differently. The player may carry only two weapons at a time, and can collect other weapons and ammunition from defeated enemies or the environment.<sup>: 8 </sup> In addition to guns and melee attacks, the player can use superpower-bestowing Vigors; these include the ability to shoot lightning, disable enemies by launching them into the air, or controlling enemies or machines. Vigors can also be laid on the ground as traps.<sup>: 9–10 </sup> Vigors require Salt, the equivalent of <a href="https://en.wikipedia.org/wiki/Magic_points">magic points</a>, to power the abilities.</p>
+
+<p>Booker has health and a damage-absorbing shield; the shield automatically regenerates out of combat, while health must be replenished with medical kits or food.<sup>: 4 </sup> If Booker dies, the player revives in a safe area at the cost of money, while local enemies are also partially healed. Items called Gear grant passive abilities that can improve the player's strength or damage resistance. A piece of Gear attaches to one of four slots; only one piece of Gear can be affixed to a slot at a time, with extras stored in the player's inventory.<sup>: 14 </sup> Player attributes can also be improved by finding Infusions, which upgrade the players' shield, health, or Salt meters.</p>
+
+<p>The player is opposed by enemies representing the Founders and the Vox Populi. These foes range from normal infantry to Heavy Hitters, more formidable enemies that act as <a href="https://en.wikipedia.org/wiki/Boss_(video_game)">mini-bosses</a> throughout the game. Armed automatons scattered throughout Columbia act as a security defense system for the city.<sup>: 11–14 </sup> Columbia is filled with large, open spaces that offer players freedom in how to approach enemy encounters. The city is traversed on foot or via the Sky-Line, a rail system that Booker and enemies ride via special hooks. Booker can jump on, off, and between Sky-Line tracks at any time and fire one-handed weapons while riding them. The hook also serves as a melee weapon, capable of performing executions on weakened foes.<sup>: 6 </sup></p>
+
+<p>Booker is aided throughout the game by Elizabeth, a computer-controlled <a href="https://en.wikipedia.org/wiki/Non-player_character">non-player character</a>. Elizabeth requires no protection and assists during combat by tossing helpful items to Booker as needed. She can also be directed to open Tears, bringing in items or pieces of the environment, such as medical kits or a ledge for higher ground. Elizabeth can pick locks using her hairpin to open doors or find useful items. Cash, food, medical kits, ammunition and Salts can be found scattered throughout the game's environments. Vending machines can be used to buy supplies and powerful upgrades for weapons and Vigors. Optional <a href="https://en.wikipedia.org/wiki/Quest_(video_gaming)">side-missions</a> are also available, where the player must unlock safes or decode hidden ciphers; completing them rewards Booker with supplies and upgrades. Audio logs (Voxophones) and film projectors (Kinetoscopes) scattered through Columbia expand on the characters and events of the game.</p>
+
+<p><i>Infinite</i> has four difficulty levels: Easy, Normal, and Hard difficulties are available to start. After beating the game on a lower difficulty level or inputting the <a href="https://en.wikipedia.org/wiki/Konami_Code">Konami Code</a> in the main menu, the hardest "1999 Mode" is unlocked. Enemies are much tougher, the player's navigational aid and aim assist is removed, resource management is much more crucial to survival, and death is more punishing.</p>
+
+<h2>Development</h2>
+
+<p>Developer <a href="https://en.wikipedia.org/wiki/Irrational_Games">Irrational Games</a> (then 2K Boston) and publisher <a href="https://en.wikipedia.org/wiki/2K_Games">2K Games</a> released <i>BioShock</i> in 2007 to critical and commercial acclaim. In late 2007, 2K Games approached Irrational about a sequel. Exhausted from shipping <i>BioShock</i> and wary of repeating themselves by returning to the same property, staff and studio head and creative director <a href="https://en.wikipedia.org/wiki/Ken_Levine_(game_developer)">Ken Levine</a> were uninterested in immediately returning to another <i>BioShock</i> game. Instead, Irrational and 2K struck an agreement that saw select personnel from Irrational form a new studio, <a href="https://en.wikipedia.org/wiki/2K_Marin">2K Marin</a>, to start work on a sequel. Levine and Irrational would instead join development of a game in the <i><a href="https://en.wikipedia.org/wiki/XCOM">XCOM</a></i> franchise.<sup>: 48–50 </sup> By contract renewal negotiations in the middle of 2008, however, Levine had reportedly lost interest in the <i>XCOM</i> project and wanted to return to <i>BioShock</i>. Levine's lack of interest was matched by disappointment within the studio's ranks that another company was making the next <i>BioShock</i>, not Irrational. While 2K Marin continued working on <i><a href="https://en.wikipedia.org/wiki/BioShock_2">BioShock 2</a></i> and Irrational's Australia office (later 2K Australia) continued work on <i>XCOM</i>, the main Irrational team would draw up concepts for the next <i>BioShock</i> game.<sup>: 51–2 </sup></p>
+
+<p>Concept work on <i>Infinite</i> began in February 2008;<sup>: 54 </sup> 2K granted Irrational a great degree of creative and financial freedom to develop the next game; Irrational considered several settings for the game, including reusing Rapture or setting the story in the <a href="https://en.wikipedia.org/wiki/Renaissance">Renaissance</a> period, before deciding on the floating city of Columbia. While the setting of a floating city would remain consistent, the time period, characters, and the story itself remained undefined as the team churned through different ideas. Designers and artists would sometimes spend months developing ideas that would be scuttled within minutes after priorities shifted or Levine changed his mind.<sup>: 55–6 </sup> Levine's creative process was described as brilliant but time-consuming, as he focused on very small details; one department within Irrational ran dress rehearsals for any meetings with Levine. At the same time as the story mode was undergoing constant revisions, a set of multiplayer modes was also being designed. The first mode, Border Control, was a <a href="https://en.wikipedia.org/wiki/Tower_defense">tower defense</a> game intended to be set within the game's world. The other multiplayer offering, code-named Spec-Ops, would have been a cooperative mode with up to four players. Matches would take place on maps that would evolve after release, using environmental storytelling to depict Columbia's evolving civil war.</p>
+
+<p>Irrational began hiring and expanding its team. One notable missing person from the original <i>BioShock</i> team was Jon Chey, who had worked with Levine since their days at <a href="https://en.wikipedia.org/wiki/Looking_Glass_Studios">Looking Glass Studios</a> in the 1990s, and who headed the Australian branch of Irrational. The two developers' differing aptitudes meant that the two teams had what Chey called a "synergy", with Chey's team emphasizing technical ability while Levine's team was more creative-minded. Dissatisfied with the questions of what Irrational's next project would be and dissatisfied with the dynamics of a large company, Chey left 2K in 2009. Chey's departure meant Levine had to shoulder more production-focused work in opposition to his creative focus, and the staff buildup in Levine's estimation "shattered" the company culture in the process. "Managing 30 or 40 people where you know everybody's name is a very different process than managing 150 people. You walk by people in the studio and you don't know who they are," he recalled.</p>
+
+<p>Irrational worked in secrecy on <i>Infinite</i> for two-and-a-half years prior to its announcement, teasing the game with the moniker "Project Icarus". The game was announced at a press event on August 12, 2010, in New York City, where journalists were shown a teaser trailer and Levine outlined the basic story of the game; these were followed by several demos and showcases of the game at events in 2011.<sup>: 57–60 </sup> The 2011 <a href="https://en.wikipedia.org/wiki/Electronic_Entertainment_Expo">Electronic Entertainment Expo</a> demo was intended to communicate what kind of game <i>Infinite</i> would be not only to players, but also to the staff itself. While the demo was highly praised, it was also not an indicator of the game's current state; the demo was carefully rehearsed and encounters heavily scripted, as the game's artificial intelligence (AI) was not in a functional state. The game was still undergoing a troubled development. While the big picture elements of the story were now locked, Levine continued to make changes to large parts of the game at a whim. Despite the expanding cost of development and additional staff, the game was not getting closer to completion.<sup>: 59–61 </sup></p>
+
+<p>Within Irrational, there was concern that the game would never be finished. The game's ship date repeatedly slipped and staff left the company. Jordan Thomas, a former <i>BioShock</i> level designer who had been creative director for <i>BioShock 2</i>, was hired in January 2012 to get the project back on track. Levine and Thomas created a roadmap for the game, deciding on cuts to reduce the scope of remaining work; this included the entirety of the multiplayer feature, with the staff reallocated to the single-player portion of the game.<sup>: 59 </sup> Thomas was followed in March 2012 by game producer Don Roy. Experienced with closing out games at publishers like Sony and Microsoft, Roy said that there was no playable game available for him to try when he asked. Roy created a new workflow to bring order to <i>Infinite</i>'s disorganized and inefficient project management. Irrational hired <a href="https://en.wikipedia.org/wiki/Rod_Fergusson">Rod Fergusson</a> as vice president of development in August 2012. Fergusson had a reputation as someone who made tough decisions to ship difficult games, and reined in Levine's worst tendencies; Irrational staff recalled Levine worked best when under constraints, and that without Fergusson the game might not have shipped.<sup>: 61–2 </sup> Thomas left Irrational in November, with the game on track to release.</p>
+
+<p>To finish the game, Irrational entered into a period of sustained <a href="https://en.wikipedia.org/wiki/Crunch_(video_games)">crunch</a>; one staffer estimated he spent most of the final year of development putting in 12-hour workdays.<sup>: 62 </sup> Content such as Vigors, Tear mechanics, weapons, locations, characters, and other enemies, were cut from the game—enough material for five or six whole games, according to one developer. After the game was <a href="https://en.wikipedia.org/wiki/Software_release_life_cycle#Release_to_manufacturing_(RTM)">released to manufacturing</a>, more than a dozen staff voluntarily left Irrational, with the number accelerating as the game's post-launch content began development. The game ultimately took roughly five years to make, and involved a team of around 200 from Irrational in addition to support from outside studios.  <i>Infinite</i> would be the last game Irrational would make in the series, as much of Irrational's staff was fired in 2014 and the studio rebranded as <a href="https://en.wikipedia.org/wiki/Ghost_Story_Games">Ghost Story Games</a>. The intellectual property would remain with <a href="https://en.wikipedia.org/wiki/2K_Games">2K Games</a>.</p>
+
+<h3>Story</h3>
+
+<p>Irrational artists had been reading <a href="https://en.wikipedia.org/wiki/Erik_Larson_(author)">Erik Larson</a>'s 2003 book <i><a href="https://en.wikipedia.org/wiki/The_Devil_in_the_White_City">The Devil in the White City</a></i>, which prominently featured the 1893 <a href="https://en.wikipedia.org/wiki/World's_Columbian_Exposition">World's Columbian Exposition</a>, and they turned Levine onto the book as inspiration. The setting was inspired by turn-of-the-century American culture and <a href="https://en.wikipedia.org/wiki/Propaganda">propaganda</a>, with some of the artwork around Columbia adapted from historical posters. By selecting the hypothetical date of July 4, 1912, the team identified films to draw imagery from, like <i><a href="https://en.wikipedia.org/wiki/The_Music_Man_(1962_film)">The Music Man</a></i>, <i><a href="https://en.wikipedia.org/wiki/Meet_Me_in_St._Louis">Meet Me in St. Louis</a></i>, and <i><a href="https://en.wikipedia.org/wiki/Hello,_Dolly!_(film)">Hello, Dolly</a></i>, which exhibited ideal views of Americana at the turn of the 20th century.  Other sources of inspiration for the game's art included photographs from before and after the <a href="https://en.wikipedia.org/wiki/1906_San_Francisco_earthquake">1906 San Francisco earthquake</a>, and from <a href="https://en.wikipedia.org/wiki/Sears_Catalog">Sears-Roebuck catalogs</a>.</p>
+
+<p>The bright, open-air environments of Columbia presented a challenge to the team to keep aspects of the horror genre within the game; the developers took inspiration from <a href="https://en.wikipedia.org/wiki/Stanley_Kubrick">Stanley Kubrick</a>'s <i><a href="https://en.wikipedia.org/wiki/The_Shining_(film)">The Shining</a></i> and <a href="https://en.wikipedia.org/wiki/David_Lynch">David Lynch</a>'s <i><a href="https://en.wikipedia.org/wiki/Blue_Velvet_(film)">Blue Velvet</a></i> in how to transform bright, sterile environments into something frightening.
+While initial designs of the flying city were darker and closer to <a href="https://en.wikipedia.org/wiki/Art_Nouveau">Art Nouveau</a>, Irrational felt this made the game world too claustrophobic and too similar to Rapture. Instead, they decided on a brighter, expansive architecture and color scheme. Irrational designed the vertical and open-air spaces of Columbia to provide more opportunities to include various types of combat compared to the tight quarters of Rapture. 2K Marin assisted in building out the architecture and details of Columbia, given the much larger scope of the levels than previous <i>BioShock</i> games.</p>
+
+<p>While the floating city setting was developed early, the name "Columbia" and the thematic ideas of American exceptionalism that would inspire the story did not come about until eight months before the game's reveal. The game also incorporated influences from more recent events at the time such as the <a href="https://en.wikipedia.org/wiki/Occupy_movement">Occupy movement</a> in 2011, which inspired how the Vox Populi group would grow from its haphazard beginnings. Levine reflected that despite the game's earlier setting, many of the modern day political turmoil calls back to similar tactics and behavior used in the early days of America's democracy, and thus provided a means to flesh out these aspects within the game.</p>
+
+<p>Central to the game is the relationship between the player character, Booker, and the AI companion, Elizabeth. Unlike <i>BioShock</i>'s <a href="https://en.wikipedia.org/wiki/List_of_characters_in_the_BioShock_series#Jack">Jack</a> and <i>BioShock 2</i>'s <a href="https://en.wikipedia.org/wiki/List_of_characters_in_the_BioShock_series#Subject_Delta">Subject Delta</a>, both of whom are <a href="https://en.wikipedia.org/wiki/Silent_protagonist">silent protagonists</a>, <i>BioShock Infinite</i>'s protagonist, Booker, was given his own voice and identity. Elizabeth, a crucial element of the game, was designed as a character which could not only be a useful AI companion to the player but a real partner with a significant emotional bond as well. The voice actors for Booker and Elizabeth—<a href="https://en.wikipedia.org/wiki/Troy_Baker">Troy Baker</a> and <a href="https://en.wikipedia.org/wiki/Courtnee_Draper">Courtnee Draper</a>, respectively—helped refine the story and their characters. Levine did not provide the actors with full knowledge of the story in order to help them develop their characters' relationship in a more natural manner.</p>
+
+<p>In the early development of <i>Infinite</i>, Elizabeth was designed to be more of a useful tool than a partner; she would perform tasks like picking locks that the player could not, but otherwise was not a major part of the experience. After Irrational saw players react favorably to Elizabeth in the E3 2011 demo, they expanded her role and abilities to make her a bigger part of the game. The approach to Elizabeth was inspired by the character <a href="https://en.wikipedia.org/wiki/Alyx_Vance">Alyx Vance</a> from <i><a href="https://en.wikipedia.org/wiki/Half-Life_2">Half-Life 2</a></i> as well as Monkey and Trip in the game <i><a href="https://en.wikipedia.org/wiki/Enslaved:_Odyssey_to_the_West">Enslaved: Odyssey to the West</a></i>. Irrational wanted to avoid giving Elizabeth any of the same tools that the player had, such as a gun. Instead, they gave her helpful abilities such as tossing supplies to Booker or deciphering codes to connect her more emotionally to the player. She also served to help Irrational avoid tropes of the genre, such as receiving information over a radio or from someone on the opposite side of a window. Elizabeth's relationship to the Songbird was inspired by Levine's experience with a friend in an abusive relationship. Her design and costume was designed so players could recognize her from a distance given the open-space nature of the game and limited resolution, with the color scheme inspired by that of superheroes.</p>
+
+<p>The time period's setting inspired the incorporation of quantum theory by <a href="https://en.wikipedia.org/wiki/Albert_Einstein">Albert Einstein</a>, <a href="https://en.wikipedia.org/wiki/Max_Planck">Max Planck</a>, and <a href="https://en.wikipedia.org/wiki/Werner_Heisenberg">Werner Heisenberg</a> that would lead to the <a href="https://en.wikipedia.org/wiki/Many-worlds_interpretation">Many Worlds Theory</a>. Irrational consulted with physicist Mackenzie Van Camp to ground the game's science fiction in real <a href="https://en.wikipedia.org/wiki/Quantum_mechanics">quantum mechanics</a>. Levine promised that the ending of <i>Infinite</i> was "like nothing you've experienced in a video game before", and wanted to avoid the issue <i>BioShock</i> had where the story lost its momentum in its final third.</p>
+
+<p>The team had to revolutionize their previous work on the <i>BioShock</i> game in order to realize Columbia, including both indoor and outdoor settings that take place thousands of feet above the ground. The  modified <a href="https://en.wikipedia.org/wiki/Unreal_Engine_2.5">Unreal Engine 2.5</a> used for <i>BioShock</i> was inadequate for their vision. Instead, they used Unreal Engine 3, modifying it with their own lighting engine and means to simulate the movement and buoyancy of the buildings. The development team found that the implementation of open spaces created new gameplay options for the player, such as deciding between long-ranged attacks or finding a means to move in for short-range or melee combat.</p>
+
+<p>The developers noticed that in <i>BioShock</i>, once players equipped specific plasmids and weapons, they could complete the game without having to alter their loadout. Irrational wanted instead to create situations through <i>Infinite</i>'s weapons and powers that would force players to change their tactics. The vertical and open-air spaces of Columbia provide more opportunity to include various types of combat compared to the close-ranged limits of Rapture within the first <i>BioShock</i>. The team developed a variety of enemies that would have certain strengths and weakness that would force the player to experiment and work with all their available tools given to them. They also wanted moral choices in the game to be less obvious and with initially ambiguous results.</p>
+
+<p>Early versions of the games had included <a href="https://en.wikipedia.org/wiki/Patent_medicine">Nostrums</a> as gameplay elements. Nostrums would have made permanent changes to the character and could not be removed once used. The Nostrum system was scrapped in favor of using gear, as they found that the system was too similar to other ones that the player would have available in equipping their character, compared to the gear option. Similarly, earlier demonstrations of the game did not use Salt to power vigors, but instead each vigor would have a limited number of uses before it was exhausted. While more could have been found around the game's environment, the player would have only been able to carry a limited number of vigors into battle, with more powerful vigors containing fewer charges. In early builds of the game, as many as 16 enemies could be on-screen at once, but this was dialed back to just six, a constraint which impacted the game design. Now, each individual enemy had to be tougher, creating "bullet sponge" enemies.</p>
+
+<p>The AI for Elizabeth was a major technical challenge for Irrational; they wanted her to display realistic-feeling behavior in contrast to games where such companions are either highly scripted or are simplistic. The developers used the AI routines of the roving Big Daddy and Little Sister characters from <i>BioShock</i> as a starting point for improving Elizabeth, giving her the tendency to look and move around like a real person instead of a robotic non-player character that either fought the player or did nothing. The developers looked to the banter between characters in the <i><a href="https://en.wikipedia.org/wiki/Uncharted_(series)">Uncharted</a></i> series by <a href="https://en.wikipedia.org/wiki/Naughty_Dog">Naughty Dog</a> as an inspiration. Elizabeth's responses are driven by a player's action or are independent of them, with the levels filled room by room with elements that Elizabeth could react to. Actions are performed based on a number of factors, including whether the player is near and looking at Elizabeth, and the current tension of the game. The game also monitors the player's actions to try and keep Elizabeth out of the line of fire. Cutting Elizabeth from the game was considered during development because of the difficulty in programming her, but Levine insisted she remain.</p>
+
+<p>The original score for <i>BioShock Infinite</i> was composed by <a href="https://en.wikipedia.org/wiki/Garry_Schyman">Garry Schyman</a>, who had previously contributed the scores for <i>BioShock</i> and <i>BioShock 2</i>. The score was partly inspired by <a href="https://en.wikipedia.org/wiki/Jonny_Greenwood">Jonny Greenwood</a>'s score for <i><a href="https://en.wikipedia.org/wiki/There_Will_Be_Blood">There Will Be Blood</a></i> and <a href="https://en.wikipedia.org/wiki/Paul_Buckmaster">Paul Buckmaster</a>'s score for <i><a href="https://en.wikipedia.org/wiki/12_Monkeys_(film)">12 Monkeys</a></i>. Because of the differences from previous <i>BioShock</i> games—a different time period and focus on characters—Schyman opted for a fresh approach to the score for <i>Infinite</i>. Schyman worked on the score over an extended period of time due to the game's long development cycle. Schyman did not limit himself to the <a href="https://en.wikipedia.org/wiki/1912_in_music">music of the period</a>, with the game's 1912 setting influential, but not determinative. Originally working with a more <a href="https://en.wikipedia.org/wiki/Orchestra">orchestral</a> approach, Schyman later used very intimate small <a href="https://en.wikipedia.org/wiki/String_orchestra">string ensembles</a> with anywhere from three to ten players to compose the game's relatively simpler score.</p>
+
+<p>Choosing the <a href="https://en.wikipedia.org/wiki/Music_licensing">licensed music</a> for <i>Infinite</i> was more challenging than <i>BioShock</i>. The first game was set in 1960, and it was easy to acquire musical pieces representative of the era. Levine felt that the contemporary 1910s music of <i>Infinite</i>'s setting was "not very listenable" to a modern listener. Consequently, the development team had to research more extensively for satisfactory music. The developers did not strictly adhere to exact historical timeframes when choosing. The game also features contemporary songs, such as "<a href="https://en.wikipedia.org/wiki/God_Only_Knows">God Only Knows</a>" by <a href="https://en.wikipedia.org/wiki/The_Beach_Boys">The Beach Boys</a> and "<a href="https://en.wikipedia.org/wiki/Girls_Just_Want_to_Have_Fun">Girls Just Want To Have Fun</a>" by <a href="https://en.wikipedia.org/wiki/Cyndi_Lauper">Cyndi Lauper</a>, recorded in an anachronistic ragtime style. In-game, the covers are presented as compositions heard through Tears in Columbia and recorded by Columbia's own artists. These covers were arranged by <a href="https://en.wikipedia.org/wiki/Scott_Bradlee">Scott Bradlee</a>, a musician who had drawn Irrational audio lead Jim Bonney's attention for his music mashups.</p>
+
+<h2>Promotion and release</h2>
+
+<p>The game was teased with several trailers, including a set that that presented the history of Columbia in the style of shows like <i><a href="https://en.wikipedia.org/wiki/In_Search_of..._(TV_series)">In Search Of...</a></i>. The official game cover was revealed by Irrational Games in early December 2012. Journalists and players were critical of the art, as it lacked Elizabeth and any of the unique elements from the game. Levine responded that the cover was designed to appeal to a casual player; Irrational had a poll to allow players to decide what the reversible cover art should be, while alternate cover art were provided as downloadable files that players can print and use. For the cover and other parts of the game's promotion including live-action commercials, the directors hired Anna "Ormeli" Moleva, a Russian <a href="https://en.wikipedia.org/wiki/Cosplayer">cosplayer</a> that had earlier attracted attention for her recreation of Elizabeth back in 2011. The game's release was accompanied by various tie-in merchandise, including replicas and figurines, a <a href="https://en.wikipedia.org/wiki/Board_game">board game</a> based on the game called <i>BioShock Infinite: The Siege of Columbia</i>, and a prequel novella, <i>Bioshock Infinite: Mind in Revolt</i>.</p>
+
+<p><i>BioShock Infinite</i> was released worldwide for the <a href="https://en.wikipedia.org/wiki/PlayStation_3">PlayStation 3</a>, <a href="https://en.wikipedia.org/wiki/Windows">Windows</a>, and <a href="https://en.wikipedia.org/wiki/Xbox_360">Xbox 360</a> platforms on March 26, 2013. <a href="https://en.wikipedia.org/wiki/Aspyr">Aspyr</a> later published and ported <i>Infinite</i> to the <a href="https://en.wikipedia.org/wiki/MacOS">MacOS</a> platform on August 29, 2013. Two special editions were released alongside the game, for each release platform. The Special Edition includes an art book, a propaganda poster, a mini-figurine of the Handyman, a keychain, and the game's soundtrack, along with in-game codes for special powers and, for consoles, additional themes.  The Ultimate Songbird edition, in addition to the above, includes a Songbird statuette, designed by Irrational's Robb Waters.</p>
+
+<p>Two major pieces of <a href="https://en.wikipedia.org/wiki/Downloadable_content">downloadable content</a> were released by Irrational for the game. The first piece is <i>Clash in the Clouds</i>, a non-story arena-based combat mode where the player is faced with increasingly difficult waves of enemies on various maps based on in-game settings. It was released on July 30, 2013. The second piece is <i><a href="https://en.wikipedia.org/wiki/BioShock_Infinite:_Burial_at_Sea">Burial at Sea</a></i>, a story-based <a href="https://en.wikipedia.org/wiki/Expansion_pack">expansion</a> set in Rapture that links <i>Infinite</i>'s story to that of the original <i>BioShock</i> game. It consists of two <a href="https://en.wikipedia.org/wiki/Episodic_video_game">episodes</a>, with the first one released on November 12, 2013, and the second one on March 25, 2014. <i>BioShock Infinite: The Complete Edition</i>, bundling <i>BioShock Infinite</i> with <i>Clash in the Clouds</i> and <i>Burial at Sea</i>, was released on November 4, 2014. A <a href="https://en.wikipedia.org/wiki/Linux">Linux</a> port was announced on December 6, 2014.</p>
+
+<p><i>BioShock Infinite</i> along with <i>Burial At Sea</i> was remastered and released for the <a href="https://en.wikipedia.org/wiki/PlayStation_4">PlayStation 4</a> and <a href="https://en.wikipedia.org/wiki/Xbox_One">Xbox One</a> as part of <i><a href="https://en.wikipedia.org/wiki/BioShock:_The_Collection">BioShock: The Collection</a></i> in September 2016; the Windows version of <i>Infinite</i>, at this time, was considered already at par with the console version and did not receive any additional updates.  A standalone version of <i>BioShock Infinite</i> (including <i>Burial at Sea</i>) as well as <i>The Collection</i> was released on the <a href="https://en.wikipedia.org/wiki/Nintendo_Switch">Nintendo Switch</a> on May 29, 2020.</p>
+
+<p>On September 3, 2022, <i>Bioshock Infinite</i> along with its predecessors was updated with the "Quality of Life Update" which added a launcher developed by <a href="https://en.wikipedia.org/wiki/2K_Games">2K Games</a>. This update was met with heavy criticism from fans of the game as it broke compatibility for Linux and <a href="https://en.wikipedia.org/wiki/Steam_Deck">Steam Deck</a> users. The update was also criticized for serving no purpose except for adding <a href="https://en.wikipedia.org/wiki/Telemetry#Software">telemetry</a>, and impacting the game's performance.</p>
+
+<h3>Sales</h3>
+
+<p>In its first week of release, <i>BioShock Infinite</i> was the best-selling game on <a href="https://en.wikipedia.org/wiki/Steam_(service)">Steam</a>'s digital Top 10 PC Charts. In the United States, <i>BioShock Infinite</i> was the top-selling console game for March 2013, with more than 878,000 units sold; these figures do not include digital sales such as through Steam. Take-Two Interactive reported that the game had shipped 3.7 million copies to retail by their May 2013 financial report, and surpassed 4 million in late July. According to Take-Two Interactive, the game has sold more than 6 million copies as of May 2014, and 11 million a year later.</p>
+
+<p>During the first week of sales in the United Kingdom, <i>BioShock Infinite</i> debuted as the number one selling PC game, and the best-selling game on all available formats, topping the UK PC Retail Sales and the UK All Formats video games charts. In the game's opening week in the UK, its Xbox 360 version ranked No. 1, PlayStation 3 version ranked No. 2, and the PC version ranked No. 9 in the UK Individual Formats video games charts, due to 64 percent of its sales being on the Xbox 360, 31 percent on the PlayStation 3, and 5 percent on PC. As of April 2, 2013, it is currently the second biggest launch of 2013 in the UK after <i><a href="https://en.wikipedia.org/wiki/Tomb_Raider_(2013_video_game)">Tomb Raider</a></i>, and is the biggest UK game launch in the <a href="https://en.wikipedia.org/wiki/BioShock_(series)"><i>BioShock</i> franchise</a>'s history with approximately 9000 more sales than <i><a href="https://en.wikipedia.org/wiki/BioShock_2">BioShock 2</a></i>. During the game's second week in the UK, despite a 75 percent drop in sales, <i>BioShock Infinite</i> maintained its lead in the UK All Formats charts. In its third week, <i>Infinite</i> became the first 2013 game to top the UK charts for three weeks in a row.</p>
+
+<h2>Reception</h2>
+
+<p><i>BioShock Infinite</i> received critical acclaim upon release, with reviewers particularly praising the story, setting and visual art design. Aggregating review website <a href="https://en.wikipedia.org/wiki/Metacritic">Metacritic</a> summarized critical consensus as "universal acclaim", with the game netting score of 93–94/100 across its released platforms. <i>BioShock Infinite</i> was the third-highest rated video game of 2013 across all platforms on the site, behind <i><a href="https://en.wikipedia.org/wiki/Grand_Theft_Auto_V">Grand Theft Auto V</a></i> and <i><a href="https://en.wikipedia.org/wiki/The_Last_of_Us">The Last of Us</a></i>. Consensus among several critics was that <i>BioShock Infinite</i> was one of the best games of the <a href="https://en.wikipedia.org/wiki/History_of_video_game_consoles_(seventh_generation)">seventh generation</a> era of video game consoles, with <a href="https://en.wikipedia.org/wiki/IGN">IGN</a>'s Ryan McCaffery praising the game as "a brilliant shooter that nudges the entire genre forward with innovations in both storytelling and gameplay." Joe Juba of <i><a href="https://en.wikipedia.org/wiki/Game_Informer">Game Informer</a></i> stated that <i>Infinite</i> was among the best games he had ever played, while PlayStation Universe's Adam Dolge called it "one of the best first-person shooters ever made." Identifying it as a "masterpiece that will be discussed for years to come", Joel Gregory of <i><a href="https://en.wikipedia.org/wiki/PlayStation_Official_Magazine_-_UK">PlayStation Official Magazine</a></i> concluded that <i>Infinite</i> was the latest game to join the hallowed ranks of <i><a href="https://en.wikipedia.org/wiki/Half-Life_(video_game)">Half-Life</a></i>, <i><a href="https://en.wikipedia.org/wiki/Deus_Ex">Deus Ex</a></i> and <i>BioShock</i> as "the apotheosis of the narrative-driven shooter."</p>
+
+<p>Many critics favorably compared <i>BioShock Infinite</i> to the original <i>BioShock</i>, with some even believing that <i>Infinite</i> had surpassed it. <i><a href="https://en.wikipedia.org/wiki/Entertainment_Weekly">Entertainment Weekly</a></i>'s Darren Franich stated that "if <i>BioShock</i> was <i><a href="https://en.wikipedia.org/wiki/The_Godfather">The Godfather</a></i>, then <i>BioShock Infinite</i> is <i><a href="https://en.wikipedia.org/wiki/Apocalypse_Now">Apocalypse Now</a></i>", with Adam Kovic of <a href="https://en.wikipedia.org/wiki/Machinima.com">Machinima.com</a> calling them "two similar-yet-separate games that can co-exist and remain equal in quality."</p>
+
+<p>Wide acclaim was directed to the story, with several critics calling it among the best in video gaming. The story's exploration of mature themes was well received, with <i><a href="https://en.wikipedia.org/wiki/Time_(magazine)">Time</a></i>'s Jared Newman praising its ability to prompt commentary and critiques from players as the game's true value. Several critics, including <a href="https://en.wikipedia.org/wiki/Adam_Sessler">Adam Sessler</a> of <a href="https://en.wikipedia.org/wiki/Rev3Games">Rev3Games</a>, also praised <i>BioShock Infinite</i>'s storytelling, noting that its ability to finesse player agency and interaction resulted in a narrative that could only work in a game. The story's <a href="https://en.wikipedia.org/wiki/Twist_ending">twist ending</a> was mostly praised, with several critics predicting that it would provoke debate, and that it would leave a deep impression on players, prompting them to replay the game. It was also generally agreed that <i>Infinite</i>'s ending was an improvement over the original <i>BioShock</i>'s, with Gregory explaining that, unlike its predecessor, <i>Infinite</i> never lost momentum after revealing its twist. Some critics who overall praised the ending did concede that it suffered from plot holes and leaps in logic, with <i><a href="https://en.wikipedia.org/wiki/Edge_(magazine)">Edge</a></i> calling it "a finality that doesn't make sense within the universe the game has created." Several articles have since been released attempting to explain the game's ending.</p>
+
+<p>Critics particularly acclaimed the city of Columbia as the setting of the game, with Arthur Gies of <a href="https://en.wikipedia.org/wiki/Polygon_(website)">Polygon</a> stating that it was "one of <i>BioShock Infinite</i>'s greatest assets." Columbia was praised by some critics as one of video games' best settings, with <a href="https://en.wikipedia.org/wiki/Destructoid">Destructoid</a>'s Jim Sterling explaining that, unlike <i>BioShock 2</i>, <i>Infinite</i> made a wise decision in abandoning Rapture "for an all new story in an all new setting, introducing us to the cloud city of Columbia." The setting's visual art design drew praise, with Columbia being described as beautiful and gorgeous. Lucas Sullivan of <a href="https://en.wikipedia.org/wiki/GamesRadar">GamesRadar</a> went on to describe <i>Infinite</i> as "one of the most visually captivating games ever made." The setting's attention to detail was also well received, with critics impressed at how diverse the game's environments were, and how no two of Columbia's many different areas ever felt alike. Critics also enjoyed how the game encouraged them to explore more of Columbia, with Juba explaining "whether you're looking at a piece of propaganda, listening to an audio log, or participating in a horrifying raffle, almost everything you encounter contributes to your understanding of the floating world."</p>
+
+<p>Elizabeth's role in the gameplay and narrative received wide praise. Her implementation as an AI partner for the player-controlled Booker was described by Sullivan to be "downright ingenious" and was stated by some critics to be the main aspect that separated <i>Infinite</i> from its predecessors. Special praise was given not only to Elizabeth's ability to take care of herself in combat, but also for actively assisting the player by finding ammo and health, and opening Tears. Critics also acknowledged Elizabeth as not just a combat partner, but a companion that invoked an emotional response from the player. <a href="https://en.wikipedia.org/wiki/Eurogamer">Eurogamer</a>'s Tom Bramwell felt that the game "creates a familial bond" between Elizabeth and the player, with Sullivan stating that she felt like "a friend." McCaffrey explained that Elizabeth's presence in the game provided motivation and emotional depth, something he believed the original <i>BioShock</i> lacked. <i>Edge</i> called Elizabeth "a technical triumph, the most human-seeming AI companion since <i>Half-Life 2</i>'s Alyx Vance", with Sullivan stating that her "behavior makes you forget she's a video game character." Several critics also praised Elizabeth's relationship and interactions with Booker, believing that they formed the core of the game's story. Mikel Reparaz of <i><a href="https://en.wikipedia.org/wiki/Official_Xbox_Magazine">Official Xbox Magazine</a></i> explained that "the evolving interplay between [Elizabeth] and Booker is the heart and soul of what makes <i>BioShock Infinite</i> such an involving, memorable experience."</p>
+
+<p>The voice cast was well received, with Troy Baker and Courtnee Draper being particularly praised for their performances as Booker and Elizabeth, respectively. The audio and soundtrack also received positive responses, with Cheat Code Central's Josh Wirtanen stating, "from the absurdly talented voice actors to the so-happy-it's-actually-creepy music selection to set the mood, this game sounds fantastic from start to finish."</p>
+
+<p>Although the gameplay's combat was mostly well received and praised, it was the most polarizing aspect of the game, with <i><a href="https://en.wikipedia.org/wiki/The_Daily_Telegraph">The Daily Telegraph</a></i>'s Tom Hoggins noting "the gunplay is far from <i>Infinite</i>'s most satisfying component." Nevertheless, critics opined that the game's gunplay and shooting was an improvement over its predecessors. The game's expanded environments were well received, with <i>Edge</i> noting they encouraged the player to think more tactically and improvise. Tom Francis of <i><a href="https://en.wikipedia.org/wiki/PC_Gamer">PC Gamer</a></i> and Hoggins felt that <i>Infinite</i>'s overall combat was an improvement over the previous <i>BioShock</i> games largely due to the dynamism of the expanded environments. The addition of the Sky-Line received special praise from critics. Sullivan felt that the Sky-Line "delivers a new FPS experience entirely", while Gregory hailed it as a "real game-changer". Critics also enjoyed the Vigors, weapons, and upgrades, with McCaffrey praising the game's "myriad combat options".</p>
+
+<p>In contrast, the gameplay was criticized by some as monotonous and repetitive, with <i>VideoGamer.com</i>'s Steven Burns explaining the game's lack of real sense of escalation in either abilities or enemies made combat very tiresome and grating. Some also noted that <i>Infinite</i> had regressed into a simple shooter compared to the role-playing <i><a href="https://en.wikipedia.org/wiki/System_Shock">System Shock</a></i> games, with Newman stating that "combat feels too constrained as a result." There were also complaints that the middle portion of the game was padded by gameplay flaws. Critics expressed disappointment that the game limited the player to only two weapons, with Reparaz feeling that this, along with the lack of outlandish upgrades, made <i>Infinite</i>'s "less inventive" combat "not quite up to <i>BioShock</i>'s high standards." Criticism was also directed at the combat's "meager" death penalty, with complaints that this resulted in a less challenging game.</p>
+
+<p><i>Infinite</i>'s graphic depiction of violence generated substantial discussion. <a href="https://en.wikipedia.org/wiki/Polygon_(website)">Polygon</a>'s Chris Plante argued the violence in the game could repel players who are more interested in the game's themes and narrative. He believed that unlike films that are based on violence as part of their themes, <i>Infinite</i> does not attempt to rationalize its violence, claiming the "magnitude of lives taken" and the "cold efficiency in doing so" was "unfamiliar to even the most <a href="https://en.wikipedia.org/wiki/Exploitative_films">exploitative films</a>." Kotaku's Kirk Hamilton agreed, stating that while violence is a common theme across video games, "[the] ridiculous violence stands out in such sharp relief when placed against the game's thoughtful story and lovely world." Hamilton acknowledged that <i>Infinite</i> likely would have been difficult to sell at the mass market if it lacked the first-person shooter elements, but still said that the violent kills felt "indulgent and leering" and unnecessary for the game. <a href="https://en.wikipedia.org/wiki/Cliff_Bleszinski">Cliff Bleszinski</a>, the creative lead of <i><a href="https://en.wikipedia.org/wiki/Gears_of_War_(series)">Gears of War</a></i>, a series Bleszinski acknowledges as being purposely violent, agreed with these sentiments, saying he "felt the violence actually detracted from the experience". Dean Takahashi of <a href="https://en.wikipedia.org/wiki/VentureBeat">VentureBeat</a> felt that the game's nature as a first-person shooter limited its audience appeal due to the extreme violence inherent in the genre.</p>
+
+<p>In comparison, Rus McLaughlin of VentureBeat stated that the sudden onset of violence at the carnival at the start of the game was a necessary element to show that "Columbia is not perfect. It's ugly, <a href="https://en.wikipedia.org/wiki/Xenophobic">xenophobic</a>, and ready to explode." McLaughlin also considered the message carried by <i>Infinite</i> about the extreme nature of the violent acts Booker commits to be tied to his redemption by the end of the game. Similarly Jim Sterling from <a href="https://en.wikipedia.org/wiki/Destructoid">Destructoid</a> considered the game's violence justified because the game's story is about violence itself. They believed that having a non-violent option would go against everything natural to the game itself and "those asking for a non-violent <i>BioShock Infinite</i> are asking for a different game entirely."</p>
+
+<p>Levine defended the game's depiction of violence, stating that using violence as a narrative device was as old as storytelling itself and that it was "a part of the storyteller's toolkit". He went on to say that art had a responsibility to authentically replicate and depict violence. He later explained that he felt "the reaction to the violence [in <i>BioShock Infinite</i>] is more an expression of people building confidence in the industry's ability to express itself in more diverse fashions".</p>
+
+<h3>Awards</h3>
+
+<p><i>BioShock Infinite</i> was nominated for or won multiple awards during its pre-release period. It was a nominee for Most Anticipated Game at the 2010 through 2012 <a href="https://en.wikipedia.org/wiki/Spike_Video_Game_Awards">Spike Video Game Awards</a>, and won over 85 editorial awards at the 2011 <a href="https://en.wikipedia.org/wiki/Electronic_Entertainment_Expo_2011">Electronic Entertainment Expo 2011</a>, 39 of which were Game of Show. The game also received two consecutive <a href="https://en.wikipedia.org/wiki/Golden_Joystick_Award">Golden Joystick Award</a> nominations for One to Watch in <a href="https://en.wikipedia.org/wiki/Golden_Joystick_Award#2011">2011</a> and <a href="https://en.wikipedia.org/wiki/Golden_Joystick_Award#2012">2012</a>. After release, <i>Infinite</i> won the <a href="https://en.wikipedia.org/wiki/List_of_Game_of_the_Year_awards">Game of the Year</a> award from multiple publications, including the <a href="https://en.wikipedia.org/wiki/Associated_Press">Associated Press</a>, <a href="https://en.wikipedia.org/wiki/CNN">CNN</a>, <i>Electronic Gaming Monthly</i>, <i>Entertainment Weekly</i>, <i><a href="https://en.wikipedia.org/wiki/Forbes">Forbes</a></i>, and <i><a href="https://en.wikipedia.org/wiki/Games_(magazine)">Games</a></i>. The game also won Best Shooter of the Year awards from several publications, including <i>The Escapist</i>, <i>Game Informer</i>, <a href="https://en.wikipedia.org/wiki/GameTrailers">GameTrailers</a>, <i>Hardcore Gamer</i>, IGN, and <i>Official Xbox Magazine</i>.</p>
+
+<h2>Themes</h2>
+
+<p>Levine stated that players are supposed to draw their own conclusions from the game, with many parts of <i>Infinite</i> open to interpretation and speculation; to this end, Levine avoided providing an authoritative final answer regarding the game's ending, saying, "what actually matters is what people think. Why does my interpretation matter more than yours?" Acknowledging that <i>Infinite</i>'s themes left fans debating and frustrated, Levine was nevertheless satisfied by the game's opacity, stating that it was his intent. Rob Crossley of <a href="https://en.wikipedia.org/wiki/ComputerAndVideoGames.com">CVG</a> stated that "To [Levine], the [game's] <a href="https://en.wikipedia.org/wiki/Many-worlds_interpretation">Many Worlds Theory</a> is a <a href="https://en.wikipedia.org/wiki/Literary_technique">storytelling device</a>; one that gives his narrative something unique in games yet celebrated in film: <a href="https://en.wikipedia.org/wiki/Interpretability">interpretability</a>."</p>
+
+<p>Commentators discussed the associated themes of <a href="https://en.wikipedia.org/wiki/Sameness">sameness</a>, <a href="https://en.wikipedia.org/wiki/Fatalism">fatalism</a>, <a href="https://en.wikipedia.org/wiki/Choice">choice</a>, and <a href="https://en.wikipedia.org/wiki/Unintended_consequences">unintended consequences</a> within the context of the Luteces' backstory and appearances. The story's theme of multiple realities in particular was also commented as drawing parallels with the fact that, in contrast to previous <i>BioShock</i> games, <i>Infinite</i> only had a single ending despite the in-game morality decisions it offered. <i><a href="https://en.wikipedia.org/wiki/Wired_(magazine)">Wired</a></i>'s Chris Kohler explained that, similar to how the alternate universes within the story all had their similar "constants" and different "variables", the game could be played through in an infinite number of ways, but that certain things would always be the same. Tom Phillips of <a href="https://en.wikipedia.org/wiki/Eurogamer">Eurogamer</a> agreed, interpreting Elizabeth's line ("We swim in different oceans, but land on the same shore") as meaning that, just like Booker's journey in different worlds, different players would have different experiences throughout the game but would nevertheless all reach the same ending. This has led some to identify <i>BioShock Infinite</i> as a <a href="https://en.wikipedia.org/wiki/Metagaming">metagame</a> and meta-commentary on the whole process of players making different choices in games.</p>
+
+<p>In response to people discussing Columbia "as a particularly racist society", Levine said that the game was making no particular point about the theme of <a href="https://en.wikipedia.org/wiki/Racism">racism</a> and that the game's depiction of it was merely "more a factor of the time." The racism portrayed in Columbia was seen by Levine "more as a reflection of what race relations in the U.S. were like in 1912;" Levine explained that the game was "less about exploring the good and bad sides of racism and more just a reflection of the time and how it impacted that era." He noted that several historic American figures such as the Founding Fathers, <a href="https://en.wikipedia.org/wiki/Abraham_Lincoln">Abraham Lincoln</a> and <a href="https://en.wikipedia.org/wiki/Theodore_Roosevelt">Theodore Roosevelt</a> were "men of their times", great men who were nevertheless racist because of the times they lived in. Consequently, Levine reasoned that the depictions of nationalism and racism were warranted in the game, saying that to not do so would be "dishonest" and "strange" to the time period. Many reviewers praised the game for its treatment of <a href="https://en.wikipedia.org/wiki/Race_and_video_games">race</a>.</p>
+
+<p>In addition to overt depictions of racism, the possibility of multiple realities, and the themes explored by the concept of constants and variables, the game was interpreted as tackling political and social problems. Other themes discussed by commentators within the context of <i>Infinite</i>'s setting and story include American exceptionalism, <a href="https://en.wikipedia.org/wiki/Extremism">extremism</a>, <a href="https://en.wikipedia.org/wiki/Fundamentalism">fundamentalism</a>, <a href="https://en.wikipedia.org/wiki/Nationalism">nationalism</a>, <a href="https://en.wikipedia.org/wiki/Fanaticism">fanaticism</a>, <a href="https://en.wikipedia.org/wiki/Cult_(religious_practice)">cultism</a>, <a href="https://en.wikipedia.org/wiki/Populism">populism</a>, <a href="https://en.wikipedia.org/wiki/Religion">religion</a>, <a href="https://en.wikipedia.org/wiki/Dichotomy">dichotomy</a>, <a href="https://en.wikipedia.org/wiki/Free_will">free will</a>, <a href="https://en.wikipedia.org/wiki/Hope">hope</a>, <a href="https://en.wikipedia.org/wiki/Self-loathing">self-loathing</a>, <a href="https://en.wikipedia.org/wiki/Denial">denial</a>, <a href="https://en.wikipedia.org/wiki/Born_again_(Christianity)">rebirth</a>, and <a href="https://en.wikipedia.org/wiki/Redemption_(theology)">redemption</a>.</p>
+
+<p>Reveals of the game had people from all sides of the <a href="https://en.wikipedia.org/wiki/Political_spectrum">political spectrum</a> accusing the game of attacking the left or right; Levine considered that <i>Infinite</i> was a <a href="https://en.wikipedia.org/wiki/Rorschach_test">Rorschach test</a> for most people, though it would be taken negatively in nature and upset them, as his vision in crafting the stories was "about not buying into a single point of view". The National Liberty Federation, a group in the <a href="https://en.wikipedia.org/wiki/Tea_Party_movement">Tea Party movement</a>, used a propaganda mural from the game espousing the Founders' racism and xenophobia on their Facebook page before its source was recognized and later taken down. <a href="https://en.wikipedia.org/wiki/Fox_News">Fox News</a> created a logo extremely similar to the <i>BioShock Infinite</i> logo for a segment titled "Defending the Homeland" relating to immigration control.</p>
+
+<p>Comstock was altered after Levine spoke with a developer who threatened to quit over the game's presentation of the character and religion; the developer helped Levine to reconsider the notion of forgiveness in the <a href="https://en.wikipedia.org/wiki/New_Testament">New Testament</a> and set to figure out why people came to follow Comstock and to understand the ecstatic religious experience they would be seeking. In another case, a player that considered himself a "devout believer" of Christianity was offended by the forced baptism that Booker receives prior to entering Columbia proper, prompting him to request a refund due to being unaware of this content in the game. Patricia Hernandez of <a href="https://en.wikipedia.org/wiki/Kotaku">Kotaku</a> considered that the baptism scene was "admirable" in the context of <a href="https://en.wikipedia.org/wiki/Video_games_as_an_art_form">video games as an art form</a>, and the scene elicited numerous responses on social media. The baptism scenes throughout the game were also interpreted by some not as a critique of Christianity or religion, but as a representation of themes such as free will, evil, rebirth and redemption.</p>
+
+
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

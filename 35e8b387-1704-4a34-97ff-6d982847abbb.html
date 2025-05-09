@@ -1,0 +1,316 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sniper Elite</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('35e8b387-1704-4a34-97ff-6d982847abbb/709dcbbb-ddf1-4e0a-8461-1d34c69559b0.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="35e8b387-1704-4a34-97ff-6d982847abbb/028ac59f-e45a-4119-801a-6aeb2b39df79.png"/> Sniper Elite</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="35e8b387-1704-4a34-97ff-6d982847abbb/ec9cef91-cc4b-433c-840c-df8566a5e1a2.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 14:41:31</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/8/2024">11/8/2024</a> 17:35:32</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-6TB STORE">6TB STORE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-9/30/2005">9/30/2005</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-75">75</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-stealth">stealth</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Tactical shooter">Tactical shooter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Rebellion Developments">Rebellion Developments</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-MC2 France">MC2 France</a><br/><a href="#quicklink-MC2-Microïds">MC2-Microïds</a><br/><a href="#quicklink-Namco Hometek">Namco Hometek</a><br/><a href="#quicklink-OS X">OS X</a><br/><a href="#quicklink-PlayStation 2">PlayStation 2</a><br/><a href="#quicklink-Reef Entertainment">Reef Entertainment</a><br/><a href="#quicklink-Wii">Wii</a><br/><a href="#quicklink-Windows">Windows</a><br/><a href="#quicklink-Xbox">Xbox</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single-player">Single-player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/Sniper_Elite_(video_game)" target="_blank">Wikipedia</a><br/><a href="https://www.mobygames.com/game/sniper-elite" target="_blank">MobyGames</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-[People] artist: James Fraser">[People] artist: James Fraser</a><br/><a href="#quicklink-[People] artist: Mark Bradshaw">[People] artist: Mark Bradshaw</a><br/><a href="#quicklink-[People] composer: Tom Bible">[People] composer: Tom Bible</a><br/><a href="#quicklink-[People] designer: Emerson Best">[People] designer: Emerson Best</a><br/><a href="#quicklink-[People] director: Christopher Kingsley">[People] director: Christopher Kingsley</a><br/><a href="#quicklink-[People] director: Jason Kingsley">[People] director: Jason Kingsley</a><br/><a href="#quicklink-[People] producer: Emerson Best">[People] producer: Emerson Best</a><br/><a href="#quicklink-[People] programmer: Kevin Floyer-Lea">[People] programmer: Kevin Floyer-Lea</a><br/><a href="#quicklink-[People] programmer: Kieran Donaldson">[People] programmer: Kieran Donaldson</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>Sniper Elite</b></i> (also known as <i><b>Sniper Elite: Berlin 1945</b></i>) is a 2005 <a href="https://en.wikipedia.org/wiki/Third-person_view">third-person</a> <a href="https://en.wikipedia.org/wiki/Tactical_shooter">tactical shooter</a> <a href="https://en.wikipedia.org/wiki/Stealth_game">stealth</a> video game developed by <a href="https://en.wikipedia.org/wiki/Rebellion_Developments">Rebellion Developments</a> and published by <a href="https://en.wikipedia.org/wiki/MC2_France">MC2 France</a> in Europe and by <a href="https://en.wikipedia.org/wiki/Namco_Hometek">Namco Hometek</a> in North America, in 2005. In 2012, to coincide with the release of <i><a href="https://en.wikipedia.org/wiki/Sniper_Elite_V2">Sniper Elite V2</a></i>, it was re-issued through <a href="https://en.wikipedia.org/wiki/Steam_(service)">Steam</a> by Rebellion itself.</p>
+
+<p>The protagonist of <i>Sniper Elite</i> is Karl Fairburne, a German-born American <a href="https://en.wikipedia.org/wiki/Office_of_Strategic_Services">OSS</a> operative disguised as a German <a href="https://en.wikipedia.org/wiki/Sniper">sniper</a>. He is inserted into the <a href="https://en.wikipedia.org/wiki/Battle_of_Berlin">Battle of Berlin</a> in 1945 during the final days of <a href="https://en.wikipedia.org/wiki/World_War_II">World War II</a>, with the critical objective of preventing <a href="https://en.wikipedia.org/wiki/German_nuclear_energy_project">German nuclear technology</a> from falling into the hands of invading <a href="https://en.wikipedia.org/wiki/Soviet_Union">Soviet</a> forces.</p>
+
+<h2>Gameplay</h2>
+
+<p><i>Sniper Elite</i> is a <a href="https://en.wikipedia.org/wiki/Third-person_shooter">third-person shooter</a> that combines <a href="https://en.wiktionary.org/wiki/stealth">stealth</a> and <a href="https://en.wikipedia.org/wiki/First-person_shooter">first-person shooter</a> game elements. To reinforce the stealth aspect, there is a <a href="https://en.wikipedia.org/wiki/Camouflage">camouflage</a> index, measured in percentage, that displays the visibility of the player. Fairburne uses several <a href="https://en.wikipedia.org/wiki/World_War_II">World War II</a>-era weapons, including various <a href="https://en.wikipedia.org/wiki/Sniper_rifle">sniper rifles</a>, a silenced <a href="https://en.wikipedia.org/wiki/Pistol">pistol</a>, <a href="https://en.wikipedia.org/wiki/Submachine_gun">submachine guns</a>, <a href="https://en.wikipedia.org/wiki/Light_machine_gun">light machine guns</a>, an anti-tank weapon, and hand grenades that can also be used to set up <a href="https://en.wikipedia.org/wiki/Tripwire">tripwire</a> booby traps.</p>
+
+<p>One of the main features of the game is the option of realistic <a href="https://en.wikipedia.org/wiki/Ballistics">ballistics</a>, involving factors such as bullet drop, wind strength, and breathing when attempting a shot. Sniping gameplay is performed in first person <a href="https://en.wikipedia.org/wiki/Telescopic_sight">scope</a> view, whereas movement and use of all other weapons is in <a href="https://en.wikipedia.org/wiki/Third-person_shooter">third person</a> view. When the player successfully takes a particularly well-placed sniper shot (such as a head shot or a shot on a moving target), the view follows the path of the bullet in <a href="https://en.wikipedia.org/wiki/Slow_motion">slow motion</a>, while the camera rotates around the bullet.</p>
+
+<p>Other features include the ability to wound an enemy so that their comrades are forced to come to their rescue and thus expose their positions for sniping, detonating enemy grenades and fuel tanks with well-aimed bullets, and timing shots so that loud noises such as thunder or artillery blasts mask the sound and thus avoid alerting nearby enemies.</p>
+
+<h2>Plot</h2>
+
+<p>In April 1945, as <a href="https://en.wikipedia.org/wiki/Berlin">Berlin</a> is slowly encircled by rival American and Soviet armies, Karl Fairburne, an agent of the American OSS, is deployed into the ruins of the city wearing the uniform of a German soldier. His superiors have tasked him with thwarting efforts by the Soviet Union to obtain information, personnel, and technology from the German nuclear weapons program. Very little information is revealed about Fairburne's background, other than he was raised in Berlin before the war broke out, that he studied at <a href="https://en.wikipedia.org/wiki/West_Point">West Point</a> shortly after America's entrance into the war, and the fact that he was primarily chosen for the mission because he's familiar with the city's geography and can easily blend in with Berlin's defenders.</p>
+
+<p>There are several factions active in the city, including the <a href="https://en.wikipedia.org/wiki/German_resistance_to_Nazism">German resistance</a>, who assist Karl, the Soviet <a href="https://en.wikipedia.org/wiki/NKVD">NKVD</a>, who are working against him for access to the spoils of German nuclear research, and the remnants of the <a href="https://en.wikipedia.org/wiki/Nazi">Nazi</a> forces in Berlin. The historical Nazi official <a href="https://en.wikipedia.org/wiki/Martin_Bormann">Martin Bormann</a>, an extremely powerful figure within the <a href="https://en.wikipedia.org/wiki/Third_Reich">Third Reich</a>, is one of Karl's first targets for assassination as he plans to meet up with an NKVD contact at the <a href="https://en.wikipedia.org/wiki/Brandenburg_Gate">Brandenburg Gate</a> to defect to the Soviet Union (in real life, Bormann committed suicide rather than be captured by the Soviets). The rest of the characters (such as Dr. Max Lohmann, a key German scientist who Fairburne is assigned to help capture and escort out of Berlin to America in order to prevent him from falling into the hands of the NKVD) are fictional with the exception of <a href="https://en.wikipedia.org/wiki/George_S._Patton">George S. Patton</a>, commander of the American forces assaulting Berlin, who is responsible for authorizing Fairburne's mission.</p>
+
+<h2>Wii version</h2>
+
+<p>The <a href="https://en.wikipedia.org/wiki/Nintendo_Wii">Nintendo Wii</a> version of the game was released by Reef Entertainment in North America in December 7, 2010. It is compatible with the <a href="https://en.wikipedia.org/wiki/Wii_Remote">Wii Remote</a> and <a href="https://en.wikipedia.org/wiki/Wii_Zapper">Wii Zapper</a> and contains a bonus new level. The game was also released in Europe later the same year.</p>
+
+<h2>Reception</h2>
+
+<p><i>Sniper Elite</i> received "generally favorable" reviews, according to <a href="https://en.wikipedia.org/wiki/Review_aggregator">review aggregator</a> <a href="https://en.wikipedia.org/wiki/Metacritic">Metacritic</a>.</p>
+
+<p>The game was awarded "Best PC/Console Game" in the <a href="https://en.wikipedia.org/wiki/The_Independent_Game_Developers'_Association">TIGA</a> Awards of 2005.</p>
+
+<h2>Novel</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/Rebellion_Developments">Rebellion Developments</a>' book imprint <a href="https://en.wikipedia.org/wiki/Abaddon_Books">Abaddon Books</a> released a novel inspired by the game, <i>Sniper Elite: The Spear of Destiny</i> written by Jasper Bark. In this book, Karl Fairburne's mission is to stop a rogue <a href="https://en.wikipedia.org/wiki/Schutzstaffel">SS</a> officer named Helmstadt from selling Germany's only working <a href="https://en.wikipedia.org/wiki/Atomic_bomb">atomic bomb</a> to the Soviets.</p>
+
+
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Uncharted Legacy of Thieves Collection </title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('6ff30950-8236-46f6-b938-4a82471ac5ef/2b4910a3-987c-4772-93b4-f79db5c5824b.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="6ff30950-8236-46f6-b938-4a82471ac5ef/f435107c-028a-4a5b-9db2-5d1ec1cf0231.png"/> Uncharted Legacy of Thieves Collection </h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="6ff30950-8236-46f6-b938-4a82471ac5ef/ac43d4da-9736-4b44-8689-6fdce1d62c46.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 14:41:31</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/8/2024">11/8/2024</a> 17:34:13</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-6TB STORE">6TB STORE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-10/19/2022">10/19/2022</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-88">88</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Iron Galaxy Studios">Iron Galaxy Studios</a><br/><a href="#quicklink-Naughty Dog LLC">Naughty Dog LLC</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-PlayStation Publishing LLC">PlayStation Publishing LLC</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Remote Play En TV">Remote Play En TV</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1659420" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1659420/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1659420/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1659420" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1659420" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1659420" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/1659420/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Acción y aventura">Acción y aventura</a><br/><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Buena trama">Buena trama</a><br/><a href="#quicklink-Cinematográficos">Cinematográficos</a><br/><a href="#quicklink-Combate">Combate</a><br/><a href="#quicklink-Disparos">Disparos</a><br/><a href="#quicklink-Disparos en tercera persona">Disparos en tercera persona</a><br/><a href="#quicklink-Divertidos">Divertidos</a><br/><a href="#quicklink-Exploración">Exploración</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Para mando">Para mando</a><br/><a href="#quicklink-Parkour">Parkour</a><br/><a href="#quicklink-Plataformas">Plataformas</a><br/><a href="#quicklink-Protagonista femenina">Protagonista femenina</a><br/><a href="#quicklink-Puzles">Puzles</a><br/><a href="#quicklink-Sigilo">Sigilo</a><br/><a href="#quicklink-Tercera persona">Tercera persona</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					¿Estás listo para buscar tu fortuna?<br><br>Busca tu propia fortuna y deja tu impronta con UNCHARTED: Colección Legado de los Ladrones. Descubre una emocionante narrativa de película y las escenas de acción más palomiteras de la franquicia UNCHARTED, repletas de momentos hilarantes, ingeniosos y sublimes de nuestros queridos ladrones Nathan Drake y Chloe Frazer.<br><br>En una experiencia ofrecida por la galardonada desarrolladora Naughty Dog, UNCHARTED: Colección Legado de los Ladrones incluye UNCHARTED™ 4: El desenlace del ladrón y UNCHARTED™: El legado perdido, dos aventuras para un jugador aclamadas por la crítica en las que recorrerás el mundo. Cada historia es un torrente de momentos divertidos y dramáticos, con una acción de alto octanaje y descubrimientos asombrosos, remasterizados para ser más inmersivos si cabe.<br><br><strong>Descubre los imponentes paisajes </strong><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1659420/extras/d20221004_ULTC_SteamPage_Still4.png?t=1717621447" /><br><br>Junglas espesas, montañas nevadas, islas exóticas y calles empapadas por la lluvia; explora cada rincón de entornos preciosos con detalles espectaculares. Sumérgete en la narrativa de película con una resolución 4K supernítida* y compatible con un monitor ultrapanorámico**. Disfruta de la mejora de una serie de características de ajustes gráficos, como la posibilidad de modificar las texturas y la calidad de modelado, el filtrado anisotrópico, las sombras, los reflejos y la oclusión ambiental. <br><br><strong>Siente la emoción del juego en tus manos</strong><br><br>Siente la respuesta háptica y los efectos de gatillos dinámicos diseñados para UNCHARTED: Colección Legado de los Ladrones cuando juegues con el mando DualSense™ conectado con cable al PC. Puedes dejar tu impronta de la forma que prefieras gracias a la completa reasignación de botones y la compatibilidad con el mando DualShock®4***, los controladores de juegos XInput y una gran variedad de mandos, teclados y ratones. Quienes prefieran ver las cosas más claras pueden probar las funciones RGB de los dispositivos compatibles con los periféricos de Razer Chroma y Chroma Link, así como con los modelos de Logitech. <br><br><strong>Mejora la aventura</strong><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1659420/extras/d20221004_ULTC_SteamPage_Still3.png?t=1717621447" /><br><br>Descubre una amplia variedad de mejoras y modos específicos para PC, como una interfaz con mejoras en las opciones de juego, interfaces de usuario renovadas, la incorporación de controles deslizantes en ciertos menús, la detección de la GPU y de la VRAM, así como la incorporación de la pausa automática, la posibilidad de minimizar en segundo plano y la velocidad de carga variable, entre otras muchas novedades.<br><br><strong>AMD Fidelity FX Super Resolution 2</strong><br><br>Aumenta tus tasas de fotogramas para buscar tu fortuna como Nathan y Chloe con la tecnología puntera de escalado temporal de AMD. FSR 2 utiliza algoritmos avanzados para aumentar tus tasas de fotogramas y ofrecer en UNCHARTED experiencias de juego de alta calidad y resolución en una gran variedad de tarjetas gráficas compatibles.<br><br>-----------------------------------------------------------------------------------------------------------------------------<br><br><br><strong>UNCHARTED 4: El desenlace del ladrón</strong><br><br>Ganador de más de 150 galardones al Juego del Año.<br><br>Varios años después de su última aventura, el cazafortunas retirado Nathan Drake se ve obligado a volver al mundo de los ladrones. El destino quiere que Sam, el hermano al que Drake había dado por muerto, reaparezca para pedirle ayuda a fin de salvarle la vida y ofrecerle una aventura a la que Drake no podrá resistirse. La mayor aventura de Drake pondrá a prueba sus habilidades físicas y determinación, todo para ver hasta dónde está dispuesto a llegar para salvar a sus más allegados.<br><br>Siguiendo la estela del tesoro perdido del capitán Henry Avery, Sam y Drake parten en busca de Libertalia, una utopía pirata en los bosques de Madagascar, para acabar viajando por todo el mundo y recorrer islas selváticas, recónditas ciudades y picos nevados en pos de la fortuna de Avery.<br><br>● Una aventura por todo el mundo con los entornos más grandes y detallados de la franquicia UNCHARTED.<br><br>● La historia más personal de Nathan Drake, que subió el listón del galardonado estilo narrativo de Naughty Dog.<br><br>● Un sistema de combate fluido y frenético gracias al uso del garfio, que da pie a escenas de acción más dinámicas y emocionantes todavía.<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1659420/extras/d20221004_ULTC_SteamPage_Still2.png?t=1717621447" /><br><br><strong>UNCHARTED: El legado perdido</strong><br><br>Para recuperar una antigua reliquia india e impedir que caiga en manos de un implacable traficante de armas, Chloe Frazer debe conseguir la ayuda de la famosa mercenaria Nadine Ross. Juntas se adentrarán en la región montañosa de las Ghats Occidentales para localizar el colmillo dorado de Ganesh. Chloe vivirá su mayor aventura, en la que tendrá que enfrentarse a su pasado y decidir qué está dispuesta a sacrificar para forjar su propio legado.<br><br>● Un nuevo escenario de aventuras en la costa suroeste del subcontinente indio que ofrece una mezcla exótica de entornos urbanos, selvas y ruinas antiguas.<br><br>● Con escenas repletas de acción y una cautivadora historia que harán las delicias de los fans de Naughty Dog y la saga UNCHARTED.<br><br>● Partiendo de las aclamadas mecánicas de la franquicia UNCHARTED como base, el juego actualiza sus sistemas y los refina con un combate cinematográfico, momentos de exploración en entornos que te dejarán con la boca abierta, puzles complejos y mucho más.<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1659420/extras/d20221004_ULTC_SteamPage_Still1.png?t=1717621447" /><br><br><br>* Se necesitan un PC y un dispositivo de pantalla 4K compatibles.<br>** Se necesitan un PC y un dispositivo de pantalla compatibles.<br>*** Utiliza un adaptador USB DUALSHOCK 4 inalámbrico o un cable micro-USB para conectarlo al ordenador. <br><br><br>©2022 Sony Interactive Entertainment LLC. Creado y desarrollado por Naughty Dog LLC. UNCHARTED es una marca registrada de Sony Interactive Entertainment LLC y sus empresas vinculadas en Estados Unidos y otros países.
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>NINJA GAIDEN: Master Collection NINJA GAIDEN Σ</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('75fbb68b-a5c1-4db1-8298-28244add6422/98125c11-92cc-45ec-b37a-a928c6414d4c.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="75fbb68b-a5c1-4db1-8298-28244add6422/e9548c11-f727-4cd2-9c0f-3de40be466aa.png"/> NINJA GAIDEN: Master Collection NINJA GAIDEN Σ</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="75fbb68b-a5c1-4db1-8298-28244add6422/368b4d4b-4e8c-4873-b2de-1ac140b8de82.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 15:35:16</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-1/27/2025">1/27/2025</a> 15:32:26</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB GAS">2TB GAS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-6/9/2021">6/9/2021</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-78">78</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-KOEI TECMO GAMES CO., LTD.">KOEI TECMO GAMES CO., LTD.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-KOEI TECMO GAMES CO., LTD.">KOEI TECMO GAMES CO., LTD.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Parcial Con Mando">Compat. Parcial Con Mando</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1580780" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1580780/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1580780/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1580780" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1580780" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1580780" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/1580780/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Anime">Anime</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Buena trama">Buena trama</a><br/><a href="#quicklink-Clásico">Clásico</a><br/><a href="#quicklink-Difíciles">Difíciles</a><br/><a href="#quicklink-Exploración">Exploración</a><br/><a href="#quicklink-Gran banda sonora">Gran banda sonora</a><br/><a href="#quicklink-Hack and slash">Hack and slash</a><br/><a href="#quicklink-Juegos de acción de personajes">Juegos de acción de personajes</a><br/><a href="#quicklink-Luchador espectacular">Luchador espectacular</a><br/><a href="#quicklink-Ninjas">Ninjas</a><br/><a href="#quicklink-Oscuros">Oscuros</a><br/><a href="#quicklink-Sangriento">Sangriento</a><br/><a href="#quicklink-Tercera persona">Tercera persona</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/><a href="#quicklink-Violentos">Violentos</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					Nota: Este producto está incluido en &quot;NINJA GAIDEN: Master Collection&quot; y &quot;NINJA GAIDEN: Master Collection Deluxe Edition&quot;. No se puede comprar de manera individual.<br>Nota: Visita la web oficial para saber más sobre este contenido.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1580780/extras/action.gif?t=1729051380" /><h2 class="bb_tag">[Acerca de NINJA GAIDEN: Master Collection]</h2><br>Disfruta de 3 juegos de la saga NINJA GAIDEN en un solo título.　<br><br>Todos son tan divertidos como recuerdas, manteniendo la acción frenética de los juegos originales.<br>¡Prepárate para luchar contra oponentes temibles!<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1580780/extras/steam_chara.jpg?t=1729051380" /><br> <br>Además de Ryu Hayabusa, también hay otros 4 personajes jugables: Ayane, Rachel, Momiji y Kasumi. Une fuerzas con tus personajes favoritos y alterna libremente entre ellos durante la batalla.<br>※Las heroínas incluidas en esta versión son idénticas a las de las entregas originales. Además, los personajes jugables y las escenas (modos) varían en función de cada juego.<br> <br>Todos los modos de juego y atuendos de DLC lanzados anteriormente están incluidos en esta entrega. Aparte de Ryu Hayabusa, los demás personajes también podrán elegir de entre distintos atuendos, permitiéndote disfrutar de las espectaculares batallas con el aspecto que prefieras.<br><br>■Juegos incluidos<br>  NINJA GAIDEN Σ<br>  NINJA GAIDEN Σ2<br>  NINJA GAIDEN 3: Razor's Edge<br><br>※El multijugador en línea no está disponible para las “MISIONES EN EQUIPO” en NINJA GAIDEN Σ2. <br>※No incluye la &quot;Batalla de clan&quot; &quot;Sombras del mundo” en NINJA GAIDEN 3 Razor's Edge.<br>　El multijugador en línea no está disponible para las “pruebas ninja”.<br>※&quot;NINJA GAIDEN Σ2&quot; y &quot;NINJA GAIDEN 3: Razor's Edge&quot; también estarán disponibles en chino tradicional.<br><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1580780/extras/steam_s.jpg?t=1729051380" /><h2 class="bb_tag">[Acerca de NINJA GAIDEN Σ]</h2><br>Además de poder realizar las impresionantes técnicas sin parangón de &quot;Ryu Hayabusa&quot;, un joven ninja que ha aprendido las artes ninja del Estilo Hayabusa, en los preciosos escenarios de un Japón occidentalizado y con aspectos del mundo espiritual, todo el contenido de este juego hará las delicias de cualquier aficionado de los juegos de acción.<br><br>■Disfruta de la épica historia con el &quot;Modo Héroe&quot;<br>Al seleccionar la dificultad &quot;Modo Héroe&quot;, este se activa cuando tu salud está baja. Con el Modo Héroe, podrás protegerte y esquivar automáticamente, además de usar tu ninpo tanto como quieras. Hasta los jugadores menos avezados podrán sentir la sensación de escapar en el último instante, volver las tornas contra los enemigos y avanzar en la partida. No hace falta decir que los modos de dificultad para los que buscan una experiencia más exigente también estarán disponibles.<br><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1580780/extras/steam_s2.jpg?t=1729051380" /><h2 class="bb_tag">[Acerca de NINJA GAIDEN Σ2]</h2><br>Conviértete en Ryu Hayabusa, el ninja que ha heredado la legendaria &quot;Espada del Dragón&quot;, y vive de nuevo la acción frenética en batallas que te llevarán por todo el mundo. El juego también incluye nuevas características como el &quot;Modo Héroe&quot;, un modo en el que el jugador se cubrirá automáticamente cuando se encuentre contra las cuerdas.<br><br>■En la &quot;CARRERA NINJA&quot;, tu velocidad determinará si vives o mueres<br>En el modo &quot;CARRERA NINJA&quot; deberás superar el mapa dentro un límite de tiempo a la vez que te abres paso entre tus enemigos. En este modo, el número de enemigos seguidos que derrotes se añadirá a tu &quot;Combo de muertes&quot;, y a medida que tu Combo de muertes vaya aumentando, también lo hará tu daño. Además, podrás usar objetos por el camino que aumentan tanto la velocidad como el tiempo, por lo que atacar de manera incesante, derrotar enemigos tan rápido como te sea posible y usar objetos será clave en tu estrategia.<br><br>■Junto a Hayabusa, 3 heroínas resplandecientes se unen al campo de batalla<br>Las heroínas de la saga &quot;NINJA GAIDEN&quot;: &quot;Ayane&quot;, &quot;Rachel&quot;, y &quot;Momiji&quot; aparecen como personajes jugables. En las &quot;MISIONES EN EQUIPO&quot;, los jugadores podrán elegir a 2 personajes de entre Hayabusa y las 3 heroínas, pudiendo alternar entre ellos mientras completan la misión.<br><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1580780/extras/steam_3re.jpg?t=1729051380" /><h2 class="bb_tag">[Acerca de NINJA GAIDEN 3: Razor's Edge]</h2><br>¡El juego de acción ninja definitivo está de vuelta! El juego ofrece un &quot;desafío&quot; extremo, a la vez que una &quot;sensación de logro&quot; igual de extrema. Vive la mejor entrega de acción de toda la saga.<br><br>■Acompañando a Ryu Hayabusa, ¡Ayane, Kasumi y Momiji también se unen a la batalla!<br>Además de &quot;Ryu Hayabusa&quot;, el personaje principal, las ninjas &quot;Ayane&quot;, &quot;Kasumi&quot; y &quot;Momiji&quot; también aparecen como personajes jugables. Y su participación no se limita únicamente a las misiones de historia &quot;Reto de capítulo&quot;, ya que los 3 personajes también podrán usarse en las &quot;PRUEBAS NINJA&quot;. Además, Ayane, la heroína de la saga &quot;NINJA GAIDEN&quot;, cuenta con su propia historia.<br><br>■Emocionantes batallas en donde no podrás bajar la guardia<br>Se han añadido las &quot;Pruebas de valentía&quot;, una fase especial para los aficionados a la saga que quieren disfrutar aún más de las batallas. En cada capítulo hay Calaveras de cristal ocultas que dan acceso a las distintas &quot;Pruebas de valentía&quot;. Al entrar en estas zonas, los jugadores deberán hacer frente a los enemigos más formidables y temibles de la saga &quot;NINJA GAIDEN&quot;.<br><br>■¡Mejorar a los personajes da más aliciente para volver a jugar!<br>Encontrando los &quot;Escarabajos dorados&quot; ocultos y usando el &quot;Karma&quot; obtenido durante las batallas, entre otras cosas, los jugadores pueden desbloquear nuevas armas y ninpo para mejorar a sus personajes. Por supuesto, las mejoras aplicadas se mantendrán durante las partidas nuevas sucesivas. Entre los movimientos que se pueden desbloquear, se han añadido algunos nuevos, como la &quot;Oleada de la cigarra&quot;, que te permite esquivar cualquier ataque del enemigo, &quot;Meditación&quot;, que te permite gastar tu indicador de Ki para recuperar salud, y más.
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

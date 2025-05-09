@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Crusader Kings III </title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('f8048733-f00a-4e59-ac3e-df43eee2eb44/207f346e-18f6-496d-8105-a9437062c4f3.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="f8048733-f00a-4e59-ac3e-df43eee2eb44/ec2b42fb-954d-482b-b142-1aaf79c09d00.png"/> Crusader Kings III </h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="f8048733-f00a-4e59-ac3e-df43eee2eb44/a5208c65-07f2-40f3-954a-14ae2dbf9c44.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 14:41:31</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/8/2024">11/8/2024</a> 17:34:28</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-6TB STORE">6TB STORE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-9/1/2020">9/1/2020</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-90">90</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-91">91</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Estrategia">Estrategia</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Rol">Rol</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Simuladores">Simuladores</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Paradox Development Studio">Paradox Development Studio</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Paradox Interactive">Paradox Interactive</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Jcj">Jcj</a><br/><a href="#quicklink-Jcj En Línea">Jcj En Línea</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Remote Play En Tableta">Remote Play En Tableta</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/><a href="#quicklink-Workshop">Workshop</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1158310" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1158310/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1158310/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1158310" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1158310" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1158310" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/1158310/achievements" target="_blank">Logros</a><br/><a href="https://steamcommunity.com/app/1158310/workshop/" target="_blank">Workshop</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-4X">4X</a><br/><a href="#quicklink-Bélicos">Bélicos</a><br/><a href="#quicklink-Economía">Economía</a><br/><a href="#quicklink-Estrategia">Estrategia</a><br/><a href="#quicklink-ETR">ETR</a><br/><a href="#quicklink-Gestión">Gestión</a><br/><a href="#quicklink-Gran estrategia">Gran estrategia</a><br/><a href="#quicklink-Históricos">Históricos</a><br/><a href="#quicklink-Las elecciones importan">Las elecciones importan</a><br/><a href="#quicklink-Medievales">Medievales</a><br/><a href="#quicklink-Modificables">Modificables</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Personalización de personajes">Personalización de personajes</a><br/><a href="#quicklink-Políticos">Políticos</a><br/><a href="#quicklink-Rol">Rol</a><br/><a href="#quicklink-Sandbox">Sandbox</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Simulador de vida">Simulador de vida</a><br/><a href="#quicklink-Tiempo real con pausas">Tiempo real con pausas</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					Tu legado aguarda. Elige una casa nobiliaria y lidera a tu dinastía a la grandeza en una epopeya de la Edad Media de varias generaciones. La guerra es una de las muchas herramientas que tienes para establecer tu reinado, ya que la estrategia real requiere diplomacia experta, conocimiento del reino y verdadera <i>astucia</i>. <strong>Crusader Kings III</strong> continúa la famosa saga creada por Paradox Development Studio, que combina la aclamada gran estrategia con un juego de rol medieval dramático y profundo. <br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1158310/extras/2s.gif?t=1730740049" /> <br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1158310/extras/ES-01.png?t=1730740049" /><br><ul class="bb_ul">  <li> Toma el control de tu casa y amplía tu dinastía durante una Edad Media documentada al detalle. Empieza en el 867 o en el 1066, y reclama territorios, títulos y vasallos para conseguir un reino digno de tu sangre real. Tu muerte solo es un detalle, pues tu linaje continúa con nuevos herederos jugables, dispuestos o no por ti. <br></li><li> Descubre un mundo simulado en expansión lleno de plebeyos y caballeros, cortesanos, espías, truhanes y bufones, y romances secretos. Un reparto bien nutrido de personajes históricos que puedes enamorar, traicionar, ejecutar o influir sutilmente.  <br></li><li> Explora un gran mapa medieval que va desde los territorios nevados del norte hasta el Cuerno de África, y desde las islas británicas al oeste hasta las riquezas exóticas de Birmania al este. Reclama, conquista y gobierna a miles de países, ducados, reinos e imperios únicos. </li></ul><br><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1158310/extras/25s.gif?t=1730740049" /><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1158310/extras/ES-02.png?t=1730740049" /><br><ul class="bb_ul"><li> Cada personaje es más profundo de lo que imaginas, ya que sus rasgos y elecciones vitales determinarán sus acciones y planificaciones. Gobierna con el miedo con tu puño de hierro o inspira a tus súbditos con tus hazañas magnánimas. La genética es innegable y tus hijos heredaran una inteligencia desbordante o una estupidez incapacitante. <br></li><li> Consigue los tutores adecuados para tu heredero o edúcalo tú mismo. Si tienen aspiraciones, cásalos o líbrate de ellos por otros medios. <br></li><li> Personaliza a tu gobernante y su casa nobiliaria, tanto su apariencia como sus atributos, y crea a un monarca digno de todas sus virtudes y vicios heredados.</li></ul><br><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1158310/extras/3s.gif?t=1730740049" /><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1158310/extras/ES-03.png?t=1730740049" /><br><ul class="bb_ul"><li> Gobierna un reino que evoluciona constantemente y concede títulos a quien tú prefieras; o vence al señor feudal y reclama la corona para ti. Ten cuidado con las amenazas, que pueden ser desde sirvientes descontentos hasta concubinas vengativas. <br></li><li> Las sombras se agitan con frecuencia y el peligro acecha en cada esquina oscura. Recluta a agentes y a otros personajes indeseables para debilitar, chantajear o asesinar a quienes se interponen en tu camino. O déjate inspirar por las canciones de los bardos y consigue poder e influencia mediante la seducción.<br></li><li> Correrá la sangre. Reúne a unidades de soldados y caballeros poderosos. Gestiona a tus ejércitos y tus tácticas en la batalla. Asalta y saquea territorios cercanos o contrata a mercenarios y a órdenes sagradas para las guerras importantes. </li></ul><br><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1158310/extras/4s.gif?t=1730740049" /><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1158310/extras/ES-04.png?t=1730740049" /><br><ul class="bb_ul"><li> Encarna a un rey piadoso para atraer a los poderes religiosos o diseña tu propia religión mientras te debates entre la fama o la condenación eternas.<br></li><li> Introduce innovaciones en la cultura y levanta poderosos castillos y bastiones para aumentar la riqueza, el prestigio y la seguridad de tu reino. <br></li><li> Puedes seguir una cantidad ilimitada de caminos: disfruta de miles de eventos dinámicos y toma decisiones fundamentales adaptadas a todas las situaciones y personajes concebibles. Hay incontables formas de garantizar tu paso a la posteridad. </li></ul>
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

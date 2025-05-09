@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Workers &amp; Resources: Soviet Republic</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('615aaed8-c738-40c4-aec7-d3ffe4d82e45/24e43f18-42b1-463d-a0f9-1d4fff765dd0.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="615aaed8-c738-40c4-aec7-d3ffe4d82e45/04d47a76-5764-4248-9a97-47bb7f779276.png"/> Workers &amp; Resources: Soviet Republic</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="615aaed8-c738-40c4-aec7-d3ffe4d82e45/0285a925-2425-4136-946d-87f8e7d376ec.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/13/2024">11/13/2024</a> 0:35:38</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/13/2024">11/13/2024</a> 1:05:59</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-PORCHE">PORCHE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-6/20/2024">6/20/2024</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-90">90</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-81">81</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Estrategia">Estrategia</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Simuladores">Simuladores</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-3Division">3Division</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Hooded Horse">Hooded Horse</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Parcial Con Mando">Compat. Parcial Con Mando</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Incluye Editor De Niveles">Incluye Editor De Niveles</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/><a href="#quicklink-Workshop">Workshop</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/784150" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/784150/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/784150/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=784150" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/784150" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=784150" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/784150/achievements" target="_blank">Logros</a><br/><a href="https://steamcommunity.com/app/784150/workshop/" target="_blank">Workshop</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-4X">4X</a><br/><a href="#quicklink-Construcción">Construcción</a><br/><a href="#quicklink-Construcción de bases">Construcción de bases</a><br/><a href="#quicklink-Construcción de ciudades">Construcción de ciudades</a><br/><a href="#quicklink-Economía">Economía</a><br/><a href="#quicklink-Estrategia">Estrategia</a><br/><a href="#quicklink-ETR">ETR</a><br/><a href="#quicklink-Gestión">Gestión</a><br/><a href="#quicklink-Gestión de recursos">Gestión de recursos</a><br/><a href="#quicklink-Gran estrategia">Gran estrategia</a><br/><a href="#quicklink-Históricos">Históricos</a><br/><a href="#quicklink-Modificables">Modificables</a><br/><a href="#quicklink-Mundo abierto">Mundo abierto</a><br/><a href="#quicklink-Sandbox">Sandbox</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Simulador de colonias">Simulador de colonias</a><br/><a href="#quicklink-Supervivencia">Supervivencia</a><br/><a href="#quicklink-Tiempo real con pausas">Tiempo real con pausas</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/><a href="#quicklink-Valor continuo">Valor continuo</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/784150/extras/image_01_loop.gif?t=1729167357" /><br>Encárgate de todos los aspectos de tu república en este juego de construcción de ciudades con ambientación soviética. La planificación económica te permite controlar todo, desde la extracción de recursos hasta la fabricación de bienes y la oferta de servicios. Úsala para tomar decisiones que tengan un impacto en el día a día de tus ciudadanos y puedas ganarte su lealtad a la nación. Puedes determinar la disponibilidad, la accesibilidad y la calidad de los distintos sectores de una ciudad desarrollada, ya sea construcción, transporte, comercio, salud, educación, entretenimiento, turismo o cualquiera de las otras facetas. Enfréntate a una simulación compleja de cadenas de suministro a escala mundial y busca suelos fértiles, vetas de minerales y tierras viables en las que construir tu nación. Deja que las estaciones de radio se desvivan en alabanzas y que los ciudadanos se regocijen de la gloria de la república soviética.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/784150/extras/headline_01-ES.png?t=1729167357" /><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/784150/extras/image_02_loop.gif?t=1729167357" /><br>Hay varias simulaciones complejas funcionando al unísono para dar vida a las ciudades de Workers &amp; Resources: Soviet Replubic. Todo se puede manipular con las acciones correctas: el precio de los bienes en el mercado global, el abastecimiento de agua y electricidad, o la cantidad de calefacción ofrecida durante el invierno. Ajusta los parámetros de tu partida para adaptarla a tu antojo. Da igual si lo tuyo es la ingeniería civil, la planificación urbanística, la economía o la simulación completa, podrás disfrutar de las mecánicas que más te gustan.<br><br><ul class="bb_ul"><li> Dirige tu nación usando rublos y dólares para mantener un equilibrio entre el mercado oriental y el occidental. El comercio con naciones de ambos lados del telón de acero te garantizará el acceso a divisas, recursos y tecnología de valor. Aunque la economía planificada sigue un estilo soviético, eres una nación sin alineamiento, por lo que tienes libertad para comerciar con el bloque occidental y el soviético como mejor te beneficie. Siempre puedes permanecer leal a uno de los bandos si lo prefieres, pero ten en cuenta que si te centras en un solo mercado de bienes obtendrás menos beneficios, y cerrar las puertas al otro bando podría privarte de avances tecnológicos útiles.<br></li><li> Familiarízate con las peculiaridades de la gestión de una cadena de suministros realista con más de 30 productos que adquirir, fabricar y transportar. Las materias primas, los bienes procesados y los desechos tienen lugares específicos de almacenaje, vehículos específicos para su transporte y estructuras específicas para la carga y descarga. Los líquidos se almacenan en depósitos y se mueven con la ayuda de tuberías y bombas, o se cargan en vehículos con cisternas. Los minerales se guardan como agregados en instalaciones de almacenaje y se distribuyen mediante cintas transportadoras, camiones de plataforma y vagones de tren. Por otro lado, los bienes procesados se envían a los almacenes por medio de camiones y vagones cerrados. Organiza tus carretillas para transportes cortos, crea redes complejas de cintas transportadores para no depender de tanto vehículo, o usa trenes para transportar bienes de una ciudad a otra; la gestión de la cadena de suministros es una parte primordial de la nación, así que tendrás que usar todo tipo de vehículos, incluyendo aviones de transporte, trenes de carga y helicópteros de transporte, para asegurarte de que la operación transcurre sin contratiempos.<br></li><li> Cada carretera, puente, edificio residencial y fábrica se construye desde cero y tiene un coste de recursos diferente en función del tamaño del proyecto. Compra materias primas en el mercado para construir sin demora con la ayuda del trabajo extranjero, o crea tus propias oficinas de construcción y genera empleo para que tus habitantes trabajen en las obras y construyan todo usando materiales locales. Los edificios pueden necesitar cosas como paneles prefabricados, vigas de acero, grava, concreto y otros recursos: prodúcelos y suminístralos de manera local, o impórtalos, si prefieres simplificar el proceso. ¿Serás una república autosuficiente, o explotarás el mercado internacional para expandirte con rapidez?</li></ul><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/784150/extras/headline_02-ES.png?t=1729167357" /><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/784150/extras/image_03_loop.gif?t=1729167357" /><br>Una nación no es nada sin su pueblo: trabajan los campos, hornean el pan y operan la maquinaria pesada que mantiene la industria en funcionamiento. Si quieres tener éxito, tienes que asegurarte de que estén felices y sean leales.<br><br><ul class="bb_ul"><li> Acompaña a tus ciudadanos a lo largo de su vida y proporciónales bienes esenciales como comida y ropa (y alcohol) mientras te cercioras de que tengan acceso a oportunidades de educación y empleo. Cuidado con los que no tienen lealtad a la república, pues son más propensos a delinquir y rinden menos que los demás. La mayoría de las veces, lo mejor es cortarles el acceso a oportunidades en las que puedan hacer más mal que bien. Vigila la felicidad y la lealtad de tu nación para asegurarte de que no haya muchos que quieran irse. Dales una vida mejor, o usa la propaganda para que se esfuercen al máximo.<br></li><li> Puedes cubrir las necesidades de los tuyos mediante importaciones o fabricando lo que necesites de manera local gracias a las cadenas de producción. Los cereales se cosechan en los enormes campos y se convierten en pan y bebidas espirituosas en plantas de producción alimenticia y en destilerías. Las fábricas de ropa seguirán produciendo siempre que cuenten con tejidos, que se producen en fábricas textiles a base de cosechas, químicos y agua. Fabrica u obtén todo tipo de bienes, como las necesidades mencionadas, o artículos de lujo, como las radios y los televisores, y crea una cadena de transporte que los lleve de las fábricas a los almacenes y de ahí a las tiendas locales donde se pondrán a la venta para el disfrute de tus ciudadanos. <br></li><li> Hay muchos servicios esenciales que querrás poner al alcance de tus ciudadanos, como la electricidad, el agua y la calefacción, imprescindibles para sobrevivir. Cada una de ellas tiene sus propias cadenas de suministro que tendrás que mantener. Observa los cambios en la demanda según las estaciones y prepárate para el duro invierno o perderás a muchos habitantes. En cuanto a los estudios, hay distintas instituciones a cargo de la educación primaria y la superior, y esta última brinda más oportunidades de empleo a los ciudadanos y desbloquea el acceso a nuevas tecnologías y producciones para la nación. El entretenimiento está en los parques y teatros locales, pero también en las emisoras de radio y los canales de televisión. Quienes quieran trabajar el bienestar físico, lo podrán hacer en piscinas y pistas deportivas. Asegúrate de que tus ciudadanos tienen todos estos servicios al alcance gracias a un sistema de transporte eficiente y tu población será sana y próspera.</li></ul><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/784150/extras/headline_03-ES.png?t=1729167357" /><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/784150/extras/image_04_loop.gif?t=1729167357" /><br>Encargarse del transporte de bienes y ciudadanos por carretera, ferrocarril, aire y mar es vital para tener una república saludable. A medida que tu nación crezca y se desarrollen ciudades en las inmediaciones de los centros de recursos repartidos por mapas enormes, irás expandiendo la red de transporte para mantenerte a la altura de la situación.<br><br><ul class="bb_ul"><li> Los autobuses, tranvías, trenes, metros, barcos y aviones proporcionan transporte público para que la gente cubra distancias cada vez mayores para satisfacer sus necesidades en establecimientos lejanos, o para aportar su experiencia en fábricas y minas remotas. Maneja los sistemas interconectados para facilitar el desplazamiento de personas a lo largo y ancho de estas grandes extensiones de tierra. Tendrás que valerte incluso de funiculares y sinuosas carreteras de tierra para facilitar el acceso a los lugares más recónditos de tu república.<br></li><li> Los camiones, los trenes, los aviones y los barcos de transporte son imprescindibles para mover recursos a largas distancias. Cada tipo cuenta con varias subcategorías que determinan qué tipo de bienes pueden transportar. Tener un acceso limitado a ciertos tipos podría obligarte a explorar sistemas de transporte que tal vez habrías ignorado de no haberte visto en la necesidad. ¿Construirás conexiones en las aduanas de tu frontera para potenciar el comercio con potencias extranjeras?<br></li><li> Construye aeropuertos a medida, planifica el emplazamiento de señales de tren y diseña intercambiadores para personalizar tus redes de transporte. Las señales de tráfico influyen en los límites de velocidad y los lugares a los que pueden acceder los vehículos, la longitud de las pistas de aterrizaje determinan qué aviones pueden operar, y las estaciones de trenes se pueden construir para pasajeros o mercancías, y pueden tener puntos de acceso para bombas, cintas transportadoras y carretillas con los que mantener las cadenas de suministro funcionando como una maquinaria bien engrasada. <br></li><li> Da a tus ciudadanos la oportunidad de comprar vehículos para su uso privado, pero vigila quién puede tener acceso a ellos según su nivel educativo y lealtad política. Eso te ayudará a prevenir la plaga de la libertad de movimiento y los atascos. Si planificas bien tu infraestructura y tus redes de transporte, tendrás el control del flujo de los trabajadores y de los recursos.</li></ul><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/784150/extras/headline_04-ES.png?t=1729167357" /><br>Workers &amp; Resources: Soviet Republic tiene herramientas dedicadas para mods y en Steam Workshop hay una colección de mods hechos por la comunidad que no para de crecer. Personaliza tu experiencia con edificios y vehículos nuevos para construir la república soviética de tus sueños.
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

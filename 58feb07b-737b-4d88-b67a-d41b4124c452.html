@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>The Last Soldier of the Ming Dynasty</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('58feb07b-737b-4d88-b67a-d41b4124c452/175999b0-989e-4a80-b938-24a24dce6712.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="58feb07b-737b-4d88-b67a-d41b4124c452/880fa285-66aa-4011-9dac-152c5b8e59a2.png"/> The Last Soldier of the Ming Dynasty</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="58feb07b-737b-4d88-b67a-d41b4124c452/ce8baee7-8883-4585-aa46-fba42c6aac6c.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-12/6/2024">12/6/2024</a> 15:14:27</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-12/10/2024">12/10/2024</a> 6:54:43</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB DATOS">2TB DATOS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-"></a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-77">77</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Rol">Rol</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Circuit_Art">Circuit_Art</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-2P Games">2P Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/2494450" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/2494450/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/2494450/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=2494450" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/2494450" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=2494450" target="_blank">PCGamingWiki</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-3D">3D</a><br/><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Acción y aventura">Acción y aventura</a><br/><a href="#quicklink-Artes marciales">Artes marciales</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Combate">Combate</a><br/><a href="#quicklink-Espadas">Espadas</a><br/><a href="#quicklink-Estilizados">Estilizados</a><br/><a href="#quicklink-Física">Física</a><br/><a href="#quicklink-Hack and slash">Hack and slash</a><br/><a href="#quicklink-Históricos">Históricos</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Peleas callejeras">Peleas callejeras</a><br/><a href="#quicklink-Rol">Rol</a><br/><a href="#quicklink-Rol de acción">Rol de acción</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<h2 class="bb_tag">The Last Soldier of the Ming Dynasty is a 3D action game inspired by traditional Chinese landscape ink paintings.</h2>You take on the role of a Qi army soldier, tasked with fighting back the Japanese pirate raids during the Ming Dynasty. After your unit's boat shipwrecks, you find yourself cast on an island controlled by the Wokou, Japanese pirates that have been terrorizing the Chinese coasts for decades. You are alone with your sword, the last soldier of the Ming Dynasty standing against the pirates – but your duty won't be fulfilled until your people's coasts are safe again. <br><br>Explore the beautifully painted landscapes of Fuling Island to defeat the 5 pirate bosses, each with their own unique characteristics, experiencing the most intense traditional melee combat. Embrace the challenge of this hardcore action game, rich in historical charm and martial arts depth!<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2494450/extras/3月25日202441711414219.gif?t=1726023806" /><h2 class="bb_tag">Fighting against Japanese pirates</h2>The Last Soldier of the Ming Dynasty is set during the Jiajing period of the Ming Dynasty. At that time, rampant Japanese pirates plagued the southeastern coastal regions. General Qi Jiguang was tasked with combating these pirates; after successfully finishing his campaign, he headed north to Jizhou, pacifying internal rebellions in his path and guarding against external barbarians. But as the Qi's army moved north, the remnants of the defeated Japanese pirates gathered back its forces and conspired with other sea raiders from Fuling Island, readying to make a bloody comeback.<br><br>As a member of the Qi's army stationed to guard the coastal regions, specifically tasked with pacifying the seas, you were patrolling the waters when a storm shipwrecked your boat – and you find yourself a castaway on the shores of Ryukyu Island, the only survivor of your unit. With your sword by your side, you walk into the depths of the Island, set on uncovering and dismantling the clandestine plots of the Japanese pirates.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2494450/extras/3月29日_1_20244171138315.gif?t=1726023806" /><h2 class="bb_tag">Ink and wash painting world</h2>The game's art is inspired by traditional Chinese ink and wash paintings. From the humblest blade of grass to the most majestic mountains of Fuling Island, each scene is beautifully painted in ink and wash. Its artistic design also draws inspiration from ancient Chinese paintings' character styles and proportions, providing players with a captivating visual experience.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2494450/extras/3月29日_1_202441711362513.gif?t=1726023806" /><h2 class="bb_tag">Tactical melee with cold weapons</h2>The Last Soldier of the Ming Dynasty will put your reflexes and warrior senses to the test. Its combat system is built upon three basic attack actions: stab, cleave, and sweep, which form the basis of both offense and defense. While executing these moves, it is crucial to discern the enemy's attacks simultaneously. You can deflect their attacks by accurately anticipating the enemy's actions. Stay calm in the midst of the storm while you ponder the enemy's every move, and you will remain undefeated in battle.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2494450/extras/3月29日_1_202441711371114.gif?t=1726023806" /><br><br>The game offers a variety of combat styles, ranging from close-quarters melee weapons to long-range bows and arrows. You can either block enemy attacks with your weapons or utilize evading maneuvers and counterattacks. The key to overcoming adversaries lies in swiftly switching between offense and defense, adeptly countering their moves. Only by mastering the art of adaptation and switching styles you will ultimately triumph over your foes.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2494450/extras/4月3日_1_202441711392817.gif?t=1726023806" /><h2 class="bb_tag">Historical weaponry and armor</h2>The game offers a variety of weapons and equipment for players to choose from. Each piece of weaponry is meticulously recreated to reflect its origins in real historical contexts.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2494450/extras/2024-04-19_16-34-5620244222036561.gif?t=1726023806" /><br><br>You can also disarm enemies and utilize their weapon skills against them. Through diligent practice, mastering the techniques of your adversaries, and then applying them to your own weaponry, you will become even more formidable in combat.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2494450/extras/4月3日_1_202441711403118.gif?t=1726023806" />
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

@@ -1,0 +1,427 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Portal (series)</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('359b7c56-054d-4076-94a5-d3cad48e1ff1/7a24ad4d-ad6b-4c4b-83dc-ea94e082c8d6.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="359b7c56-054d-4076-94a5-d3cad48e1ff1/fb9b3420-2adc-4ad1-8a98-c5249c234176.png"/> Portal (series)</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="359b7c56-054d-4076-94a5-d3cad48e1ff1/92ccad0d-e119-4408-ac6f-bdc44b51a410.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 15:27:56</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/17/2024">11/17/2024</a> 14:35:13</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-1 TB 1">1 TB 1</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-"></a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/Portal_(series)" target="_blank">Wikipedia</a><br/><a href="http://www.thinkwithportals.com" target="_blank">Official website</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>Portal</b></i> is a series of <a href="https://en.wikipedia.org/wiki/First-person_(video_games)">first-person</a> <a href="https://en.wikipedia.org/wiki/Puzzle-platform">puzzle-platform</a> video games developed by <a href="https://en.wikipedia.org/wiki/Valve_Corporation">Valve</a>. Set in the <i><a href="https://en.wikipedia.org/wiki/Half-Life_(series)">Half-Life</a></i> universe, the two main games in the series, <i><a href="https://en.wikipedia.org/wiki/Portal_(video_game)">Portal</a></i> (2007) and <i><a href="https://en.wikipedia.org/wiki/Portal_2">Portal 2</a></i> (2011), center on a woman, <a href="https://en.wikipedia.org/wiki/Chell_(Portal)">Chell</a>, forced to undergo a series of tests within the <a href="https://en.wikipedia.org/wiki/Aperture_Science_Enrichment_Center">Aperture Science Enrichment Center</a> by a malicious <a href="https://en.wikipedia.org/wiki/Artificial_intelligence">artificial intelligence</a>, <a href="https://en.wikipedia.org/wiki/GLaDOS">GLaDOS</a>, that controls the facility. Most of the tests involve using the "Aperture Science Handheld Portal Device" – nicknamed the portal gun – that creates a human-sized wormhole-like connection between two flat surfaces. The player-character or objects in the game world may move through portals while conserving their momentum. This allows complex "flinging" maneuvers to be used to cross wide gaps or perform other feats to reach the exit for each test chamber. A number of other mechanics, such as lasers, light bridges, high energy pellets<b>,</b> buttons, cubes, tractor funnels and turrets, exist to aid or hinder the player's goal to reach the exit.</p>
+
+<p>The <i>Portal</i> games are noted for bringing students and their projects from the <a href="https://en.wikipedia.org/wiki/DigiPen_Institute_of_Technology">DigiPen Institute of Technology</a> into Valve and extending their ideas into the full games. The portal concept was introduced by the game <i><a href="https://en.wikipedia.org/wiki/Narbacular_Drop">Narbacular Drop</a></i> and led to the basis for the first game. Another game, <i><a href="https://en.wikipedia.org/wiki/Tag:_The_Power_of_Paint">Tag: The Power of Paint</a></i>, formed the basis of surface-altering "gels" introduced in <i>Portal 2</i>.</p>
+
+<p>Both games have received near-universal praise, and have sold millions of copies. The first game was released as part of a five-game compilation, <i><a href="https://en.wikipedia.org/wiki/The_Orange_Box">The Orange Box</a></i>, and though intended as a short bonus feature of the compilation, was instead considered the highlight of the five. Its success led to the creation of the much longer <i>Portal 2</i>, which included both single player and cooperative player modes; it too received near-universal critical acclaim. In addition to the challenging puzzle elements, both games are praised for their <a href="https://en.wikipedia.org/wiki/Black_comedy">dark humor</a>, written by <a href="https://en.wikipedia.org/wiki/Erik_Wolpaw">Erik Wolpaw</a>, <a href="https://en.wikipedia.org/wiki/Chet_Faliszek">Chet Faliszek</a>, and <a href="https://en.wikipedia.org/wiki/Jay_Pinkerton">Jay Pinkerton</a>, voice work by actors <a href="https://en.wikipedia.org/wiki/Ellen_McLain">Ellen McLain</a>, <a href="https://en.wikipedia.org/wiki/Stephen_Merchant">Stephen Merchant</a>, and <a href="https://en.wikipedia.org/wiki/J._K._Simmons">J. K. Simmons</a>. A number of spin-off media have been developed alongside the games, and several of the game elements have become parts of <a href="https://en.wikipedia.org/wiki/Internet_meme">internet memes</a>.</p>
+
+<h2>Setting and characters</h2>
+
+<p>Both <i>Portal</i> games take place in the fictional "Aperture Science Enrichment Center". Aperture Science was founded by <a href="https://en.wikipedia.org/wiki/Cave_Johnson_(Portal)">Cave Johnson</a> (voiced by <a href="https://en.wikipedia.org/wiki/J.K._Simmons">J.K. Simmons</a>) and originally sought to make shower curtains for the military. Its research happened upon the discovery of portal technology, and soon became a direct competitor with <a href="https://en.wikipedia.org/wiki/Black_Mesa_Research_Facility">Black Mesa Research Facility</a> (from the <i><a href="https://en.wikipedia.org/wiki/Half-Life_(series)">Half-Life</a></i> series) for government funding. Johnson acquired the rights to a disused salt mine in the Upper Peninsula of Michigan, where they started building a labyrinthine set of offices, laboratories, facilities, and test chambers. During this time, Johnson became poisoned from exposure to moon dust, a key component of the paint needed to support portal technology, and became increasingly deranged.</p>
+
+<p>In <i>Portal 2</i>, the player explores these long-abandoned areas of Aperture, learning that the company had moved from testing on the country's finest, to paid volunteers, who were often homeless, and ultimately to forcing its own employees to participate in testing. Near the point of his death, Johnson ordered his lifelong assistant Caroline (voiced by <a href="https://en.wikipedia.org/wiki/Ellen_McLain">Ellen McLain</a>) to be the first test subject for a <a href="https://en.wikipedia.org/wiki/Mind_uploading">mind-to-computer transfer</a>; her personality would ultimately form the core of <a href="https://en.wikipedia.org/wiki/GLaDOS">GLaDOS</a> (also McLain). Sometime after Johnson's death, the old sections of the facility were <a href="https://en.wikipedia.org/wiki/Vitrification">vitrified</a>, and a more modern facility was built atop the ruins. GLaDOS was built to control the facility and monitor the tests, but researchers found that the computer had villainous tendencies, threatening to kill the entire staff before it was shut down in time. The Aperture researchers constructed a number of "personality cores" that would fit onto GLaDOS to prevent her from turning against them.  Despite this, on the day she was officially activated (coincidentally on "<a href="https://en.wikipedia.org/wiki/Take_Your_Daughter_to_Work_Day">Take Your Daughter to Work Day</a>"), she turned against the researchers and killed nearly everyone in the facility with lethal doses of <a href="https://en.wikipedia.org/wiki/Neurotoxin">neurotoxin</a> gas. In the games and the comic <i>Lab Rat</i>, one employee Doug Rattmann survived due to his schizophrenia and distrust of GLaDOS. In trying to find a way to defeat GLaDOS, he finds that <a href="https://en.wikipedia.org/wiki/Chell_(Portal)">Chell</a>, one of the human subjects kept in cryogenic storage within Aperture, has a high level of tenacity, and arranges for the events of <i>Portal</i> to occur by moving her to the top of GLaDOS' testing list. GLaDOS remains driven to test human subjects despite the lack of humans.</p>
+
+<p>The player is introduced to Aperture in <i>Portal</i>, which is said by Valve to be set sometime between the events of <i><a href="https://en.wikipedia.org/wiki/Half-Life_(video_game)">Half-Life</a></i> and <i><a href="https://en.wikipedia.org/wiki/Half-Life_2">Half-Life 2</a></i>. The player-character Chell is awakened by GLaDOS for testing. Chell resists GLaDOS' lies and verbal ploys and succeeds to defeat GLaDOS' core, the destruction creating a portal implosion that sends Chell to the surface, unconscious. Rattmann, who has helped Chell by writing warning messages and directions to maintenance areas on the facility walls and had observed the final battle, escapes Aperture, but on witnessing a robot dragging Chell's body back inside, sacrifices his escape to assure that Chell is put into indefinite cryogenic storage. He himself is critically wounded but appears to make it to another cryogenic chamber, though his ultimate fate is not revealed.</p>
+
+<p><i>Portal 2</i> takes place an unknown number of years after the events of the first game; the Aperture facility has fallen into disrepair without GLaDOS. A personality core named Wheatley (<a href="https://en.wikipedia.org/wiki/Stephen_Merchant">Stephen Merchant</a>) wakes Chell from her sleep to help her stop a reactor failure, but inadvertently awakens GLaDOS, who had backed up her personality. Though they defeat GLaDOS by putting Wheatley in control of the facility, Wheatley is overwhelmed with power, sending Chell and GLaDOS, GLaDOS being temporarily reduced to a small computer powered by a potato, to the old core of Aperture, where GLaDOS rediscovers her relation to Caroline. They return to the surface where they are forced to defeat Wheatley before his ineptitude with the Aperture systems causes the facility reactors to become critical and explode. GLaDOS is returned to her original place and returns the facility to normal. GLaDOS then lets Chell go, realizing that the prospect of trying to kill her is too much trouble. Instead, she turns to two robots of her own creation, Atlas and P-Body, to locate a mythical store of additional human subjects kept in cryogenic sleep for her to continue testing on.</p>
+
+<p>In addition to these characters, the game includes numerous laser-seeking turrets that seek to kill the player-characters, though are apologetic for it; most are voiced by McLain, though some defective ones in the sequel are voiced by <a href="https://en.wikipedia.org/wiki/Nolan_North">Nolan North</a>. GLaDOS introduces Chell to the "<a href="https://en.wikipedia.org/wiki/Weighted_Companion_Cube">Weighted Companion Cube</a>", appearing similar to other Weighed Cubes (crates) in the game, but decorated with hearts on its sides; GLaDOS attempts to make Chell believe the Companion Cube is a sentient object and a key to her survival, before having Chell dispose of it in an incinerator in order to leave a test chamber. Both games feature other personality cores that were constructed to keep GLaDOS in check; the first game includes three cores, the Morality, Curiosity, and Intelligence Cores, voiced by McLain as well as a snarling Anger Core voiced by <a href="https://en.wikipedia.org/wiki/Mike_Patton">Mike Patton</a>.  In <i>Portal 2</i>, three more such cores (beyond Wheatley) are introduced including the irrelevant Fact Core, the bold Adventure Core, and the space-obsessed Space Core, each voiced by North.</p>
+
+<h2>Gameplay</h2>
+
+<p>The player controls the main character (Chell in both single player campaigns, or Atlas and P-Body in the cooperative campaign) from a first-person view, running, jumping, and interacting with switches or other devices. The player-characters are able to withstand large drops, but can be killed by falling in the toxic water of the facility, crushed to death, passing through laser grids, or fired on repeatedly by turrets.</p>
+
+<p>Both games are generally divided into a series of test chambers; other sections of the game are more exploratory areas that connect these chambers. Each chamber has an exit door that must be reached, often requiring that certain conditions have been met such as having weighed down a large button with a "Weighted Cube", effectively a crate. These puzzles require the use of the Aperture Science Handheld Portal Device, the portal gun.  The gun can shoot two portals, colored differently for identification, on any flat surface that is painted with a specific paint containing moon dust. Once both portal ends are placed, the player can walk the character between them, or carry objects with the portal gun through them.  Portal ends can be re positioned as often as necessary, but certain actions, such as walking through "emancipation grills" or moving a surface with a portal will cause the portals to dissipate.</p>
+
+<p>A critical feature of portals is that they retain the speed of the object traveling through it; as stated by GLaDOS to the player in the first game, "Speedy thing goes in, speedy thing comes out". When portals are placed on non-parallel planes, this can create the effect of "flinging".  Commonly, one uses gravity to build up their momentum when they fall into a portal, which flings them out of the other side to gain speed and distance that normal jumping and running could not generate.  A leapfrogging effect can be used by placing portals in series during this flinging, gaining further momentum with each use.</p>
+
+<p>Portals will also allow light and other objects to transfer through them, and numerous puzzles involve using portals to manipulate bouncing energy balls, lasers, "hard light" bridges, and tractor beams to access new locations or direct objects to specific receptacles that must be activated to open the level's exit. <i>Portal 2</i> introduces "mobility gels" that can paint surfaces, including turrets and cubes, that can also move through portals though not directly by the player. The gels can create a surface that repels the player (Repulsion Gel), increases the player's speed (Propulsion Gel), or allows the surface to accept portals (Conversion Gel).</p>
+
+<p>The games' credit sequences feature the songs "<a href="https://en.wikipedia.org/wiki/Still_Alive">Still Alive</a>" and "<a href="https://en.wikipedia.org/wiki/Want_You_Gone">Want You Gone</a>" composed by <a href="https://en.wikipedia.org/wiki/Jonathan_Coulton">Jonathan Coulton</a>, and, in its original form, sung by Ellen McLain in the GLaDOS voice. <i><a href="https://en.wikipedia.org/wiki/Music_of_Portal_2">Portal 2</a></i> also features the song "<a href="https://en.wikipedia.org/wiki/Exile_Vilify">Exile Vilify</a>" by <a href="https://en.wikipedia.org/wiki/The_National_(band)">The National</a>.</p>
+
+<h2>History</h2>
+
+<p>The concept of <i>Portal</i> came from <i><a href="https://en.wikipedia.org/wiki/Narbacular_Drop">Narbacular Drop</a>,</i> a student project from the <a href="https://en.wikipedia.org/wiki/DigiPen_Institute_of_Technology">DigiPen Institute of Technology</a>.  The game included the aspects of placing portals on any flat surfaces and using them to maneuver around levels. Valve's employees, attending a DigiPen career fair, saw their game and shortly later offered the entire team jobs at Valve to help expand on their idea.</p>
+
+<p>Valve originally saw <i>Portal</i> as an experimental game to be included with its upcoming compilation, <i><a href="https://en.wikipedia.org/wiki/The_Orange_Box">The Orange Box</a></i>, alongside its release of <i><a href="https://en.wikipedia.org/wiki/Half-Life_2:_Episode_Two">Half-Life 2: Episode Two</a></i> and <i><a href="https://en.wikipedia.org/wiki/Team_Fortress_2">Team Fortress 2</a></i>. To give the game character, a minimal story, tied loosely with the <i>Half-Life</i> world, was written by Valve's <a href="https://en.wikipedia.org/wiki/Erik_Wolpaw">Erik Wolpaw</a>. He needed a character to guide the player through the game, coming onto a polite but humorous artificial intelligence, which would ultimately become the character of <a href="https://en.wikipedia.org/wiki/GLaDOS">GLaDOS</a>.</p>
+
+<p><i>Portal</i>'s release with <i>The Orange Box</i> received near-universal praise, with the standalone game earning an aggregate <a href="https://en.wikipedia.org/wiki/Metacritic">Metacritic</a> rating of 90 out of 100. With success of the game, work on an expanded sequel began nearly immediately, expanding the development team from 8 to about 30-40 programmers. Initial ideas for <i>Portal 2</i> retained the idea of solving puzzles through scientific concepts, but eliminating the use of portals altogether; these versions did not fare well with test audiences nor with Gabe Newell, Valve's president; these ideas were dropped though saved for potential reuse in a different game by Valve. <i>Portal 2</i> development was restarted specifically to keep the portal concept but adding new elements to freshen the gameplay.</p>
+
+<p>During this period, Valve had witnessed another student project out of Digipen, <i><a href="https://en.wikipedia.org/wiki/Tag:_The_Power_of_Paint">Tag: The Power of Paint</a></i> which allows the player to spray paint onto surfaces to alter their behavior, and brought them into Valve, though not initially as part of the <i>Portal</i>. The <i>Tag</i> team had found a way to incorporate their paints with real-time fluid dynamics code previously made by Valve, and soon their concept for paints had become the "conversion gels" as part of <i>Portal 2</i>.</p>
+
+<p>Valve included a co-operative play mode, based on their own observations and stories from players about working out the solutions to <i>Portal</i>'s puzzles in a group environment. With this feature, they sought the ability to enable cross-platform play of <i>Portal 2</i> between computers and consoles through Steamworks. This led to a surprise reveal by Newell that not only would <i>Portal 2</i> be on the <a href="https://en.wikipedia.org/wiki/PlayStation_3">PlayStation 3</a> platform, after previously stating the difficulties in supporting this console, but that it would include support for cross-platform play between personal computers and PlayStation 3 players through a limited Steamworks interface. Valve brought in writer <a href="https://en.wikipedia.org/wiki/Jay_Pinkerton">Jay Pinkerton</a> formerly with <i><a href="https://en.wikipedia.org/wiki/National_Lampoon_(magazine)">National Lampoon</a></i>, and <i><a href="https://en.wikipedia.org/wiki/Left_4_Dead">Left 4 Dead</a></i> writer <a href="https://en.wikipedia.org/wiki/Chet_Faliszek">Chet Faliszek</a> to assist Wolpaw with the larger story. They built on the character of the Aperture Science facility, providing a deeper story for GLaDOS and Aperture's CEO Cave Johnson, as well as developing several concepts for "personality cores" ultimately to the creation of the Wheatley core character.</p>
+
+<p><i>Portal 2</i> was similarly released with high praise with a 95 out of 100 score on Metacritic. Valve has continued to support the game through the release of two separate <a href="https://en.wikipedia.org/wiki/Downloadable_content">downloadable content</a> packages, one introducing a new co-operative campaign, and a second that incorporated an easy-to-learn level editor that allowed players to make their own test chambers and share these through the Steam Workshop to others. Further on this, Valve has created a special version of the <i>Portal</i> level editor to be used alongside its "Steam in Schools" program as a means of using the game and editor to teach students about physics, math, and other lessons; Valve released this version of <i>Portal 2</i> free for educational use. Exploring options for a full-scale VR game in 2017, Valve experimented with <i>Portal</i>, but found the portal systems disorienting in VR; instead, they returned to the <i>Half-Life</i> series and released <i><a href="https://en.wikipedia.org/wiki/Half-Life:_Alyx">Half-Life: Alyx</a></i> in 2020.</p>
+
+<p>In April 2022, Erik Wolpaw urged Valve to make <i>Portal 3</i> saying "I am also not getting any younger. We are reaching the point where – it's crazy to think – [we're] literally going to be too old to work on <i>Portal 3</i>. So we should just do it." In September, Ellen McLain also called for <i>Portal 3</i> saying she was willing to star in it and asked fans to "write in. Email Valve. You've got my blessing".</p>
+
+<h2>Games</h2>
+
+<h3><i>Portal</i></h3>
+
+<p><i>Portal</i> was initially released in October 2007 as part of a compilation game called <i><a href="https://en.wikipedia.org/wiki/The_Orange_Box">The Orange Box</a></i>, alongside <i><a href="https://en.wikipedia.org/wiki/Half-Life_2">Half-Life 2</a></i> and its two episodes and <i><a href="https://en.wikipedia.org/wiki/Team_Fortress_2">Team Fortress 2</a></i>. Valve considered including <i>Portal</i> as a bonus feature of the compilation; the game was purposely kept short such that if it did not meet expectations, players would have the rest of the content of <i>The Orange Box</i> as a "safety net". <i>Portal</i> has since been repackaged on Windows as a standalone game in April 2008. A Mac OS X client was introduced simultaneously with the release of the Steam client for that platform in May 2010; as part of its promotion, the game was released free of charge for both platforms during which at least 1.5 million players downloaded it.</p>
+
+<h4><i>Portal: Still Alive</i></h4>
+
+<p><i>Portal: Still Alive</i> was a standalone version of <i>Portal</i> with additional content for the <a href="https://en.wikipedia.org/wiki/Xbox_Live_Arcade">Xbox Live Arcade</a>, released in October 2008.  The game included new achievements, additional challenges from the existing test chambers, and additional non-story levels based on those found in the <a href="https://en.wikipedia.org/wiki/Adobe_Flash">Flash</a>-based <i>Portal: The Flash Version</i> created by We Create Stuff.</p>
+
+<h4><i>Portal with RTX</i></h4>
+
+<p>In September 2022, <a href="https://en.wikipedia.org/wiki/Nvidia">Nvidia</a> announced it would release an updated version of <i>Portal</i> with <a href="https://en.wikipedia.org/wiki/Ray_tracing_(graphics)">real-time ray tracing</a>, as a free DLC for owners of the original game on PC. It was released on December 8, 2022.</p>
+
+<p><i>Portal 2</i> was released as a standalone game in April 2011 on both computers and consoles. It is considered as one of the <a href="https://en.wikipedia.org/wiki/Greatest_video_games_of_all_time">greatest video games of all time</a> by numerous publications and critics. It received acclaim for its gameplay, pacing, <a href="https://en.wikipedia.org/wiki/Dark_humor">dark humor</a>, writing, the voice work of McLain, Merchant, and Simmons, and its challenging but surmountable <a href="https://en.wikipedia.org/wiki/Learning_curve">learning curve</a>.</p>
+
+<p><i>Portal: Companion Collection</i> is a compilation of both games and <i>Still Alive</i> content released for <a href="https://en.wikipedia.org/wiki/Nintendo_Switch">Nintendo Switch</a> on June 28, 2022. The <a href="https://en.wikipedia.org/wiki/Video_game_port">port</a> was developed in collaboration with <a href="https://en.wikipedia.org/wiki/Nvidia_Lightspeed_Studios">Nvidia Lightspeed Studios</a>.</p>
+
+<h2>Spin-offs and other media</h2>
+
+<h3><i>Potato Sack</i></h3>
+
+<p>The <i><a href="https://en.wikipedia.org/wiki/Potato_Sack">Potato Sack</a></i> was an A.R.G (<a href="https://en.wikipedia.org/wiki/Alternate_reality_game">alternate reality game</a>)  conceived by Valve and 13 <a href="https://en.wikipedia.org/wiki/Independent_video_game_development">indie video game developers</a> as a prelude to the release of <i>Portal 2</i>.  <i>Portal 2</i> had been announced by a similar game, where a patch applied to the Steam version of <i>Portal</i> in March 2010, provided clues heralding the official announcement. The <i>Potato Sack</i> game, launched on April 1, 2011, led to the reveal of "GLaDOS@home", a spoof of distributed computer challenges, to get players to cooperate on playing the independent games as to unlock <i>Portal 2</i> on Steam about 10 hours before its planned release.</p>
+
+<p><i>The Final Hours of Portal 2</i> is a digital book written and created by <a href="https://en.wikipedia.org/wiki/Geoff_Keighley">Geoff Keighley</a> released on May 17, 2011. This digital book gives insight on the creation of <i>Portal 2</i>. Keighley had previously worked as an editor at <a href="https://en.wikipedia.org/wiki/GameSpot">GameSpot</a>, writing several 10,000-word "Final Hours" pieces on various games where he visited the studios during the late development phases to document the creation of the game. One piece, "The Final Hours of Half-Life 2", allowed Keighley to interact with Valve during 2003 and 2004 and talk with the staff as they completed work on <i>Half-Life 2</i>. Keighley wanted to recreate a similar work for <i>Portal 2</i>, with focus on making it an interactive work for the <a href="https://en.wikipedia.org/wiki/IPad">iPad</a>.  Keighley was granted "fly on the wall" access to Valve when <i>Portal 2</i> was being produced. The initial iPad release was written by Keighley with work by Joe Zeff Design, a studio that had also produced digital applications for <i><a href="https://en.wikipedia.org/wiki/Time_(magazine)">Time</a></i> magazine. The interactive work provides movie clips and short applications to demonstrate the various mechanics of the game and stages of the game's development. The work was later ported into a non-interactive eBook, and into an application with the same iPad interactivity on the Steam platform. With the iPad and Steam version, Keighley is able to offer live updates to the work; upon release of the "Peer Review" downloadable content pack, the work was updated with an additional chapter discussing the creation of the new content and what new features players could expect in the future from <i>Portal 2</i>.</p>
+
+<p>To help the players develop the fictional history of Aperture Science, Valve created a digital comic to tell the story of the "Rat Man", a schizophrenic who is unseen in the games themselves but creates murals and scrawlings that guide Chell in both games. The comic, "Portal 2: Lab Rat", takes place both during and after <i>Portal</i>, explaining the events that led to <i>Portal 2</i>. The Rat Man's artwork appears early in <i>Portal 2</i>, where it retells the plot of <i>Portal</i>. <a href="https://en.wikipedia.org/wiki/Michael_Avon_Oeming">Michael Avon Oeming</a>, who had worked on comics for Valve games <i><a href="https://en.wikipedia.org/wiki/Team_Fortress_2">Team Fortress 2</a></i> and <i><a href="https://en.wikipedia.org/wiki/Left_4_Dead_(franchise)">Left 4 Dead</a></i>, and Valve in-house artist Andrea Wicklund drew the comic. Ted Kosmatka wrote most of the story with input from the <i>Portal 2</i> writers. The 27-page comic was made available online in two parts about two weeks before the game's release and was also bundled with the game itself. <a href="https://en.wikipedia.org/wiki/Dark_Horse_Comics">Dark Horse Comics</a> has published "Portal 2: Lab Rat" in a printed anthology of Valve comics, <i>Valve Presents: The Sacrifice and Other Steam-Powered Stories</i>, in November 2011.</p>
+
+<p>In the comic, Doug Rattmann (also known as The Rat Man) is a scientist working in the Aperture facility. He escapes GLaDOS's initial neurotoxin attack, but suffers symptoms as his <a href="https://en.wikipedia.org/wiki/Schizophrenia">schizophrenia</a> medication runs out, causing hallucinations of his Weighted Companion Cube talking. Noticing that Chell is uniquely tenacious among the test subjects held by Aperture, Rattmann moves her to the top of the queue of testing subjects, thus starting the events of the first <i>Portal</i>. After Chell defeats GLaDOS, Rattmann escapes Aperture, but returns against the Companion Cube's objections when he sees the Party Escort Bot dragging an unconscious Chell back inside and into a disabled cryo chamber. He ensures that Chell is kept in indefinite <a href="https://en.wikipedia.org/wiki/Suspended_animation">suspended animation</a>, but he is shot by a <a href="https://en.wikipedia.org/wiki/Characters_in_the_Portal_series#Turrets">turret</a> in the process. He then enters a stasis pod himself, leaving his fate afterward unknown.</p>
+
+<p>A <a href="https://en.wikipedia.org/wiki/Board_game">board game</a> version of <i>Portal</i>, developed by <a href="https://en.wikipedia.org/wiki/Cryptozoic_Entertainment">Cryptozoic Entertainment</a> with oversight from Valve, was released in 2015. Titled <i>Portal: Uncooperative Cake Acquisition Game</i>, the game is based on players manipulating their tokens – which are representative of unwitting test subjects – through various test chambers in the Aperture Laboratories. The goal being to test the most lucrative chambers while attempting to stall the progress of other players. Valve had approached Cryptozoic with the core concepts of the board game, which the publisher found only needed small modifications in gameplay for the purpose of balance.</p>
+
+<p><i>The Lab</i> is a <a href="https://en.wikipedia.org/wiki/Virtual_reality_game">VR game</a> developed by Valve that as part of its partnership with <a href="https://en.wikipedia.org/wiki/HTC">HTC</a> and the VR headset, the <a href="https://en.wikipedia.org/wiki/HTC_Vive">HTC Vive</a>. It was described as a "room-scale" VR experience, consisting of about a dozen small experimental experiences that highlight the use of VR; such include experiencing a fully panoramic view that has been stitched together from a number of photographs, a <a href="https://en.wikipedia.org/wiki/Physics_game">physics game</a> where the player attempts to launch <a href="https://en.wikipedia.org/wiki/Personality_cores">personality cores</a> into piles of boxes using a catapult, and a bow-and-arrow based game. <i>The Lab</i> was announced at the 2016 <a href="https://en.wikipedia.org/wiki/Game_Developers_Conference">Game Developers Conference</a>, and was released free on April 5, 2016, following the public release of the HTC Vive.</p>
+
+<p>Valve licensed the use of <i>Portal</i> to <a href="https://en.wikipedia.org/wiki/Headup_Games">Headup Games</a> and Clockstone Software, the developers of <i><a href="https://en.wikipedia.org/wiki/Bridge_Constructor">Bridge Constructor</a></i>, to develop <i>Bridge Constructor Portal</i>. The game follows the same type of gameplay as <i>Bridge Constructor</i>, where players are tasked to create a bridge from a limited set of parts to cross a river or chasm, using physics simulations to test if the bridge will hold up against traffic crossing it. <i>Bridge Constructor Portal</i> adds in elements from the <i>Portal</i> series, such as portals, as part of the construction challenge. The game is set within Aperture Laboratories, with the puzzles monitored by GLaDOS. The game released on December 20, 2017, for personal computers and mobile devices, and later in 2018 for <a href="https://en.wikipedia.org/wiki/PlayStation_4">PlayStation 4</a>, <a href="https://en.wikipedia.org/wiki/Xbox_One">Xbox One</a>, and <a href="https://en.wikipedia.org/wiki/Nintendo_Switch">Nintendo Switch</a> consoles.</p>
+
+<p>Aperture Hand Lab is a roomscale VR video game co-developed by Canadian studio Cloudhead Games and Valve, released free for Windows on June 25, 2019. It is a tech demo set in the Portal universe that showcases the functions of the hand, knuckle, and finger tracking technology used by the <a href="https://en.wikipedia.org/wiki/Valve_Index">Valve Index</a>.</p>
+
+<p><i>Aperture Desk Job</i> is a free game set in the <i>Portal</i> universe released on March 1, 2022. It is a demonstration of the various features of the <a href="https://en.wikipedia.org/wiki/Steam_Deck">Steam Deck</a> handheld system. In the game, the player works as a <a href="https://en.wikipedia.org/wiki/Quality_assurance">quality assurance</a> checker for toilets manufactured by Aperture Science in its early years. They are guided by the personality core Grady through the steps, but as the game progresses, mishaps in the automated factory lead Grady to suggest that the player develop a weaponized toilet as an invention to pitch to Cave Johnson.</p>
+
+<p>In February 2013, Valve president <a href="https://en.wikipedia.org/wiki/Gabe_Newell">Gabe Newell</a> and film director <a href="https://en.wikipedia.org/wiki/J._J._Abrams">J. J. Abrams</a> announced that they were to collaborate on a film adaptation of the <i>Portal</i> series. In 2016, Abrams stated that he still has plans to direct these films in the future, with both films in the writing stage. Abrams confirmed in May 2021 that the film adaptation was still in the works as they were still working on a script for the film from <a href="https://en.wikipedia.org/wiki/Warner_Bros._Pictures">Warner Bros. Pictures</a>.</p>
+
+<h2>In popular culture and other media</h2>
+
+<ul>
+  <li>During <i>Portal</i>, the player explores areas outside of the test chambers where scrawled messages left by Rattmann and others warn of GLaDOS' deception.  In particular, while GLaDOS promises that Chell will receive cake for completing the training courses, the messages alert that this reward does not exist, and that "<a href="https://en.wikipedia.org/wiki/The_cake_is_a_lie">The cake is a lie</a>". The phrase became an <a href="https://en.wikipedia.org/wiki/Internet_meme">Internet meme</a>, leading to numerous cake-related jokes, as well as its adaption as a term relating to a false promise. When writing <i>Portal 2</i>, Wolpaw stated that they were so sick of cake jokes that they purposely avoided any reference to them, save for one subtle nod.</li>
+  <li>Valve has sold several <i>Portal</i>-based prints, T-shirts, and other memorabilia through its own store, often riding on the popularity of certain memes that the series has created. When first released, both were sold out in under 24 hours. Valve also has partnerships with other vendors for similar merchandise. <a href="https://en.wikipedia.org/wiki/WizKids">WizKids</a> has released collectible miniatures of the turrets, cores and companion cube(s) within the game.</li>
+  <li><i><a href="https://en.wikipedia.org/wiki/Minecraft">Minecraft</a></i> officially features the <i>Portal</i> characters Chell, Atlas, and P-Body as cosmetic skins purchasable from the Minecraft Marketplace for <i>Minecraft Bedrock Edition</i>. The skin pack featuring these characters was originally released as DLC for <i>Minecraft Xbox 360 Edition</i>.</li>
+  <li>Ellen McLain voiced the AI of the Jaeger suite in the 2013 film <a href="https://en.wikipedia.org/wiki/Pacific_Rim_(film)"><i>Pacific Rim</i></a>, explicitly using the GLaDOS voice in the films trailer.</li>
+  <li>Atlas appears as a player-character in the downloadable content package for <i><a href="https://en.wikipedia.org/wiki/Runner2">Runner2</a></i>.</li>
+  <li>The crossover video game <i><a href="https://en.wikipedia.org/wiki/Lego_Dimensions">Lego Dimensions</a></i>, which incorporates the use of <a href="https://en.wikipedia.org/wiki/Lego_minifigure">Lego minifigures</a> with a special gamepad, includes <i>Portal</i>-themed elements, as first demonstrated during its <a href="https://en.wikipedia.org/wiki/Electronic_Entertainment_Expo_2015">Electronic Entertainment Expo 2015</a> trailer. A <i>Portal</i>-themed level appears as part of the main story campaign, with GLaDOS playing a significant role in the game's plot. A Chell minifigure was released that comes packaged with buildable sentry turret and companion cube; the figure unlocks an additional level and open-world area based on the series when used in-game. The <i>Portal</i> levels include Easter eggs based on Doug Rattmann hiding himself away. The game also features a new song written by <a href="https://en.wikipedia.org/wiki/Jonathan_Coulton">Jonathan Coulton</a> and performed by Ellen McLain that plays over the end credits.</li>
+  <li>The series' main antagonist, GLaDOS, was included as the dealer in <i><a href="https://en.wikipedia.org/wiki/Poker_Night_2">Poker Night 2</a></i>. This game features <i>Portal</i> themed unlockables such as playing cards, table and room. Wheatley is also featured as a bargaining chip. A <i>Portal</i> based downloadable content for <i><a href="https://en.wikipedia.org/wiki/Zen_Pinball_2">Zen Pinball 2</a></i> <i>Pinball FX2</i> was made in collaboration with Valve and <a href="https://en.wikipedia.org/wiki/Zen_Studios">Zen Studios</a>.</li>
+  <li>GLaDOS guest stars in <i><a href="https://en.wikipedia.org/wiki/Defense_Grid:_The_Awakening">Defense Grid: The Awakening</a></i> in a full-story expansion. </li>
+  <li>A cosmetic set based on the Companion Cube was released as a visual replacement for the "Io" character in Valve's <a href="https://en.wikipedia.org/wiki/Multiplayer_online_battle_arena">multiplayer online battle arena</a> game, <i><a href="https://en.wikipedia.org/wiki/Dota_2">Dota 2</a></i>.</li>
+  <li>P-Body is a playable character in the Windows release of <i><a href="https://en.wikipedia.org/wiki/Super_Bomberman_R">Super Bomberman R</a></i>.</li>
+  <li>In 2012, a laser engraved panel featuring Wheatley was launched aboard the <a href="https://en.wikipedia.org/wiki/JAXA">Japan Aerospace Exploration Agency</a> (JAXA)'s <a href="https://en.wikipedia.org/wiki/Kounotori_3">Kounotori 3</a> mission on its way to resupply the <a href="https://en.wikipedia.org/wiki/International_Space_Station">International Space Station</a>.</li>
+  <li>In April 2018, set of seven <i>Portal</i>-themed DLC levels were added to the game <i><a href="https://en.wikipedia.org/wiki/The_Ball_(video_game)">The Ball</a></i>.<sup>[<i><a href="https://en.wikipedia.org/wiki/Wikipedia:Citation_needed">citation needed</a></i>]</sup></li>
+  <li>A few <i>Portal</i> characters, including Chell and P-Body, feature as avatar customization items in the game <i><a href="https://en.wikipedia.org/wiki/Fall_Guys">Fall Guys</a></i> for 5 crowns each.</li>
+  <li><i>Portal</i> has appeared in the game <i><a href="https://en.wikipedia.org/wiki/What_the_Golf">What The Golf</a></i> as a set of levels.</li>
+  <li>The portal gun is one of several weapons used alongside ones from other game and film franchises in a climactic fight for the 2021 film <i><a href="https://en.wikipedia.org/wiki/Free_Guy">Free Guy</a></i> which takes place within a video game.</li>
+  <li>A reference to GLaDOS appears in a sub-quest in <i><a href="https://en.wikipedia.org/wiki/Cyberpunk_2077">Cyberpunk 2077</a></i> as a murderous AI driving a taxi and eventually tries to kill the protagonist.</li>
+  <li>In 2022, <a href="https://en.wikipedia.org/wiki/GEICO">GEICO</a> released a commercial entitled "The Gecko Visits Portal", featuring elements from the <i>Portal</i> games such as an unreleased test chamber shown in trailers for <i>Portal 2</i>, with McLain reprising her role as GLaDOS.</li>
+  <li><i><a href="https://en.wikipedia.org/wiki/Rocket_League">Rocket League</a></i> released free DLC that includes a variety of items from the <i>Portal</i> series available for vehicle customization.</li>
+  <li><i><a href="https://en.wikipedia.org/wiki/Evil_Genius_2:_World_Domination">Evil Genius 2: World Domination</a></i> includes a free <i>Portal</i> themed expansion pack which adds <i>Portal</i>-themed rooms and traps to the game.</li>
+  <li><i><a href="https://en.wikipedia.org/wiki/Escape_Simulator">Escape Simulator</a></i> features a free Portal Escape Chamber DLC in which players will need to escape from the Aperture Science Laboratories by solving various puzzles.</li>
+</ul>
+
+<h2>Unofficial media</h2>
+
+<h3><i>Portal: Prelude</i></h3>
+
+<p>Portal Prelude is a 2008 single-player <a href="https://en.wikipedia.org/wiki/Mod_(video_gaming)">mod</a> that takes place before the events of <a href="https://en.wikipedia.org/wiki/Portal_(video_game)"><i>Portal</i></a>. A remastered version using <a href="https://en.wikipedia.org/wiki/Nvidia_RTX">Nvidia RTX</a> Remix was released in 2023.</p>
+
+<p>Portal Stories: Mel is a single-player mod of <i><a href="https://en.wikipedia.org/wiki/Portal_2">Portal 2</a></i> released on June 25, 2015, developed by <a href="https://en.wikipedia.org/wiki/Prism_Studios">Prism Studios</a>.</p>
+
+<p>Portal Stories: VR is a single-player <a href="https://en.wikipedia.org/wiki/Virtual_reality">virtual reality</a> <a href="https://en.wikipedia.org/wiki/Fangame">fangame</a> of <i>Portal 2</i> released on May 16, 2016, developed by <a href="https://en.wikipedia.org/wiki/Prism_Studios">Prism Studios</a>.</p>
+
+<p>Aperture Tag: The Paint Gun Testing Initiative is a 2014 <a href="https://en.wikipedia.org/wiki/First-person_(video_games)">first-person</a> <a href="https://en.wikipedia.org/wiki/Platform_game#Puzzle_platformers">puzzle-platform</a> video game developed by the Aperture Tag Team.</p>
+
+<p>Thinking with Time Machine is a single-player mod for <i>Portal 2</i> released on April 18, 2014, developed by Ruslan Rybka, also known as Stridemann, and released by SignHead Studio.</p>
+
+<p>Portal Reloaded is a 2021 single-player mod for <i>Portal 2</i> developed by Jannis Brinkmann.</p>
+
+<p>Portal: Revolution is a 2024 single-player mod for <i>Portal 2</i> developed by Second Face Software. It serves as a prequel to the original game.</p>
+
+<p>Mari0 is a fan-made video game released on March 3, 2012, that combines elements of the video games <i><a href="https://en.wikipedia.org/wiki/Super_Mario_Bros.">Super Mario Bros.</a></i> and <i>Portal</i>.</p>
+
+<p>In August 2011, <a href="https://en.wikipedia.org/wiki/Dan_Trachtenberg">Dan Trachtenberg</a> released a <a href="https://en.wikipedia.org/wiki/Fan_film">fan film</a> based on the series called <i><a href="https://en.wikipedia.org/wiki/Portal_-_No_Escape">Portal: No Escape</a></i>. The video would later go viral.</p>
+
+<h2>In education</h2>
+
+<p>The <i>Portal</i> games have found application in educational aspects outside of game development. The first game was praised as an example of <a href="https://en.wikipedia.org/wiki/Instructional_scaffolding">instructional scaffolding</a> where the student is first given an environment to learn new tools with sufficient hand-holding, but these facets are slowly removed as the student proceeds. At least one college, <a href="https://en.wikipedia.org/wiki/Wabash_College">Wabash College</a>, introduced <i>Portal</i> as part of required coursework; at Wabash, the game is used as an example of <a href="https://en.wikipedia.org/wiki/Erving_Goffman">Erving Goffman</a>'s dissemination on <a href="https://en.wikipedia.org/wiki/Dramaturgy_(sociology)">dramaturgy</a>, <i><a href="https://en.wikipedia.org/wiki/The_Presentation_of_Self_in_Everyday_Life">The Presentation of Self in Everyday Life</a></i>.</p>
+
+<p>At a mid-2011 presentation at the 2011 <a href="https://en.wikipedia.org/wiki/Games_for_Change">Games for Change</a> Festival at <a href="https://en.wikipedia.org/wiki/New_York_University">New York University</a>, Gabe Newell stated Valve's intention to direct <i>Portal</i> and <i>Portal 2</i> towards education. Newell stated that Valve "doesn't see divide between making a game that can do well and be educational", and was already working with schools to develop lesson plans around the game. In one example, Valve brought in students from nearby <a href="https://en.wikipedia.org/wiki/The_Evergreen_School">Evergreen School</a> to watch them interact with the game in an educational setting. As part of this effect, the company promoted <i>Portal</i> for free use by any user during September 2011.</p>
+
+<p>In speaking at the 2012 Games for Change Festival, Newell said that the response to these efforts was praised by educators. Their efforts culminated in a "Teach with Portals" program that Newell announced at the Festival. The effort is built on a standalone "Puzzle Maker" that incorporates the level editor for <i>Portal 2</i> that was released as free content for the game in early 2012. Valve had built the Puzzle Maker with the aid of educators, as to make it suitable for lesson plans as well as making it as easy for teachers to use to construct such plans. The Puzzle Maker is not limited to physics, but designed to be modular so that other fields, such as fundamental electronics or chemistry, could be included. The "Teach with Portals" initiative is built atop of a stripped-down version of the Steam client, "Steam for Schools", that is designed to be used in schools, allowing instructors to control the installation of the games and lesson plans on the students' computers. These tools, as well as copies of <i>Portal 2</i> and the Puzzle Maker, are being offered for free for all educators.</p>
+
+
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>State of Decay 2</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('16408d34-b75a-4186-a394-f14e2bd55fee/231d44ec-6f0e-4709-9ea2-b67e70e58888.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="16408d34-b75a-4186-a394-f14e2bd55fee/e11012ee-f180-4cae-94d3-f44d0fa44af2.png"/> State of Decay 2</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="16408d34-b75a-4186-a394-f14e2bd55fee/1440dde4-6bcd-4804-af91-aa79c8d8e629.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 15:35:16</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-2/5/2025">2/5/2025</a> 0:18:25</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-1 TB EXT">1 TB EXT</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-3/13/2020">3/13/2020</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-82">82</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-69">69</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Rol">Rol</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Simuladores">Simuladores</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Undead Labs">Undead Labs</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Xbox Game Studios">Xbox Game Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Parcial Con Mando">Compat. Parcial Con Mando</a><br/><a href="#quicklink-Cooperativo">Cooperativo</a><br/><a href="#quicklink-Cooperativo En Línea">Cooperativo En Línea</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Multijugador Multiplataforma">Multijugador Multiplataforma</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Subtítulos Disponibles">Subtítulos Disponibles</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/495420" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/495420/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/495420/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=495420" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/495420" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=495420" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/495420/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-Construcción de bases">Construcción de bases</a><br/><a href="#quicklink-Cooperativos">Cooperativos</a><br/><a href="#quicklink-Cooperativos en línea">Cooperativos en línea</a><br/><a href="#quicklink-Muerte permanente">Muerte permanente</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Mundo abierto">Mundo abierto</a><br/><a href="#quicklink-Posapocalípticos">Posapocalípticos</a><br/><a href="#quicklink-Rol">Rol</a><br/><a href="#quicklink-Sandbox">Sandbox</a><br/><a href="#quicklink-Sangriento">Sangriento</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Supervivencia">Supervivencia</a><br/><a href="#quicklink-Tercera persona">Tercera persona</a><br/><a href="#quicklink-Terror">Terror</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/><a href="#quicklink-Valor continuo">Valor continuo</a><br/><a href="#quicklink-Violentos">Violentos</a><br/><a href="#quicklink-Zombis">Zombis</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<i>State of Decay 2</i> is an open-world survival-fantasy game set just after the zombie apocalypse. Your small community of survivors seeks to rebuild a corner of civilization, and you get to make all the decisions about how that happens.<br><br>You decide who to recruit to your team, where to settle your community, how to fortify and upgrade your base, and when it’s time to move to greener pastures. You select which survivor to bring along on a scavenging run for the food and ammo you need, and who you’ll use to fight off the zombies attacking your base. You choose how you’ll deal with other people who move into your town. Will you be friendly and welcoming... or will you aggressively defend your territory?<br><br>Every player’s experience in the sandbox is unique. Each character in your community has their own special set of skills and traits, so no two communities are ever the same. The challenges you face also vary from game to game, based on who you recruit and the decisions you make along the way.<br><br>With co-op multiplayer support, you can visit your friends' communities and help them through a tough spot, bringing back rewards for your own communities later. Alternate game modes include a full 10-hour narrative campaign and a four-player zombie-slaughtering &quot;siege defense&quot; mode.<br><br>Undead Labs is proud to present our best-ever vision of the zombie apocalypse. Keep your eyes peeled and your weapons ready. This is one apocalypse you won't want to miss.<br><br><strong>ACCESSIBILITY OPTIONS</strong><br><br><strong>Gameplay</strong><br><ul class="bb_ul"><li>Adjustable difficulty can be set to ‘Green’, ‘Standard’, ‘Dread’, ‘Nightmare’, or ‘Lethal’, and can be adjusted separately each for ‘Action’, ‘Community’, and ‘Maps’ <br></li><li>Adjustable aim assist, allowing the character to automatically lock on to the nearest enemy, can be set to ‘None’, ‘Normal’, or ‘Maximum’ <br></li><li>Game can be paused in single-player mode (pause is unavailable in multiplayer) </li></ul><br><strong>Audio</strong><br><ul class="bb_ul"><li>Volume controls can be adjusted for Music, Voice, and SFX audio<br></li><li>Adjustable audio output can be set to Surround, Stereo, Headphones or TV</li></ul><br><strong>Visual</strong><br><ul class="bb_ul"><li>Subtitles for spoken content can be set to On or Off<br></li><li>Subtitle text size can be scaled to 50%, 75%, 100%, 125%, or 150% <br></li><li>Gamma levels can be adjusted to increase or decrease in-game brightness, and is available prior to game start <br></li><li>Field of view can be adjusted between 40% and 100%<br></li><li>Motion blur can be set to Off, Low, or High<br></li><li>‘Reduce auto-camera movement’ can be set to On or Off<br></li><li>HUD UI visibility can be set to On or Off<br></li><li>In-World Objective Icon visibility can be set to On or Off<br></li><li>UI prompts for Finisher Moves on zombies can be set to On or Off<br></li><li>Mini-map visibility can be set to On or Off<br></li><li>Mini-map rotation lock can be set to On or Off<br></li><li>Tooltip visibility can be set to On or Off<br></li><li>Notifications can be set to On or Off</li></ul><br><strong>Input</strong><br><ul class="bb_ul"><li>Input remapping for keyboard &amp; mouse, and most controller buttons*<br></li><li>Controller vibration can be set to On or Off<br></li><li>‘Auto Camera Tracking on Foot’ can be set to On or Off<br></li><li>‘Auto Camera Tracking in Vehicle’ can be set to On or Off<br></li><li>‘Use camera to target interactions’ can be set to ‘Never’, ‘Always’, or ‘Only when using mouse’<br></li><li>‘Aim on Movement Stick’ can be set to On or Off<br></li><li>‘Rapid Button Tap’ can be replaced with ‘Hold Button Down’<br></li><li>‘Hold to Aim’ can be replaced with ‘Aim Toggle’<br></li><li>‘Remember Aim Zoom Level’ can be set to On or Off<br></li><li>Reduce Auto Camera Movement can be set to On or Off<br></li><li>Adjustable sensitivity for camera movement and weapon aiming for controller joystick and mouse <br></li><li>Ability to invert camera X and Y axes for controller joystick and mouse<br></li><li>Ability to swap left and right controller joystick functionality</li></ul>*For Xbox controllers: the right stick, ‘view’, and ‘menu’ buttons are not remappable. To move your character while also aiming a weapon, a mouse or controller joystick stick is required – this cannot be done with a keyboard only.
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

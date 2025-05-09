@@ -1,0 +1,300 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ready or Not</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('2bff7104-0715-4809-a28f-9329240bf804/86899897-7cc2-42a0-862e-89c0b7081f44.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="2bff7104-0715-4809-a28f-9329240bf804/d350c020-6078-412e-a5f1-c4d5b357722c.png"/> Ready or Not</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="2bff7104-0715-4809-a28f-9329240bf804/be656a7a-e654-4671-8c80-cf75e477f4b8.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 15:27:56</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/17/2024">11/17/2024</a> 14:38:11</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-1 TB 1">1 TB 1</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-"></a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-87">87</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Indie">Indie</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-VOID Interactive">VOID Interactive</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-VOID Interactive">VOID Interactive</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Cooperativo">Cooperativo</a><br/><a href="#quicklink-Cooperativo En Línea">Cooperativo En Línea</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1144200" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1144200/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1144200/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1144200" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1144200" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1144200" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/1144200/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-América">América</a><br/><a href="#quicklink-Campañas cooperativas">Campañas cooperativas</a><br/><a href="#quicklink-Combate">Combate</a><br/><a href="#quicklink-Cooperativos">Cooperativos</a><br/><a href="#quicklink-Crimen">Crimen</a><br/><a href="#quicklink-Disparos">Disparos</a><br/><a href="#quicklink-FPS">FPS</a><br/><a href="#quicklink-Modernos">Modernos</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Personalización de armas">Personalización de armas</a><br/><a href="#quicklink-Primera persona">Primera persona</a><br/><a href="#quicklink-Realistas">Realistas</a><br/><a href="#quicklink-Sangriento">Sangriento</a><br/><a href="#quicklink-Tácticos">Tácticos</a><br/><a href="#quicklink-Terror">Terror</a><br/><a href="#quicklink-Terror psicológico">Terror psicológico</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/><a href="#quicklink-Violentos">Violentos</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					&quot;Los Sueños. El LSPD informa de un gran aumento de los delitos en toda el área metropolitana de Los Sueños. Se ha enviado a los SWAT (equipos de armas y tácticas especiales) para solventar diversas situaciones de alto riesgo, como toma de rehenes, amenazas de bomba activas, sospechosos atrincherados y otras conductas delictivas. Se recomienda a los ciudadanos permanecer en casa o tener cuidado al recorrer la ciudad. <br />
+<br />
+A pesar de que Los Sueños sigue siendo percibida como una ciudad con gente adinerada, es evidente que para muchos otros las cosas con más calidad de la vida son cada vez más difíciles de conseguir. «La ciudad está atestada de altos edificios de apartamentos sin espacio y cada vez hay menos viviendas asequibles, algo de lo que las organizaciones criminales se han aprovechado como si de un parásito maligno se trataran», afirma el jefe de policía Galo Álvarez. «En una ciudad en la que la población se limita a tratar de sobrevivir, la intervención del LSPD y de su equipo de SWAT sigue siendo esencial para evitar que el deteriorado tejido social de esta ciudad se desgarre ante el caos actual». <br />
+<br />
+Como respuesta a la intensa oleada de crímenes en la que está inmersa Los Sueños, el jefe Álvarez del LSPD cuenta con el fiel apoyo de David Beaumont, apodado «el Juez», como comandante del equipo de SWAT del LSPD. Poco después de anunciarlo, el LSPD también ha informado de que se encuentra en proceso de incorporar a más miembros a esta unidad especializada con el objetivo de devolver la paz a la ciudad. <br />
+<br />
+«Se trata de una tarea no apta para pusilánimes», ha comentado Beaumont, «Extremistas, políticos corruptos, innumerables armas, tráfico de personas, drogas, pornografía ilegal... El trabajo policial en Los Sueños supone enfrentarse a crudas realidades a las que no cualquiera está acostumbrado. Estas son las realidades que se deben gestionar dentro de los límites junto con el equipo o cuyas consecuencias se deben afrontar y empeorar la situación». <br />
+ <br />
+ El Departamento de Policía de Los Sueños ha publicado nueva información oficial sobre la nueva misión del comandante Beaumont dentro del equipo de SWAT del LSPD:<br />
+<br />
+Nuevas expectativas: conozcas la ciudad de Los Sueños o no, esta ha cambiado y también lo han hecho las herramientas y estrategias con las que desempeñamos nuestra labor. Las pesadillas que puedas haber sufrido o de las que hayas oído hablar han evolucionado, así como los enfoques que adoptamos. Además, hemos recibido informes que identifican 4 nuevos distritos policiales de alto riesgo y que sospechamos que podrían precisar de intervención policial táctica, además de al menos otros 4 en los que ya ha habido grandes disturbios. <br />
+<br />
+Ponte al mando: la misión del comandante del equipo de SWAT consiste en crear un equipo a partir de una plantilla de grandes talentos, dar órdenes tácticas, planificar meticulosamente y llevar a cabo misiones. Los comandantes deben efectuar cada operación con integridad y cuidar del bienestar físico y mental de su equipo. Los agentes con una salud mental deteriorada podrían no lograr cumplir con sus obligaciones adecuadamente o incluso sentir la obligación de dejar el cuerpo. Los agentes incapacitados pueden llegar a no estar disponibles y enfrentarse a la trágica posibilidad de fallecer, lo que supondrá su pérdida definitiva. En el caso de los comandantes SWAT envueltos en circunstancias excepcionales debido a decisiones personales, sus errores pueden resultar letales y llevar a su propia desgracia. <br />
+<br />
+Mejora de la calidad del equipo de SWAT: la esperada mejora de los métodos de entrenamiento, las tácticas y la experiencia de los SWAT ha provocado un aumento de la calidad y el número de agentes de nuestro cuerpo. La mayor versatilidad les permite hacer frente a cualquier desafío con una confianza, coordinación e independencia impecables. Además, ahora los SWAT cuentan con entrenamiento básico extra para refrescar las nociones fundamentales y mantener la memoria muscular en plena forma. <br />
+<br />
+Equipamiento y personalización: contamos con las mejores armas y equipamiento del LSPD para este trabajo excepcionalmente peligroso, incluidas nuevas adquisiciones. Pero la personalización no se limita al equipamiento. Mediante la estrecha colaboración con el equipo durante las operaciones obtendrás tu ropa y accesorios, e incluso el reloj que lleves. Por último, hemos renovado la zona de entrenamiento del cuartel para probar mejor nuestro arsenal antes de dirigirnos a una misión. &quot;
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

@@ -1,0 +1,432 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>PUBG: Battlegrounds</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('e6e45c38-ff0c-4ea6-9863-e76f8480ccd4/060af11c-9ce9-45ce-9310-46e0ae05a093.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="e6e45c38-ff0c-4ea6-9863-e76f8480ccd4/f88005fb-8d3c-405b-ab90-ce54af8ba81b.png"/> PUBG: Battlegrounds</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="e6e45c38-ff0c-4ea6-9863-e76f8480ccd4/c0c62ef3-f4c0-484c-b23f-fe7daa2e2b95.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-1/29/2025">1/29/2025</a> 14:44:06</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-1/29/2025">1/29/2025</a> 14:53:54</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-FREE TO PLAY">FREE TO PLAY</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-Microsoft Xbox Series">Microsoft Xbox Series</a><br/><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-12/20/2017">12/20/2017</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-82">82</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Battle royale">Battle royale</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-PUBG Studios">PUBG Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Krafton">Krafton</a><br/><a href="#quicklink-Microsoft Studios">Microsoft Studios</a><br/><a href="#quicklink-Tencent Games">Tencent Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Multiplayer">Multiplayer</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/PUBG:_Battlegrounds" target="_blank">Wikipedia</a><br/><a href="https://www.pubg.com/" target="_blank">Official website</a><br/><a href="https://www.mobygames.com/game/playerunknowns-battlegrounds" target="_blank">MobyGames</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-[Game Engine] Unreal Engine 4">[Game Engine] Unreal Engine 4</a><br/><a href="#quicklink-[People] artist: Jang Tae-seok">[People] artist: Jang Tae-seok</a><br/><a href="#quicklink-[People] composer: Tom Salta">[People] composer: Tom Salta</a><br/><a href="#quicklink-[People] designer: Brendan Greene">[People] designer: Brendan Greene</a><br/><a href="#quicklink-[People] director: Brendan Greene">[People] director: Brendan Greene</a><br/><a href="#quicklink-[People] director: Jang Tae-seok">[People] director: Jang Tae-seok</a><br/><a href="#quicklink-[People] producer: Kim Chang-han">[People] producer: Kim Chang-han</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>PUBG: Battlegrounds</b></i> (previously known as <i><b>PlayerUnknown's Battlegrounds</b></i>) is a 2017 <a href="https://en.wikipedia.org/wiki/Battle_royale_game">battle royale</a> video game published by <a href="https://en.wikipedia.org/wiki/Krafton">Krafton</a>, and developed by Krafton's <a href="https://en.wikipedia.org/wiki/PUBG_Studios">PUBG Studios</a>. The game, which was inspired by the Japanese film <i><a href="https://en.wikipedia.org/wiki/Battle_Royale_(film)">Battle Royale</a></i> (2000), is based on previous <a href="https://en.wikipedia.org/wiki/Mod_(video_gaming)">mods</a> created by <a href='https://en.wikipedia.org/wiki/Brendan_"PlayerUnknown"_Greene'>Brendan "PlayerUnknown" Greene</a> for other games, and expanded into a standalone game under Greene's creative direction. Played from either a <a href="https://en.wikipedia.org/wiki/Third-person_(video_games)">third-person</a> or <a href="https://en.wikipedia.org/wiki/First-person_(video_games)">first-person</a> perspective, up to one hundred players parachute onto an island where they are tasked to scavenge for weapons and equipment to kill other players while avoiding getting killed themselves. The available safe area of the game's map decreases in size over time, directing surviving players into an ever-tightening space to force encounters.</p>
+
+<p><i>PlayerUnknown's Battlegrounds</i> was first released for <a href="https://en.wikipedia.org/wiki/Windows">Windows</a> via <a href="https://en.wikipedia.org/wiki/Steam_(service)">Steam</a>'s <a href="https://en.wikipedia.org/wiki/Early_access">early access</a> beta program in March 2017, with a full release in December 2017; the same month, <a href="https://en.wikipedia.org/wiki/Microsoft_Studios">Microsoft Studios</a> studios released it for the <a href="https://en.wikipedia.org/wiki/Xbox_One">Xbox One</a> via the <a href="https://en.wikipedia.org/wiki/Xbox_Game_Preview">Xbox Game Preview</a> program, with a full release coming in September 2018. Afterwards the game was <a href="https://en.wikipedia.org/wiki/Video_game_port">ported</a> to the <a href="https://en.wikipedia.org/wiki/PlayStation_4">PlayStation 4</a>, <a href="https://en.wikipedia.org/wiki/Xbox_Series_X/S">Xbox Series X/S</a> and <a href="https://en.wikipedia.org/wiki/PlayStation_5">PlayStation 5</a> consoles, and the <a href="https://en.wikipedia.org/wiki/Google_Stadia">Stadia</a> streaming platform, and has also spawned a <a href="https://en.wikipedia.org/wiki/Mobile_game">mobile</a> version, <i><a href="https://en.wikipedia.org/wiki/PUBG_Mobile">PUBG Mobile</a></i>, for <a href="https://en.wikipedia.org/wiki/Android_(operating_system)">Android</a> and <a href="https://en.wikipedia.org/wiki/IOS">iOS</a>. The game is continuously developed under the <a href="https://en.wikipedia.org/wiki/Game_as_a_service">games as a service</a> model and has been <a href="https://en.wikipedia.org/wiki/Free-to-play">free-to-play</a> for all platforms since January 2022.</p>
+
+<p>The game received positive reviews from critics, who found that while the game had some technical flaws, it presented new types of gameplay that could be easily approached by players of any skill level and was highly replayable. The game was credited with popularizing the battle royale genre, with a number of unofficial Chinese <a href="https://en.wikipedia.org/wiki/Video_game_clone">clones</a> also being produced following its success. The game received several <a href="https://en.wikipedia.org/wiki/List_of_Game_of_the_Year_awards">Game of the Year</a> nominations and set seven <a href="https://en.wikipedia.org/wiki/Guinness_World_Records">Guinness World Records</a>, among many other accolades. PUBG Corporation has run several small tournaments and introduced in-game tools to help with broadcasting the game to spectators, as they wish for it to become a popular <a href="https://en.wikipedia.org/wiki/Esport">esport</a>. It has sold over 75 million copies on <a href="https://en.wikipedia.org/wiki/Personal_computers">personal computers</a> and <a href="https://en.wikipedia.org/wiki/Game_consoles">game consoles</a>, is the <a href="https://en.wikipedia.org/wiki/List_of_best-selling_PC_games">best-selling game on PC</a> and <a href="https://en.wikipedia.org/wiki/List_of_best-selling_Xbox_One_video_games">on Xbox One</a>, and is the <a href="https://en.wikipedia.org/wiki/List_of_best-selling_video_games">fifth best-selling video game of all time</a>. Until Q3 2022, the game has accumulated $13 billion in worldwide revenue, including from the more successful mobile version of the game, and it is considered to be one of the highest-grossing video games of all time.</p>
+
+<h2>Gameplay</h2>
+
+<p><i>PUBG</i> is a <a href="https://en.wikipedia.org/wiki/Player_versus_player">player versus player</a> <a href="https://en.wikipedia.org/wiki/Shooter_game">shooter game</a> in which up to one hundred players fight in a <a href="https://en.wikipedia.org/wiki/Battle_royale_game">battle royale</a>, a type of large-scale <a href="https://en.wikipedia.org/wiki/Last_man_standing_(video_games)">last man standing deathmatch</a> where players fight to remain the last alive. Players can choose to enter the match solo, duo, or with a small team of up to four people. The last person or team alive wins the match.</p>
+
+<p>Each match starts with players parachuting from a plane onto one of the eight maps which have different sizes and terrain. The plane's flight path across the map varies with each round, requiring players to quickly determine the best time to eject and parachute to the ground. Players start with no gear beyond customized clothing selections which do not affect gameplay. Once they land, players can search buildings, <a href="https://en.wikipedia.org/wiki/Ghost_town">ghost towns</a> and other sites to find weapons, vehicles, armor, and other equipment. These <a href="https://en.wikipedia.org/wiki/Item_(game_terminology)">items</a> are procedurally distributed throughout the map at the start of a match, with certain high-risk zones typically having better equipment. Killed players can be looted to acquire their gear as well. Players can opt to play either from the <a href="https://en.wikipedia.org/wiki/First-person_perspective">first-person</a> or <a href="https://en.wikipedia.org/wiki/Third-person_perspective">third-person perspective</a>, each having their own advantages and disadvantages in combat and situational awareness; though server-specific settings can be used to force all players into one perspective to eliminate some advantages.</p>
+
+<p>Every few minutes, the playable area of the map begins to shrink down towards a random location, with any player caught outside the safe area taking damage incrementally, and eventually being eliminated if the safe zone is not entered in time; in game, the players see the boundary as a shimmering blue wall that contracts over time. This results in a more confined map, in turn increasing the chances of encounters. During the course of the match, random regions of the map are highlighted in red and bombed, posing a threat to players who remain in that area. In both cases, players are warned a few minutes before these events, giving them time to relocate to safety. A plane will fly over various parts of the playable map occasionally at random, or wherever a player uses a <a href="https://en.wikipedia.org/wiki/Flare_gun">flare gun</a>, and drop a loot package, containing items which are typically unobtainable during normal gameplay. These packages emit highly visible red smoke, drawing interested players near it and creating further confrontations. On average, a full round takes no more than 30 minutes.</p>
+
+<p>At the completion of each round, players gain <a href="https://en.wikipedia.org/wiki/In-game_currency">in-game currency</a> based on their performance. The currency is used to purchase crates which contain <a href="https://en.wikipedia.org/wiki/Virtual_goods">cosmetic items</a> for character or weapon customization. A rotating "event mode" was added to the game in March 2018. These events change up the normal game rules, such as establishing larger teams or squads, or altering the distribution of weapons and armor across the game map.</p>
+
+<h2>Development</h2>
+
+<p>The game's concept and design was led by Brendan Greene, better known by his online handle PlayerUnknown, who had previously created the <i><a href="https://en.wikipedia.org/wiki/ARMA_2">ARMA 2</a></i> <a href="https://en.wikipedia.org/wiki/Mod_(video_gaming)">mod</a> <i>DayZ: Battle Royale</i>, an offshoot of popular mod <i><a href="https://en.wikipedia.org/wiki/DayZ_(mod)">DayZ</a></i>, and inspired by the 2000 Japanese film <i><a href="https://en.wikipedia.org/wiki/Battle_Royale_(film)">Battle Royale</a></i>. At the time he created <i>DayZ: Battle Royale</i>, around 2013, Irish-born Greene had been living in Brazil for a few years as a photographer, graphic designer, and web designer, and played video games such as <i><a href="https://en.wikipedia.org/wiki/Delta_Force:_Black_Hawk_Down">Delta Force: Black Hawk Down</a></i> and <i><a href="https://en.wikipedia.org/wiki/America's_Army">America's Army</a></i>. The <i>DayZ</i> mod caught his interest, both as a realistic military simulation and its open-ended gameplay, and he started playing around with a custom server, learning programming as he went along. Greene found most multiplayer first-person shooters too repetitive, considering maps small and easy to memorize. He wanted to create something with more random aspects so that players would not know what to expect, creating a high degree of replayability; this was done by creating vastly larger maps that could not be easily memorized, and using random item placement across it. Greene was also inspired by an online competition for <i>DayZ</i> called <i>Survivor GameZ</i>, which featured a number of <a href="https://en.wikipedia.org/wiki/Twitch_(service)">Twitch</a> and <a href="https://en.wikipedia.org/wiki/YouTube">YouTube</a> <a href="https://en.wikipedia.org/wiki/Video_game_live_streaming">streamers</a> fighting until only a few were left; as he was not a streamer himself, Greene wanted to create a similar game mode that anyone could play. His initial efforts on this mod were more inspired by <i><a href="https://en.wikipedia.org/wiki/The_Hunger_Games">The Hunger Games</a></i> novels, where players would try to vie for stockpiles of weapons at a central location, but he moved away from this partially to give players a better chance at survival by spreading weapons around, and also to avoid copyright issues with the novels. In taking inspiration from the <i>Battle Royale</i> film, Greene had wanted to use square safe areas, but his inexperience in coding led him to use circular safe areas instead, which persisted to <i>Battlegrounds</i>.</p>
+
+<p>When <i>DayZ</i> became its <a href="https://en.wikipedia.org/wiki/DayZ_(video_game)">own standalone title</a>, interest in his <i>ARMA 2</i> version of the <i>Battle Royale</i> mod trailed off, and Greene transitioned development of the mod to <i><a href="https://en.wikipedia.org/wiki/ARMA_3">ARMA 3</a></i>. <a href="https://en.wikipedia.org/wiki/Sony_Online_Entertainment">Sony Online Entertainment</a> (now the <a href="https://en.wikipedia.org/wiki/Daybreak_Game_Company">Daybreak Game Company</a>) had become interested in Greene's work, and brought him on as a consultant to develop on <i>H1Z1</i>, licensing the battle royale idea from him. In February 2016, Sony Online split <i>H1Z1</i> into two separate games, the survival mode <i><a href="https://en.wikipedia.org/wiki/H1Z1:_Just_Survive">H1Z1: Just Survive</a></i>, and the battle royale-like <i><a href="https://en.wikipedia.org/wiki/H1Z1:_King_of_the_Kill">H1Z1: King of the Kill</a></i>, around the same time that Greene's consultation period was over.</p>
+
+<p>Separately, the <a href="https://en.wikipedia.org/wiki/Seoul">Seoul</a>-based studio Ginno Games, led by Chang-han Kim and who developed <a href="https://en.wikipedia.org/wiki/Massively_multiplayer_online_game">massively multiplayer online games</a> (MMOs) for personal computers, was acquired and renamed Bluehole Ginno Games by Bluehole in January 2015, a major South Korean publisher of MMOs and <a href="https://en.wikipedia.org/wiki/Mobile_games">mobile games</a>. Kim recognized that producing a successful game in South Korea generally meant it would be published globally, and wanted to use his team to create a successful title for personal computers that followed the same model as other mobile games published by Bluehole. He had already been excited about making a type of battle royale game after he had played <i>DayZ</i>, in part that the format had not caught on in Korea. He also wanted to make this through an <a href="https://en.wikipedia.org/wiki/Early_access">early access</a> model and have a very limited development schedule to get the game out as quickly as possible, while treating the product as a "<a href="https://en.wikipedia.org/wiki/Games_as_a_service">games as a service</a>" model to be able to support it for many years. In researching what had been done, he came across Greene's mods and reached out to him. In July 2017, Bluehole partnered with <a href="https://en.wikipedia.org/wiki/Social_media">social media</a> platform <a href="https://en.wikipedia.org/wiki/Facebook">Facebook</a> to provide exclusive streaming content to Facebook's gaming channels, as part of their push to provide more gaming content for its users.</p>
+
+<p>Around the same time that Greene left Sony Online, Kim contacted and offered him the opportunity to work on a new battle royale concept. Within a week, Greene flew out to Bluehole's headquarters in Korea to discuss the options, and a few weeks later, he became the creative director of Bluehole. He moved to South Korea to oversee development. According to Greene, this was the first time a Korean game studio had brought aboard a foreigner for a creative director role, and while it was a risk, he says that his relationship with Bluehole's management is strong, allowing Greene's team to work autonomously with minimal oversight. The game's main musical theme was composed by <a href="https://en.wikipedia.org/wiki/Tom_Salta">Tom Salta</a>, who was personally selected by Greene as he and the team were looking for an "orchestral electronic hybrid theme" that would give players a "huge build-up",  keeping them "resolutely determined" until a match starts. The music for 6th anniversary was composed by Antti Martikainen.</p>
+
+<p>Development began in early 2016 and was publicly announced that June, with plans to have the game ready within a year. Kim served as executive producer for the game. Bluehole started with a team of about 35 developers supporting Greene's work, but had expanded to 70 by June 2017. Greene stated that many of these developers were voluntarily putting in longer work hours into the game due to their dedication to the project, and not by any mandate from himself or Bluehole's management. In addition to Bluehole, Greene also credits <a href="https://en.wikipedia.org/wiki/Bohemia_Interactive">Bohemia Interactive</a>, the developers of <i>ARMA</i> and <i>DayZ</i>, for support with <a href="https://en.wikipedia.org/wiki/Motion_capture">motion capture</a> animations via their <a href="https://en.wikipedia.org/wiki/Prague">Prague</a> studio.</p>
+
+<p>With the rapid growth of interest in the game, Bluehole spun out the entire development for <i>PUBG</i> into Bluehole Ginno Games in September 2017, which was renamed PUBG Corporation with Kim as its <a href="https://en.wikipedia.org/wiki/Chief_executive_officer">chief executive officer</a>. PUBG Corporation continued the development of the game and its marketing and growth, opening an office in the United States with plans for future ones in Europe and Japan. In August 2018, PUBG Corporation launched the "Fix PUBG" campaign, acknowledging that the game by then still had several lingering <a href="https://en.wikipedia.org/wiki/Software_bug">bugs</a> and other performance issues. The campaign finished in November, with PUBG Corporation calling it a success as everything listed had been implemented by then.</p>
+
+<p>In March 2019, Greene announced that he was stepping down as the game's lead designer, but would still serve as a creative consultant. Tae-seok Jang, the game's art director, would replace him, with Green relocating to PUBG's studio in Amsterdam, PUBG Special Projects. Greene stated that he believed the main <i>PUBG</i> team was at a place to continue developing the game in the direction he had set to keep the game unique among the other battle royale games it had launched, and he wanted to try something not tied to battle royale but still multiplayer-based. The move also put him closer to his family in Ireland.</p>
+
+<p>With the success of <i>PUBG</i>, Bluehole created <a href="https://en.wikipedia.org/wiki/Krafton">Krafton</a> as a holding company for its video game assets and studios in 2018, taking over the publishing duties for <i>PUBG</i> and related games. By December 2020, Krafton merged PUBG Corporation into their internal studio system, rebranding the team as PUBG Studios.</p>
+
+<h3>Design</h3>
+
+<p><i>PUBG</i> represents the standalone version of what Greene believes is the "final version" of the battle royale concept, incorporating the elements he had designed in previous iterations. Faster development was possible with the game engine <a href="https://en.wikipedia.org/wiki/Unreal_Engine">Unreal Engine</a> 4, compared with <i>ARMA</i> and <i>H1Z1</i>, which were built with proprietary game engines. Greene acknowledged that implementing the size of the maps in <i>PUBG</i> has been one of the challenges with working with Unreal, which was not designed with such maps in mind. The game was designed as a mix between the realistic simulation of <i>ARMA 3</i> and the arcade-like action focus and player accessibility of <i>H1Z1</i>. To prevent <a href="https://en.wikipedia.org/wiki/Cheating_in_online_games">in-game cheating</a>, the game uses <a href="https://en.wikipedia.org/wiki/BattlEye">BattlEye</a> anti-cheating software, which had permanently banned over 13 million players by October 2018. BattlEye indicated that 99% of all cheating software for the game was developed in <a href="https://en.wikipedia.org/wiki/China">China</a>.</p>
+
+<p>Based on Greene's experience with the genre, an island with many terrain features was picked as the first map, known as "Erangel". The map design scope was to offer players many possible options for strategic and unique gameplay. Some buildings and structures were designed to depict the style of the <a href="https://en.wikipedia.org/wiki/Brutalist_architecture">brutalist architecture</a> of the <a href="https://en.wikipedia.org/wiki/Soviet_Union">Soviet Union</a> during the 1950s. The developer team playtested architecture features and random item placement systems, looking at both how close-quarters encounters went and open terrain areas. The goal was to optimize the right distribution and placement of weapons and gear across the map, to encourage players to make strategic decisions about how to proceed in the game without overly penalizing players who may not find weapons within the first few minutes of a round. During early access, additional maps were planned, such as one set on a fictional island in the Adriatic Sea that included snow-covered Yugoslavian territories. Greene stated that he thought the Erangel map felt disjointed despite meeting their goals for gameplay, and sought to create more unified ideas with future maps.</p>
+
+<p>The freefall from an airplane at the start of each match was a new feature for the genre, encouraging strategy between staying with the pack of players or seeking out one's own route for a better chance at finding good loot. With the added parachute drop, Greene considered that <i>PUBG</i> had three distinct subgames: the airdrop during which one must quickly figure out the best time to jump and where to land in relationship to the other players, the loot game of knowing where and how to gather the best possible equipment, and the combat game with other players. Winners of a match are greeted with the phrase "winner winner chicken dinner", an idiom that Greene had used in his prior battle royale games and kept in <i>PUBG</i>, which itself had origins as early as the <a href="https://en.wikipedia.org/wiki/Great_Depression">Great Depression</a> era.</p>
+
+<p>Greene also introduced <a href="https://en.wikipedia.org/wiki/Microtransaction">microtransactions</a> that allow players to use real-world funds to purchase loot crates that provide randomly-selected cosmetic items, also known as "skins", which they can trade with other players; while Greene recognizes the issue with <a href="https://en.wikipedia.org/wiki/Skin_gambling">skin gambling</a>, he believes that Valve has put safeguards in place to support a "skin economy" that will provide further revenue for them without concerns over gambling. However, by November 2017, <a href="https://en.wikipedia.org/wiki/Gray_market">gray market</a> skin gambling sites began to appear that used <i>PUBG</i> cosmetics as <a href="https://en.wikipedia.org/wiki/Virtual_currency">virtual currency</a>. Following controversy over the use of <a href="https://en.wikipedia.org/wiki/Loot_box">loot boxes</a> to offer "pay-to-win" items in other games in November 2017, the PUBG Corporation affirmed that while they would continue to add new cosmetic items rewarded by in-game crate purchases, they would never add anything that affects or alters gameplay. In May 2018, PUBG Corporation disabled the ability to trade skins on the <a href="https://en.wikipedia.org/wiki/Steam_Marketplace">Steam Marketplace</a> as they found that players were still abusing the system by selling them for monetary value through unofficial third-party platforms. While still in early access, Bluehole offered an early preview of the system by offering time-limited crates that could be purchased during the first <i>PUBG</i> Invitations tournament during <a href="https://en.wikipedia.org/wiki/Gamescom">Gamescom</a> in August 2017, with the sales from these contributing to the prize pool. Among loot from these crates were special outfits inspired by the original <i><a href="https://en.wikipedia.org/wiki/Battle_Royale_(film)">Battle Royale</a></i> film. Greene anticipates adding a campaign mode with co-operative player support, though there would be "no serious lore" crafted for the narrative, comparing this to similar modes in <i><a href="https://en.wikipedia.org/wiki/Watch_Dogs_(video_game)">Watch Dogs</a></i>.</p>
+
+<p>The game also features custom gamemodes and <a href="https://en.wikipedia.org/wiki/Mod_(video_gaming)">modding</a> support. He considered modding support an essential part of the full release as, just as he had his start with mods, he wants to enable others to create variations on his game so that he could "find the next PlayerUnknown". This was aided by a quiet release of custom server support to a number of influential streamers which subsequently made it into public release. In one case, "Zombie Mode", all but four players pretend to be <a href="https://en.wikipedia.org/wiki/Zombie">zombies</a>, who may sometimes distinguish themselves by removing all clothing and are limited only to collecting melee weapons and consumable items, and must rush to attack the other four players, who are able to collect all gear and attempt to outrun and defeat the zombies. Inspired by this mode, Greene announced plans to introduce an official zombie-based gameplay mode based on this into <i>PUBG</i>. Whereas most of the rest of the team continued to develop the core gameplay and maps, Greene is taking on the zombie mode as a near solo project, only using the assistance of the lead animator to help with the zombie animations. Greene sees <i>PUBG</i> as a platform, and would like to see more custom game types and mods developed by players for it. Greene identified that some mods that he also previously worked on from <i>ARMA 3</i> may become part of the <i>Battlegrounds</i> platform. Greene also wants to incorporate streaming services like <a href="https://en.wikipedia.org/wiki/Twitch_(service)">Twitch</a> into the game that would enable features supporting <i>Battlegrounds'</i> development as an <a href="https://en.wikipedia.org/wiki/Esport">esport</a>, calling this an "ultimate end goal" for his development, but he wanted to let it progress naturally with players.</p>
+
+<h2>Release</h2>
+
+<h3>Personal computers</h3>
+
+<p>Bluehole used <a href="https://en.wikipedia.org/wiki/Closed_beta">closed alpha and beta periods</a> with about 80,000 players to gauge initial reaction to the gameplay and adjust balance prior to a wider release. Just prior to the <a href="https://en.wikipedia.org/wiki/Early_access#Steam_Early_Access">early access phase on Steam</a>, Bluehole opened a few servers and invited some popular <a href="https://en.wikipedia.org/wiki/Live_stream">live streamers</a> of similar games to try it out as to start gaining interest. Early access for the Windows version launched on March 23, 2017. This period was planned to last approximately six months, originally aiming for a September 2017 release. In July 2017, Greene announced that they would need to extend the early access period by a few months, continuing to release updates on a regular basis, with plans to still release by the end of 2017, as committing to this original period "could hinder us from delivering a fully featured game and/or lead to disappointment within the community if the launch deadline is not met". Initially, Bluehole had expected that they would just gain enough players through early access to smooth out the gameplay, and only when the game was completed, they would have started more marketing for the title. The sudden interest in the game from early access exceeded their expectations, and put emphasis on the stability of the game and its underlying networking alongside gameplay improvements. Through August 2017, these updates generally included a major weekly patch alongside major monthly updates that provided key performance improvements. However, from August onward, Bluehole backed off the rate of such patches, as the high frequency has led to some quality control issues, and the developers rather make sure each patch content is well-vetted by the community before providing new updates; this did not change their plans for a 2017 release, where it fully released out of early access on December 20.</p>
+
+<p>In part of the game's success in early access, <a href="https://en.wikipedia.org/wiki/Tencent_Games">Tencent Games</a>, the largest publisher of video games in China, approached Bluehole that same month with an offer to publish <i>PUBG</i> in China. However, the China Audio-Video and Digital Publishing Association issued a statement in October 2017 that discouraged battle royale-style games, stating that they are too violent and deviate from Chinese values of socialism, deeming it harmful to young consumers. The following month however, PUBG had reached a formal agreement with the Chinese government to allow the release of the game in the country, with Tencent as the publishing partner. However, some changes were made to make sure it aligned with socialist values and traditional Chinese morals. In South Korea, the game is marketed and distributed by <a href="https://en.wikipedia.org/wiki/Kakao_Games">Kakao Games</a>.</p>
+
+<p>Despite the lack of a Chinese publisher prior to the Tencent deal, players in China had found ways to acquire and play the game through Steam via proxies and other networking tricks. To address it, PUBG Corporation planned to add maximum client <a href="https://en.wikipedia.org/wiki/Ping_(networking_utility)">ping</a> limits for servers which can reduce the issues with latency problems and prevent some of the cheating that has occurred. This would not prevent cross-region matchmaking but may make it difficult for some players to play outside their region if they have a poor Internet infrastructure. Tencent has also helped by identifying and reporting around 30 software programs to Chinese police that can be used to cheat in <i>PUBG</i>, leading to over a hundred arrests by the beginning of 2018. Separately, this technical issue, in addition to the larger number of Chinese players, has created complaints in the player community. Some Western players fear that many Chinese players are able to cheat in the game by exploiting some of the network latency issues, something that PUBG Corporation continued to address as the game shifted out of early access. However, a small number of players called for server segregation by region and had used racial insults at Chinese players they encountered in game. Greene was disappointed with this "xenophobic attitude", calling it "disgraceful", and asked the player community to respect the Chinese players more as their numbers were a key part of the game's success. Greene also identified that players can easily get around such region locks using <a href="https://en.wikipedia.org/wiki/Virtual_private_network">virtual private networks</a>, making this approach ineffective. PUBG Corporation eventually added region-based matchmaking by October 2018, though players still reported issues with connectivity and slow matchmaking.</p>
+
+<p><i>PUBG Lite</i> was a free version of <i>PUBG</i> that was meant to be better playable on low-end computers by having significant reductions in graphic details and other features, but is otherwise feature complete with the full game. The version was meant to be played in regions where the game's minimum specifications may be difficult for average players to achieve, with a beta launch first releasing in Thailand in January 2019, and in Europe that October. <i>PUBG Lite</i> was shut down on April 29, 2021.</p>
+
+<p>On January 12, 2022, the game became <a href="https://en.wikipedia.org/wiki/Free-to-play">free to play</a>. A new account tier, called Battleground Plus, was made available for purchase that includes additional customization items and in-game experience boosts. Owners of the game who purchased prior to January 12 were automatically upgraded to Battleground Plus for free. Battleground Plus allows for playing in ranked mode and on custom servers and includes additional customization items and in-game experience boosts.</p>
+
+<p>Greene was part of <a href="https://en.wikipedia.org/wiki/Microsoft">Microsoft</a>'s press conference during <a href="https://en.wikipedia.org/wiki/E3_2017">E3 2017</a> to announce that <i>PUBG</i> would be coming to <a href="https://en.wikipedia.org/wiki/Xbox_One">Xbox One</a> as a timed console exclusive sometime by the end of 2017, using the <a href="https://en.wikipedia.org/wiki/Xbox_Game_Preview">Xbox Game Preview</a> early access approach to test it.</p>
+
+<p>Initially, Greene said that Microsoft was not directly involved in the porting but only providing assistance to make sure the port is good, and that most of the porting responsibilities are being done by Anticto, a Spanish developer. However, at <a href="https://en.wikipedia.org/wiki/Gamescom">Gamescom</a> that year, Bluehole affirmed that <a href="https://en.wikipedia.org/wiki/Microsoft_Studios">Microsoft Studios</a> would be publishing the Xbox One version of the title, helping to make a planned 2017 release for this version. Greene said that Microsoft's support has helped in several ways, not only for the Xbox One version but improving the performance and security of the Windows version. Further, by being part of the group of studios under the Microsoft banner, they have been able to talk and incorporate technology from other developers, such as improved water rendering techniques they obtained from <a href="https://en.wikipedia.org/wiki/Rare_(company)">Rare</a> that they had developed for <i><a href="https://en.wikipedia.org/wiki/Sea_of_Thieves">Sea of Thieves</a></i>. Microsoft considered <i>PUBG</i> to be an important project to demonstrate their company's ability to be more than just a publisher, according to Microsoft's Nico Bihary who lead the project. Bihary said they have given <i>PUBG</i> a "white glove" treatment, and for the Xbox One port, they have provided services from their advanced technology group and time and support from <a href="https://en.wikipedia.org/wiki/The_Coalition_(company)">The Coalition</a>, another of Microsoft Studios' subsidiaries. Kim also stated that the team was interested in <a href="https://en.wikipedia.org/wiki/Cross-platform_play">cross-platform play</a> between the Windows and console versions, but did not anticipate this as a release feature, as they need to determine how to mitigate the advantage keyboard and mouse-using players would have over those using controllers.</p>
+
+<p>Titled "Game Preview Edition", the early access version for the Xbox One was released on December 12, 2017, in both digital and physical formats. To promote it, Microsoft performed real-life supply crate drops in Australia in the week prior, with the crates containing Xbox hardware, <i>Battlegrounds</i> merchandise, and other goods, using passcodes published alongside the drop locations on social media. The Xbox version also includes Xbox-specific in-game cosmetic items, some of which could be purchased directly rather than through in-game crates. The official release out of the Game Preview program occurred on September 4, 2018. <a href="https://en.wikipedia.org/wiki/Xbox_Series_X/S">Xbox Series X/S</a> version and <a href="https://en.wikipedia.org/wiki/PlayStation_5">PlayStation 5</a> version releases were announced via a post on the office website. The game launched on November 10, 2020, in Xbox Series X/S. PUBG Corporation confirmed the Xbox Series X version will feature a consistent 60 FPS gameplay while the Xbox Series S version features a 30 FPS gameplay, however they've also claimed the framerate cap will be raised in the near future. The game also features account transition and cross-platform play.</p>
+
+<p>With the announcement of the Xbox release, PUBG Corporation stated that there were plans to port to additional platforms, such as the <a href="https://en.wikipedia.org/wiki/PlayStation_4">PlayStation 4</a>. In an interview shortly after Gamescom, Greene said that their deal with Microsoft did not exclude a PlayStation 4 port, but that their focus at the time was only on the Windows and Xbox One version, given the small size of their team. When asked about it in January 2018, Kim stated that the team released the game first on the Steam and Xbox Game Preview early access programs as they both easily allowed in-development games to be released and updated over time, which contrasted with Sony's lack of their own early access program, as well as their strict quality control for even completed games. The PlayStation port was officially announced in November, and was released on December 7, 2018. PUBG Corporation studio head Brian Corrigan said that while they had a small team working on the PlayStation 4 port for some time, it was only until the Xbox One port was mostly completed that they began fully working on the PlayStation port. The PlayStation 4 version of the game includes platform-exclusive customization items, specifically the outfit of <a href="https://en.wikipedia.org/wiki/Nathan_Drake_(character)">Nathan Drake</a> from the <i><a href="https://en.wikipedia.org/wiki/Uncharted">Uncharted</a></i> series, and <a href="https://en.wikipedia.org/wiki/Ellie_(The_Last_of_Us)">Ellie</a>'s backpack from <i><a href="https://en.wikipedia.org/wiki/The_Last_of_Us">The Last of Us</a></i>. A short live-action film to promote the PlayStation 4 release was directed by <a href="https://en.wikipedia.org/wiki/Jordan_Vogt-Roberts">Jordan Vogt-Roberts</a> and starred <a href="https://en.wikipedia.org/wiki/Jason_Mitchell_(actor)">Jason Mitchell</a>. The <a href="https://en.wikipedia.org/wiki/PlayStation_5">PlayStation 5</a> version of the game was released along with the PlayStation 5 console on November 12, 2020. The publisher claimed those who purchased the game on PlayStation 4 will be able to freely upgrade and download the game, and players could experience a consistent 60 FPS gameplay, account transition and support for cross-platform play.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Cross-platform_play">Cross-platform play</a> support between the Xbox and PlayStation versions of <i>PUBG</i> was added in October 2019 following a testing period during the prior month.</p>
+
+<p><i>PlayerUnknown's Battlegrounds – Pioneer Edition</i> was released on the streaming service <a href="https://en.wikipedia.org/wiki/Google_Stadia">Stadia</a> on April 28, 2020. The game was free for Stadia's paid subscribers on launch.</p>
+
+<p>Following the Chinese publication deal for the Windows version, Tencent Games and PUBG Corporation additionally announced that they were planning on releasing two mobile versions based on the game in the country. The first, <i>PUBG: Exhilarating Battlefield</i>, is an abridged version of the original game, and was developed by LightSpeed &amp; Quantum Studio, an internal division of <a href="https://en.wikipedia.org/wiki/Tencent_Games">Tencent Games</a>. The second, <i>PUBG: Army Attack</i>, includes more arcade-style elements, including action taking place on warships, and was developed by Tencent's TiMi Studio. Both versions are <a href="https://en.wikipedia.org/wiki/Free-to-play">free-to-play</a>, and were released for <a href="https://en.wikipedia.org/wiki/Android_(operating_system)">Android</a> and <a href="https://en.wikipedia.org/wiki/IOS">iOS</a> devices on February 9, 2018. The games had a combined total of 75 million pre-registrations, and ranked first and second on the Chinese iOS download charts at launch. Following a <a href="https://en.wikipedia.org/wiki/Soft_launch">soft launch</a> in Canada, an English version of <i>Exhilarating Battlefield</i>, localized simply as <i>PUBG Mobile</i>, was released worldwide on March 19, 2018. Following its release, a Korean and Japanese oriented version of the game released in June 2018, under the title name <i>PUBG Mobile KR</i>. A Vietnamese version, <i>PUBG Mobile VN</i> released in January 2019.</p>
+
+<p>In China, <i>PUBG Mobile</i> had been awaiting approval by the government for an authorized release, during which the game could only be offered as a public test. However, Tencent's planned release was suspended due to the <a href="https://en.wikipedia.org/wiki/Video_gaming_in_China#2018_approvals_freeze">government approval freeze across most of 2018</a>. By May 2019, Tencent announced it would no longer seek to publish <i>PUBG Mobile</i> in China, but instead would re-release the game under the title <i>Game for Peace</i> that readily meets China's content restrictions, such as eliminating blood and gore. Taiwanese version of the game was released following the Chinese version, as <i>PUBG Mobile TW</i>. A version meant for lower-end mobile devices which features a smaller map made for 60 players, <i>PUBG Mobile Lite</i>, was released on July 25, 2019. This had support for high FPS gameplay on multiple Android devices. The Chinese version of the app was again renamed to <i>Peacekeeper Elite</i> in 2020.</p>
+
+<p>Support for 90 FPS gameplay was added for selected OnePlus devices in August 2020.</p>
+
+<p>On May 6, 2021, <a href="https://en.wikipedia.org/wiki/Krafton">Krafton</a> announced the relaunch of the game in <a href="https://en.wikipedia.org/wiki/India">India</a>, following the ban imposed by the <a href="https://en.wikipedia.org/wiki/Government_of_India">Government of India</a>. Krafton directly published the game instead of <a href="https://en.wikipedia.org/wiki/Tencent">Tencent</a> as a newly named title which could only be accessed by users in India as <i><a href="https://en.wikipedia.org/wiki/Battlegrounds_Mobile_India">Battlegrounds Mobile India</a></i>.</p>
+
+<h2>Esports</h2>
+
+<p>To celebrate the game surpassing two million copies sold, Bluehole announced a 2017 Charity Invitational event, inviting 128 players to compete over their official <a href="https://en.wikipedia.org/wiki/Twitch_(service)">Twitch</a> channel to raise money for the <a href="https://en.wikipedia.org/wiki/Gamers_Outreach_Foundation">Gamers Outreach Foundation</a>, with Bluehole matching all donations up to <a href="https://en.wikipedia.org/wiki/United_States_dollar">US$</a>100,000. The competition ran in early May 2017, and raised at least US$120,000 from viewers along with Bluehole's US$100,000 match, and served as a prototype for future <a href="https://en.wikipedia.org/wiki/Esports">esports</a> events for the game. During the August 2017 <a href="https://en.wikipedia.org/wiki/Gamescom">Gamescom</a> event, Bluehole and <a href="https://en.wikipedia.org/wiki/ESL_(company)">ESL</a> organized the first <i>PUBG</i> invitational tournament, with a $350,000 prize pool. Separate events were held for solo players, two-player teams, two-player teams fixed to first-person perspective, and four-player squads. Each event featured three matches, with the player or team scoring the highest across all three named winners.</p>
+
+<p>Greene said that while he had envisioned the battle royale format to be a spectator sport since his <i>ARMA II</i> mod, their approach to making <i>PUBG</i> an esport would be a matter of taking "baby steps". Greene said that they would not actively pursue esports until after the game was fully released and that all major <a href="https://en.wikipedia.org/wiki/Software_bug">bugs</a> were eliminated. The Gamescom 2017 event demonstrated the issues surrounding the logistics of running a large <i>PUBG</i> tournament with a large number of players involved, and they had worked alongside ESL to explore how to do this effectively in the future. Further, Greene stated there was also the need to establish a format for presenting a <i>PUBG</i> match to make it interesting to spectators, which he thought would take some time to develop given the nature of the emergent gameplay, comparing it to established first-person shooters and multiplayer online battle arena esport games. A 20-team, 80-player tournament with a US$200,000 prize pool was organized by <a href="https://en.wikipedia.org/wiki/Intel">Intel</a> in Oakland in November 2017.</p>
+
+<h2>Other games and media</h2>
+
+<p>Krafton had looked to expand <i>PUBG</i> beyond the core game as to expand the narrative universe. As part of this, <i>PlayerUnknown's Battlegrounds</i> was quietly rebranded as <i>PUBG: Battlegrounds</i> around July 2021.</p>
+
+<p>Starting in 2020, Krafton released a series of live-action documentaries starring <a href="https://en.wikipedia.org/wiki/Jonathan_Frakes">Jonathan Frakes</a> that explored the origins of the game's Battlegrounds. Ahead of the game's Taego expansion in July 2021, Krafton released another live-action short called "Ground Zero", featuring <a href="https://en.wikipedia.org/wiki/Ma_Dong-seok">Ma Dong-seok</a> (aka Don Lee).</p>
+
+<p>Krafton announced a partnership with <a href="https://en.wikipedia.org/wiki/Adi_Shankar">Adi Shankar</a> in July 2021 to develop an animated series based on the <i>PUBG</i> universe.</p>
+
+<p>In 2019, Krafton created a new studio Striking Distance, helmed by <a href="https://en.wikipedia.org/wiki/Glen_Schofield">Glen Schofield</a>, who previously led development on the <i><a href="https://en.wikipedia.org/wiki/Dead_Space_(video_game)">Dead Space</a></i> series. In 2020, Schofield revealed that the studio was working on <i><a href="https://en.wikipedia.org/wiki/The_Callisto_Protocol">The Callisto Protocol</a></i>, a game set in the <i>PUBG</i> universe but in the far future, taking place on a prison colony established on Jupiter's moon <a href="https://en.wikipedia.org/wiki/Callisto_(moon)">Callisto</a>.</p>
+
+<p>Krafton announced a new game in development named <i><a href="https://en.wikipedia.org/wiki/PUBG:_New_State">PUBG: New State</a></i>. This particular game is separated from <i>PUBG: Battlegrounds</i> but taking place in the <a href="https://en.wikipedia.org/wiki/PUBG_Universe">PUBG Universe</a>. Pre-registrations were opened for the game on February 25, 2021. It was released on 11 November that year for <a href="https://en.wikipedia.org/wiki/IOS">iOS</a> and <a href="https://en.wikipedia.org/wiki/Android_(operating_system)">Android</a>. The game takes place in the year 2051 and is based on future warfare. On January 27, 2022, the title name changed from "<i>PUBG: New State</i>" to "<i>New State Mobile</i>".</p>
+
+<h2>Reception</h2>
+
+<p><i>Battlegrounds</i> received "generally favorable reviews" on all platforms, with the exception of the PlayStation 4 version which received "mixed or average reviews", according to <a href="https://en.wikipedia.org/wiki/Review_aggregator">review aggregator</a> website <a href="https://en.wikipedia.org/wiki/Metacritic">Metacritic</a>. During both its early access phase and after, the game also surpassed numerous player-count records. Bluehole released statistics for the first four months of release that showed that over ten million rounds of <i>Battlegrounds</i> had been played, effectively equal to more than 25,000 man-years of time. Data by <a href="https://en.wikipedia.org/wiki/SteamSpy">SteamSpy</a> showed that <i>Battlegrounds</i> had surpassed long-standing popular titles in <a href="https://en.wikipedia.org/wiki/Concurrent_player_count">concurrent player count</a> on Steam, such as <i><a href="https://en.wikipedia.org/wiki/Fallout_4">Fallout 4</a></i> and <i><a href="https://en.wikipedia.org/wiki/Grand_Theft_Auto_V">Grand Theft Auto V</a></i>, eventually overtaking <i><a href="https://en.wikipedia.org/wiki/Dota_2">Dota 2</a></i>, the most played game on the platform for years, in August 2017. The following month, the game had its peak concurrent player count reach over 1.3 million, surpassing <i>Dota 2</i>'s all-time record of 1.29 set in March 2016. The game then reached a concurrent player count of two million in October 2017, and three million by the end of the year. The game has also been shown popular in South Korean <a href="https://en.wikipedia.org/wiki/PC_bangs">PC bangs</a>; analysis firm Gametrics reported that <i>Battlegrounds</i> had surpassed <i><a href="https://en.wikipedia.org/wiki/Overwatch_(video_game)">Overwatch</a></i> and became the second-most played game in the country by August 2017, only behind <i><a href="https://en.wikipedia.org/wiki/League_of_Legends">League of Legends</a></i>, it subsequently surpassed <i>League of Legends</i> by October 2017. <i>Battlegrounds</i>' popularity in China led to a large increase in users of Steam from there, with more than half of Steam clients having Chinese as their default language in late 2017.</p>
+
+<p>Several journalists commented on the game's rapid growth towards a large player base for a game that was still in early access. Greene had confidence that the game could reach over a million players within a month, but some of his development team were only anticipating around 200,000 to 300,000 within the first year, and were surprised by its performance in its first month. Greene himself believed that the strong growth was buoyed by non-traditional promotional channels like Twitch streamers and other content creators, which they have since worked to introduce new gameplay elements ahead of public release. <i><a href="https://en.wikipedia.org/wiki/IGN">IGN</a></i>'s Rad believed that the popularity of the game was due to its fast-paced nature compared to similar type games available at the time, such as <i><a href="https://en.wikipedia.org/wiki/H1Z1:_King_of_the_Kill">H1Z1</a></i> and <i><a href="https://en.wikipedia.org/wiki/DayZ_(video_game)">DayZ</a></i>. She thought that the design balanced the solitary periods when the player is scavenging or sneaking around with those of being in combat with others, and the approach is readily accessible to new players with very little waiting time to get into a new match. Andy Moore for <i><a href="https://en.wikipedia.org/wiki/Glixel">Glixel</a></i> considered that <i>Battlegrounds</i>' popularity comes from how the game encouraged players to engage due to the situation they are placed in rather than from the player's own disposition, comparing it to the <a href="https://en.wikipedia.org/wiki/Stanford_prison_experiment">Stanford prison experiment</a>, and thus the game is able to capture the interest of players who may normally eschew these types of games.</p>
+
+<p><i><a href="https://en.wikipedia.org/wiki/Rock_Paper_Shotgun">Rock Paper Shotgun</a></i>'s Michael Johnson described <i>Battlegrounds</i> as "a tactical shooting sandbox, a story generator, and a horror game all in one", providing some of the "highest highs" in multiplayer gaming as reason for its popularity. Rob Zacny for <i><a href="https://en.wikipedia.org/wiki/Waypoint_(website)">Waypoint</a></i> found that <i>Battlegrounds</i> offered the same type of entertainment experience for viewers that many other player-vs-player <a href="https://en.wikipedia.org/wiki/Survival_game">survival games</a> have, but because of the lack of persistence, players were more likely to experiment with resources rather than hoard them, leading to humorous or unexpected situations that are often absent in survival games and making the title more enjoyable to watch and play, leading to its popularity. Jeff Grubb of <i><a href="https://en.wikipedia.org/wiki/Venture_Beat">Venture Beat</a></i> considered <i>Battlegrounds</i> a paradigm shift in the first-person shooter market similar to how <i><a href="https://en.wikipedia.org/wiki/Call_of_Duty_4:_Modern_Warfare">Call of Duty 4: Modern Warfare</a></i> also changed the landscape of shooters when it was released in 2007, and believed it did this by being an anti-<i>Call of Duty</i> in terms of pacing and strategy. <i>IGN's</i> Chloi Rad has praised the game's gunplay, saying the game "has taken the military-sim gameplay... [and] boiled it down to its most exciting parts."</p>
+
+<h3>Sales</h3>
+
+<p><i>Battlegrounds</i> made US$11 million in the first three days of its Windows early access release in March 2017. By the second week of April, the game had sold over one million copies, with a peak player count of 89,000, <a href="https://en.wikipedia.org/wiki/SuperData_Research">SuperData Research</a> estimated that the game's April sales exceeded US$34 million, putting it as one of the top 10 highest grossing revenue games for the month and exceeding revenue from <i><a href="https://en.wikipedia.org/wiki/Overwatch_(video_game)">Overwatch</a></i> and <i><a href="https://en.wikipedia.org/wiki/Counter-Strike:_Global_Offensive">Counter-Strike: Global Offensive</a></i>. By May 2017, the game had sold over two million copies, with total gross revenues estimated at US$60 million. Within three months of its early access release, it had surpassed over five million copies sold, and Bluehole announced it had exceeded US$100 million in sale revenue. <i>Battlegrounds</i> reached this four million mark faster than <i><a href="https://en.wikipedia.org/wiki/Minecraft">Minecraft</a></i>, which took over a year to reach similar sales figures while it was in its paid-beta development period.</p>
+
+<p>By September 2017, Bluehole's value, as tracked by a firm that tracks private Korean corporations, increased five-fold from June of that year to US$4.6 billion, primarily due to <i>Battlegrounds</i>. By December 2017, PUBG Corporation reported that there were more than 30 million players worldwide between the Windows and Xbox versions. The research firm SuperData estimated that <i>Battlegrounds</i> drew in more than US$712 million in revenue within 2017. By February 2018, the game had sold over thirty million on Steam according to <a href="https://en.wikipedia.org/wiki/Steam_Spy">Steam Spy</a>. The following month, Steam's President <a href="https://en.wikipedia.org/wiki/Gabe_Newell">Gabe Newell</a> stated that the game was the third highest-grossing game of all time on the platform. <i>PUBG: Battlegrounds</i> is the <a href="https://en.wikipedia.org/wiki/List_of_best-selling_PC_games">best-selling video game on PC</a> and <a href="https://en.wikipedia.org/wiki/List_of_best-selling_Xbox_One_video_games">on Xbox One</a>. Before the release of the <a href="https://en.wikipedia.org/wiki/PlayStation_4">PlayStation 4</a> version, 42 million copies were sold on PC and 9 million copies on Xbox One.</p>
+
+<p>Within three days of going live on the Xbox Live Preview Program in mid-December 2017, Microsoft announced that <i>Battlegrounds</i> had sold more than a million copies on the platform. Alongside this, Microsoft announced that <i>Battlegrounds</i> would be offered as a free add-on for those buying the <a href="https://en.wikipedia.org/wiki/Xbox_One_X">Xbox One X</a> console through the end of 2017. A month after release, the Xbox version had sold more than four million copies and was the fourth bestselling game in the United States, according to <a href="https://en.wikipedia.org/wiki/The_NPD_Group">The NPD Group</a>. By March 2018, the game had sold forty million copies across all platforms, which had risen to over fifty million by June, averaging over 87 million players daily with over 400 million players in total. The mobile version had over 100 million downloads by August 2018, and exceeded 225 million by October 2018, a figure higher than the combined player base for <i><a href="https://en.wikipedia.org/wiki/Fortnite">Fortnite</a></i> at nearly the same point in time. In 2018, the bulk of these players were in Asian countries such as China and India, where <i>PUBG Mobile</i> was released before <i>Fortnite</i> and could run on lower-powered mobile hardware. China was the game's largest player base. <i>PUBG</i> was the most popular online game in India in 2018 (but it was banned by the government of India in 2020; see <a href="https://en.wikipedia.org/wiki/PUBG:_Battlegrounds#National_bans">below</a>).</p>
+
+<p><i>PUBG</i> was the top-selling PC paid game of 2017, having sold 30 million copies worldwide and grossed about $900 million. By June 2018, it had sold more than 50 million copies worldwide. <i>PUBG</i> was again the top-selling PC paid game of 2018, increasing its annual sales revenue to $1.028 billion. In addition, the free-to-play <i>PUBG Mobile</i> became the first mobile battle royale game to gross over $1 billion, reaching over $1.5 billion as of 2019.</p>
+
+<p><i>PUBG Mobile</i> was the second most-downloaded mobile game of 2018, with nearly 300 million downloads worldwide. The game's largest market was China, which accounted for 29% of the game's downloads, followed by India and the United States each with about 10% (30 million) of its downloads. It was the most-installed battle royale game of 2018, with about 200 million more installs than <i>Fortnite</i>, which received 82 million installs on mobile devices. In 2019, <i>PUBG Mobile</i> reached 555 million downloads worldwide, with India accounting for 116 million (21%) of the downloads, China 108 million (19%), and the United States 42 million (8%).</p>
+
+<p>In Japan, <i>PUBG</i> was the most popular <a href="https://en.wikipedia.org/wiki/PC_game">PC game</a> during 2017. <i>PUBG Mobile</i> grossed ¥3.58 billion ($32.42 million) in Japan during 2018. In January 2019, the PlayStation 4 version of <i>Battlegrounds</i> sold 7,447 copies within its first week in Japan, which placed it at number 14 on the all-format sales chart. By December 2019, the PC and console versions of the game had sold over 60 million copies, in addition to <i>PUBG Mobile</i> having exceeded 600 million downloads. By July 2020, computer and console software sales had exceeded 70 million units sold, in addition to <i>PUBG Mobile</i> accumulating 734 million downloads. <i>PUBG Mobile</i> had grossed over $3.5 billion in revenue by August 2020. <i>PUBG Mobile</i> grossed over $2.6 billion in 2020, making it the <a href="https://en.wikipedia.org/wiki/2020_in_video_games">highest-grossing game of the year</a> and bringing its total revenue to over $4.3 billion by December 2020.</p>
+
+<p>In March 2021, it was reported that <i>PUBG Mobile</i> had accumulated 1 billion downloads outside of China since launch. By December 2022, <i>PUBG Mobile</i> has grossed $9 billion worldwide, while <i><a href="https://en.wikipedia.org/wiki/Battlegrounds_Mobile_India">Battlegrounds Mobile India</a></i> surpassed 100 million downloads from the <a href="https://en.wikipedia.org/wiki/Google_Play">Google Play</a> store. By the end of 2021, <i>PUBG: Battlegrounds</i> had an average of 70 million daily users. After selling more than 75 million copies, the original PC and console game converted to free-to-play, and according to Krafton's revenue report for the first quarter of 2022, the free-to-play transition was the reason for the increase in the game's profits. PC sales had increased by 61 percent for a revenue of $82.3 million. In gaming consoles, sales revenue increased by 274 percent over the last year, and monthly active users also increased by almost 300 percent. The PC and console versions of the game have a total revenue of $4 billion since the game's release in 2017. Combined with the mobile version, which generated $9 billion in revenue until Q3 2022, <i>PUBG:</i> <i>Battlegrounds</i> has a total revenue of $13 billion.</p>
+
+<h4>Records</h4>
+
+<p>Before the official release of <i>PUBG: Battlegrounds,</i> as an <a href="https://en.wikipedia.org/wiki/Early_access_video_game">early access video game</a>, it had collected seven <a href="https://en.wikipedia.org/wiki/Guinness_World_Records">Guinness World Records</a> on <a href="https://en.wikipedia.org/wiki/Steam_(service)">Steam</a>. Starting with the first record, title "Fastest time for a Steam Early Access video game to sell one million units" was provided for being able to sell 1 million units in just 16 days of its early access release. Title "Fastest time for a Steam Early Access video game to gross $100 million in revenue" was provided for being able to gross $100 million in just 79 days of its early access release. Title "First non-Valve video game to be the most played game on Steam" was provided for being able to temporarily top the Steam charts for people playing the game at the same time – more than 800,000. It was the first time that a game not published by <a href="https://en.wikipedia.org/wiki/Valve_Corporation">Valve</a>, the makers of Steam, had achieved this since Steam's initial release in 2003. As of 6 September 2017, it had the second highest ever peak players on the Steam distribution platform. Titles "Most concurrent players for a Steam Early Access video game", "Most concurrent players on Steam for a non-Valve video game" and "Most actively played video game on Steam" were provided for being able to achieve 1,984,278 <a href="https://en.wikipedia.org/wiki/Concurrent_players">concurrent players</a> on Steam. Title "First video game with 2 million concurrent players on Steam" was provided for being able to achieve a peak of 2,279,084 gamers playing at the same time.</p>
+
+<p>While still in early access, <i>Battlegrounds</i> won the "Best Multiplayer Game" and was also nominated for the categories "Game of the Year" and "Best Ongoing Game" at <a href="https://en.wikipedia.org/wiki/The_Game_Awards_2017">The Game Awards 2017</a>. The game's nomination for "Game of the Year" created some debate, being the first early access title to be named for one of the top industry awards. Also, about a month before it was released, the game won "Best Multiplayer Game" and "PC Game of the Year" at the 35th <a href="https://en.wikipedia.org/wiki/Golden_Joystick_Awards">Golden Joystick Awards</a>, whereas its other nominations were for "Studio of the Year" (PUBG Corporation) and "Ultimate Game of the Year". It also won the "Breakout Game of the Year" award at <i><a href="https://en.wikipedia.org/wiki/PC_Gamer">PC Gamer</a></i>'s end of the year awards, whereas its other nomination was for "Game of the Year". <i><a href="https://en.wikipedia.org/wiki/Polygon_(website)">Polygon</a></i> ranked the game second on their list of the 50 best games of 2017, and <i><a href="https://en.wikipedia.org/wiki/The_Verge">The Verge</a></i> named it one of their 15 Best Games of 2017, while <i><a href="https://en.wikipedia.org/wiki/Entertainment_Weekly">Entertainment Weekly</a></i> ranked it seventh on their "Best Games of 2017" list.</p>
+
+<p>Following release, <i>Battlegrounds</i> has been nominated and won several industry awards, including winning Best Multiplayer Game at the 35th <a href="https://en.wikipedia.org/wiki/Golden_Joystick_Awards">Golden Joystick Awards</a> and <a href="https://en.wikipedia.org/wiki/The_Game_Awards_2017">The Game Awards 2017</a>, as well as <a href="https://en.wikipedia.org/wiki/D.I.C.E._Award_for_Action_Game_of_the_Year">Action Game of the Year</a> during the <a href="https://en.wikipedia.org/wiki/21st_Annual_D.I.C.E._Awards">21st Annual D.I.C.E. Awards</a>.</p>
+
+<p>The game has also gained multiple awards from individual press. <i>Battlegrounds</i> won the award for "Best PC Game", "Best Multiplayer", and "Best Spectator Game" at the <a href="https://en.wikipedia.org/wiki/IGN">IGN</a> Best of 2017 Awards, whereas its other nominations were for "Game of the Year" and "Best Shooter". It also won the award for "Best PC Game" at <i><a href="https://en.wikipedia.org/wiki/Destructoid">Destructoid</a></i>'s Game of the Year Awards 2017. The game also won <a href="https://en.wikipedia.org/wiki/Giant_Bomb">Giant Bomb</a>'s "Best Multiplayer", "Best Surprise", "Best Debut", and "Game of the Year" awards, and was classified as a runner-up for the "Best Moment or Sequence" award for the "chicken-eating game". <i><a href="https://en.wikipedia.org/wiki/Eurogamer">Eurogamer</a></i> ranked <i>PUBG</i> fourth on their list of the "Top 50 Games of 2017", while <i><a href="https://en.wikipedia.org/wiki/GamesRadar+">GamesRadar+</a></i> ranked it 12th on their list of the 25 Best Games of 2017. <i><a href="https://en.wikipedia.org/wiki/Game_Informer">Game Informer</a></i> gave it the award each for "Best Competitive Multiplayer" and "Best Shooter" in their Best of 2017 Awards, and also for "Best Competitive Multiplayer", "Best Multiplayer Map" (Erangel), "Best Innovation", and "Shooter of the Year" in their 2017 Shooter of the Year Awards. In their Reader's Choice Best of 2017 Awards, the game won the "Best Competitive Multiplayer" award, and was runner-up in the "Best Microsoft Exclusive" and "Best Shooter" categories.</p>
+
+<h2>Litigation</h2>
+
+<h3>Epic Games lawsuit</h3>
+
+<p><i>Battlegrounds</i> is considered as one of the games that have boosted the popularity of the <a href="https://en.wikipedia.org/wiki/Battle_royale_game">battle royale game</a> genre, even though other games, including Greene's previous mods, were already on the market. After its large early access sales numbers, other games followed with battle royale mechanics, with either existing games that added a battle royale mode or fully new games. Notably, <a href="https://en.wikipedia.org/wiki/Epic_Games">Epic Games</a> updated their in-development title <i><a href="https://en.wikipedia.org/wiki/Fortnite">Fortnite</a></i>, a <a href="https://en.wikipedia.org/wiki/Sandbox_game">sandbox</a>-based survival game that included the ability to construct fortifications, to include a battle royale mode that retained the fortification aspects. Known as <i><a href="https://en.wikipedia.org/wiki/Fortnite_Battle_Royale">Fortnite Battle Royale</a></i>, Epic later released it as a standalone free-to-play game in September 2017. Shortly after its release, <a href="https://en.wikipedia.org/wiki/Krafton">Bluehole</a> expressed concerns about the game, acknowledging that while they cannot claim ownership of the battle royale genre, they feared that since they had been working with Epic for technical support of the Unreal engine, they may have had a heads-up on planned features they wanted to bring to <i>Battlegrounds</i> and could release it first. PUBG Corporation later filed a lawsuit against Epic Games Korea in January 2018, alleging that <i>Fortnite Battle Royale</i> was infringing the copyright of <i>Battlegrounds</i>. However, the lawsuit was closed by PUBG in June 2018 for undisclosed reasons.</p>
+
+<p>Greene had expressed concern on the large number of games that have simply <a href="https://en.wikipedia.org/wiki/Video_game_clone">cloned</a> the <i>Battlegrounds</i> mechanics, particularly in China where clones of <i>Battlegrounds</i> are considered a new genre of "chicken-eating game" (based on the "winner winner chicken dinner" line to a match winner in <i>Battlegrounds</i>). Greene said "I want this genre of games to grow. For that to happen you need new and interesting spins on the game mode. If it's just copycats down the line, then the genre doesn't grow and people get bored." Greene claimed no ownership of the battle royale or last man standing genres, but believed that the clones were taking some specific mechanics he had developed in <i>Battlegrounds</i> and prior mods, such as the initial parachuting segment or the red-zone bombing runs, and would like to see legislation to give developers like himself protection against these types of concepts as well as improve creativity as developers invent new approaches to mimic such innovations. <i>Battlegrounds</i>' explosive growth and how it popularized the battle royale genre was considered one of the top stories in the <a href="https://en.wikipedia.org/wiki/Video_game_industry">video game industry</a> during 2017.</p>
+
+<p>Prior to release of their mobile versions, PUBG Corporation initiated legal action in the <a href="https://en.wikipedia.org/wiki/United_States_District_Court_for_the_Northern_District_of_California">Northern District Court of California</a> against Chinese game publisher <a href="https://en.wikipedia.org/wiki/NetEase">NetEase</a> in January 2018, claiming that their mobile games <i><a href="https://en.wikipedia.org/wiki/Rules_of_Survival">Rules of Survival</a></i> and <i>Knives Out</i> infringe on <i>Battlegrounds</i>' copyrights. PUBG's lawsuit asserts that <i>Rules of Survival</i> is "a copyrightable audio-visual work, individually and/or in combination with other elements of Battlegrounds", and identified several elements that appear similar in both games. While some of these elements are common features of a battle royale game, PUBG asserted that other elements referencing specific facets of <i>Battlegrounds</i>, such as references to chicken for winning a game or using cookware as weapons or armor, imply a connection to <i>Battlegrounds</i>. PUBG seeks both monetary damages and an injunction to prevent NetEase from further distribution of the games. NetEase, in responding to PUBG's request to <a href="https://en.wikipedia.org/wiki/Apple_Inc.">Apple</a> to remove the games, denied that their games violated <i>Battlegrounds</i>' copyrights. By March 2019, the two companies had reached an undisclosed agreement and were working to get the cases dismissed.</p>
+
+<p>In March 2019, <i>Battlegrounds</i> was banned in the Indian state of <a href="https://en.wikipedia.org/wiki/Gujarat">Gujarat</a> after the local government decided the game was too addictive and an unnecessary distraction during exam season. A number of students caught playing the game were arrested as a result. The ban was not renewed in some cities in the state after March as exam season had ended. A similar ban was enacted in <a href="https://en.wikipedia.org/wiki/Nepal">Nepal</a> and <a href="https://en.wikipedia.org/wiki/Iraq">Iraq</a> in April 2019, with the cited reasons being that the game was harmful to children and teenagers. The ban in Nepal was shortly lifted by the country's Supreme Court, stating that the government could not enforce such a ban that interfered with personal freedoms without demonstrating why the ban was necessary. In mid-2019, <a href="https://en.wikipedia.org/wiki/Jordan">Jordan</a> and the Indonesian province of <a href="https://en.wikipedia.org/wiki/Aceh">Aceh</a> issued similar bans.</p>
+
+<p>On July 1, 2020, <i>Battlegrounds</i> was banned in Pakistan by <a href="https://en.wikipedia.org/wiki/Pakistan_Telecommunication_Authority">Pakistan Telecommunication Authority</a>, citing the reasons that the game is addictive, a wastage of time and poses a serious negative impact on the physical and psychological health of children, after receiving various complaints from different segments of society and <a href="https://en.wikipedia.org/wiki/Lahore_High_Court">Lahore High Court</a>'s directions to look in the matter. However, the ban was temporary till further orders from the court. The game continued to remain banned in Pakistan for a month. A meeting was held on July 30, 2020, between PTA and legal representatives of Proxima Beta, who addressed the queries raised by the authority and emphasized on continued engagement and a comprehensive control mechanism. After this, the ban on <i>Battlegrounds</i> was lifted.</p>
+
+<p>Amidst the ongoing <a href="https://en.wikipedia.org/wiki/2020_China–India_skirmishes">2020 China–India skirmishes</a>, the Indian government banned <i>PUBG Mobile</i> along with more than 100 other Chinese apps, most made by Tencent and NetEase, on September 2, 2020, asserting the apps were "stealing and surreptitiously transmitting user data in an unauthorized manner to servers which have locations outside India". India was <i>PUBG Mobile</i>'s largest market with the country accounting for 175 million downloads and 24% of global users.</p>
+
+
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

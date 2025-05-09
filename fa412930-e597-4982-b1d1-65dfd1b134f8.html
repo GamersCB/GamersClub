@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>PERISH </title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('fa412930-e597-4982-b1d1-65dfd1b134f8/3ad433ed-4ddd-461a-bfb9-0386b06f610c.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="fa412930-e597-4982-b1d1-65dfd1b134f8/3b455213-1e8d-4887-b3b2-17d47e190ae3.png"/> PERISH </h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="fa412930-e597-4982-b1d1-65dfd1b134f8/25e2da15-2a28-453a-b5bb-07589daed98f.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/13/2024">11/13/2024</a> 0:35:38</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/13/2024">11/13/2024</a> 1:06:04</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-PORCHE">PORCHE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-2/2/2023">2/2/2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-69">69</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-62">62</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Indie">Indie</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-ITEM42">ITEM42</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-HandyGames">HandyGames</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Cooperativo">Cooperativo</a><br/><a href="#quicklink-Cooperativo En Línea">Cooperativo En Línea</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Remote Play En TV">Remote Play En TV</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1016360" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1016360/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1016360/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1016360" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1016360" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1016360" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/1016360/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-Cooperativos">Cooperativos</a><br/><a href="#quicklink-Cooperativos en línea">Cooperativos en línea</a><br/><a href="#quicklink-Demonios">Demonios</a><br/><a href="#quicklink-Difíciles">Difíciles</a><br/><a href="#quicklink-Disparos">Disparos</a><br/><a href="#quicklink-FPS">FPS</a><br/><a href="#quicklink-Gran banda sonora">Gran banda sonora</a><br/><a href="#quicklink-Hack and slash">Hack and slash</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-JcE">JcE</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Para adultos">Para adultos</a><br/><a href="#quicklink-Primera persona">Primera persona</a><br/><a href="#quicklink-Roguelite">Roguelite</a><br/><a href="#quicklink-Sangre">Sangre</a><br/><a href="#quicklink-Sangriento">Sangriento</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/><a href="#quicklink-Violentos">Violentos</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<strong>PERISH es un elegante FPS para cuatro jugadores con una cruz a cuestas. Aniquila hordas de criaturas en las calcinadas arenas del Purgatorio y vende sus cadáveres manchados de oro a los corruptos sacerdotes. Mata a majestuosos jefes y utiliza las recompensas para entrar en el Elíseo, un lugar de revelaciones cósmicas.<br><br>Eres amyetri, un espíritu corpóreo condenado a vivir una vida sombría en el reino intermedio del Purgatorio. Ponle fin a tu sufrimiento iniciando los Ritos de Orfeo y derrota a las deidades ctónicas que dominan tu díscolo camino hacia el Elíseo.</strong><h2 class="bb_tag">EL DESFAVORECIDO INICIADO</h2>Comienza tu viaje con nada más que una espada rota. Solo el danake,  la moneda ensangrentada del inframundo, te proporcionará el equipo más adecuado para enfrentarte a los Señores del Mal que se interponen entre tú y Elysium.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1016360/extras/TheDeprivedInitiate_600x200.gif?t=1729172043" /><h2 class="bb_tag">RIESGO VERSUS RECOMPENSA</h2>Las criaturas vengadoras del Purgatorio están consumidas por el mismo hambre de danake de oro que motiva tu propia misión. Caer en manos de tus enemigos te hará perder la riqueza adquirida. Deposita tu danake en el Panteón antes de morir, o continúa tu carrera hacia el Elíseo y arriésgate a perderlo todo.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1016360/extras/SorokosRampage_600x200.gif?t=1729172043" /><h2 class="bb_tag">FUERZA EN LA ASAMBLEA</h2>El inframundo es un lugar solitario. Reúne a un máximo de tres amigos y trazad juntos un camino lleno de oro hacia Elysium. Despliega equipos y artilugios específicos para cooperativas para apoyar, defender y revivir a los demás en el peligroso camino hacia el olvido eterno.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1016360/extras/4Players_600x200.gif?t=1729172043" /><h2 class="bb_tag">UN VIAJE HERCÚLEO</h2>Sobrevive al duro entorno de los escarpados acantilados de Teseo, los templos en ruinas de Orfeo y las fundiciones volcánicas de Hefesto. Navega por laberintos desmoronados, lagos fundidos de oro puro y montañas destrozadas atrapadas en el trago de los remolinos de Caribdis.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1016360/extras/Cliffs_600x200.gif?t=1729172043" /><h2 class="bb_tag">LA ARMERÍA DE ARES</h2>Las sacerdotisas poseen un formidable arsenal de armas. Utiliza tu danake para equiparte con poderosas coronas y anillos que otorgan al portador importantes ventajas en el campo de batalla. Elige entre una plétora de armas a distancia y cuerpo a cuerpo, y luego imbuye tu armamento elegido con una serie de emocionantes aumentos.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1016360/extras/EurusShowcase_600x200.gif?t=1729172043" /><h2 class="bb_tag">CARACTERÍSTICAS.</h2><ul class="bb_ul"><li>Campaña cooperativa online para 1-4 jugadores que se extiende por templos en ruinas, fundiciones volcánicas y antiguos naufragios.<br></li><li>Una serie de magníficos combates contra deidades colosales raras e inexploradas de la antigua mitología griega.<br></li><li>Más de 10 jabalinas, espadas, arcos y pistolas artesanales y ornamentadas, cada una con sus propias capacidades ofensivas únicas y mejorables.<br></li><li>Combates a distancia y cuerpo a cuerpo gratuitos y brutales contra enemigos con comportamientos de batalla distintivos.<br></li><li>Gladiadores mórbidos: los enemigos de PERISH son implacables, y a medida que viajes por el Purgatorio te encontrarás con un montón de enemigos inspirados en las antiguas mitologías griega, romana y cristiana.<br></li><li>Soporte post-lanzamiento: actualizaciones gratuitas del universo PERISH, con nuevos y extraños enemigos y armas aún más locas con las que jugar</li></ul>
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

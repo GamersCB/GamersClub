@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>7 Days to Die</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('895c9a11-c872-45ad-a67f-fae82417e17c/20a221da-119a-4c54-b8a7-2955167ecf3a.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="895c9a11-c872-45ad-a67f-fae82417e17c/71ca6586-6c32-4639-b2a5-4e00f7544081.png"/> 7 Days to Die</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="895c9a11-c872-45ad-a67f-fae82417e17c/5e0ed065-a892-457e-a59d-56bbffcb4bf8.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 15:35:16</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/8/2024">11/8/2024</a> 12:00:34</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB GAS">2TB GAS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-7/25/2024">7/25/2024</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-87">87</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Estrategia">Estrategia</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Rol">Rol</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Simuladores">Simuladores</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-The Fun Pimps">The Fun Pimps</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-The Fun Pimps Entertainment LLC">The Fun Pimps Entertainment LLC</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Cooperativo">Cooperativo</a><br/><a href="#quicklink-Cooperativo En LAN">Cooperativo En LAN</a><br/><a href="#quicklink-Cooperativo En Línea">Cooperativo En Línea</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Incluye Editor De Niveles">Incluye Editor De Niveles</a><br/><a href="#quicklink-Jcj">Jcj</a><br/><a href="#quicklink-Jcj En LAN">Jcj En LAN</a><br/><a href="#quicklink-Jcj En Línea">Jcj En Línea</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Multijugador Multiplataforma">Multijugador Multiplataforma</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Remote Play En Tableta">Remote Play En Tableta</a><br/><a href="#quicklink-Remote Play En TV">Remote Play En TV</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/251570" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/251570/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/251570/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=251570" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/251570" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=251570" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/251570/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Construcción">Construcción</a><br/><a href="#quicklink-Construcción de bases">Construcción de bases</a><br/><a href="#quicklink-Cooperativos en línea">Cooperativos en línea</a><br/><a href="#quicklink-Defensa de torres">Defensa de torres</a><br/><a href="#quicklink-Estrategia">Estrategia</a><br/><a href="#quicklink-Exploración">Exploración</a><br/><a href="#quicklink-FPS">FPS</a><br/><a href="#quicklink-Generación por procedimientos">Generación por procedimientos</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Mundo abierto">Mundo abierto</a><br/><a href="#quicklink-Personalización de personajes">Personalización de personajes</a><br/><a href="#quicklink-Posapocalípticos">Posapocalípticos</a><br/><a href="#quicklink-Sandbox">Sandbox</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Supervivencia">Supervivencia</a><br/><a href="#quicklink-Supervivencia en mundo abierto">Supervivencia en mundo abierto</a><br/><a href="#quicklink-Terror">Terror</a><br/><a href="#quicklink-Vóxel">Vóxel</a><br/><a href="#quicklink-Zombis">Zombis</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/251570/extras/7Days_AboutThisGame_Banner.png?t=1724878216" /><h2 class="bb_tag">¿Cuánto tiempo puedes sobrevivir? </h2>Con más de 18 millones de copias vendidas, 7 Days ha definido el género de supervivencia, con contenido relacionado a la fabricación y a la creación de mundos sin igual. 7 Days To Die es un juego de mundo abierto ambientado en un mundo postapocalíptico brutal e implacable lleno de no-muertos que combina de forma original juegos de disparos en primera persona, supervivencia de terror, defensa de torres y rol. Ofrece mecánicas de combate, fabricación, búsqueda, minería, exploración y desarrollo de personajes a los que los fanáticos de todo el mundo han respondido con entusiasmo. Juega al primer RPG de supervivencia zombi de entorno abierto. ¡Navezgane te espera!<h2 class="bb_tag">CARACTERÍSTICAS DEL JUEGO</h2><br>* Explora: Entornos enormes, únicos y completos que ofrecen la libertad de jugar al juego de la forma que tú quieras, con 5 biomas diferentes y mundos de hasta 100 kilómetros cuadrados.<br><br>* Fabrica: Fabrica y repara manualmente armas, vestimentas, armaduras, herramientas, vehículos y otros elementos con más de 500 recetas. Aprende las recetas más poderosas al encontrar esquemas.<br><br>* Construye: Diseña tu fuerte y agrégale trampas, energía eléctrica, torretas y puertas automáticas, dispositivos y posiciones defensivas para sobrevivir a los no-muertos en un mundo totalmente destructible y moldeable.<br><br>* Coopera o compite: Trabaja en conjunto para construir asentamientos o enfréntate a otros jugadores para invadir las bases de los contrincantes, en este páramo desolado en el que zombis y renegados gobiernan la tierra, depende solo de ti.<br><br>* Crea: Dale rienda suelta a tu creatividad con acceso a más de 800 elementos dentro del juego, más de 1300 bloques de construcción diferentes y un sistema de pintura que ofrece posibilidades infinitas.<br><br>* Mejora: Aumenta tus habilidades con diversos beneficios agrupados en 5 atributos principales. Obtén habilidades adicionales al leer más de 100 libros. 7 Days To Die es el único RPG realmente de supervivencia.<br><br>* Elige: Juega el mundo de campaña o zambúllete en mundos generados aleatoriamente con ciudades, pueblos, lagos, montañas, valles, carreteras, cavernas y más de 700 ubicaciones distintas.<br><br>* Combate: Enfréntate ante 60 arquetipos de zombis distintos, incluidos infectados especiales con comportamientos únicos y ataques de dificultad progresiva que te desafiarán infinitamente.<br><br>* Sobrevive: Experimenta mecánicas de supervivencia arduas y reales con más de 50 potenciadores, mejoras y desventajas que afectarán al juego y a tu capacidad de supervivencia tanto de formas positivas como negativas.<br><br>* Destruye: Los edificios y las formaciones de terreno pueden colapsar por su propio peso a causa de daños estructurales o por estar mal diseñados gracias a su estabilidad estructural realista.<br><br>* Busca: Hurga por el mundo en busca de las mejores armas, herramientas y armaduras de 6 rangos de calidad que ofrecen miles de modificaciones. Aumenta elementos con una amplia variedad de mods.<br><br>* Emprende misiones: Conoce a distintos PNJ comerciantes que compran y venden objetos y ofrecen misiones de trabajo a cambio de recompensas. Disfruta de distintos tipos de misiones soportados en más de 700 ubicaciones.<br><br>* Personaliza: Crea tu propio personaje y personalízalo aún más dentro del juego gracias a una amplia selección de vestimentas y armaduras que podrás fabricar o encontrar en el mundo.<br><br>*Conduce: Disfruta de un sistema vehicular genial en el que encontrarás todas las partes, aprenderás las recetas, fabricarás y personalizarás tus propios vehículos como bicicletas, minimotocicletas, motocicletas, 4x4 o girocópteros y pasea con amigos.<br><br>* Cultiva o caza: Planta y cosecha parcelas de recursos sustentables o sal a la naturaleza para cazar más de una docena de animales salvajes diferentes.
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

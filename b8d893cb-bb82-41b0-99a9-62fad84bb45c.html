@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>HOT WHEELS UNLEASHED 2 - Turbocharged</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('b8d893cb-bb82-41b0-99a9-62fad84bb45c/a427cc4a-2f46-4817-ae74-e99317ba63b6.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="b8d893cb-bb82-41b0-99a9-62fad84bb45c/ea01e5a0-8fbc-4bf8-80ec-18fdc9e9110b.png"/> HOT WHEELS UNLEASHED 2 - Turbocharged</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="b8d893cb-bb82-41b0-99a9-62fad84bb45c/ee521b16-a99e-4a61-9f1a-c8077fa8d7c3.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 14:41:31</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/8/2024">11/8/2024</a> 17:33:59</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-6TB STORE">6TB STORE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-10/19/2023">10/19/2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-68">68</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Carreras">Carreras</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Deportes">Deportes</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Simuladores">Simuladores</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Milestone S.r.l.">Milestone S.r.l.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Milestone S.r.l.">Milestone S.r.l.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Jcj">Jcj</a><br/><a href="#quicklink-Jcj A Pantalla (Com)Partida">Jcj A Pantalla (Com)Partida</a><br/><a href="#quicklink-Jcj En Línea">Jcj En Línea</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Pantalla Partida/Compartida">Pantalla Partida/Compartida</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/2051120" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/2051120/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/2051120/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=2051120" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/2051120" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=2051120" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/2051120/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Arcade">Arcade</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Carreras">Carreras</a><br/><a href="#quicklink-Conducción">Conducción</a><br/><a href="#quicklink-Deportes">Deportes</a><br/><a href="#quicklink-Divertidos">Divertidos</a><br/><a href="#quicklink-JcJ">JcJ</a><br/><a href="#quicklink-Motos">Motos</a><br/><a href="#quicklink-Motos y bicicletas">Motos y bicicletas</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Multijugador local">Multijugador local</a><br/><a href="#quicklink-Pantalla dividida">Pantalla dividida</a><br/><a href="#quicklink-Para mando">Para mando</a><br/><a href="#quicklink-Para toda la familia">Para toda la familia</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Tercera persona">Tercera persona</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<h2 class="bb_tag">¡VOLVIMOS A CONSEGUIRLO!</h2><p class="bb_paragraph">Si pensabas que el primer capítulo era insuperable, bueno, abróchate el cinturón, porque todas estas novedades increíbles van mil por hora.</p><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2051120/extras/GIF_Annuncio_NuoviVeicoli_2_1.gif?t=1728469616" /></p><p class="bb_paragraph"></p><h2 class="bb_tag">MÁS RUEDAS, MÁS DIVERSIÓN</h2><p class="bb_paragraph">Lo primer es lo primero: haz hueco en tu estantería virtual, porque tendrás acceso a más de 130 vehículos y a incluso más variedades de vehículos. Sí, no solo a Hot Wheels™ Originals, también a Hot Wheels™ Monster Trucks y a vehículos del mundo del entretenimiento. También podrás pilotar motocicletas y quads, cada uno con su propio estilo de conducción para conquistar cada pista de la forma más estratégica.</p><p class="bb_paragraph"> </p><p class="bb_paragraph">Un sistema totalmente nuevo que define las categorías de los vehículos, que pueden mejorarse desde su correspondiente árbol de habilidades para afectar directamente a su rendimiento. ¡Contempla cómo tu coche se vuelve imparable!</p><p class="bb_paragraph"> </p><h2 class="bb_tag">NUEVOS LUGARES A LOS QUE LLAMAR HOGAR</h2><p class="bb_paragraph">Ya sea el patio trasero de una casa de las afueras o una pista de minigolf en un pueblo del salvaje oeste, ¡cada pista se ubicará en entornos asombrosos!</p><p class="bb_paragraph">Conoce 5 ubicaciones nuevas, descubre todos sus secretos y enseguida te sentirás como en casa después de recorrerlas y subir al podio.</p><p class="bb_paragraph">Los terrenos nuevos son otra adición fantástica que hará que vuestras carreras sean aún más desafiantes y emocionantes. Hierba, arena y muchas cosas más que afectarán al control que tengas sobre el vehículo, así que habrá que tenerlo en cuenta a la hora de decidir una estrategia: ¡ahora es aún más importante!</p><p class="bb_paragraph"></p><h2 class="bb_tag">PRESUME DE HABILIDADES</h2><p class="bb_paragraph">Antes de impresionar a tus oponentes con una gran victoria, ¡déjalos boquiabiertos con movimientos nuevos y pasmosos! Además de derrapar y Boost, ahora podrás correr de lado, saltar o hacer un salto doble. Elige qué hacer y cuándo con cabeza para golpear a tus rivales y sacarlos de la pista... ¡o para evitar obstáculos!</p><p class="bb_paragraph">¡Con los nuevos saltos, podrás pasar del tráfico y encontrar atajos ocultos!</p><p class="bb_paragraph"></p><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2051120/extras/GIF_Annuncio_NuoveAbilita.gif?t=1728469616" /></p><h2 class="bb_tag">COMO MÁS TE GUSTE</h2><p class="bb_paragraph">¿Te gusta correr riesgos para transformar cada carrera en pura adrenalina? ¿O quizás prefieres comprobar hasta dónde puedes llegar? ¿Has dicho que te gustan «estrellar coches»? Bueno, HOT WHEELS UNLEASHED™ 2 - Turbocharged te trae todo eso y mucho más. Modos de juego diferentes para que te diviertas como consideres, tanto en línea como sin conexión.</p><p class="bb_paragraph"></p><h2 class="bb_tag">¡DA RIENDA SUELTA A TU CREATIVIDAD!</h2><p class="bb_paragraph">¡Los editores más aclamados han vuelto! Crea la pista de tus sueños con el potente Editor de pistas o utiliza las mejores creaciones de la comunidad.</p><p class="bb_paragraph"></p><p class="bb_paragraph">Y, por supuesto, a una pista maravillosa le hacen falta coches despampanantes. El nuevo y mejorado Editor corporativo es todo lo que necesitas: con las nuevas herramientas, como el Editor de pegatinas, puedes diseñar y guardar patrones y formas para crear tu obra maestra. ¡Tenemos claro que las mejores ideas saldrán de tu cabeza!</p><p class="bb_paragraph"></p><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2051120/extras/GIF_Annuncio_LiveryEditor.gif?t=1728469616" /></p><h2 class="bb_tag">UNA HISTORIA COMPLETAMENTE NUEVA</h2><p class="bb_paragraph">Literalmente. La aventura del modo Campaña es totalmente nueva y original, además de estar basada en la historia. Están atacando la ciudad y solo tú puedes salvarla de las criaturas que la asedian. ¿Cómo? ¡Muy fácil! ¡Ganando carreras y desafíos específicos! Vale, puede que no sea tan fácil... ¡Pero sí que será muy emocionante! Prepárate, porque no solo ganarás carreras, ¡también salvarás a gente!</p>
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

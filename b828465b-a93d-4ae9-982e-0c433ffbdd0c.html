@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Dishonored 2 </title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('b828465b-a93d-4ae9-982e-0c433ffbdd0c/97425614-4469-4a1d-abba-8624cf25430f.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="b828465b-a93d-4ae9-982e-0c433ffbdd0c/e5030900-f60b-4981-9645-90cd75ff429a.png"/> Dishonored 2 </h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="b828465b-a93d-4ae9-982e-0c433ffbdd0c/d754f4d5-af46-4f02-8b10-5c7493e20dff.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/6/2024">11/6/2024</a> 14:41:31</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-2/5/2025">2/5/2025</a> 0:41:53</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-1 TB EXT">1 TB EXT</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-11/11/2016">11/11/2016</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-88">88</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-86">86</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Arkane Studios">Arkane Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Bethesda Softworks">Bethesda Softworks</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Parcial Con Mando">Compat. Parcial Con Mando</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Remote Play En Tableta">Remote Play En Tableta</a><br/><a href="#quicklink-Remote Play En TV">Remote Play En TV</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/403640" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/403640/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/403640/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=403640" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/403640" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=403640" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/403640/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-Asesinos">Asesinos</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Buena trama">Buena trama</a><br/><a href="#quicklink-Distopías">Distopías</a><br/><a href="#quicklink-Exploración">Exploración</a><br/><a href="#quicklink-Gran banda sonora">Gran banda sonora</a><br/><a href="#quicklink-Magia">Magia</a><br/><a href="#quicklink-Mundo abierto">Mundo abierto</a><br/><a href="#quicklink-Parkour">Parkour</a><br/><a href="#quicklink-Primera persona">Primera persona</a><br/><a href="#quicklink-Protagonista femenina">Protagonista femenina</a><br/><a href="#quicklink-Robos">Robos</a><br/><a href="#quicklink-Sangriento">Sangriento</a><br/><a href="#quicklink-Sigilo">Sigilo</a><br/><a href="#quicklink-Simulador inmersivo">Simulador inmersivo</a><br/><a href="#quicklink-Sobrenaturales">Sobrenaturales</a><br/><a href="#quicklink-Steampunk">Steampunk</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<h2 class="bb_tag">Descripción Del Juego</h2>Repite en tu papel de asesino sobrenatural en Dishonored 2. <br><br>Dishonored 2 ha sido elogiado por IGN como &quot;asombroso&quot; y como &quot;una magnífica secuela&quot;, ha sido declarado &quot;obra maestra&quot; por Eurogamer y aclamado como &quot;un cuento de venganza imprescindible entre los mejores de su clase&quot; por Game Informer. Se trata del nuevo capítulo del superventas de acción en primera persona creado por Arkane Studios, Dishonored, ganador de más de 100 premios al &quot;Juego del año&quot;. <br><br>Juega a tu manera en un mundo en el que misticismo e industria están en conflicto. ¿Decidirás jugar como la emperatriz Emily Kaldwin o como el protector real, Corvo Attano? ¿Avanzarás por el juego sin que te vean, harás uso de su brutal sistema de combate o utilizarás una mezcla de ambos? ¿De qué forma única combinarás los poderes, armas y artilugios de tu personaje para eliminar a tus enemigos? La historia responderá a las elecciones que tomes y te proporcionará resultados fascinantes a medida que juegues cada una de las misiones individualmente diseñadas del juego.<h2 class="bb_tag">Historia</h2>Dishonored 2 tiene lugar 15 años después de la derrota del lord Regente. La temible peste ha pasado a la historia y un usurpador de otro mundo se ha hecho con el trono de la emperatriz Emily Kaldwin. El futuro de las islas pende de un hilo. Asume el papel de Emily o Corvo, y viaja más allá de las legendarias calles de Dunwall hasta Karnaca, una ciudad costera antaño deslumbrante, que alberga la clave para devolver a Emily al poder. Usa la marca del Forastero, así como nuevas y poderosas habilidades, para dar caza a tus enemigos y recuperar lo que te pertenece por derecho.<h2 class="bb_tag">Características</h2><ul class="bb_ul"><li><h2 class="bb_tag">Los Asesinos </h2>Emily Kaldwin y Corvo Attano, personajes completamente doblados, aportan sus propias perspectivas y respuestas emocionales al mundo y a la historia. Usa el conjunto de poderes, artilugios y armas personalizadas propio de cada personaje de forma creativa para explorar el mundo —ya sea abriéndote paso luchando por las calles de la ciudad o colándote por los tejados— y decides qué enemigos eliminar o perdonar. <br><br></li><li><h2 class="bb_tag">Poderes Sobrenaturales</h2>La creación avanzada de talismanes de hueso y los nuevos árboles de mejoras te permiten personalizar tus poderes de formas muy diferentes. Conviértete en una sombra viviente y acecha sigilosamente a tus enemigos para que compartan un mismo destino, o hipnotízalos y domina sus mentes. Elige entre una combinación casi infinita de violencia, combate no letal, poderes y armas para cumplir tus objetivos.<br><br></li><li><h2 class="bb_tag">Mundo Imaginativo 	</h2>Sumérgete en los espectaculares entornos creados por los excelentes equipos artísticos y narrativos de Arkane, desde las mugrientas calles de Dunwall, infestadas de ratas, a las exuberantes costas de la decadente Karnaca. El mundo es un personaje en sí mismo, con una abundante historia y arquitectura, y unos personajes eclécticos. Está enriquecido con enclaves de misiones peculiares, como la Tolvanera, asolada por tormentas de polvo y facciones en guerra, y la mansión de un lunático con paredes deslizantes, trampas mortales y soldados mecánicos. <br><br></li><li><h2 class="bb_tag">Void Engine</h2>El nuevo motor Void Engine, creado por id Tech y muy personalizado por Arkane Studios, da vida a Dishonored 2 y supone una revolución en la tecnología de renderizado. Ha sido diseñado para hacer posible una dirección artística del mejor nivel y aprovechar al máximo el potente hardware que ofrece esta generación de consolas, y permite unos avances significativos en todos los sistemas de juego, entre los que se cuentan un sistema de sigilo y de IA de combate que responde a las acciones del jugador, el renderizado gráfico y de iluminación, unos entornos urbanos sorprendentemente densos y una presentación de la historia más rica. </li></ul>
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>
