@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Frostpunk </title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('0a1ac505-1d85-4f83-b340-3f39e8ff7b79/51f5c197-b327-47f0-9a17-b89c8f84b939.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="0a1ac505-1d85-4f83-b340-3f39e8ff7b79/f74eee84-ff66-4ea9-8a80-4a85d3cddb22.png"/> Frostpunk </h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="0a1ac505-1d85-4f83-b340-3f39e8ff7b79/ee96f7fb-fcbd-48a6-b0d9-f07ef5009f7b.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-11/5/2024">11/5/2024</a> 22:37:13</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-11/17/2024">11/17/2024</a> 15:25:17</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-No Jugado">No Jugado</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-1 TB 1">1 TB 1</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-4/24/2018">4/24/2018</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-91">91</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-84">84</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Estrategia">Estrategia</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Simuladores">Simuladores</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-11 bit studios">11 bit studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-11 bit studios">11 bit studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Remote Play En Móvil">Remote Play En Móvil</a><br/><a href="#quicklink-Remote Play En Tableta">Remote Play En Tableta</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/323190" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/323190/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/323190/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=323190" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/323190" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=323190" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/323190/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-Construcción">Construcción</a><br/><a href="#quicklink-Construcción de bases">Construcción de bases</a><br/><a href="#quicklink-Construcción de ciudades">Construcción de ciudades</a><br/><a href="#quicklink-Difíciles">Difíciles</a><br/><a href="#quicklink-Economía">Economía</a><br/><a href="#quicklink-Estrategia">Estrategia</a><br/><a href="#quicklink-ETR">ETR</a><br/><a href="#quicklink-Gestión">Gestión</a><br/><a href="#quicklink-Gestión de recursos">Gestión de recursos</a><br/><a href="#quicklink-Gran banda sonora">Gran banda sonora</a><br/><a href="#quicklink-Las elecciones importan">Las elecciones importan</a><br/><a href="#quicklink-Oscuros">Oscuros</a><br/><a href="#quicklink-Posapocalípticos">Posapocalípticos</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Simulador de colonias">Simulador de colonias</a><br/><a href="#quicklink-Steampunk">Steampunk</a><br/><a href="#quicklink-Supervivencia">Supervivencia</a><br/><a href="#quicklink-Tiempo real con pausas">Tiempo real con pausas</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<h2 class="bb_tag"><strong>EL FINAL DEL CAMINO</strong></h2>Desde el lanzamiento de Frostpunk, lo hemos actualizado varias veces con contenido adicional. Ahora puedes disfrutar del nuevo <strong>Endless Mode (modo Infinito)</strong>, que aumenta las rejugabilidad y ofrece tres formas de jugarlo. También hay un <strong>nuevo escenario, The Fall of Winterhome (La caída de Invernia)</strong>, que amplía aún más el universo del juego y la información disponible. De postre hemos añadido detalles como la posibilidad de <strong>poner nombre a los personajes y autómatas</strong> y, por último, un <strong>modo Foto</strong>. Todo esto está <strong>disponible gratis</strong> con el juego base. Además, hay tres expansiones, disponibles con el <strong>Season Pass</strong> de pago. Queremos aprovechar para comentar que no vamos a crear más contenido para Frostpunk, ya que este viaje ha llegado a su fin, pero esperamos que estéis pendientes de otros juegos que publicaremos en el futuro. Naturalmente, el juego seguirá recibiendo parches, correcciones de problemas y soporte técnico.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/323190/extras/Package_header_image_620x177.jpg.jpg?t=1724859064" /><h2 class="bb_tag"><strong>SEASON PASS</strong></h2>¡El contenido del <strong>Season Pass</strong> oficial de Frostpunk ya está disponible en su totalidad! Te permite acceder a todo el contenido adicional publicado desde el lanzamiento del juego, incluidas tres expansiones: <strong>The Last Autumn (El último otoño)</strong>, <strong>On The Edge (Al límite)</strong> y <strong>The Rifts (Las Fosas)</strong>, que amplían enormemente la historia principal y completan un montón de vacíos en el universo del juego. Además, cuando termines de jugar, podrás relajarte mientras escuchas la, con su imponente orquesta, o descubrir más cosas sobre el mundo del juego con el <strong>libro de diseños digital</strong> exclusivo. <br><br>¿No tienes el juego? No te preocupes, porque <strong>Frostpunk: Game of the Year Edition</strong> es justo lo que buscas. Incluye el juego base, el Season Pass y todo el contenido exclusivo a precio rebajado.<h2 class="bb_tag"><strong>ACERCA DEL JUEGO</strong></h2><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/323190/extras/FP_STEAM_GIF_HEADER.gif?t=1724859064" /><h2 class="bb_tag"><strong>LA CIUDAD DEBE SOBREVIVIR</strong></h2><br>Frostpunk, el título más reciente de los creadores de This War of Mine, es un juego de supervivencia en sociedad donde el calor es fuente de vida y cada decisión tiene un precio. En un mundo totalmente congelado, la humanidad ha desarrollado una tecnología basada en el vapor para hacer frente al frío implacable. Tu tarea consiste en construir la última ciudad de la Tierra y conseguir los recursos necesarios para que tu comunidad sobreviva. <br><br>La gestión de recursos y su optimización a menudo chocan con la empatía y con las decisiones razonables. Aunque la administración de la ciudad y de su sociedad consume la mayor parte del tiempo del gobernante, llega un punto en el que se hace necesario explorar el mundo exterior para comprender su historia y su situación actual.<br><br>¿Qué decisiones tomarás para asegurar la supervivencia de tu sociedad? ¿Qué harás cuando estés entre la espada y la pared? ¿En qué te convertirás durante el proceso?<h2 class="bb_tag"><strong>CREA LAS LEYES</strong></h2>Promulga leyes que regulen la existencia de tu sociedad en desarrollo. Decide cuál será su horario de trabajo, su sistema sanitario, el abastecimiento de comida y otros aspectos cruciales de la vida cotidiana. Hacer que estén contentos y que mantengan la esperanza es algo tan importante para una sociedad como protegerla y obtener los bienes de primera necesidad que la alimentan.<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/323190/extras/FP_STEAM_GIF_01.gif?t=1724859064" /><h2 class="bb_tag"><strong>MOLDEA TU SOCIEDAD</strong></h2>Si llegas a un punto de inflexión, no dudes en decidir el camino que tu gente debe seguir. ¿Deberías gobernar con mano de hierro... o mostrarles el camino de la compasión y la fe? Encuentra el equilibrio o decántate por los extremos. Hagas lo que hagas, recuerda que no hay vuelta atrás.<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/323190/extras/FP_STEAM_GIF_02.gif?t=1724859064" /><h2 class="bb_tag"><strong>SOPESA TUS DECISIONES</strong></h2>Algunas de tus decisiones parecerán insignificantes, como decidir el destino de un ciudadano preocupado o satisfacer las peticiones de una nueva facción, pero ten en cuenta que la suma de tus acciones puede tener resultados inesperados. Tu gente ha depositado su confianza en ti, pero su devoción tiene un límite. El liderazgo puede llegar a ser una carga.<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/323190/extras/FP_STEAM_GIF_03.gif?t=1724859064" /><h2 class="bb_tag"><strong>DESARROLLA NUEVAS TECNOLOGÍAS</strong></h2>Para sobrevivir hay que progresar. Reacciona a los sucesos que se produzcan, pero piensa siempre a largo plazo e invierte en el desarrollo y en el avance tecnológico. Conseguir infraestructuras avanzadas con autómatas autopropulsados, aeronaves y otras maravillas de la tecnología no es fácil, pero tampoco imposible. Todo depende de tus capacidades de gestión y liderazgo.<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/323190/extras/FP_STEAM_GIF_04.gif?t=1724859064" /><h2 class="bb_tag"><strong>EXPLORA TIERRAHELADA</strong></h2>Aunque Nueva Londres es tu objetivo principal, fuera de los límites de la ciudad hay muchas cosas por descubrir. Las expediciones, aunque sean arriesgadas, pueden conseguir valiosa información, suministros muy necesarios y aumentar la población de tu sociedad. Puede que haya gente ahí fuera; su destino está en tus manos.<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/323190/extras/FP_STEAM_GIF_05.gif?t=1724859064" /><h2 class="bb_tag"><strong>JUEGA ETERNAMENTE</strong></h2>El modo Infinito de Frostpunk aporta un rejugabilidad sin límites. Juega en 8 mapas con distintas condiciones climatológicas, orografía y desafíos a los que enfrentarte. Sabemos que cada uno busca su propia experiencia, así que hemos incluido 3 variantes en el modo Infinito. Resistencia es la prueba definitiva de tu capacidad de gestión, construcción y supervivencia en las condiciones más duras. En Constructores no dispondrás de un generador al principio, así que el desafío cambiará por completo. Y, por último, Serenidad, que se centra en disfrutar de la construcción de la ciudad propiamente dicha, sin presiones innecesarias.  <br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/323190/extras/FP_STEAM_GIF_06.gif?t=1724859064" />
+				</div>
+			</div>
+		</div>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>
