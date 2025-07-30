@@ -206,7 +206,7 @@ a:active {
 							</TR>
 							<TR>
 								<TD>Modificado</TD>
-								<TD><a href="#quicklink-11/8/2024">11/8/2024</a> 17:33:39</TD>
+								<TD><a href="#quicklink-7/10/2025">7/10/2025</a> 21:16:22</TD>
 							</TR>
 							<TR>
 								<TD>Estado de finalización</TD>
@@ -218,7 +218,7 @@ a:active {
 							</TR>
 							<TR>
 								<TD>Fuente</TD>
-								<TD><a href="#quicklink-6TB STORE">6TB STORE</a></TD>
+								<TD><a href="#quicklink-2TB 3">2TB 3</a></TD>
 							</TR>
 							<TR>
 								<TD>Plataforma</TD>
@@ -275,6 +275,30 @@ a:active {
 				</div>
 			</div>
 		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
 		<script src="lozad.min.js"></script>
 		<script>
 			const observer = lozad(); // lazy loads elements with default selector as '.lozad'

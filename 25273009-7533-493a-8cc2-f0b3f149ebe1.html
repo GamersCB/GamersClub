@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Monster Hunter Stories</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('25273009-7533-493a-8cc2-f0b3f149ebe1/1d88488f-e599-42ad-bda4-1dc8f2541b04.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="25273009-7533-493a-8cc2-f0b3f149ebe1/0158d02b-f47e-45ee-adb7-6f880953b961.png"/> Monster Hunter Stories</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="25273009-7533-493a-8cc2-f0b3f149ebe1/60df9749-4672-45f7-ad28-2be5eb25d377.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-7/28/2025">7/28/2025</a> 22:33:21</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-7/29/2025">7/29/2025</a> 17:44:45</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB GAS">2TB GAS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-6/13/2024">6/13/2024</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-86">86</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Rol">Rol</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-CAPCOM Co., Ltd.">CAPCOM Co., Ltd.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-CAPCOM Co., Ltd.">CAPCOM Co., Ltd.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Parcial Con Mando">Compat. Parcial Con Mando</a><br/><a href="#quicklink-Jcj">Jcj</a><br/><a href="#quicklink-Jcj En Línea">Jcj En Línea</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/2356560" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/2356560/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/2356560/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=2356560" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/2356560" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=2356560" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/2356560/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-3D">3D</a><br/><a href="#quicklink-Anime">Anime</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Botín">Botín</a><br/><a href="#quicklink-Buena trama">Buena trama</a><br/><a href="#quicklink-Caricaturescos">Caricaturescos</a><br/><a href="#quicklink-Caza">Caza</a><br/><a href="#quicklink-Coleccionista de criaturas">Coleccionista de criaturas</a><br/><a href="#quicklink-Dragones">Dragones</a><br/><a href="#quicklink-Emocionales">Emocionales</a><br/><a href="#quicklink-Exploración">Exploración</a><br/><a href="#quicklink-Fantasía">Fantasía</a><br/><a href="#quicklink-JcE">JcE</a><br/><a href="#quicklink-JcJ">JcJ</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Personalización de personajes">Personalización de personajes</a><br/><a href="#quicklink-Rol">Rol</a><br/><a href="#quicklink-Rol japonés">Rol japonés</a><br/><a href="#quicklink-Tercera persona">Tercera persona</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					* Este contenido también está disponible como parte de uno o más lotes. Comprueba tus compras anteriores para evitar duplicados. <br><br>¡Monster Hunter Stories es un JDR que lleva el mundo de Monster Hunter en nuevas y apasionantes direcciones! Aquí no cazarás monstruos, ¡los criarás! En esta elaborada historia protagonizada por los llamados «Monster Riders» convivirás con monstruos y forjarás lazos con ellos para toda la vida.<br><br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2356560/extras/top.jpg?t=1732755730" /></div><br>La primera entrega de Monster Hunter Stories regresa completamente doblada al japonés y al inglés, y con características adicionales como un nuevo modo Museo donde escuchar música y admirar ilustraciones de concepto para así sumergirte aún más en este mundo.<br><br><strong>Sinopsis:</strong><br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2356560/extras/story1.jpg?t=1732755730" /></div><br>Tú eres el personaje principal de esta historia. Naciste en una aldea de Riders y te ganas la vida criando monstruos. Deberás superar desafíos y obstáculos mientras aprendes el oficio y abandonas tu hogar para embarcarte en una aventura. Tu destino: el mundo de los cazadores, que se ganan la vida atrapando monstruos. Aunque sus costumbres son diametralmente diferentes, deberás aprender a convivir y colaborar con los cazadores y, a la vez, acercar un poco estos dos mundos tan dispares.<br><br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2356560/extras/story2.jpg?t=1732755730" /></div><br>Las cosas se complican cuando se desencadena un desastre conocido como la «Plaga Negra», que pone en peligro todo el mundo y altera sus, hasta entonces, apacibles existencias. Riders y cazadores deberán poner a prueba su valor para enfrentarse a esta amenaza.<br><br>Las claves para salvar el mundo son la piedra vinculante y el poder que esta esconde, así como la veracidad de la «leyenda de Redan», que revela el origen de los Riders, secreto durante mucho tiempo. Durante tu épico viaje descubrirás el verdadero significado de la Unificación, que seguirá ahondándose a medida que vuestros lazos se estrechen. Vive una historia de triunfo y amistad: ¡adéntrate ya en el mundo de Monster Hunter Stories!<br><br><strong>Características del juego:</strong><br>■ ¡Juego de rol por turnos ambientado en el mundo de Monster Hunter!<br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2356560/extras/battle.gif?t=1732755730" /></div><br>Monster Hunter Stories incluye un sistema de batalla estratégico fácil de aprender incluso para los menos diestros con los juegos de acción. ¡Usa ataques potentes, ágiles y técnicos para descubrir y burlar los patrones de ataque de tu rival, causarle graves heridas e imponerte en duelos cara a cara! ¡Carga tu indicador de vínculo para usar habilidades o prueba las habilidades vinculantes únicas de tus Monsties!<br><br>■ ¡Convierte algunos de los monstruos más famosos de esta serie en tus Monsties!<br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2356560/extras/tamago.gif?t=1732755730" /></div><br>Explora el terreno con las habilidades de Monsties, haz eclosionar los huevos que encuentres durante tu viaje y convierte varios monstruos en Monsties. En este juego encontrarás muchos monstruos famosos de la serie Monster Hunter como Zinogre, Nargacuga y Lagiacrus.<br><br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2356560/extras/densho.gif?t=1732755730" /></div><br>El Rito canalizador es una ceremonia que despierta las habilidades latentes de tus Monsties y con la que podrás criar Monsties originales para enfrentarte a poderosos enemigos.<br><br>■ Funciones online<br>¡Forma un poderoso grupo con los Monsties que adoptes y disfruta de batallas con otros jugadores!<br><br><strong>Funciones nuevas:</strong><br>■ Completamente doblado al inglés y al japonés<br>¡Una historia más inmersiva que nunca gracias al doblaje completo al inglés y japonés!<br><br>■ Contenidos extras en el museo<br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2356560/extras/museum.jpg?t=1732755730" /></div><br>Disfruta de las más de 200 ilustraciones de concepto, algunas completamente inéditas, así como de un gran número de temas musicales. ¡Algunos por primera vez disponibles con sonido envolvente!<br><br>■ Incluye todas las actualizaciones<br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2356560/extras/monster.jpg?t=1732755730" /></div><br>Contiene todos los monstruos añadidos en las diferentes actualizaciones del juego original, como Kushala Daora, Teostra y Rajang, así como los contenidos extendidos tras finalizar el juego y piezas adicionales de edición de personajes, para que no te pierdas absolutamente nada.
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

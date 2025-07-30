@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Company of Heroes 3</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('7033639f-62ad-4dc9-98af-d6c1b9f788a9/f1b0c3c0-96b9-4a95-ae5b-2bcd71b0b8e7.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="7033639f-62ad-4dc9-98af-d6c1b9f788a9/6712ea90-3a3c-49d2-b172-a211fb889a1a.png"/> Company of Heroes 3</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="7033639f-62ad-4dc9-98af-d6c1b9f788a9/c2cf5832-1d2a-48c6-aa14-ac19649c1e0b.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-6/26/2025">6/26/2025</a> 12:26:45</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-6/26/2025">6/26/2025</a> 12:33:31</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-4TB 1">4TB 1</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-2/23/2023">2/23/2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-57">57</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-81">81</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Estrategia">Estrategia</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Relic Entertainment">Relic Entertainment</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Relic Entertainment">Relic Entertainment</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cooperativo">Cooperativo</a><br/><a href="#quicklink-Cooperativo En Línea">Cooperativo En Línea</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Estadísticas">Estadísticas</a><br/><a href="#quicklink-Jcj">Jcj</a><br/><a href="#quicklink-Jcj En Línea">Jcj En Línea</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/><a href="#quicklink-Workshop">Workshop</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1677280" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1677280/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1677280/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1677280" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1677280" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1677280" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/1677280/achievements" target="_blank">Logros</a><br/><a href="https://steamcommunity.com/app/1677280/workshop/" target="_blank">Workshop</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Bélicos">Bélicos</a><br/><a href="#quicklink-Cooperativos">Cooperativos</a><br/><a href="#quicklink-De arriba a abajo">De arriba a abajo</a><br/><a href="#quicklink-Estrategia">Estrategia</a><br/><a href="#quicklink-Estrategia por turnos">Estrategia por turnos</a><br/><a href="#quicklink-ETR">ETR</a><br/><a href="#quicklink-ETR de acción">ETR de acción</a><br/><a href="#quicklink-Históricos">Históricos</a><br/><a href="#quicklink-JcE">JcE</a><br/><a href="#quicklink-JcJ">JcJ</a><br/><a href="#quicklink-Juegos de guerra">Juegos de guerra</a><br/><a href="#quicklink-Las elecciones importan">Las elecciones importan</a><br/><a href="#quicklink-Militares">Militares</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Segunda Guerra Mundial">Segunda Guerra Mundial</a><br/><a href="#quicklink-Tácticas en tiempo real">Tácticas en tiempo real</a><br/><a href="#quicklink-Tácticas por turnos">Tácticas por turnos</a><br/><a href="#quicklink-Tácticos">Tácticos</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1677280/extras/COH3_SteamPatchHighlights_Oversized_Bodged2.0v2.png?t=1750947457" /></div></p><p class="bb_paragraph">Company of Heroes 3 brings the series' acclaimed authentic and tactical gameplay to a stunning new setting. Immerse yourself in two epic campaigns, four unique multiplayer &amp; co-op factions, and a breathtaking new theatre spanning from the sweeping deserts of North Africa to the rolling hills of Italy. Join the Fight with new features such as Full Tactical Pause and our Dynamic Campaign Map, which enable you to take complete control of the battlefield.</p><p class="bb_paragraph"></p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1677280/extras/SteamHeader_GameOverview.png?t=1750947457" /></div></p><p class="bb_paragraph">The legendary strategy franchise is back! Company of Heroes 3 is the ultimate package of action, tactics and strategy. Take charge in the heat of real-time battle, then command as a General guiding the overall campaign where every decision matters. </p><p class="bb_paragraph"></p><p class="bb_paragraph">Overwhelm your opponents with four unique factions and all-new international Battlegroups. Command ground, air and naval forces and build supply lines to crush enemy advances on the new Dynamic Campaign Map - no two playthroughs are ever alike! Play at your own pace across campaign and skirmish modes before diving into blistering multiplayer action. Discover the untold stories of a stunning Mediterranean theatre featuring next-generation destructible environments, all powered by Relic's proprietary Essence Engine. </p><p class="bb_paragraph"></p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1677280/extras/201103_Anvil_GIF_05_v1.gif?t=1750947457" /></div></p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1677280/extras/SteamHeader_AwardWinningTacticalGameplay.png?t=1750947457" /></div></p><p class="bb_paragraph">Company of Heroes 3 delivers the next generation of acclaimed tactical gameplay. Beloved combat mechanics collide with authentic new gameplay features, making for the deepest tactical experience to date.  ​</p><p class="bb_paragraph"></p><p class="bb_paragraph">Make use of daring flanking moves to expose enemy side armor, experience all new infantry breaching mechanics allowing you to flush enemy units from their garrisons, and master elevation to enhance your line of sight and gain the upper hand. </p><p class="bb_paragraph"></p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1677280/extras/Award_winning_tactical.gif?t=1750947457" /></div></p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1677280/extras/SteamHeader_AStunningNewTheater.png?t=1750947457" /></div></p><p class="bb_paragraph">Welcome to the Mediterranean - a breathtaking new theatre filled with untold stories of war. Engage ferocious enemy forces across Italian mountain passes, breathtaking coastal vistas and the sweeping deserts of N Africa. Stunning visuals deliver authentic and highly diverse environments designed to keep you on your toes.  ​</p><p class="bb_paragraph"></p><p class="bb_paragraph">Mountainous maps will require uniquely different strategies from coastal towns, with verticality now greatly affecting units’ line of sight (True Sight). Desert plains will call for careful reconnaissance and daring armored maneuvers. On this new frontline, intelligence trumps speed and clever use of local terrain will let you bewilder your opponents and rout them from the field. </p><p class="bb_paragraph"></p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1677280/extras/201103_Anvil_GIF_04_v1.gif?t=1750947457" /></div></p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1677280/extras/SteamHeader_NewLayersOfStrategy.png?t=1750947457" /></div></p><p class="bb_paragraph">Experience the biggest single-player campaign in franchise history. The new Dynamic Campaign Map delivers full ‘sandbox-style’ gameplay, allowing players to command the overall war effort and experience an unprecedented level of strategic choice.   ​</p><p class="bb_paragraph"></p><p class="bb_paragraph">Establish vital supply lines before deploying rear guard defenses to secure your advance. Launch air and naval strikes to weaken and scatter enemy forces or liberate a nearby town to develop a Partisan spy network. Choose your forces and upgrade your veteran companies to match your playstyle. Meanwhile, the optional Full Tactical Pause feature allows players total control over the pacing of single-player action. Plan your attacks, then effortlessly queue up lethal precision plays that will give you the edge in battle. </p><p class="bb_paragraph"></p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1677280/extras/201103_Anvil_GIF_03_v1.gif?t=1750947457" /></div></p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1677280/extras/SteamHeader_DiverseFactionsAndUnits.png?t=1750947457" /></div></p><p class="bb_paragraph">Company of Heroes 3 promises to delight even the most ardent WW2 enthusiasts thanks to the largest number of launch factions in the series to date. ​</p><p class="bb_paragraph"></p><p class="bb_paragraph">New army customization mechanics will allow you to call in the help of a varied cast of specialist units. Take up the fight with new elite squads including the American-Canadian Special Service Forces, the revered Gurkhas from the Commonwealth and many more.  ​</p><p class="bb_paragraph"></p><p class="bb_paragraph">From devastating tank destroyers to clandestine recon vehicles, Company of Heroes 3 features the largest roster in the series to date. The super-light Weasel, the armor-sniping Nashorn, and the Chaffee Light Tank are just a few of the units making their debut. Also, let's not forget revamped classics like the M3 Recovery Vehicle Halftrack, which can now be used to repair and steal abandoned enemy vehicles!</p><p class="bb_paragraph"></p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1677280/extras/image001.gif?t=1750947457" /></div></p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1677280/extras/SteamHeader_CinematicAction.png?t=1750947457" /></div></p><p class="bb_paragraph">Feel the blistering impact of every mortar shell and naval bombardment with Relic's state-of-the-art Essence Engine. In Company of Heroes 3, every location becomes a fully destructible sandbox, opening up limitless tactical gameplay options for you or your enemy to exploit. ​</p><p class="bb_paragraph"></p><p class="bb_paragraph">Bring fortified buildings crashing down onto enemy squads, then witness enhanced destruction mechanics at play as soldiers exploit fresh ruins as dynamic cover. Stunning new rendering and particle FX technology depicts fire, sand and smoke like never before. Brilliant new soldier animations combine with enhanced AI, delivering realistic squad reactions to the battlefield. Optimized for DirectX 12 and multi-core CPUs, Relic's new engine technology will deliver cinematic action to rival any Hollywood blockbuster. </p><p class="bb_paragraph"></p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1677280/extras/Cinematic_action.gif?t=1750947457" /></div></p>
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

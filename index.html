@@ -1,12 +1,35 @@
 ﻿<!DOCTYPE html>
 <html>
-  <head>
-   <link rel="apple-touch-icon" sizes="180x180" src="/apple-touch-icon.png">
-   <link rel="icon" type="image/png" sizes="32x32" src="/favicon-32x32.png">
-   <link rel="icon" type="image/png" sizes="16x16" src="/favicon-16x16.png">
-   <link rel="manifest" src="/site.webmanifest"
-    <title>Gamers Club</title>
+ <head>
+    <title>Nombre</title>
+    <link rel="manifest" href="manifest.webmanifest">
 	<meta name="viewport" content="width=device-width, initial-scale=0.5">
+        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js"></script>
+        <link rel="stylesheet" href="styles.css">
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
 	<style>
 h2:after,
 .cards .card figcaption,
@@ -32,7 +55,11 @@ h2 span {
 }
 
 body {
-  background: #000000;
+   background-image:url("1.jpg");
+   background-attachment: fixed;
+   background-size: cover;
+   background-repeat: no-repeat;
+   opacity: 0.9;
   font-family: 'Arial';
 }
 
@@ -364,11 +391,16 @@ input:hover{
   <body>
     <button onclick="topFunction()" id="BackTopButton" title="Go to top">Top</button>
     <div class="wrapper" id="wrapper">
-      <h2><strong>MEN&#218; PRINCIPAL - Nombre<span>(Nombre ascendente / Nombre ascendente)</span></strong></h2>
+      <h2><strong>GAMERS CLUB</span></strong></h2>
       <div class="Menu"><a Class="MenuButton" href="index.html">Nombre ▲</A><a Class="MenuButton" href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html">G&#233;nero ▲</A><a Class="MenuButton" href="default%20combobox%20quicklinks_category_descendente_name_descendente.html">Por Activacion ▼</A><a Class="MenuButton" href="default%20combobox%20quicklinks_favorite_descendente_name_descendente.html">JUEGOS FREE TO PLAY ▼</A></div>
       <h2><strong>Buscar</strong></h2><input type="text" id="search" placeholder="Escribe el nombre del juego para buscar"><br/><button onclick="search()" id="searchbutton">Buscar</button>
       <h2><strong>Enlaces r&#225;pidos</strong></h2>
-      <P id="label">Nombre: <select id="combobselect" onchange="window.location=this.options[this.selectedIndex].value"><option value="#quicklink-#"># (4)</option><option value="#quicklink-A">A (26)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-A">A (10)</option><option value="#quicklink-B">B (33)</option><option value="#quicklink-C">C (17)</option><option value="#quicklink-#"># (2)</option><option value="#quicklink-C">C (17)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-C">C (8)</option><option value="#quicklink-D">D (2)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-D">D (37)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-D">D (6)</option><option value="#quicklink-E">E (2)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-E">E (19)</option><option value="#quicklink-F">F (34)</option><option value="#quicklink-G">G (15)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-G">G (7)</option><option value="#quicklink-H">H (11)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-H">H (10)</option><option value="#quicklink-I">I (9)</option><option value="#quicklink-J">J (4)</option><option value="#quicklink-K">K (10)</option><option value="#quicklink-L">L (18)</option><option value="#quicklink-M">M (26)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-M">M (19)</option><option value="#quicklink-N">N (9)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-N">N (6)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-N">N (7)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-N">N (5)</option><option value="#quicklink-O">O (8)</option><option value="#quicklink-P">P (17)</option><option value="#quicklink-Q">Q (1)</option><option value="#quicklink-R">R (5)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-R">R (25)</option><option value="#quicklink-S">S (59)</option><option value="#quicklink-T">T (2)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-T">T (19)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-T">T (1)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-T">T (35)</option><option value="#quicklink-U">U (4)</option><option value="#quicklink-V">V (5)</option><option value="#quicklink-W">W (2)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-W">W (19)</option><option value="#quicklink-X">X (1)</option><option value="#quicklink-Z">Z (1)</option></select></P>
+      <a 
+       href="https://wa.me/5356614779?text=Hola%20quiero%20más%20información" class="button-whatsapp" target="_blank">
+       <iconify-icon icon="ic:baseline-whatsapp" width="1.3rem" height="1.2rem"></iconify-icon> 
+        Enviar Mensaje
+    </a>
+      <P id="label">Nombre: <select id="combobselect" onchange="window.location=this.options[this.selectedIndex].value"><option value="#quicklink-#"># (4)</option><option value="#quicklink-A">A (29)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-A">A (11)</option><option value="#quicklink-B">B (34)</option><option value="#quicklink-C">C (17)</option><option value="#quicklink-#"># (2)</option><option value="#quicklink-C">C (18)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-C">C (8)</option><option value="#quicklink-D">D (2)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-D">D (39)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-D">D (6)</option><option value="#quicklink-E">E (2)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-E">E (19)</option><option value="#quicklink-F">F (34)</option><option value="#quicklink-G">G (15)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-G">G (7)</option><option value="#quicklink-H">H (11)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-H">H (10)</option><option value="#quicklink-I">I (9)</option><option value="#quicklink-J">J (4)</option><option value="#quicklink-K">K (11)</option><option value="#quicklink-L">L (8)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-L">L (10)</option><option value="#quicklink-M">M (28)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-M">M (24)</option><option value="#quicklink-N">N (10)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-N">N (6)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-N">N (7)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-N">N (5)</option><option value="#quicklink-O">O (8)</option><option value="#quicklink-P">P (20)</option><option value="#quicklink-Q">Q (1)</option><option value="#quicklink-R">R (4)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-R">R (25)</option><option value="#quicklink-S">S (62)</option><option value="#quicklink-T">T (2)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-T">T (19)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-T">T (1)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-T">T (37)</option><option value="#quicklink-U">U (4)</option><option value="#quicklink-V">V (5)</option><option value="#quicklink-W">W (2)</option><option value="#quicklink-#"># (1)</option><option value="#quicklink-W">W (20)</option><option value="#quicklink-X">X (1)</option><option value="#quicklink-Z">Z (1)</option></select></P>
       <div id="quicklink-#"><h2 id="h2jscript" onclick="ShowHide('#')"><strong id="eye-#" style="color: #007962;">&#x25BC;</strong><strong>#<span>( 4 )</span></strong></h2></div>
 <div id="#" class="cards">
 <figure class="card">
@@ -396,7 +428,7 @@ input:hover{
   </a>
 </figure>
 
-</div><div id="quicklink-A"><h2 id="h2jscript" onclick="ShowHide('A')"><strong id="eye-A" style="color: #007962;">&#x25BC;</strong><strong>A<span>( 26 )</span></strong></h2></div>
+</div><div id="quicklink-A"><h2 id="h2jscript" onclick="ShowHide('A')"><strong id="eye-A" style="color: #007962;">&#x25BC;</strong><strong>A<span>( 29 )</span></strong></h2></div>
 <div id="A" class="cards">
 <figure class="card">
   <a href="9c8ac982-8d58-4139-b206-52695f5c2b4b.html">
@@ -471,6 +503,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="ad6bfaa1-e0df-49d4-8a5b-f54d14adadb7.html">
+  <img class="lozad" data-src="ad6bfaa1-e0df-49d4-8a5b-f54d14adadb7/5f91245b-a321-4b81-a4b8-5f64fe8c350a.jpg"/>
+  <figcaption>Among Us</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="2fbb55b4-a292-49ff-9219-28ebea772182.html">
   <img class="lozad" data-src="2fbb55b4-a292-49ff-9219-28ebea772182/e4a5cacd-b2af-46a2-8e24-43301f47a209.jpg"/>
   <figcaption>Animal Crossing New Horizons </figcaption>
@@ -537,9 +575,21 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="1c3e41a9-f626-40bc-9e96-95eb2d24aa66.html">
+  <img class="lozad" data-src="1c3e41a9-f626-40bc-9e96-95eb2d24aa66/35cb4b39-18f6-4721-bc00-37eafa17f8cd.jpg"/>
+  <figcaption>Assassin&#39;s Creed Liberation</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="d92eab15-71f6-46f5-bbcd-53cdc2458afc.html">
   <img class="lozad" data-src="d92eab15-71f6-46f5-bbcd-53cdc2458afc/e32afa71-0364-42a6-a405-03c338aae1b6.jpg"/>
   <figcaption>Assassin&#39;s Creed Mirage</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="b5c7412e-cb45-494b-abc0-9850f90e17cb.html">
+  <img class="lozad" data-src="b5c7412e-cb45-494b-abc0-9850f90e17cb/0c6b37c6-5cbd-415c-bb4f-7be87ebe3277.jpg"/>
+  <figcaption>Assassin&#39;s Creed Revelations</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -564,7 +614,7 @@ input:hover{
   </a>
 </figure>
 
-</div><div id="quicklink-A"><h2 id="h2jscript" onclick="ShowHide('A')"><strong id="eye-A" style="color: #007962;">&#x25BC;</strong><strong>A<span>( 10 )</span></strong></h2></div>
+</div><div id="quicklink-A"><h2 id="h2jscript" onclick="ShowHide('A')"><strong id="eye-A" style="color: #007962;">&#x25BC;</strong><strong>A<span>( 11 )</span></strong></h2></div>
 <div id="A" class="cards">
 <figure class="card">
   <a href="72e51c9a-0725-4556-9026-7a3c251012ab.html">
@@ -582,6 +632,12 @@ input:hover{
   <a href="37a085a2-3e18-4923-84f7-c6990b909e35.html">
   <img class="lozad" data-src="37a085a2-3e18-4923-84f7-c6990b909e35/cedf3074-15db-4cfa-acd4-f0d5b0fa9464.jpg"/>
   <figcaption>Assassins Creed Origins </figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="c117c0e6-7fb4-48e7-8535-6c1987422635.html">
+  <img class="lozad" data-src="c117c0e6-7fb4-48e7-8535-6c1987422635/850436c6-666f-469f-8360-5f7bdbe9f128.jpg"/>
+  <figcaption>Assassin’s Creed Chronicles: China</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -627,7 +683,7 @@ input:hover{
   </a>
 </figure>
 
-</div><div id="quicklink-B"><h2 id="h2jscript" onclick="ShowHide('B')"><strong id="eye-B" style="color: #007962;">&#x25BC;</strong><strong>B<span>( 33 )</span></strong></h2></div>
+</div><div id="quicklink-B"><h2 id="h2jscript" onclick="ShowHide('B')"><strong id="eye-B" style="color: #007962;">&#x25BC;</strong><strong>B<span>( 34 )</span></strong></h2></div>
 <div id="B" class="cards">
 <figure class="card">
   <a href="d8ee974f-d617-4262-a2bf-84cd37e7ab57.html">
@@ -816,6 +872,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="774509ea-b539-468c-9907-4d20d2eed9d2.html">
+  <img class="lozad" data-src="774509ea-b539-468c-9907-4d20d2eed9d2/3812c0fd-a616-41f9-a616-07e4abdfb53d.jpg"/>
+  <figcaption>Broken Arrow</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="f34a90e0-6e5f-43ab-bba0-2ef9c5fd76e5.html">
   <img class="lozad" data-src="f34a90e0-6e5f-43ab-bba0-2ef9c5fd76e5/4a2f4c77-05cc-4572-a7f9-6bf5d297044f.jpg"/>
   <figcaption>Brothers: A Tale of Two Sons Remake</figcaption>
@@ -948,7 +1010,7 @@ input:hover{
   </a>
 </figure>
 
-</div><div id="quicklink-C"><h2 id="h2jscript" onclick="ShowHide('C')"><strong id="eye-C" style="color: #007962;">&#x25BC;</strong><strong>C<span>( 17 )</span></strong></h2></div>
+</div><div id="quicklink-C"><h2 id="h2jscript" onclick="ShowHide('C')"><strong id="eye-C" style="color: #007962;">&#x25BC;</strong><strong>C<span>( 18 )</span></strong></h2></div>
 <div id="C" class="cards">
 <figure class="card">
   <a href="a82825ef-b8b2-4406-8678-2b7b91fb6e77.html">
@@ -1020,6 +1082,12 @@ input:hover{
   <a href="f5fd043c-2454-436f-974a-6c1602697e81.html">
   <img class="lozad" data-src="f5fd043c-2454-436f-974a-6c1602697e81/a5036800-5fb5-4fd4-a738-18a6347e37cc.jpg"/>
   <figcaption>CODE VEIN</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="7033639f-62ad-4dc9-98af-d6c1b9f788a9.html">
+  <img class="lozad" data-src="7033639f-62ad-4dc9-98af-d6c1b9f788a9/c2cf5832-1d2a-48c6-aa14-ac19649c1e0b.jpg"/>
+  <figcaption>Company of Heroes 3</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -1137,7 +1205,7 @@ input:hover{
   </a>
 </figure>
 
-</div><div id="quicklink-D"><h2 id="h2jscript" onclick="ShowHide('D')"><strong id="eye-D" style="color: #007962;">&#x25BC;</strong><strong>D<span>( 37 )</span></strong></h2></div>
+</div><div id="quicklink-D"><h2 id="h2jscript" onclick="ShowHide('D')"><strong id="eye-D" style="color: #007962;">&#x25BC;</strong><strong>D<span>( 39 )</span></strong></h2></div>
 <div id="D" class="cards">
 <figure class="card">
   <a href="b8c25d71-ea52-4286-b1b6-ef908ab04b6f.html">
@@ -1233,6 +1301,12 @@ input:hover{
   <a href="201f491e-72a4-406a-81a6-f14d2494b4c4.html">
   <img class="lozad" data-src="201f491e-72a4-406a-81a6-f14d2494b4c4/b320a0a1-474e-468c-9406-881ad94921b4.jpg"/>
   <figcaption>DELTA FORCE</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="f5d38089-528b-4ab0-85d7-3bb11dffb325.html">
+  <img class="lozad" data-src="f5d38089-528b-4ab0-85d7-3bb11dffb325/b9e778a9-425c-4ccb-b592-a82a3fa16590.jpg"/>
+  <figcaption>Demon&#39;s Souls [2009]----PS3 EMULATOR</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -1353,6 +1427,12 @@ input:hover{
   <a href="610546f1-bf83-40b1-a34c-f12150560bd9.html">
   <img class="lozad" data-src="610546f1-bf83-40b1-a34c-f12150560bd9/d3f94923-489c-435c-b172-5b10c3d88070.jpg"/>
   <figcaption>Dragon&#39;s Dogma 2</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="89f2fe4a-591f-454e-afac-1d108a0df493.html">
+  <img class="lozad" data-src="89f2fe4a-591f-454e-afac-1d108a0df493/633e37c2-3c49-4525-bec8-e7fec740e9b2.jpg"/>
+  <figcaption>Dread Dawn</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -2130,7 +2210,7 @@ input:hover{
   </a>
 </figure>
 
-</div><div id="quicklink-K"><h2 id="h2jscript" onclick="ShowHide('K')"><strong id="eye-K" style="color: #007962;">&#x25BC;</strong><strong>K<span>( 10 )</span></strong></h2></div>
+</div><div id="quicklink-K"><h2 id="h2jscript" onclick="ShowHide('K')"><strong id="eye-K" style="color: #007962;">&#x25BC;</strong><strong>K<span>( 11 )</span></strong></h2></div>
 <div id="K" class="cards">
 <figure class="card">
   <a href="c20a2ff8-bb1e-4fe8-9f48-36fd80cb661f.html">
@@ -2163,6 +2243,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="c116618f-2a13-4f26-99fd-4f8d9fa07803.html">
+  <img class="lozad" data-src="c116618f-2a13-4f26-99fd-4f8d9fa07803/65aa683e-5c97-4ee7-bd8f-dd6a1007198f.jpg"/>
+  <figcaption>Killing Floor 3</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="db04da9b-b822-49f6-a652-3cfdf1903e8b.html">
   <img class="lozad" data-src="db04da9b-b822-49f6-a652-3cfdf1903e8b/bcf1c3ea-d55a-493c-9a8c-0e6ff24f752e.jpg"/>
   <figcaption>Kingdom Come - Deliverance </figcaption>
@@ -2172,12 +2258,6 @@ input:hover{
   <a href="ba634fd3-494a-46a5-a819-f2d5b9d3a56f.html">
   <img class="lozad" data-src="ba634fd3-494a-46a5-a819-f2d5b9d3a56f/03dfbd22-e2d9-4e64-a7d2-5901dfd3f99e.jpg"/>
   <figcaption>Kingdom Come: Deliverance II</figcaption>
-  </a>
-</figure>
-<figure class="card">
-  <a href="7132600a-6977-43ec-a028-2eb685dab894.html">
-  <img class="lozad" data-src="7132600a-6977-43ec-a028-2eb685dab894/3543930b-08bc-4f9e-9c65-0ad483ea192c.jpg"/>
-  <figcaption>Kingdom Rush 5: Alliance TD</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -2192,8 +2272,14 @@ input:hover{
   <figcaption>Kirby&#39;s Return to Dream Land Deluxe</figcaption>
   </a>
 </figure>
+<figure class="card">
+  <a href="a1c02b12-c1c7-4ba3-bb69-6acadc3a6ded.html">
+  <img class="lozad" data-src="a1c02b12-c1c7-4ba3-bb69-6acadc3a6ded/4f37584e-ca4c-46b3-8093-2788d315b54e.jpg"/>
+  <figcaption>Kunitsu-Gami: Path of the Goddess</figcaption>
+  </a>
+</figure>
 
-</div><div id="quicklink-L"><h2 id="h2jscript" onclick="ShowHide('L')"><strong id="eye-L" style="color: #007962;">&#x25BC;</strong><strong>L<span>( 18 )</span></strong></h2></div>
+</div><div id="quicklink-L"><h2 id="h2jscript" onclick="ShowHide('L')"><strong id="eye-L" style="color: #007962;">&#x25BC;</strong><strong>L<span>( 8 )</span></strong></h2></div>
 <div id="L" class="cards">
 <figure class="card">
   <a href="cd295203-a62e-46f2-9c70-8e645e363427.html">
@@ -2238,11 +2324,23 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
-  <a href="9d8e0493-6ee1-48fd-82fd-f7a00643b803.html">
-  <img class="lozad" data-src="9d8e0493-6ee1-48fd-82fd-f7a00643b803/5b220561-c3a8-4fc4-95e5-16c75246f04c.jpg"/>
-  <figcaption>Little Nightmares</figcaption>
+  <a href="07314a84-a8eb-4b7d-b563-a37a9366f1a2.html">
+  <img class="lozad" data-src="07314a84-a8eb-4b7d-b563-a37a9366f1a2/7c86944c-f2d3-4ab3-a94e-20d8e28c4a2d.jpg"/>
+  <figcaption>Life is Strange: Double Exposure</figcaption>
   </a>
 </figure>
+
+</div><div id="quicklink-#"><h2 id="h2jscript" onclick="ShowHide('#')"><strong id="eye-#" style="color: #007962;">&#x25BC;</strong><strong>#<span>( 1 )</span></strong></h2></div>
+<div id="#" class="cards">
+<figure class="card">
+  <a href="9d8e0493-6ee1-48fd-82fd-f7a00643b803.html">
+  <img class="lozad" data-src="9d8e0493-6ee1-48fd-82fd-f7a00643b803/64c31c1a-08cb-4134-a851-946ea13e3758.jpg"/>
+  <figcaption>  Little Nightmares Enhanced Edition</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-L"><h2 id="h2jscript" onclick="ShowHide('L')"><strong id="eye-L" style="color: #007962;">&#x25BC;</strong><strong>L<span>( 10 )</span></strong></h2></div>
+<div id="L" class="cards">
 <figure class="card">
   <a href="c9a13a14-0062-483b-bf49-722ef13b9030.html">
   <img class="lozad" data-src="c9a13a14-0062-483b-bf49-722ef13b9030/c79981c5-cbe5-4537-9df3-4affc08b4266.jpg"/>
@@ -2304,7 +2402,7 @@ input:hover{
   </a>
 </figure>
 
-</div><div id="quicklink-M"><h2 id="h2jscript" onclick="ShowHide('M')"><strong id="eye-M" style="color: #007962;">&#x25BC;</strong><strong>M<span>( 26 )</span></strong></h2></div>
+</div><div id="quicklink-M"><h2 id="h2jscript" onclick="ShowHide('M')"><strong id="eye-M" style="color: #007962;">&#x25BC;</strong><strong>M<span>( 28 )</span></strong></h2></div>
 <div id="M" class="cards">
 <figure class="card">
   <a href="616a9e45-6d98-4746-9a05-bdb7cbd61ea8.html">
@@ -2421,6 +2519,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="706e7f85-f473-4c4f-b0ef-a538455ac4fa.html">
+  <img class="lozad" data-src="706e7f85-f473-4c4f-b0ef-a538455ac4fa/20b4487a-8218-42d4-9263-a94841ee5015.jpg"/>
+  <figcaption>METAL GEAR RISING: REVENGEANCE</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="e347cc9d-0b2c-4a63-b190-1ae7b5c0653b.html">
   <img class="lozad" data-src="e347cc9d-0b2c-4a63-b190-1ae7b5c0653b/47e5a3c9-1511-45ce-aba6-e648472e5e10.jpg"/>
   <figcaption>METAL GEAR SOLID 3: Snake Eater - Master Collection Version</figcaption>
@@ -2442,6 +2546,12 @@ input:hover{
   <a href="119c21ed-23cb-4b83-b272-175476f7a2d2.html">
   <img class="lozad" data-src="119c21ed-23cb-4b83-b272-175476f7a2d2/d242732e-8d3b-46bc-84ae-687d7326b76e.jpg"/>
   <figcaption>Metro Exodus</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="ce76f1b6-377f-45c8-bcb0-7aa3318f0a3a.html">
+  <img class="lozad" data-src="ce76f1b6-377f-45c8-bcb0-7aa3318f0a3a/c7428e1d-4f58-412b-b7f5-01d833e5b000.jpg"/>
+  <figcaption>Metro: Last Light Redux</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -2472,12 +2582,30 @@ input:hover{
   </a>
 </figure>
 
-</div><div id="quicklink-M"><h2 id="h2jscript" onclick="ShowHide('M')"><strong id="eye-M" style="color: #007962;">&#x25BC;</strong><strong>M<span>( 19 )</span></strong></h2></div>
+</div><div id="quicklink-M"><h2 id="h2jscript" onclick="ShowHide('M')"><strong id="eye-M" style="color: #007962;">&#x25BC;</strong><strong>M<span>( 24 )</span></strong></h2></div>
 <div id="M" class="cards">
 <figure class="card">
   <a href="c73a64fe-fb28-4a1f-a8db-4849f9a95816.html">
   <img class="lozad" data-src="c73a64fe-fb28-4a1f-a8db-4849f9a95816/b2318624-01fc-493e-a15d-5836073026d6.jpg"/>
   <figcaption>MindsEye</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="537967a9-749b-499d-bdb9-5f77e4699fab.html">
+  <img class="lozad" data-src="537967a9-749b-499d-bdb9-5f77e4699fab/9d75d91b-a161-4c16-9fce-470119aaea67.jpg"/>
+  <figcaption>Minecraft dungeons</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="d952e4bf-36cf-4e5a-8274-8c87c3cb5c56.html">
+  <img class="lozad" data-src="d952e4bf-36cf-4e5a-8274-8c87c3cb5c56/87e72023-c543-4384-8cb7-9998d58ac7b4.jpg"/>
+  <figcaption>Minecraft Legends</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="f109adce-cfef-4a2a-9261-4ab310dc8dcb.html">
+  <img class="lozad" data-src="f109adce-cfef-4a2a-9261-4ab310dc8dcb/9d75bcab-6c0e-4451-b0c9-18bfee328344.jpg"/>
+  <figcaption>MLB 2K20 Cuba</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -2499,6 +2627,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="25273009-7533-493a-8cc2-f0b3f149ebe1.html">
+  <img class="lozad" data-src="25273009-7533-493a-8cc2-f0b3f149ebe1/60df9749-4672-45f7-ad28-2be5eb25d377.jpg"/>
+  <figcaption>Monster Hunter Stories</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="e81f2707-88ca-408f-a930-adff443bef3b.html">
   <img class="lozad" data-src="e81f2707-88ca-408f-a930-adff443bef3b/5299e99f-0d18-40df-b134-158bd6b3dd79.jpg"/>
   <figcaption>Monster Hunter: World</figcaption>
@@ -2508,6 +2642,12 @@ input:hover{
   <a href="449dedec-64a9-4622-9708-7b92814c0f93.html">
   <img class="lozad" data-src="449dedec-64a9-4622-9708-7b92814c0f93/f9f289c4-1e79-4a3e-8288-aa7f98eeaf75.jpg"/>
   <figcaption>Monster Jam Showdown</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="ae2e7e03-2709-43cf-8f8c-a175410db378.html">
+  <img class="lozad" data-src="ae2e7e03-2709-43cf-8f8c-a175410db378/27a497bf-e921-4a33-8822-e9fd0b597d5b.jpg"/>
+  <figcaption>Monument Valley 3</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -2532,12 +2672,6 @@ input:hover{
   <a href="89c697d3-8240-48d1-8efe-1bf41b667ee3.html">
   <img class="lozad" data-src="89c697d3-8240-48d1-8efe-1bf41b667ee3/17257f32-9443-45fd-a231-1a68e5835e84.jpg"/>
   <figcaption>Mortal Shell </figcaption>
-  </a>
-</figure>
-<figure class="card">
-  <a href="fa929e76-50fe-4c0a-b628-74086d42f8f4.html">
-  <img class="lozad" data-src="fa929e76-50fe-4c0a-b628-74086d42f8f4/856a8f78-4c0b-4175-984b-f4c15c34c159.jpg"/>
-  <figcaption>MotoGP24</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -2577,6 +2711,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="d2b935e9-84b0-438d-b706-f94a600c6311.html">
+  <img class="lozad" data-src="d2b935e9-84b0-438d-b706-f94a600c6311/b4a45251-6b2e-4917-b3f4-e4fa9b06b57b.jpg"/>
+  <figcaption>My Time at Portia</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="1623c8d1-dc0a-484d-adfb-b2bb0787113e.html">
   <img class="lozad" data-src="1623c8d1-dc0a-484d-adfb-b2bb0787113e/44f99b1e-64f0-495a-987d-d33b41f45826.jpg"/>
   <figcaption>My Time at Sandrock</figcaption>
@@ -2589,7 +2729,7 @@ input:hover{
   </a>
 </figure>
 
-</div><div id="quicklink-N"><h2 id="h2jscript" onclick="ShowHide('N')"><strong id="eye-N" style="color: #007962;">&#x25BC;</strong><strong>N<span>( 9 )</span></strong></h2></div>
+</div><div id="quicklink-N"><h2 id="h2jscript" onclick="ShowHide('N')"><strong id="eye-N" style="color: #007962;">&#x25BC;</strong><strong>N<span>( 10 )</span></strong></h2></div>
 <div id="N" class="cards">
 <figure class="card">
   <a href="fae03f9d-8876-4263-aa0e-fe19f87d4278.html">
@@ -2613,6 +2753,12 @@ input:hover{
   <a href="24d37881-10bd-47f5-9f42-205fc14b714f.html">
   <img class="lozad" data-src="24d37881-10bd-47f5-9f42-205fc14b714f/17789bf4-3cef-401e-a95f-d3936408cf5f.jpg"/>
   <figcaption>NARUTO SHIPPUDEN: Ultimate Ninja STORM Revolution</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="cdeaeeaf-c6e5-4694-abb4-1b0f5d25da09.html">
+  <img class="lozad" data-src="cdeaeeaf-c6e5-4694-abb4-1b0f5d25da09/3383ebe6-603f-4415-bebc-80229900fa92.jpg"/>
+  <figcaption>NARUTO: Ultimate Ninja STORM</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -2841,7 +2987,7 @@ input:hover{
   </a>
 </figure>
 
-</div><div id="quicklink-P"><h2 id="h2jscript" onclick="ShowHide('P')"><strong id="eye-P" style="color: #007962;">&#x25BC;</strong><strong>P<span>( 17 )</span></strong></h2></div>
+</div><div id="quicklink-P"><h2 id="h2jscript" onclick="ShowHide('P')"><strong id="eye-P" style="color: #007962;">&#x25BC;</strong><strong>P<span>( 20 )</span></strong></h2></div>
 <div id="P" class="cards">
 <figure class="card">
   <a href="b5e1668a-aba0-4b1d-a226-f491c8ff2d83.html">
@@ -2898,6 +3044,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="9ddaf451-d703-48e4-94ae-b11a04352e4c.html">
+  <img class="lozad" data-src="9ddaf451-d703-48e4-94ae-b11a04352e4c/c11757ba-97b2-4573-9a32-86a80ea220f2.jpg"/>
+  <figcaption>PixARK</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="a8ca7d31-4ade-4df9-a130-83abe3cf1a96.html">
   <img class="lozad" data-src="a8ca7d31-4ade-4df9-a130-83abe3cf1a96/c5bd4d4f-72e3-4c9a-8a49-939228eb68d5.jpg"/>
   <figcaption>Poppy Playtime</figcaption>
@@ -2910,6 +3062,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="c3a96c54-2288-4888-9170-54fdcc6ef58c.html">
+  <img class="lozad" data-src="c3a96c54-2288-4888-9170-54fdcc6ef58c/8a2d89b1-fa5f-4d38-a16f-118d9bc68eba.jpg"/>
+  <figcaption>Prey</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="d1e371c6-b59d-4a61-9d08-2d1eb165460d.html">
   <img class="lozad" data-src="d1e371c6-b59d-4a61-9d08-2d1eb165460d/3cc8c398-bfe6-49bd-95ca-7a83c90d589d.jpg"/>
   <figcaption>Prince of Persia The Lost Crown </figcaption>
@@ -2919,6 +3077,12 @@ input:hover{
   <a href="fb585d19-eb60-490f-a43b-2895057b384d.html">
   <img class="lozad" data-src="fb585d19-eb60-490f-a43b-2895057b384d/2f2b605a-bc92-4844-9b4b-dfaa55be311e.jpg"/>
   <figcaption>Prince of Persia: The Forgotten Sands</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="c9e5e36b-2d8d-4efc-b619-abd38ea9afa4.html">
+  <img class="lozad" data-src="c9e5e36b-2d8d-4efc-b619-abd38ea9afa4/eba6992b-5bad-40b7-883b-f43cac63bb15.jpg"/>
+  <figcaption>Project Zomboid</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -2955,7 +3119,7 @@ input:hover{
   </a>
 </figure>
 
-</div><div id="quicklink-R"><h2 id="h2jscript" onclick="ShowHide('R')"><strong id="eye-R" style="color: #007962;">&#x25BC;</strong><strong>R<span>( 5 )</span></strong></h2></div>
+</div><div id="quicklink-R"><h2 id="h2jscript" onclick="ShowHide('R')"><strong id="eye-R" style="color: #007962;">&#x25BC;</strong><strong>R<span>( 4 )</span></strong></h2></div>
 <div id="R" class="cards">
 <figure class="card">
   <a href="1123a687-9eda-4beb-9eb3-75313792aac7.html">
@@ -2973,12 +3137,6 @@ input:hover{
   <a href="c1384d0e-cd8c-4a15-aae9-2eeb0e0ec59b.html">
   <img class="lozad" data-src="c1384d0e-cd8c-4a15-aae9-2eeb0e0ec59b/bcb60e6c-ffd7-4034-9d8e-b479093aecfd.jpg"/>
   <figcaption>Rain World </figcaption>
-  </a>
-</figure>
-<figure class="card">
-  <a href="255d6241-7127-4bb8-940e-7ef9a6c6bf5e.html">
-  <img class="lozad" data-src="255d6241-7127-4bb8-940e-7ef9a6c6bf5e/d2bb4664-490b-4214-a524-8a8276ed41a6.jpg"/>
-  <figcaption>Ranch Simulator </figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -3018,14 +3176,14 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
-  <a href="ec8677ae-8cd3-41fc-a8e7-8463b7a9460c.html">
-  <img class="lozad" data-src="ec8677ae-8cd3-41fc-a8e7-8463b7a9460c/79d9af59-9b8c-4a95-85b9-eed1cd107cac.jpg"/>
+  <a href="3f51045b-b4e6-485b-9201-8e3b0bca760f.html">
+  <img class="lozad" data-src="3f51045b-b4e6-485b-9201-8e3b0bca760f/06ec62f7-dff6-4639-b7f8-cc674935de06.jpg"/>
   <figcaption>Red Dead Redemption</figcaption>
   </a>
 </figure>
 <figure class="card">
-  <a href="3f51045b-b4e6-485b-9201-8e3b0bca760f.html">
-  <img class="lozad" data-src="3f51045b-b4e6-485b-9201-8e3b0bca760f/06ec62f7-dff6-4639-b7f8-cc674935de06.jpg"/>
+  <a href="ec8677ae-8cd3-41fc-a8e7-8463b7a9460c.html">
+  <img class="lozad" data-src="ec8677ae-8cd3-41fc-a8e7-8463b7a9460c/79d9af59-9b8c-4a95-85b9-eed1cd107cac.jpg"/>
   <figcaption>Red Dead Redemption</figcaption>
   </a>
 </figure>
@@ -3150,7 +3308,7 @@ input:hover{
   </a>
 </figure>
 
-</div><div id="quicklink-S"><h2 id="h2jscript" onclick="ShowHide('S')"><strong id="eye-S" style="color: #007962;">&#x25BC;</strong><strong>S<span>( 59 )</span></strong></h2></div>
+</div><div id="quicklink-S"><h2 id="h2jscript" onclick="ShowHide('S')"><strong id="eye-S" style="color: #007962;">&#x25BC;</strong><strong>S<span>( 62 )</span></strong></h2></div>
 <div id="S" class="cards">
 <figure class="card">
   <a href="af3bffe8-78f1-45b8-8295-4274b5702843.html">
@@ -3180,6 +3338,12 @@ input:hover{
   <a href="8f6c6e86-dade-45b3-a45f-72736864c47e.html">
   <img class="lozad" data-src="8f6c6e86-dade-45b3-a45f-72736864c47e/8275cddb-322d-4006-a043-58ab7d64bd4d.jpg"/>
   <figcaption>Scars Above  </figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="15545a1b-dd79-41d7-803b-078a9c927698.html">
+  <img class="lozad" data-src="15545a1b-dd79-41d7-803b-078a9c927698/078505f6-552c-4add-bce6-2941c4c11952.jpg"/>
+  <figcaption>SCUM</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -3339,6 +3503,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="1826182a-f9f8-408c-b4f7-aa961103bf58.html">
+  <img class="lozad" data-src="1826182a-f9f8-408c-b4f7-aa961103bf58/d6b263ec-afa5-4fab-a176-763820ea26e5.jpg"/>
+  <figcaption>Spider-Man: Shattered Dimensions</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="2c2e57bc-72d4-4b10-b25f-70c07b587a29.html">
   <img class="lozad" data-src="2c2e57bc-72d4-4b10-b25f-70c07b587a29/2adbe534-de95-4e57-bd39-9ea4d46db129.jpg"/>
   <figcaption>Split Fiction</figcaption>
@@ -3417,6 +3587,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="b465b2d9-6330-4f6c-a5ff-ba5d5cbbc03d.html">
+  <img class="lozad" data-src="b465b2d9-6330-4f6c-a5ff-ba5d5cbbc03d/9e7014c7-3a65-4895-a46b-c8d4d2546b32.jpg"/>
+  <figcaption>Steep</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="ddf8c54e-7fcc-48a2-9972-5c9ebd0b69a3.html">
   <img class="lozad" data-src="ddf8c54e-7fcc-48a2-9972-5c9ebd0b69a3/828ae0ce-6a13-4ab3-8f3d-760596fd3d92.jpg"/>
   <figcaption>Still Wakes the Deep</figcaption>
@@ -3438,6 +3614,12 @@ input:hover{
   <a href="cbf9807e-b3cc-43e9-ba96-38b4ff6e137f.html">
   <img class="lozad" data-src="cbf9807e-b3cc-43e9-ba96-38b4ff6e137f/ef9d095e-cd8b-4ed6-9cb6-d4f724d5a4d7.jpg"/>
   <figcaption>Strayed Lights</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="b2f5ac52-5aca-47dd-847d-46d1f9f4df38.html">
+  <img class="lozad" data-src="b2f5ac52-5aca-47dd-847d-46d1f9f4df38/3a0f6ef6-f9a5-4d3a-a97e-3084da1e0630.jpg"/>
+  <figcaption>Street Fighter V</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -3492,12 +3674,6 @@ input:hover{
   <a href="3408aa24-622c-4b9f-bb05-4d6ae7775d88.html">
   <img class="lozad" data-src="3408aa24-622c-4b9f-bb05-4d6ae7775d88/138b3782-4d05-4eac-874d-583e6fc11933.jpg"/>
   <figcaption>Supermarket Simulator</figcaption>
-  </a>
-</figure>
-<figure class="card">
-  <a href="a5f6afa5-bb96-4574-baee-cbf7aad41c6d.html">
-  <img class="lozad" data-src="a5f6afa5-bb96-4574-baee-cbf7aad41c6d/e32bf747-a1ed-414c-b449-a6b94f0c1f8d.jpg"/>
-  <figcaption>Supernatural </figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -3675,7 +3851,7 @@ input:hover{
   </a>
 </figure>
 
-</div><div id="quicklink-T"><h2 id="h2jscript" onclick="ShowHide('T')"><strong id="eye-T" style="color: #007962;">&#x25BC;</strong><strong>T<span>( 35 )</span></strong></h2></div>
+</div><div id="quicklink-T"><h2 id="h2jscript" onclick="ShowHide('T')"><strong id="eye-T" style="color: #007962;">&#x25BC;</strong><strong>T<span>( 37 )</span></strong></h2></div>
 <div id="T" class="cards">
 <figure class="card">
   <a href="58feb07b-737b-4d88-b67a-d41b4124c452.html">
@@ -3804,6 +3980,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="c8ff7823-7362-4078-82f7-5d6751fdd689.html">
+  <img class="lozad" data-src="c8ff7823-7362-4078-82f7-5d6751fdd689/befb0bf9-0ea3-4f8d-93dd-fd98c8deb066.jpg"/>
+  <figcaption>Tom Clancy&#39;s Rainbow Six Siege X</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="4ea5e5a1-3af9-47d0-aa07-a0029a259d70.html">
   <img class="lozad" data-src="4ea5e5a1-3af9-47d0-aa07-a0029a259d70/7195bdbe-6dd0-4d2c-a88a-b8fb97be7e6c.jpg"/>
   <figcaption>Tom Clancy&#39;s Splinter Cell Double Agent </figcaption>
@@ -3837,6 +4019,12 @@ input:hover{
   <a href="e011007f-a6aa-415a-9f86-80eefe0b751b.html">
   <img class="lozad" data-src="e011007f-a6aa-415a-9f86-80eefe0b751b/8e7621ac-cf8c-4803-83bd-4a0681030925.jpg"/>
   <figcaption>Tomb Raider I III Remastered Starring Lara Croft</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="15d54f4d-9d62-484a-b92c-34fc2d908b99.html">
+  <img class="lozad" data-src="15d54f4d-9d62-484a-b92c-34fc2d908b99/2b0ed521-dd30-4eb0-87ea-f6aba29da6b0.jpg"/>
+  <figcaption>Tony Hawk&#39;s Pro Skater 3 + 4</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -3972,7 +4160,7 @@ input:hover{
   </a>
 </figure>
 
-</div><div id="quicklink-W"><h2 id="h2jscript" onclick="ShowHide('W')"><strong id="eye-W" style="color: #007962;">&#x25BC;</strong><strong>W<span>( 19 )</span></strong></h2></div>
+</div><div id="quicklink-W"><h2 id="h2jscript" onclick="ShowHide('W')"><strong id="eye-W" style="color: #007962;">&#x25BC;</strong><strong>W<span>( 20 )</span></strong></h2></div>
 <div id="W" class="cards">
 <figure class="card">
   <a href="a016c999-ccd7-4f8a-8a99-46b116f19a27.html">
@@ -4077,9 +4265,15 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
-  <a href="996a9677-db58-4c6c-a29e-9e154839cddf.html">
-  <img class="lozad" data-src="996a9677-db58-4c6c-a29e-9e154839cddf/b8f7adf9-f0e3-406f-b948-5c485ed5cccc.jpg"/>
-  <figcaption>WWE 2K24</figcaption>
+  <a href="fff5bb23-237e-4b11-bf38-b1584640d568.html">
+  <img class="lozad" data-src="fff5bb23-237e-4b11-bf38-b1584640d568/fa9bca81-ddf8-46db-98c2-ae41e782c805.jpg"/>
+  <figcaption>WUCHANG: Fallen Feathers</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="c3e9d180-21e2-4260-9aa6-9ce6776d994e.html">
+  <img class="lozad" data-src="c3e9d180-21e2-4260-9aa6-9ce6776d994e/ea81d410-91bc-4466-b783-2652207badca.jpg"/>
+  <figcaption>Wuthering Waves</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -4110,7 +4304,7 @@ input:hover{
 </div>
     </div>
   </body>
-   <script src="lozad.min.js"></script>
+  <script src="lozad.min.js"></script>
   <script>
     const observer = lozad(); // lazy loads elements with default selector as '.lozad'
     observer.observe();

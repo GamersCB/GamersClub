@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Tom Clancy&#39;s Rainbow Six Siege X</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('c8ff7823-7362-4078-82f7-5d6751fdd689/ee634eb1-eea0-4636-93a7-a4f1162accfa.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="c8ff7823-7362-4078-82f7-5d6751fdd689/9d75e0e7-d920-4692-afe1-e68c9dd2a238.png"/> Tom Clancy&#39;s Rainbow Six Siege X</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="c8ff7823-7362-4078-82f7-5d6751fdd689/befb0bf9-0ea3-4f8d-93dd-fd98c8deb066.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-6/23/2025">6/23/2025</a> 18:16:05</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-6/23/2025">6/23/2025</a> 18:17:41</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-FREE TO PLAY">FREE TO PLAY</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-"></a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-83">83</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Free to Play">Free to Play</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Ubisoft Montreal">Ubisoft Montreal</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Ubisoft">Ubisoft</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Compras Dentro De La Aplicación">Compras Dentro De La Aplicación</a><br/><a href="#quicklink-Cooperativo">Cooperativo</a><br/><a href="#quicklink-Cooperativo En Línea">Cooperativo En Línea</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Jcj">Jcj</a><br/><a href="#quicklink-Jcj En Línea">Jcj En Línea</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Remote Play En Móvil">Remote Play En Móvil</a><br/><a href="#quicklink-Remote Play En Tableta">Remote Play En Tableta</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/359550" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/359550/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/359550/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=359550" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/359550" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=359550" target="_blank">PCGamingWiki</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-3D">3D</a><br/><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Basados en equipos">Basados en equipos</a><br/><a href="#quicklink-Bélicos">Bélicos</a><br/><a href="#quicklink-Competitivos">Competitivos</a><br/><a href="#quicklink-Cooperativos">Cooperativos</a><br/><a href="#quicklink-Cooperativos en línea">Cooperativos en línea</a><br/><a href="#quicklink-Destrucción">Destrucción</a><br/><a href="#quicklink-Difíciles">Difíciles</a><br/><a href="#quicklink-Disparos">Disparos</a><br/><a href="#quicklink-Disparos de héroe">Disparos de héroe</a><br/><a href="#quicklink-e-sports">e-sports</a><br/><a href="#quicklink-Estrategia">Estrategia</a><br/><a href="#quicklink-FPS">FPS</a><br/><a href="#quicklink-JcJ">JcJ</a><br/><a href="#quicklink-Militares">Militares</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Primera persona">Primera persona</a><br/><a href="#quicklink-Realistas">Realistas</a><br/><a href="#quicklink-Tácticos">Tácticos</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					Tom Clancy's Rainbow Six Siege X es el referente indiscutible de juegos de disparos tácticos de equipo, en el que la estrategia y la ejecución de élite triunfan.<br>Disfruta de acceso gratuito a los modos de juego Partida rápida, No clasificatoria y Dual Front con una selección de agentes.<br><br>HACE FALTA PAGAR PARA DESBLOQUEAR CIERTAS CARACTERISTICAS, COMO LAS LISTAS DEL MODO CLASIFICATORIO, LA COPA SIEGE, AGENTES ADICIONALES Y OBJETOS ESTETICOS.<br><br>Siege X supone la mayor evolución de la historia del juego, lo que supone una renovación visual, una experiencia mejorada y cambios en la jugabilidad que profundizan en la esencia táctica del juego.<br><br><br>[/h2]ALTO RIESGO 5c5 ATAQUE CONTRA DEFENSA[/h2]<br><br>Alterna entre ataque y defensa, adapta tu forma de afrontar los mapas y a los agentes. Siente la emoción y la intensidad de la acción mientras te aprovechas de la destrucción y los dispositivos para superar a los rivales en todas y cada una de las rondas.<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/359550/extras/GIF_BASE_R6X_FU_01.gif?t=1750266194" /><br>- En defensa, transforma tus alrededores en fuertes fortificados. Refuerza paredes, coloca barricadas y despliega trampas para controlar los movimientos del enemigo. Utiliza herramientas de vigilancia para reunir información y anticipar su plan de ataque. Defiende la posición, adáptate a sus tácticas y supera a los atacantes en todo momento.<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/359550/extras/GIF_BASE_R6X_FU_02.gif?t=1750266194" /><br>- En ataque, reúne información sobre la posición de los enemigos y los nidos de bombas con los drones. Coordínate con tu equipo para superar defensas reforzadas, despejar trampas y crear aperturas inesperadas. Pilla a los enemigos por sorpresa con jugadas verticales: ataca desde arriba, abajo o arriésgate a entrar en la zona por las ventanas gracias al rápel. Planea el ataque, ejecútalo y desactiva el peligro de las situaciones.<br><br><br>[/h2]HERRAMIENTAS DE DESTRUCCIÓN[/h2]<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/359550/extras/GIF_BASE_R6X_FU_03.gif?t=1750266194" /><br>La destrucción no solo es el caos: es la herramienta para el éxito. Usa el entorno y aprovéchate de él: convierte las paredes en oportunidades.  Utiliza tecnología de vanguardia para rastrear los movimientos del enemigo, destruye paredes para crear nuevas líneas de visión y manipula el entorno para asegurarte la ventaja táctica.<br><br><br>[/h2]DUAL FRONT: ENFRENTAMIENTOS 6C6 CON DINAMISMO TÁCTICO[/h2]<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/359550/extras/GIF_BASE_R6X_FU_04.gif?t=1750266194" /><br>Enfréntate en combates 6c6 intensos en el mapa más grande de Siege, en el que los equipos capturan sectores enemigos y defienden los suyos propios. Ábrete paso hasta la base enemiga y asegura la victoria.<br><br>Selecciona a un agente de una lista preparada entre ataques y defensores que lucharán codo con codo y desbloquea nuevas posibilidades tácticas. Al reaparecer, cambia tu agente y la estrategia para cambiar las tornas del combate, o aventúrate en el Sector neutral para afrontar misiones de mucho riesgo y gran recompensa para conseguir bonificaciones que pueden darle la vuelta a la tortilla.<br><br>Dual Front presenta una forma nueva y atrevida de disfrutar del enfoque y la intensidad tácticos de Rainbow Six Siege.<br><br><br>[/h2]DE RECLUTA A ÉLITE[/h2]<br><br>Una vía de iniciación de calidad para los jugadores nuevos, que incluye una nueva ruta de nivel de autorización para ayudar con el aprendizaje de los conceptos básicos y a ganar la confianza y habilidad necesarias para lanzarse a la acción táctica.<br><br><br>[/h2]EVOLUCIÓN CONSTANTE[/h2]<br><br>Cada temporada incluye grandes actualizaciones, con nuevo contenido y características para una estrategia y jugabilidad renovadas.<br><br><br>[/h2]COMPETITIVIDAD ESTRATOSFÉRICA[/h2]<br><br>Únete a una comunidad online enorme con más de 80 millones de jugadores. Disfruta de enfrentamientos entre equipos profesionales del más alto nivel en la prestigiosa competición de esports de Rainbow Six Siege.<br><br><br>El acceso al juego es gratuito. Hace falta pagar para desbloquear ciertas características, como los modos de juego competitivo, agentes y objetos estéticos.
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

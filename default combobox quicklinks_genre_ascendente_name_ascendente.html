@@ -1,9 +1,35 @@
 ﻿<!DOCTYPE html>
 <html>
-  <head>
+ <head>
     <title>G&#233;nero</title>
     <link rel="manifest" href="manifest.webmanifest">
 	<meta name="viewport" content="width=device-width, initial-scale=0.5">
+        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js"></script>
+        <link rel="stylesheet" href="styles.css">
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
 	<style>
 h2:after,
 .cards .card figcaption,
@@ -29,7 +55,11 @@ h2 span {
 }
 
 body {
-  background: #24282f;
+   background-image:url("1.jpg");
+   background-attachment: fixed;
+   background-size: cover;
+   background-repeat: no-repeat;
+   opacity: 0.9;
   font-family: 'Arial';
 }
 
@@ -365,13 +395,19 @@ input:hover{
       <div class="Menu"><a Class="MenuButton" href="index.html">Nombre ▲</A><a Class="MenuButton" href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html">G&#233;nero ▲</A><a Class="MenuButton" href="default%20combobox%20quicklinks_category_descendente_name_descendente.html">Por Activacion ▼</A><a Class="MenuButton" href="default%20combobox%20quicklinks_favorite_descendente_name_descendente.html">JUEGOS FREE TO PLAY ▼</A></div>
       <h2><strong>Buscar</strong></h2><input type="text" id="search" placeholder="Escribe el nombre del juego para buscar"><br/><button onclick="search()" id="searchbutton">Buscar</button>
       <h2><strong>Enlaces r&#225;pidos</strong></h2>
-      <P id="label">G&#233;nero: <select id="combobselect" onchange="window.location=this.options[this.selectedIndex].value"><option value="#quicklink-Ninguna">Ninguna (5)</option><option value="#quicklink-Acceso anticipado">Acceso anticipado (8)</option><option value="#quicklink-Acci&#243;n">Acci&#243;n (358)</option><option value="#quicklink-Action">Action (28)</option><option value="#quicklink-Action role-playing">Action role-playing (3)</option><option value="#quicklink-Action-adventure">Action-adventure (2)</option><option value="#quicklink-Adventure">Adventure (29)</option><option value="#quicklink-Arcade">Arcade (1)</option><option value="#quicklink-Aventura">Aventura (262)</option><option value="#quicklink-Baseball">Baseball (1)</option><option value="#quicklink-Battle royale">Battle royale (1)</option><option value="#quicklink-beat &#39;em up">beat &#39;em up (1)</option><option value="#quicklink-Carreras">Carreras (38)</option><option value="#quicklink-Casual">Casual (36)</option><option value="#quicklink-Crime">Crime (1)</option><option value="#quicklink-Deportes">Deportes (38)</option><option value="#quicklink-DLC / Expansion">DLC / Expansion (1)</option><option value="#quicklink-Estrategia">Estrategia (59)</option><option value="#quicklink-Family">Family (1)</option><option value="#quicklink-Fantasy">Fantasy (1)</option><option value="#quicklink-First-Person">First-Person (3)</option><option value="#quicklink-First-person shooter">First-person shooter (7)</option><option value="#quicklink-Free to Play">Free to Play (22)</option><option value="#quicklink-Gaming Competition">Gaming Competition (1)</option><option value="#quicklink-Hack and slash/Beat &#39;em up">Hack and slash/Beat &#39;em up (2)</option><option value="#quicklink-Horde Defense">Horde Defense (1)</option><option value="#quicklink-Horror">Horror (3)</option><option value="#quicklink-Indie">Indie (108)</option><option value="#quicklink-Life simulation">Life simulation (1)</option><option value="#quicklink-MMO">MMO (1)</option><option value="#quicklink-Multijugador masivo">Multijugador masivo (15)</option><option value="#quicklink-Open-World">Open-World (7)</option><option value="#quicklink-Party">Party (1)</option><option value="#quicklink-Persistent Online">Persistent Online (2)</option><option value="#quicklink-Platform">Platform (5)</option><option value="#quicklink-Platformer">Platformer (6)</option><option value="#quicklink-Puzzle">Puzzle (3)</option><option value="#quicklink-Racing">Racing (11)</option><option value="#quicklink-Remake">Remake (4)</option><option value="#quicklink-Remaster">Remaster (3)</option><option value="#quicklink-Roguelite">Roguelite (1)</option><option value="#quicklink-Rol">Rol (127)</option><option value="#quicklink-Role-playing (RPG)">Role-playing (RPG) (2)</option><option value="#quicklink-RPG">RPG (13)</option><option value="#quicklink-Shooter">Shooter (15)</option><option value="#quicklink-Simuladores">Simuladores (109)</option><option value="#quicklink-Simulation">Simulation (2)</option><option value="#quicklink-Simulator">Simulator (2)</option><option value="#quicklink-Sports">Sports (2)</option><option value="#quicklink-stealth">stealth (2)</option><option value="#quicklink-Strategy">Strategy (2)</option><option value="#quicklink-Survival">Survival (1)</option><option value="#quicklink-Tactical shooter">Tactical shooter (2)</option><option value="#quicklink-Third-person shooter">Third-person shooter (2)</option><option value="#quicklink-Turn-Based">Turn-Based (1)</option><option value="#quicklink-Western">Western (1)</option></select></P>
-      <div id="quicklink-Ninguna"><h2 id="h2jscript" onclick="ShowHide('Ninguna')"><strong id="eye-Ninguna" style="color: #007962;">&#x25BC;</strong><strong>Ninguna<span>( 5 )</span></strong></h2></div>
+      <P id="label">G&#233;nero: <select id="combobselect" onchange="window.location=this.options[this.selectedIndex].value"><option value="#quicklink-Ninguna">Ninguna (6)</option><option value="#quicklink-Acceso anticipado">Acceso anticipado (9)</option><option value="#quicklink-Acci&#243;n">Acci&#243;n (378)</option><option value="#quicklink-Action">Action (30)</option><option value="#quicklink-Action role-playing">Action role-playing (3)</option><option value="#quicklink-Action-adventure">Action-adventure (2)</option><option value="#quicklink-Adventure">Adventure (29)</option><option value="#quicklink-Arcade">Arcade (1)</option><option value="#quicklink-Aventura">Aventura (275)</option><option value="#quicklink-Baseball">Baseball (1)</option><option value="#quicklink-Battle royale">Battle royale (1)</option><option value="#quicklink-beat &#39;em up">beat &#39;em up (1)</option><option value="#quicklink-Carreras">Carreras (37)</option><option value="#quicklink-Casual">Casual (40)</option><option value="#quicklink-Crime">Crime (1)</option><option value="#quicklink-Deportes">Deportes (38)</option><option value="#quicklink-DLC / Expansion">DLC / Expansion (1)</option><option value="#quicklink-Estrategia">Estrategia (64)</option><option value="#quicklink-Family">Family (1)</option><option value="#quicklink-Fantasy">Fantasy (1)</option><option value="#quicklink-First-Person">First-Person (3)</option><option value="#quicklink-First-person shooter">First-person shooter (7)</option><option value="#quicklink-Free to Play">Free to Play (24)</option><option value="#quicklink-Gaming Competition">Gaming Competition (1)</option><option value="#quicklink-Hack and slash/Beat &#39;em up">Hack and slash/Beat &#39;em up (2)</option><option value="#quicklink-Horde Defense">Horde Defense (1)</option><option value="#quicklink-Horror">Horror (3)</option><option value="#quicklink-Indie">Indie (111)</option><option value="#quicklink-Life simulation">Life simulation (1)</option><option value="#quicklink-MMO">MMO (1)</option><option value="#quicklink-Multijugador masivo">Multijugador masivo (17)</option><option value="#quicklink-Open-World">Open-World (7)</option><option value="#quicklink-Party">Party (1)</option><option value="#quicklink-Persistent Online">Persistent Online (2)</option><option value="#quicklink-Platform">Platform (5)</option><option value="#quicklink-Platformer">Platformer (6)</option><option value="#quicklink-Puzzle">Puzzle (3)</option><option value="#quicklink-Racing">Racing (11)</option><option value="#quicklink-Remake">Remake (4)</option><option value="#quicklink-Remaster">Remaster (3)</option><option value="#quicklink-Roguelite">Roguelite (1)</option><option value="#quicklink-Rol">Rol (135)</option><option value="#quicklink-Role-playing (RPG)">Role-playing (RPG) (2)</option><option value="#quicklink-RPG">RPG (14)</option><option value="#quicklink-Shooter">Shooter (15)</option><option value="#quicklink-Simuladores">Simuladores (109)</option><option value="#quicklink-Simulation">Simulation (2)</option><option value="#quicklink-Simulator">Simulator (2)</option><option value="#quicklink-Sports">Sports (2)</option><option value="#quicklink-stealth">stealth (2)</option><option value="#quicklink-Strategy">Strategy (2)</option><option value="#quicklink-Survival">Survival (1)</option><option value="#quicklink-Tactical shooter">Tactical shooter (2)</option><option value="#quicklink-Third-person shooter">Third-person shooter (2)</option><option value="#quicklink-Turn-Based">Turn-Based (1)</option><option value="#quicklink-Western">Western (1)</option></select></P>
+      <div id="quicklink-Ninguna"><h2 id="h2jscript" onclick="ShowHide('Ninguna')"><strong id="eye-Ninguna" style="color: #007962;">&#x25BC;</strong><strong>Ninguna<span>( 6 )</span></strong></h2></div>
 <div id="Ninguna" class="cards">
 <figure class="card">
   <a href="f337cde9-4957-412e-9125-b74eeb104d88.html">
   <img class="lozad" data-src="f337cde9-4957-412e-9125-b74eeb104d88/4455e94d-467d-4721-aa06-278c1e83f0ca.jpg"/>
   <figcaption>Middle-earth: Shadow of Mordor</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="f109adce-cfef-4a2a-9261-4ab310dc8dcb.html">
+  <img class="lozad" data-src="f109adce-cfef-4a2a-9261-4ab310dc8dcb/9d75bcab-6c0e-4451-b0c9-18bfee328344.jpg"/>
+  <figcaption>MLB 2K20 Cuba</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -399,7 +435,7 @@ input:hover{
   </a>
 </figure>
 
-</div><div id="quicklink-Acceso anticipado"><h2 id="h2jscript" onclick="ShowHide('Acceso anticipado')"><strong id="eye-Acceso anticipado" style="color: #007962;">&#x25BC;</strong><strong>Acceso anticipado<span>( 8 )</span></strong></h2></div>
+</div><div id="quicklink-Acceso anticipado"><h2 id="h2jscript" onclick="ShowHide('Acceso anticipado')"><strong id="eye-Acceso anticipado" style="color: #007962;">&#x25BC;</strong><strong>Acceso anticipado<span>( 9 )</span></strong></h2></div>
 <div id="Acceso anticipado" class="cards">
 <figure class="card">
   <a href="dab7fa48-6b01-4036-9425-2d8a0132dc7a.html">
@@ -438,6 +474,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="c9e5e36b-2d8d-4efc-b619-abd38ea9afa4.html">
+  <img class="lozad" data-src="c9e5e36b-2d8d-4efc-b619-abd38ea9afa4/eba6992b-5bad-40b7-883b-f43cac63bb15.jpg"/>
+  <figcaption>Project Zomboid</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="4a5f6b21-d6a4-40fd-abb0-e29b427704c2.html">
   <img class="lozad" data-src="4a5f6b21-d6a4-40fd-abb0-e29b427704c2/84c36fae-eee9-4912-8ca3-6a1928c9a747.jpg"/>
   <figcaption>silent bREATH</figcaption>
@@ -450,7 +492,7 @@ input:hover{
   </a>
 </figure>
 
-</div><div id="quicklink-Acci&#243;n"><h2 id="h2jscript" onclick="ShowHide('Acci&#243;n')"><strong id="eye-Acci&#243;n" style="color: #007962;">&#x25BC;</strong><strong>Acci&#243;n<span>( 358 )</span></strong></h2></div>
+</div><div id="quicklink-Acci&#243;n"><h2 id="h2jscript" onclick="ShowHide('Acci&#243;n')"><strong id="eye-Acci&#243;n" style="color: #007962;">&#x25BC;</strong><strong>Acci&#243;n<span>( 378 )</span></strong></h2></div>
 <div id="Acci&#243;n" class="cards">
 <figure class="card">
   <a href="1c620747-c306-4bdf-b2d2-56be08224633.html">
@@ -609,6 +651,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="c117c0e6-7fb4-48e7-8535-6c1987422635.html">
+  <img class="lozad" data-src="c117c0e6-7fb4-48e7-8535-6c1987422635/850436c6-666f-469f-8360-5f7bdbe9f128.jpg"/>
+  <figcaption>Assassin’s Creed Chronicles: China</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="83ba3b90-496c-410c-a9cc-e6db86ad4470.html">
   <img class="lozad" data-src="83ba3b90-496c-410c-a9cc-e6db86ad4470/c63b9fd2-d4e9-4127-aa0e-365a8868e227.jpg"/>
   <figcaption>Assassin’s Creed&#174; IV Black Flag™</figcaption>
@@ -645,6 +693,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="1c3e41a9-f626-40bc-9e96-95eb2d24aa66.html">
+  <img class="lozad" data-src="1c3e41a9-f626-40bc-9e96-95eb2d24aa66/35cb4b39-18f6-4721-bc00-37eafa17f8cd.jpg"/>
+  <figcaption>Assassin&#39;s Creed Liberation</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="d92eab15-71f6-46f5-bbcd-53cdc2458afc.html">
   <img class="lozad" data-src="d92eab15-71f6-46f5-bbcd-53cdc2458afc/e32afa71-0364-42a6-a405-03c338aae1b6.jpg"/>
   <figcaption>Assassin&#39;s Creed Mirage</figcaption>
@@ -660,6 +714,12 @@ input:hover{
   <a href="37a085a2-3e18-4923-84f7-c6990b909e35.html">
   <img class="lozad" data-src="37a085a2-3e18-4923-84f7-c6990b909e35/cedf3074-15db-4cfa-acd4-f0d5b0fa9464.jpg"/>
   <figcaption>Assassins Creed Origins </figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="b5c7412e-cb45-494b-abc0-9850f90e17cb.html">
+  <img class="lozad" data-src="b5c7412e-cb45-494b-abc0-9850f90e17cb/0c6b37c6-5cbd-415c-bb4f-7be87ebe3277.jpg"/>
+  <figcaption>Assassin&#39;s Creed Revelations</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -909,6 +969,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="7033639f-62ad-4dc9-98af-d6c1b9f788a9.html">
+  <img class="lozad" data-src="7033639f-62ad-4dc9-98af-d6c1b9f788a9/c2cf5832-1d2a-48c6-aa14-ac19649c1e0b.jpg"/>
+  <figcaption>Company of Heroes 3</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="8ae0d266-f8b6-44fa-86fa-a13c91d7821c.html">
   <img class="lozad" data-src="8ae0d266-f8b6-44fa-86fa-a13c91d7821c/4467bc83-89eb-4b16-a9af-77a494598e63.jpg"/>
   <figcaption>Contra: Operation Galuga</figcaption>
@@ -1146,6 +1212,12 @@ input:hover{
   <a href="610546f1-bf83-40b1-a34c-f12150560bd9.html">
   <img class="lozad" data-src="610546f1-bf83-40b1-a34c-f12150560bd9/d3f94923-489c-435c-b172-5b10c3d88070.jpg"/>
   <figcaption>Dragon&#39;s Dogma 2</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="89f2fe4a-591f-454e-afac-1d108a0df493.html">
+  <img class="lozad" data-src="89f2fe4a-591f-454e-afac-1d108a0df493/633e37c2-3c49-4525-bec8-e7fec740e9b2.jpg"/>
+  <figcaption>Dread Dawn</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -1629,6 +1701,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="c116618f-2a13-4f26-99fd-4f8d9fa07803.html">
+  <img class="lozad" data-src="c116618f-2a13-4f26-99fd-4f8d9fa07803/65aa683e-5c97-4ee7-bd8f-dd6a1007198f.jpg"/>
+  <figcaption>Killing Floor 3</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="db04da9b-b822-49f6-a652-3cfdf1903e8b.html">
   <img class="lozad" data-src="db04da9b-b822-49f6-a652-3cfdf1903e8b/bcf1c3ea-d55a-493c-9a8c-0e6ff24f752e.jpg"/>
   <figcaption>Kingdom Come - Deliverance </figcaption>
@@ -1641,6 +1719,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="a1c02b12-c1c7-4ba3-bb69-6acadc3a6ded.html">
+  <img class="lozad" data-src="a1c02b12-c1c7-4ba3-bb69-6acadc3a6ded/4f37584e-ca4c-46b3-8093-2788d315b54e.jpg"/>
+  <figcaption>Kunitsu-Gami: Path of the Goddess</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="970a65d8-61f3-40b5-80c3-bb82f09b2f5b.html">
   <img class="lozad" data-src="970a65d8-61f3-40b5-80c3-bb82f09b2f5b/66f904f0-c0de-462c-82c1-a7cb3cbab21d.jpg"/>
   <figcaption>Legacy of Kain Soul Reaver 1&amp;2 Remastered</figcaption>
@@ -1650,6 +1734,12 @@ input:hover{
   <a href="21e24f2c-0a32-4bdf-8d53-492c0ab80a2e.html">
   <img class="lozad" data-src="21e24f2c-0a32-4bdf-8d53-492c0ab80a2e/65e1b33b-7e28-49eb-bd4b-3c95d18cb57f.jpg"/>
   <figcaption>Lies of P-- Overture DLC</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="07314a84-a8eb-4b7d-b563-a37a9366f1a2.html">
+  <img class="lozad" data-src="07314a84-a8eb-4b7d-b563-a37a9366f1a2/7c86944c-f2d3-4ab3-a94e-20d8e28c4a2d.jpg"/>
+  <figcaption>Life is Strange: Double Exposure</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -1725,6 +1815,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="706e7f85-f473-4c4f-b0ef-a538455ac4fa.html">
+  <img class="lozad" data-src="706e7f85-f473-4c4f-b0ef-a538455ac4fa/20b4487a-8218-42d4-9263-a94841ee5015.jpg"/>
+  <figcaption>METAL GEAR RISING: REVENGEANCE</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="e347cc9d-0b2c-4a63-b190-1ae7b5c0653b.html">
   <img class="lozad" data-src="e347cc9d-0b2c-4a63-b190-1ae7b5c0653b/47e5a3c9-1511-45ce-aba6-e648472e5e10.jpg"/>
   <figcaption>METAL GEAR SOLID 3: Snake Eater - Master Collection Version</figcaption>
@@ -1749,9 +1845,27 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="ce76f1b6-377f-45c8-bcb0-7aa3318f0a3a.html">
+  <img class="lozad" data-src="ce76f1b6-377f-45c8-bcb0-7aa3318f0a3a/c7428e1d-4f58-412b-b7f5-01d833e5b000.jpg"/>
+  <figcaption>Metro: Last Light Redux</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="c73a64fe-fb28-4a1f-a8db-4849f9a95816.html">
   <img class="lozad" data-src="c73a64fe-fb28-4a1f-a8db-4849f9a95816/b2318624-01fc-493e-a15d-5836073026d6.jpg"/>
   <figcaption>MindsEye</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="537967a9-749b-499d-bdb9-5f77e4699fab.html">
+  <img class="lozad" data-src="537967a9-749b-499d-bdb9-5f77e4699fab/9d75d91b-a161-4c16-9fce-470119aaea67.jpg"/>
+  <figcaption>Minecraft dungeons</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="d952e4bf-36cf-4e5a-8274-8c87c3cb5c56.html">
+  <img class="lozad" data-src="d952e4bf-36cf-4e5a-8274-8c87c3cb5c56/87e72023-c543-4384-8cb7-9998d58ac7b4.jpg"/>
+  <figcaption>Minecraft Legends</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -1830,6 +1944,12 @@ input:hover{
   <a href="24d37881-10bd-47f5-9f42-205fc14b714f.html">
   <img class="lozad" data-src="24d37881-10bd-47f5-9f42-205fc14b714f/17789bf4-3cef-401e-a95f-d3936408cf5f.jpg"/>
   <figcaption>NARUTO SHIPPUDEN: Ultimate Ninja STORM Revolution</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="cdeaeeaf-c6e5-4694-abb4-1b0f5d25da09.html">
+  <img class="lozad" data-src="cdeaeeaf-c6e5-4694-abb4-1b0f5d25da09/3383ebe6-603f-4415-bebc-80229900fa92.jpg"/>
+  <figcaption>NARUTO: Ultimate Ninja STORM</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -1989,9 +2109,21 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="9ddaf451-d703-48e4-94ae-b11a04352e4c.html">
+  <img class="lozad" data-src="9ddaf451-d703-48e4-94ae-b11a04352e4c/c11757ba-97b2-4573-9a32-86a80ea220f2.jpg"/>
+  <figcaption>PixARK</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="a8ca7d31-4ade-4df9-a130-83abe3cf1a96.html">
   <img class="lozad" data-src="a8ca7d31-4ade-4df9-a130-83abe3cf1a96/c5bd4d4f-72e3-4c9a-8a49-939228eb68d5.jpg"/>
   <figcaption>Poppy Playtime</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="c3a96c54-2288-4888-9170-54fdcc6ef58c.html">
+  <img class="lozad" data-src="c3a96c54-2288-4888-9170-54fdcc6ef58c/8a2d89b1-fa5f-4d38-a16f-118d9bc68eba.jpg"/>
+  <figcaption>Prey</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -2157,6 +2289,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="15545a1b-dd79-41d7-803b-078a9c927698.html">
+  <img class="lozad" data-src="15545a1b-dd79-41d7-803b-078a9c927698/078505f6-552c-4add-bce6-2941c4c11952.jpg"/>
+  <figcaption>SCUM</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="4fcfd30f-a4d0-4bc4-834f-0ffab95a6f5e.html">
   <img class="lozad" data-src="4fcfd30f-a4d0-4bc4-834f-0ffab95a6f5e/cfc8e63b-521d-46f2-9704-9dff4485f3a9.jpg"/>
   <figcaption>Sekiro </figcaption>
@@ -2289,6 +2427,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="b465b2d9-6330-4f6c-a5ff-ba5d5cbbc03d.html">
+  <img class="lozad" data-src="b465b2d9-6330-4f6c-a5ff-ba5d5cbbc03d/9e7014c7-3a65-4895-a46b-c8d4d2546b32.jpg"/>
+  <figcaption>Steep</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="ddf8c54e-7fcc-48a2-9972-5c9ebd0b69a3.html">
   <img class="lozad" data-src="ddf8c54e-7fcc-48a2-9972-5c9ebd0b69a3/828ae0ce-6a13-4ab3-8f3d-760596fd3d92.jpg"/>
   <figcaption>Still Wakes the Deep</figcaption>
@@ -2307,6 +2451,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="b2f5ac52-5aca-47dd-847d-46d1f9f4df38.html">
+  <img class="lozad" data-src="b2f5ac52-5aca-47dd-847d-46d1f9f4df38/3a0f6ef6-f9a5-4d3a-a97e-3084da1e0630.jpg"/>
+  <figcaption>Street Fighter V</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="cdaaa44f-910e-4a88-85ac-45dda39d0923.html">
   <img class="lozad" data-src="cdaaa44f-910e-4a88-85ac-45dda39d0923/13557aac-6f0e-4682-bcb1-7c2814a52f71.jpg"/>
   <figcaption>Suicide Squad: Kill the Justice League</figcaption>
@@ -2316,12 +2466,6 @@ input:hover{
   <a href="1d46778b-75d0-4d0d-b0d0-8ab780f34091.html">
   <img class="lozad" data-src="1d46778b-75d0-4d0d-b0d0-8ab780f34091/ce4c9418-a54c-4d41-a101-c5a86e3996dd.jpg"/>
   <figcaption>Sumerian Six </figcaption>
-  </a>
-</figure>
-<figure class="card">
-  <a href="a5f6afa5-bb96-4574-baee-cbf7aad41c6d.html">
-  <img class="lozad" data-src="a5f6afa5-bb96-4574-baee-cbf7aad41c6d/e32bf747-a1ed-414c-b449-a6b94f0c1f8d.jpg"/>
-  <figcaption>Supernatural </figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -2430,6 +2574,12 @@ input:hover{
   <a href="0e9a10d9-5478-4f3b-ab16-ecff555bd2ad.html">
   <img class="lozad" data-src="0e9a10d9-5478-4f3b-ab16-ecff555bd2ad/f4acf604-061d-4648-8517-3226a2b59d6e.jpg"/>
   <figcaption>Tom Clancys Ghost Recon Wildlands </figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="c8ff7823-7362-4078-82f7-5d6751fdd689.html">
+  <img class="lozad" data-src="c8ff7823-7362-4078-82f7-5d6751fdd689/befb0bf9-0ea3-4f8d-93dd-fd98c8deb066.jpg"/>
+  <figcaption>Tom Clancy&#39;s Rainbow Six Siege X</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -2600,8 +2750,20 @@ input:hover{
   <figcaption>Wreckfest </figcaption>
   </a>
 </figure>
+<figure class="card">
+  <a href="fff5bb23-237e-4b11-bf38-b1584640d568.html">
+  <img class="lozad" data-src="fff5bb23-237e-4b11-bf38-b1584640d568/fa9bca81-ddf8-46db-98c2-ae41e782c805.jpg"/>
+  <figcaption>WUCHANG: Fallen Feathers</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="c3e9d180-21e2-4260-9aa6-9ce6776d994e.html">
+  <img class="lozad" data-src="c3e9d180-21e2-4260-9aa6-9ce6776d994e/ea81d410-91bc-4466-b783-2652207badca.jpg"/>
+  <figcaption>Wuthering Waves</figcaption>
+  </a>
+</figure>
 
-</div><div id="quicklink-Action"><h2 id="h2jscript" onclick="ShowHide('Action')"><strong id="eye-Action" style="color: #007962;">&#x25BC;</strong><strong>Action<span>( 28 )</span></strong></h2></div>
+</div><div id="quicklink-Action"><h2 id="h2jscript" onclick="ShowHide('Action')"><strong id="eye-Action" style="color: #007962;">&#x25BC;</strong><strong>Action<span>( 30 )</span></strong></h2></div>
 <div id="Action" class="cards">
 <figure class="card">
   <a href="a76c4f99-1d5f-45d8-8d25-79f70c8bcb59.html">
@@ -2637,6 +2799,12 @@ input:hover{
   <a href="998b7ca8-cd0d-412e-a46f-d3bf216f3750.html">
   <img class="lozad" data-src="998b7ca8-cd0d-412e-a46f-d3bf216f3750/3a554c9e-4e6b-4c40-b949-579e7835c4ef.jpg"/>
   <figcaption>Dead Space [2008]</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="f5d38089-528b-4ab0-85d7-3bb11dffb325.html">
+  <img class="lozad" data-src="f5d38089-528b-4ab0-85d7-3bb11dffb325/b9e778a9-425c-4ccb-b592-a82a3fa16590.jpg"/>
+  <figcaption>Demon&#39;s Souls [2009]----PS3 EMULATOR</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -2739,6 +2907,12 @@ input:hover{
   <a href="8556fdc9-07e6-44de-9962-a829237bd9b0.html">
   <img class="lozad" data-src="8556fdc9-07e6-44de-9962-a829237bd9b0/180bbcd4-89e5-456a-a4eb-f9b754ed0413.jpg"/>
   <figcaption>Silent Hill 2 Remake</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="1826182a-f9f8-408c-b4f7-aa961103bf58.html">
+  <img class="lozad" data-src="1826182a-f9f8-408c-b4f7-aa961103bf58/d6b263ec-afa5-4fab-a176-763820ea26e5.jpg"/>
+  <figcaption>Spider-Man: Shattered Dimensions</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -2994,8 +3168,14 @@ input:hover{
   </a>
 </figure>
 
-</div><div id="quicklink-Aventura"><h2 id="h2jscript" onclick="ShowHide('Aventura')"><strong id="eye-Aventura" style="color: #007962;">&#x25BC;</strong><strong>Aventura<span>( 262 )</span></strong></h2></div>
+</div><div id="quicklink-Aventura"><h2 id="h2jscript" onclick="ShowHide('Aventura')"><strong id="eye-Aventura" style="color: #007962;">&#x25BC;</strong><strong>Aventura<span>( 275 )</span></strong></h2></div>
 <div id="Aventura" class="cards">
+<figure class="card">
+  <a href="9d8e0493-6ee1-48fd-82fd-f7a00643b803.html">
+  <img class="lozad" data-src="9d8e0493-6ee1-48fd-82fd-f7a00643b803/64c31c1a-08cb-4134-a851-946ea13e3758.jpg"/>
+  <figcaption>  Little Nightmares Enhanced Edition</figcaption>
+  </a>
+</figure>
 <figure class="card">
   <a href="1c620747-c306-4bdf-b2d2-56be08224633.html">
   <img class="lozad" data-src="1c620747-c306-4bdf-b2d2-56be08224633/e2966a5b-43a5-4a46-9864-3c9f41e2d6e1.jpg"/>
@@ -3111,6 +3291,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="c117c0e6-7fb4-48e7-8535-6c1987422635.html">
+  <img class="lozad" data-src="c117c0e6-7fb4-48e7-8535-6c1987422635/850436c6-666f-469f-8360-5f7bdbe9f128.jpg"/>
+  <figcaption>Assassin’s Creed Chronicles: China</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="83ba3b90-496c-410c-a9cc-e6db86ad4470.html">
   <img class="lozad" data-src="83ba3b90-496c-410c-a9cc-e6db86ad4470/c63b9fd2-d4e9-4127-aa0e-365a8868e227.jpg"/>
   <figcaption>Assassin’s Creed&#174; IV Black Flag™</figcaption>
@@ -3147,6 +3333,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="1c3e41a9-f626-40bc-9e96-95eb2d24aa66.html">
+  <img class="lozad" data-src="1c3e41a9-f626-40bc-9e96-95eb2d24aa66/35cb4b39-18f6-4721-bc00-37eafa17f8cd.jpg"/>
+  <figcaption>Assassin&#39;s Creed Liberation</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="d92eab15-71f6-46f5-bbcd-53cdc2458afc.html">
   <img class="lozad" data-src="d92eab15-71f6-46f5-bbcd-53cdc2458afc/e32afa71-0364-42a6-a405-03c338aae1b6.jpg"/>
   <figcaption>Assassin&#39;s Creed Mirage</figcaption>
@@ -3162,6 +3354,12 @@ input:hover{
   <a href="37a085a2-3e18-4923-84f7-c6990b909e35.html">
   <img class="lozad" data-src="37a085a2-3e18-4923-84f7-c6990b909e35/cedf3074-15db-4cfa-acd4-f0d5b0fa9464.jpg"/>
   <figcaption>Assassins Creed Origins </figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="b5c7412e-cb45-494b-abc0-9850f90e17cb.html">
+  <img class="lozad" data-src="b5c7412e-cb45-494b-abc0-9850f90e17cb/0c6b37c6-5cbd-415c-bb4f-7be87ebe3277.jpg"/>
+  <figcaption>Assassin&#39;s Creed Revelations</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -3426,6 +3624,12 @@ input:hover{
   <a href="a730de00-112c-4387-9309-e627ba8551a9.html">
   <img class="lozad" data-src="a730de00-112c-4387-9309-e627ba8551a9/c36688e5-5ec0-4a96-9233-f00221ae37e8.jpg"/>
   <figcaption>Dragon&#39;s Dogma  Dark Arisen (incl. Update 7) </figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="89f2fe4a-591f-454e-afac-1d108a0df493.html">
+  <img class="lozad" data-src="89f2fe4a-591f-454e-afac-1d108a0df493/633e37c2-3c49-4525-bec8-e7fec740e9b2.jpg"/>
+  <figcaption>Dread Dawn</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -3813,9 +4017,9 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
-  <a href="9d8e0493-6ee1-48fd-82fd-f7a00643b803.html">
-  <img class="lozad" data-src="9d8e0493-6ee1-48fd-82fd-f7a00643b803/5b220561-c3a8-4fc4-95e5-16c75246f04c.jpg"/>
-  <figcaption>Little Nightmares</figcaption>
+  <a href="07314a84-a8eb-4b7d-b563-a37a9366f1a2.html">
+  <img class="lozad" data-src="07314a84-a8eb-4b7d-b563-a37a9366f1a2/7c86944c-f2d3-4ab3-a94e-20d8e28c4a2d.jpg"/>
+  <figcaption>Life is Strange: Double Exposure</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -3921,9 +4125,27 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="537967a9-749b-499d-bdb9-5f77e4699fab.html">
+  <img class="lozad" data-src="537967a9-749b-499d-bdb9-5f77e4699fab/9d75d91b-a161-4c16-9fce-470119aaea67.jpg"/>
+  <figcaption>Minecraft dungeons</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="ae2e7e03-2709-43cf-8f8c-a175410db378.html">
+  <img class="lozad" data-src="ae2e7e03-2709-43cf-8f8c-a175410db378/27a497bf-e921-4a33-8822-e9fd0b597d5b.jpg"/>
+  <figcaption>Monument Valley 3</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="4ceb5a72-2820-4738-a3ed-fb5fd0ea5623.html">
   <img class="lozad" data-src="4ceb5a72-2820-4738-a3ed-fb5fd0ea5623/675c62b4-7b66-49c9-9494-53a4e96e7336.jpg"/>
   <figcaption>Mr. Prepper</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="d2b935e9-84b0-438d-b706-f94a600c6311.html">
+  <img class="lozad" data-src="d2b935e9-84b0-438d-b706-f94a600c6311/b4a45251-6b2e-4917-b3f4-e4fa9b06b57b.jpg"/>
+  <figcaption>My Time at Portia</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -3960,6 +4182,12 @@ input:hover{
   <a href="24d37881-10bd-47f5-9f42-205fc14b714f.html">
   <img class="lozad" data-src="24d37881-10bd-47f5-9f42-205fc14b714f/17789bf4-3cef-401e-a95f-d3936408cf5f.jpg"/>
   <figcaption>NARUTO SHIPPUDEN: Ultimate Ninja STORM Revolution</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="cdeaeeaf-c6e5-4694-abb4-1b0f5d25da09.html">
+  <img class="lozad" data-src="cdeaeeaf-c6e5-4694-abb4-1b0f5d25da09/3383ebe6-603f-4415-bebc-80229900fa92.jpg"/>
+  <figcaption>NARUTO: Ultimate Ninja STORM</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -4089,9 +4317,21 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="9ddaf451-d703-48e4-94ae-b11a04352e4c.html">
+  <img class="lozad" data-src="9ddaf451-d703-48e4-94ae-b11a04352e4c/c11757ba-97b2-4573-9a32-86a80ea220f2.jpg"/>
+  <figcaption>PixARK</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="a8ca7d31-4ade-4df9-a130-83abe3cf1a96.html">
   <img class="lozad" data-src="a8ca7d31-4ade-4df9-a130-83abe3cf1a96/c5bd4d4f-72e3-4c9a-8a49-939228eb68d5.jpg"/>
   <figcaption>Poppy Playtime</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="c3a96c54-2288-4888-9170-54fdcc6ef58c.html">
+  <img class="lozad" data-src="c3a96c54-2288-4888-9170-54fdcc6ef58c/8a2d89b1-fa5f-4d38-a16f-118d9bc68eba.jpg"/>
+  <figcaption>Prey</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -4206,6 +4446,12 @@ input:hover{
   <a href="8f6c6e86-dade-45b3-a45f-72736864c47e.html">
   <img class="lozad" data-src="8f6c6e86-dade-45b3-a45f-72736864c47e/8275cddb-322d-4006-a043-58ab7d64bd4d.jpg"/>
   <figcaption>Scars Above  </figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="15545a1b-dd79-41d7-803b-078a9c927698.html">
+  <img class="lozad" data-src="15545a1b-dd79-41d7-803b-078a9c927698/078505f6-552c-4add-bce6-2941c4c11952.jpg"/>
+  <figcaption>SCUM</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -4350,12 +4596,6 @@ input:hover{
   <a href="ba55a31e-7f51-40d6-88b1-8b42cb20ae57.html">
   <img class="lozad" data-src="ba55a31e-7f51-40d6-88b1-8b42cb20ae57/7677bbe9-df5d-4664-b787-6ae9107526d4.jpg"/>
   <figcaption>Subnautica Below Zero </figcaption>
-  </a>
-</figure>
-<figure class="card">
-  <a href="a5f6afa5-bb96-4574-baee-cbf7aad41c6d.html">
-  <img class="lozad" data-src="a5f6afa5-bb96-4574-baee-cbf7aad41c6d/e32bf747-a1ed-414c-b449-a6b94f0c1f8d.jpg"/>
-  <figcaption>Supernatural </figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -4563,6 +4803,18 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="fff5bb23-237e-4b11-bf38-b1584640d568.html">
+  <img class="lozad" data-src="fff5bb23-237e-4b11-bf38-b1584640d568/fa9bca81-ddf8-46db-98c2-ae41e782c805.jpg"/>
+  <figcaption>WUCHANG: Fallen Feathers</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="c3e9d180-21e2-4260-9aa6-9ce6776d994e.html">
+  <img class="lozad" data-src="c3e9d180-21e2-4260-9aa6-9ce6776d994e/ea81d410-91bc-4466-b783-2652207badca.jpg"/>
+  <figcaption>Wuthering Waves</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="3fe1a911-7e28-4c8a-a496-395e49f4c83d.html">
   <img class="lozad" data-src="3fe1a911-7e28-4c8a-a496-395e49f4c83d/37e59709-eb38-484f-be64-61657be8c47c.jpg"/>
   <figcaption>Zoo Simulator </figcaption>
@@ -4596,7 +4848,7 @@ input:hover{
   </a>
 </figure>
 
-</div><div id="quicklink-Carreras"><h2 id="h2jscript" onclick="ShowHide('Carreras')"><strong id="eye-Carreras" style="color: #007962;">&#x25BC;</strong><strong>Carreras<span>( 38 )</span></strong></h2></div>
+</div><div id="quicklink-Carreras"><h2 id="h2jscript" onclick="ShowHide('Carreras')"><strong id="eye-Carreras" style="color: #007962;">&#x25BC;</strong><strong>Carreras<span>( 37 )</span></strong></h2></div>
 <div id="Carreras" class="cards">
 <figure class="card">
   <a href="6206aa17-4ef3-491e-912d-9b566e239f6b.html">
@@ -4725,12 +4977,6 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
-  <a href="fa929e76-50fe-4c0a-b628-74086d42f8f4.html">
-  <img class="lozad" data-src="fa929e76-50fe-4c0a-b628-74086d42f8f4/856a8f78-4c0b-4175-984b-f4c15c34c159.jpg"/>
-  <figcaption>MotoGP24</figcaption>
-  </a>
-</figure>
-<figure class="card">
   <a href="f9ef4dce-c023-44c5-9e4a-cb4953dc5b8a.html">
   <img class="lozad" data-src="f9ef4dce-c023-44c5-9e4a-cb4953dc5b8a/02cc9bf0-a147-443a-908d-002521847d64.jpg"/>
   <figcaption>MotoGP25</figcaption>
@@ -4827,12 +5073,18 @@ input:hover{
   </a>
 </figure>
 
-</div><div id="quicklink-Casual"><h2 id="h2jscript" onclick="ShowHide('Casual')"><strong id="eye-Casual" style="color: #007962;">&#x25BC;</strong><strong>Casual<span>( 36 )</span></strong></h2></div>
+</div><div id="quicklink-Casual"><h2 id="h2jscript" onclick="ShowHide('Casual')"><strong id="eye-Casual" style="color: #007962;">&#x25BC;</strong><strong>Casual<span>( 40 )</span></strong></h2></div>
 <div id="Casual" class="cards">
 <figure class="card">
   <a href="8fd65995-3788-42c6-9565-2bc2b6146bcb.html">
   <img class="lozad" data-src="8fd65995-3788-42c6-9565-2bc2b6146bcb/ee859711-d243-453f-9084-9dda10559bc2.jpg"/>
   <figcaption>Alaskan Road Truckers</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="ad6bfaa1-e0df-49d4-8a5b-f54d14adadb7.html">
+  <img class="lozad" data-src="ad6bfaa1-e0df-49d4-8a5b-f54d14adadb7/5f91245b-a321-4b81-a4b8-5f64fe8c350a.jpg"/>
+  <figcaption>Among Us</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -4962,9 +5214,21 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="ae2e7e03-2709-43cf-8f8c-a175410db378.html">
+  <img class="lozad" data-src="ae2e7e03-2709-43cf-8f8c-a175410db378/27a497bf-e921-4a33-8822-e9fd0b597d5b.jpg"/>
+  <figcaption>Monument Valley 3</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="4ceb5a72-2820-4738-a3ed-fb5fd0ea5623.html">
   <img class="lozad" data-src="4ceb5a72-2820-4738-a3ed-fb5fd0ea5623/675c62b4-7b66-49c9-9494-53a4e96e7336.jpg"/>
   <figcaption>Mr. Prepper</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="d2b935e9-84b0-438d-b706-f94a600c6311.html">
+  <img class="lozad" data-src="d2b935e9-84b0-438d-b706-f94a600c6311/b4a45251-6b2e-4917-b3f4-e4fa9b06b57b.jpg"/>
+  <figcaption>My Time at Portia</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -4989,6 +5253,12 @@ input:hover{
   <a href="130ce260-53eb-48e1-afd7-a6694d95c93f.html">
   <img class="lozad" data-src="130ce260-53eb-48e1-afd7-a6694d95c93f/b05f68d7-7aab-41cc-b5fa-176559c826ac.jpg"/>
   <figcaption>PATHOGEN X</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="9ddaf451-d703-48e4-94ae-b11a04352e4c.html">
+  <img class="lozad" data-src="9ddaf451-d703-48e4-94ae-b11a04352e4c/c11757ba-97b2-4573-9a32-86a80ea220f2.jpg"/>
+  <figcaption>PixARK</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -5172,12 +5442,6 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
-  <a href="fa929e76-50fe-4c0a-b628-74086d42f8f4.html">
-  <img class="lozad" data-src="fa929e76-50fe-4c0a-b628-74086d42f8f4/856a8f78-4c0b-4175-984b-f4c15c34c159.jpg"/>
-  <figcaption>MotoGP24</figcaption>
-  </a>
-</figure>
-<figure class="card">
   <a href="f9ef4dce-c023-44c5-9e4a-cb4953dc5b8a.html">
   <img class="lozad" data-src="f9ef4dce-c023-44c5-9e4a-cb4953dc5b8a/02cc9bf0-a147-443a-908d-002521847d64.jpg"/>
   <figcaption>MotoGP25</figcaption>
@@ -5244,9 +5508,21 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="b465b2d9-6330-4f6c-a5ff-ba5d5cbbc03d.html">
+  <img class="lozad" data-src="b465b2d9-6330-4f6c-a5ff-ba5d5cbbc03d/9e7014c7-3a65-4895-a46b-c8d4d2546b32.jpg"/>
+  <figcaption>Steep</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="42cf3de5-d478-4e7f-8b6e-c727a424ca3f.html">
   <img class="lozad" data-src="42cf3de5-d478-4e7f-8b6e-c727a424ca3f/1afb270b-8897-4315-ab68-d161ca7d23a5.jpg"/>
   <figcaption>Tennis Manager 2024 </figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="15d54f4d-9d62-484a-b92c-34fc2d908b99.html">
+  <img class="lozad" data-src="15d54f4d-9d62-484a-b92c-34fc2d908b99/2b0ed521-dd30-4eb0-87ea-f6aba29da6b0.jpg"/>
+  <figcaption>Tony Hawk&#39;s Pro Skater 3 + 4</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -5274,12 +5550,6 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
-  <a href="996a9677-db58-4c6c-a29e-9e154839cddf.html">
-  <img class="lozad" data-src="996a9677-db58-4c6c-a29e-9e154839cddf/b8f7adf9-f0e3-406f-b948-5c485ed5cccc.jpg"/>
-  <figcaption>WWE 2K24</figcaption>
-  </a>
-</figure>
-<figure class="card">
   <a href="170897aa-675f-417d-94e7-d665deec2c44.html">
   <img class="lozad" data-src="170897aa-675f-417d-94e7-d665deec2c44/6ccf825e-2258-4c25-ab27-1d74f0eaf7b6.jpg"/>
   <figcaption>WWE 2K25</figcaption>
@@ -5295,7 +5565,7 @@ input:hover{
   </a>
 </figure>
 
-</div><div id="quicklink-Estrategia"><h2 id="h2jscript" onclick="ShowHide('Estrategia')"><strong id="eye-Estrategia" style="color: #007962;">&#x25BC;</strong><strong>Estrategia<span>( 59 )</span></strong></h2></div>
+</div><div id="quicklink-Estrategia"><h2 id="h2jscript" onclick="ShowHide('Estrategia')"><strong id="eye-Estrategia" style="color: #007962;">&#x25BC;</strong><strong>Estrategia<span>( 64 )</span></strong></h2></div>
 <div id="Estrategia" class="cards">
 <figure class="card">
   <a href="ddb8c97c-f2a2-49e2-bd2d-383af2608717.html">
@@ -5346,9 +5616,21 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="774509ea-b539-468c-9907-4d20d2eed9d2.html">
+  <img class="lozad" data-src="774509ea-b539-468c-9907-4d20d2eed9d2/3812c0fd-a616-41f9-a616-07e4abdfb53d.jpg"/>
+  <figcaption>Broken Arrow</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="39eb5324-db4d-4ac4-82e7-5024ec29a7ce.html">
   <img class="lozad" data-src="39eb5324-db4d-4ac4-82e7-5024ec29a7ce/650f89f3-761d-44ae-9a50-55ac79cf8165.jpg"/>
   <figcaption>Cities  Skylines </figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="7033639f-62ad-4dc9-98af-d6c1b9f788a9.html">
+  <img class="lozad" data-src="7033639f-62ad-4dc9-98af-d6c1b9f788a9/c2cf5832-1d2a-48c6-aa14-ac19649c1e0b.jpg"/>
+  <figcaption>Company of Heroes 3</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -5460,15 +5742,15 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
-  <a href="7132600a-6977-43ec-a028-2eb685dab894.html">
-  <img class="lozad" data-src="7132600a-6977-43ec-a028-2eb685dab894/3543930b-08bc-4f9e-9c65-0ad483ea192c.jpg"/>
+  <a href="305c4ec8-05f9-40c9-8c81-be03a2d35a4f.html">
+  <img class="lozad" data-src="305c4ec8-05f9-40c9-8c81-be03a2d35a4f/855d394b-763f-40c3-83e2-f1fcdd781ed6.jpg"/>
   <figcaption>Kingdom Rush 5: Alliance TD</figcaption>
   </a>
 </figure>
 <figure class="card">
-  <a href="305c4ec8-05f9-40c9-8c81-be03a2d35a4f.html">
-  <img class="lozad" data-src="305c4ec8-05f9-40c9-8c81-be03a2d35a4f/855d394b-763f-40c3-83e2-f1fcdd781ed6.jpg"/>
-  <figcaption>Kingdom Rush 5: Alliance TD</figcaption>
+  <a href="a1c02b12-c1c7-4ba3-bb69-6acadc3a6ded.html">
+  <img class="lozad" data-src="a1c02b12-c1c7-4ba3-bb69-6acadc3a6ded/4f37584e-ca4c-46b3-8093-2788d315b54e.jpg"/>
+  <figcaption>Kunitsu-Gami: Path of the Goddess</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -5481,6 +5763,18 @@ input:hover{
   <a href="8c88eb6d-f7cf-48a7-b213-9430fa828aca.html">
   <img class="lozad" data-src="8c88eb6d-f7cf-48a7-b213-9430fa828aca/eac9e61a-8c23-4f60-b1d8-df7990ebd558.jpg"/>
   <figcaption>Manor Lords</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="d952e4bf-36cf-4e5a-8274-8c87c3cb5c56.html">
+  <img class="lozad" data-src="d952e4bf-36cf-4e5a-8274-8c87c3cb5c56/87e72023-c543-4384-8cb7-9998d58ac7b4.jpg"/>
+  <figcaption>Minecraft Legends</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="ae2e7e03-2709-43cf-8f8c-a175410db378.html">
+  <img class="lozad" data-src="ae2e7e03-2709-43cf-8f8c-a175410db378/27a497bf-e921-4a33-8822-e9fd0b597d5b.jpg"/>
+  <figcaption>Monument Valley 3</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -5529,6 +5823,12 @@ input:hover{
   <a href="882c6d32-3c71-4dcf-9c2d-d9b53fe775a7.html">
   <img class="lozad" data-src="882c6d32-3c71-4dcf-9c2d-d9b53fe775a7/e99c3ebc-961d-4fa3-8c9c-16ebe46c344e.jpg"/>
   <figcaption>Park Beyond </figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="9ddaf451-d703-48e4-94ae-b11a04352e4c.html">
+  <img class="lozad" data-src="9ddaf451-d703-48e4-94ae-b11a04352e4c/c11757ba-97b2-4573-9a32-86a80ea220f2.jpg"/>
+  <figcaption>PixARK</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -5736,7 +6036,7 @@ input:hover{
   </a>
 </figure>
 
-</div><div id="quicklink-Free to Play"><h2 id="h2jscript" onclick="ShowHide('Free to Play')"><strong id="eye-Free to Play" style="color: #007962;">&#x25BC;</strong><strong>Free to Play<span>( 22 )</span></strong></h2></div>
+</div><div id="quicklink-Free to Play"><h2 id="h2jscript" onclick="ShowHide('Free to Play')"><strong id="eye-Free to Play" style="color: #007962;">&#x25BC;</strong><strong>Free to Play<span>( 24 )</span></strong></h2></div>
 <div id="Free to Play" class="cards">
 <figure class="card">
   <a href="5768a109-c64c-4bea-b8f8-abf534cacc88.html">
@@ -5853,6 +6153,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="c8ff7823-7362-4078-82f7-5d6751fdd689.html">
+  <img class="lozad" data-src="c8ff7823-7362-4078-82f7-5d6751fdd689/befb0bf9-0ea3-4f8d-93dd-fd98c8deb066.jpg"/>
+  <figcaption>Tom Clancy&#39;s Rainbow Six Siege X</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="9d1d8107-6608-4c2e-aca7-1156b8c05038.html">
   <img class="lozad" data-src="9d1d8107-6608-4c2e-aca7-1156b8c05038/b644bb02-b0a4-487f-b292-51f2edbc87e3.jpg"/>
   <figcaption>War Thunder</figcaption>
@@ -5868,6 +6174,12 @@ input:hover{
   <a href="db075704-3e3e-4d50-b600-7f8b3e795d91.html">
   <img class="lozad" data-src="db075704-3e3e-4d50-b600-7f8b3e795d91/d70dfef8-b5a0-42bb-84a6-c64dbac8181d.jpg"/>
   <figcaption>World of Warships</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="c3e9d180-21e2-4260-9aa6-9ce6776d994e.html">
+  <img class="lozad" data-src="c3e9d180-21e2-4260-9aa6-9ce6776d994e/ea81d410-91bc-4466-b783-2652207badca.jpg"/>
+  <figcaption>Wuthering Waves</figcaption>
   </a>
 </figure>
 
@@ -5925,7 +6237,7 @@ input:hover{
   </a>
 </figure>
 
-</div><div id="quicklink-Indie"><h2 id="h2jscript" onclick="ShowHide('Indie')"><strong id="eye-Indie" style="color: #007962;">&#x25BC;</strong><strong>Indie<span>( 108 )</span></strong></h2></div>
+</div><div id="quicklink-Indie"><h2 id="h2jscript" onclick="ShowHide('Indie')"><strong id="eye-Indie" style="color: #007962;">&#x25BC;</strong><strong>Indie<span>( 111 )</span></strong></h2></div>
 <div id="Indie" class="cards">
 <figure class="card">
   <a href="440bb863-60ef-4c19-958e-4ecb29903f3e.html">
@@ -6075,6 +6387,12 @@ input:hover{
   <a href="00dd83b3-4464-4bc8-9395-83cb4e702347.html">
   <img class="lozad" data-src="00dd83b3-4464-4bc8-9395-83cb4e702347/ffa87040-509f-4c5c-9185-09167d2ab969.jpg"/>
   <figcaption>Don&#39;t Starve Together</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="89f2fe4a-591f-454e-afac-1d108a0df493.html">
+  <img class="lozad" data-src="89f2fe4a-591f-454e-afac-1d108a0df493/633e37c2-3c49-4525-bec8-e7fec740e9b2.jpg"/>
+  <figcaption>Dread Dawn</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -6270,12 +6588,6 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
-  <a href="7132600a-6977-43ec-a028-2eb685dab894.html">
-  <img class="lozad" data-src="7132600a-6977-43ec-a028-2eb685dab894/3543930b-08bc-4f9e-9c65-0ad483ea192c.jpg"/>
-  <figcaption>Kingdom Rush 5: Alliance TD</figcaption>
-  </a>
-</figure>
-<figure class="card">
   <a href="305c4ec8-05f9-40c9-8c81-be03a2d35a4f.html">
   <img class="lozad" data-src="305c4ec8-05f9-40c9-8c81-be03a2d35a4f/855d394b-763f-40c3-83e2-f1fcdd781ed6.jpg"/>
   <figcaption>Kingdom Rush 5: Alliance TD</figcaption>
@@ -6312,6 +6624,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="ae2e7e03-2709-43cf-8f8c-a175410db378.html">
+  <img class="lozad" data-src="ae2e7e03-2709-43cf-8f8c-a175410db378/27a497bf-e921-4a33-8822-e9fd0b597d5b.jpg"/>
+  <figcaption>Monument Valley 3</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="d8930792-621b-467e-a3f8-98d759e9de83.html">
   <img class="lozad" data-src="d8930792-621b-467e-a3f8-98d759e9de83/fb32b293-e507-407c-ab16-fb6f8d239754.jpg"/>
   <figcaption>Mount &amp; Blade II: Bannerlord</figcaption>
@@ -6321,6 +6639,12 @@ input:hover{
   <a href="4ceb5a72-2820-4738-a3ed-fb5fd0ea5623.html">
   <img class="lozad" data-src="4ceb5a72-2820-4738-a3ed-fb5fd0ea5623/675c62b4-7b66-49c9-9494-53a4e96e7336.jpg"/>
   <figcaption>Mr. Prepper</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="d2b935e9-84b0-438d-b706-f94a600c6311.html">
+  <img class="lozad" data-src="d2b935e9-84b0-438d-b706-f94a600c6311/b4a45251-6b2e-4917-b3f4-e4fa9b06b57b.jpg"/>
+  <figcaption>My Time at Portia</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -6408,6 +6732,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="c9e5e36b-2d8d-4efc-b619-abd38ea9afa4.html">
+  <img class="lozad" data-src="c9e5e36b-2d8d-4efc-b619-abd38ea9afa4/eba6992b-5bad-40b7-883b-f43cac63bb15.jpg"/>
+  <figcaption>Project Zomboid</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="c1384d0e-cd8c-4a15-aae9-2eeb0e0ec59b.html">
   <img class="lozad" data-src="c1384d0e-cd8c-4a15-aae9-2eeb0e0ec59b/bcb60e6c-ffd7-4034-9d8e-b479093aecfd.jpg"/>
   <figcaption>Rain World </figcaption>
@@ -6429,6 +6759,12 @@ input:hover{
   <a href="8f6f48fd-90b1-4b1d-8761-7a9e6c92c5eb.html">
   <img class="lozad" data-src="8f6f48fd-90b1-4b1d-8761-7a9e6c92c5eb/d1896ce9-0618-4e32-876c-634ea03d8400.jpg"/>
   <figcaption>Satisfactory </figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="15545a1b-dd79-41d7-803b-078a9c927698.html">
+  <img class="lozad" data-src="15545a1b-dd79-41d7-803b-078a9c927698/078505f6-552c-4add-bce6-2941c4c11952.jpg"/>
+  <figcaption>SCUM</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -6495,12 +6831,6 @@ input:hover{
   <a href="3408aa24-622c-4b9f-bb05-4d6ae7775d88.html">
   <img class="lozad" data-src="3408aa24-622c-4b9f-bb05-4d6ae7775d88/138b3782-4d05-4eac-874d-583e6fc11933.jpg"/>
   <figcaption>Supermarket Simulator</figcaption>
-  </a>
-</figure>
-<figure class="card">
-  <a href="a5f6afa5-bb96-4574-baee-cbf7aad41c6d.html">
-  <img class="lozad" data-src="a5f6afa5-bb96-4574-baee-cbf7aad41c6d/e32bf747-a1ed-414c-b449-a6b94f0c1f8d.jpg"/>
-  <figcaption>Supernatural </figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -6594,7 +6924,7 @@ input:hover{
   </a>
 </figure>
 
-</div><div id="quicklink-Multijugador masivo"><h2 id="h2jscript" onclick="ShowHide('Multijugador masivo')"><strong id="eye-Multijugador masivo" style="color: #007962;">&#x25BC;</strong><strong>Multijugador masivo<span>( 15 )</span></strong></h2></div>
+</div><div id="quicklink-Multijugador masivo"><h2 id="h2jscript" onclick="ShowHide('Multijugador masivo')"><strong id="eye-Multijugador masivo" style="color: #007962;">&#x25BC;</strong><strong>Multijugador masivo<span>( 17 )</span></strong></h2></div>
 <div id="Multijugador masivo" class="cards">
 <figure class="card">
   <a href="ccec6ba0-9bca-4dd8-bd53-c0da5f61ab2a.html">
@@ -6645,9 +6975,21 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="9ddaf451-d703-48e4-94ae-b11a04352e4c.html">
+  <img class="lozad" data-src="9ddaf451-d703-48e4-94ae-b11a04352e4c/c11757ba-97b2-4573-9a32-86a80ea220f2.jpg"/>
+  <figcaption>PixARK</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="f0958959-f191-44c3-8ba4-8e06770e2a72.html">
   <img class="lozad" data-src="f0958959-f191-44c3-8ba4-8e06770e2a72/7b733bd2-5d5d-4c62-af59-67437cadb1ac.jpg"/>
   <figcaption>Riders Republic</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="15545a1b-dd79-41d7-803b-078a9c927698.html">
+  <img class="lozad" data-src="15545a1b-dd79-41d7-803b-078a9c927698/078505f6-552c-4add-bce6-2941c4c11952.jpg"/>
+  <figcaption>SCUM</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -6975,7 +7317,7 @@ input:hover{
   </a>
 </figure>
 
-</div><div id="quicklink-Rol"><h2 id="h2jscript" onclick="ShowHide('Rol')"><strong id="eye-Rol" style="color: #007962;">&#x25BC;</strong><strong>Rol<span>( 127 )</span></strong></h2></div>
+</div><div id="quicklink-Rol"><h2 id="h2jscript" onclick="ShowHide('Rol')"><strong id="eye-Rol" style="color: #007962;">&#x25BC;</strong><strong>Rol<span>( 135 )</span></strong></h2></div>
 <div id="Rol" class="cards">
 <figure class="card">
   <a href="1c620747-c306-4bdf-b2d2-56be08224633.html">
@@ -7233,6 +7575,12 @@ input:hover{
   <a href="610546f1-bf83-40b1-a34c-f12150560bd9.html">
   <img class="lozad" data-src="610546f1-bf83-40b1-a34c-f12150560bd9/d3f94923-489c-435c-b172-5b10c3d88070.jpg"/>
   <figcaption>Dragon&#39;s Dogma 2</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="89f2fe4a-591f-454e-afac-1d108a0df493.html">
+  <img class="lozad" data-src="89f2fe4a-591f-454e-afac-1d108a0df493/633e37c2-3c49-4525-bec8-e7fec740e9b2.jpg"/>
+  <figcaption>Dread Dawn</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -7494,6 +7842,18 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="537967a9-749b-499d-bdb9-5f77e4699fab.html">
+  <img class="lozad" data-src="537967a9-749b-499d-bdb9-5f77e4699fab/9d75d91b-a161-4c16-9fce-470119aaea67.jpg"/>
+  <figcaption>Minecraft dungeons</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="25273009-7533-493a-8cc2-f0b3f149ebe1.html">
+  <img class="lozad" data-src="25273009-7533-493a-8cc2-f0b3f149ebe1/60df9749-4672-45f7-ad28-2be5eb25d377.jpg"/>
+  <figcaption>Monster Hunter Stories</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="89c697d3-8240-48d1-8efe-1bf41b667ee3.html">
   <img class="lozad" data-src="89c697d3-8240-48d1-8efe-1bf41b667ee3/17257f32-9443-45fd-a231-1a68e5835e84.jpg"/>
   <figcaption>Mortal Shell </figcaption>
@@ -7509,6 +7869,12 @@ input:hover{
   <a href="4ceb5a72-2820-4738-a3ed-fb5fd0ea5623.html">
   <img class="lozad" data-src="4ceb5a72-2820-4738-a3ed-fb5fd0ea5623/675c62b4-7b66-49c9-9494-53a4e96e7336.jpg"/>
   <figcaption>Mr. Prepper</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="d2b935e9-84b0-438d-b706-f94a600c6311.html">
+  <img class="lozad" data-src="d2b935e9-84b0-438d-b706-f94a600c6311/b4a45251-6b2e-4917-b3f4-e4fa9b06b57b.jpg"/>
+  <figcaption>My Time at Portia</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -7569,6 +7935,18 @@ input:hover{
   <a href="0e8e2813-2621-4e34-a6d0-bce8f221dc48.html">
   <img class="lozad" data-src="0e8e2813-2621-4e34-a6d0-bce8f221dc48/d5756c5c-2d35-4a6b-876f-9194a2f740f2.jpg"/>
   <figcaption>Path of Exile</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="9ddaf451-d703-48e4-94ae-b11a04352e4c.html">
+  <img class="lozad" data-src="9ddaf451-d703-48e4-94ae-b11a04352e4c/c11757ba-97b2-4573-9a32-86a80ea220f2.jpg"/>
+  <figcaption>PixARK</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="c9e5e36b-2d8d-4efc-b619-abd38ea9afa4.html">
+  <img class="lozad" data-src="c9e5e36b-2d8d-4efc-b619-abd38ea9afa4/eba6992b-5bad-40b7-883b-f43cac63bb15.jpg"/>
+  <figcaption>Project Zomboid</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -7739,6 +8117,18 @@ input:hover{
   <figcaption>Wo Long Fallen Dynasty </figcaption>
   </a>
 </figure>
+<figure class="card">
+  <a href="fff5bb23-237e-4b11-bf38-b1584640d568.html">
+  <img class="lozad" data-src="fff5bb23-237e-4b11-bf38-b1584640d568/fa9bca81-ddf8-46db-98c2-ae41e782c805.jpg"/>
+  <figcaption>WUCHANG: Fallen Feathers</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="c3e9d180-21e2-4260-9aa6-9ce6776d994e.html">
+  <img class="lozad" data-src="c3e9d180-21e2-4260-9aa6-9ce6776d994e/ea81d410-91bc-4466-b783-2652207badca.jpg"/>
+  <figcaption>Wuthering Waves</figcaption>
+  </a>
+</figure>
 
 </div><div id="quicklink-Role-playing (RPG)"><h2 id="h2jscript" onclick="ShowHide('Role-playing (RPG)')"><strong id="eye-Role-playing (RPG)" style="color: #007962;">&#x25BC;</strong><strong>Role-playing (RPG)<span>( 2 )</span></strong></h2></div>
 <div id="Role-playing (RPG)" class="cards">
@@ -7755,7 +8145,7 @@ input:hover{
   </a>
 </figure>
 
-</div><div id="quicklink-RPG"><h2 id="h2jscript" onclick="ShowHide('RPG')"><strong id="eye-RPG" style="color: #007962;">&#x25BC;</strong><strong>RPG<span>( 13 )</span></strong></h2></div>
+</div><div id="quicklink-RPG"><h2 id="h2jscript" onclick="ShowHide('RPG')"><strong id="eye-RPG" style="color: #007962;">&#x25BC;</strong><strong>RPG<span>( 14 )</span></strong></h2></div>
 <div id="RPG" class="cards">
 <figure class="card">
   <a href="9512dee0-f9d5-4731-9617-7af532ee453a.html">
@@ -7767,6 +8157,12 @@ input:hover{
   <a href="65b9f603-a4e7-4a52-a1ee-3a5058e5b969.html">
   <img class="lozad" data-src="65b9f603-a4e7-4a52-a1ee-3a5058e5b969/185f8cf2-a516-4bda-a99e-38e83d4a5411.jpg"/>
   <figcaption>BLADES OF FIRE</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="f5d38089-528b-4ab0-85d7-3bb11dffb325.html">
+  <img class="lozad" data-src="f5d38089-528b-4ab0-85d7-3bb11dffb325/b9e778a9-425c-4ccb-b592-a82a3fa16590.jpg"/>
+  <figcaption>Demon&#39;s Souls [2009]----PS3 EMULATOR</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -8316,6 +8712,12 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
+  <a href="d2b935e9-84b0-438d-b706-f94a600c6311.html">
+  <img class="lozad" data-src="d2b935e9-84b0-438d-b706-f94a600c6311/b4a45251-6b2e-4917-b3f4-e4fa9b06b57b.jpg"/>
+  <figcaption>My Time at Portia</figcaption>
+  </a>
+</figure>
+<figure class="card">
   <a href="1623c8d1-dc0a-484d-adfb-b2bb0787113e.html">
   <img class="lozad" data-src="1623c8d1-dc0a-484d-adfb-b2bb0787113e/44f99b1e-64f0-495a-987d-d33b41f45826.jpg"/>
   <figcaption>My Time at Sandrock</figcaption>
@@ -8364,15 +8766,15 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
-  <a href="7ebbd850-5296-4215-9cc2-06795c75bab2.html">
-  <img class="lozad" data-src="7ebbd850-5296-4215-9cc2-06795c75bab2/53f1f116-9ad7-4050-be41-800dbf13f437.jpg"/>
-  <figcaption>Railway Empire 2</figcaption>
+  <a href="c9e5e36b-2d8d-4efc-b619-abd38ea9afa4.html">
+  <img class="lozad" data-src="c9e5e36b-2d8d-4efc-b619-abd38ea9afa4/eba6992b-5bad-40b7-883b-f43cac63bb15.jpg"/>
+  <figcaption>Project Zomboid</figcaption>
   </a>
 </figure>
 <figure class="card">
-  <a href="255d6241-7127-4bb8-940e-7ef9a6c6bf5e.html">
-  <img class="lozad" data-src="255d6241-7127-4bb8-940e-7ef9a6c6bf5e/d2bb4664-490b-4214-a524-8a8276ed41a6.jpg"/>
-  <figcaption>Ranch Simulator </figcaption>
+  <a href="7ebbd850-5296-4215-9cc2-06795c75bab2.html">
+  <img class="lozad" data-src="7ebbd850-5296-4215-9cc2-06795c75bab2/53f1f116-9ad7-4050-be41-800dbf13f437.jpg"/>
+  <figcaption>Railway Empire 2</figcaption>
   </a>
 </figure>
 <figure class="card">
@@ -8568,12 +8970,6 @@ input:hover{
   </a>
 </figure>
 <figure class="card">
-  <a href="996a9677-db58-4c6c-a29e-9e154839cddf.html">
-  <img class="lozad" data-src="996a9677-db58-4c6c-a29e-9e154839cddf/b8f7adf9-f0e3-406f-b948-5c485ed5cccc.jpg"/>
-  <figcaption>WWE 2K24</figcaption>
-  </a>
-</figure>
-<figure class="card">
   <a href="170897aa-675f-417d-94e7-d665deec2c44.html">
   <img class="lozad" data-src="170897aa-675f-417d-94e7-d665deec2c44/6ccf825e-2258-4c25-ab27-1d74f0eaf7b6.jpg"/>
   <figcaption>WWE 2K25</figcaption>
@@ -8721,7 +9117,7 @@ input:hover{
 </div>
     </div>
   </body>
-  <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+  <script src="lozad.min.js"></script>
   <script>
     const observer = lozad(); // lazy loads elements with default selector as '.lozad'
     observer.observe();

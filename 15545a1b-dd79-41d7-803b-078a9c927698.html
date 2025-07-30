@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>SCUM</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('15545a1b-dd79-41d7-803b-078a9c927698/eba492ad-3b69-4020-9b12-065a51c0eeef.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="15545a1b-dd79-41d7-803b-078a9c927698/b113a3bd-4dc9-421a-833b-0ffe68b93149.png"/> SCUM</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="15545a1b-dd79-41d7-803b-078a9c927698/078505f6-552c-4add-bce6-2941c4c11952.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-7/4/2025">7/4/2025</a> 12:45:45</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-7/4/2025">7/4/2025</a> 12:58:08</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-6TB STORE">6TB STORE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-6/17/2025">6/17/2025</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-74">74</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Multijugador masivo">Multijugador masivo</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Gamepires">Gamepires</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Gamepires">Gamepires</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Comodidad De La Cámara">Comodidad De La Cámara</a><br/><a href="#quicklink-Controles De Volumen Personalizados">Controles De Volumen Personalizados</a><br/><a href="#quicklink-Cooperativo">Cooperativo</a><br/><a href="#quicklink-Cooperativo En Línea">Cooperativo En Línea</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Dificultad Ajustable">Dificultad Ajustable</a><br/><a href="#quicklink-Estadísticas">Estadísticas</a><br/><a href="#quicklink-Jcj">Jcj</a><br/><a href="#quicklink-Jcj En Línea">Jcj En Línea</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Multijugador Masivo">Multijugador Masivo</a><br/><a href="#quicklink-Sonido Envolvente">Sonido Envolvente</a><br/><a href="#quicklink-Sonido Estéreo">Sonido Estéreo</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/513710" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/513710/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/513710/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=513710" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/513710" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=513710" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/513710/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/513710/extras/SCUM_Money_Shot_Gif.gif?t=1750430234" /></div></p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/513710/extras/Scum_island@0.5x_SPAN.png?t=1750430234" /></div></p><p class="bb_paragraph">¡Bienvenidos a la isla SCUM, reclusos! Un lugar en el que la participación es forzosa y el entorno es cruel, aunque más crueles son sus habitantes. El público disfrutará de vuestro afán desesperado por sobrevivir, y procurándoles entretenimiento redimiréis vuestros crímenes y saldaréis vuestra deuda con la sociedad. Ni se os ocurra creer que la muerte os salvará; vuestra condena no ha hecho más que empezar. </p><p class="bb_paragraph">SCUM es un juego de supervivencia en mundo abierto difícil y realista a más no poder. Cada aspecto de la supervivencia lo integran detalles fundamentales, como la gestión del inventario, el mantenimiento del armamento, la administración de la resistencia y la fatiga, o el sistema de metabolismo más minucioso jamás concebido en un videojuego. ¿Seréis capaces de aguantar con vida en la isla? ¡Lanzaos de cabeza a averiguarlo! </p><h2 class="bb_tag">Características principales </h2><p class="bb_paragraph"><strong>La isla</strong> </p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/513710/extras/Enviroment.gif?t=1750430234" /></div></p><p class="bb_paragraph">Os presentamos el mapa más extenso que se ha creado nunca en Unreal Engine 4, con 225 ㎢, inspirado en la topografía croata: desde el hermoso litoral adriático hasta inhóspitas cordilleras nevadas, pasando por bosques exuberantes. Un mapa cargado de aldeas, pueblos, ciudades, bases militares, fábricas e infraestructura civil entre muchos más puntos de interés. Tampoco pueden faltar zonas de riesgo tales como búnkeres inexpugnables, o abandonados y repletos de amenazas, así como un sector radiactivo donde los peligros no solo son los que se aprecian a simple vista. </p><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>Metabolismo</strong> </p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/513710/extras/metabolism.gif?t=1750430234" /></div></p><p class="bb_paragraph">Meteos de lleno en el sistema de metabolismo más complejo y formidable que se ha diseñado jamás. Más allá de preocuparos por comer y beber para no desfallecer, os tocará estar pendientes de qué coméis y qué bebéis para que vuestros reclusos gocen de la mejor forma física. Si a esto le sumamos complejas mecánicas de salud y un sistema de atributos y habilidades propio de un RPG, podréis adecuar la dieta del recluso a vuestro estilo particular de juego. </p><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>Peligros</strong> </p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/513710/extras/Dangers.gif?t=1750430234" /></div></p><p class="bb_paragraph">La isla os depara peligros a punta de pala: experimentos malogrados que han engendrado monstruosidades mutantes, participantes resurgidos como títeres homicidas, otros supervivientes dispuestos a matar en beneficio propio, la radiación procedente de una central nuclear en ruinas y otros jugadores que harán lo que sea con tal de salir a flote. </p><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>Fabricación y saqueo</strong> </p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/513710/extras/Crafting.gif?t=1750430234" /></div></p><p class="bb_paragraph">No os faltarán pertrechos necesarios para sobrevivir, tanto si los fabricáis con vuestras propias manos como si los encontráis por la isla. Armas cuerpo a cuerpo, arcos, armas de fuego, indumentaria, mochilas y un sistema de cocinado muy completo. Para cada fin, una herramienta; vosotros decidís qué uso darles. </p><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>Mantenimiento</strong> </p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/513710/extras/Maintenance.gif?t=1750430234" /></div></p><p class="bb_paragraph">Tanto si hablamos de vuestro rifle favorito como de vuestros vaqueros de la suerte, procurad llevar el equipo siempre bien mantenido, ya que de ello dependerá cuánta carga podréis llevar a cuestas, la probabilidad de que se os atasquen las armas o la calidad de los objetos fabricados. </p><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>Vehículos</strong> </p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/513710/extras/Vehicle.gif?t=1750430234" /></div></p><p class="bb_paragraph">No importa si es por tierra, mar o aire, porque siempre habrá un vehículo perfecto para ello. Gracias al sistema modular, podréis añadir y retirar piezas a cada vehículo. Incorporad blindajes o dejadlo pelado, optando entre protección o estética, y moveos por el mapa con total comodidad. </p><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>Multijugador</strong> </p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/513710/extras/PvP.gif?t=1750430234" /></div></p><p class="bb_paragraph">Ponemos a vuestra disposición servidores a mansalva, en los que trataréis de sobrevivir junto a otros 64 jugadores, ya sea uniendo fuerzas o matándoos los unos a los otros. También podréis utilizar servidores propios y configurar la experiencia al milímetro con un sinfín de ajustes de personalización. </p>
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

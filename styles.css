@@ -1,0 +1,35 @@
+/* Estilos para el botón de WhatsApp */
+.button-whatsapp {
+    margin: 10px;
+     bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: #25D366;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+/* Estilo para la imagen dentro del botón */
+.button-whatsapp img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    filter: invert(1);
+    /* Esto convierte los colores de la imagen a blanco. Puedes ajustarlo o eliminarlo según la imagen que uses */
+}
+/* Efectos al pasar el ratón por el botón */
+.button-whatsapp:hover {
+    background-color: #1EBE56;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+.button-whatsapp:active {
+    background-color: #169E49;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
