@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Cronos: The New Dawn</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('1cd3e725-2146-443a-a0ff-8ccaa190d2de/9229b808-a735-40de-a469-c46809649456.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="1cd3e725-2146-443a-a0ff-8ccaa190d2de/112f665f-5d7b-4406-a7ec-1f567e6e9c16.png"/> Cronos: The New Dawn</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="1cd3e725-2146-443a-a0ff-8ccaa190d2de/629b1e21-aabf-4dae-a435-e4386e72e79e.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-9/4/2025">9/4/2025</a> 12:02:23</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-9/4/2025">9/4/2025</a> 12:43:35</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-4TB TANK">4TB TANK</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Linux)">PC (Linux)</a><br/><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-9/5/2025">9/5/2025</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Bloober Team">Bloober Team</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Bloober Team SA">Bloober Team SA</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-HDR Disponible">HDR Disponible</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/2101960" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/2101960/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/2101960/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=2101960" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/2101960" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=2101960" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/2101960/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Acción y aventura">Acción y aventura</a><br/><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-Buena trama">Buena trama</a><br/><a href="#quicklink-Ciencia ficción">Ciencia ficción</a><br/><a href="#quicklink-Combate">Combate</a><br/><a href="#quicklink-Difíciles">Difíciles</a><br/><a href="#quicklink-Disparos en tercera persona">Disparos en tercera persona</a><br/><a href="#quicklink-Distopías">Distopías</a><br/><a href="#quicklink-Fabricación">Fabricación</a><br/><a href="#quicklink-Futuristas">Futuristas</a><br/><a href="#quicklink-Gestión de recursos">Gestión de recursos</a><br/><a href="#quicklink-Oscuros">Oscuros</a><br/><a href="#quicklink-Posapocalípticos">Posapocalípticos</a><br/><a href="#quicklink-Sangriento">Sangriento</a><br/><a href="#quicklink-Supervivencia / Terror">Supervivencia / Terror</a><br/><a href="#quicklink-Tercera persona">Tercera persona</a><br/><a href="#quicklink-Terror">Terror</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/><a href="#quicklink-Viajes en el tiempo">Viajes en el tiempo</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2101960/extras/437bafe758260388a1c34682b81be232.poster.avif?t=1756924488" width=800 height=343 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2101960/extras/437bafe758260388a1c34682b81be232.webm?t=1756924488" type="video/webm; codecs=vp9"></video></span></p><p class="bb_paragraph" >Cronos: The New Dawn es un juego de supervivencia y terror en tercera persona en el que lucharás por salvaguardar el futuro protegiendo el pasado. Quema monstruos antes de que se fusionen. Extrae almas de los vivos. Adáptate o muere. </p><p class="bb_paragraph" ></p><p class="bb_paragraph" ><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2101960/extras/8b5e9c83a1b70cda5d249f80accaa607.webp?t=1756924488" width=616 height=29 /></span></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2101960/extras/b8184442b11cd14d8dea4026ef7fc2f9.poster.avif?t=1756924488" width=780 height=333 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2101960/extras/b8184442b11cd14d8dea4026ef7fc2f9.webm?t=1756924488" type="video/webm; codecs=vp9"></video></span></p><p class="bb_paragraph" >Un juego ambientado en un mundo lúgubre que mezcla la tecnología retrofuturista con el brutalismo de Europa del Este. En Cronos: The New Dawn descubrirás una historia que desdibuja los límites entre el pasado y el futuro. </p><p class="bb_paragraph" >En el pasado, explorarás un mundo sumido en el Cambio, un cataclismo que transformó a la humanidad para siempre. Mientras tanto, en los páramos arrasados del futuro, cada instante se convierte en una lucha por la supervivencia contra peligrosas abominaciones que pondrán a prueba tus reflejos y tu pensamiento estratégico.  </p><p class="bb_paragraph" >Eres una viajera, una agente del enigmático Colectivo, a quien se le encomendó la tarea de explorar el futuro en busca de portales del tiempo que te transportarán a la Polonia de los ochenta. </p><p class="bb_paragraph" ></p><p class="bb_paragraph" ><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2101960/extras/e028acae892f0929ec445fd5c2bd8a22.webp?t=1756924488" width=616 height=34 /></span></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2101960/extras/1c5d79321f18a136fdd47227615939ca.poster.avif?t=1756924488" width=780 height=333 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2101960/extras/1c5d79321f18a136fdd47227615939ca.webm?t=1756924488" type="video/webm; codecs=vp9"></video></span></p><p class="bb_paragraph" >En un mundo desolado donde el peligro acecha en cada esquina, tu supervivencia dependerá de la estrategia que sigas. Los enemigos que te encontrarás son criaturas aterradoras nacidas de los restos de la humanidad; para derrotarlas, tendrás que emplear todo tu arsenal. </p><p class="bb_paragraph" >Puedes manipular las anomalías temporales para abrirte paso a través del entorno desolador que te espera, y además, tendrás que rapiñar recursos para reponer suministros y munición. La clave para la supervivencia es prepararse bien. Durante el combate, las decisiones rápidas marcarán la diferencia entre la vida y la muerte.</p><p class="bb_paragraph" ></p><p class="bb_paragraph" ><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2101960/extras/80d0cf800d88343708657cb46ee26829.webp?t=1756924488" width=616 height=29 /></span></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2101960/extras/6a79cf364a81183d460802bb087df117.poster.avif?t=1756924488" width=800 height=343 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2101960/extras/6a79cf364a81183d460802bb087df117.webm?t=1756924488" type="video/webm; codecs=vp9"></video></span>Las criaturas que mates no estarán muertas mucho tiempo. Los enemigos pueden absorber a otros enemigos caídos mediante un grotesco proceso llamado «Fusión» y volverse más rápidos, más duros y muchísimo más peligrosos.</p><p class="bb_paragraph" >¿Y cuál es la única forma de evitarlo? Quemarlos. Y cuanto más rápido, mejor.<br><br>  </p><p class="bb_paragraph" >Si no, te enfrentarás a abominaciones cada vez más poderosas que pondrán tus habilidades al límite. </p><p class="bb_paragraph" ></p><p class="bb_paragraph" ><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2101960/extras/727aab7530f3f0a7a5d2b01ff53d51da.webp?t=1756924488" width=616 height=29 /></span></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2101960/extras/c43cce90f0e7ba1b0ef40889d8f48653.poster.avif?t=1756924488" width=780 height=333 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2101960/extras/c43cce90f0e7ba1b0ef40889d8f48653.webm?t=1756924488" type="video/webm; codecs=vp9"></video></span></p><p class="bb_paragraph" >Tu misión consiste en hallar a personas importantes del pasado que perecieron en la catástrofe. Valiéndote de tu poderosa Segadora, podrás extraer sus esencias para que te acompañen al futuro.<br> </p><p class="bb_paragraph" >Pero, atención: dichas esencias tendrán un gran impacto en tu aventura.<br> </p><p class="bb_paragraph" >Cuántas más esencias lleves, más maldito se volverá tu traje, lo que hará que seas más poderoso en combate, aunque también hará que oigas susurros, veas destellos y que vayas perdiendo tu cordura poco a poco.  </p>
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

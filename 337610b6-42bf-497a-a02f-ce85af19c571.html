@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>METAL GEAR SOLID Δ: SNAKE EATER</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('337610b6-42bf-497a-a02f-ce85af19c571/a0ef8c20-7173-4781-b91d-050f9065f876.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="337610b6-42bf-497a-a02f-ce85af19c571/03ec5952-84eb-419b-8e82-fa099702401a.png"/> METAL GEAR SOLID Δ: SNAKE EATER</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="337610b6-42bf-497a-a02f-ce85af19c571/850320a0-7f13-4acd-8822-f920c0d83243.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-8/29/2025">8/29/2025</a> 20:14:02</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-9/1/2025">9/1/2025</a> 7:30:16</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-6TB STORE">6TB STORE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-"></a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Konami">Konami</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Konami">Konami</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Alternativas De Color">Alternativas De Color</a><br/><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Comodidad De La Cámara">Comodidad De La Cámara</a><br/><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Controles De Volumen Personalizados">Controles De Volumen Personalizados</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Dificultad Ajustable">Dificultad Ajustable</a><br/><a href="#quicklink-HDR Disponible">HDR Disponible</a><br/><a href="#quicklink-Jugable Sin Eventos Rápidos">Jugable Sin Eventos Rápidos</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Opciones De Subtítulos">Opciones De Subtítulos</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Sonido Envolvente">Sonido Envolvente</a><br/><a href="#quicklink-Sonido Estéreo">Sonido Estéreo</a><br/><a href="#quicklink-Tamaño Del Texto Ajustable">Tamaño Del Texto Ajustable</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/2417610" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/2417610/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/2417610/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=2417610" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/2417610" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=2417610" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/2417610/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-3D">3D</a><br/><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Acción y aventura">Acción y aventura</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Bélicos">Bélicos</a><br/><a href="#quicklink-Buena trama">Buena trama</a><br/><a href="#quicklink-Cinematográficos">Cinematográficos</a><br/><a href="#quicklink-Disparos en tercera persona">Disparos en tercera persona</a><br/><a href="#quicklink-Drama">Drama</a><br/><a href="#quicklink-Exploración">Exploración</a><br/><a href="#quicklink-Guerra Fría">Guerra Fría</a><br/><a href="#quicklink-Militares">Militares</a><br/><a href="#quicklink-Sigilo">Sigilo</a><br/><a href="#quicklink-Supervivencia">Supervivencia</a><br/><a href="#quicklink-Tácticos">Tácticos</a><br/><a href="#quicklink-Tanques">Tanques</a><br/><a href="#quicklink-Tercera persona">Tercera persona</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/><a href="#quicklink-Versiones nuevas">Versiones nuevas</a><br/><a href="#quicklink-Violentos">Violentos</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					El principio de todo.<br><br>Una adaptación del juego METAL GEAR SOLID 3: SNAKE EATER de 2004, con la historia irresistible y el mundo fascinante que ya conoces, ahora con gráficos renovados y sonido 3D que potencian el ambiente selvático. Prepárate para la experiencia definitiva de supervivencia, sigilo y acción.<br><br><strong>La crisis en plena Guerra Fría con la que comenzó todo</strong><br>En plena Guerra Fría, Naked Snake, el hombre al que acabarían conociendo como Big Boss, se infiltra en la Unión Soviética para escoltar a un científico desertor, Sokolov. Sin embargo, la misión acaba siendo un fracaso cuando la mentora de Snake (The Boss, una soldado conocida como la madre de las fuerzas especiales) lo traiciona y Sokolov es capturado por el coronel Volgin del GRU.<br><br>Una semana más tarde, Snake vuelve al territorio soviético para rescatar a Sokolov y eliminar a The Boss. Esta misión marcará el inicio de una nueva leyenda en el contexto de una historia marcada por constantes cambios.<br><br><strong>Todo lo que te encanta y todavía más</strong><br>Vuelven la historia, los personajes, el doblaje, la jugabilidad y la música que causaron un gran impacto en una nueva versión para las consolas de la actual generación. Este salto evolutivo otorga a cada escena una nueva vida y reconstruye cada rincón del mundo.<br><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2417610/extras/a1b2c82d75682ae92e0d1ae244f220fc.poster.avif?t=1756386016" width=640 height=360 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2417610/extras/a1b2c82d75682ae92e0d1ae244f220fc.webm?t=1756386016" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2417610/extras/a1b2c82d75682ae92e0d1ae244f220fc.mp4?t=1756386016" type="video/mp4"></video></span><br><br><strong>Gráficos espectaculares</strong><br>Gracias a Unreal Engine 5, los escenarios expansivos se representan con una tecnología de vanguardia. Unos increíbles gráficos nuevos recrean el desarrollo silvestre de las selvas, los bosques y los pantanos con un gran nivel de detalle. Los personajes se representan con tanto detalle que las arrugas, los poros e incluso los movimientos oculares y del iris son visibles, algo que permite ofrecer unas animaciones faciales sorprendentes y emotivas.<br><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2417610/extras/c3904c4e8891ddf9e83ccd59983b98f5.poster.avif?t=1756386016" width=640 height=360 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2417610/extras/c3904c4e8891ddf9e83ccd59983b98f5.webm?t=1756386016" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2417610/extras/c3904c4e8891ddf9e83ccd59983b98f5.mp4?t=1756386016" type="video/mp4"></video></span><br><br><strong>Auténticas representaciones de la vida real</strong><br>Se ha mejorado el sistema de daños en combate con el desgaste de la ropa de Snake, así como los moratones y las heridas de bala de su cuerpo, todo reflejado en tiempo real. Cualquier lesión que sufra dejará una huella permanente en el cuerpo de Snake, lo que supone una aventura única para cada jugador.<br><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2417610/extras/6eb89b78a2c174ad61d7b8209381879a.poster.avif?t=1756386016" width=640 height=360 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2417610/extras/6eb89b78a2c174ad61d7b8209381879a.webm?t=1756386016" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2417610/extras/6eb89b78a2c174ad61d7b8209381879a.mp4?t=1756386016" type="video/mp4"></video></span><br><br><strong>Experiencias inmersivas profundas</strong><br>Los jugadores podrán optar por un nuevo estilo de control más moderno. Estos controles intuitivos permiten la inmersión total en el juego y vivir toda la emoción de la experiencia de sigilo y supervivencia. También estará disponible un sistema de control clásico que recuerda más al juego original.<br><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2417610/extras/f340f5e2bfb2f795e253cd4adc76b5dc.poster.avif?t=1756386016" width=640 height=360 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2417610/extras/f340f5e2bfb2f795e253cd4adc76b5dc.webm?t=1756386016" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2417610/extras/f340f5e2bfb2f795e253cd4adc76b5dc.mp4?t=1756386016" type="video/mp4"></video></span><h2 class="bb_tag" >Modos de juego adicionales</h2>*El lanzamiento de FOX HUNT está previsto en otoño de 2025.<br><br>・SNAKE VS MONKEY<br>En este modo, jugarás como Snake y deberás reunir a todos los simios que han escapado y campan por sus anchas en cada nivel.<br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2417610/extras/4ae63ca10f977715f452be7f87392b78.avif?t=1756386016" data-has-big width=800 height=450 /></span><br><br>・FOX HUNT<br>Un flamante modo multijugador en línea, ambientado en el mismo mundo que la historia principal. Este nuevo modo hace uso de elementos de sigilo y supervivencia para jugar al escondite con alternancia de roles.<br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2417610/extras/5a73caa9e0d5d8abf3cf4928cf121aaf.avif?t=1756386016" data-has-big width=800 height=450 /></span><br><br>・Secret Theater<br>Encuentra bobinas de película de 8 mm, que los soldados enemigos llevan de forma secreta, para desbloquear estas versiones humorísticas de ciertas escenas. Podrás encontrar escenas del Secret Theater original, así como vídeos completamente nuevos.<br>*Secret Theater se desbloqueará después de terminar el juego.<br>*Las bobinas de película que llevan los soldados se pueden recolectar durante el juego.<br><br>・GUY SAVAGE Δ<br>Regresa el minijuego de pesadilla &quot;Guy Savage&quot; con una versión rediseñada que captura la esencia del original y aporta la fresca mirada de PlatinumGames. Para desbloquearlo como modo extra, activa la secuencia de la pesadilla durante el juego o completa el modo historia.<br>*GUY SAVAGE Δ se desbloqueará tras finalizar el juego.
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>
