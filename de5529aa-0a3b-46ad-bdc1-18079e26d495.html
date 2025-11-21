@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>dredge</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('de5529aa-0a3b-46ad-bdc1-18079e26d495/1eda1295-1eb4-44b3-94cf-42ce4e7e2169.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="de5529aa-0a3b-46ad-bdc1-18079e26d495/1bfb71da-91c0-46ee-b40c-daef02fdb9ac.png"/> dredge</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="de5529aa-0a3b-46ad-bdc1-18079e26d495/8767897e-9d00-4120-a555-d3774d41cf94.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-20/11/2025">20/11/2025</a> 14:16:39</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-20/11/2025">20/11/2025</a> 14:17:07</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB GAS">2TB GAS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-Macintosh">Macintosh</a><br/><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-30/03/2023">30/03/2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-94">94</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Rol">Rol</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Black Salt Games">Black Salt Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Team17">Team17</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Alternativas De Color">Alternativas De Color</a><br/><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Comodidad De La Cámara">Comodidad De La Cámara</a><br/><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Controles De Volumen Personalizados">Controles De Volumen Personalizados</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Dificultad Ajustable">Dificultad Ajustable</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Opción Solo Teclado">Opción Solo Teclado</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Sonido Estéreo">Sonido Estéreo</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1562430" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1562430/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1562430/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1562430" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1562430" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1562430" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/1562430/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-3D">3D</a><br/><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Buena trama">Buena trama</a><br/><a href="#quicklink-Estilizados">Estilizados</a><br/><a href="#quicklink-Exploración">Exploración</a><br/><a href="#quicklink-Gestión de inventario">Gestión de inventario</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Lovecraftianos">Lovecraftianos</a><br/><a href="#quicklink-Misterio">Misterio</a><br/><a href="#quicklink-Mundo abierto">Mundo abierto</a><br/><a href="#quicklink-Navegación">Navegación</a><br/><a href="#quicklink-Pesca">Pesca</a><br/><a href="#quicklink-Psicológicos">Psicológicos</a><br/><a href="#quicklink-Rol">Rol</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Supervivencia / Terror">Supervivencia / Terror</a><br/><a href="#quicklink-Terror">Terror</a><br/><a href="#quicklink-Terror psicológico">Terror psicológico</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph" >Ponte al mando de tu trainera de pesca y explora una colección de islas remotas y las profundidades que las rodean para ver qué yace allí debajo. Vende lo que pesques a los lugareños y completa misiones para saber más sobre el turbulento pasado de cada zona. Potencia tu barca con equipamiento mejorado y navega por tierras lejanas, pero ten en cuenta el tiempo.... puede que no te guste lo que encuentres en la oscuridad...</p><p class="bb_paragraph" ></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1562430/extras/e05bf43d4b98d5a6f1ee21a2188118f1.poster.avif?t=1763037313" width=600 height=274 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1562430/extras/e05bf43d4b98d5a6f1ee21a2188118f1.webm?t=1763037313" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1562430/extras/e05bf43d4b98d5a6f1ee21a2188118f1.mp4?t=1763037313" type="video/mp4"></video></span></p><h2 class="bb_tag" >Explora las islas y descubre sus secretos</h2><p class="bb_paragraph" >Lánzate al agua desde tu nuevo hogar en el remoto archipiélago The Marrows y explora las profundidades para encontrar curiosos coleccionables y más de 125 habitantes de las profundidades marinas. Explora cada zona mientras completas misiones y visitas las regiones isleñas vecinas, cada una de ellas con sus propias oportunidades, habitantes y secretos.</p><p class="bb_paragraph" ></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1562430/extras/fa4cf39d128e8585f06a78aadd8e398a.poster.avif?t=1763037313" width=600 height=274 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1562430/extras/fa4cf39d128e8585f06a78aadd8e398a.webm?t=1763037313" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1562430/extras/fa4cf39d128e8585f06a78aadd8e398a.mp4?t=1763037313" type="video/mp4"></video></span></p><h2 class="bb_tag" >Ahonda en las profundidades</h2><p class="bb_paragraph" >Alguien quiere que indagues en el pasado, pero ¿puedes confiar en esa persona? ¿Y será alguna vez suficiente?</p><p class="bb_paragraph" ></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1562430/extras/0a3c212374bd93be210e2b4c00179ea2.poster.avif?t=1763037313" width=600 height=274 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1562430/extras/0a3c212374bd93be210e2b4c00179ea2.webm?t=1763037313" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1562430/extras/0a3c212374bd93be210e2b4c00179ea2.mp4?t=1763037313" type="video/mp4"></video></span></p><h2 class="bb_tag" >Cuidado con la niebla</h2><p class="bb_paragraph" >El peligro está por todas partes, así que ten cuidado con las rocas afiladas y los arrecifes poco profundos, aunque las mayores amenazas acechan entre la niebla que cubre los mares nocturnos... </p><p class="bb_paragraph" ></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1562430/extras/e1266d2c5f67e1b41a9a3987ddb3d95c.poster.avif?t=1763037313" width=600 height=274 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1562430/extras/e1266d2c5f67e1b41a9a3987ddb3d95c.webm?t=1763037313" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1562430/extras/e1266d2c5f67e1b41a9a3987ddb3d95c.mp4?t=1763037313" type="video/mp4"></video></span></p><h2 class="bb_tag" >Características del juego</h2><p class="bb_paragraph" >Desvela un misterio: ponte al mando de tu trainera de pesca y recorre varias islas remotas, cada una con sus propios habitantes, su fauna y sus historias por descubrir.</p><p class="bb_paragraph" ></p><p class="bb_paragraph" >Ahonda en las profundidades: explora el mar en busca de tesoros ocultos y completa misiones para acceder a nuevas y extrañas habilidades.</p><p class="bb_paragraph" ></p><p class="bb_paragraph" >Estudia tu embarcación: investiga el equipamiento especial y mejora las capacidades de tu barca para conseguir peces raros y valiosas curiosidades submarinas.</p><p class="bb_paragraph" ></p><p class="bb_paragraph" >Pesca para sobrevivir: Vende tus descubrimientos a los lugareños para aprender más sobre cada zona, mejorar tu barco y alcanzar ubicaciones todavía más apartadas.</p><p class="bb_paragraph" ></p><p class="bb_paragraph" >Lucha contra lo inimaginable: fortalece tu mente y utiliza tus capacidades para sobrevivir a las incursiones fuera del agua después del anochecer.</p>
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

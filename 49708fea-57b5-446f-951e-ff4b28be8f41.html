@@ -1,0 +1,356 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Spider-Man 3</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('49708fea-57b5-446f-951e-ff4b28be8f41/f434f21c-b317-457f-b12e-1c05bebd23f1.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="49708fea-57b5-446f-951e-ff4b28be8f41/7467147f-8042-4876-80dd-406384a0f6cf.png"/> Spider-Man 3</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="49708fea-57b5-446f-951e-ff4b28be8f41/d2218665-5610-46ba-9a08-6c1711962c4d.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-29/10/2025">29/10/2025</a> 22:11:42</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-29/10/2025">29/10/2025</a> 22:13:26</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB GAS">2TB GAS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-Microsoft Xbox 360">Microsoft Xbox 360</a><br/><a href="#quicklink-Nintendo DS">Nintendo DS</a><br/><a href="#quicklink-Nintendo Game Boy Advance">Nintendo Game Boy Advance</a><br/><a href="#quicklink-Nintendo Wii">Nintendo Wii</a><br/><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/><a href="#quicklink-Sony PlayStation 2">Sony PlayStation 2</a><br/><a href="#quicklink-Sony PlayStation 3">Sony PlayStation 3</a><br/><a href="#quicklink-Sony PlayStation Portable">Sony PlayStation Portable</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-04/05/2007">04/05/2007</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-61">61</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Action-adventure">Action-adventure</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Beenox">Beenox</a><br/><a href="#quicklink-Treyarch">Treyarch</a><br/><a href="#quicklink-Vicarious Visions">Vicarious Visions</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Activision">Activision</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-multiplayer (DS)">multiplayer (DS)</a><br/><a href="#quicklink-Single-player">Single-player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/Spider-Man_3_(video_game)" target="_blank">Wikipedia</a><br/><a href="https://www.mobygames.com/game/spider-man-3" target="_blank">MobyGames</a><br/><a href="https://www.mobygames.com/game/spider-man-3_" target="_blank">MobyGames</a><br/><a href="https://www.mobygames.com/game/spider-man-3__" target="_blank">MobyGames</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-[Game Engine] 360">[Game Engine] 360</a><br/><a href="#quicklink-[Game Engine] DS">[Game Engine] DS</a><br/><a href="#quicklink-[Game Engine] GBA)">[Game Engine] GBA)</a><br/><a href="#quicklink-[Game Engine] PSP">[Game Engine] PSP</a><br/><a href="#quicklink-[Game Engine] Treyarch NGL (PS3">[Game Engine] Treyarch NGL (PS3</a><br/><a href="#quicklink-[Game Engine] Vicarious Visions Alchemy (PS2">[Game Engine] Vicarious Visions Alchemy (PS2</a><br/><a href="#quicklink-[Game Engine] Wii">[Game Engine] Wii</a><br/><a href="#quicklink-[Game Engine] Windows)">[Game Engine] Windows)</a><br/><a href="#quicklink-[People] composer: Tobias Enhus">[People] composer: Tobias Enhus</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>Spider-Man 3</b></i> is a 2007 <a href="https://en.wikipedia.org/wiki/Action-adventure_game">action-adventure game</a> loosely based on the 2007 film <a href="https://en.wikipedia.org/wiki/Spider-Man_3">of the same name</a>. The game is the sequel to 2004's <i><a href="https://en.wikipedia.org/wiki/Spider-Man_2_(2004_video_game)">Spider-Man 2</a></i>, itself based on the 2004 film <a href="https://en.wikipedia.org/wiki/Spider-Man_2_(film)">of the same name</a>. It was released for the <a href="https://en.wikipedia.org/wiki/PlayStation_3">PlayStation 3</a>, <a href="https://en.wikipedia.org/wiki/PlayStation_2">PlayStation 2</a>, <a href="https://en.wikipedia.org/wiki/Xbox_360">Xbox 360</a>, <a href="https://en.wikipedia.org/wiki/Microsoft_Windows">Microsoft Windows</a>, <a href="https://en.wikipedia.org/wiki/Wii">Wii</a>, <a href="https://en.wikipedia.org/wiki/Nintendo_DS">Nintendo DS</a>, and <a href="https://en.wikipedia.org/wiki/Game_Boy_Advance">Game Boy Advance</a> on May 4, 2007, and for the <a href="https://en.wikipedia.org/wiki/PlayStation_Portable">PlayStation Portable</a> on October 16, 2007. Published by <a href="https://en.wikipedia.org/wiki/Activision">Activision</a>, the PlayStation 3 and Xbox 360 versions were developed by <a href="https://en.wikipedia.org/wiki/Treyarch">Treyarch</a>, while <a href="https://en.wikipedia.org/wiki/Vicarious_Visions">Vicarious Visions</a> handled the development of the other versions, which are drastically different. <a href="https://en.wikipedia.org/wiki/Beenox">Beenox</a> ported Treyarch's version of the game to Microsoft Windows.</p>
+
+<p>The game plays similarly to two of Treyarch's previous <i>Spider-Man</i> titles, <i>Spider-Man 2</i> and <i><a href="https://en.wikipedia.org/wiki/Ultimate_Spider-Man_(video_game)">Ultimate Spider-Man</a></i>, incorporating an <a href="https://en.wikipedia.org/wiki/Open_world">open world</a> design that allows players to freely explore a fictitious representation of <a href="https://en.wikipedia.org/wiki/Manhattan">Manhattan</a> when not completing missions to advance the narrative. The <a href="https://en.wikipedia.org/wiki/Symbiote_(comics)">symbiote</a> costume from the film is a major gameplay mechanic, increasing Spider-Man's strength and unlocking new abilities. While the game directly adapts the plot of the film, it builds upon it by including additional characters and elements from the Spider-Man comic books and other aspects of the <a href="https://en.wikipedia.org/wiki/Marvel_Universe">Marvel Universe</a>. Most actors reprise their roles from the film, including <a href="https://en.wikipedia.org/wiki/Tobey_Maguire">Tobey Maguire</a>, <a href="https://en.wikipedia.org/wiki/James_Franco">James Franco</a> (the first time he does so as <a href="https://en.wikipedia.org/wiki/Josh_Keaton">Josh Keaton</a> provided Harry's voice in the previous two games), <a href="https://en.wikipedia.org/wiki/Topher_Grace">Topher Grace</a>, <a href="https://en.wikipedia.org/wiki/Thomas_Haden_Church">Thomas Haden Church</a>, and <a href="https://en.wikipedia.org/wiki/J._K._Simmons">J. K. Simmons</a>. <a href="https://en.wikipedia.org/wiki/Bruce_Campbell">Bruce Campbell</a>, who played a French <a href="https://en.wikipedia.org/wiki/Maître_d'">maître d'</a> in the film, narrates the game's tutorial level.</p>
+
+<p>With the exception of the Nintendo DS version, which received mostly positive reviews, <i>Spider-Man 3</i> was met with a mixed critical response. Most of the criticism was aimed at the game's graphics, short length, and technical issues, as well as being too similar to its predecessors. The drastic differences between platforms was another point of criticism. The game was followed in October 2008 by <i><a href="https://en.wikipedia.org/wiki/Spider-Man:_Web_of_Shadows">Spider-Man: Web of Shadows</a></i>, which has no connections to the <i>Spider-Man</i> film series. A <a href="https://en.wikipedia.org/wiki/Beat_'em_up">beat 'em up</a> loosely connected to the films, <i><a href="https://en.wikipedia.org/wiki/Spider-Man:_Friend_or_Foe">Spider-Man: Friend or Foe</a></i>, was published by Activision in October 2007.  Following the expiration of Activision's licensing deal with Marvel, <i>Spider-Man 3</i> was delisted and removed from all digital store fronts on January 4, 2017.</p>
+
+<h2>Gameplay</h2>
+
+<h3>PlayStation 3, Xbox 360 and Microsoft Windows</h3>
+
+<p>Similarly to <i><a href="https://en.wikipedia.org/wiki/Spider-Man_2_(2004_video_game)">Spider-Man 2</a></i> and <i><a href="https://en.wikipedia.org/wiki/Ultimate_Spider-Man_(video_game)">Ultimate Spider-Man</a></i>, <i>Spider-Man 3</i> is a third-person action-adventure video game, set in an <a href="https://en.wikipedia.org/wiki/Open_world">open world</a> based on <a href="https://en.wikipedia.org/wiki/Manhattan">Manhattan</a>. Players take on the role of Spider-Man and complete missions—linear scenarios with set objectives—to progress through the story. Missions are structured in a non-linear manner like in the <i><a href="https://en.wikipedia.org/wiki/Grand_Theft_Auto">Grand Theft Auto</a></i> series, meaning that the game features multiple storylines which can be played in any order the player desires. Once the player has completed a number of missions from each storyline, they unlock a main story mission, related to the plot of the film. In addition to the story missions, the game also features side missions, such as races, combat tours and disarming bombs, as well as random attacks in the streets by the city's gangs, which the player can choose to stop. If a number of gang attacks in a specific district are thwarted, then the gang loses control of that district and attacks will no longer occur there. This crime wave mechanic is also influenced by the story missions and combat tours involving each gang.</p>
+
+<p>Players can web swing, crawl walls, and fight enemies using a variety of combos. The game introduces quick-time events and collectibles, which are scattered throughout the city, including the subway (which is now accessible while free roaming). It also features the <a href="https://en.wikipedia.org/wiki/Symbiote_(comics)">symbiote</a> black suit, which is automatically unlocked after a number of story missions and introduces a "rage" mechanic, that is charged up by attacking enemies and allows the player to deal extra damage. In this version, the black suit can not be removed after unlocking it, and will be automatically and permanently removed after reaching a certain point in the story.</p>
+
+<p>The game also features an upgrade system where upgrades are unlocked automatically as the player progresses in the story. In the <i>Collectors Edition</i> of the <a href="https://en.wikipedia.org/wiki/PlayStation_3">PlayStation 3</a> version, the <a href="https://en.wikipedia.org/wiki/Harry_Osborn_(2002_film_series_character)">New Goblin</a> is a playable character, similarly to the <a href="https://en.wikipedia.org/wiki/Norman_Osborn_(2002_film_series_character)">Green Goblin</a> in the <a href="https://en.wikipedia.org/wiki/Spider-Man_(2002_film)">first game</a>. The New Goblin is also briefly playable in the final mission of the game across all three platforms, and is available as downloadable content for both <a href="https://en.wikipedia.org/wiki/PlayStation_Network">PlayStation Network</a> and <a href="https://en.wikipedia.org/wiki/Xbox_Live">Xbox Live</a>. He can be selected from the game's menu, much like the player can select from regular Spider-Man and black suited Spider-Man once they completed the story with the former. If choosing to play as black suited Spider-Man, then the game starts from the beginning, but all upgrades are unlocked, therefore this essentially serves as a <a href="https://en.wikipedia.org/wiki/New_Game_Plus">New Game Plus</a>. If choosing to play as the New Goblin, then none of the story missions are available, but the player can still free roam through the game's map and complete side missions. On PC, the New Goblin is playable only through mods. Peter Parker in his civilian outfit is also playable on PC through mods, and through a <a href="https://en.wikipedia.org/wiki/Glitch">glitch</a> that prevents progression in certain story missions across all three platforms.</p>
+
+<p>This version of the game plays similarly to its next-gen counterpart, except the combat system is mostly ground-based, like in <i><a href="https://en.wikipedia.org/wiki/Ultimate_Spider-Man_(video_game)">Ultimate Spider-Man</a></i>. The main narrative is mostly unchanged, except for several slightly altered missions, while most of the secondary storylines focusing on characters not featured in the film have been removed and replaced with new ones. The map has also suffered a few aesthetic changes due to these consoles' limitations. New <a href="https://en.wikipedia.org/wiki/Computer-generated_imagery">CGI</a> cutscenes are included, in addition to several recycled scenes from the next-gen version. The most notable change in the gameplay is the ability to change between Spider-Man's traditional red and blue costume and the black suit at any time through a short quick time event (once the latter is unlocked). During the main storyline, the black suit requires to be removed regularly, because if worn for too long, the symbiote will corrupt Spider-Man, leading to a <a href="https://en.wikipedia.org/wiki/Game_over">game over</a>. After removing it, there is a <a href="https://en.wikipedia.org/wiki/Cooldown">cooldown</a> before the black suit can be worn again. After completing the main storyline, the black suit's rage meter will instead deplete to zero percent without killing Spider-Man, once it reaches its limit.</p>
+
+<p>The game features an upgrade system where upgrades need to be manually purchased; there are no upgrades for the black suit. Upgrades are purchased through hero points, similarly to <i>Spider-Man 2</i>, which are unlocked from completing either the main story missions or side missions, including races and combat tours, as well as some that appear randomly across the map. Unlike previous Spider-Man games, these random missions are activated through a radio transmission, allowing the player to accept or decline them, and may vary from stopping muggings to delivering fruit pies. The collectibles and crime wave mechanic from the next-gen version also return, albeit with several modifications. Collectibles, mainly the Spider Emblems, which can be found only during story missions, actually reward the player once found, by unlocking the black suit. The crime wave is now influenced mainly by the combat tours, as there are no longer main story missions involving the gangs. Rather than clearing the city of the gang's influence, the player's goal is to help the <a href="https://en.wikipedia.org/wiki/New_York_City_Police_Department">NYPD</a> take over, which is depicted as its own "gang", allied to the player, in the menu map.</p>
+
+<p>The primary features for the Wii version are motion controls. By flicking the Wii Remote &amp; Nunchuck, the player can perform various actions such as combat, and one of Spider-Man's trademark abilities, web swinging. There are also certain mini-games tailored to the motion controls. This can range from disarming a bomb, to completing quick time events. The PlayStation Portable version is a full-on port of the PlayStation 2 version with an extra feature exclusive to the version known as "Conquest Mode": an extra mode where the player has to traverse the city and complete challenges such as combat tours, delivering items, and protecting civilians under a time limit. The more challenges are completed, the more hero points the player earns. Once time has elapsed, the score is calculated and the most recent save is loaded; the mission can be replayed any time to get a higher score. Conquest Mode can be exited with a visit to the Daily Bugle building in order to return to the main game. Conquest Mode can be accessed via the title screen or Scrapbook.</p>
+
+<p>The Game Boy Advance version is a <a href="https://en.wikipedia.org/wiki/Level_(video_games)">level</a>-based <a href="https://en.wikipedia.org/wiki/2D_computer_graphics">2D</a> <a href="https://en.wikipedia.org/wiki/Side-scrolling">side-scrolling</a> <a href="https://en.wikipedia.org/wiki/Beat_'em_up">beat 'em up</a>; only the characters are rendered in <a href="https://en.wikipedia.org/wiki/2.5D">2.5D</a>. A map is used to enter levels, and each level has question bubbles that give hints. The Nintendo DS version is completely 2.5D and uses the Touch Screen to execute most attacks. Players can put on the black suit at will, but it will be disabled if Spider-Man's health is too low. This version supports wireless multiplayer.</p>
+
+<h2>Synopsis</h2>
+
+<h3>Setting</h3>
+
+<p><i>Spider-Man 3</i> is set a year after the events of <i><a href="https://en.wikipedia.org/wiki/Spider-Man_2_(2004_video_game)">Spider-Man 2</a></i>. Since <a href="https://en.wikipedia.org/wiki/Otto_Octavius_(film_character)">Otto Octavius</a>' sacrifice, <a href="https://en.wikipedia.org/wiki/New_York_City">New York City</a> has seen no real major threat that <a href="https://en.wikipedia.org/wiki/Peter_Parker_(2002_film_series_character)">Spider-Man</a> has not been able to handle, although recently four new gangs—the H-Bombers, the Apocalypse, the Waste Tribe, and the Dragon Tail—have begun dividing the city between them, engaging in a violent turf war. Peter Parker's personal life is also in turmoil, despite him finally getting to date his childhood crush, <a href="https://en.wikipedia.org/wiki/Mary_Jane_Watson_(2002_film_series_character)">Mary Jane Watson</a>, after she became aware of his double life. Peter's former best friend, <a href="https://en.wikipedia.org/wiki/Harry_Osborn_(2002_film_series_character)">Harry Osborn</a>, who also learned his secret, despises him because he falsely believes that Spider-Man murdered his <a href="https://en.wikipedia.org/wiki/Norman_Osborn_(2002_film_series_character)">father</a>, while his job at the <i><a href="https://en.wikipedia.org/wiki/Daily_Bugle">Daily Bugle</a></i> is threatened by a new rival, <a href="https://en.wikipedia.org/wiki/Eddie_Brock">Eddie Brock</a>.</p>
+
+<h2>Special editions</h2>
+
+<p>Special editions of the game were available to PS2 and PS3 owners. The PlayStation 3 Collector's Edition artwork shows the fully colored Black Suit of Spider-Man instead of a hybrid of both suits. Common features for the PS2 and PS3 were an interview with <a href="https://en.wikipedia.org/wiki/Avi_Arad">Avi Arad</a>, chief creative officer of <a href="https://en.wikipedia.org/wiki/Marvel_Entertainment">Marvel Entertainment</a> and founder of <a href="https://en.wikipedia.org/wiki/Marvel_Studios">Marvel Studios</a>, <i>Spider-Man 3</i> movie webisodes, a behind the scenes <a href="https://en.wikipedia.org/wiki/Featurette">featurette</a> with the cast, and a collectable lenticular card with the movie's images. The PS3 Collector's Edition came with a pre-installed DLC that featured the ability to play as the New Goblin (who becomes available only after defeating him in the game). The New Goblin DLC was later made available for download from <a href="https://en.wikipedia.org/wiki/PlayStation_Network">PlayStation Network</a> and <a href="https://en.wikipedia.org/wiki/Xbox_Live">Xbox Live</a> users on July 12, 2007.</p>
+
+<h2>Reception</h2>
+
+<p><i>Spider-Man 3</i> received "generally positive" reviews for the DS version but "mixed or average" reviews for all other platforms, according to <a href="https://en.wikipedia.org/wiki/Review_aggregator">review aggregator</a> <a href="https://en.wikipedia.org/wiki/Metacritic">Metacritic</a>.</p>
+
+<p>The PlayStation 2, Wii, and PlayStation Portable versions have been criticized for a short story mode and disappointing graphics, with <i><a href="https://en.wikipedia.org/wiki/GamesRadar">GamesRadar</a></i> suggesting that they were technically inferior to the preceding game from 2004. The Wii version has however been praised for the use of the Remote and Nunchuk in its gameplay, which is considered to be the Wii version's strongest point. The Microsoft Windows, Xbox 360, and PlayStation 3 versions, despite receiving only average reviews, have been universally better received than the PlayStation 2, Wii, and PlayStation Portable versions. The Wii version was given a "D+" grade by <i><a href="https://en.wikipedia.org/wiki/The_Wire_(magazine)">The Wire</a></i>.<sup>[<i><a href="https://en.wikipedia.org/wiki/Wikipedia:Citation_needed">citation needed</a></i>]</sup> <i><a href="https://en.wikipedia.org/wiki/X-Play">X-Play</a></i> gave the Wii version 1 out of 5 (the first Wii game to get 1 out of 5), the Xbox 360 and PlayStation 3 versions 3 out of 5, and the DS version 4 out of 5.</p>
+
+<p>The game was also criticized for not being the same version on each system. Some criticism has surfaced due to having New Goblin only fully playable in the Xbox 360 and PlayStation 3. It was also criticized for having a lot of glitches. However, <i><a href="https://en.wikipedia.org/wiki/Game_Informer">Game Informer</a></i> liked the Xbox 360 and PlayStation 3 versions of game, giving them an eight out of ten. For the Nintendo DS version, <i><a href="https://en.wikipedia.org/wiki/GameSpot">GameSpot</a></i> praised the number of moves, Tobey Maguire's voice acting, and the variety of missions, but criticized the soundtrack.</p>
+
+<p>The game shipped more than 4 million copies.</p>
+
+<h2>Cancelled sequel</h2>
+
+<p>Based on the cancelled film of the same name, <i>Spider-Man 4</i> was being developed by <a href="https://en.wikipedia.org/wiki/Eurocom">Eurocom</a> exclusively for the <a href="https://en.wikipedia.org/wiki/Wii">Wii</a>, but it was ultimately cancelled. In June 2019, a senior environment artist from <a href="https://en.wikipedia.org/wiki/Radical_Entertainment">Radical Entertainment</a>, Wayne Dalton, posted several screenshots taken from the game, and revealed that <i>Spider-Man 4</i> had been in development at Radical, and that after its cancellation, assets from the game were reworked into <i><a href="https://en.wikipedia.org/wiki/Prototype_2">Prototype 2</a></i>. In December 2019, gameplay footage of the Wii version of <i>Spider-Man 4</i>, developed by Eurocom, was posted on <a href="https://en.wikipedia.org/wiki/YouTube">YouTube</a>, showing the prototype of the game. In September 2021, gameplay footage of the cancelled <a href="https://en.wikipedia.org/wiki/Xbox_360">Xbox 360</a> version was revealed to the public, showing Spider-Man web-swinging through Manhattan and fighting an enemy gunship and several thugs. The audio for Spider-Man's web-swinging is similar to the one used in <a href="https://en.wikipedia.org/wiki/Beenox">Beenox</a>'s <i><a href="https://en.wikipedia.org/wiki/The_Amazing_Spider-Man_(2012_video_game)">The Amazing Spider-Man</a></i> and its sequel <i><a href="https://en.wikipedia.org/wiki/The_Amazing_Spider-Man_2_(2014_video_game)">The Amazing Spider-Man 2</a></i>.</p>
+
+
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

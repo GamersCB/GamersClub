@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Payday 2</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('b7ba4d32-83f8-42de-8486-a72b4bb0a284/4e99d244-df00-42a9-92b4-af7c85e36364.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="b7ba4d32-83f8-42de-8486-a72b4bb0a284/3b4e4287-23e1-404e-90ba-8a5ff74cbe23.png"/> Payday 2</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="b7ba4d32-83f8-42de-8486-a72b4bb0a284/0a099408-5c9e-4266-a126-28b517096951.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-14/11/2025">14/11/2025</a> 5:46:54</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-18/11/2025">18/11/2025</a> 5:46:56</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-PORCHE">PORCHE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Linux)">PC (Linux)</a><br/><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-"></a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-89">89</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-79">79</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Rol">Rol</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-OVERKILL - a Starbreeze Studio.">OVERKILL - a Starbreeze Studio.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Starbreeze Publishing AB">Starbreeze Publishing AB</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Comodidad De La Cámara">Comodidad De La Cámara</a><br/><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Compatible Con RV">Compatible Con RV</a><br/><a href="#quicklink-Compras Dentro De La Aplicación">Compras Dentro De La Aplicación</a><br/><a href="#quicklink-Controles De Volumen Personalizados">Controles De Volumen Personalizados</a><br/><a href="#quicklink-Cooperativo">Cooperativo</a><br/><a href="#quicklink-Cooperativo En Línea">Cooperativo En Línea</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Detección De Mov. En Mando">Detección De Mov. En Mando</a><br/><a href="#quicklink-Dificultad Ajustable">Dificultad Ajustable</a><br/><a href="#quicklink-Jugable Sin Eventos Rápidos">Jugable Sin Eventos Rápidos</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Remote Play En Móvil">Remote Play En Móvil</a><br/><a href="#quicklink-Remote Play En Tableta">Remote Play En Tableta</a><br/><a href="#quicklink-Remote Play En TV">Remote Play En TV</a><br/><a href="#quicklink-Sonido Estéreo">Sonido Estéreo</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/><a href="#quicklink-VR">VR</a><br/><a href="#quicklink-VR Motion Controllers">VR Motion Controllers</a><br/><a href="#quicklink-VR Room-Scale">VR Room-Scale</a><br/><a href="#quicklink-VR Standing">VR Standing</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/218620" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/218620/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/218620/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=218620" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/218620" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=218620" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/218620/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Basados en equipos">Basados en equipos</a><br/><a href="#quicklink-Cooperativos">Cooperativos</a><br/><a href="#quicklink-Cooperativos en línea">Cooperativos en línea</a><br/><a href="#quicklink-Crimen">Crimen</a><br/><a href="#quicklink-Disparos">Disparos</a><br/><a href="#quicklink-Disparos y botín">Disparos y botín</a><br/><a href="#quicklink-Divertidos">Divertidos</a><br/><a href="#quicklink-Estrategia">Estrategia</a><br/><a href="#quicklink-FPS">FPS</a><br/><a href="#quicklink-Gran banda sonora">Gran banda sonora</a><br/><a href="#quicklink-JcE">JcE</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Personalización de armas">Personalización de armas</a><br/><a href="#quicklink-Primera persona">Primera persona</a><br/><a href="#quicklink-Robos">Robos</a><br/><a href="#quicklink-Sigilo">Sigilo</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Tácticos">Tácticos</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					PAYDAY 2 es un juego de acción cooperativo para cuatro jugadores que, una vez más, permite a los jugadores ponerse en la piel del equipo original de PAYDAY - Dallas, Hoxton, Wolf y Chains - mientras descienden por Washington DC en una épica ola de crímenes.<br><br>La red CRIMENET ofrece una amplia gama de contratos dinámicos, y los jugadores son libres de elegir cualquier cosa, desde pequeños atracos a tiendas de conveniencia o secuestros, hasta grandes ciberdelitos o vaciar importantes cámaras acorazadas para ese épico PAYDAY. Y mientras estás en DC, ¿por qué no participas en la comunidad local y haces algunos encargos políticos?<br><br>Hasta cuatro amigos cooperan en los golpes y, a medida que el equipo avanza, los trabajos se hacen más grandes, mejores y más gratificantes. Además de ganar más dinero y convertirse en un criminal legendario, existe un sistema de personalización y creación de personajes que permite a los equipos construir y personalizar sus propias armas y equipamiento.<h2 class="bb_tag" >Características principales</h2><ul class="bb_ul"><li>Atraca bancos, recibe una paga - Los jugadores deben elegir a su equipo con cuidado, ya que necesitarán la combinación correcta de habilidades de su lado cuando el trabajo comience.<br></li><li>CRIMENET - La base de datos dinámica de contratos permite a los jugadores escoger entre los trabajos disponibles al conectarse con contactos locales como Vlad el ucraniano, el político sombrío &quot;El Elefante&quot; y el narcotraficante sudamericano Héctor, todos con su propia agenda y sus propios intereses en mente.<br></li><li>PAYDAY, disparos y mecánicas a un nuevo nivel - Disparar armas y atacar a civiles nunca se sintió tan bien.<br></li><li>Escenarios dinámicos - Ningún atraco se juega de la misma manera dos veces. Cada escenario tiene una geometría aleatoria o incluso eventos raros.<br></li><li>Elige tus habilidades - A medida que los jugadores progresan, pueden invertir en cualquiera de los cinco árboles de habilidades especiales: Mente Maestra, Matón, Fantasma, Técnico y Fugitivo. Cada uno presenta un árbol de personalización de habilidades y equipos asociados para dominar, y se pueden mezclar y combinar para crear el mejor asaltante.<br></li><li>Más máscaras que nunca - PAYDAY 2 presenta un sistema de máscaras completamente nuevo, que brinda a los jugadores la capacidad de crear su propia máscara única con un patrón y un color a elección, lo que resulta en millones de combinaciones diferentes.  <br></li><li>Armas y modificaciones - Un nuevo arsenal para el asaltante serio, que abarca desde fusiles de francotirador y asalto, hasta armas de defensa personal y subfusiles. Una vez que hayas elegido alguno de estos, puedes modificarlo con ópticas, supresores, empuñaduras, retículas, barriles, culatas, cargadores y más, lo cual afectará el rendimiento de tu arma. También hay mejoras puramente estéticas - ¿Por qué no optar por el aspecto del capo de la droga con culata de nogal pulido para tu arma?<br></li><li>Juega a tu manera - Cada trabajo permite múltiples estrategias, como emboscadas lentas y sigilosas o correr con armas de fuego. Alcanza el objetivo de la forma que quieras. Cada estrategia proporcionará una experiencia diferente.<br></li><li>Una larga historia de contenido adicional - Más de 70 actualizaciones desde su lanzamiento, incluidos nuevos atracos, personajes, armas y otras características de juego como conducir automóviles y vehículos de carga.</li></ul>
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

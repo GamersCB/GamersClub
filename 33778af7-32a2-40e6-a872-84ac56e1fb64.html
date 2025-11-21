@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sackboy Una aventura a lo grande</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('33778af7-32a2-40e6-a872-84ac56e1fb64/6f4770bf-1b25-4432-8d38-0f62709abfc6.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="33778af7-32a2-40e6-a872-84ac56e1fb64/3a393ba9-b661-4c20-85d7-640cab821d28.png"/> Sackboy Una aventura a lo grande</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="33778af7-32a2-40e6-a872-84ac56e1fb64/dd46859f-8f75-4927-bf40-e767e12a84a2.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-16/10/2025">16/10/2025</a> 17:53:13</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-17/10/2025">17/10/2025</a> 2:11:29</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB 3">2TB 3</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-27/10/2022">27/10/2022</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-81">81</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Sumo Digital">Sumo Digital</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-PlayStation Publishing LLC">PlayStation Publishing LLC</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Alternativas De Color">Alternativas De Color</a><br/><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Comodidad De La Cámara">Comodidad De La Cámara</a><br/><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Controles De Volumen Personalizados">Controles De Volumen Personalizados</a><br/><a href="#quicklink-Coop. A Pantalla (Com)Partida">Coop. A Pantalla (Com)Partida</a><br/><a href="#quicklink-Cooperativo">Cooperativo</a><br/><a href="#quicklink-Cooperativo En Línea">Cooperativo En Línea</a><br/><a href="#quicklink-Guardar En Cualquier Momento">Guardar En Cualquier Momento</a><br/><a href="#quicklink-Jugable Sin Eventos Rápidos">Jugable Sin Eventos Rápidos</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Opción Solo Teclado">Opción Solo Teclado</a><br/><a href="#quicklink-Opciones De Subtítulos">Opciones De Subtítulos</a><br/><a href="#quicklink-Pantalla Partida/Compartida">Pantalla Partida/Compartida</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Sonido Envolvente">Sonido Envolvente</a><br/><a href="#quicklink-Sonido Estéreo">Sonido Estéreo</a><br/><a href="#quicklink-Tamaño Del Texto Ajustable">Tamaño Del Texto Ajustable</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1599660" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1599660/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1599660/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1599660" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1599660" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1599660" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/1599660/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-3D">3D</a><br/><a href="#quicklink-4 jugadores en modo local">4 jugadores en modo local</a><br/><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Adorables">Adorables</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Casuales">Casuales</a><br/><a href="#quicklink-Coloridos">Coloridos</a><br/><a href="#quicklink-Cooperativos">Cooperativos</a><br/><a href="#quicklink-Cooperativos en línea">Cooperativos en línea</a><br/><a href="#quicklink-Cooperativos locales">Cooperativos locales</a><br/><a href="#quicklink-Gran banda sonora">Gran banda sonora</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Multijugador local">Multijugador local</a><br/><a href="#quicklink-Pantalla dividida">Pantalla dividida</a><br/><a href="#quicklink-Para toda la familia">Para toda la familia</a><br/><a href="#quicklink-Personalización de personajes">Personalización de personajes</a><br/><a href="#quicklink-Plataformas">Plataformas</a><br/><a href="#quicklink-Plataformas 3D">Plataformas 3D</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					Enfréntate en solitario a una aventura contrarreloj repleta de peligros y riesgos o forma equipos de 2 a 4 aventureros y pásatelo en grande mientras colaboráis para superar los obstáculos. ¿Podrás salvar Mundo Artesano del malvado Vex y su horripilante Patasarribador... y convertirte en el legendario Caballero de la Puntada?<br><br><strong>¡Nuevas y emocionantes características para PC!</strong><br>¡Sackboy &lt;3 jugar en PC!<br><br>Los mejores técnicos de Mundo Artesano han trabajado en un montón de funciones para el juego basadas en los gráficos y el rendimiento para que te diviertas el máximo posible jugando a esta increíble aventura en tu PC.<br><br><strong>¡Qué gráficos tan bonitos!</strong><br>¡Recorre las coloridas y delirantes tierras de Mundo Artesano con una claridad requetechuli de 4K*! Asómbrate ante unas bellísimas y detalladas imágenes en alta resolución generadas por la revolucionaria tecnología DLSS (Supermuestreo de Aprendizaje Profundo) de NVIDIA Corporation para tarjetas gráficas NVIDIA® GeForce RTX® o superiores. ¡Qué bien te veo, Sackboy!<br><br><strong>¡Arrea, qué juego tan rápido!</strong><br>El despiadado Vex no descansa, y tú tendrás que estar a su altura para desbaratar sus retorcidos planes.<br>Zambúllete en una acción frenética con frecuencias de fotogramas mejoradas de hasta 120 FPS, tiempos de carga mejorados en hardware compatible y tasas de actualización variables.**<br><br><strong>¡Toma el control!</strong><br>¡Salva el mundo a tu manera! Disfruta de la retroalimentación háptica y efectos de gatillo dinámicos diseñados especialmente para Sackboy™ Una aventura a lo grande jugando con el mando DualSense™ de PlayStation®5 mediante conexión por cable a tu PC. También podrás jugar con una amplia selección de mandos, además de reasignar los controles del ratón y el teclado.<br><br><strong>¡Payasadas a pantalla completa!</strong><br>¡Explora las cimas y las simas de Mundo Artesano con un campo de visión envolvente gracias a la compatibilidad con configuraciones de pantalla de 21:9 ultra-widescreen.*<br><br>*Se requieren PC y monitor compatibles.<br>**Se requiere un monitor compatible con HDMI 2.1.<br><br><strong>La historia hasta aquí...</strong><br>El malvado Vex (un ser casi mítico nacido del propio caos y el miedo, ¿cómo te quedas?) ha raptado a los amigos de Sackboy y los ha obligado a construir su Patasarribador.<br><br>Este horripilante y terrorífico dispositivo transformará Mundo Artesano, una tierra fantástica llena de imaginación y sueños inocentes, en un páramo con pesadillas por doquier.<br><br>¡Mira que hay que ser malo!<br><br>Pero la leyenda habla de una profecía que versa sobre la ancestral orden de los Caballeros de la Puntada, los legendarios defensores de Mundo Artesano.<br><br>Solo el más valiente, intrépido, caballeresco y, cómo no, galante podrá deshacer este entuerto y luchar contrarreloj para superar todos los peligros y amenazas.<br><br>Muchos peligros.<br><br>Embárcate en una aventura en solitario o forma equipo con valientes amigos mientras os lo pasáis en grande en montañas nevadas, selvas frondosas, reinos subacuáticos empapados y... colonias del espacio espacial.<br><br>Derrota a Vex. Salva a los sack. Y los muebles.<br><br>Ha llegado el momento de cumplir con tu destino, Sackboy.<br><br>Amable y achuchable niño a héroe de arpillera... Álzate, como un Caballero de la Puntada.<br><br><strong>Una peligrosa aventura de plataformas.</strong><br>Explora todos los recovecos en las reconocibles tierras hechas a mano de Mundo Artesano.<br><br>Emplea los numerosos e increíbles movimientos de Sackboy para superar los desafíos, enemigos y sorpresas.<br><br>Nunca sabrás lo que te espera en esta impresionante y divertidísima aventura épica a la que querrás jugar una y otra vez.<br><br>Y otra vez.<br><br><strong>Multijugador cooperativo, caótico y divertido.</strong><br>Reúne a tus amigos, familiares y vecinos preferidos. Llevarás la fama y cardarás la lana.<br><br>Forma equipos de 2 a 4 aventureros y asume hilarantes desafíos en partidas en grupo locales y online que os tendrán pendiendo de un hilo.<br><br>Los equipos podrán jugar el juego completo, lo que incluye unos cuantos niveles exclusivos para el modo cooperativo, y tendréis que superar viles obstáculos de la mejor forma que se os ocurra: desde ingeniosas tácticas grupales hasta la suerte más loca. ¡Lo que haga falta!<br><br>Explorar por tu cuenta es una experiencia sobrecogedora, pero enzarzaros en un viaje de descubrimiento con amigos, familiares y vecinos la convierte en inolvidable.<br><br><strong>Con relleno. Puntadas. Y cremallera. ¡A saco!</strong><br>Célebre por sus payasadas en la saga de éxito LittleBigPlanet™ para consolas PlayStation®, Sackboy llega a PC con un arsenal de movimientos chulísimos y cachivaches que redefinirán la partida.<br><br>Divertido, intrépido, creativo y heroico. Este es Sackboy en su más pura expresión: con relleno, puntadas y cremallera para una nueva generación de aventureros.
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

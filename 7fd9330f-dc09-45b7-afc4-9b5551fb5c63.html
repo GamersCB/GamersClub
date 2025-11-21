@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Keeper</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('7fd9330f-dc09-45b7-afc4-9b5551fb5c63/9edb8fc6-7f86-4476-bf20-085d51353f79.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="7fd9330f-dc09-45b7-afc4-9b5551fb5c63/77dbdbe4-0a07-4076-bf42-f73ced132960.png"/> Keeper</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="7fd9330f-dc09-45b7-afc4-9b5551fb5c63/3c7aeedd-6272-4302-95f8-dc9492c17310.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-25/10/2025">25/10/2025</a> 2:27:53</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-25/10/2025">25/10/2025</a> 2:28:25</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB DATOS">2TB DATOS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-17/10/2025">17/10/2025</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-83">83</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Double Fine Productions">Double Fine Productions</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Xbox Game Studios">Xbox Game Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Comodidad De La Cámara">Comodidad De La Cámara</a><br/><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Controles De Volumen Personalizados">Controles De Volumen Personalizados</a><br/><a href="#quicklink-HDR Disponible">HDR Disponible</a><br/><a href="#quicklink-Jugable Sin Eventos Rápidos">Jugable Sin Eventos Rápidos</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Menús Narrados">Menús Narrados</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Sonido Envolvente">Sonido Envolvente</a><br/><a href="#quicklink-Sonido Estéreo">Sonido Estéreo</a><br/><a href="#quicklink-Tamaño Del Texto Ajustable">Tamaño Del Texto Ajustable</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/3043580" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/3043580/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/3043580/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=3043580" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/3043580" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=3043580" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/3043580/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-3D">3D</a><br/><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Buena trama">Buena trama</a><br/><a href="#quicklink-Cinematográficos">Cinematográficos</a><br/><a href="#quicklink-Coloridos">Coloridos</a><br/><a href="#quicklink-Estilizados">Estilizados</a><br/><a href="#quicklink-Exploración">Exploración</a><br/><a href="#quicklink-Fantasía">Fantasía</a><br/><a href="#quicklink-Filosóficos">Filosóficos</a><br/><a href="#quicklink-Lineales">Lineales</a><br/><a href="#quicklink-Misterio">Misterio</a><br/><a href="#quicklink-Naturaleza">Naturaleza</a><br/><a href="#quicklink-Psicodélicos">Psicodélicos</a><br/><a href="#quicklink-Puzles">Puzles</a><br/><a href="#quicklink-Simulador de caminar">Simulador de caminar</a><br/><a href="#quicklink-Surrealistas">Surrealistas</a><br/><a href="#quicklink-Tercera persona">Tercera persona</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3043580/extras/3e68f40c08f80abc273fe26698dc656f.poster.avif?t=1760713325" aria-label="Keeper" width=1170 height=950 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3043580/extras/3e68f40c08f80abc273fe26698dc656f.webm?t=1760713325" type="video/webm; codecs=vp9"></video></span></p><p class="bb_paragraph" ></p><p class="bb_paragraph" ><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3043580/extras/a6bc461a7a168670c8aef3038c096776.avif?t=1760713325" alt="Una historia  contada sin palabras" width=1232 height=116 /></span><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3043580/extras/deac5faf5d7c76d952dd675c601b04d2.poster.avif?t=1760713325" aria-hidden="true"width=780 height=461 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3043580/extras/deac5faf5d7c76d952dd675c601b04d2.webm?t=1760713325" type="video/webm; codecs=vp9"></video></span></p><p class="bb_paragraph" ></p><p class="bb_paragraph" ><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3043580/extras/51965031d0010a5f6a9a4cc92de39e24.avif?t=1760713325" alt="Un viaje hacia lo inesperado" width=1232 height=116 /></span><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3043580/extras/e09e3926ddf16557cec1cb2560056b2e.poster.avif?t=1760713325" aria-hidden="true"width=780 height=461 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3043580/extras/e09e3926ddf16557cec1cb2560056b2e.webm?t=1760713325" type="video/webm; codecs=vp9"></video></span></p><p class="bb_paragraph" ></p><p class="bb_paragraph" ><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3043580/extras/f8afaa1f081854a8c0d3f92e5b77e099.avif?t=1760713325" alt="Un entrañable relato de amistad" width=1232 height=116 /></span><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3043580/extras/78b9b6bc2d96d92864f618890d4525e6.poster.avif?t=1760713325" width=780 height=461 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3043580/extras/78b9b6bc2d96d92864f618890d4525e6.webm?t=1760713325" type="video/webm; codecs=vp9"></video></span></p><p class="bb_paragraph" ></p><p class="bb_paragraph" ><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3043580/extras/ea993ac11d29c17ab458d9017f5cda2b.avif?t=1760713325" alt="Una aventura de belleza mística" width=1232 height=116 /></span><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3043580/extras/7e9e66a919ed828ab6093ccac2fd093a.poster.avif?t=1760713325" aria-hidden="true"width=780 height=461 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3043580/extras/7e9e66a919ed828ab6093ccac2fd093a.webm?t=1760713325" type="video/webm; codecs=vp9"></video></span></p><p class="bb_paragraph" ></p><p class="bb_paragraph" ><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3043580/extras/24fb281d44a4d01006d6fc24710079e1.avif?t=1760713325" alt="Una historia de metamorfosis mística" width=1232 height=116 /></span><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3043580/extras/a4afd008adde7f7c978be2326241ce6d.poster.avif?t=1760713325" aria-hidden="true"width=780 height=461 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3043580/extras/a4afd008adde7f7c978be2326241ce6d.webm?t=1760713325" type="video/webm; codecs=vp9"></video></span></p><p class="bb_paragraph" ></p><p class="bb_paragraph" ><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3043580/extras/ff9df766043c56503c4ecdf4cc09ec5e.avif?t=1760713325" alt="El guardián despertará - 17 de octubre de 2025" width=1232 height=320 /></span></p><p class="bb_paragraph" ></p><p class="bb_paragraph" >Keeper, de Lee Petty y Double Fine Productions, es una aventura mística, hermosa y surrealista; una historia contada sin palabras.  </p><p class="bb_paragraph" >En una isla situada en medio de un mar sumido en el pasado, un faro olvidado se alza a la sombra de un lejano pico de montaña. Al roce de unas raíces marchitas que se funden con su piedra, el faro despierta de su letargo. Impulsado por un misterioso sentido del propósito, el faro se embarca junto a una vivaz ave marina en un entrañable relato de amistad, una odisea de metamorfosis mística y en un sorprendente viaje hacia reinos más allá  del entendimiento.</p>
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Starship Troopers: Terran Command</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('53f5081f-afee-4eba-9317-cf913e2df502/a39b2e0d-abde-4f35-b775-ffc5f79ab718.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="53f5081f-afee-4eba-9317-cf913e2df502/9cc4bde7-57b1-401d-971a-3ef8c13ccc35.png"/> Starship Troopers: Terran Command</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="53f5081f-afee-4eba-9317-cf913e2df502/35bba973-e79e-4532-8e27-ee2dde266827.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-17/11/2025">17/11/2025</a> 13:47:07</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-18/11/2025">18/11/2025</a> 5:43:31</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB DATOS">2TB DATOS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-16/06/2022">16/06/2022</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-85">85</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Estrategia">Estrategia</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-The Artistocrats">The Artistocrats</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Slitherine Ltd.">Slitherine Ltd.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1202130" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1202130/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1202130/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1202130" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1202130" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1202130" target="_blank">PCGamingWiki</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Bélicos">Bélicos</a><br/><a href="#quicklink-Ciencia ficción">Ciencia ficción</a><br/><a href="#quicklink-Defensa de torres">Defensa de torres</a><br/><a href="#quicklink-Estrategia">Estrategia</a><br/><a href="#quicklink-ETR">ETR</a><br/><a href="#quicklink-Extraterrestres">Extraterrestres</a><br/><a href="#quicklink-Gestión de recursos">Gestión de recursos</a><br/><a href="#quicklink-Gran banda sonora">Gran banda sonora</a><br/><a href="#quicklink-Inteligencia artificial">Inteligencia artificial</a><br/><a href="#quicklink-Juegos de guerra">Juegos de guerra</a><br/><a href="#quicklink-Militares">Militares</a><br/><a href="#quicklink-Protagonista villano">Protagonista villano</a><br/><a href="#quicklink-Sangriento">Sangriento</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Tácticas en tiempo real">Tácticas en tiempo real</a><br/><a href="#quicklink-Tácticos">Tácticos</a><br/><a href="#quicklink-Tiempo real">Tiempo real</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/><a href="#quicklink-Valor continuo">Valor continuo</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1202130/extras/7cb3f91d3265af33e774ffbb4e124eba.avif?t=1761055389" width=624 height=73 /></span><br><br><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1202130/extras/8115b9356af4514d8e0c9029eb490209.poster.avif?t=1761055389" width=624 height=300 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1202130/extras/8115b9356af4514d8e0c9029eb490209.webm?t=1761055389" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1202130/extras/8115b9356af4514d8e0c9029eb490209.mp4?t=1761055389" type="video/mp4"></video></span><br>La población del inhóspito planeta desértico de Kwalasha necesita nuestra ayuda. Una nueva amenaza a la que no puede enfrentarse pone su vida pacífica de trabajo en las minas en grave peligro: los Arácnidos. Bajo el mando del coronel Hawthorne, la Infantería Móvil recuperará el control del planeta y arrasará con todo ser de más de dos patas. Alístate en esta campaña militar tan emocionante, conoce a personajes inspiradores, visita lugares increíbles y pon tu granito de arena en la guerra contra los bichos.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1202130/extras/f9aa8067b188ffae38fcbb445a88602c.avif?t=1761055389" width=624 height=73 /></span><br><br><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1202130/extras/20be0b5f55343ff93d30bc96503c40cd.poster.avif?t=1761055389" width=624 height=300 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1202130/extras/20be0b5f55343ff93d30bc96503c40cd.webm?t=1761055389" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1202130/extras/20be0b5f55343ff93d30bc96503c40cd.mp4?t=1761055389" type="video/mp4"></video></span><br>Quizá haya un número ilimitado de Arácnidos, pero no poseen el entrenamiento táctico y concienzudo de la Infantería Móvil. Coloca tus unidades en los pasos estrechos o en zonas elevadas para obtener ventaja. No obstante, ten en cuenta que las mecánicas de combate como las verdaderas líneas de visión o de tiro pueden limitar tu campo de tiro y propiciar que los bichos te tiendan una emboscada.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1202130/extras/7814f7d057c5dbd55d161c8516a16c69.avif?t=1761055389" width=624 height=73 /></span><br><br><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1202130/extras/f2dbb8ce320393383ebebaa1773a0f1f.poster.avif?t=1761055389" width=624 height=300 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1202130/extras/f2dbb8ce320393383ebebaa1773a0f1f.webm?t=1761055389" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1202130/extras/f2dbb8ce320393383ebebaa1773a0f1f.mp4?t=1761055389" type="video/mp4"></video></span><br>Optimiza el ejército con una gran variedad de unidades especializadas. Cada una posee puntos fuertes y débiles distintos, además de un conjunto de habilidades de élite que podrás desbloquear. Los Troopers con Rifle pueden usar la habilidad de su arma para contener las hordas grandes de Arácnidos, los M-11 Marauder bípedos sueltan descargas de mortero fulminantes y el Enlace de la Flota puede llamar a refuerzos o dirigir un ataque aéreo para eliminar oleadas enteras de enemigos.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1202130/extras/c287c6b7c8b18789b90324392dc373a6.avif?t=1761055389" width=624 height=73 /></span><br><br><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1202130/extras/6356bf9ffa860e4afd414cc211722fe5.poster.avif?t=1761055389" width=624 height=300 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1202130/extras/6356bf9ffa860e4afd414cc211722fe5.webm?t=1761055389" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1202130/extras/6356bf9ffa860e4afd414cc211722fe5.mp4?t=1761055389" type="video/mp4"></video></span><br>La plaga de bichos está arraigada en nidos subterráneos complejos. Estos suponen un desafío único que te obligará a encontrar un equilibrio delicado entre el ataque y la defensa. Ten cuidado con las varias aberturas de los túneles, pues de ellas pueden salir hordas de Arácnidos.<br>Erradica los nidos para acabar con el problema de los bichos de una vez por todas.
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

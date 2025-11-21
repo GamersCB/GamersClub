@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Total War: EMPIRE - Definitive Edition</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('a7aea45c-e323-4c18-b604-9716fa561eb1/bc280183-f9f3-49b9-a659-57b819a30ea8.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="a7aea45c-e323-4c18-b604-9716fa561eb1/4689f35d-1c51-45b7-833a-536bd221afec.png"/> Total War: EMPIRE - Definitive Edition</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="a7aea45c-e323-4c18-b604-9716fa561eb1/6daf12c0-2b75-47d9-be11-dc191ade8c4b.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-14/10/2025">14/10/2025</a> 17:48:21</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-14/10/2025">14/10/2025</a> 17:49:02</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB GAS">2TB GAS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-Macintosh">Macintosh</a><br/><a href="#quicklink-PC (Linux)">PC (Linux)</a><br/><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-04/03/2009">04/03/2009</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-89">89</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-90">90</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Estrategia">Estrategia</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Creative Assembly">Creative Assembly</a><br/><a href="#quicklink-Feral Interactive (Linux)">Feral Interactive (Linux)</a><br/><a href="#quicklink-Feral Interactive (Mac)">Feral Interactive (Mac)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Feral Interactive (Linux)">Feral Interactive (Linux)</a><br/><a href="#quicklink-Feral Interactive (Mac)">Feral Interactive (Mac)</a><br/><a href="#quicklink-Sega">Sega</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cooperativo">Cooperativo</a><br/><a href="#quicklink-Cooperativo En LAN">Cooperativo En LAN</a><br/><a href="#quicklink-Cooperativo En Línea">Cooperativo En Línea</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Estadísticas">Estadísticas</a><br/><a href="#quicklink-Jcj">Jcj</a><br/><a href="#quicklink-Jcj En LAN">Jcj En LAN</a><br/><a href="#quicklink-Jcj En Línea">Jcj En Línea</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/10500" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/10500/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/10500/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=10500" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/10500" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=10500" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/10500/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-América">América</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Bélicos">Bélicos</a><br/><a href="#quicklink-Clásico">Clásico</a><br/><a href="#quicklink-Estrategia">Estrategia</a><br/><a href="#quicklink-Estrategia por turnos">Estrategia por turnos</a><br/><a href="#quicklink-ETR">ETR</a><br/><a href="#quicklink-Gran banda sonora">Gran banda sonora</a><br/><a href="#quicklink-Gran estrategia">Gran estrategia</a><br/><a href="#quicklink-Históricos">Históricos</a><br/><a href="#quicklink-Marítimos">Marítimos</a><br/><a href="#quicklink-Militares">Militares</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Por turnos">Por turnos</a><br/><a href="#quicklink-Tácticas en tiempo real">Tácticas en tiempo real</a><br/><a href="#quicklink-Tácticas por turnos">Tácticas por turnos</a><br/><a href="#quicklink-Tácticos">Tácticos</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/10500/extras/EMPIRE_FIRST.GIF?t=1756284525" /></span><br><br>Completa tu colección de Total War con esta Definitive Edition de Total War: EMPIRE, que incluye todos los DLC y actualizaciones desde el lanzamiento del juego:<br><br>Atrévete con la Campaña Warpath y lidera una de las 5 facciones de nativos americanos en una guerra épica para defender tus tierras y expulsar a los invasores.<br><br>Forma tus ejércitos con los packs de Unidades de élite de Oriente, Unidades de élite de Occidente, Unidades de élite de América y Unidades de fuerzas especiales y contenido adicional, que en total añaden más de 50 unidades de élite nuevas.<br><br>Total War: EMPIRE Definitive Edition ofrece cientos y cientos de horas de juego absorbente con todo el contenido que se ha creado para él. Sigue leyendo para descubrir más información. <br><br><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/10500/extras/d6ea92b7ff9fcd29e48aa9544999e5b5.poster.avif?t=1756284525" width=610 height=204 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/10500/extras/d6ea92b7ff9fcd29e48aa9544999e5b5.webm?t=1756284525" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/10500/extras/d6ea92b7ff9fcd29e48aa9544999e5b5.mp4?t=1756284525" type="video/mp4"></video></span><br><br><strong>Acerca de Total War: EMPIRE</strong><br>Controla la tierra, domina los mares, forja una nueva nación y conquista el mundo. <br>Total War: EMPIRE lleva la saga Total War al siglo XVIII, el Siglo de las Luces, una época de agitación política, avances militares y pensamiento radical. Todo capturado con asombroso detalle.<br>Total War: EMPIRE introduce multitud de nuevas características revolucionarias, entre las que se incluyen combates navales en 3D real. Por primera vez en la serie Total War, podrás dirigir de forma intuitiva un único barco o extensas flotas en paisajes marinos repletos de efectos meteorológicos y de agua extraordinarios que jugarán un gran papel en lo que acabará siendo tu glorioso triunfo o vergonzosa derrota. Después de bombardear al enemigo con los cañones, acércate para amarrar su barco y prepárate para abordar: toma el control de tus hombres mientras luchan mano a mano en las cubiertas de estos mastodontes de madera. <br>Además, Total War: EMPIRE incluye mejoras adicionales para las batallas en 3D y el mapa de campaña por turnos típicos de la serie Total War. Las batallas en tiempo real presentan nuevos retos con la inclusión del cañón y del mosquete, lo que impone a los jugadores el desafío de dominar formaciones y tácticas nuevas conforme la pólvora gana importancia en la guerra. El mapa de campaña, el punto central de la experiencia Total War, introduce una variedad de elementos nuevos y actualizados, entre los que se incluyen sistemas nuevos de comercio, diplomacia y espionaje con agentes; una interfaz de usuario refinada y simplificada; consejeros mejorados; y una mayor ambientación, al incluir las riquezas de la India, la turbulenta Europa y, por primera vez, el potencial sin explotar de Estados Unidos. <br><br><br><strong>Acerca de la Campaña Warpath</strong><br>Un nuevo y detallado mapa de la campaña norteamericana que amplía aún más la experiencia de Total War: EMPIRE, con 5 nuevas facciones de los nativos americanos, y nuevas unidades y tecnologías. <br>Vive las batallas en la nueva Campaña Warpath y lidera una de las 5 nuevas facciones en una guerra épica para defender tus territorios y expulsar a los invasores. O lucha con estas unidades y sus habilidades únicas en el modo multijugador. <br>•	5 nuevas facciones con las que jugar, entre las que se incluyen las naciones pueblo, cheroquis, iroquesas, huronas y de las praderas. <br>•	Expande los territorios norteamericanos. Un nuevo mapa de la campaña norteamericana más detallado, con nuevas regiones y una nueva fecha de inicio. <br>•	Nuevas unidades de élite, entre las que se incluyen los guerreros de élite mohawk, los perros soldados cheyenne, los guerreros exploradores navajos y muchos más. <br>•	Dos nuevos tipos de agentes. Infíltrate en territorio enemigo con la nueva unidad chamán y sabotea al enemigo con la astucia del explorador. <br>•	18 nuevas tecnologías tribales, entre las que se incluyen la medicina espiritual, la llamada salvaje y andar en sueños, que crean un nuevo árbol tecnológico tribal. <br>•	Nuevos objetivos de victoria para cada una de las facciones disponibles. <br><br><br><strong>Acerca de Unidades de élite de Oriente</strong><br>Unidades de élite de Oriente añade 12 nuevas unidades de élite a las facciones marathas y otomanas, y se adentra más en el este que sus predecesores de Total War.<br>La mayoría de estos soldados están curtidos en la batalla. Unos son temibles bandidos, otros cuentan con una importante formación académica y son guerreros bien entrenados. <br>Aportarán una amplia gama de opciones tácticas para intimidar y someter a tus enemigos.<br>•	Mercenarios haydut (Imperio otomano)<br>•	Boyardos de Valaquia (Imperio otomano)<br>•	Panduks bosnios (Imperio otomano)<br>•	Caballería armada circasiana (Imperio otomano)<br>•	Arqueros armenios (Imperio otomano)<br>•	Kuloglus libios (Imperio otomano)<br>•	Tropas de apoyo palestinas (Imperio otomano)<br>•	Jenízaros del Cairo (Imperio otomano)<br>•	Nizam-I-Cedit montados (Imperio otomano)<br>•	Rajput Zamindar (Marathas)<br>•	Poligar (Marathas)<br>•	Barawardis (Marathas)<br><br><br><strong>Acerca de Unidades de élite de Occidente</strong><br>Unidades de élite de Occidente añade 14 unidades totalmente nuevas y únicas de las facciones occidentales más importantes. Con unas unidades de infantería y caballería totalmente nuevas, equipadas con las mejores armas y que han recibido un entrenamiento de lo más riguroso, Unidades de élite de Occidente aporta aún más opciones en el campo de batalla a todos esos amantes de las tácticas que quieren derrotar a sus enemigos. <br>•	Granaderos húngaros (Austria)<br>•	Guardia montada (Bretaña)<br>•	Guardias suizos (Francia)<br>•	Guardia azul (Provincias Unidas)<br>•	Gardes du Corps (Provincias Unidas)<br>•	Granaderos de la guardia (Polonia-Lituania)<br>•	Segundos Húsares (Prusia)<br>•	Bosníacos (Prusia)<br>•	Frei-Korps (Prusia)<br>•	Gardes à cheval (Rusia)<br>•	Guardia de a pie Siemionowski (Rusia)<br>•	Guardia valona (España)<br>•	Legión de los Estados Unidos (Estados Unidos)<br>•	US Marines (Estados Unidos)<br><br><br><strong>Acerca de Unidades de élite de América</strong><br>Unidades de élite de América añade 15 nuevas unidades de élite a las facciones de América, Gran Bretaña y Francia de Total War: EMPIRE. Durante la última mitad del siglo XVIII, la revolución política de trece colonias británicas en América del Norte llevó finalmente a la Declaración de Independencia de 1776 y cambió la historia para siempre. Las 15 unidades que incluye han desempeñado una función muy importante en la Revolución americana. Aunque se basan principalmente en las tradiciones militares europeas, su identidad está unida al destino de Estados Unidos, lo que da a estos hombres una valentía y audacia incomparables a otros soldados del campo de batalla.<br>•	1º de Delaware (Estados Unidos)<br>•	1º de Maryland (Estados Unidos)<br>•	2º de Dragones ligeros continentales (Estados Unidos)<br>•	2º de Nueva York (Estados Unidos)<br>•	33º de infantería (Gran Bretaña)<br>•	Dragones de Brunswick (Gran Bretaña)<br>•	Granaderos hessianos (Gran Bretaña)<br>•	Regimiento real del rey de Nueva York (Gran Bretaña)<br>•	Legión de Lee (Estados Unidos)<br>•	Cuerpo provisional de fusileros de Morgan (Estados Unidos)<br>•	Legión de Pulaski (Estados Unidos)<br>•	Regimiento real Deux-Ponts (Francia)<br>•	Fusileros reales galeses (Bretaña)<br>•	Compañía de tiradores selectos/Rangers de Fraser (Bretaña)<br>•	Dragones ligeros de Tarleton (Bretaña)<br><br><br><strong>Acerca de Unidades de fuerzas especiales y contenido adicional</strong><br>Unidades de fuerzas especiales añade seis de los cuerpos militares más influyentes del siglo XVIII. Como mandan los cánones de la época, ninguna de estas unidades de élite aparecerá en el mapa de campaña hasta que juegues con una facción determinada o tengas bajo control una región geográfica en concreto. Este pack también incluye tres unidades de élite exclusivas adicionales.<br>•	HMS Victory<br>•	Rangers de Roger <br>•	Cañón órgano otomano <br>•	Ghoorkas <br>•	Guerrillas terrestres corsas <br>•	Regimiento de Bulkeley <br>•	Húsares de la Muerte <br>•	USS Constitution <br>•	Amazonas de Dahomey
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

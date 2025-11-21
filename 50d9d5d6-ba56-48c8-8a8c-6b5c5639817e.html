@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Warhammer 40,000: Battlesector</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('50d9d5d6-ba56-48c8-8a8c-6b5c5639817e/df908d57-7795-4482-bedc-51ddbf6425f7.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="50d9d5d6-ba56-48c8-8a8c-6b5c5639817e/89e15b30-95a1-45a2-bf6a-3f11da99b3d5.png"/> Warhammer 40,000: Battlesector</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="50d9d5d6-ba56-48c8-8a8c-6b5c5639817e/d0322e2f-5b73-45d1-894d-3c892c92b877.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-29/10/2025">29/10/2025</a> 22:16:08</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-29/10/2025">29/10/2025</a> 22:16:34</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB GAS">2TB GAS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-22/07/2021">22/07/2021</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-85">85</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Estrategia">Estrategia</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Slitherine Ltd.">Slitherine Ltd.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Slitherine Ltd.">Slitherine Ltd.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Parcial Con Mando">Compat. Parcial Con Mando</a><br/><a href="#quicklink-Jcj">Jcj</a><br/><a href="#quicklink-Jcj A Pantalla (Com)Partida">Jcj A Pantalla (Com)Partida</a><br/><a href="#quicklink-Jcj En Línea">Jcj En Línea</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Pantalla Partida/Compartida">Pantalla Partida/Compartida</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Remote Play Together">Remote Play Together</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1295500" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1295500/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1295500/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1295500" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1295500" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1295500" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/1295500/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-3D">3D</a><br/><a href="#quicklink-Bélicos">Bélicos</a><br/><a href="#quicklink-Ciencia ficción">Ciencia ficción</a><br/><a href="#quicklink-Combate">Combate</a><br/><a href="#quicklink-Combate por turnos">Combate por turnos</a><br/><a href="#quicklink-Espacio">Espacio</a><br/><a href="#quicklink-Estrategia">Estrategia</a><br/><a href="#quicklink-Estrategia por turnos">Estrategia por turnos</a><br/><a href="#quicklink-Games Workshop">Games Workshop</a><br/><a href="#quicklink-Isométricos">Isométricos</a><br/><a href="#quicklink-JcJ">JcJ</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Multijugador asíncrono">Multijugador asíncrono</a><br/><a href="#quicklink-Por turnos">Por turnos</a><br/><a href="#quicklink-Tácticas por turnos">Tácticas por turnos</a><br/><a href="#quicklink-Tácticos">Tácticos</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/><a href="#quicklink-Valor continuo">Valor continuo</a><br/><a href="#quicklink-Violentos">Violentos</a><br/><a href="#quicklink-Warhammer 40K">Warhammer 40K</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					Warhammer 40,000: Battlesector es un frenético juego de estrategia por turnos establecido en el siniestro universo del milenio 41. Elige tu facción, desarrolla tu ejército, manda al campo de batalla a héroes poderosos y lucha por la victoria usando tu mejor estrategia, habilidades increíbles y armas devastadoras.<h2 class="bb_tag" >La era del alba carmesí</h2>Experimenta una campaña para un jugador con veinte misiones épicas que explora las consecuencias de la devastación de Baal. Ayuda al sargento Carleon y a sus aliados a purgar la plaga de los Tiránidos en Baal Secundus y a preservar el honor de los nobles Ángeles Sangrientos.<h2 class="bb_tag" >Modo refriega</h2>Lucha en los mapas que quieras de la superficie de Baal y elige formar parte de los Ángeles Sangrientos, o bien de los Tiránidos en el modo refriega. Personaliza totalmente tu ejército eligiendo las unidades, los héroes y su armamento.<h2 class="bb_tag" >Forma tus tropas</h2>Dirige unidades icónicas, como el Sacerdote Sangriento, el Dreadnought Bibliotecario y el Tirano de Enjambre para aniquilar a tus enemigos. Usa más de 60 habilidades y 50 armas para acabar con tus rivales.<h2 class="bb_tag" >Genera impulso</h2>Cada facción tiene un sistema de impulso diferente que puede producir unidades aceleradas. Las unidades aceleradas pueden realizar cadenas de acciones sobrehumanas, o bien usar la oportunidad para mejorar todavía más sus habilidades.<h2 class="bb_tag" >Pide apoyo aéreo</h2>Usa puntos de mando para pedir habilidades de apoyo aéreo específicas de tu facción. Los Ángeles Sangrientos Stormraven pueden arrasar a los xenos con una lluvia de misiles o infiltrar a una unidad de Marines de Asalto veteranos entre las líneas enemigas. Mientras, la Harpía Tiránida puede devastar las defensas enemigas con su chillido sónico, o bien esparcir sus letales minas espora por el campo de batalla.<h2 class="bb_tag" >Enfréntate a tus amigos en el campo de batalla</h2>Gracias a los modos multijugador asincrónicos y en directo, además de los modos hotseat disponibles, no hay excusa para no llevarte a tus amigos a la guerra.
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

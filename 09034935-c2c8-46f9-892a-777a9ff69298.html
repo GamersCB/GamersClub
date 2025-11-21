@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Dying Light: The Beast</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('09034935-c2c8-46f9-892a-777a9ff69298/ca914456-5746-4b5e-8c21-4f9567316117.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="09034935-c2c8-46f9-892a-777a9ff69298/b416b798-1330-48b8-9412-0f32d896d5b6.png"/> Dying Light: The Beast</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="09034935-c2c8-46f9-892a-777a9ff69298/9aefe147-17a5-4aaf-a5cb-7a96624dcf72.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-20/09/2025">20/09/2025</a> 15:53:30</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-21/09/2025">21/09/2025</a> 2:50:03</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-6TB STORE">6TB STORE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-18/09/2025">18/09/2025</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-88">88</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Rol">Rol</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Techland">Techland</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Techland">Techland</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Parcial Con Mando">Compat. Parcial Con Mando</a><br/><a href="#quicklink-Cooperativo">Cooperativo</a><br/><a href="#quicklink-Cooperativo En Línea">Cooperativo En Línea</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Remote Play En TV">Remote Play En TV</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/3008130" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/3008130/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/3008130/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=3008130" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/3008130" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=3008130" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/3008130/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Acción y aventura">Acción y aventura</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Buena trama">Buena trama</a><br/><a href="#quicklink-Campañas cooperativas">Campañas cooperativas</a><br/><a href="#quicklink-Combate">Combate</a><br/><a href="#quicklink-Exploración">Exploración</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Mundo abierto">Mundo abierto</a><br/><a href="#quicklink-Parkour">Parkour</a><br/><a href="#quicklink-Posapocalípticos">Posapocalípticos</a><br/><a href="#quicklink-Primera persona">Primera persona</a><br/><a href="#quicklink-Realistas">Realistas</a><br/><a href="#quicklink-Rol">Rol</a><br/><a href="#quicklink-Rol de acción">Rol de acción</a><br/><a href="#quicklink-Sangriento">Sangriento</a><br/><a href="#quicklink-Terror">Terror</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/><a href="#quicklink-Violentos">Violentos</a><br/><a href="#quicklink-Zombis">Zombis</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph" ><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3008130/extras/c1cdde54083980ff7aa640171ef9617c.avif?t=1758382048" data-has-big width=800 height=510 /></span> </p><p class="bb_paragraph" >Eres Kyle Crane, y tras haber sido atrapado por el Barón y sufrir sus horribles experimentos durante años, consigues escapar. Pero las secuelas de ese horror permanecen. Estás a un paso de convertirte en un monstruo, ya que tienes ADN zombi aparte de humano. Apenas puedes controlar a la bestia que hay en tu interior, con todos los problemas que eso conlleva. Pero tendrás que aprender a controlarla si quieres vengarte del hombre que te hizo todo esto.</p><p class="bb_paragraph" >Dying Light: The Beast combina los géneros de acción y supervivencia en el mundo abierto del valle de Castor Woods, un lugar antaño precioso pero que ahora está hasta arriba de zombis en vez de turistas. Para acabar con quien te capturó, tendrás que formar alianzas frágiles y usar todas las opciones de combate y de movimiento que tienes a tu disposición.</p><p class="bb_paragraph" >Pero, ¡cuidado! En este sitio, cada paso es una lucha por la supervivencia y más aún al ponerse el sol, pues la tensión se dispara y los verdaderos horrores salen durante la noche.</p><p class="bb_paragraph" ></p><p class="bb_paragraph" ><strong>Mitad Bestia, mitad superviviente</strong></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3008130/extras/1a6a0ca7913ed633e71fd9b4f9ac4351.poster.avif?t=1758382048" width=616 height=325 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3008130/extras/1a6a0ca7913ed633e71fd9b4f9ac4351.webm?t=1758382048" type="video/webm; codecs=vp9"></video></span>Conviértete en Kyle Crane, un héroe único con el ADN de un superviviente... y el de una bestia. Alterna dos estilos de juego y enfréntate a un brutal conflicto interno entre tu parte humana y tu lado más bestial, hasta aceptar al fin el poder imparable que llevas dentro.</p><p class="bb_paragraph" > <strong> </strong></p><p class="bb_paragraph" ><strong>Brutalidad primitiva</strong><br><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3008130/extras/bc0337fc7f2d3b95dee6f29d91d17b4c.poster.avif?t=1758382048" width=616 height=325 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3008130/extras/bc0337fc7f2d3b95dee6f29d91d17b4c.webm?t=1758382048" type="video/webm; codecs=vp9"></video></span> </p><p class="bb_paragraph" >Lleva la crudeza del combate de Dying Light al extremo y sobrepasa los límites humanos de la brutalidad. Aplasta cráneos, corta cabezas y parte enemigos en dos mientras luchas por controlar los salvajes poderes bestiales de nuestro héroe, en constante evolución y alimentados por una rabia incontrolable.</p><p class="bb_paragraph" ></p><p class="bb_paragraph" ><strong>Días seguros, noches horrendas</strong></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3008130/extras/04e28777955a64c029385d90b34e1b9e.poster.avif?t=1758382048" width=616 height=325 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3008130/extras/04e28777955a64c029385d90b34e1b9e.webm?t=1758382048" type="video/webm; codecs=vp9"></video></span>El sello propio de la saga Dying Light: dos experiencias completamente diferentes de día y de noche que se unen para formar un todo inolvidable. Explora el entorno de día y siente la presión del paso del tiempo, pues cada segundo que pasa te acerca al atardecer. Cuando cae la noche, los horrores que la habitan solo te permitirán correr, esconderte o luchar por tu vida. </p><p class="bb_paragraph" ><strong>Domina los tejados, gobierna en los caminos</strong></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3008130/extras/dc657bb86ad9e9c76d76c52d9bdc473b.poster.avif?t=1758382048" width=616 height=325 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3008130/extras/dc657bb86ad9e9c76d76c52d9bdc473b.webm?t=1758382048" type="video/webm; codecs=vp9"></video></span>Siente la adrenalina del mejor parkour en primera persona mientras saltas de azotea en azotea y superas cualquier obstáculo con un sistema de movimiento accesible para todos, pero quienes lo dominen podrán hacer virguerías con él. También puedes ponerte al volante de un vehículo todoterreno y arrasar con hordas de zombis. ¡Disfruta de una libertad de movimiento sin igual en un mundo abierto!</p><p class="bb_paragraph" ></p><p class="bb_paragraph" ><strong>Un apocalipsis zombi «precioso»</strong></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3008130/extras/54f46cb6b30d482569a397162e373dcf.poster.avif?t=1758382048" width=616 height=325 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3008130/extras/54f46cb6b30d482569a397162e373dcf.webm?t=1758382048" type="video/webm; codecs=vp9"></video></span> Impresionantes gráficos de nueva generación dan vida a un apocalipsis zombi artesanal, donde cada detalle cuenta una historia de supervivencia. Piérdete en la majestuosidad del valle de Castor Woods, inspirado en los Alpes suizos, con sus diversos biomas: el pueblo turístico, la zona industrial, el parque nacional, los campos de cultivo, los pantanos, todos repletos de belleza... y decadencia.<br><br><strong>Importante: aquel que haya comprado la Edición Definitiva de Dying Light 2 Stay Human recibirá Dying Light: The Beast sin coste adicional.  </strong></p><p class="bb_paragraph" ></p><p class="bb_paragraph" ><strong>Comparte la aventura</strong></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3008130/extras/e461b5d6e59c4043f85fdf4fc58168ef.poster.avif?t=1758382048" width=616 height=325 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3008130/extras/e461b5d6e59c4043f85fdf4fc58168ef.webm?t=1758382048" type="video/webm; codecs=vp9"></video></span>Haz grupos de hasta 4 jugadores en modo cooperativo para hacer frente a los peligros de Castor Woods: podréis enfrentaros a cada batalla, descubrimiento y giro de los acontecimientos en compañía. Aprovechad el progreso compartido para completar la aventura codo con codo mientras lucháis contra enemigos despiadados, buscáis recursos y os salváis la vida unos a los otros.</p>
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

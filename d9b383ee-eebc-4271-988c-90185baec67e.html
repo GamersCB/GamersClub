@@ -1,0 +1,372 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Pathfinder: Kingmaker</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('d9b383ee-eebc-4271-988c-90185baec67e/d7f1730a-b4a3-47cb-b913-f2f7679abe25.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="d9b383ee-eebc-4271-988c-90185baec67e/e1b7cdef-2426-4f9d-abcb-91ea4a507ec9.png"/> Pathfinder: Kingmaker</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="d9b383ee-eebc-4271-988c-90185baec67e/ad0ed997-cb52-4946-a445-e21e791a1e87.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-17/11/2025">17/11/2025</a> 13:24:15</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-18/11/2025">18/11/2025</a> 5:46:03</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB DATOS">2TB DATOS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-Macintosh">Macintosh</a><br/><a href="#quicklink-Microsoft Xbox One">Microsoft Xbox One</a><br/><a href="#quicklink-PC (Linux)">PC (Linux)</a><br/><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/><a href="#quicklink-Sony PlayStation 4">Sony PlayStation 4</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-25/09/2018">25/09/2018</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-74">74</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Role-playing">Role-playing</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Owlcat Games">Owlcat Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Deep Silver  /">Deep Silver  /</a><br/><a href="#quicklink-Knights Peak Interactive">Knights Peak Interactive</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Single-player">Single-player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/Pathfinder:_Kingmaker" target="_blank">Wikipedia</a><br/><a href="https://kingmaker.owlcatgames.com/" target="_blank">Pathfinder: Kingmaker - the first CRPG in Pathfinder universe (official site under Knights Peak Interactive)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-[Game Engine] Unity">[Game Engine] Unity</a><br/><a href="#quicklink-[People] artist: Victor Surkov">[People] artist: Victor Surkov</a><br/><a href="#quicklink-[People] composer: Dmitry V. Silantyev">[People] composer: Dmitry V. Silantyev</a><br/><a href="#quicklink-[People] composer: Inon Zur">[People] composer: Inon Zur</a><br/><a href="#quicklink-[People] director: Alexander Mishulin">[People] director: Alexander Mishulin</a><br/><a href="#quicklink-[People] programmer: Alexey Drobyshevsky">[People] programmer: Alexey Drobyshevsky</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>Pathfinder: Kingmaker</b></i> is an <a href="https://en.wikipedia.org/wiki/Isometric_video_game_graphics">isometric</a> <a href="https://en.wikipedia.org/wiki/Role-playing_video_game">role-playing game</a> developed by Russian studio <a href="https://en.wikipedia.org/wiki/Owlcat_Games">Owlcat Games</a> and published by <a href="https://en.wikipedia.org/wiki/Deep_Silver">Deep Silver</a>, based on <a href="https://en.wikipedia.org/wiki/Paizo_Publishing">Paizo Publishing</a>'s <i><a href="https://en.wikipedia.org/wiki/Pathfinder_Roleplaying_Game">Pathfinder</a></i> franchise. Announced through a <a href="https://en.wikipedia.org/wiki/Kickstarter">Kickstarter</a> campaign in 2017, the game was released for <a href="https://en.wikipedia.org/wiki/Microsoft_Windows">Microsoft Windows</a>, <a href="https://en.wikipedia.org/wiki/MacOS">macOS</a>, and <a href="https://en.wikipedia.org/wiki/Linux">Linux</a> on 25 September 2018.  As of May 2024, the publisher became Knights Peak, a subsidiary of <a href="https://en.wikipedia.org/wiki/My.Games">My.Games</a>.</p>
+
+<h2>Gameplay</h2>
+
+<p>The gameplay is modeled on the Pathfinder role-playing game and inspired by classic computer RPGs such as <i><a href="https://en.wikipedia.org/wiki/Baldur's_Gate_(video_game)">Baldur's Gate</a></i> and <i><a href="https://en.wikipedia.org/wiki/Neverwinter_Nights_(2002_video_game)">Neverwinter Nights</a>.</i> It features a <a href="https://en.wikipedia.org/wiki/Pausable_real-time">real-time-with-pause</a> or turn-based combat system and an <a href="https://en.wikipedia.org/wiki/Isometric_video_game_graphics">isometric perspective</a>. One of the game's distinguishing features is its emphasis on realm-building, with the player's decisions as a local lord affecting the rest of the gameplay as they are embroiled in a world of political intrigue and adventure.</p>
+
+<p>Character customization is a key feature, along with an <a href="https://en.wikipedia.org/wiki/Alignment_system">alignment system</a> where a character's alignment can change due to player choice. While the player begins with only one character of their creation, the game is <a href="https://en.wikipedia.org/wiki/Party_(role-playing_games)">party</a>-based as companions join them along the way. These include both established <i>Pathfinder</i> characters and newly invented characters. The game lasts around 80 hours.</p>
+
+<h2>Plot</h2>
+
+<p><i>Pathfinder: Kingmaker</i> is based on the six <a href="https://en.wikipedia.org/wiki/Game_module">modules</a> that make up the Pathfinder <a href="https://en.wikipedia.org/wiki/Adventure_Path">Adventure Path</a> campaign published in 2010.</p>
+
+<h3>Story</h3>
+
+<p>The Stolen Lands are a harsh, anarchic stretch of territory. Attempts to rule over it have repeatedly failed. After the player-character kills a local bandit leader, they are made a <a href="https://en.wikipedia.org/wiki/Baron">baron</a>/baroness in the Stolen Lands by Jamandi Aldori, a noble in the nearby kingdom of Brevoy. The Baron/ess must deal with multiple threats to the kingdom including unusual trolls, an epidemic of people turning into beasts, and an ancient lich. They recruit various companions to their <a href="https://en.wikipedia.org/wiki/Party_(role-playing_games)">party</a>, and expand their barony's territory and influence.</p>
+
+<p>Aldori starts an independence war for her region of Brevoy. The Baron/ess may choose to help Aldori, side with the ruling Brevic government, negotiate a peaceful solution, or stay uninvolved. After resolving this issue, the Baron/ess rises to become an independent <a href="https://en.wikipedia.org/wiki/King">king</a>/queen (hereafter referred to as the Monarch). The newly-crowned Monarch deals with more issues, primarily the meddling of neighboring king Irovetti of Pitax. The Monarch defeats Irovetti and annexes Pitax, becoming the only ruler in the Stolen Lands.</p>
+
+<p>The Monarch discovers that all of the threats were orchestrated by a <a href="https://en.wikipedia.org/wiki/Nymph">nymph</a> named Nyrissa. Nyrissa once attempted to become an Eldest, the immortal rulers of the <a href="https://en.wikipedia.org/wiki/Fairy">fey</a> realm called "the First World". This failed and angered the Lantern King, who is one of the Eldest. The Lantern King removed a portion of Nyrissa's soul and commanded her to destroy 100 kingdoms as an apology. Pitax (which Nyrissa secretly sabotaged) was kingdom number 99.</p>
+
+<p>Nyrissa sends endless fey armies to attack the Monarch's kingdom. The Monarch travels to the far west, where they find a portal to Nyrissa's home in the First World. They locate and attack Nyrissa. After defeating her, the magical apology is complete, since Nyrissa's "kingdom" has been ended. The player may choose to let Nyrissa take the apology to the Lantern King, kill her, or convince her to join the Monarch in fighting the Lantern King.</p>
+
+<p>If Nyrissa is allowed to finish the apology, the kingdom is no longer troubled by the fey and the game ends. Otherwise, the Lantern King appears and reveals that he was helping the Monarch in various guises throughout the story. Angered that his "game" has been spoiled, the Lantern King sends the spirits of Nyrissa's victims to attack the kingdom. The Monarch launches an assault to retake their capital city with various allies. They weaken the Lantern King by destroying artifacts that he created, then battle him in the royal palace.</p>
+
+<p>The Lantern King is killed, but instantly returns to life since he is an Eldest. Impressed, the Lantern King offers the Monarch a deal. They may become the Lantern King's <a href="https://en.wikipedia.org/wiki/Herald">herald</a>, gaining immortality and restoring the kingdom to normal. Alternatively, they may simply say that they &amp; the Lantern King should leave each other alone, to which the Eldest agrees but laments the end of his "performance".</p>
+
+<p>There is a secret ending that depends on specific actions throughout the game, including researching curses extensively and persuading Nyrissa to ally with the Monarch against the Lantern King. After defeating the Lantern King, Nyrissa &amp; the Monarch use a mask imbued with a fragment of his power to bounce his own curses back at him, permanently killing him. The kingdom lives in peace and prosperity, straddling the mortal &amp; First worlds.</p>
+
+<h4><i>Varnhold's Lot</i></h4>
+
+<p>At the same time that she sponsored the main campaign Baron/ess, Jamandi Aldori also appointed another new baron: Mercenary leader Maeger Varn for the barony of Varnhold in the eastern Stolen Lands. The DLC player-character is the General, one of Varn's closest advisors. Accompanied by Varn, the wizard Cephal Lorentus, and several other mercenaries, they must deal with various problems in the barony. These include centaur attacks, missing travellers, and a political agitator from the south. The centaurs warn the General that an ancient evil slumbers under the land and must not be disturbed.</p>
+
+<p>The General reaches a village which is in civil war between a <a href="https://en.wikipedia.org/wiki/Mortuary_cult">death cult</a> and worshippers of other gods. After resolving the conflict, the cultists' leader informs them of a great "master" who has awoken. The master's tomb is the same evil which the centaurs have sworn to guard against. The party travels to the tomb and opens it. It is filled with countless illusions, and is actually a fortress sunk into the ground. Varn and Lorentus are separated from the rest of the group by traps and illusions.</p>
+
+<p>The remaining group finds a portal to the First World deep in the fortress. The Horned Hunter (who is really the Lantern King, although the General does not learn this) appears and explains the situation: the ancient evil does exist but in a different location, and the events of the DLC were all a long joke by the Hunter. The Hunter offers a "gift" to the General, which varies depending on the player's choices throughout the game: The General either ends up turned into a <a href="https://en.wikipedia.org/wiki/Mimic_(Dungeons_&amp;_Dragons)">mimic</a> to eat other adventurers, forced to defend the tomb from an endless army of First World monsters, or roams the First World after being stranded. Regardless of the General's fate, the Horned Hunter kills the remaining mercenaries. Varn and Lorentus survive to take part in the events of the main story.</p>
+
+<h4><i>Beneath the Stolen Lands</i></h4>
+
+<p>At some point in the main campaign, the Baron/Baroness/King/Queen has dreams pointing to a massive dungeon called the Tenebrous Depths. Upon reaching the area, the party encounters a dragon called Xelliren. The dragon explains that he sent the dreams, and that the bottom of the dungeon hosts a Spawn of Rovagug, an ancient creature that can lay waste to entire continents if allowed to escape.</p>
+
+<p>As the party descends through the floors of the dungeon, they come across past adventurers who have been driven insane by the Spawn's influence. Once all four have been defeated, the party enters a portal that takes them to the Spawn's nest. Upon defeating the Spawn, the party returns to the surface where Xelliren congratulates them but note that the pattern will likely repeat in several thousand years. Nonetheless, Xelliren notes that the party doesn't have to worry about it.</p>
+
+<p>Alternatively, the player can come across clues from the fallen adventurers written while they had not yet succumbed to the Spawn's influence, specifically blaming Xelliren for luring them to the dungeon. With enough clues, the Baron can make Xelliren understand the truth: the dragon had been unintentionally working for the Spawn. Shocked by the revelation, Xelliren disappears and reappears during the party's fight with the Spawn, attempting to attack it but ending up mind-controlled instead. After the party defeats the Spawn, Xelliren regains his sanity and congratulates the player for permanently defeating the Spawn.</p>
+
+<h2>Development</h2>
+
+<p>Following the game's announcement, Owlcat announced they were considering different funding avenues. This culminated in the June 2017 launch of the <a href="https://en.wikipedia.org/wiki/Kickstarter">Kickstarter</a> campaign, which was billed as for expanding the game rather than funding it. The campaign ended by the end of the month after raising US$909,057 from more than 18,000 contributors. <a href="https://en.wikipedia.org/wiki/Chris_Avellone">Chris Avellone</a>, an acclaimed scriptwriter for other role-playing games, contributed to the game.</p>
+
+<p>The game was published by <a href="https://en.wikipedia.org/wiki/Deep_Silver">Deep Silver</a> and was released on 25 September 2018. On June 6, 2019, <i>Enhanced Edition</i> update was released for computer platforms. On August 18, 2020, ports for <a href="https://en.wikipedia.org/wiki/PlayStation_4">PlayStation 4</a> and <a href="https://en.wikipedia.org/wiki/Xbox_One">Xbox One</a> were released subtitled <i>Definitive Edition</i>. The computer versions got an update at the same time that was titled <i>Enhanced Plus Edition</i>.</p>
+
+<h2>Reception</h2>
+
+<p><i>Pathfinder: Kingmaker</i> received mixed reviews, holding an aggregate score of 73 out of 100 on <a href="https://en.wikipedia.org/wiki/Metacritic">Metacritic</a>. The <i>Game Debate</i> review praised the game's engrossing story, depth and realm management feature, calling it "a beautiful looking, rich CRPG, that delivers a great place to adventure, an interesting land to rule and the tools to carve out a realm that you can call home". In a somewhat less enthusiastic review, <i><a href="https://en.wikipedia.org/wiki/GameSpot">GameSpot</a></i>'s Daniel Starkey believes the game to be "hampered by a litany of small issues, balancing, and the gargantuan knowledge base you'll need to play most effectively", while also lauding the narrative and the kingdom management aspect of the game, mentioning that "for those with the patience, the rewards are well worth the investment". The game has also been criticized for its inconsistent difficulty curve and the opaqueness of some of its mechanics.</p>
+
+<p>On the technical side, the game's launch was plagued by numerous <a href="https://en.wikipedia.org/wiki/Software_bug">bugs</a>, long <a href="https://en.wikipedia.org/wiki/Loading_screen">loading screens</a> and <a href="https://en.wikipedia.org/wiki/Game_balance">balance</a> issues, which hurt the game's initial reception with both professional critics and customers. In the following months, many of these issues have been fixed by <a href="https://en.wikipedia.org/wiki/Patch_(computing)">patches</a>.</p>
+
+<p>In September 2021, the game had sold over one million copies worldwide.</p>
+
+<h2>Sequel</h2>
+
+<p>Owlcat announced a sequel <i><a href="https://en.wikipedia.org/wiki/Pathfinder:_Wrath_of_the_Righteous">Pathfinder: Wrath of the Righteous</a></i> in December 2019. Narratively, the game follows the same-named Adventure Path published in August 2013, where the player's party becomes involved in a battle between mortals and demons. The sequel builds on the engine from <i>Kingmaker</i> to address concerns raised by critics and players, and expands additional rulesets from the tabletop game, including new character classes and the mythic progression system. Owlcat launched a Kickstarter campaign in February 2020 to raise additional development funds for the title. The Kickstarter successfully raised over US$2 million of its requested US$300,000, allowing for several stretch goals to be added during development.</p>
+
+<h2>References &amp; Notes</h2>
+
+
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

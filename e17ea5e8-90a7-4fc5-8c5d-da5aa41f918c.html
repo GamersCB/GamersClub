@@ -1,0 +1,414 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Half-Life</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('e17ea5e8-90a7-4fc5-8c5d-da5aa41f918c/c1e7f432-4c3a-4986-9791-f8578449395c.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="e17ea5e8-90a7-4fc5-8c5d-da5aa41f918c/e619752e-3d94-43b8-9699-69d0abbd4dd0.png"/> Half-Life</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="e17ea5e8-90a7-4fc5-8c5d-da5aa41f918c/f414b60d-9006-478b-8ecd-b17200a3399c.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-20/11/2025">20/11/2025</a> 14:13:34</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-20/11/2025">20/11/2025</a> 14:14:28</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB GAS">2TB GAS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-Macintosh">Macintosh</a><br/><a href="#quicklink-PC (Linux)">PC (Linux)</a><br/><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/><a href="#quicklink-Sony PlayStation 2">Sony PlayStation 2</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-19/11/1998">19/11/1998</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-92">92</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-First-person shooter">First-person shooter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Valve">Valve</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Sierra Studios">Sierra Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single-player">Single-player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/Half-Life_(video_game)" target="_blank">Wikipedia</a><br/><a href="https://www.half-life.com/en/halflife" target="_blank">Official website</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-[Game Engine] GoldSrc">[Game Engine] GoldSrc</a><br/><a href="#quicklink-[People] composer: Kelly Bailey">[People] composer: Kelly Bailey</a><br/><a href="#quicklink-[People] writer: Marc Laidlaw">[People] writer: Marc Laidlaw</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>Half-Life</b></i><!--Do not add stylization in this since it's only used in box art and title screen.--> is a 1998 <a href="https://en.wikipedia.org/wiki/First-person_shooter">first-person shooter</a> game developed by <a href="https://en.wikipedia.org/wiki/Valve_Corporation">Valve Corporation</a> and published by <a href="https://en.wikipedia.org/wiki/Sierra_Studios">Sierra Studios</a> for <a href="https://en.wikipedia.org/wiki/Windows">Windows</a>. It was Valve's debut product and the first game in the <a href="https://en.wikipedia.org/wiki/Half-Life_(series)"><i>Half-Life</i> series</a>. The player assumes the role of <a href="https://en.wikipedia.org/wiki/Gordon_Freeman">Gordon Freeman</a>, a scientist who must escape from the <a href="https://en.wikipedia.org/wiki/Black_Mesa_Research_Facility">Black Mesa Research Facility</a> after it is overrun by <a href="https://en.wikipedia.org/wiki/Extraterrestrials_in_fiction">alien</a> creatures following a disastrous scientific experiment. The gameplay consists of combat, exploration and puzzles.</p>
+
+<p>Valve was disappointed with the lack of innovation in the FPS genre, and aimed to create an immersive world rather than a "shooting gallery". Unlike other games at the time, the player has almost uninterrupted control of the <a href="https://en.wikipedia.org/wiki/Player_character">player character</a>; the story is mostly experienced through <a href="https://en.wikipedia.org/wiki/Scripted_sequence">scripted sequences</a> rather than <a href="https://en.wikipedia.org/wiki/Cutscene">cutscenes</a>. Valve developed the game using <a href="https://en.wikipedia.org/wiki/GoldSrc">GoldSrc</a>, a heavily modified version of the <a href="https://en.wikipedia.org/wiki/Quake_engine"><i>Quake</i> engine</a>, licensed from <a href="https://en.wikipedia.org/wiki/Id_Software">id Software</a>. The science fiction novelist <a href="https://en.wikipedia.org/wiki/Marc_Laidlaw">Marc Laidlaw</a> was hired to craft the plot and assist with design.</p>
+
+<p><i>Half-Life</i> received acclaim for its graphics, gameplay and narrative and won more than 50 <a href="https://en.wikipedia.org/wiki/PC_game">PC</a> "<a href="https://en.wikipedia.org/wiki/List_of_Game_of_the_Year_awards">Game of the Year</a>" awards. It is considered one of the most influential first-person shooter games and one of the <a href="https://en.wikipedia.org/wiki/Greatest_video_games">greatest video games</a>. By 2008, it had sold more than nine million copies. It was ported to the <a href="https://en.wikipedia.org/wiki/PlayStation_2">PlayStation 2</a> in 2001, along with the multiplayer expansion <i><a href="https://en.wikipedia.org/wiki/Half-Life:_Decay">Decay</a></i>, and to <a href="https://en.wikipedia.org/wiki/OS_X">OS X</a> and <a href="https://en.wikipedia.org/wiki/Linux_kernel">Linux</a> in 2013. Valve ported <i>Half-Life</i> to its <a href="https://en.wikipedia.org/wiki/Game_engine">game engine</a>, <a href="https://en.wikipedia.org/wiki/Source_(game_engine)">Source</a>, as <i><b>Half-Life: Source</b></i> in 2004. In 2020, <i><a href="https://en.wikipedia.org/wiki/Black_Mesa_(video_game)">Black Mesa</a></i> was released, an unofficial fan-made remake of <i>Half-Life</i> developed by Crowbar Collective using the Source engine.</p>
+
+<p><i>Half-Life</i> inspired numerous fan-made <a href="https://en.wikipedia.org/wiki/Mod_(video_gaming)">mods</a>, some of which became standalone games, such as <i><a href="https://en.wikipedia.org/wiki/Counter-Strike_(video_game)">Counter-Strike</a></i> (2000), <i><a href="https://en.wikipedia.org/wiki/Day_of_Defeat">Day of Defeat</a></i> (2003), and <i><a href="https://en.wikipedia.org/wiki/Sven_Co-op">Sven Co-op</a></i> (1999). It was followed by the <a href="https://en.wikipedia.org/wiki/Expansion_pack">expansion packs</a> <i><a href="https://en.wikipedia.org/wiki/Half-Life:_Opposing_Force">Opposing Force</a></i> (1999) and <i><a href="https://en.wikipedia.org/wiki/Half-Life:_Blue_Shift">Blue Shift</a></i> (2001), developed by <a href="https://en.wikipedia.org/wiki/Gearbox_Software">Gearbox Software</a>, and the sequels <i><a href="https://en.wikipedia.org/wiki/Half-Life_2">Half-Life 2</a></i> (2004), <i><a href="https://en.wikipedia.org/wiki/Half-Life_2:_Episode_One">Episode One</a></i> (2006), <i><a href="https://en.wikipedia.org/wiki/Half-Life_2:_Episode_Two">Episode Two</a></i> (2007) and <i><a href="https://en.wikipedia.org/wiki/Half-Life:_Alyx">Half-Life: Alyx</a></i> (2020).</p>
+
+<h2>Gameplay</h2>
+
+<p><i>Half-Life</i> is a <a href="https://en.wikipedia.org/wiki/First-person_shooter">first-person shooter</a> that requires the player to perform combat tasks and puzzle solving to advance through the game. Unlike most first-person shooters at the time, which relied on <a href="https://en.wikipedia.org/wiki/Cutscene">cut-scene intermissions</a> to detail their plotlines, <i>Half-Life</i>'s story is told mostly using <a href="https://en.wikipedia.org/wiki/Scripted_sequence">scripted sequences</a> (bar one short cutscene), keeping the player in control of the <a href="https://en.wikipedia.org/wiki/First-person_(video_games)">first-person viewpoint</a>. In line with this, the player rarely loses the ability to control the <a href="https://en.wikipedia.org/wiki/Player_character">player character</a>, <a href="https://en.wikipedia.org/wiki/Gordon_Freeman">Gordon Freeman</a>, who never speaks and is never actually seen in the game; the player sees "through his eyes" for the entire length of the game. <i>Half-Life</i> has no <a href="https://en.wikipedia.org/wiki/Level_(video_games)">levels</a>; it instead divides the game into chapters, whose titles briefly appear on screen as the player progresses through the game. With the exception of short loading pauses, progression throughout the game is continuous, with each map directly connecting to the next, although levels with <a href="https://en.wikipedia.org/wiki/Teleportation">teleportation</a> are an exception.</p>
+
+<p>The game regularly integrates puzzles, such as navigating a maze of conveyor belts or using nearby boxes to build a small staircase to the next area the player must travel to. Some puzzles involve using the environment to kill an enemy, like turning a valve to spray hot steam at their enemies. There are few <a href="https://en.wikipedia.org/wiki/Boss_(video_gaming)">bosses</a> in the conventional sense, where the player defeats a superior opponent by direct confrontation. Instead, such organisms occasionally define chapters, and the player is generally expected to use the terrain, rather than firepower, to kill the boss. Late in the game, the player receives a "long jump module" for the <a href="https://en.wikipedia.org/wiki/HEV_suit">HEV suit</a>, which allows the player to increase the horizontal distance and speed of jumps by crouching before jumping. The player must rely on this ability to navigate various platformer-style <a href="https://en.wikipedia.org/wiki/Jumping_puzzles">jumping puzzles</a> in <a href="https://en.wikipedia.org/wiki/Half-Life_(series)#Setting">Xen</a> toward the end of the game.</p>
+
+<p>The player battles alone for the majority of the game, but is occasionally assisted by <a href="https://en.wikipedia.org/wiki/Non-player_character">non-player characters</a>; specifically security guards and scientists who help the player. The guards will fight alongside the player, and both guards and scientists can assist in reaching new areas and pass on relevant plot information. An array of alien enemies populate the game, including headcrabs, bullsquids, vortigaunts, and headcrab zombies. The player also faces hostile human soldiers and <a href="https://en.wikipedia.org/wiki/Black_operation">Black Ops</a> assassins. <i>Half-Life</i> includes online multiplayer support for both individual and team-based <a href="https://en.wikipedia.org/wiki/Deathmatch_(video_games)">deathmatch</a> modes. It was one of the first mainstream games to use the <a href="https://en.wikipedia.org/wiki/WASD_keys">WASD keys</a> as the default control scheme.</p>
+
+<h2>Plot</h2>
+
+<p>At the underground <a href="https://en.wikipedia.org/wiki/Black_Mesa_Research_Facility">Black Mesa Research Facility</a>, the theoretical physicist <a href="https://en.wikipedia.org/wiki/Gordon_Freeman">Gordon Freeman</a> participates in an experiment on a crystal of unknown origin. This triggers a "resonance cascade", which greatly damages the facility and teleports in hostile alien creatures through a portal between the Xen and Earth dimensions. Venturing to the surface, Freeman discovers <a href="https://en.wikipedia.org/wiki/U.S._federal_government">U.S. federal government</a> soldiers have been dispatched to cover up the incident by killing humans and aliens alike. A scientist instructs him to make his way to the Lambda Complex to stop the alien invasion.</p>
+
+<p>Freeman kills a giant creature inside a rocket engine test facility and uses an underground monorail to reach a rocket silo. He launches a satellite to help the Lambda team close the portal, but is captured by soldiers and left for dead in a trash compactor. Escaping through a waste treatment complex, Freeman travels through a part of Black Mesa filled with alien specimens, collected long before the resonance cascade.</p>
+
+<p>Overpowered by the aliens, the soldiers withdraw. Freeman fights across the rest of the facility to reach the Lambda Complex, where he discovers secret teleportation technology. There, scientists inform him that the satellite launched earlier didn't work to stop the cascade due to a powerful alien creature preventing them from closing the portal. They teleport him to the alien dimension <a href="https://en.wikipedia.org/wiki/Half-Life_(series)#Setting">Xen</a> to kill it.</p>
+
+<p>Freeman encounters dead scientists who teleported there before him. He kills a large alien, the Gonarch, and finds a factory that manufactures alien soldiers. Finally, he enters the Nihilanth's lair and kills it. Freeman is detained by the <a href="https://en.wikipedia.org/wiki/Characters_of_the_Half-Life_series#G-Man">G-Man</a>, a mysterious interdimensional agent who claims his "employers" wish to hire Freeman. If he accepts, Freeman is placed into <a href="https://en.wikipedia.org/wiki/Stasis_(fiction)">stasis</a>; if not, he is teleported to his death.</p>
+
+<h2>Development</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/Valve_Corporation">Valve</a>, based in <a href="https://en.wikipedia.org/wiki/Kirkland,_Washington">Kirkland, Washington</a>, U.S., was founded in 1996 by the former <a href="https://en.wikipedia.org/wiki/Microsoft">Microsoft</a> employees <a href="https://en.wikipedia.org/wiki/Gabe_Newell">Gabe Newell</a> and <a href="https://en.wikipedia.org/wiki/Mike_Harrington">Mike Harrington</a>. For their first product, Valve settled on a concept for a horror first-person shooter (FPS) game. They did not want to build their own <a href="https://en.wikipedia.org/wiki/Game_engine">game engine</a>, as this would have created too much work for a small team and Newell planned to innovate in different areas. Instead, Valve licensed the <a href="https://en.wikipedia.org/wiki/Quake_engine"><i>Quake</i> engine</a> and the <a href="https://en.wikipedia.org/wiki/Quake_II_engine"><i>Quake II</i> engine</a> from <a href="https://en.wikipedia.org/wiki/Id_Software">id Software</a> and combined them with their own code. Newell estimated that around 75% of the final engine code was by Valve. As the project expanded, Valve cancelled development of a fantasy role-playing game, <i>Prospero</i>, and the <i>Prospero</i> team joined the <i>Half-Life</i> project.</p>
+
+<p><i>Half-Life</i> was inspired by the FPS games <i><a href="https://en.wikipedia.org/wiki/Doom_(1993_video_game)">Doom</a></i> (1993) and <i><a href="https://en.wikipedia.org/wiki/Quake_(video_game)">Quake</a></i> (1996),<sup>: 9, 11 </sup> <a href="https://en.wikipedia.org/wiki/Stephen_King">Stephen King</a>'s 1980 novella <i><a href="https://en.wikipedia.org/wiki/The_Mist_(novella)">The Mist</a></i>, and a 1963 episode of <i><a href="https://en.wikipedia.org/wiki/The_Outer_Limits_(1963_TV_series)">The Outer Limits</a></i> titled "<a href="https://en.wikipedia.org/wiki/The_Borderland">The Borderland</a>". According to the designer Harry Teasley, <i>Doom</i> was a major influence and the team wanted <i>Half-Life</i> to "scare you like <i>Doom</i> did". The project had the working title <i>Quiver</i>, after the Arrowhead military base from <i>The Mist</i>. The name <i>Half-Life</i> was chosen because it was evocative of the theme, not clichéd, and had a corresponding visual symbol: the <a href="https://en.wikipedia.org/wiki/Greek_letter">Greek letter</a> λ (lower-case <a href="https://en.wikipedia.org/wiki/Lambda">lambda</a>), which represents the <i>decay constant</i> in the <a href="https://en.wikipedia.org/wiki/Half-life">half-life</a> equation.<sup>: 31 </sup> According to the designer Brett Johnson, the level design was inspired by environments in the <a href="https://en.wikipedia.org/wiki/Manga">manga</a> series <i><a href="https://en.wikipedia.org/wiki/Akira_(manga)">Akira</a></i>.</p>
+
+<p>Valve struggled to find a publisher, as many believed the game was too ambitious for a first-time developer. <a href="https://en.wikipedia.org/wiki/Sierra_On-Line">Sierra On-Line</a> signed Valve for a one-game deal as it was interested in making a 3D action game, especially one based on the <i>Quake</i> engine. Sierra gave Valve an advance of around $1 million in exchange for 30% of the revenue and 100% of the <a href="https://en.wikipedia.org/wiki/Intellectual_property">intellectual property</a>; the rest of development was funded by Newell and Harrington. Valve first showed <i>Half-Life</i> in early 1997; it was a success at <a href="https://en.wikipedia.org/wiki/E3">E3</a> that year, where Valve demonstrated the animation and <a href="https://en.wikipedia.org/wiki/Artificial_intelligence_in_video_games">artificial intelligence</a>. Novel features of the artificial intelligence included fear and pack behavior.</p>
+
+<p>Valve aimed for a November 1997 release to compete with <i><a href="https://en.wikipedia.org/wiki/Quake_II">Quake II</a></i>. By September 1997, the team found that, while they had built some innovative aspects in weapons, enemies, and level design, the game was not fun and there was little design cohesion. Playtesting produced "lukewarm" responses. Sierra would not agree to extra funding, so Newell took out a loan to fund additional development to rework the game.</p>
+
+<p>Valve took a novel approach of assigning a small team to build a prototype level containing every element in the game and then spent a month iterating on the level. When the rest of the team played the level, which the designer Ken Birdwell described as "<i><a href="https://en.wikipedia.org/wiki/Die_Hard">Die Hard</a></i> meets <i><a href="https://en.wikipedia.org/wiki/Evil_Dead">Evil Dead</a></i>", they agreed to use it as a baseline. The team developed three theories about what made the level fun. First, it had several interesting things happen in it, all triggered by the player rather than a timer so that the player would set the pace of the level. Second, the level responded to any player action, even for something as simple as adding graphic decals to wall textures to show a bullet impact. Finally, the level warned the player of imminent danger to allow them to avoid it, rather than killing the player with no warning.</p>
+
+<p>To move forward with this unified design, Valve sought a game designer but found no one suitable. Instead, Valve created the "cabal", initially a group of six individuals from across all departments that worked primarily for six months straight in six-hour meetings four days a week. The cabal was responsible for all elements of design, including level layouts, key events, enemy designs, narrative, and the introduction of gameplay elements relative to the story. The collaboration proved successful, and once the cabal had come to decisions on types of gameplay elements that would be needed, mini-cabals from other departments most affected by the choice were formed to implement these elements. Membership in the main cabal rotated since the required commitment created <a href="https://en.wikipedia.org/wiki/Occupational_burnout">burnout</a>.</p>
+
+<p>The cabal produced a 200-page <a href="https://en.wikipedia.org/wiki/Game_design_document">design document</a> detailing nearly every aspect of the game. They also produced a 30-page document for the narrative, and hired the science fiction novelist <a href="https://en.wikipedia.org/wiki/Marc_Laidlaw">Marc Laidlaw</a> to help manage the script. Laidlaw said his contribution was to add "old storytelling tricks" to the team's ambitious designs: "I was in awe of [the team]. It felt to me like I was just borrowing from old standards while they were the ones doing something truly new." Rather than dictate narrative elements "from some kind of ivory tower of authorial inspiration", he worked with the team to improvise ideas, and was inspired by their experiments. For example, he conceived the opening train ride after an engineer implemented train code for another concept.</p>
+
+<p>Valve initially planned to use traditional <a href="https://en.wikipedia.org/wiki/Cutscene">cutscenes</a>, but switched to a continuous first-person perspective for lack of time. Laidlaw said they discovered unexpected advantages in this approach, as it created a sense of immersion and enforced a sense of loneliness in a frightening environment. Laidlaw felt that non-player characters were unnecessary to guide players if the design had sufficiently strong "visual grammar", and that this allowed the characters to "feel like characters instead of signposts". An early version of <i>Half-Life</i> began immediately after the disaster, with the environments already wrecked. Laidlaw worked with Johnson to create versions of the lab environment before the disaster to help set the story. He said: "These were all economical ways of doing storytelling with the architecture—which was my whole obsession. The narrative had to be baked into the corridors."</p>
+
+<p>Within a month of the cabal's formation, the other team members started detailed game development, and within another month began <a href="https://en.wikipedia.org/wiki/Playtesting">playtesting</a> through Sierra. The cabal was intimately involved with playtesting, monitoring the player but otherwise not interacting. They noted any confusion or inability to solve a game's puzzles and made them into <a href="https://en.wikipedia.org/wiki/Action_item">action items</a> to be fixed on the next iteration. Later, with most of the main adjustments made, the team included means to benchmark players' actions. They then collected and interpreted statistically to fine-tune levels further. Between the cabal and playtesting, Valve identified and removed parts that proved unenjoyable. Birdwell said that while there were struggles at first, the cabal approach was critical for <i>Half-Life</i>'s success, and was reused for <i><a href="https://en.wikipedia.org/wiki/Team_Fortress_2">Team Fortress 2</a></i> from the start.</p>
+
+<p>Much of the detail of <i>Half-Life</i>'s development has been lost. According to Valve employee Erik Johnson, two or three months before release, their <a href="https://en.wikipedia.org/wiki/Visual_SourceSafe">Visual SourceSafe</a> source control system "exploded". Logs of technical changes from before the final month of development were lost, and code had to be recovered from individual computers. The revised version of <i>Half-Life</i> shown at E3 1998 received the <a href="https://en.wikipedia.org/wiki/Game_Critics_Awards">Game Critics Awards</a> for "Best PC Game" and "Best Action Game".</p>
+
+<h2>Release</h2>
+
+<p>To promote <i>Half-Life</i>, Valve's chief marketing officer, Monica Harrington, promoted Valve's reputation in the industry, with conference talks about their advances in game development, leading to coverage in the <i><a href="https://en.wikipedia.org/wiki/Wall_Street_Journal">Wall Street Journal</a></i>. <i>Half-Life</i> was released on November 19, 1998. When Sierra told Valve it was not planning to promote it beyond launch, Harrington threatened that Valve would "walk away from our agreement and tell the industry that had fallen in love with Valve how screwed up Sierra really was". In response, Sierra reissued <i>Half-Life</i> in a "Game of the Year" edition, boosting sales. In 2001, after renegotiating with Sierra, Valve gained the <i>Half-Life</i> <a href="https://en.wikipedia.org/wiki/Intellectual_property">intellectual property</a> and online distribution rights for its games.</p>
+
+<p>Valve released two <i>Half-Life</i> <a href="https://en.wikipedia.org/wiki/Game_demo">demos</a>. The first, <i>Half-Life: Day One</i>, contained the first fifth of the game and was distributed with certain graphic cards. The second, <i>Half-Life: Uplink</i>, was released on February 12, 1999, and featured original content. A short film based on <i>Half-Life,</i> also titled <i>Half-Life: Uplink</i>, was developed by Cruise Control, a British marketing agency, and released on February 11. The protagonist is a journalist who infiltrates the Black Mesa Research Facility, trying to discover what has happened there.</p>
+
+<p><i>Half-Life</i> was censored in Germany to comply with the <a href="https://en.wikipedia.org/wiki/Federal_Department_for_Media_Harmful_to_Young_Persons">Federal Department for Media Harmful to Young Persons</a>, which regulates depictions of violence against humans. Valve replaced the human characters with robots, spilling oil and gears instead of blood and body parts when killed, among other changes. In 2017, <i>Half-Life</i> was removed from the German censorship list. To acknowledge this, Valve released <i>Half-Life Uncensored</i>, a free <a href="https://en.wikipedia.org/wiki/Downloadable_content">downloadable content</a> pack, that reverts the censorship.</p>
+
+<h3>Other versions</h3>
+
+<p>Valve canceled a <a href="https://en.wikipedia.org/wiki/Porting">port</a> of <i>Half-Life</i> for <a href="https://en.wikipedia.org/wiki/MacOS">MacOS</a>, developed by Logicware, in 2000. Newell said the port was substandard and would have made Mac players "second-class customers". <a href="https://en.wikipedia.org/wiki/Rebecca_Heineman">Rebecca Heineman</a>, the co-founder of Logicware, denied this, saying that Valve cancelled the port as <a href="https://en.wikipedia.org/wiki/Apple_Inc.">Apple</a> had angered them by misrepresenting sales projections. She said the port was complete and three weeks from release. Valve released ports for <a href="https://en.wikipedia.org/wiki/OS_X">OS X</a> and <a href="https://en.wikipedia.org/wiki/Linux">Linux</a> in 2013.</p>
+
+<p>Captivation Digital Laboratories and <a href="https://en.wikipedia.org/wiki/Gearbox_Software">Gearbox Software</a> developed a port of <i>Half-Life</i> for the <a href="https://en.wikipedia.org/wiki/Dreamcast">Dreamcast</a>, with new character models and textures and an exclusive expansion, <i><a href="https://en.wikipedia.org/wiki/Half-Life:_Blue_Shift">Blue Shift</a></i>. Following the cancellations of several third-party games in the wake of <a href="https://en.wikipedia.org/wiki/Sega">Sega</a>'s decision to discontinue the Dreamcast in March 2001, Sierra cancelled the port weeks before its scheduled release in June, citing "changing marketing conditions". <i>Blue Shift</i> was ported to Windows. The Dreamcast port became the basis of the <i>Half-Life</i> port for PlayStation 2, released in late 2001. This version added competitive play and a co-op expansion, <i><a href="https://en.wikipedia.org/wiki/Half-Life:_Decay">Half-Life: Decay</a>.<sup><a href="https://en.wikipedia.org/wiki/Half-Life_(video_game)#cite_note-40">[38]</a></sup></i></p>
+
+<p>In 2004, Valve released <i>Half-Life: Source</i>, a version of <i>Half-Life</i> ported to their new game engine, <a href="https://en.wikipedia.org/wiki/Source_(game_engine)">Source</a>. It adds <a href="https://en.wikipedia.org/wiki/Ragdoll_physics">ragdoll physics</a>, advanced water effects, and <a href="https://en.wikipedia.org/wiki/5.1_surround_sound">5.1 surround sound</a>. At launch, it received mediocre reviews for its lack of significant gameplay and visual enhancements, although <i><a href="https://en.wikipedia.org/wiki/IGN">IGN</a></i> still recommended it. Retrospective reception has been more negative, owing to the game's instability and frequent <a href="https://en.wikipedia.org/wiki/Glitches">glitches</a>. The deathmatch mode was ported to Source separately in 2006 as <i>Half-Life Deathmatch: Source</i>. Following the release of the <i>Half-Life</i> 25th anniversary update in 2023, both ports were delisted from <a href="https://en.wikipedia.org/wiki/Steam_(service)">Steam</a> and do not appear in its search results. <i><a href="https://en.wikipedia.org/wiki/Black_Mesa_(video_game)">Black Mesa</a></i>, a third-party remake of <i>Half-Life</i> developed by <a href="https://en.wikipedia.org/wiki/Crowbar_Collective">Crowbar Collective</a> on the <a href="https://en.wikipedia.org/wiki/Source_(game_engine)">Source</a> engine, was published as a free mod in September 2012 and later approved by Valve for a commercial standalone release.</p>
+
+<p>In November 2023, for the 25th anniversary of <i>Half-Life</i>, Valve updated the Steam version to revert content to its original 1998 state, fix long-standing bugs, and add content including the <i>Half-Life: Uplink</i> demo, four new multiplayer maps, <a href="https://en.wikipedia.org/wiki/Steam_Deck">Steam Deck</a> support, rendering improvements, and support for <a href="https://en.wikipedia.org/wiki/4K_resolution">4K resolution</a> monitors. Valve also released an hour-long documentary on the creation of <i>Half-Life</i>, featuring commentary from the original developers, designers and artists. Two days after the release, <i>Half-Life</i> reached 33,471 concurrent players on Steam, its highest-ever number.</p>
+
+<h2>Mods</h2>
+
+<p><i>Half-Life</i> received support from independent game developers, supported and encouraged by Valve. With the game, Valve included <a href="https://en.wikipedia.org/wiki/Valve_Hammer_Editor">Worldcraft</a>, the level design tool used during development, and a <a href="https://en.wikipedia.org/wiki/Software_development_kit">software development kit</a>, enabling developers to create <a href="https://en.wikipedia.org/wiki/Mod_(video_gaming)">mods</a>. Both tools were updated with the release of the patch 1.1.0.0. Supporting tools (including texture editors, model editors, and level editors such as the multiple engine editor <a href="https://en.wikipedia.org/wiki/QuArK">QuArK</a>) were either created or updated to work with <i>Half-Life</i>.<sup>[<i><a href="https://en.wikipedia.org/wiki/Wikipedia:Citation_needed">citation needed</a></i>]</sup></p>
+
+<p>The <i>Half-Life</i> software development kit served as the development base for many mods, including the Valve-developed <i><a href="https://en.wikipedia.org/wiki/Team_Fortress_Classic">Team Fortress Classic</a></i> and <i>Deathmatch Classic</i> (a remake of <i>Quake</i>'s multiplayer deathmatch mode in the GoldSrc engine). Other mods such as <i>Counter-Strike</i> and <i><a href="https://en.wikipedia.org/wiki/Day_of_Defeat">Day of Defeat</a></i> (<i>DOD</i>) began life as the work of independent developers who later received aid from Valve. Other multiplayer mods include <i><a href="https://en.wikipedia.org/wiki/Firearms_(video_game)">Firearms</a></i>, <i><a href="https://en.wikipedia.org/wiki/Natural_Selection_(video_game)">Natural Selection</a></i> and <i><a href="https://en.wikipedia.org/wiki/Sven_Co-op">Sven Co-op</a></i>. Single-player mods include <i><a href="https://en.wikipedia.org/wiki/USS_Darkstar">USS Darkstar</a></i> (1999, a futuristic action-adventure on board a <a href="https://en.wikipedia.org/wiki/Zoological">zoological</a> research spaceship) and <i><a href="https://en.wikipedia.org/wiki/They_Hunger">They Hunger</a></i> (2000–2001, a <a href="https://en.wikipedia.org/wiki/Survival_horror">survival horror</a> <a href="https://en.wikipedia.org/wiki/Total_conversion">total conversion</a> trilogy involving zombies). To promote the 2003 film <i><a href="https://en.wikipedia.org/wiki/Underworld_(2003_film)">Underworld</a></i>, <a href="https://en.wikipedia.org/wiki/Sony_Pictures">Sony Pictures</a> commissioned video game developer <a href="https://en.wikipedia.org/wiki/Black_Widow_Games">Black Widow Games</a> to develop a promotional tie-in mod titled <i>Underworld: Bloodline</i>. The mod was available on Sony Pictures' official website until the end of 2007 and remains the only officially licensed Half-Life mod tied to a Hollywood film.</p>
+
+<p>Some <i>Half-Life</i> modifications received retail releases. <i>Counter-Strike</i> was the most successful, having been released in six different editions: as a standalone product (2000), as part of the <i>Platinum Pack</i> (2000), as an <a href="https://en.wikipedia.org/wiki/Xbox_(console)">Xbox</a> version (2003), and as a single-player spin-off, <i><a href="https://en.wikipedia.org/wiki/Counter-Strike:_Condition_Zero">Counter-Strike: Condition Zero</a></i> (2004), as well as in two versions using the Source engine. <i>Team Fortress Classic</i>, <i>Day of Defeat</i>, <i><a href="https://en.wikipedia.org/wiki/Gunman_Chronicles">Gunman Chronicles</a></i> (2000, a futuristic <a href="https://en.wikipedia.org/wiki/Western_(genre)">Western movie</a>-style <a href="https://en.wikipedia.org/wiki/Total_conversion">total conversion</a> with emphasis on its single-player mode) and <i>Sven Co-op</i> were also released as standalone products. <i>Half-Life</i> is also the subject of the <a href="https://en.wikipedia.org/wiki/YouTube">YouTube</a> <a href="https://en.wikipedia.org/wiki/Improvisational_theatre">improv</a> <a href="https://en.wikipedia.org/wiki/Roleplaying">roleplaying</a> series <i><a href="https://en.wikipedia.org/wiki/Half-Life_VR_but_the_AI_is_Self-Aware">Half-Life VR but the AI is Self-Aware</a></i> and <i><a href="https://en.wikipedia.org/wiki/Freeman's_Mind">Freeman's Mind</a></i>.</p>
+
+<p>In 2003, Valve's network was infiltrated by hackers. Among the stolen files was the unreleased <i>Half-Life</i> mod <i>Half-Life: Threewave</i>, a canceled remake of the <i>Quake</i> mod <i><a href="https://en.wikipedia.org/wiki/Malice_(video_game_mod)">Threewave CTF</a></i>. The files were found by fans on a Vietnamese <a href="https://en.wikipedia.org/wiki/FTP_server">FTP server</a> in February 2016 and unofficially distributed that September.</p>
+
+<h2>Reception</h2>
+
+<h3>Critical reception</h3>
+
+<p><i>Half-Life</i> received critical acclaim by reviewers. On the review aggregation website <a href="https://en.wikipedia.org/wiki/Metacritic">Metacritic</a>, <i>Half-Life</i> has a score of 96 out of 100, indicating "universal acclaim". <i><a href="https://en.wikipedia.org/wiki/Computer_Gaming_World">Computer Gaming World</a></i>'s <a href="https://en.wikipedia.org/wiki/Jeff_Green_(writer)">Jeff Green</a> said it was "not just one of the best games of the year. It's one of the best games of any year, an instant classic that is miles better than any of its immediate competition, and—in its single-player form—is the best shooter since the original <i><a href="https://en.wikipedia.org/wiki/Doom_(1993_video_game)">Doom</a>.</i>" <i><a href="https://en.wikipedia.org/wiki/Next_Generation_(magazine)">Next Generation</a></i> wrote: "It is fast paced, it is dramatic, and it brings the very idea of adventure on a PC out of the dark ages and into a 3D world. All that and not a single Orc in sight." <i><a href="https://en.wikipedia.org/wiki/IGN">IGN</a></i> described it as "a tour de force in game design, the definitive single player game in a first-person shooter". <i><a href="https://en.wikipedia.org/wiki/GameSpot">GameSpot</a></i> said it was the "closest thing to a revolutionary step the genre has ever taken".</p>
+
+<p>Several reviewers cited the level of immersion and interactivity as revolutionary. <i><a href="https://en.wikipedia.org/wiki/AllGame">AllGame</a></i> said, "It isn't everyday that you come across a game that totally revolutionizes an entire genre, but Half-Life has done just that." <i>Hot Games</i> commented on the realism, and how the environment "all adds up to a totally immersive gaming experience that makes everything else look quite shoddy in comparison". <i>Gamers Depot</i> wrote that it was the most immersive game they had played.</p>
+
+<p>The final portion of the game, taking place in the alien world of Xen, was generally considered the weakest. Besides introducing a wholly new and alien setting, it also featured a number of low-gravity jumping puzzles. The GoldSrc engine did not provide as much precise control for the player during jumping, making these jumps difficult and often with Freeman falling into a void and the player restarting the game. <i><a href="https://en.wikipedia.org/wiki/Wired_(magazine)">Wired</a></i>'s Julie Muncy called the Xen sequence "an abbreviated, unpleasant stop on an alien world with bad platforming and a boss fight against what appeared, by all accounts, to be a giant floating infant". <i><a href="https://en.wikipedia.org/wiki/The_Electric_Playground">The Electric Playground</a></i> said that <i>Half-Life</i> was an "immersive and engaging entertainment experience" in its first half and that it "peaked too soon".</p>
+
+<p>During the <a href="https://en.wikipedia.org/wiki/Academy_of_Interactive_Arts_&amp;_Sciences">AIAS</a>' <a href="https://en.wikipedia.org/wiki/2nd_Annual_Interactive_Achievement_Awards">2nd Annual Interactive Achievement Awards</a>, <i>Half-Life</i> was awarded "Computer Entertainment Title of the Year" and "<a href="https://en.wikipedia.org/wiki/D.I.C.E._Award_for_Action_Game_of_the_Year">PC Action Game of the Year</a>"; it also received nominations for "<a href="https://en.wikipedia.org/wiki/D.I.C.E._Award_for_Game_of_the_Year">Game of the Year</a>" and outstanding achievement in "<a href="https://en.wikipedia.org/wiki/D.I.C.E._Award_for_Outstanding_Achievement_in_Art_Direction">Art/Graphics</a>", "<a href="https://en.wikipedia.org/wiki/D.I.C.E._Award_for_Outstanding_Achievement_in_Story">Character or Story Development</a>", "<a href="https://en.wikipedia.org/wiki/D.I.C.E._Award_for_Outstanding_Achievement_in_Game_Design">Interactive Design</a>", and "<a href="https://en.wikipedia.org/wiki/D.I.C.E._Award_for_Outstanding_Technical_Achievement">Software Engineering</a>".</p>
+
+<p>Jeff Lundrigan reviewed the PlayStation 2 version for <i><a href="https://en.wikipedia.org/wiki/Next_Generation_(magazine)">Next Generation</a></i>, rating it three out of five, and wrote that "it may be getting old, but there's still a surprising amount of life in <i>Half-Life</i>". The PlayStation 2 version was a nominee for <i><a href="https://en.wikipedia.org/wiki/The_Electric_Playground">The Electric Playground</a></i>'s 2001 Blister Awards for "Best Console Shooter Game", but lost to <i><a href="https://en.wikipedia.org/wiki/Halo:_Combat_Evolved">Halo: Combat Evolved</a></i> for <a href="https://en.wikipedia.org/wiki/Xbox_(console)">Xbox</a>.</p>
+
+<p>In 1999, 2001, and 2005, <i><a href="https://en.wikipedia.org/wiki/PC_Gamer">PC Gamer</a></i> named <i>Half-Life</i> the best PC game of all time. In 2004, <i><a href="https://en.wikipedia.org/wiki/GameSpy">GameSpy</a></i> readers voted <i>Half-Life</i> the best game of all time. <i><a href="https://en.wikipedia.org/wiki/Gamasutra">Gamasutra</a></i> gave it their Quantum Leap Award in the FPS category in 2006. <a href="https://en.wikipedia.org/wiki/GameSpot">GameSpot</a> inducted <i>Half-Life</i> into their Greatest Games of All Time list in May 2007. In 2007, <i>IGN</i> described <i>Half-Life</i> as one of the most influential video games, and in 2013 wrote that the history of the FPS genre "breaks down pretty cleanly into pre-<i>Half-Life</i> and post-<i>Half-Life</i> eras". In 2021, the <i><a href="https://en.wikipedia.org/wiki/The_Guardian">Guardian</a></i> ranked <i>Half-Life</i> the third-greatest game of the 1990s, writing that it "helped write the rulebook for how games tell their stories without resorting to aping the conventions of film".</p>
+
+<p>According to Newell, <i>Half-Life</i> was budgeted with the expectation of lifetime sales of around 180,000 copies. However, it was a surprise hit. In the United States, <i>Half-Life</i> debuted at #8 on <a href="https://en.wikipedia.org/wiki/PC_Data">PC Data</a>'s weekly PC game sales chart for the November 15–21 period, with an average retail price (ARP) of $49. It rose to sixth place the following week, before dropping to position 10 for the week ending December 5. During the December 6–12 period, the game climbed back to sixth place; by this time, its ARP had dropped to $36. It placed between sixth and eighth on PC Data's weekly charts through the end of December, and its ARP rose back to $45 by the week ending January 2. PC Data declared <i>Half-Life</i> November's sixth-best-selling PC game in the United States, a position it held for the month of December. While its U.S. sales were below 100,000 copies by November 30, it sold 212,173 copies and earned revenues of $8.6 million in the United States by the end of 1998.</p>
+
+<p>In January 1999, <i>Half-Life</i> debuted at #3 on <a href="https://en.wikipedia.org/wiki/Chart-Track">Chart-Track</a>'s PC game sales rankings for the United Kingdom, and remained in PC Data's weekly top 10 for the entire month, peaking at #4. By January 19, after two full months of availability, global sales of <i>Half-Life</i> surpassed 500,000 units. In the United States, it was the fifth-best-selling PC game for the month of January. On PC Data's weekly charts, it rose to #2 from February 7–20, with an ARP of $35. Holding a position in the weekly top 10 for the rest of February, it climbed to fourth for the month. The game remained in PC Data's weekly top 10 until the week of March 21 and dropped to position 11 for March as a whole. In the United Kingdom, it placed second in February—behind the debut of <i><a href="https://en.wikipedia.org/wiki/Baldur's_Gate_(video_game)">Baldur's Gate</a></i>—and fifth in March. In April, it claimed #3 on Chart-Track's rankings and dropped to #16 on those of PC Data. On April 23, Sierra announced that global sales of <i>Half-Life</i> had reached almost 1 million copies.</p>
+
+<p>After maintaining the 16th place for May in the U.S., <i>Half-Life</i> exited PC Data's monthly top 20 in June. <i>Half-Life</i> became the fifth-best-selling PC game of the first half of 1999 in the U.S. Its domestic sales during 1999 reached 290,000 copies by the end of September. During 1999, it was the fifth-best-selling PC game in the U.S., with sales of 445,123 copies. These sales brought in revenues of $16.6 million, the sixth-highest gross that year for a PC game in the U.S. The following year, it was the 16th-best-selling PC game in the U.S., selling another 286,593 copies and earning $8.98 million.</p>
+
+<p>The PlayStation 2 version received a "Silver" sales award from the <a href="https://en.wikipedia.org/wiki/Entertainment_and_Leisure_Software_Publishers_Association">Entertainment and Leisure Software Publishers Association</a> (ELSPA), indicating sales of at least 100,000 copies in the United Kingdom. <i>Half-Life</i>'s global sales reached 2.5 million units by July 2001. <i><a href="https://en.wikipedia.org/wiki/Edge_(magazine)">Edge</a></i> noted in 2003 that "a significant number of the 7.5m copies of the PC version were bought because the game offered such potential for community-driven expansion". As of November 16, 2004, eight million copies of the game had been sold, and by 2008, 9.3 million copies had been sold at retail. <i><a href="https://en.wikipedia.org/wiki/Guinness_World_Records">Guinness World Records</a></i> awarded <i>Half-Life</i> the world record for Best-Selling First-Person Shooter of All Time (PC) in the <i>Guinness World Records: Gamer's Edition 2008</i>.</p>
+
+<h2>Expansions and sequels</h2>
+
+<p><i>Half-Life</i> was followed by an <a href="https://en.wikipedia.org/wiki/Expansion_pack">expansion pack</a>, <i><a href="https://en.wikipedia.org/wiki/Half-Life:_Opposing_Force">Opposing Force</a></i>, on November 1, 1999, developed by <a href="https://en.wikipedia.org/wiki/Gearbox_Software">Gearbox Software</a>. Players control Hazardous Environment Combat Unit (HECU) Corporal <a href="https://en.wikipedia.org/wiki/Adrian_Shephard">Adrian Shephard</a>, who fights a new group of aliens called <a href="https://en.wikipedia.org/wiki/Race_X">Race X</a> and Black Ops units after being split from his team. Gearbox developed a second expansion pack, <i><a href="https://en.wikipedia.org/wiki/Half-Life:_Blue_Shift">Blue Shift</a></i>, in which players control <a href="https://en.wikipedia.org/wiki/Barney_Calhoun">Barney Calhoun</a>, a security guard at Black Mesa, as he attempts to escape the facility. It was developed as a bonus campaign for the Dreamcast port of <i>Half-Life,</i> but was released for Windows on June 12, 2001, after the port was canceled. Gearbox created a <a href="https://en.wikipedia.org/wiki/Cooperative_video_game">cooperative</a> multiplayer expansion pack, <i><a href="https://en.wikipedia.org/wiki/Half-Life:_Decay">Decay</a>,</i> exclusively for the <a href="https://en.wikipedia.org/wiki/PlayStation_2">PlayStation 2</a> port of <i>Half-Life</i> which is played through the perspectives of Gina Cross and Colette Green, two Black Mesa scientists.</p>
+
+<p><i><a href="https://en.wikipedia.org/wiki/Half-Life_2">Half-Life 2</a></i> was announced at <a href="https://en.wikipedia.org/wiki/E3_2003">E3 2003</a> and released in 2004. The player controls Freeman 20 years after the Black Mesa incident in the dystopian <a href="https://en.wikipedia.org/wiki/City_17">City 17</a>, where he joins a rebellion against an alien regime. It was followed by the <a href="https://en.wikipedia.org/wiki/Episodic_video_game">episodic</a> sequels <i><a href="https://en.wikipedia.org/wiki/Half-Life_2:_Episode_One">Half-Life 2: Episode One</a></i> (2006) and <i><a href="https://en.wikipedia.org/wiki/Half-Life_2:_Episode_Two">Half-Life 2: Episode Two</a></i> (2007). After <a href="https://en.wikipedia.org/wiki/Unreleased_Half-Life_games">cancelling several other <i>Half-Life</i> projects</a>, Valve released <i><a href="https://en.wikipedia.org/wiki/Half-Life:_Alyx">Half-Life: Alyx</a></i> in 2020.</p>
+
+
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

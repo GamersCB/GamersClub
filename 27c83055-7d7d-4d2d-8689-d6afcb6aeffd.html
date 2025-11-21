@@ -1,0 +1,366 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Star Wars: Squadrons</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('27c83055-7d7d-4d2d-8689-d6afcb6aeffd/5338cb84-dd65-4a7d-b633-ba252fec0d84.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="27c83055-7d7d-4d2d-8689-d6afcb6aeffd/66f96fcf-dd11-4770-a75c-243b9443a8a8.png"/> Star Wars: Squadrons</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="27c83055-7d7d-4d2d-8689-d6afcb6aeffd/c7f749f2-d2e4-4edb-a81c-0c7c64ca267e.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-18/11/2025">18/11/2025</a> 14:16:14</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-18/11/2025">18/11/2025</a> 14:17:10</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB DATOS">2TB DATOS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-Microsoft Xbox One">Microsoft Xbox One</a><br/><a href="#quicklink-Microsoft Xbox Series">Microsoft Xbox Series</a><br/><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/><a href="#quicklink-Sony PlayStation 4">Sony PlayStation 4</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-02/10/2020">02/10/2020</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-79">79</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Space combat">Space combat</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Motive Studio">Motive Studio</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Electronic Arts">Electronic Arts</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single-player">Single-player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/Star_Wars:_Squadrons" target="_blank">Wikipedia</a><br/><a href="https://www.ea.com/games/starwars/squadrons" target="_blank">Official website</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-[Game Engine] Frostbite 3">[Game Engine] Frostbite 3</a><br/><a href="#quicklink-[People] artist: Mike Yazijian">[People] artist: Mike Yazijian</a><br/><a href="#quicklink-[People] composer: Gordy Haab">[People] composer: Gordy Haab</a><br/><a href="#quicklink-[People] designer: James Clement">[People] designer: James Clement</a><br/><a href="#quicklink-[People] director: Ian S. Frazier">[People] director: Ian S. Frazier</a><br/><a href="#quicklink-[People] producer: Jean-Francois Poirier">[People] producer: Jean-Francois Poirier</a><br/><a href="#quicklink-[People] producer: Susanne Hunka">[People] producer: Susanne Hunka</a><br/><a href="#quicklink-[People] producer: Thomas Mir">[People] producer: Thomas Mir</a><br/><a href="#quicklink-[People] programmer: Patrick Lalonde">[People] programmer: Patrick Lalonde</a><br/><a href="#quicklink-[People] writer: Joanna Berry">[People] writer: Joanna Berry</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>Star Wars: Squadrons</b></i> is a <a href="https://en.wikipedia.org/wiki/Space_flight_simulation_game">space combat game</a> set in the <i><a href="https://en.wikipedia.org/wiki/Star_Wars">Star Wars</a></i> universe, developed by <a href="https://en.wikipedia.org/wiki/Motive_Studio">Motive Studio</a> and published by <a href="https://en.wikipedia.org/wiki/Electronic_Arts">Electronic Arts</a>. It was released for <a href="https://en.wikipedia.org/wiki/PlayStation_4">PlayStation 4</a>, <a href="https://en.wikipedia.org/wiki/Windows">Windows</a>, and <a href="https://en.wikipedia.org/wiki/Xbox_One">Xbox One</a>, on October 2, 2020, and for <a href="https://en.wikipedia.org/wiki/Xbox_Series_X_and_Series_S">Xbox Series X/S</a> on December 3, 2020. The game features both <a href="https://en.wikipedia.org/wiki/Multiplayer_video_game">multiplayer</a> game modes and a <a href="https://en.wikipedia.org/wiki/Single-player_video_game">single-player</a> campaign. Set after <i><a href="https://en.wikipedia.org/wiki/Return_of_the_Jedi">Return of the Jedi</a></i>, the campaign alternates between the <a href="https://en.wikipedia.org/wiki/New_Republic_(Star_Wars)">New Republic</a>'s Vanguard Squadron and the <a href="https://en.wikipedia.org/wiki/Galactic_Empire_(Star_Wars)">Galactic Empire</a>'s Titan Squadron, both of which become involved with the Republic's Project Starhawk; Vanguard Squadron wants to ensure its completion, while Titan Squadron attempts to destroy it.</p>
+
+<p>The game received generally favorable reviews upon release, garnering praise for its gameplay, while facing some criticism over its story and lack of content. The game sold more than 1.1 million digital copies as of October 2020.</p>
+
+<h2>Gameplay</h2>
+
+<p><i>Star Wars: Squadrons</i> is a <a href="https://en.wikipedia.org/wiki/Space_flight_simulation_game">space combat game</a>, played from a <a href="https://en.wikipedia.org/wiki/First-person_(video_games)">first-person perspective</a>. Players take control of starfighters from either the <a href="https://en.wikipedia.org/wiki/Galactic_Empire_(Star_Wars)">Galactic Empire</a> or the <a href="https://en.wikipedia.org/wiki/New_Republic_(Star_Wars)">New Republic</a> navy. In these ships, they can utilise the movement of power between the ship's functions of weaponry, shields and engines to defeat their opponents in combat. Imperial starfighters do not have shields, resulting in other additions to their class so that the two teams would be balanced. As players earn more <a href="https://en.wikipedia.org/wiki/Experience_(gaming)">experience</a>, they can unlock new weapons, shields, upgrades and various cosmetic items for the pilot and their ship. Completing Daily Challenges and Operation Challenges will also give players Glory, which can be spent on purchasing cosmetic unlocks. Players can check the ship's status, shields and powers by viewing the instruments in the ship's <a href="https://en.wikipedia.org/wiki/Cockpit">cockpit</a>.</p>
+
+<p>Gameplay is <a href="https://en.wikipedia.org/wiki/Character_class">class</a>-based, with both the New Republic and the Empire having four starfighter classes that the player can choose from: Fighter (<a href="https://en.wikipedia.org/wiki/TIE_Fighter">TIE Fighter</a> for the Empire and <a href="https://en.wikipedia.org/wiki/X-wing">X-wing</a> for the Republic), Interceptor (<a href="https://en.wikipedia.org/wiki/TIE_Interceptor">TIE Interceptor</a> and <a href="https://en.wikipedia.org/wiki/A-Wing">A-Wing</a>), Bomber (<a href="https://en.wikipedia.org/wiki/TIE_Bomber">TIE Bomber</a> and <a href="https://en.wikipedia.org/wiki/Y-Wing">Y-Wing</a>), and Support (<a href="https://en.wikipedia.org/wiki/TIE_fighter#TIE_variants">TIE Reaper</a> and <a href="https://en.wikipedia.org/wiki/List_of_Star_Wars_starfighters#U-wing">U-Wing</a>). An update added the <a href="https://en.wikipedia.org/wiki/List_of_Star_Wars_starfighters#B-wing">B-Wing</a> to the bomber class for the New Republic and the <a href="https://en.wikipedia.org/wiki/TIE_Defender">TIE Defender</a> for the fighter class of the Galactic Empire.</p>
+
+<p>The game features two multiplayer modes, and a single-player mode: The story mode is set after the Battle of Endor and the destruction of the second <a href="https://en.wikipedia.org/wiki/Second_Death_Star">Death Star</a>. The narrative alternates between two customizable pilots from the New Republic's Vanguard Squadron and the Empire's Titan Squadron. The game offers two online modes: Dogfight, which is a <a href="https://en.wikipedia.org/wiki/Team_deathmatch">team deathmatch</a> mode that supports 10 players, and Fleet Battles, in which two teams of up to 5 players compete to destroy each other's Capital Ships.</p>
+
+<h2>Plot</h2>
+
+<p>Following <a href="https://en.wikipedia.org/wiki/Star_Wars_(film)">the destruction</a> of <a href="https://en.wikipedia.org/wiki/Alderaan">Alderaan</a>, <a href="https://en.wikipedia.org/wiki/Darth_Vader">Darth Vader</a> orders all <a href="https://en.wikipedia.org/wiki/Galactic_Empire_(Star_Wars)">Imperial</a> forces to hunt down any refugees who escaped the planet's destruction. Captain Lindon Javes of the Imperial Navy is tasked by Commodore <a href="https://en.wikipedia.org/wiki/Rae_Sloane">Rae Sloane</a> to lead Helix Squadron in finding and eliminating a convoy of refugees at Fostar Haven. Disgusted with his orders, Javes turns on his wingmen and disables their ships to protect the refugees. The convoy sends a distress signal to the <a href="https://en.wikipedia.org/wiki/Rebel_Alliance">Rebel Alliance</a>, who dispatches Echo Squadron to assist in the convoy’s escape. After the battle, Javes defects to the Alliance, offering his knowledge of Imperial Fleet protocols to earn their trust.</p>
+
+<p>Four years later, after the Alliance's victory in the <a href="https://en.wikipedia.org/wiki/Return_of_the_Jedi">Battle of</a> <a href="https://en.wikipedia.org/wiki/Endor_(Star_Wars)">Endor</a>, the newly promoted Commander Javes assumes command of the <a href="https://en.wikipedia.org/wiki/New_Republic_(Star_Wars)">New Republic</a> <a href="https://en.wikipedia.org/wiki/Mon_Calamari_cruiser">cruiser</a> <i>Temperance</i> and its elite fighter squadron, Vanguard Squadron. Assigned to the secret project known as Starhawk, the squadron undertakes missions to ensure Project Starhawk’s completion. It is later revealed that the project is a massive battleship constructed using parts from stolen <a href="https://en.wikipedia.org/wiki/Star_Destroyer">Star Destroyers</a> and has a powerful tractor beam.</p>
+
+<p>Meanwhile, Imperial Captain Terisa Kerrill, Javes' former protégé and wingman from Fostar, is eager to take vengeance on him for his betrayal and is assigned to put an end to Project Starhawk before its completion. She assigns her own elite fighter squadron, Titan Squadron, to hinder the New Republic’s progress to complete the <i>Starhawk</i>. While Titan Squadron's initial operations are a success, an impulsive Kerrill is baited into a trap by Javes which nearly destroys her <a href="https://en.wikipedia.org/wiki/Star_Destroyer">Star Destroyer</a>, the <i>Overseer</i>. Unwilling to let Javes go, Kerrill forgoes repairs and instead hastily rearms the <i>Overseer</i>, planning to destroy the <i>Starhawk</i> even at the cost of her own life.</p>
+
+<p>A surprise Imperial assault at the Nadiri Dockyards badly damages the <i>Starhawk</i>, although it manages to escape destruction. In an attempt to defend what’s left of the battleship, Javes personally takes command of Anvil Squadron but is later shot down and presumed dead. The <i>Starhawk</i> itself becomes damaged beyond repair in a secondary attack by Titan Squadron, although Vanguard Squadron, now led by General <a href="https://en.wikipedia.org/wiki/List_of_Star_Wars_Rebels_characters#Hera_Syndulla">Hera Syndulla</a>, make a last stand and use the remains of <i>Starhawk</i> to destroy the Imperial fleet by ramming it into an unstable moon. The plan is a success and, with the help of a surviving Javes, Vanguard Squadron manages to escape the explosion while Kerrill had left the battle earlier with her ship the Overseer after completing her mission of destroying the Starhawk prototype. Both Titan and Vanguard Squadrons are commended for their actions, with the New Republic planning to construct more <i>Starhawk</i> battleships while the Empire makes plans to regain control of the galaxy.</p>
+
+<h2>Development</h2>
+
+<p>Initially conceived and pitched by James Clement and Patrick Lalonde to <a href="https://en.wikipedia.org/wiki/Motive_Studio">Motive Studio</a> leadership, they were soon joined by Steven Masters to help develop the presentation for what would become <i>Star Wars: Squadrons</i>. As these 3 developers were still finalizing the single player campaign for <i><a href="https://en.wikipedia.org/wiki/Star_Wars_Battlefront_II_(2017_video_game)">Star Wars Battlefront II</a></i>, a small group led by Ian Frazier laid the groundwork to build the production team.</p>
+
+<p>The game was revealed on June 15, 2020 with the release of a trailer. It released for PlayStation 4, Windows, and Xbox One on October 2, 2020 with <a href="https://en.wikipedia.org/wiki/Cross-platform_play">cross-platform play</a> enabled. The PC version can be played in <a href="https://en.wikipedia.org/wiki/Virtual_reality">virtual reality</a> using various VR headsets, with the PlayStation 4 version supporting <a href="https://en.wikipedia.org/wiki/PlayStation_VR">PlayStation VR</a>. All versions of the game have <a href="https://en.wikipedia.org/wiki/HOTAS">HOTAS</a> support, with the console editions receiving support in a day one patch. By September 10, 2020, development for the game had reached "gold" status, meaning that it was ready to begin production on the physical editions of the game.</p>
+
+<p>The game received enhancements for the <a href="https://en.wikipedia.org/wiki/PlayStation_5">PlayStation 5</a> and <a href="https://en.wikipedia.org/wiki/Xbox_Series_X_and_S">Xbox Series X and S</a>, including improved lighting for the former and 4K support and high frame rate on the latter.</p>
+
+<h2>Release</h2>
+
+<h3>Marketing</h3>
+
+<p>Following the June 15, 2020 trailer, a further gameplay trailer was released on July 18, 2020, and a trailer focusing on the single-player campaign was showcased at <a href="https://en.wikipedia.org/wiki/Gamescom#2020">Gamescom 2020</a> on August 27, 2020.</p>
+
+<p>On September 14, 2020, a CGI short titled <i>Hunted</i> was debuted on the <i>Star Wars</i> <a href="https://en.wikipedia.org/wiki/YouTube">YouTube</a> channel, being produced by Motive Studios in collaboration with <a href="https://en.wikipedia.org/wiki/Lucasfilm">Lucasfilm</a>, <a href="https://en.wikipedia.org/wiki/Skywalker_Sound">Skywalker Sound</a>, and <a href="https://en.wikipedia.org/wiki/Industrial_Light_&amp;_Magic">Industrial Light &amp; Magic</a>. The short follows the Empire's retreat after a surprise attack by the New Republic, which marks yet another defeat for the Empire after the destruction of the second Death Star. Squadron Leader Varko Grey delayed his retreat in an attempt to defend a TIE Bomber pilot, yet the pilot's ship is destroyed and Grey is too late to escape with his Star Destroyer. Now the last TIE ship on the battlefield, he enters into a dogfight with an X-wing and manages to destroy it before crashing onto the planet's surface. He states that the war is not yet over as he is retrieved by Imperial forces.</p>
+
+<p>If pre-ordering the game, additional cosmetic skins for the game's pilots and ships were included. The first selection of these are themed around the New Republic Recruit or Imperial Ace sets, and include a skin for each ship, a skin each for both Imperial and New Republic pilots, and a decal for both sets.</p>
+
+<p>Following the promotional short <i>Hunted</i>, two additional skins for the X-wing and TIE Interceptor respectively, titled the Var-Shaa set, were added to the pre-order bonuses and are based on the appearances of the two ships from the short.</p>
+
+<h2>Reception</h2>
+
+<p><i>Star Wars: Squadrons</i> received "generally favorable" reviews, according to <a href="https://en.wikipedia.org/wiki/Review_aggregator">review aggregator</a> <a href="https://en.wikipedia.org/wiki/Metacritic">Metacritic</a>. Some critics compared the game's favorable reception to the <a href="https://en.wikipedia.org/wiki/Star_Wars:_Rogue_Squadron_(series)">Rogue Squadron video games</a> that were released during the late 1990s and early 2000s.</p>
+
+<p><i><a href="https://en.wikipedia.org/wiki/PC_Gamer">PC Gamer</a></i> awarded the game a score of 83/100, praising the combat and flight mechanics but criticizing the lack of choices in the story and character development. <i><a href="https://en.wikipedia.org/wiki/Game_Informer">Game Informer</a></i> awarded it 8.25 out of 10, praising the multiplayer but saying the single-player "struggles to hit the target." <i><a href="https://en.wikipedia.org/wiki/Push_Square">Push Square</a></i> awarded the game 6 out of 10, praising its flight mechanics, but criticizing the overall experience as lacking in excitement and content.</p>
+
+<h3>Sales</h3>
+
+<p>In Japan, the PlayStation 4 version of <i>Star Wars: Squadrons</i> sold 5,114 physical copies within its first week of release, making it the twelfth best-selling retail game of the week in the country. It was the 28th best selling game in Japan for the week of October 5, 2020 to October 11, 2020, selling 1,972 copies.</p>
+
+<p>In the UK, <i>Star Wars: Squadrons</i> was the second bestselling retail game during its first week of release, and the bestselling digital game during the same week. It was the third best-selling game in Switzerland during its first week of release.</p>
+
+<p>On PS4, it was the 2nd most downloaded game in October 2020 in the United States and Canada, and the 3rd in Europe. As of October 2020, the game sold over 1.1 million digital copies. In November 2020, it was the 18th most downloaded game on PS4 in the United States and Canada.</p>
+
+<p><i>Star Wars: Squadrons</i> was nominated for Best VR/AR at <a href="https://en.wikipedia.org/wiki/The_Game_Awards_2020">The Game Awards 2020</a>.  It won the Music of the Year award at <a href="https://en.wikipedia.org/wiki/Game_Audio_Network_Guild">The Game Audio Network Guild Awards</a> It won Best PS VR Experience at the PlayStation.Blog 2020 Game of the Year Awards.</p>
+
+
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

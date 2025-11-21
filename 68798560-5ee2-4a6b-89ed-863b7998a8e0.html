@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Grounded 2</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('68798560-5ee2-4a6b-89ed-863b7998a8e0/82f58c35-f351-450b-b08b-08e2a1d50f6e.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="68798560-5ee2-4a6b-89ed-863b7998a8e0/532eb7da-0d67-4146-abd8-3a11ebda2540.png"/> Grounded 2</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="68798560-5ee2-4a6b-89ed-863b7998a8e0/695eddf6-fcab-4c39-9ab8-ce13be642e4a.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-26/09/2025">26/09/2025</a> 18:53:55</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-26/09/2025">26/09/2025</a> 19:05:54</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-6TB STORE">6TB STORE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-29/07/2025">29/07/2025</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-78">78</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acceso anticipado">Acceso anticipado</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Eidos-Montréal">Eidos-Montréal</a><br/><a href="#quicklink-Obsidian Entertainment">Obsidian Entertainment</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Xbox Game Studios">Xbox Game Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Cooperativo">Cooperativo</a><br/><a href="#quicklink-Cooperativo En Línea">Cooperativo En Línea</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/2661300" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/2661300/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/2661300/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=2661300" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/2661300" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=2661300" target="_blank">PCGamingWiki</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acceso anticipado">Acceso anticipado</a><br/><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Construcción de bases">Construcción de bases</a><br/><a href="#quicklink-Cooperativos">Cooperativos</a><br/><a href="#quicklink-Cooperativos en línea">Cooperativos en línea</a><br/><a href="#quicklink-Exploración">Exploración</a><br/><a href="#quicklink-Fabricación">Fabricación</a><br/><a href="#quicklink-Multijugador">Multijugador</a><br/><a href="#quicklink-Mundo abierto">Mundo abierto</a><br/><a href="#quicklink-Políticos">Políticos</a><br/><a href="#quicklink-Primera persona">Primera persona</a><br/><a href="#quicklink-Rol">Rol</a><br/><a href="#quicklink-Sandbox">Sandbox</a><br/><a href="#quicklink-Supervivencia">Supervivencia</a><br/><a href="#quicklink-Supervivencia en mundo abierto">Supervivencia en mundo abierto</a><br/><a href="#quicklink-Tercera persona">Tercera persona</a><br/><a href="#quicklink-Terror">Terror</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2661300/extras/a6b75d852b40886c50c5e253101f0e7e.poster.avif?t=1758098480" width=600 height=450 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2661300/extras/a6b75d852b40886c50c5e253101f0e7e.webm?t=1758098480" type="video/webm; codecs=vp9"></video></span></p><p class="bb_paragraph" >Has vuelto a encoger, pero ahora el mundo es mucho más grande. Sobrevive a un mundo abierto en expansión en solitario o con amigos. Fabrica armas y armaduras y construye bases mientras exploras el parque a lomos de leales insectos. Descubre misterios ocultos y enfréntate a amenazas inesperadas, pero debes saber que hay algo más ahí fuera... y no te ha olvidado.</p><p class="bb_paragraph" >Siendo del tamaño de una hormiga, encontrarás espacios que te resultaban familiares ahora transformados en una vasta frontera inexplorada. Sobrevive en solitario o en modo cooperativo con amigos, fabricando armas y armaduras y construyendo bases mientras exploras campos de juego artificiales invadidos por la naturaleza. Viaja por este nuevo mundo a lomos de leales insectos y descubre los misterios que acechan bajo los brillantes colores y las imponentes estructuras. Pero mantente alerta: hay algo más ahí fuera... y no te ha olvidado.</p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2661300/extras/afb7a904f407d49cf68c846ee9507ea0.poster.avif?t=1758098480" width=600 height=600 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2661300/extras/afb7a904f407d49cf68c846ee9507ea0.webm?t=1758098480" type="video/webm; codecs=vp9"></video></span></p><p class="bb_paragraph" ><strong><u>Sobrevive, adáptate y triunfa</u></strong> <br>El mundo es implacable, pero tú también. Da forma a tu aventura con arquetipos únicos, cada uno con habilidades diferentes que se adaptan a tu estilo de juego. Tanto si optas por la precisión, el ingenio o la fuerza bruta, necesitarás cada ventaja que puedas obtener para sobrevivir a los peligros del parque.</p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2661300/extras/28ceb85414778fea99d346f5cde1ab31.poster.avif?t=1758098480" width=616 height=346 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2661300/extras/28ceb85414778fea99d346f5cde1ab31.webm?t=1758098480" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2661300/extras/28ceb85414778fea99d346f5cde1ab31.mp4?t=1758098480" type="video/mp4"></video></span></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2661300/extras/da7720bb84d7ed4ad64effdd4280f3ed.poster.avif?t=1758098480" width=600 height=600 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2661300/extras/da7720bb84d7ed4ad64effdd4280f3ed.webm?t=1758098480" type="video/webm; codecs=vp9"></video></span></p><p class="bb_paragraph" ><strong><u>La unión hace la fuerza</u></strong> <br>En solitario, los peligros del parque pueden resultar abrumadores, pero con amigos, cada desafío se convierte en una aventura. Colabora para construir, luchar y descubrir los secretos enterrados bajo la hierba. Tanto si te enfrentas al peligro codo con codo con amigos como si continúas tu viaje en un mundo compartido, sobrevivir siempre es más fácil con aliados.</p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2661300/extras/1a7d12d21bb669f00ba5de7ded32bd87.poster.avif?t=1758098480" width=616 height=346 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2661300/extras/1a7d12d21bb669f00ba5de7ded32bd87.webm?t=1758098480" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2661300/extras/1a7d12d21bb669f00ba5de7ded32bd87.mp4?t=1758098480" type="video/mp4"></video></span></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2661300/extras/894f8b72a1e0853e23dfadffdf6de2f1.poster.avif?t=1758098480" width=600 height=600 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2661300/extras/894f8b72a1e0853e23dfadffdf6de2f1.webm?t=1758098480" type="video/webm; codecs=vp9"></video></span></p><p class="bb_paragraph" ><strong><u>Andar es cosa del pasado</u></strong> <br>Corretean, luchan y ahora te ayudan a sobrevivir. ¡Ayuda a eclosionar a tus nuevos amigos insectos, los Bichacos, y críalos para usarlos como monturas! Súbete y viaja por el parque, lucha sobre ellos o a su lado, o úsalos para recolectar recursos y construir tu base. El compañero adecuado puede marcar la diferencia entre sobrevivir a duras penas o prosperar.</p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2661300/extras/560ce6f246b85ec1837b34f1f165c149.poster.avif?t=1758098480" width=616 height=346 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2661300/extras/560ce6f246b85ec1837b34f1f165c149.webm?t=1758098480" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2661300/extras/560ce6f246b85ec1837b34f1f165c149.mp4?t=1758098480" type="video/mp4"></video></span></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2661300/extras/ba0c19322845eaa63e3ad39e29c04934.poster.avif?t=1758098480" width=600 height=600 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2661300/extras/ba0c19322845eaa63e3ad39e29c04934.webm?t=1758098480" type="video/webm; codecs=vp9"></video></span></p><p class="bb_paragraph" ><strong><u>Una sombra te sigue</u></strong> <br>La amenaza está siempre ahí, observando, aprendiendo y esperando... No sabes de dónde viene, solo que nunca se va. Cuanto más investigas, más se acerca. Algunos misterios están mejor enterrados, pero ahora es demasiado tarde. Sabe que estás buscando, y te está esperando. Cada respuesta te sumerge más en la búsqueda, cada paso invita a algo a acercarse. Creías que no había nadie. Creías que tenías el control. Te equivocabas.</p><p class="bb_paragraph" > <span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2661300/extras/4e911ff483ba473ced8293125acdb082.poster.avif?t=1758098480" width=616 height=346 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2661300/extras/4e911ff483ba473ced8293125acdb082.webm?t=1758098480" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2661300/extras/4e911ff483ba473ced8293125acdb082.mp4?t=1758098480" type="video/mp4"></video></span></p>
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

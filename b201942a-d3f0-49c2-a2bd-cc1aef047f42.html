@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gas Station Simulator</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('b201942a-d3f0-49c2-a2bd-cc1aef047f42/26b74a83-e639-4924-8415-f0536b0d26d7.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="b201942a-d3f0-49c2-a2bd-cc1aef047f42/f6b80455-ef0c-4474-909e-3d781c824c49.png"/> Gas Station Simulator</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="b201942a-d3f0-49c2-a2bd-cc1aef047f42/971f8a83-60b0-44e3-bb2b-ea5e8ec83bb9.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-16/10/2025">16/10/2025</a> 18:09:30</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-17/10/2025">17/10/2025</a> 2:15:57</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB DATOS">2TB DATOS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-Macintosh">Macintosh</a><br/><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-15/09/2021">15/09/2021</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-86">86</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-72">72</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Casual">Casual</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Simuladores">Simuladores</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-DRAGO entertainment">DRAGO entertainment</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-DRAGO entertainment">DRAGO entertainment</a><br/><a href="#quicklink-HeartBeat Games">HeartBeat Games</a><br/><a href="#quicklink-Shochiku">Shochiku</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1149620" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1149620/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1149620/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1149620" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1149620" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1149620" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/1149620/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Casuales">Casuales</a><br/><a href="#quicklink-Conducción">Conducción</a><br/><a href="#quicklink-Construcción">Construcción</a><br/><a href="#quicklink-Construcción de bases">Construcción de bases</a><br/><a href="#quicklink-Destrucción">Destrucción</a><br/><a href="#quicklink-Diseño e ilustración">Diseño e ilustración</a><br/><a href="#quicklink-Divertidos">Divertidos</a><br/><a href="#quicklink-Economía">Economía</a><br/><a href="#quicklink-Educación">Educación</a><br/><a href="#quicklink-Física">Física</a><br/><a href="#quicklink-Gestión">Gestión</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Las elecciones importan">Las elecciones importan</a><br/><a href="#quicklink-Memes">Memes</a><br/><a href="#quicklink-Mundo abierto">Mundo abierto</a><br/><a href="#quicklink-Primera persona">Primera persona</a><br/><a href="#quicklink-Realistas">Realistas</a><br/><a href="#quicklink-Relajantes">Relajantes</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph" ></p><p class="bb_paragraph" >Gas Station Simulator va sobre renovar, expandir y llevar una gasolinera en una autopista en medio del desierto. La libertad de decidir y las múltiples opciones que tendrás para dirigir tu negocio y lidiar con la presión son ingredientes claves en este juego.</p><p class="bb_paragraph" ></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/60c39b04eaa3628bc50f277d2009c301.poster.avif?t=1759852424" width=610 height=210 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/60c39b04eaa3628bc50f277d2009c301.webm?t=1759852424" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/60c39b04eaa3628bc50f277d2009c301.mp4?t=1759852424" type="video/mp4"></video></span>Compra una gasolinera abandonada en la mitad de la nada y devuélvele toda su gloria. Desházte del escombro y del mobiliario roto, arregla las paredes, pinta y decora el lugar como desees. Pero no gastes todo tu dinero en la apariencia nada más empezar; has comprado una gasolinera, al fin y al cabo. Repara el equipo, compra lo que no puedas reparar y empieza a servir a tus clientes para ganar dinero para más reformas y mejoras.</p><p class="bb_paragraph" ></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/51adb55615a60d6de9eeae08652a2aa9.poster.avif?t=1759852424" width=610 height=210 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/51adb55615a60d6de9eeae08652a2aa9.webm?t=1759852424" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/51adb55615a60d6de9eeae08652a2aa9.mp4?t=1759852424" type="video/mp4"></video></span>No hace falta que pienses en pequeño. Puedes expandir tu gasolinera para poder servir a más clientes. Además, una gasolinera no solo se trata de vender gasolina. Puedes expandir la lista de servicios que ofreces a tus clientes y así, atraer a una variedad mayor. Tienes varias opciones de expansión a tu disposición, desde las más pequeñas como aseos o como una simple tienda para cumplimentar tus ganancias, hasta las más grandes como un taller para reparar coches o incluso un lavacoches. Hay unas cuantas opciones y la mayoría de expansiones pueden ser, a su vez, expandidas. Tienes mucho que hacer aquí.</p><p class="bb_paragraph" ></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/5bdfee1495465acc8e5f8bc246d14993.poster.avif?t=1759852424" width=610 height=210 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/5bdfee1495465acc8e5f8bc246d14993.webm?t=1759852424" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/5bdfee1495465acc8e5f8bc246d14993.mp4?t=1759852424" type="video/mp4"></video></span>Restaurar tu gasolinera es una cosa, pero darle un toque personal es otra. El juego ofrece una gran lista de opciones para personalizar lo que construyas y muchas decoraciones para realzar la singularidad del lugar. Algunas decoraciones se pueden comprar, otras se adquieren a través del gameplay. No solo se trata de hacer que la gasolinera esté bonita. Cuanto más impresionante sea tu gasolinera, más clientes se fijarán en ella.</p><p class="bb_paragraph" ></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/c06a62c408ea62ed139bb1f349981b0c.poster.avif?t=1759852424" width=610 height=210 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/c06a62c408ea62ed139bb1f349981b0c.webm?t=1759852424" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/c06a62c408ea62ed139bb1f349981b0c.mp4?t=1759852424" type="video/mp4"></video></span>Atender a tus clientes es clave para dirigir tu gasolinera con éxito. Todos esperan que sus coches sean repuestos, sus compras hechas al momento, y no son muy pacientes ni siquiera cuando se trata de reparar sus vehículos. Vas a estar lidiando con mucha presión debido al tiempo en las horas clave, y tendrás que organizar varias tareas para cuando haya menos caos. Manejar bien tu tiempo y elegir las prioridades de manera correcta te será muy importante para poder mantener a tus clientes felices.</p><p class="bb_paragraph" ></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/189632b3e9ff0139172ada8c08b47fa6.poster.avif?t=1759852424" width=610 height=210 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/189632b3e9ff0139172ada8c08b47fa6.webm?t=1759852424" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/189632b3e9ff0139172ada8c08b47fa6.mp4?t=1759852424" type="video/mp4"></video></span>Aunque lo puedes intentar, en la mayoría de los casos, dirigir una gasolinera que ha sido expandida y mejorada, y que ofrece muchos servicios diferentes, puede que termine siendo demasiado solo para ti. Aquí es donde los empleados entran. Puedes contratar incluso a múltiples empleados para que te ayuden en varias tareas en la gasolinera. Los empleados tienen diferentes habilidades y algunos son mejores en algunas tareas que otras. Los empleados también subirán de nivel según las tareas que hagan, y mejorarán con el tiempo.</p><p class="bb_paragraph" ></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/cafbd87694eb2b6751fe456227de54b4.poster.avif?t=1759852424" width=610 height=210 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/cafbd87694eb2b6751fe456227de54b4.webm?t=1759852424" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/cafbd87694eb2b6751fe456227de54b4.mp4?t=1759852424" type="video/mp4"></video></span>No puedes vender lo que no tienes. Estar al tanto de tu inventario es importante, y pedir cosas en el momento adecuado por el precio adecuado te ayudará a mantener las ganancias. Para aprovecharte mejor de las oportunidades de precio bajo, puedes construir un almacén y expandirlo para poder tener mayor almacenamiento. Vigilar de cerca tu inventario es crucial, ya que los pedidos toman su tiempo y no vas a querer quedarte sin nada que vender, o incluso peor, sin gasolina.</p><p class="bb_paragraph" ></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/c71419244d42c46376ea53f9629c75fd.poster.avif?t=1759852424" width=610 height=210 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/c71419244d42c46376ea53f9629c75fd.webm?t=1759852424" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/c71419244d42c46376ea53f9629c75fd.mp4?t=1759852424" type="video/mp4"></video></span>Creamos el juego para que si te gusta, puedas entrar de lleno en las características de gestión y microgestiones lo que quieras. Sin embargo, si la gestión no es de tu interés, no te forzamos a lidiar con ello de lleno. Eso sí, microgestionar alguno de los aspectos como los suministros o los empleados puede recompensarte, tanto como en cuanto a finanzas como en cuanto a entretenimiento.</p><p class="bb_paragraph" ></p><h2 class="bb_tag" >Características clave</h2><ul class="bb_ul"><li><p class="bb_paragraph" >Renueva, dirige y expande una gasolinera en el desierto.</p></li><li><p class="bb_paragraph" >Construye nuevos servicios como una taller, una tienda, un almacén o un lavacoches. </p></li><li><p class="bb_paragraph" >Intenta manejar todo tú solo o contrata empleados para que te ayuden.</p></li><li><p class="bb_paragraph" >Eventos interesantes aparte del gameplay base.</p></li><li><p class="bb_paragraph" >Gran cantidad de opciones de personalización y decoración.</p></li><li><p class="bb_paragraph" >Gran cantidad de clientes diferentes, con necesidades y expectaciones varias.</p></li><li><p class="bb_paragraph" >Gran cantidad de opciones de gestión en las que sumergirse.</p></li></ul><p class="bb_paragraph" ></p>
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

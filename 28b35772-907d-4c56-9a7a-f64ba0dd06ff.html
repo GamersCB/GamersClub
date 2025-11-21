@@ -1,0 +1,400 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>FIFA 20</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('28b35772-907d-4c56-9a7a-f64ba0dd06ff/536d8fae-19ce-41cf-a4fd-d20af77defa7.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="28b35772-907d-4c56-9a7a-f64ba0dd06ff/9b08bab0-ac15-4318-aa41-732130c47094.png"/> FIFA 20</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="28b35772-907d-4c56-9a7a-f64ba0dd06ff/f7f32997-f242-4ecf-abf5-b0ff1957220c.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-19/11/2025">19/11/2025</a> 13:02:53</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-19/11/2025">19/11/2025</a> 20:26:03</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB DATOS">2TB DATOS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-Microsoft Xbox One">Microsoft Xbox One</a><br/><a href="#quicklink-Nintendo Switch">Nintendo Switch</a><br/><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/><a href="#quicklink-Sony PlayStation 4">Sony PlayStation 4</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-27/09/2019">27/09/2019</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-69">69</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Sports">Sports</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-EA Romania">EA Romania</a><br/><a href="#quicklink-EA Vancouver">EA Vancouver</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-EA Sports">EA Sports</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single-player">Single-player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/FIFA_20" target="_blank">Wikipedia</a><br/><a href="https://www.ea.com/games/fifa/fifa-20" target="_blank">Official website</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-[Game Engine] Frostbite 3 (PS4">[Game Engine] Frostbite 3 (PS4</a><br/><a href="#quicklink-[Game Engine] Xbox One and PC only)">[Game Engine] Xbox One and PC only)</a><br/><a href="#quicklink-[People] composer: Nafrom">[People] composer: Nafrom</a><br/><a href="#quicklink-[People] designer: Matthew Prior">[People] designer: Matthew Prior</a><br/><a href="#quicklink-[People] producer: Aaron McHardy">[People] producer: Aaron McHardy</a><br/><a href="#quicklink-[People] producer: Mat Thomas">[People] producer: Mat Thomas</a><br/><a href="#quicklink-[People] producer: Nicholas Wlodyka">[People] producer: Nicholas Wlodyka</a><br/><a href="#quicklink-[People] producer: Sebastian Enrique">[People] producer: Sebastian Enrique</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>FIFA 20</b></i> is a <a href="https://en.wikipedia.org/wiki/Association_football">football</a> <a href="https://en.wikipedia.org/wiki/Simulation_video_game">simulation</a> video game published by <a href="https://en.wikipedia.org/wiki/Electronic_Arts">Electronic Arts</a> as part of the <a href="https://en.wikipedia.org/wiki/FIFA_(video_game_series)"><i>FIFA</i> series</a>. It is the 27th installment in the series and was released on 27 September 2019 for <a href="https://en.wikipedia.org/wiki/Microsoft_Windows">Microsoft Windows</a>, <a href="https://en.wikipedia.org/wiki/PlayStation_4">PlayStation 4</a>, <a href="https://en.wikipedia.org/wiki/Xbox_One">Xbox One</a> and <a href="https://en.wikipedia.org/wiki/Nintendo_Switch">Nintendo Switch</a>. This is the first game in the main series  to not have <a href="https://en.wikipedia.org/wiki/Xbox_360">Xbox 360</a> and <a href="https://en.wikipedia.org/wiki/PlayStation_3">PlayStation 3</a> versions since <i><a href="https://en.wikipedia.org/wiki/FIFA_06:_Road_to_FIFA_World_Cup">FIFA 06: Road to FIFA World Cup</a></i> and <i><a href="https://en.wikipedia.org/wiki/FIFA_08">FIFA 08</a></i> respectively.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Real_Madrid_CF">Real Madrid</a> winger <a href="https://en.wikipedia.org/wiki/Eden_Hazard">Eden Hazard</a> was named the new cover star of the Standard Edition, with <a href="https://en.wikipedia.org/wiki/Liverpool_F.C.">Liverpool</a> defender <a href="https://en.wikipedia.org/wiki/Virgil_van_Dijk">Virgil van Dijk</a> on the cover of the Champions Edition. Former <a href="https://en.wikipedia.org/wiki/Juventus_FC">Juventus</a> and Real Madrid midfielder <a href="https://en.wikipedia.org/wiki/Zinedine_Zidane">Zinedine Zidane</a> was later named as the cover star for the Ultimate Edition.</p>
+
+<p>The game features <i>VOLTA</i> <i>Football</i> for the first time, a new mode that provides a variance on the traditional 11v11 gameplay and focuses on small-sided <a href="https://en.wikipedia.org/wiki/Street_football_(association_football)">street</a> and <a href="https://en.wikipedia.org/wiki/Futsal">futsal</a> games. The mode shares similarities to the former <a href="https://en.wikipedia.org/wiki/FIFA_Street_(2005_video_game)"><i>FIFA Street</i> series</a>.</p>
+
+<p>The online servers for the game were shut down on 6 November 2023.</p>
+
+<h2>Features</h2>
+
+<p>Gameplay changes to <i>FIFA 20</i> focus primarily on a new feature titled <i>VOLTA Football</i>. The mode, which translates to 'return' in Portuguese, focuses on street football rather than the traditional matches associated with the <i>FIFA</i> series, similar to the <i>FIFA Street</i> series. It includes several options to play in three versus three, four versus four and five versus five matches, as well as with professional <a href="https://en.wikipedia.org/wiki/Futsal">futsal</a> rules. The mode will incorporate the same engine, but places emphasis on skill and independent play rather than tactical or team play.</p>
+
+<p>Additionally, players have the option to create their custom player by gender, clothing, shoes, hats, accessories and tattoos. Following the completion of the three-part series <i>"The Journey"</i> in <i><a href="https://en.wikipedia.org/wiki/FIFA_19">FIFA 19</a></i>, players are now able to follow a similar storyline mode in <i>VOLTA Football</i>, which would be played with the player's own character. Alex Hunter also makes a cameo in the game, along with his agent Beatriz Villanova.</p>
+
+<p>Changes were also made to the traditional 11 versus 11 mode to encourage more one-on-ones and off-the-ball space creation. New penalty and free-kick mechanics were implemented and updates were made to the ball physics.</p>
+
+<p>VOLTA Football includes 17 locations, with each providing a unique experience. In addition to the generic warehouse and parking lot, VOLTA Football features venues based in real-life cities, namely <a href="https://en.wikipedia.org/wiki/Amsterdam">Amsterdam</a>, <a href="https://en.wikipedia.org/wiki/Barcelona">Barcelona</a>, <a href="https://en.wikipedia.org/wiki/Berlin">Berlin</a>, <a href="https://en.wikipedia.org/wiki/Buenos_Aires">Buenos Aires</a>, <a href="https://en.wikipedia.org/wiki/Cape_Town">Cape Town</a>, <a href="https://en.wikipedia.org/wiki/Lagos">Lagos</a>, <a href="https://en.wikipedia.org/wiki/London">London</a>, <a href="https://en.wikipedia.org/wiki/Los_Angeles">Los Angeles</a>, <a href="https://en.wikipedia.org/wiki/Mexico_City">Mexico City</a>, <a href="https://en.wikipedia.org/wiki/Miami">Miami</a>, <a href="https://en.wikipedia.org/wiki/New_York_City">New York City</a>, <a href="https://en.wikipedia.org/wiki/Paris">Paris</a>, <a href="https://en.wikipedia.org/wiki/Rio_de_Janeiro">Rio de Janeiro</a>, <a href="https://en.wikipedia.org/wiki/Rome">Rome</a> and <a href="https://en.wikipedia.org/wiki/Tokyo">Tokyo</a>.</p>
+
+<p>Commentary is once again provided by <a href="https://en.wikipedia.org/wiki/Martin_Tyler">Martin Tyler</a> and <a href="https://en.wikipedia.org/wiki/Alan_Smith_(footballer,_born_1962)">Alan Smith</a> and alternating with <a href="https://en.wikipedia.org/wiki/Derek_Rae">Derek Rae</a> and <a href="https://en.wikipedia.org/wiki/Lee_Dixon">Lee Dixon</a> for all competitions, with <a href="https://en.wikipedia.org/wiki/Alan_McInally">Alan McInally</a> providing in-game score updates and <a href="https://en.wikipedia.org/wiki/Geoff_Shreeves">Geoff Shreeves</a> providing pitch-side injury updates.</p>
+
+<p>Each player has his own overall rating, with <a href="https://en.wikipedia.org/wiki/Lionel_Messi">Lionel Messi</a> having the highest rating in the game with a 94.</p>
+
+<h3>Pro clubs</h3>
+
+<p>Pro clubs is a game mode in <i>FIFA 20</i> where players can create personalised pros and compete in a squad against other squads online. The objective is to rise up the Divisions, starting in Division 10 and climbing to compete for the Division 1 title.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Ultimate_Team">Ultimate Team</a> features 88 icon players, including 15 new names. <a href="https://en.wikipedia.org/wiki/Carlos_Alberto_Torres">Carlos Alberto</a>, <a href="https://en.wikipedia.org/wiki/John_Barnes_(footballer)">John Barnes</a>, <a href="https://en.wikipedia.org/wiki/Kenny_Dalglish">Kenny Dalglish</a>, <a href="https://en.wikipedia.org/wiki/Didier_Drogba">Didier Drogba</a>, <a href="https://en.wikipedia.org/wiki/Michael_Essien">Michael Essien</a>, <a href="https://en.wikipedia.org/wiki/Garrincha">Garrincha</a>, <a href="https://en.wikipedia.org/wiki/Pep_Guardiola">Pep Guardiola</a>, <a href="https://en.wikipedia.org/wiki/Kaká">Kaká</a>, <a href="https://en.wikipedia.org/wiki/Ronald_Koeman">Ronald Koeman</a>, <a href="https://en.wikipedia.org/wiki/Andrea_Pirlo">Andrea Pirlo</a>, <a href="https://en.wikipedia.org/wiki/Ian_Rush">Ian Rush</a>, <a href="https://en.wikipedia.org/wiki/Hugo_Sánchez">Hugo Sánchez</a>, <a href="https://en.wikipedia.org/wiki/Ian_Wright">Ian Wright</a>, <a href="https://en.wikipedia.org/wiki/Gianluca_Zambrotta">Gianluca Zambrotta</a> and <a href="https://en.wikipedia.org/wiki/Zinedine_Zidane">Zinedine Zidane</a> all feature as icons for the first time.</p>
+
+<p>Two new game modes – King of the Hill and Mystery Ball – are also incorporated in Ultimate Team following their previous inclusion in kick-off mode. Mystery Ball gives the attacking side boosts to passing, shooting, dribbling, speed or all attributes, adding unpredictability to every match. King of the Hill sees players fight for possession in a randomly generated zone on the pitch to boost the amount the next goal is worth. Ultimate Team also includes a new dedicated kit supporting Premier League's No Room for Racism campaign.</p>
+
+<p>Career Mode, following feedback from the community, saw some major updates – mainly to the manager mode. New additions include fully interactive press conferences and player conversations, an improved player morale system which can affect the team or individual players stats, performance levels and stance with the manager. The ability to fully customise the manager's appearance and gender, a new dynamic player potential system, live news screenshots, league oriented UI and new negotiation environments.</p>
+
+<p>The player, nicknamed "Revvy", successfully tries out for the street football team "J10", named for and led by legendary street footballer, Jason "Jayzinho" Quezada. J10's dream to win the World Championship in <a href="https://en.wikipedia.org/wiki/Buenos_Aires">Buenos Aires</a> are dashed when Jayzinho suffers an injury that will sideline him for several months. While Revvy and Sydney "Syd" Ko decide to stay on the team, the others players see no chance of winning without Jayzinho and quit. Jayzinho plans to forfeit a tournament in Tokyo organized by fellow legend Kotaro Tokuda. Revvy convinces Jayzhino to have Kotaro find a replacement third player to meet the tournament's three player requirement.</p>
+
+<p>In Tokyo, Kotaro introduces a third player to join Revvy and Syd on the field. To J10's surprise, one of their former teammates, Peter Panna, is playing for an opposing team. After defeating his team to win the tournament, Peter apologies for leaving and is invited back into J10, after which they play an exhibition against Kotaro's team.</p>
+
+<p>J10 travels to <a href="https://en.wikipedia.org/wiki/Amsterdam">Amsterdam</a> to train with legendary player Edward Van Gils, and find former teammate Big T as well. Big T challenges J10 to play and win five consecutive matches, which they accomplish. J10 defeats Big T's team and Revvy asks him to rejoin J10. Afterward, J10 plays against legendary street footballer Rocky Hehakaija's team.</p>
+
+<p>Jayzinho sends J10 to <a href="https://en.wikipedia.org/wiki/Rio_de_Janeiro">Rio de Janeiro</a> to recruit former member Bobbi Pillay. Bobbi had been training local youths in street football and invites J10 to play against her and her pupils, agreeing to return to J10 if they win. After winning, <a href="https://en.wikipedia.org/wiki/Vinícius_Júnior">Vinícius Júnior</a> and legendary street player Issy Hitman play against J10.</p>
+
+<p>Thanks to J10's winning streak and Syd's social media campaigning, Revvy is invited to the prestigious Pro Street Invitational in <a href="https://en.wikipedia.org/wiki/New_York_City">New York City</a> by <a href="https://en.wikipedia.org/wiki/Alex_Hunter_(character)">Alex Hunter</a>'s agent, Beatriz Villanova. Additionally, J10 earn a place in the World Championships.</p>
+
+<p>At the Pro Street Invitational, Revvy learns that Jayzinho was originally going to be invited, but was replaced by Revvy due to his injury. Playing alongside and against several professional footballers, Revvy wins the tournament to great fanfare, but is accused by Jayzinho of undermining his leadership and stealing his glory.</p>
+
+<p>At the World Championship, Revvy discovers that Jayzinho has entered the tournament with a team composed of all the legendary street players they played against. Furthermore, Jayzinho has reclaimed the name J10 for his new team, prompting Revvy to choose a new name for their own team to play under.</p>
+
+<p>As Revvy's team progresses through the tournament, Beatriz offers to represent Revvy and get them on a professional team. This development upsets Syd, as she assumes Revvy will abandon her as their other teammates had. Revvy reveals that before joining J10, they were offered contracts from several professional teams, but the offers were rescinded once Revvy fell into depression following their sister's sudden death. Revvy thanks Syd for helping them overcome their depression by reminding them of her, which Syd appreciates.</p>
+
+<p>Revvy's team beats J10 to become the World Champions. Revvy invites Jayzinho to lift the trophy at the celebration, publicly crediting him for establishing J10 and mentoring them. Jayzinho reconciles with Revvy and accepts Vinícius Júnior's offer to run street tournaments across the world, while Revvy declines Beatriz's offer in favor of continue playing street football for J10 with Syd.</p>
+
+<p>The game features more than 30 officially licensed leagues, over 700 clubs and over 17,000 players. For the first time in FIFA History, the Romanian <a href="https://en.wikipedia.org/wiki/Liga_I">Liga I</a> and its 14 teams were added, as well as <a href="https://en.wikipedia.org/wiki/United_Arab_Emirates">Emirati</a> club <a href="https://en.wikipedia.org/wiki/Al_Ain_FC">Al Ain</a>, who were added following extensive requests from the fans in the region.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Juventus">Juventus</a>, <a href="https://en.wikipedia.org/wiki/Boca_Juniors">Boca Juniors</a>, <a href="https://en.wikipedia.org/wiki/Club_Atlético_River_Plate">River Plate</a> and <a href="https://en.wikipedia.org/wiki/Colo-Colo">Colo-Colo</a> are not featured after they signed exclusive partnership deals with <i><a href="https://en.wikipedia.org/wiki/EFootball_Pro_Evolution_Soccer_2020">eFootball PES 2020</a></i>. As a result, they are instead referred to as Piemonte Calcio (Juventus), Buenos Aires (Boca Juniors), Núñez (River Plate) and CD Viñazur (Colo-Colo). While these teams feature the players' likenesses, their official badges and kits are not licensed, and thus replaced by custom designs created by EA Sports. The three teams' stadiums, the <a href="https://en.wikipedia.org/wiki/Juventus_Stadium">Juventus Stadium</a>, <a href="https://en.wikipedia.org/wiki/La_Bombonera">La Bombonera</a>, <a href="https://en.wikipedia.org/wiki/El_Monumental">El Monumental</a> and <a href="https://en.wikipedia.org/wiki/Estadio_Monumental_David_Arellano">Estadio Monumental</a>, are replaced in the game by generic stadiums as well. <a href="https://en.wikipedia.org/wiki/Bayern_Munich">Bayern Munich</a> is featured in the game with their licensed players and kits, but without their home stadium <a href="https://en.wikipedia.org/wiki/Allianz_Arena">Allianz Arena</a>, which also happens to be exclusively licensed to PES 2020.</p>
+
+<p><i>FIFA 20</i> retains the exclusive licenses to the <a href="https://en.wikipedia.org/wiki/UEFA_Champions_League">UEFA Champions League</a>, <a href="https://en.wikipedia.org/wiki/UEFA_Europa_League">UEFA Europa League</a>, and <a href="https://en.wikipedia.org/wiki/UEFA_Super_Cup">UEFA Super Cup</a>, first seen in <i>FIFA 19</i>. The deal includes authentic broadcast packages, branding, and custom commentary. Additionally, the <a href="https://en.wikipedia.org/wiki/Copa_Libertadores">Copa Libertadores</a>, <a href="https://en.wikipedia.org/wiki/Copa_Sudamericana">Copa Sudamericana</a> and the <a href="https://en.wikipedia.org/wiki/Recopa_Sudamericana">Recopa Sudamericana</a> is featured in the game via an update released on 13 March 2020.</p>
+
+<p>EA also signed a deal with <a href="https://en.wikipedia.org/wiki/ITV_(TV_network)">ITV</a> to use the <a href="https://en.wikipedia.org/wiki/Soccer_Aid">Soccer Aid</a> branding included in the 10 June 2020 update, containing FUT icons in Kick-Off.<sup>[<i><a href="https://en.wikipedia.org/wiki/Wikipedia:Citation_needed">citation needed</a></i>]</sup></p>
+
+<p>There are 90 fully licensed stadiums from 15 countries in <i>FIFA 20</i>, as well as 29 generic stadiums. <a href="https://en.wikipedia.org/wiki/Bramall_Lane">Bramall Lane</a> has been included following <a href="https://en.wikipedia.org/wiki/Sheffield_United_F.C.">Sheffield United</a>'s promotion, ensuring that all <a href="https://en.wikipedia.org/wiki/Premier_League">Premier League</a> teams have their respective stadiums. Three new Spanish stadiums have also been added – <a href="https://en.wikipedia.org/wiki/Estadio_El_Alcoraz">Estadio El Alcoraz</a> (home of <a href="https://en.wikipedia.org/wiki/SD_Huesca">SD Huesca</a>), <a href="https://en.wikipedia.org/wiki/Campo_de_Fútbol_de_Vallecas">Estadio De Vallecas</a> (home of <a href="https://en.wikipedia.org/wiki/Rayo_Vallecano">Rayo Vallecano</a>) and <a href="https://en.wikipedia.org/wiki/Estadio_José_Zorrilla">Estadio José Zorrilla</a> (home of <a href="https://en.wikipedia.org/wiki/Real_Valladolid">Real Valladolid</a>).</p>
+
+<p>As part of an extensive new licensing deal, 13 new stadiums across the <a href="https://en.wikipedia.org/wiki/Bundesliga">Bundesliga</a> and <a href="https://en.wikipedia.org/wiki/2._Bundesliga">2. Bundesliga</a> were included. These include <a href="https://en.wikipedia.org/wiki/BayArena">BayArena</a> (home of <a href="https://en.wikipedia.org/wiki/Bayer_04_Leverkusen">Bayer 04 Leverkusen</a>), <a href="https://en.wikipedia.org/wiki/MHPArena">Mercedes-Benz Arena</a> (home of <a href="https://en.wikipedia.org/wiki/VfB_Stuttgart">VfB Stuttgart</a>), <a href="https://en.wikipedia.org/wiki/Red_Bull_Arena_(Leipzig)">Red Bull Arena</a> (home of <a href="https://en.wikipedia.org/wiki/RB_Leipzig">RB Leipzig</a>) and <a href="https://en.wikipedia.org/wiki/Volkswagen_Arena">Volkswagen Arena</a> (home of <a href="https://en.wikipedia.org/wiki/VfL_Wolfsburg">VfL Wolfsburg</a>). Also added into the game is the <a href="https://en.wikipedia.org/wiki/Parc_Olympique_Lyonnais">Groupama Stadium</a>, home of <a href="https://en.wikipedia.org/wiki/Olympique_Lyonnais">Olympique Lyonnais</a> in <a href="https://en.wikipedia.org/wiki/Ligue_1">Ligue 1</a>; <a href="https://en.wikipedia.org/wiki/Red_Bull_Arena_(New_Jersey)">Red Bull Arena</a>, home of <a href="https://en.wikipedia.org/wiki/New_York_Red_Bulls">New York Red Bulls</a> in <a href="https://en.wikipedia.org/wiki/Major_League_Soccer">Major League Soccer</a>; as well as the <a href="https://en.wikipedia.org/wiki/Atatürk_Olympic_Stadium">Atatürk Olympic Stadium</a>, the venue originally slated to host the <a href="https://en.wikipedia.org/wiki/2020_UEFA_Champions_League_Final">2020 UEFA Champions League Final</a> before the location was changed to Lisbon due to the COVID-19 pandemic.
+2 new stadiums were added in 2020 when the <a href="https://en.wikipedia.org/wiki/Copa_Libertadores">Copa Libertadores</a> was released in March. The stadium <a href="https://en.wikipedia.org/wiki/Estadio_Libertadores_de_América">Estadio Libertadores de América</a> of the Argentinian club <a href="https://en.wikipedia.org/wiki/Club_Atlético_Independiente">Club Atlético Independiente</a> is now available, as well as the stadium <a href="https://en.wikipedia.org/wiki/Estadio_Presidente_Juan_Domingo_Perón">Estadio Presidente Juan Domingo Perón</a> of the Argentinian club <a href="https://en.wikipedia.org/wiki/Racing_Club_de_Avellaneda">Racing Club de Avellaneda</a>.</p>
+
+<h2>Release</h2>
+
+<h3>Demo/EA Access</h3>
+
+<p>The <i>FIFA 20</i> demo was released on 10 September 2019 and includes 6 playable teams which can be played on the UEFA Champions League kick-off mode – <a href="https://en.wikipedia.org/wiki/Borussia_Dortmund">Borussia Dortmund</a>, <a href="https://en.wikipedia.org/wiki/Liverpool_F.C.">Liverpool</a>, <a href="https://en.wikipedia.org/wiki/Chelsea_F.C.">Chelsea</a>, <a href="https://en.wikipedia.org/wiki/Paris_Saint-Germain_F.C.">Paris Saint-Germain</a>, <a href="https://en.wikipedia.org/wiki/Tottenham_Hotspur_F.C.">Tottenham Hotspur</a> and <a href="https://en.wikipedia.org/wiki/Real_Madrid_CF">Real Madrid</a> and a demo of the new <i>VOLTA Football</i> mode. The demo was available for <a href="https://en.wikipedia.org/wiki/PS4">PS4</a>, <a href="https://en.wikipedia.org/wiki/Xbox_One">Xbox One</a> and <a href="https://en.wikipedia.org/wiki/Microsoft_Windows">PC</a>.</p>
+
+<p><i>FIFA 20</i> was the last <a href="https://en.wikipedia.org/wiki/FIFA_(video_game_series)">FIFA game</a> that distributed a free <a href="https://en.wikipedia.org/wiki/Game_demo">demo</a>.</p>
+
+<p>The game was released through the <a href="https://en.wikipedia.org/wiki/EA_Access">EA Access</a> subscription on 24 September 2019, which also offers a free 10 hour trial.</p>
+
+<p><i>FIFA 20</i> features three cover stars across all regional editions. <a href="https://en.wikipedia.org/wiki/Real_Madrid_CF">Real Madrid</a> winger <a href="https://en.wikipedia.org/wiki/Eden_Hazard">Eden Hazard</a> was named the new cover star of the Regular Edition, with <a href="https://en.wikipedia.org/wiki/Liverpool_F.C.">Liverpool</a> defender <a href="https://en.wikipedia.org/wiki/Virgil_van_Dijk">Virgil van Dijk</a> on the cover of the Champions Edition. Former Real Madrid midfielder and manager <a href="https://en.wikipedia.org/wiki/Zinedine_Zidane">Zinedine Zidane</a> was later named as the cover star for the Ultimate Edition.</p>
+
+<p>Whilst the Xbox One, PS4 and PC versions have all of the new features, the Nintendo Switch version was released under the label <i>Legacy Edition</i>, with updated kits, rosters and minor updates, but without the new <i>VOLTA Football</i> mode or any of the other new features. <i>FIFA 20</i> was not released on <a href="https://en.wikipedia.org/wiki/Xbox_360">Xbox 360</a> or <a href="https://en.wikipedia.org/wiki/PlayStation_3">PlayStation 3</a>, making <i><a href="https://en.wikipedia.org/wiki/FIFA_19">FIFA 19</a></i> the final game in the series to be released on those platforms.</p>
+
+<h2>Reception</h2>
+
+<p><i>FIFA 20</i> received "generally favourable" reviews for the PS4 and Xbox One versions of the game from critics, while the Nintendo Switch version received "generally unfavorable" reviews from critics, according to <a href="https://en.wikipedia.org/wiki/Review_aggregator">review aggregator</a> website <a href="https://en.wikipedia.org/wiki/Metacritic">Metacritic</a>.</p>
+
+<p>Despite changing some of the mode's features, upon release, the game's Career Mode was criticised for being riddled with bugs including computer-controlled opposition managers picking unusually weak teams, players changing positions seemingly at random, and unexplained ratings changes. The criticism has been described as "issues that either turn its take on realism into a bit of a joke or break the game entirely", with claims that EA is attempting to cover up or downplay the game's flaws. The "#FixCareerMode" hashtag trended for several days on <a href="https://en.wikipedia.org/wiki/Twitter">Twitter</a> in the <a href="https://en.wikipedia.org/wiki/United_Kingdom">United Kingdom</a>, with fans hoping to draw attention to the issues in the mode. On 16 October 2019, EA responded by releasing a new patch for the game which fixed various issues that were reported to be present.</p>
+
+<p>In a re-review of the game by the Bleacher Report, (it originally awarded the game a 7.5/10 rating), it was described as a 'defensive borefest', going on to criticise the game as frustrating and unbalanced; citing server issues, frustrating game mechanics such as the slow communication between players and the overpowering of AI defending mechanic (a criticism shared by various players online), as well as a general lack of 'fun challenges and rewards' in the popular 'Ultimate Team' mode. Bleacher Report then gave an updated score of 6/10. This view was shared by former world No. 1 FIFA player 'Fnatic Tekzz', who said at a pro event, "Nobody enjoys playing it."</p>
+
+<p>The Nintendo Switch version of the game was criticised for being released as <i>Legacy Edition</i>; a tagline given to versions of the game where only kits, rosters and stadiums are updated from the previous edition of the game.</p>
+
+<p>Many professional players online have widely criticised FIFA 20 as one of the most frustrating editions in the history of the franchise, citing the clunky gameplay, dynamic difficulty and balancing issues. Players have also criticised the popular 'Ultimate Team' for adopting a 'pay-to-play' model, citing the steps that Electronic Arts have taken to make the game more friendly for e-sports competitions.
+In early October 2019, it was reported that some players' personal information was exposed to other gamers. Some players' that signed up to the Fifa 20 Global Series found a completed registration form with other people's information. The error exposed email addresses and birth dates of players. According to EA the problem affected about 1,600 people.</p>
+
+<h3>Awards</h3>
+
+
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

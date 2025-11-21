@@ -1,0 +1,356 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hitman: Contracts</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('af91acf2-f11a-4137-a30b-49933c09110a/02449194-92ca-48ea-a4aa-92817625e7f5.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="af91acf2-f11a-4137-a30b-49933c09110a/03c91689-6e83-427b-9552-268d33d7915e.png"/> Hitman: Contracts</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="af91acf2-f11a-4137-a30b-49933c09110a/7fc0441b-7ac0-4b74-9059-1df1d0afeba7.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-20/11/2025">20/11/2025</a> 14:00:06</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-20/11/2025">20/11/2025</a> 14:06:23</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB GAS">2TB GAS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-Microsoft Xbox">Microsoft Xbox</a><br/><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/><a href="#quicklink-Sony PlayStation 2">Sony PlayStation 2</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-20/04/2004">20/04/2004</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-78">78</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-stealth">stealth</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-IO Interactive">IO Interactive</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Eidos Interactive">Eidos Interactive</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Single-player">Single-player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/Hitman:_Contracts" target="_blank">Wikipedia</a><br/><a href="https://www.mobygames.com/game/12998/hitman-contracts/" target="_blank">MobyGames</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-[Game Engine] Glacier">[Game Engine] Glacier</a><br/><a href="#quicklink-[People] composer: Jesper Kyd">[People] composer: Jesper Kyd</a><br/><a href="#quicklink-[People] writer: Greg Nagan">[People] writer: Greg Nagan</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>Hitman: Contracts</b></i> is a 2004 <a href="https://en.wikipedia.org/wiki/Stealth_game">stealth video game</a> developed by <a href="https://en.wikipedia.org/wiki/IO_Interactive">IO Interactive</a> and published by <a href="https://en.wikipedia.org/wiki/Eidos_Interactive">Eidos Interactive</a> for <a href="https://en.wikipedia.org/wiki/Microsoft_Windows">Microsoft Windows</a>, <a href="https://en.wikipedia.org/wiki/PlayStation_2">PlayStation 2</a> and <a href="https://en.wikipedia.org/wiki/Xbox_(console)">Xbox</a>. It is the third installment in the <a href="https://en.wikipedia.org/wiki/Hitman_(franchise)"><i>Hitman</i> video game series</a>, and serves as both a remake of <i><a href="https://en.wikipedia.org/wiki/Hitman:_Codename_47">Hitman: Codename 47</a></i> (2000) and sequel to <i><a href="https://en.wikipedia.org/wiki/Hitman_2:_Silent_Assassin">Hitman 2: Silent Assassin</a></i> (2002), incorporating gameplay elements introduced in the latter into missions from the first game, which have been remastered with enhanced graphics. The game also includes several new missions, which serve as <a href="https://en.wikipedia.org/wiki/Flashback_(narrative)">flashbacks</a> experienced by the <a href="https://en.wikipedia.org/wiki/Human_cloning">cloned</a> assassin <a href="https://en.wikipedia.org/wiki/Agent_47">Agent 47</a> after almost being killed on a failed mission.</p>
+
+<p><i>Hitman: Contracts</i> was met with generally positive reviews; praise was directed at the improved gameplay elements, graphics, soundtrack, darker tone and atmosphere, while criticism was reserved for the lack of significant improvements and the familiarity with the previous two games. As of April 2009, the game has sold around 2 million copies. High-definition ports of <i>Contracts</i>, <i>Silent Assassin</i>, and the sequel <i><a href="https://en.wikipedia.org/wiki/Hitman:_Blood_Money">Blood Money</a></i> were released on <a href="https://en.wikipedia.org/wiki/PlayStation_3">PlayStation 3</a> and <a href="https://en.wikipedia.org/wiki/Xbox_360">Xbox 360</a> in January 2013 as the <i>Hitman HD Trilogy</i>.</p>
+
+<h2>Gameplay</h2>
+
+<p>In <i>Hitman: Contracts</i>, players control protagonist <a href="https://en.wikipedia.org/wiki/Agent_47">Agent 47</a> from a third-person perspective, who is sent to various locations across the globe to assassinate specific targets. A wide array of weapons can be used, from kitchen knives, assault rifles and handguns to belt-fed machine guns. While stealth and <a href="https://en.wikipedia.org/wiki/Deception">subterfuge</a> is encouraged, the game allows the player to take a more violent approach and gunfight their way to their mission goals. As players progress through the game, they can collect the various armaments found in the levels, allowing them to be used in future missions. Aside from the more straightforward ways of killing targets such as gunplay and <a href="https://en.wikipedia.org/wiki/Strangling">strangulation</a>, several missions allow the player more subtle ways to eliminate hits, such as judicious use of <a href="https://en.wikipedia.org/wiki/Poison">poison</a>, or arranging "accidents" like a heat-induced <a href="https://en.wikipedia.org/wiki/Myocardial_infarction">heart attack</a> inside a <a href="https://en.wikipedia.org/wiki/Sauna">sauna</a>.</p>
+
+<p>Players are rated on their performance based on several factors; key among which are the number of shots fired, <a href="https://en.wikipedia.org/wiki/Non-player_character">non-player characters</a> (NPCs) killed (and whether they were armed adversaries or innocents), and the number of times the guards are alerted. The lowest rank is "Mass Murderer", which is awarded to players who kill large numbers of NPCs in the pursuit of their target and do not use stealth. The highest rank is "Silent Assassin", which is earned when the player accomplishes their mission without being detected, and generally without killing anyone other than the intended target(s).</p>
+
+<p><i>Contracts</i> continues the trend of <a href="https://en.wikipedia.org/wiki/Context-sensitive_user_interface">context sensitive</a> actions, which means that one button is used in multiple situations for multiple uses. For example, when the player is near a door, the context sensitive button will allow the player to perform door-relevant actions such as keyhole-peeking, <a href="https://en.wikipedia.org/wiki/Lock_picking">lock picking</a>, or if allowed, simply opening it. When the player is near an unconscious or dead NPC, the same button will allow the ability to either acquire the person's outfit, or drag the body to an area where it will not be found by various types of guards.</p>
+
+<p>Along with the context sensitive button, the "Suspicion Meter" returns as well; this meter informs players of how close they are to blowing their respective cover. Actions like excess running indoors, brandishing weapons openly, residing in restricted areas, or sneaking can raise suspicion. Proximity will also usually raise the meter. If the "Suspicion Meter" fills, guards will open fire on sight of the player and the current cover becomes useless. If the guards discover a fallen body, or if an unconscious person wakes and alerts them, the "Suspicion Meter" will raise much faster than it would otherwise.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Disguise">Disguises</a> can be either found in the environment or taken from the bodies of male NPCs. Depending on the disguise, the player can then access areas restricted to most individuals in a level. These disguises can be seen through by guards, as stated above; e.g. if guards in a level are all wielding shotguns, a player dressed as a guard but not similarly equipped will draw more suspicion. Also, certain behaviors (like picking locks) will cause guards to see through a disguise as well.</p>
+
+<h2>Plot</h2>
+
+<p>On 17 March 2004, around two years after the events of <i><a href="https://en.wikipedia.org/wiki/Hitman_2:_Silent_Assassin">Silent Assassin</a></i>, <a href="https://en.wikipedia.org/wiki/Agent_47">Agent 47</a> is shot and critically wounded while carrying out a mission in <a href="https://en.wikipedia.org/wiki/Paris">Paris</a>, France, for his employers, the International Contracts Agency (ICA). Returning to his hotel room, <a href="https://en.wikipedia.org/wiki/Hitman:_Codename_47">he reflects on his past</a>, beginning with his escape from <a href="https://en.wikipedia.org/wiki/Detașamentul_Special_de_Protecție_și_Intervenție">Romanian special forces</a> after killing his creator, Dr. Otto Ort-Meyer, at his own facility. 47 then recalls various contracts he carried out over the years, including the assassination of two <a href="https://en.wikipedia.org/wiki/Sexual_fetishism">sexual fetishists</a> who had kidnapped and murdered a client's daughter in <a href="https://en.wikipedia.org/wiki/Bucharest">Bucharest</a>, Romania; the killing of a <a href="https://en.wikipedia.org/wiki/Black_market">black marketeer</a> in <a href="https://en.wikipedia.org/wiki/Kamchatka_Krai">Kamchatka</a>, Russia, selling weapons to <a href="https://en.wikipedia.org/wiki/Terrorism">terrorists</a>, and the destruction of their weapon labs aboard a submarine; the murder of a corrupt <a href="https://en.wikipedia.org/wiki/Nobility">nobleman</a> and his son in England; the assassination of a biker crime lord in <a href="https://en.wikipedia.org/wiki/Rotterdam">Rotterdam</a>, Netherlands; and the killings of three of his five genetic "fathers", namely <a href="https://en.wikipedia.org/wiki/Arms_trafficking">arms trafficker</a> Arkadij Jegorov, who the bikers were doing business with in Rotterdam, terrorist Frantz Fuchs – incidentally, the brother of the black marketeer in Kamchatka – in a hotel in <a href="https://en.wikipedia.org/wiki/Budapest">Budapest</a>, Hungary, and the <a href="https://en.wikipedia.org/wiki/Triad_(organized_crime)">Triad</a> boss Lee Hong in <a href="https://en.wikipedia.org/wiki/Hong_Kong">Hong Kong</a>, China.</p>
+
+<p>During this time, an ICA doctor arrives and performs emergency surgery on 47 before he can bleed out, but officers from the <a href="https://en.wikipedia.org/wiki/GIGN">GIGN</a> storm the hotel to capture 47. While the ICA doctor is forced to flee without dressing the wound, 47 regains his strength and prepares to deal with the officers, before recalling the briefing for his current contract. He remembers that he had taken out two of the three targets he had been sent to eliminate (an event later addressed in <i><a href="https://en.wikipedia.org/wiki/Hitman:_Blood_Money">Hitman: Blood Money</a></i>), all of whom were involved in a <a href="https://en.wikipedia.org/wiki/Child_prostitution">child prostitution</a> ring in <a href="https://en.wikipedia.org/wiki/Eastern_Europe">Eastern Europe</a>. He also recalls that the third target, corrupt GIGN officer Albert Fournier, survived 47's attempt on his life after being tipped off to his presence, and was responsible for his injury.</p>
+
+<p>As the GIGN prepares to storm his room, which is slowly being filled with <a href="https://en.wikipedia.org/wiki/Tear_gas">tear gas</a>, 47 escapes from the hotel, intending to complete his contract. Upon reaching the streets, he finds and kills Fournier, before escaping to the <a href="https://en.wikipedia.org/wiki/Charles_de_Gaulle_Airport">Charles de Gaulle Airport</a>. Boarding a plane that is leaving the country, 47 is reunited with his handler Diana Burnwood, who confirms his suspicion that someone knew about the contract and warns him that the ICA is being targeted by the same group. 47 agrees to handle the matter and takes possession of a file which names the group as the Franchise, an enemy of the ICA that seeks to undermine them and gain control of governments worldwide.</p>
+
+<h2>Development</h2>
+
+<p>The third <i>Hitman</i> game was originally meant to be the final game of a trilogy, but due to time pressure from <a href="https://en.wikipedia.org/wiki/IO_Interactive">IO Interactive's</a> then publisher, <a href="https://en.wikipedia.org/wiki/Eidos_Interactive">Eidos</a>, <a href="https://en.wikipedia.org/wiki/IO_Interactive">IOI</a> split into two teams to work on <i>Hitman: Contracts</i> and <i><a href="https://en.wikipedia.org/wiki/Hitman:_Blood_Money">Hitman: Blood Money</a></i> at the same time, with <i>Hitman: Contracts</i> being a smaller game containing remastered levels from <i><a href="https://en.wikipedia.org/wiki/Hitman:_Codename_47">Hitman: Codename 47</a></i> (2000) in addition to new levels. <i>Hitman: Contracts</i> was developed on a tight schedule to release two years after <i><a href="https://en.wikipedia.org/wiki/Hitman_2:_Silent_Assassin">Hitman 2: Silent Assassin</a></i>. The game was released in 2004 in North America on 20 April, in the UK on 30 April, in Australia on 13 May, and in Japan on 14 October.</p>
+
+<h2>Soundtrack</h2>
+
+<p><i>Hitman: Contracts Original Soundtrack</i> was composed by <a href="https://en.wikipedia.org/wiki/Jesper_Kyd">Jesper Kyd</a> and released in 2004. The score features the same <a href="https://en.wikipedia.org/wiki/Latin_music">Latin</a> <a href="https://en.wikipedia.org/wiki/Choir">choral</a> arrangements as in all the other scores; however, they are heavily <a href="https://en.wikipedia.org/wiki/Sampling_(music)">sampled</a> and mixed into the dark <a href="https://en.wikipedia.org/wiki/Electronic_music">electronic</a> soundscape. As summed up by Kyd, "First of all it is a much darker score. <i>Hitman 2</i> was an epic story that kind of spanned all over the world. This one, although there are different locations, it's not one big epic story. It's a lot of darker, psychological small stories mixed together, so the score follows the darker aspect of Hitman and his career." The score was awarded the title of "Best Original Music" at the <a href="https://en.wikipedia.org/wiki/British_Academy_Games_Awards#2004">2005 BAFTA Games Awards</a>.</p>
+
+<p>Besides the original Jesper Kyd score, the game features the following songs:</p>
+
+<ul>
+  <li>"<a href="https://en.wikipedia.org/wiki/Put_Your_Head_on_My_Shoulder_(song)">Put Your Head on My Shoulder</a>" by <a href="https://en.wikipedia.org/wiki/Paul_Anka">Paul Anka</a> in Level 2 "The Meat King's Party". 2:37</li>
+  <li>"A Different Kind of Love" by Dick Walter in Level 4 "Beldingford Manor" 5:18</li>
+  <li>"Immortal" by <a href="https://en.wikipedia.org/wiki/Clutch_(band)">Clutch</a> in Level 5 "Rendezvous in Rotterdam".</li>
+  <li>"Walking Dead" by <a href="https://en.wikipedia.org/wiki/Puressence">Puressence</a> in Level 6 "Deadly Cargo".</li>
+  <li>"Le Souteneur (Monsieur Claude)" by <a href="https://en.wikipedia.org/wiki/Faf_Larage">Faf Larage</a> in Level 12 "Hunter and Hunted".</li>
+</ul>
+
+<h2>Reception</h2>
+
+<p><i>Hitman: Contracts</i> received mostly positive reviews. Critics praised the improved gameplay elements, graphics, soundtrack, darker tone and atmosphere, while criticism was directed towards the familiarity and the lack of significant changes and additions from the previous game.</p>
+
+<p>Although <i><a href="https://en.wikipedia.org/wiki/GameSpot">GameSpot</a></i>'s Greg Kasavin liked that some of the missions from <i><a href="https://en.wikipedia.org/wiki/Hitman:_Codename_47">Hitman: Codename 47</a></i> are featured here with graphical enhancements, he did feel it was a "cheap move." Kasavin also criticised the normal difficulty in the game; he felt it was too easy and that players can take the 'Mass Murderer' route with little to no consequences. Air Hendrix of <i><a href="https://en.wikipedia.org/wiki/GamePro">GamePro</a></i> said of the PlayStation 2 and Xbox versions, "In this captivating outing, 47 revisits the past while modernizing the nagging flaws of his previous games, making for his best trail of assassinations yet."</p>
+
+
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

@@ -1,0 +1,362 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Half-Life 2: Episode Two</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('a5bfbd60-79cc-4a82-8e95-70522fe8ceed/2ba4791c-634f-42d7-a8f9-7d2600616593.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="a5bfbd60-79cc-4a82-8e95-70522fe8ceed/a3707fb4-994d-4159-ad13-d0010d9fef68.png"/> Half-Life 2: Episode Two</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="a5bfbd60-79cc-4a82-8e95-70522fe8ceed/be0e7d00-d07a-44d4-8e61-0a060c464ce2.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-20/11/2025">20/11/2025</a> 14:14:45</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-20/11/2025">20/11/2025</a> 14:15:23</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB GAS">2TB GAS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-Macintosh">Macintosh</a><br/><a href="#quicklink-Microsoft Xbox 360">Microsoft Xbox 360</a><br/><a href="#quicklink-PC (Linux)">PC (Linux)</a><br/><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/><a href="#quicklink-Sony PlayStation 3">Sony PlayStation 3</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-10/10/2007">10/10/2007</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-90">90</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-First-person shooter">First-person shooter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Valve">Valve</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Valve">Valve</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Single-player">Single-player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/Half-Life_2:_Episode_Two" target="_blank">Wikipedia</a><br/><a href="http://orange.half-life2.com/hl2ep2.html" target="_blank">Official Half-Life 2: Episode Two website</a><br/><a href="https://www.mobygames.com/game/half-life-2-episode-two" target="_blank">MobyGames</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-[Game Engine] Source">[Game Engine] Source</a><br/><a href="#quicklink-[People] composer: Kelly Bailey">[People] composer: Kelly Bailey</a><br/><a href="#quicklink-[People] writer: Chet Faliszek">[People] writer: Chet Faliszek</a><br/><a href="#quicklink-[People] writer: Erik Wolpaw">[People] writer: Erik Wolpaw</a><br/><a href="#quicklink-[People] writer: Marc Laidlaw">[People] writer: Marc Laidlaw</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>Half-Life 2: Episode Two</b></i> is a 2007 <a href="https://en.wikipedia.org/wiki/First-person_shooter">first-person shooter</a> game developed and published by <a href="https://en.wikipedia.org/wiki/Valve_Corporation">Valve</a>. Following <i><a href="https://en.wikipedia.org/wiki/Half-Life_2:_Episode_One">Episode One</a></i> (2006), it is the second of two shorter <a href="https://en.wikipedia.org/wiki/Episodic_games">episodic games</a> that continue the story of <i><a href="https://en.wikipedia.org/wiki/Half-Life_2">Half-Life 2</a></i> (2004). The player controls <a href="https://en.wikipedia.org/wiki/Gordon_Freeman">Gordon Freeman</a>, who travels through the mountains surrounding <a href="https://en.wikipedia.org/wiki/City_17">City 17</a> to a resistance base with his ally <a href="https://en.wikipedia.org/wiki/Alyx_Vance">Alyx Vance</a>. Like previous <i><a href="https://en.wikipedia.org/wiki/Half-Life_(series)">Half-Life</a></i> games, <i>Episode Two</i> combines shooting, puzzle-solving and narrative elements, and adds expansive environments and less linear sequences.</p>
+
+<p><i>Episode Two</i> was released on October 10, 2007, for <a href="https://en.wikipedia.org/wiki/Windows">Windows</a> on Valve's distribution service <a href="https://en.wikipedia.org/wiki/Steam_(service)">Steam</a>, and as a part of <i><a href="https://en.wikipedia.org/wiki/The_Orange_Box">The Orange Box</a></i>, a compilation of Valve games for Windows, <a href="https://en.wikipedia.org/wiki/Xbox_360">Xbox 360</a>, and <a href="https://en.wikipedia.org/wiki/PlayStation_3">PlayStation 3</a>. The PlayStation version was produced by <a href="https://en.wikipedia.org/wiki/Electronic_Arts">Electronic Arts</a>. <i>Episode Two</i> received positive reviews.</p>
+
+<p>Valve canceled <i><a href="https://en.wikipedia.org/wiki/Half-Life_2:_Episode_Three">Half-Life 2: Episode Three</a></i> when they abandoned episodic development and began developing a new <a href="https://en.wikipedia.org/wiki/Game_engine">game engine</a>. In 2020, after <a href="https://en.wikipedia.org/wiki/Unreleased_Half-Life_games">canceling several further <i>Half-Life</i> projects</a>, Valve released <i><a href="https://en.wikipedia.org/wiki/Half-Life:_Alyx">Half-Life: Alyx</a></i>.</p>
+
+<h2>Gameplay</h2>
+
+<p>As with previous <i><a href="https://en.wikipedia.org/wiki/Half-Life_(series)">Half-Life</a></i> games, <i>Episode Two</i> is played in the <a href="https://en.wikipedia.org/wiki/First_person_(video_games)">first person</a> as <a href="https://en.wikipedia.org/wiki/Gordon_Freeman">Gordon Freeman</a> against <a href="https://en.wikipedia.org/wiki/Transhuman">transhuman</a> troops, known as the <a href="https://en.wikipedia.org/wiki/Combine_(Half-Life)">Combine</a>, and other hostile alien creatures. Levels are linear but add a more open environment, consisting of puzzles and <a href="https://en.wikipedia.org/wiki/First-person_shooter">first-person shooter</a> game-play. Sequences involving vehicles are interspersed throughout the game, breaking up moments of combat.</p>
+
+<p>One of the focal points was the increased use of vehicles in open areas. However, the game retains its original linear style until the final battle. <i>Episode Two</i> has more puzzles than <i><a href="https://en.wikipedia.org/wiki/Half-Life_2:_Episode_One">Episode One</a></i>; the sequence in which the player must cross a damaged bridge is the biggest <a href="https://en.wikipedia.org/wiki/Game_physics">physics</a> puzzle in the series. As in the previous two games, <i>Episode Two</i> features numerous "achievements" (similar to <a href="https://en.wikipedia.org/wiki/PlayStation_3">PlayStation 3</a>'s Trophies and <a href="https://en.wikipedia.org/wiki/Xbox_Live">Xbox Live</a>'s <a href="https://en.wikipedia.org/wiki/Xbox_Live">Achievements</a>) for carrying out certain tasks. Some are essential to game progress, such as helping fight off an antlion invasion, or defeating the first Hunters. Others are optional tricks or feats the player can perform, such as killing a Combine soldier with their own grenade or running down a certain number of enemies with the car.</p>
+
+<h3>Enemies</h3>
+
+<p><i>Episode Two</i> featured a new Hunter enemy, which had just been seen briefly in a recorded message in <i>Episode One</i>. The Hunter serves as one of the most dangerous enemies within the game and as means of emotional development for <a href="https://en.wikipedia.org/wiki/Alyx_Vance">Alyx Vance</a>. The Hunter is a powerful and resilient enemy which players must often run from while seeking a means to fight back; <i>Episode Two</i>'s environments are designed with this in mind.</p>
+
+<p>An interview in the August 2006 issue of <i>PC Gamer</i> magazine revealed that the Hunter stands 8 feet (2.4 m) tall. Erik Johnson, the game's project lead, states that the Hunters are "big and impressive, but they can go anywhere the player can go", as the player can encounter them both indoors and outdoors. Ted Backman, senior artist for Valve, talks about how the Hunter can express emotions, being a somewhat non-human character. "We want the Hunter to be able to express nervousness or aggression, [to show you] whether it's aggressive, hurt, or mad." Hunters are very aggressive and they tend to operate in packs, but can also be found supporting other Combine troops. Late in the game, they can be found escorting Striders, using their <a href="https://en.wikipedia.org/wiki/Flechette">flechette</a> guns to protect the Striders that the player is trying to attack.</p>
+
+<p>Hunters primarily attack the player by bracing themselves and firing bursts from their flechette cannon. Four flechettes can vaporize an ordinary human soldier. If they do not strike a living target, the flechettes charge up for several seconds and then explode, dealing minor damage to everything nearby. Hunters may also conduct a charging attack or strike with their legs if the player gets too close. Hunters are vulnerable to all weapons, but to compensate, are still quite resilient, making explosives and the pulse rifle's charged energy ball the most attractive options. Objects thrown with the gravity gun are also effective, especially if the player catches some of their flechettes with the object before hurling it. In outdoor environments, they can be run over with a vehicle.</p>
+
+<p><i>Episode Two</i> features no additions to Gordon Freeman's weapons inventory. Instead, Valve chose to further explore uses for the gravity gun, with which the player can pick up and throw large objects. They introduced more varied gravity gun "ammunition", such as logs, flares, and half-height butane tanks, which are easier to aim than full-size fuel drums.</p>
+
+<p>Near the end of the game, the player uses "Magnusson Devices", which designer Dario Casali described as a "sticky bomb that you fire at a Strider's underbelly that will draw power from the Strider's internal power source". The player uses the gravity gun to attach the bombs to tripodal enemy Striders; the bombs detonate when fired upon with any other of the player's weapons, instantly destroying the target. The Hunter escorts prioritize them as targets, either destroying them in the player's grasp or shooting already-attached ones off.</p>
+
+<p>Large sections of the game feature a car which resembles a gutted-and-rebuilt <a href="https://en.wikipedia.org/wiki/1969_Dodge_Charger">1969 Dodge Charger</a>. It appears to have been tuned for performance. A radar system is installed later in the game, allowing the player to locate Rebel supply caches. In the final battle, a rear-mounted storage rack for Magnusson Devices is added and the radar is adjusted to track enemies and Magnusson Device dispensers. A homing unit is also installed so the player can quickly locate the car in the chaos of the final battle via a readout in the <a href="https://en.wikipedia.org/wiki/Gordon_Freeman#Character_design">Hazardous Environment suit</a>.</p>
+
+<h2>Plot</h2>
+
+<p>The <a href="https://en.wikipedia.org/wiki/Combine_(Half-Life)">Combine</a> have opened an interdimensional portal in place of the destroyed Citadel, to summon reinforcements and defeat the Resistance. Outside <a href="https://en.wikipedia.org/wiki/Locations_of_Half-Life#City_17">City 17</a>, <a href="https://en.wikipedia.org/wiki/Gordon_Freeman">Gordon Freeman</a> and <a href="https://en.wikipedia.org/wiki/Alyx_Vance">Alyx Vance</a> (<a href="https://en.wikipedia.org/wiki/Merle_Dandridge">Merle Dandridge</a>) escape the wreckage of a train they used to flee the city. The two proceed to a <a href="https://en.wikipedia.org/wiki/Radio_communication_station">transmission station</a>, where they make contact with <a href="https://en.wikipedia.org/wiki/Dr._Isaac_Kleiner">Dr. Isaac Kleiner</a> (<a href="https://en.wikipedia.org/wiki/Harry_S._Robins">Harry S. Robins</a>) and <a href="https://en.wikipedia.org/wiki/Dr._Eli_Vance">Dr. Eli Vance</a> (<a href="https://en.wikipedia.org/wiki/Robert_Guillaume">Robert Guillaume</a>), who have arrived at the <a href="https://en.wikipedia.org/wiki/Locations_of_Half-Life#White_Forest">White Forest</a> rocket facility. Kleiner and Eli learn that a copied Combine transmission Alyx is carrying may be able to close the portal. The pair reach an abandoned mine, where Alyx is critically wounded by a Combine Hunter. A <a href="https://en.wikipedia.org/wiki/Vortigaunt">vortigaunt</a> (<a href="https://en.wikipedia.org/wiki/Tony_Todd">Tony Todd</a>) leads the two to an underground outpost, where Gordon is instructed to help gather <a href="https://en.wikipedia.org/wiki/Larva">larvae</a> from a nearby antlion colony to heal Alyx. After the larvae are gathered, vortigaunts begin to heal Alyx. With their abilities diverted, the <a href="https://en.wikipedia.org/wiki/Characters_of_Half-Life#G-Man">G-Man</a> (<a href="https://en.wikipedia.org/wiki/Michael_Shapiro_(actor)">Michael Shapiro</a>) can now connect to Gordon. He reveals that he rescued Alyx from the <a href="https://en.wikipedia.org/wiki/Black_Mesa_Research_Facility">Black Mesa</a> Incident despite objections from an unspecified third party, and it is imperative she reaches White Forest. The G-Man instructs an unconscious Alyx to tell Eli to "prepare for unforeseen consequences".</p>
+
+<p>After Alyx recovers, they reunite with Eli, Kleiner and <a href="https://en.wikipedia.org/wiki/Characters_of_Half-Life#Dog">Dog</a> at White Forest and are introduced to <a href="https://en.wikipedia.org/wiki/Dr._Arne_Magnusson">Dr. Arne Magnusson</a> (<a href="https://en.wikipedia.org/wiki/John_Aylward">John Aylward</a>). The scientists are preparing a rocket which they plan to use with the code to reverse the portal. After Gordon subdues a Combine attack on the facility, Alyx gives Kleiner a message recorded by <a href="https://en.wikipedia.org/wiki/Characters_of_Half-Life#Judith_Mossman">Judith Mossman</a> (<a href="https://en.wikipedia.org/wiki/Michelle_Forbes">Michelle Forbes</a>), which contains the location of the <i>Borealis</i>, a vanished <a href="https://en.wikipedia.org/wiki/Locations_of_Half-Life#Aperture_Science_Laboratories">Aperture Science</a> research vessel. Kleiner believes the vessel contains technology capable of combating the Combine, but Eli argues the vessel should be destroyed. Both agree that Alyx and Gordon should travel to the ship and locate Mossman. Alyx unconsciously delivers the G-Man's message to her father, troubling him. Gordon learns from Eli that the G-Man provided the test sample which caused the Black Mesa Incident, warning Eli with the same message as Gordon entered the test chamber. He promises to explain more after the portal is closed.</p>
+
+<p>While the scientists prepare the launch, White Forest is under another Combine attack. Gordon defeats the attackers using explosive weaponry created by Magnusson. The scientists launch the rocket and close the portal, trapping all remaining Combine forces on Earth. As Alyx and Freeman prepare to leave for the <i>Borealis</i>, Eli warns Gordon about the ship's "cargo". The trio head to a hangar to board a helicopter, but two Combine <a href="https://en.wikipedia.org/wiki/Combine_(Half-Life)#Advisors">Advisors</a> suddenly appear and restrain them. Eli is killed by an Advisor before Dog can chase the Advisors away. Alyx, sobbing, clutches her father's body.</p>
+
+<h2>Development</h2>
+
+<p><i>Episode Two</i> was the second in a planned trilogy of shorter <a href="https://en.wikipedia.org/wiki/Episodic_games">episodic games</a> that would continue the story of <i><a href="https://en.wikipedia.org/wiki/Half-Life_2">Half-Life 2</a></i> (2004). It was developed simultaneously with <i><a href="https://en.wikipedia.org/wiki/Half-Life_2:_Episode_One">Episode One</a></i> (2006) by a team led by David Speyrer. This schedule of simultaneous development aided them in streamlining the story between the two games to create an immersive story. The technology used was the same for both games, allowing the development teams to quickly fix any technical problems that might arise from either game; this happened often because of the multi-platform release. The team originally planned the ending to feature a comical sequence with Lamarr, Kleiner's pet headcrab, floating in space outside the rocket Gordon launches into space; however, Valve president <a href="https://en.wikipedia.org/wiki/Gabe_Newell">Gabe Newell</a> requested killing off a major character to create a cliffhanger for <i>Episode Three</i>.</p>
+
+<p>On July 13, 2006, Valve announced that <i>Episode Two</i> would be released on Xbox 360 and PlayStation 3 in addition to Windows. Valve handled the development for the PC and Xbox 360, while <a href="https://en.wikipedia.org/wiki/Electronic_Arts">Electronic Arts</a> (EA) worked on the PlayStation 3 version. It was announced on September 7, 2007, that the PlayStation 3 version would be delayed because the EA studio behind the game was in the United Kingdom, away from Valve's development team, and therefore lagged behind in its schedule. According to Valve's marketing director, Doug Lombardi, the Xbox 360, PlayStation 3 and Windows versions would be identical in functionality and performance. An <a href="https://en.wikipedia.org/wiki/Audio_commentary#Video_games">audio commentary</a> is also featured, as in <i>Episode One</i> and <i><a href="https://en.wikipedia.org/wiki/Half-Life_2:_Lost_Coast">Lost Coast</a></i>. <a href="https://en.wikipedia.org/wiki/Tony_Todd">Tony Todd</a> replaced <a href="https://en.wikipedia.org/wiki/Louis_Gossett_Jr.">Louis Gossett Jr.</a> as the voice of the <a href="https://en.wikipedia.org/wiki/Vortigaunts">Vortigaunts</a>.</p>
+
+<h2>Reception</h2>
+
+<p><i>Half-Life 2: Episode Two</i> received an average score of 90.68% based on 22 reviews on the review aggregator <a href="https://en.wikipedia.org/wiki/GameRankings">GameRankings</a>. On <a href="https://en.wikipedia.org/wiki/Metacritic">Metacritic</a>, it has an average score of 90 out of 100 based on 21 reviews, indicating "universal acclaim". As part of <i><a href="https://en.wikipedia.org/wiki/The_Orange_Box">The Orange Box</a></i> compilation, <i>Episode Two</i> shared with <i><a href="https://en.wikipedia.org/wiki/Portal_(video_game)">Portal</a></i> and <i><a href="https://en.wikipedia.org/wiki/Team_Fortress_2">Team Fortress 2</a></i> in winning "Computer Game of the Year" at the <a href="https://en.wikipedia.org/wiki/11th_Annual_Interactive_Achievement_Awards">11th Annual Interactive Achievement Awards</a>.</p>
+
+<p>Dan Adams of <i><a href="https://en.wikipedia.org/wiki/IGN">IGN</a></i> rated the game 9.4 out of 10 and praised its improved visuals and expansive environments, but cited the short six-hour length as a drawback. He said: "Any way you look at it, <i>Episode Two</i> stands out, even among the <i>Half-Life</i> series, as something special ... a burly experience packed into roughly six hours or so that offers up all the diversity, level design, and thoughtful gameplay we've known while making sure to propel the story forward and leave us wanting more." <a href="https://en.wikipedia.org/wiki/Bit-tech.net"><i>Bit-tech</i></a> awarded the game a ten out of ten score, citing approval of how the story turns and the introduction of side stories and new characters. <i><a href="https://en.wikipedia.org/wiki/1UP.com">1UP.com</a></i> said that it was "vivid, emotionally engaging, and virtually unsurpassed". <i><a href="https://en.wikipedia.org/wiki/PC_Gamer_UK">PC Gamer UK</a></i> felt that <i>Episode Two</i> was "the most sumptuous chapter of the <i>Half-Life</i> saga, and by a country mile". <i><a href="https://en.wikipedia.org/wiki/The_New_York_Times">The New York Times</a></i> enjoyed the gameplay, saying that battles "often require as much ingenuity as they do fast reflexes".</p>
+
+<p><i><a href="https://en.wikipedia.org/wiki/Computer_and_Video_Games">Computer and Video Games</a></i> said that, although the Source engine was dated, the "wonderful art design and the odd bit of technical spit-shine ensure that <i>Episode Two</i> [...] doesn't lose any of its wow factor". They also noticed that the game "goes about fixing a lot of the niggling complaints we had about <i>Episode One</i>," applauding the open forests and rocky hills. The <i>New York Times</i> wrote that "while it sows a few seeds for the final episode of the trilogy, the game lacks the driving force of the previous episode". <i><a href="https://en.wikipedia.org/wiki/GameSpy">GameSpy</a></i> felt that it was less consistent than its predecessors, and that the opening segments were "arguably the weakest".</p>
+
+<h2>Legacy</h2>
+
+<p><i><a href="https://en.wikipedia.org/wiki/Half-Life_2:_Episode_Three">Half-Life 2: Episode Three</a></i> was scheduled for release by Christmas 2007. It was canceled after Valve abandoned episodic development and began developing a new game engine, <a href="https://en.wikipedia.org/wiki/Source_2">Source 2</a>. After <a href="https://en.wikipedia.org/wiki/Unreleased_Half-Life_games">canceling several further <i>Half-Life</i> games</a>, Valve released <i><a href="https://en.wikipedia.org/wiki/Half-Life:_Alyx">Half-Life: Alyx</a></i> in 2020. In November 2024, Valve delisted <i>Episode One</i> and <i>Two</i> from the Steam Store and incorporated them into <i>Half-Life 2</i>.</p>
+
+<p>In reference to the <i>Episode Two</i> <a href="https://en.wikipedia.org/wiki/Achievement_(video_games)">achievement</a> "Little Rocket Man", which requires the player to carry a <a href="https://en.wikipedia.org/wiki/Garden_gnome">garden gnome</a> from the start to the end of the game and place it into a rocket before it launches into orbit, Newell partnered with <a href="https://en.wikipedia.org/wiki/Wētā_Workshop">Wētā Workshop</a> and <a href="https://en.wikipedia.org/wiki/Rocket_Lab">Rocket Lab</a> to create and launch a garden gnome on their "Return To Sender" space mission. The mission launched on November 20, 2020, from <a href="https://en.wikipedia.org/wiki/Rocket_Lab_Launch_Complex_1">Mahia Launch Complex, New Zealand</a>, as a <a href="https://en.wikipedia.org/wiki/Mass_simulator">mass simulator</a>.</p>
+
+
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

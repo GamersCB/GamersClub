@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>DOOM: The Dark Ages----ACTIVACION</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('50d22263-9ed8-40ff-8c62-85979be17ad2/5534506d-5cfb-4f2b-8150-1ddd0b3ead94.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="50d22263-9ed8-40ff-8c62-85979be17ad2/55b08537-bd7c-4bef-9232-71c2f93c6a68.png"/> DOOM: The Dark Ages----ACTIVACION</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="50d22263-9ed8-40ff-8c62-85979be17ad2/27fdfb3c-8d94-4f70-bbad-c0018dff0e9f.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-22/09/2025">22/09/2025</a> 18:01:23</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-20/11/2025">20/11/2025</a> 13:56:23</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-POR ACTIVACION">POR ACTIVACION</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-14/05/2025">14/05/2025</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-86">86</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-id Software">id Software</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Bethesda Softworks">Bethesda Softworks</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Alternativas De Color">Alternativas De Color</a><br/><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Dificultad Ajustable">Dificultad Ajustable</a><br/><a href="#quicklink-HDR Disponible">HDR Disponible</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Sonido Envolvente">Sonido Envolvente</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/3017860" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/3017860/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/3017860/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=3017860" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/3017860" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=3017860" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/3017860/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Buena trama">Buena trama</a><br/><a href="#quicklink-Ciencia ficción">Ciencia ficción</a><br/><a href="#quicklink-Cinematográficos">Cinematográficos</a><br/><a href="#quicklink-De ritmo rápido">De ritmo rápido</a><br/><a href="#quicklink-Demonios">Demonios</a><br/><a href="#quicklink-Disparos">Disparos</a><br/><a href="#quicklink-Disparos clásicos">Disparos clásicos</a><br/><a href="#quicklink-Dragones">Dragones</a><br/><a href="#quicklink-Fantasía oscura">Fantasía oscura</a><br/><a href="#quicklink-FPS">FPS</a><br/><a href="#quicklink-Mechas">Mechas</a><br/><a href="#quicklink-Mitos y leyendas">Mitos y leyendas</a><br/><a href="#quicklink-Para adultos">Para adultos</a><br/><a href="#quicklink-Primera persona">Primera persona</a><br/><a href="#quicklink-Sangre">Sangre</a><br/><a href="#quicklink-Sangriento">Sangriento</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3017860/extras/b3cfba615e512d430bf57d7e668219a4.poster.avif?t=1755006908" width=616 height=575 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3017860/extras/b3cfba615e512d430bf57d7e668219a4.webm?t=1755006908" type="video/webm; codecs=vp9"></video></span></p><p class="bb_paragraph" ><strong>LUCHA EN LA PIEL DEL SLAYER EN UNA GUERRA MEDIEVAL CONTRA EL INFIERNO</strong><br>DOOM: The Dark Ages es la precuela de los aclamados DOOM (2016) y DOOM Eternal, y narra el épico y cinematográfico origen de la furia del DOOM Slayer. En esta tercera entrega de la saga moderna de DOOM, los jugadores se pondrán en la piel del DOOM Slayer en una oscura y siniestra guerra medieval contra el infierno nunca antes vista.</p><p class="bb_paragraph" >DOOM: The Dark Ages es una experiencia para un jugador ambientada en un mundo de fantasía oscura y ciencia ficción que ofrece los intensos combates y los espectaculares gráficos de la incomparable franquicia DOOM, mediante el último motor de idTech.<br><br><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3017860/extras/e23387b1d1d3fa3685f58eb460c5ba60.poster.avif?t=1755006908" width=616 height=334 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3017860/extras/e23387b1d1d3fa3685f58eb460c5ba60.webm?t=1755006908" type="video/webm; codecs=vp9"></video></span><strong>SOMETE AL INFIERNO</strong> <br>Como el superarma de dioses y reyes, harás pedazos a enemigos con tus devastadoras armas favoritas, como la superescopeta, pero también podrás empuñar una variedad de nuevas y brutales armas, como el versátil escudo sierra. Resistirás las acometidas y lucharás en los campos de batalla infestados de demonios en los salvajes e intensos combates por los que es famosa la saga original de DOOM. <br> <br><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3017860/extras/f56732336950fa4d9a843669a5041369.poster.avif?t=1755006908" width=616 height=334 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3017860/extras/f56732336950fa4d9a843669a5041369.webm?t=1755006908" type="video/webm; codecs=vp9"></video></span><strong>RESISTE LAS ACOMETIDAS Y LUCHA</strong> <br>Descubre el origen de la furia del DOOM Slayer en esta épica y cinematográfica historia cargada de acción. El DOOM Slayer, destinado a convertirse en el superarma de dioses y reyes, repele hordas de demonios mientras su líder intenta destruirlo para convertirse en el único terror del infierno. Presencia la forja de una leyenda conforme el Slayer va derrotando a las fuerzas demoníacas y cambia el curso de la guerra. <br> <br><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline crossorigin="anonymous" poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3017860/extras/ae3e9f8f5bef2e696b8a9e9af79dde70.poster.avif?t=1755006908" width=616 height=334 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3017860/extras/ae3e9f8f5bef2e696b8a9e9af79dde70.webm?t=1755006908" type="video/webm; codecs=vp9"></video></span><strong>DESCUBRE REINOS DESCONOCIDOS</strong> <br>En su misión por aplastar a las legiones del infierno, el Slayer se adentrará en reinos inexplorados. Castillos abandonados, campos de batalla épicos, bosques oscuros, páramos ancestrales y mundos del más allá cubiertos de misterio que ocultan un sinfín de desafíos y recompensas. Atraviesa un universo oscuro repleto de amenazas y secretos armado con el poderoso y letal escudo sierra en los niveles más extensos de id Software jamás vistos.</p>
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

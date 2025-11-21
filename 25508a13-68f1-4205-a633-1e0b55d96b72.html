@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Cataclismo</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('25508a13-68f1-4205-a633-1e0b55d96b72/3d2e3a36-8f21-4370-ad37-f32a5a8821da.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="25508a13-68f1-4205-a633-1e0b55d96b72/f367fd68-3512-41cb-9274-42c50e3a5cbd.png"/> Cataclismo</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="25508a13-68f1-4205-a633-1e0b55d96b72/17990490-792e-4c28-829c-afb9b78b9faa.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-10/10/2025">10/10/2025</a> 17:13:21</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-13/11/2025">13/11/2025</a> 0:24:07</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-PORCHE">PORCHE</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-20/03/2025">20/03/2025</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-87">87</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-82">82</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Estrategia">Estrategia</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Simuladores">Simuladores</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Digital Sun">Digital Sun</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Hooded Horse">Hooded Horse</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Alternativas De Color">Alternativas De Color</a><br/><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Comodidad De La Cámara">Comodidad De La Cámara</a><br/><a href="#quicklink-Controles De Volumen Personalizados">Controles De Volumen Personalizados</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Dificultad Ajustable">Dificultad Ajustable</a><br/><a href="#quicklink-Guardar En Cualquier Momento">Guardar En Cualquier Momento</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Opción Solo Ratón">Opción Solo Ratón</a><br/><a href="#quicklink-Opciones De Subtítulos">Opciones De Subtítulos</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Sonido Estéreo">Sonido Estéreo</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/><a href="#quicklink-Workshop">Workshop</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/1422440" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/1422440/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/1422440/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=1422440" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/1422440" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1422440" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/1422440/achievements" target="_blank">Logros</a><br/><a href="https://steamcommunity.com/app/1422440/workshop/" target="_blank">Workshop</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-4X">4X</a><br/><a href="#quicklink-Bélicos">Bélicos</a><br/><a href="#quicklink-Construcción">Construcción</a><br/><a href="#quicklink-Construcción de bases">Construcción de bases</a><br/><a href="#quicklink-Construcción de ciudades">Construcción de ciudades</a><br/><a href="#quicklink-Economía">Economía</a><br/><a href="#quicklink-Estrategia">Estrategia</a><br/><a href="#quicklink-ETR">ETR</a><br/><a href="#quicklink-Gestión">Gestión</a><br/><a href="#quicklink-Gestión de recursos">Gestión de recursos</a><br/><a href="#quicklink-Gran estrategia">Gran estrategia</a><br/><a href="#quicklink-Históricos">Históricos</a><br/><a href="#quicklink-Modificables">Modificables</a><br/><a href="#quicklink-Mundo abierto">Mundo abierto</a><br/><a href="#quicklink-Sandbox">Sandbox</a><br/><a href="#quicklink-Simulación">Simulación</a><br/><a href="#quicklink-Tácticos">Tácticos</a><br/><a href="#quicklink-Tiempo real con pausas">Tiempo real con pausas</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/><a href="#quicklink-Valor continuo">Valor continuo</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1422440/extras/d3d59ab0bf2ef20a0a39d05c61998031.poster.avif?t=1762543667" width=780 height=440 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1422440/extras/d3d59ab0bf2ef20a0a39d05c61998031.webm?t=1762543667" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1422440/extras/d3d59ab0bf2ef20a0a39d05c61998031.mp4?t=1762543667" type="video/mp4"></video></span></p><p class="bb_paragraph" >Guía a los últimos supervivientes del Cataclismo en un mundo corrompido que busca destruir los últimos restos de la humanidad. Construye fortalezas ladrillo a ladrillo, diseñando complejas estructuras de madera y piedra con las que rechazar las hordas de horrores que intentarán acabar con tu grupo. Dirige poderosas unidades para reforzar las defensas, empleando sus diferentes habilidades para contener al enemigo en una brecha tras otra. Lidera incursiones a lo desconocido para obtener recursos esenciales para ampliar tu poderío militar y capacidad de construcción mientras resistes asaltos cada vez más poderosos. Noche tras noche, el asedio es constante.</p><p class="bb_paragraph" ></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1422440/extras/63be1b5365c9d71eafab6c25713d0df3.avif?t=1762543667" width=1560 height=213 /></span><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1422440/extras/45364f0391522a4f95347b3faba1af9d.poster.avif?t=1762543667" width=780 height=440 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1422440/extras/45364f0391522a4f95347b3faba1af9d.webm?t=1762543667" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1422440/extras/45364f0391522a4f95347b3faba1af9d.mp4?t=1762543667" type="video/mp4"></video></span></p><p class="bb_paragraph" >Tus ciudadelas, alejadas de la relativa protección de la última ciudad, deberán aguantar contra las hordas de horrores y evitar que alcancen el corazón de la humanidad. Edifica fortalezas inexpugnables en diversos biomas con un completo sistema de construcción que te permite diseñar las defensas con total libertad y creatividad estratégica, adaptándote al entorno de cada lugar. Aprovecha los cuellos de botella naturales, el terreno elevado y los recursos de la región y prepárate para los ataques que trae la noche.</p><p class="bb_paragraph" ></p><ul class="bb_ul"><li><p class="bb_paragraph" >El sistema de construcción modular te permite crear las fortalezas de tus sueños, sea bloque a bloque, usando planos que has diseñado con antelación o aprovechando las creaciones de otros jugadores de la comunidad. Emplea los recursos que obtengas para crear estructuras con las que acceder a lugares del mapa inaccesibles o para preparar fortificaciones que impidan el paso a los horrores y proporcionen posiciones superiores a tus tropas.</p></li><li><p class="bb_paragraph" >Construye estructuras rápidas y baratas de madera o recurre a la firme piedra para resistir las acometidas del enemigo. Vigila la integridad estructural y los pilares maestros, ya que el colapso de una estructura aplastará a enemigos y amigos por igual. También puedes crear vulnerabilidades estratégicas intencionadas para derribar edificios sobre tus enemigos.</p></li><li><p class="bb_paragraph" >Adapta tu bastión a sus crecientes necesidades obteniendo nuevas herramientas y expande tus dominios para obtener los recursos necesarios para crear tus invencibles defensas. Optimiza la ruta desde los depósitos de recursos a tus almacenes con estructuras adecuadas y edifica sobre los tejados para aprovechar el limitado espacio del que dispones.</p></li></ul><p class="bb_paragraph" ></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1422440/extras/29c126e39b305fb94c65a2ea0e307c8a.avif?t=1762543667" width=1560 height=213 /></span><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1422440/extras/34cf923b28c6857632ce9c822d7edd13.poster.avif?t=1762543667" width=780 height=440 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1422440/extras/34cf923b28c6857632ce9c822d7edd13.webm?t=1762543667" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1422440/extras/34cf923b28c6857632ce9c822d7edd13.mp4?t=1762543667" type="video/mp4"></video></span></p><p class="bb_paragraph" >Los horrores atacarán tus defensas durante el día, pero por la noche es cuando llega el verdadero asalto. Pasa los días explorando el mundo y ampliando tus fuerzas, porque cuando el sol se ponga llegará el momento de repartir tus fuerzas por las defensas para resistir la horda de esa noche.</p><p class="bb_paragraph" ></p><ul class="bb_ul"><li><p class="bb_paragraph" >Dirige con astucia a tus soldados: desde arqueros con vista de lince hasta cañoneros armados con explosivos te permitirán responder a una situación en constante cambio y a la llegada de nuevos horrores. Atrae al enemigo a una encerrona llena de trampas letales y haz llover sobre ellos flechas incendiarias y tarros llenos de veneno desde las almenas. Maniobra a tus tropas a posiciones tácticas para beneficiarte de sus rasgos y habilidades, que pasarán a estar disponibles con cada mejora. Elige la altura ideal para cada unidad: la buena arquitectura contempla la defensa en varios niveles.</p></li><li><p class="bb_paragraph" >Erige estructuras vitales para reforzar tus defensas contra la creciente amenaza y alcanza nuevas cotas de prosperidad con tecnologías innovadoras. Los puestos de recogida de recursos, los centros de reclutamiento y las viviendas de tus ciudadanos apoyan a las tropas de forma directa e indirecta. Y si las murallas caen, hasta las casas pueden servir de segunda línea de defensa. Pase lo que pase, la ciudadela debe resistir.</p></li></ul><p class="bb_paragraph" ></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1422440/extras/ffa084300b9e0b6602ec7a6342bffdc7.avif?t=1762543667" width=1560 height=213 /></span><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1422440/extras/45ff7e0f7e13ce88f5a914166f336784.poster.avif?t=1762543667" width=780 height=440 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1422440/extras/45ff7e0f7e13ce88f5a914166f336784.webm?t=1762543667" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1422440/extras/45ff7e0f7e13ce88f5a914166f336784.mp4?t=1762543667" type="video/mp4"></video></span></p><p class="bb_paragraph" >Cataclismo ofrece tres opciones: una campaña de un jugador épica con una historia cautivadora, un modo de escaramuzas con mapas elaborados a mano y un modo de desafío infinitamente jugable que te pondrá a prueba en mapas generados automáticamente en los que deberás rechazar oleadas cada vez más peligrosas de horrores. Un complejo editor de mapas te ofrece la oportunidad de diseñar y compartir tus propios mapas de escaramuza para retar a la comunidad, mientras que el completo sistema de construcción permitirá a cualquiera con sueños de arquitectura crear y compartir sus planos para ayudar en la defensa contra los horrores.</p><p class="bb_paragraph" ></p><p class="bb_paragraph" >El Cataclismo devastó el mundo, pero la esperanza es lo último que se pierde. Guía a la humanidad a través de la oscuridad hacia un futuro resplandeciente, construye imponentes fortalezas y lidera a tus tropas en batallas en tiempo real contra una horda aparentemente interminable que no se detendrá ante nada con tal de destruir a tu pueblo.</p><p class="bb_paragraph" ></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1422440/extras/3b545e7ab8df8b6e28a212f859cf2d9f.poster.avif?t=1762543667" width=780 height=440 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1422440/extras/3b545e7ab8df8b6e28a212f859cf2d9f.webm?t=1762543667" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1422440/extras/3b545e7ab8df8b6e28a212f859cf2d9f.mp4?t=1762543667" type="video/mp4"></video></span></p>
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

@@ -1,0 +1,416 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Grand Theft Auto: San Andreas</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('456b6903-4b2a-4772-9201-93c63a4a2362/1288db8a-52ef-4e3b-bf48-f1a307ff394c.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="456b6903-4b2a-4772-9201-93c63a4a2362/c3bba52e-0975-4ceb-8865-36ad210a1897.png"/> Grand Theft Auto: San Andreas</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="456b6903-4b2a-4772-9201-93c63a4a2362/51e90959-d63e-4914-98d4-efb8d3ea01cf.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-26/10/2025">26/10/2025</a> 13:52:40</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-27/10/2025">27/10/2025</a> 1:28:04</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB DATOS">2TB DATOS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-Android">Android</a><br/><a href="#quicklink-Fire OS">Fire OS</a><br/><a href="#quicklink-iOS">iOS</a><br/><a href="#quicklink-Macintosh">Macintosh</a><br/><a href="#quicklink-Microsoft Xbox">Microsoft Xbox</a><br/><a href="#quicklink-Microsoft Xbox 360">Microsoft Xbox 360</a><br/><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/><a href="#quicklink-Sony PlayStation 2">Sony PlayStation 2</a><br/><a href="#quicklink-Sony PlayStation 3">Sony PlayStation 3</a><br/><a href="#quicklink-Windows Phone">Windows Phone</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-26/10/2004">26/10/2004</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-95">95</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Action-adventure">Action-adventure</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-Rockstar North">Rockstar North</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-Rockstar Games">Rockstar Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single-player">Single-player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/Grand_Theft_Auto:_San_Andreas" target="_blank">Wikipedia</a><br/><a href="https://www.rockstargames.com/games/sanandreas" target="_blank">Official website</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-[Game Engine] RenderWare">[Game Engine] RenderWare</a><br/><a href="#quicklink-[People] artist: Aaron Garbut">[People] artist: Aaron Garbut</a><br/><a href="#quicklink-[People] composer: Michael Hunter">[People] composer: Michael Hunter</a><br/><a href="#quicklink-[People] producer: Leslie Benzies">[People] producer: Leslie Benzies</a><br/><a href="#quicklink-[People] programmer: Adam Fowler">[People] programmer: Adam Fowler</a><br/><a href="#quicklink-[People] programmer: Obbe Vermeij">[People] programmer: Obbe Vermeij</a><br/><a href="#quicklink-[People] writer: Dan Houser">[People] writer: Dan Houser</a><br/><a href="#quicklink-[People] writer: DJ Pooh">[People] writer: DJ Pooh</a><br/><a href="#quicklink-[People] writer: James Worrall">[People] writer: James Worrall</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<p><i><b>Grand Theft Auto: San Andreas</b></i> is a 2004 <a href="https://en.wikipedia.org/wiki/Action-adventure_game">action-adventure game</a> developed by <a href="https://en.wikipedia.org/wiki/Rockstar_North">Rockstar North</a> and published by <a href="https://en.wikipedia.org/wiki/Rockstar_Games">Rockstar Games</a>. It is the fifth main game in the <a href="https://en.wikipedia.org/wiki/Grand_Theft_Auto"><i>Grand Theft Auto</i> series</a>, following 2002's <i><a href="https://en.wikipedia.org/wiki/Grand_Theft_Auto:_Vice_City">Grand Theft Auto: Vice City</a></i>, and the seventh entry overall. Set within the fictional U.S. state of San Andreas, the game follows <a href='https://en.wikipedia.org/wiki/Carl_"CJ"_Johnson'>Carl "CJ" Johnson</a>, who returns home in 1992 after his mother's murder and finds his old <a href="https://en.wikipedia.org/wiki/Street_gang">street gang</a> has lost much of their territory. Over the course of the game, he attempts to rebuild the gang, clashes with corrupt authorities and powerful criminals, and gradually unravels the truth behind his mother's murder.</p>
+
+<p>The game is played from a <a href="https://en.wikipedia.org/wiki/Third-person_view">third-person perspective</a> and its world is navigated on foot or by vehicle. The <a href="https://en.wikipedia.org/wiki/Open_world">open world</a> design lets the player freely roam San Andreas, consisting of three major metropolitan cities: Los Santos, San Fierro, and Las Venturas, based on <a href="https://en.wikipedia.org/wiki/Los_Angeles">Los Angeles</a>, <a href="https://en.wikipedia.org/wiki/San_Francisco">San Francisco</a>, and <a href="https://en.wikipedia.org/wiki/Las_Vegas">Las Vegas</a>, respectively. Rockstar conducted on-site research in each city and consulted Los Angeles natives <a href="https://en.wikipedia.org/wiki/DJ_Pooh">DJ Pooh</a>, <a href="https://en.wikipedia.org/wiki/Estevan_Oriol">Estevan Oriol</a>, and <a href="https://en.wikipedia.org/wiki/Mister_Cartoon">Mister Cartoon</a> for help imitating the city's culture. The narrative is based on multiple real-life events in Los Angeles, including the <a href="https://en.wikipedia.org/wiki/Bloods">Bloods</a> and <a href="https://en.wikipedia.org/wiki/Crips">Crips</a> street gang rivalry, the <a href="https://en.wikipedia.org/wiki/1990s_crack_epidemic">1990s crack epidemic</a>, the <a href="https://en.wikipedia.org/wiki/1992_Los_Angeles_riots">1992 Los Angeles riots</a>, and the <a href="https://en.wikipedia.org/wiki/Rampart_scandal">Rampart scandal</a>. The 75-person development team spent nearly two years creating the game. <i>San Andreas</i> was released in October 2004 for the <a href="https://en.wikipedia.org/wiki/PlayStation_2">PlayStation 2</a>.</p>
+
+<p>The game received critical acclaim for its characters, narrative, open world design, and visual fidelity, but mixed responses towards its mission design, technical issues, and portrayal of race. It generated controversy when the hidden "<a href="https://en.wikipedia.org/wiki/Hot_Coffee_(minigame)">Hot Coffee</a>" sex minigame was discovered, briefly requiring the game to be re-rated <a href="https://en.wikipedia.org/wiki/Entertainment_Software_Rating_Board#Adults_Only_rating">Adults Only</a>. <i>San Andreas</i> received year-end accolades from several <a href="https://en.wikipedia.org/wiki/Gaming_publications">gaming publications</a>, and it is considered one of the <a href="https://en.wikipedia.org/wiki/Sixth_generation_of_video_game_consoles">sixth generation of console gaming</a>'s most significant titles and among the <a href="https://en.wikipedia.org/wiki/Best_video_games_ever_made">best video games ever made</a>. It was released for <a href="https://en.wikipedia.org/wiki/Windows">Windows</a> and the <a href="https://en.wikipedia.org/wiki/Xbox_(console)">Xbox</a> in 2005, followed by enhanced versions and mobile ports in the 2010s, and <a href="https://en.wikipedia.org/wiki/Grand_Theft_Auto:_The_Trilogy_–_The_Definitive_Edition">a remastered version</a> in 2021. <i>San Andreas</i> is the <a href="https://en.wikipedia.org/wiki/List_of_best-selling_PlayStation_2_games">best-selling PlayStation 2 game</a> with over 17.3 million copies sold, and one of the <a href="https://en.wikipedia.org/wiki/Best-selling_games_of_all_time">best-selling games of all time</a> with 27.5 million copies sold overall. Its successor, <i><a href="https://en.wikipedia.org/wiki/Grand_Theft_Auto_IV">Grand Theft Auto IV</a></i>, was released in April 2008.</p>
+
+<h2>Gameplay</h2>
+
+<p><i>Grand Theft Auto: San Andreas</i> is an <a href="https://en.wikipedia.org/wiki/Action-adventure_game">action-adventure game</a> played from a <a href="https://en.wikipedia.org/wiki/Third-person_view">third-person view</a>. In the game, players control criminal <a href='https://en.wikipedia.org/wiki/Carl_"CJ"_Johnson'>Carl "CJ" Johnson</a> and complete missions—linear scenarios with set objectives—to progress through the story. Outside of missions, players can <a href="https://en.wikipedia.org/wiki/Nonlinear_gameplay">freely roam</a> the game's <a href="https://en.wikipedia.org/wiki/Open_world">open world</a> and complete optional side missions. A <a href="https://en.wikipedia.org/wiki/Multiplayer">multiplayer</a> mode allows two players to roam the world. The fictional state of San Andreas, which makes up the open world, comprises three metropolitan cities: Los Santos, San Fierro, and Las Venturas. The cities are unlocked as the story progresses; airports allow teleportation between each city using <a href="https://en.wikipedia.org/wiki/Fast_travel">fast travel</a>.<sup>: 1 </sup> Scattered throughout the map, safehouses can be purchased to <a href="https://en.wikipedia.org/wiki/Save_the_game">save the game</a> and store vehicles.<sup>: 20 </sup></p>
+
+<p>Players may run, swim, and use vehicles to navigate the world, and use <a href="https://en.wikipedia.org/wiki/Melee#Use_in_gaming">melee</a> attacks, firearms and explosives to fight enemies, including the ability to <a href="https://en.wikipedia.org/wiki/Dual_wield">dual wield</a> firearms and commit <a href="https://en.wikipedia.org/wiki/Drive-by_shooting">drive-by shootings</a>. Weapons are purchased from local <a href="https://en.wikipedia.org/wiki/Firearms_dealer">firearms dealers</a>, retrieved from dead enemies, and found scattered through the world. In combat, <a href="https://en.wikipedia.org/wiki/Auto-aim">auto-aim</a> is used to lock on to targets.<sup>: 42 </sup> Should players take damage, their health meter can be fully regenerated through health pick-ups, and <a href="https://en.wikipedia.org/wiki/Body_armour">body armour</a> can be used to absorb gunshots and explosive damage. Players <a href="https://en.wikipedia.org/wiki/Respawn">respawn</a> at hospitals when their health depletes.<sup>: 100 </sup> If players commit crimes, law enforcement may respond as indicated by a "<a href="https://en.wikipedia.org/wiki/Fugitive">wanted</a>" meter in the <a href="https://en.wikipedia.org/wiki/HUD_(video_gaming)">head-up display</a>. Stars displayed on the meter indicate the current wanted level; at the maximum six-star level, police helicopters and military are sent after players.<sup>: 1 </sup> Officers will search for players who leave the wanted vicinity. The meter enters a cool-down mode and eventually recedes when players are hidden from the officers' line of sight.<sup>: 29 </sup> The game features more than 180 vehicles, including cars, motorcycles, aircraft, boats, and <a href="https://en.wikipedia.org/wiki/Remote-control_vehicle">remote-control vehicles</a>,<sup>: 6–11 </sup> and most can be accessorised with modifications like <a href="https://en.wikipedia.org/wiki/Car_hydraulics">hydraulics</a>, <a href="https://en.wikipedia.org/wiki/Nitrous_oxide_engine">nitrous oxide engines</a>, and <a href="https://en.wikipedia.org/wiki/Car_stereo">stereo systems</a>.<sup>: 201–204 </sup></p>
+
+<p>In the world, players can fight for territory by attacking rival gang members; the territory is won when players survive three waves of responding enemy attacks. Won territories are subject to periodic enemy gang attacks—they must be successfully defended or else lost.<sup>: 196 </sup> While free roaming the world, players may engage in activities such as <a href="https://en.wikipedia.org/wiki/Burglary">burglary</a>, <a href="https://en.wikipedia.org/wiki/Fire_fighting">fire fighting</a>, <a href="https://en.wikipedia.org/wiki/Pimping">pimping</a>, <a href="https://en.wikipedia.org/wiki/Taxi">taxi</a>, and <a href="https://en.wikipedia.org/wiki/Vigilante">vigilante</a> missions;<sup>: 176–180 </sup> completion rewards players with cash, which can be spent on CJ's accessories, clothing, hairstyles, and tattoos—new <a href="https://en.wikipedia.org/wiki/Role-playing_video_game">role-playing</a> elements for the series. Balancing food and physical activity impacts CJ's appearance and physical attributes; eating and exercising maintains health, while losing muscle lessens combat effectiveness. Three styles of <a href="https://en.wikipedia.org/wiki/Hand-to-hand_combat">hand-to-hand combat</a>—<a href="https://en.wikipedia.org/wiki/Boxing">boxing</a>, <a href="https://en.wikipedia.org/wiki/Kickboxing">kickboxing</a>, and <a href="https://en.wikipedia.org/wiki/Mixed_martial_arts">mixed martial arts</a>—are taught at gyms in each city.<sup>: 144–145 </sup><sup>: 31 </sup> The game tracks respect among CJ's friends, which varies according to his actions and appearance.<sup>: 1 </sup> Acquired skills are also tracked, such as driving, firearms handling, lung capacity, muscles, and stamina, which unlock additional game mechanics.<sup>: 4 </sup> Players can date six different girls and take them to dinner, drinks, or dancing.<sup>: 200–201 </sup></p>
+
+<h2>Plot</h2>
+
+<p>In 1992, after five years in <a href="https://en.wikipedia.org/wiki/Liberty_City_(Grand_Theft_Auto)">Liberty City</a>, gangster Carl "CJ" Johnson (<a href="https://en.wikipedia.org/wiki/Young_Maylay">Young Maylay</a>) returns to Los Santos following his mother's death in a drive-by shooting. He is intercepted by corrupt <a href="https://en.wikipedia.org/wiki/C.R.A.S.H.">C.R.A.S.H.</a> officers led by Frank Tenpenny (<a href="https://en.wikipedia.org/wiki/Samuel_L._Jackson">Samuel L. Jackson</a>), who threaten to implicate CJ in the killing of a fellow police officer unless he co-operates with them. CJ returns to Grove Street and reunites with his brother Sean "Sweet" Johnson (<a href="https://en.wikipedia.org/wiki/Faizon_Love">Faizon Love</a>), sister Kendl Johnson (<a href="https://en.wikipedia.org/wiki/Yolanda_Whittaker">Yolanda Whittaker</a>), and members of his old gang, Big Smoke (<a href="https://en.wikipedia.org/wiki/Clifton_Powell">Clifton Powell</a>) and Ryder (<a href="https://en.wikipedia.org/wiki/MC_Eiht">MC Eiht</a>). Discovering the Grove Street Families (GSF) have lost much of their territory, CJ restores the gang to power by helping reunite the various GSF sets who had splintered and allying himself with Cesar Vialpando (<a href="https://en.wikipedia.org/wiki/Clifton_Collins_Jr.">Clifton Collins Jr.</a>)—Kendl's boyfriend and leader of the Varrios Los Aztecas gang. CJ and Cesar witness Smoke and Ryder meeting with Tenpenny and the rival Ballas gang, and discover they betrayed the GSF and were responsible for killing CJ's mother. Suspecting a set-up, CJ rushes to Sweet's aid in a showdown against the Ballas.</p>
+
+<p>Sweet gets wounded in the ambush and imprisoned, while Tenpenny exiles CJ to the countryside, where he forces him to eliminate witnesses to C.R.A.S.H.'s corruption in exchange for Sweet's safety in prison. CJ befriends an ageing hippie and marijuana farmer named "the Truth" (<a href="https://en.wikipedia.org/wiki/Peter_Fonda">Peter Fonda</a>) and <a href="https://en.wikipedia.org/wiki/Triad_(organized_crime)">Triad</a> leader Wu Zi Mu (<a href="https://en.wikipedia.org/wiki/James_Yaegashi">James Yaegashi</a>). He participates in a street race and wins a garage in San Fierro, which he sets up to earn money, and crosses paths with the Loco Syndicate, Big Smoke and Ryder's drug connection. Infiltrating the organisation, he identifies its leader: the affable but mysterious Mike Toreno (<a href="https://en.wikipedia.org/wiki/James_Woods">James Woods</a>). Alongside Cesar and the Triad, CJ destroys the Loco Syndicate's drug factory, killing Ryder and the other leaders except Toreno, who reveals himself an undercover agent. He enlists CJ's help in several shady operations in exchange for Sweet's release from prison. Meanwhile in Las Venturas, CJ and Wu Zi Mu establish a <a href="https://en.wikipedia.org/wiki/Casino">casino</a> and clash with the <a href="https://en.wikipedia.org/wiki/Mafia">Mafia</a>.</p>
+
+<p>After his release, Sweet and CJ revive the GSF, drive off the rival gangs from their territory, and rebuild throughout Los Santos. Tenpenny is arrested and tried for several felonies, but the charges are dropped due to lack of witnesses, prompting a city-wide riot. CJ soon discovers Big Smoke's hideout. The two engage in a gunfight; CJ wins, and before dying, Smoke confesses that he got caught up in money and power. Tenpenny arrives, holds CJ at gunpoint, steals Smoke's drug money, and escapes after causing an explosion in the building. He drives off in a fire truck, followed by CJ and Sweet, but eventually loses control and crashes over the side of a bridge overlooking Grove Street. CJ and his friends watch as Tenpenny dies of his injuries, ending the riot. In the aftermath, CJ's family and friends celebrate their success at the Johnson house. In the midst of the celebrations, CJ leaves to check on the neighbourhood.</p>
+
+<h2>Development</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/Rockstar_North">Rockstar North</a> began development of <i>San Andreas</i> following the release of <i><a href="https://en.wikipedia.org/wiki/Grand_Theft_Auto:_Vice_City">Grand Theft Auto: Vice City</a></i> in October 2002. The 50-person team grew to 75 as the developers from <i><a href="https://en.wikipedia.org/wiki/Manhunt_(video_game)">Manhunt</a></i> (2003) joined <i>San Andreas</i>, while the New York team consisted of around 15 members; the <a href="https://en.wikipedia.org/wiki/Game_testing">testing</a> department grew from 60 to 100. Having two years of development, as opposed to <i>Vice City</i>'s one, gave the team more opportunities to experiment and reevaluate the previous <i><a href="https://en.wikipedia.org/wiki/Grand_Theft_Auto">Grand Theft Auto</a></i> games. Producer <a href="https://en.wikipedia.org/wiki/Leslie_Benzies">Leslie Benzies</a> hoped <i>San Andreas</i> would redefine the series and "revolutionize open-ended gameplay and video game production values". <a href="https://en.wikipedia.org/wiki/Rockstar_Games">Rockstar Games</a>'s <i><a href="https://en.wikipedia.org/wiki/The_Warriors_(video_game)">The Warriors</a></i> was delayed from 2004 to 2005 to provide additional resources to <i>San Andreas</i>. <i>San Andreas</i> had a budget of under US$10 million.</p>
+
+<p>Rockstar North's minimal <a href="https://en.wikipedia.org/wiki/Turnover_(employment)">turnover</a> since the development of the series's first game, <i><a href="https://en.wikipedia.org/wiki/Grand_Theft_Auto_(video_game)">Grand Theft Auto</a></i> (1997), allowed the team to leverage their experience with the series.<sup>: 57 </sup> Some developers were concerned about working conditions at Rockstar during <i>San Andreas</i>'s development, as they were unable to take an adequate break after <i>Vice City</i>. Programmer Gary Foreman feared the company had entered a "constant <a href="https://en.wikipedia.org/wiki/Crunch_(video_games)">crunch</a>", as some developers worked for 17 hours per day.<sup>: 138 </sup> Some stepped away after disagreements with Rockstar president <a href="https://en.wikipedia.org/wiki/Sam_Houser">Sam Houser</a> about working conditions,<sup>: 139–141, 160 </sup> and one veteran employee quit in objection to the portrayal of <a href="https://en.wikipedia.org/wiki/African_Americans">African Americans</a> and what he perceived to be a gloomier and more exploitative tone in Rockstar's output, particularly <i>San Andreas</i> and <i>Manhunt</i>.<sup>: 167 </sup></p>
+
+<h3>Technical and open world design</h3>
+
+<p><i>San Andreas</i>'s world was originally envisioned as three separate maps connected by public transport; it later became three cities in one map, with countryside and desert in between. Its cities are inspired by real locations: Los Santos by <a href="https://en.wikipedia.org/wiki/Los_Angeles">Los Angeles</a>, San Fierro by <a href="https://en.wikipedia.org/wiki/San_Francisco">San Francisco</a>, and Las Venturas by <a href="https://en.wikipedia.org/wiki/Las_Vegas">Las Vegas</a>.<sup>: 44 </sup> Early in development, the team travelled to each city for research and photography;<sup>: 61 </sup><sup>: 40 </sup> art director Aaron Garbut felt Los Angeles's gang territory in particular was difficult to capture without first-hand experience. Rockstar's New York-based research team took thousands of photographs and video,<sup>: 61 </sup> some of which were used as <a href="https://en.wikipedia.org/wiki/Texture_mapping">textures</a> in the game. <i>San Andreas</i>'s world is 36 square kilometres (14 sq mi), about four to six times larger than <i><a href="https://en.wikipedia.org/wiki/Grand_Theft_Auto_III">Grand Theft Auto III</a></i>'s and <i>Vice City</i>'s;<sup>: 44 </sup> each city in <i>San Andreas</i> is approximately as large as Vice City. Garbut found it more difficult to memorise <i>San Andreas</i>'s larger map than its predecessors'.<sup>: 61 </sup> The team wanted all elements—including packaging and marketing—to maintain a consistent theme to ensure players felt they were connected.<sup>: 47 </sup></p>
+
+<p>Benzies felt Rockstar North's relationship with Los Angeles natives <a href="https://en.wikipedia.org/wiki/Estevan_Oriol">Estevan Oriol</a>, <a href="https://en.wikipedia.org/wiki/Mister_Cartoon">Mister Cartoon</a>, and <a href="https://en.wikipedia.org/wiki/DJ_Pooh">DJ Pooh</a> helped them imitate the city's 1990s street culture.<sup>: 40 </sup> The team wanted to ensure the world looked neither too "toy-towny" nor too precise, as they sought "depth" over quantitative size; Garbut wanted players to "feel like [they] can stop at any point and discover new things". Real-world areas were the inspiration for many in-game locations: <a href="https://en.wikipedia.org/wiki/Compton,_California">Compton</a> for Los Santos's urban areas, and the <a href="https://en.wikipedia.org/wiki/Golden_Gate_Bridge">Golden Gate Bridge</a> for the Gant Bridge. The team were enthusiastic about the inclusion of mountains, forests, and a desert—firsts for the series. San Fierro's hills, based on <a href="https://en.wikipedia.org/wiki/List_of_hills_in_San_Francisco">those in San Francisco</a>, were intended to draw the player's focus towards vehicle gameplay,<sup>: 45 </sup> and the open countryside driving was inspired from a technical perspective by Rockstar's <i><a href="https://en.wikipedia.org/wiki/Smuggler's_Run">Smuggler's Run</a></i> (2002).<sup>: 42 </sup> Producer and co-writer <a href="https://en.wikipedia.org/wiki/Dan_Houser">Dan Houser</a> felt the game's return to Los Santos in the final act afforded players a chance to view it from a different perspective.<sup>: 122 </sup> Garbut established <a href="https://en.wikipedia.org/wiki/Climate_zones">climate zones</a> for each city represented by their sky colour: Los Santos's red-orange, San Fierro's blue, and Las Venturas's red.</p>
+
+<p><i>San Andreas</i> was built using the <a href="https://en.wikipedia.org/wiki/Game_engine">game engine</a> <a href="https://en.wikipedia.org/wiki/RenderWare">RenderWare</a>.<sup>: 74 </sup> Its <a href="https://en.wikipedia.org/wiki/Graphics_pipeline">render pipeline</a> was rewritten for increased graphical detail and scope, allowing 35–50% more <a href="https://en.wikipedia.org/wiki/Polygon_(computer_graphics)">polygons</a> on screen,<sup>: 74 </sup> real-time reflections and <a href="https://en.wikipedia.org/wiki/Volumetric_lighting">volumetric lighting</a>, and unique <a href="https://en.wikipedia.org/wiki/3D_modeling">models</a> and lighting sets for day and night,<sup>: 45 </sup> including full shadows for stealth sequences.<sup>: 24 </sup> According to Garbut, the world is built with around 16,000 unique objects and buildings.<sup>: 61 </sup> Several buildings share a single low-detail model, allowing them to be loaded as players traverse the map without the interruption of loading screens like in <i>Vice City</i>.<sup>: 122 </sup> Textures were created at a high resolution and scaled down for platforms unable to handle them. The driving physics were reworked from previous games in consideration of <i>San Andreas</i>'s more open areas. <i>Manhunt</i> inspired <i>San Andreas</i>'s stealth elements,<sup>: 49 </sup> and the "physicality" of <i>Manhunt</i>'s targeting and gun gameplay was adapted to the open world formula. <a href="https://en.wikipedia.org/wiki/Scripting_language">Computer scripting</a> advancements enabled the developers to create gameplay features not possible in their previous games, such as the casino minigames. The game's action sequences were crafted as an extension of the team's favourite moments of <i>Vice City</i>.</p>
+
+<p>Several historical events influenced the narrative, including the <a href="https://en.wikipedia.org/wiki/Rampart_scandal">Rampart scandal</a> of the <a href="https://en.wikipedia.org/wiki/Los_Angeles_Police_Department">Los Angeles Police Department</a>, the <a href="https://en.wikipedia.org/wiki/1990s_crack_epidemic">1990s crack epidemic</a>, the <a href="https://en.wikipedia.org/wiki/1992_Los_Angeles_riots">1992 Los Angeles riots</a>, and the rivalry between the <a href="https://en.wikipedia.org/wiki/Bloods">Bloods</a> and <a href="https://en.wikipedia.org/wiki/Crips">Crips</a> street gangs. Sam Houser recounted being fascinated by the appearances of street gangs and terrified by their behaviour; the writers sought to accurately portray gang violence without glorifying it,<sup>: 54 </sup> and wanted each gang to act differently, signified by unique walking styles. DJ Pooh was hired to co-write the game from an American perspective.<sup>: 189 </sup> The narrative was influenced by <a href="https://en.wikipedia.org/wiki/Hollywood_films">Hollywood films</a>; Dan Houser said the team watched "hundreds of movies to get the California vibe". The developers referenced <i><a href="https://en.wikipedia.org/wiki/Boyz_n_the_Hood">Boyz n the Hood</a></i> (1991), <i><a href="https://en.wikipedia.org/wiki/Colors_(film)">Colors</a></i> (1988), and <i><a href="https://en.wikipedia.org/wiki/Menace_II_Society">Menace II Society</a></i> (1993) for narrative inspiration, and compared their in-game locations to those in different films: the countryside to <i><a href="https://en.wikipedia.org/wiki/Deliverance">Deliverance</a></i> (1972), San Fierro to <i><a href="https://en.wikipedia.org/wiki/Bullitt">Bullitt</a></i> (1968), and Las Venturas to <i><a href="https://en.wikipedia.org/wiki/Casino_(1995_film)">Casino</a></i> (1995).<sup>: 77 </sup> Journalists identified references to other films like <i><a href="https://en.wikipedia.org/wiki/Juice_(1992_film)">Juice</a></i> (1992) and <i><a href="https://en.wikipedia.org/wiki/New_Jack_City">New Jack City</a></i> (1991). The focus on several communities was prompted by the variety in <a href="https://en.wikipedia.org/wiki/West_Coast_of_the_United_States">West Coast</a> culture in the 1990s.</p>
+
+<p>While the stories are largely unconnected, <i>San Andreas</i> concluded a trilogy that started with <i>Grand Theft Auto III</i>, allowing Rockstar to explore the 1980s (<i>Vice City</i>), 1990s (<i>San Andreas</i>), and early 2000s (<i>III</i>). The team wanted the games to be loosely connected, avoiding an "ultimate bad guy"; Dan Houser enjoyed <i>San Andreas</i>'s inclusion of <i>III</i>'s antagonist Catalina as the character became more sympathetic. The team felt "the world's attention was on California" in the 1990s in regards to news and music, and that it translated well to the game;<sup>: 77 </sup> they considered other time periods, like the 1930s to 50s, but found them incongruous with the series.<sup>: 108 </sup> Dan Houser said the game's satire was aimed towards the "broader weirdness" of American <a href="https://en.wikipedia.org/wiki/Consumerism">consumerism</a> and <a href="https://en.wikipedia.org/wiki/Action_movies">action movies</a>. He noted the writers attempted to outdo each other's humour. The team wanted to give players the freedom to make choices while maintaining interest in the story. The game features over 400 speaking actors and over 60,000 lines of dialogue, including over 7,700 for CJ; it broke a <a href="https://en.wikipedia.org/wiki/Guinness_World_Record">Guinness World Record</a> for the largest video game voice cast with 861 credited actors. Recording took place over roughly five months. Each <a href="https://en.wikipedia.org/wiki/Non-player_character">non-player character</a> had around an hour of dialogue, in contrast to <i>Vice City</i>'s ten minutes.<sup>: 71 </sup></p>
+
+<p>Sam Houser sought an unknown actor for CJ, as he found <a href="https://en.wikipedia.org/wiki/Ray_Liotta">Ray Liotta</a>'s performance as <a href="https://en.wikipedia.org/wiki/Tommy_Vercetti">Tommy Vercetti</a> in <i>Vice City</i> "conflicting" due to his familiarity with Liotta's previous work. He opted to cast celebrities in secondary roles, such as Jackson as Tenpenny, and he felt Young Maylay's obscurity in the industry made CJ feel "very, very human". Rockstar asked Young Maylay to audition after overhearing him speak with DJ Pooh; he was cast in the role—his first acting performance—a few weeks after auditioning.<sup>: 41 </sup> He felt the developers gave him the freedom to imbue CJ with his own personality. They aimed for CJ to be their "most human" character, ensuring he had "the most intense story around him" to allow players to identify.<sup>: 54 </sup> DJ Pooh compared CJ to <a href="https://en.wikipedia.org/wiki/Tupac_Shakur">Tupac Shakur</a> in his fierce dedication to family but ability to become "cold-blooded" when necessary.<sup>: 49 </sup> The team felt the ability to adjust CJ's weight helped players feel their actions could have consequences. Dan Houser felt CJ's customisability allowed players to better connect with the characters.<sup>: 50 </sup> DJ Pooh engaged several other actors to work on the game, such as Faizon Love, MC Eiht, and <a href="https://en.wikipedia.org/wiki/Shawn_Fonteno">Shawn Fonteno</a>.</p>
+
+<p>Rockstar partnered with <a href="https://en.wikipedia.org/wiki/Interscope_Records">Interscope Records</a> to create the soundtrack. The in-game radio features eleven radio stations with twenty <a href="https://en.wikipedia.org/wiki/DJ">DJs</a>—including <a href="https://en.wikipedia.org/wiki/Axl_Rose">Axl Rose</a>, <a href="https://en.wikipedia.org/wiki/Chuck_D">Chuck D</a>, and <a href="https://en.wikipedia.org/wiki/George_Clinton_(funk_musician)">George Clinton</a>—and more than three times as many licensed songs and original in-universe advertisements as <i>Grand Theft Auto III</i>. The radio features were overhauled; instead of looping sounds, each station became dynamic, allowing a randomised song order, accurate weather predictions, and story-relevant news announcements. <a href="https://en.wikipedia.org/wiki/Michael_Hunter_(composer)">Michael Hunter</a> wrote the game's <a href="https://en.wikipedia.org/wiki/Theme_music">main theme</a>, partly inspired by his childhood experiences with <a href="https://en.wikipedia.org/wiki/Hip_hop">hip hop</a> through <i><a href="https://en.wikipedia.org/wiki/Yo!_MTV_Raps">Yo! MTV Raps</a></i> (1988–1995). Interscope published two albums for the game: a two-disc album in November 2004, and an eight-disc box set in December. Post-PlayStation 2 versions of the game added an additional radio station supporting a custom, user-imported soundtrack.</p>
+
+<h2>Release and promotion</h2>
+
+<p>In October 2003, Rockstar's parent company <a href="https://en.wikipedia.org/wiki/Take-Two_Interactive">Take-Two Interactive</a> announced the next <i>Grand Theft Auto</i> game would be released in 2004's third quarter, and it prompted speculation after registering <i>GTA: San Andreas</i> with the <a href="https://en.wikipedia.org/wiki/U.S._Patent_and_Trademark_Office">U.S. Patent and Trademark Office</a> in December 2003. Rockstar announced the game in March 2004, along with a scheduled release date of 19 and 22 October in North America and Europe, respectively. The first details and screenshots were released at <a href="https://en.wikipedia.org/wiki/E3_2004">E3</a> in May alongside a <a href="https://en.wikipedia.org/wiki/Magazine_cover">cover story</a> in <i><a href="https://en.wikipedia.org/wiki/Game_Informer">Game Informer</a></i>, followed by the <a href="https://en.wikipedia.org/wiki/Cover_art">cover art</a> in July. Rockstar launched the official website and first trailer in August, followed by the second trailer in September. In September, Take-Two announced the game's delay to 26 and 29 October in North America and Europe, respectively, and revealed it would be released for <a href="https://en.wikipedia.org/wiki/Windows">Windows</a> in early 2005. Rockstar commissioned hand-painted advertisements for <i>San Andreas</i> around the world in late 2004; one in <a href="https://en.wikipedia.org/wiki/Melbourne">Melbourne</a> remained partially visible in 2020.</p>
+
+<p>In October 2004, an early version of the game was leaked by hackers; Rockstar asserted it would "aggressively pursue this matter" and asked for information. The game was released for the PlayStation 2 in October 2004. A <a href="https://en.wikipedia.org/wiki/Special_edition">special edition</a> version was published for the PlayStation 2 on 8 October 2005, featuring Rockstar's debut documentary film <i>Sunday Driver</i>, about a <a href="https://en.wikipedia.org/wiki/Lowrider">lowrider</a> <a href="https://en.wikipedia.org/wiki/Car_club">car club</a> in Compton. It also included <i>.mw-parser-output .vanchor>:target~.vanchor-text{background-color:#b1d2ff}@media screen{html.skin-theme-clientpref-night .mw-parser-output .vanchor>:target~.vanchor-text{background-color:#0f4dc9}}@media screen and (prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .vanchor>:target~.vanchor-text{background-color:#0f4dc9}}The Introduction</i>, an in-engine video previously provided on a <a href="https://en.wikipedia.org/wiki/DVD">DVD</a> with the game's soundtrack. The 21-minute video chronicles the events leading up to <i>San Andreas</i>, featuring CJ, Sweet, Big Smoke, Ryder, and Tenpenny. <i><a href="https://en.wikipedia.org/wiki/GameSpot">GameSpot</a></i> recommended the film for fans of the series; <i><a href="https://en.wikipedia.org/wiki/IGN">IGN</a></i>'s Chris Carle enjoyed the voice acting but found the narrative uncompelling and felt the film alone was not worth purchasing the special edition. <a href="https://en.wikipedia.org/wiki/Capcom">Capcom</a> published the game in Japan on 25 January 2007.</p>
+
+<h2>Reception</h2>
+
+<h3>Critical response</h3>
+
+<p><i>Grand Theft Auto: San Andreas</i> received "universal acclaim" from critics, according to review aggregator <a href="https://en.wikipedia.org/wiki/Metacritic">Metacritic</a>. It is the site's fifth-highest-rated PlayStation 2 game. <i><a href="https://en.wikipedia.org/wiki/PSM2">PSM2</a></i>'s Daniel Dawkins declared it "the single most complete, unique, universe in console history" after <i><a href="https://en.wikipedia.org/wiki/The_Legend_of_Zelda:_Ocarina_of_Time">The Legend of Zelda: Ocarina of Time</a></i> (1998) and "the best entertainment console gaming can offer". <i>Game Informer</i>'s Andrew Reiner called it "entertainment at its best" and <i><a href="https://en.wikipedia.org/wiki/GameSpy">GameSpy</a></i>'s Miguel Lopez wrote it reminded him why he plays games: "to be liberated from the constraints of reality, and explore living, breathing worlds".</p>
+
+<p>Several reviewers considered <i>San Andreas</i>'s world an improvement over its predecessors', praising the attention to detail in its areas and characters; <i>IGN</i>'s Jeremy Dunham cited the differences in each city's weather as a highlight. <i><a href="https://en.wikipedia.org/wiki/1Up.com">1Up.com</a></i>'s Jeremy Parish considered it "the most complete, complex and detailed environment ever crafted for a game", praising the complexities of the freeway system and social dynamics. <i>GameSpy</i>'s Lopez lauded its accurate imitation of the <a href="https://en.wikipedia.org/wiki/American_West_Coast">American West Coast</a>. Critics considered the graphics an improvement over <i>Vice City</i>, particularly regarding the animations, foliage, lighting, and weather effects; <i>PALGN</i>'s Chris Sell called it "one of the most visually absorbing games ever". Criticism was directed at the game's technical issues, with several reviewers encountering <a href="https://en.wikipedia.org/wiki/Pop-up_(video_gaming)">pop-up</a>, and unstable <a href="https://en.wikipedia.org/wiki/Frame_rate">frame rates</a>; some felt the game pushed the PlayStation 2 hardware to its limit.</p>
+
+<p><i>Game Informer</i>'s Reiner considered gameplay a dramatic improvement over previous entries. <i>PSM2</i>'s Dawkins found the missions were rarely repetitive and blended difficulty with comedy. <i><a href="https://en.wikipedia.org/wiki/GameRevolution">GameRevolution</a></i>'s Joe Dodson lauded the freedom provided to players, while <i>1Up.com</i>'s Parish felt the previous games' improvisation had been removed and <i><a href="https://en.wikipedia.org/wiki/Electronic_Gaming_Monthly">Electronic Gaming Monthly</a></i>'s Dan Hsu thought it could have benefited from branching paths. <i><a href="https://en.wikipedia.org/wiki/The_New_York_Times">The New York Times</a></i>'s Charles Herold found the game's structure diminished enjoyment of its missions, forcing players to drive long distances and replay extensive sequences upon failing, a complaint echoed by others. Some reviewers criticised the combat targeting (though acknowledged the usefulness of auto-aim) and the flight, racing, <a href="https://en.wikipedia.org/wiki/RC_car">RC car</a>, and minigame controls. The addition of role-playing elements was praised for its simplicity, subtlety, and effectiveness, though <i>1Up.com</i>'s Parish denounced some missions' statistical prerequisites.</p>
+
+<p>Several critics considered the narrative the series's best to date, which <i><a href="https://en.wikipedia.org/wiki/Eurogamer">Eurogamer</a></i>'s Kristan Reed attributed to its focus on dialogue and scene-setting, both in and out of cutscenes. <i>Game Informer</i>'s Matt Miller enjoyed the narrative's ridicule of modern culture. Some reviewers compared the story to Hollywood films and similar <a href="https://en.wikipedia.org/wiki/Popular_culture">popular culture</a>; <i>PSM2</i>'s Dawkins felt the finale "outstrips the collected work" of filmmakers <a href="https://en.wikipedia.org/wiki/Jerry_Bruckheimer">Jerry Bruckheimer</a> and <a href="https://en.wikipedia.org/wiki/Don_Simpson">Don Simpson</a>. Critics praised the cast's performances, particularly that of Young Maylay, Samuel L. Jackson, James Woods, and <a href="https://en.wikipedia.org/wiki/David_Cross">David Cross</a>. <i><a href="https://en.wikipedia.org/wiki/Official_U.S._PlayStation_Magazine">Official U.S. PlayStation Magazine</a></i>'s John Davison considered CJ "possibly one of the most well-developed and believable videogame characters ever made" due to his layered personality and realistic behaviour; <i>1Up.com</i>'s Parish concurred but felt CJ's kind nature made his in-game actions less believable, a problem that may have been circumvented through a branching narrative.</p>
+
+<p>Some critics and scholars criticised the game for perpetuating <a href="https://en.wikipedia.org/wiki/Racial_stereotypes">racial stereotypes</a>. <i>Seeing Black</i>'s Esther Iverem condemned the series for "validating ... an accepted caricature" rather than teaching respect and tolerance. Dean Chan felt the series's protagonist shift from Tommy (an <a href="https://en.wikipedia.org/wiki/Italian_American">Italian American</a>) to CJ (an African American) without subverting archetypes made it "complicit in the pathologization and fetishization of race".<sup>: 25 </sup> Paul Barrett found its disregard and decontextualisation of <a href="https://en.wikipedia.org/wiki/Institutional_racism">institutional racism</a>'s structures suggest "that the problems that African Americans experience is due to individual failure", reinforced by the concept that white players can simply experience "black identity".<sup>: 114 </sup> A <i><a href="https://en.wikipedia.org/wiki/Games_and_Culture">Games and Culture</a></i> study found youth groups "do not passively receive the games' images and content": white players expressed concern about its racial stereotypes, while African American players used it "as a framework to discuss institutional racism".<sup>: 264, 279 </sup> Rachael Hutchinson considered <i>San Andreas</i> "a critical reflection on racial conflict in America" and found several criticisms were based on limited viewings instead of the whole story.<sup>: 174–175 </sup> <i><a href="https://en.wikipedia.org/wiki/Kotaku">Kotaku</a></i> opined some in-game interactions could be portrayed as a lack of racism, such as characters conversing without moderating vocabularies or commenting on others'. <i>1Up.com</i>'s Parish lauded the references to <a href="https://en.wikipedia.org/wiki/Rodney_King">Rodney King</a>'s assault and the sophisticated writing addressing race in <a href="https://en.wikipedia.org/wiki/South_Central_Los_Angeles">South Central Los Angeles</a>. David J. Leonard felt politicians and legislators were more concerned about the game's violent and sexual content than its racial stereotypes.<sup>: 268 </sup></p>
+
+<h4>Windows and Xbox versions</h4>
+
+<p><i>San Andreas</i>'s June 2005 release for Windows and Xbox received "universal acclaim" according to Metacritic. It was the second-highest-rated Windows game of 2005, behind <i><a href="https://en.wikipedia.org/wiki/Civilization_IV">Civilization IV</a></i>, and the third-highest-rated Xbox game, behind <i><a href="https://en.wikipedia.org/wiki/Ninja_Gaiden_Black">Ninja Gaiden Black</a></i> and <i><a href="https://en.wikipedia.org/wiki/Tom_Clancy's_Splinter_Cell:_Chaos_Theory">Tom Clancy's Splinter Cell: Chaos Theory</a></i>.</p>
+
+<p><i>PALGN</i>'s Matt Keller considered the Windows release the best version of the game. Reviewers lauded the improved graphics, particularly the detailed textures and models, higher <a href="https://en.wikipedia.org/wiki/Draw_distance">draw distance</a>, and improved frame rate, loading times, and <a href="https://en.wikipedia.org/wiki/Anti-aliasing">anti-aliasing</a>, though some considered the graphics outdated for the platform. <i>PALGN</i>'s Keller found the increased population density improved the world's overall atmosphere. The <a href="https://en.wikipedia.org/wiki/Mouse_and_keyboard">mouse and keyboard</a> controls were generally praised as an improvement over the console versions and the series's previous Windows ports, especially during combat gameplay, though responses to driving controls and <a href="https://en.wikipedia.org/wiki/Keyboard_mapping">keyboard mapping</a> were mixed. Praise was directed at the custom radio and <a href="https://en.wikipedia.org/wiki/Video_game_packaging">physical packaging</a> and manual. Some critics bemoaned the lack of changes to the mission structure, and some encountered technical difficulties like sudden and major <a href="https://en.wikipedia.org/wiki/Lag_(video_games)">lagging</a> spikes.</p>
+
+<p><i>GameZone</i>'s Eduardo Zacarias called the Xbox release the "definitive version of the game", and <i>GameSpy</i>'s Will Tuttle considered it better than the original. Several reviewers praised the improved assets, reflections, shadows, and load times, as well as the addition of a custom radio station and video replay mode, though <i>GameSpy</i>'s Tuttle felt the latter was pointless without the ability to save videos. Some critics thought the controls had not been improved since the original, and others considered it a downgrade, though <i>GameSpot</i>'s <a href="https://en.wikipedia.org/wiki/Jeff_Gerstmann">Jeff Gerstmann</a> appreciated the <a href="https://en.wikipedia.org/wiki/Xbox_controller">Xbox controller</a>'s analogue <a href="https://en.wikipedia.org/wiki/Trigger_(game_controller)">triggers</a> when driving. Some technical problems occasionally persisted, including pop-up, inconsistent frame rates, and poor <a href="https://en.wikipedia.org/wiki/Aliasing">aliasing</a>, and some reviewers bemoaned the lack of significant graphical improvements.</p>
+
+<h4>Mobile version</h4>
+
+<p><i>San Andreas</i>'s mobile version received "generally favorable" reviews according to Metacritic. <i><a href="https://en.wikipedia.org/wiki/TouchArcade">TouchArcade</a></i>'s Eli Hodapp considered it "the best the game has ever been", while <i><a href="https://en.wikipedia.org/wiki/Digital_Spy">Digital Spy</a></i>'s Scott Nichols said it was "easily the worst way to experience" the game, only recommending that players with newer mobile hardware consider purchasing. Its US$6.99 price point was praised.</p>
+
+<p>Reviewers praised the port's graphical enhancements, including increased draw distance, improved frame rates and load times, and enhanced models, reflections, shadows, and lighting, though <i>IGN</i>'s Leif Johnson found the textures remained dated and some critics encountered technical issues like pop-up. <i>Digital Spy</i>'s Nichols lauded the addition of mid-mission <a href="https://en.wikipedia.org/wiki/Checkpoint_(video_gaming)">checkpoints</a>, and <i>TouchArcade</i>'s Hodapp found <a href="https://en.wikipedia.org/wiki/Cloud_storage">cloud saves</a> the port's best feature. Responses to the controls were generally positive, considered an improvement over the series's previous mobile ports, though critics concurred that playing with a <a href="https://en.wikipedia.org/wiki/Game_controller">controller</a> improved the experience and better imitated the original versions.</p>
+
+<p><i>San Andreas</i> won four of its five nominations at the <a href="https://en.wikipedia.org/wiki/Spike_Video_Game_Awards">Spike Video Game Awards</a>, including Game of the Year, Best Action Game, and Best Performance by a Human Male for Jackson as Tenpenny. It received four nominations at the <a href="https://en.wikipedia.org/wiki/2nd_British_Academy_Games_Awards">British Academy Games Awards</a> and five at the <a href="https://en.wikipedia.org/wiki/Game_Developers_Choice_Awards">Game Developers Choice Awards</a>; according to <i><a href="https://en.wikipedia.org/wiki/The_Guardian">The Guardian</a></i>, the developers walked out during the latter after winning nothing. It won five awards at the <a href="https://en.wikipedia.org/wiki/Golden_Joystick_Awards">Golden Joystick Awards</a>, including <a href="https://en.wikipedia.org/wiki/Ultimate_Game_of_the_Year">Ultimate Game of the Year</a> and Hero and Villain for CJ and Tenpenny, respectively, and received six nominations at the <a href="https://en.wikipedia.org/wiki/8th_Annual_Interactive_Achievement_Awards">Interactive Achievement Awards</a>, of which it won Outstanding Achievement in Soundtrack and Console Action/Adventure Game of the Year.</p>
+
+<p><i>San Andreas</i> was named 2004's best game by <i><a href="https://en.wikipedia.org/wiki/GamesMaster_(magazine)">GamesMaster</a></i> and runner-up by <i>PSM</i>. It won PlayStation 2 Game of the Year and Best Game Within a Game (for <a href="https://en.wikipedia.org/wiki/Pool_(cue_sports)">pool</a>) from <i>Electronic Gaming Monthly</i>, Best PlayStation 2 Game, Best Action Adventure Game, Best Voice Acting, and Funniest Game from <i>GameSpot</i>, Best Action Game and Best Story for PlayStation 2 from <i>IGN</i>, and Best Replay Value and Best Voice Acting from <i>PSM</i>.</p>
+
+<h2>Sales</h2>
+
+<p><i>Grand Theft Auto: San Andreas</i> sold 4.5 million copies in its first week, outselling <i>Vice City</i> by 45%. In the United States, it sold 2.06 million units within six days of release and generated US$235 million in revenue in its first week; it sold 1.5 million units in November, totalling 3.6 million sales overall. Analysts noted the game, alongside <i><a href="https://en.wikipedia.org/wiki/Halo_2">Halo 2</a></i>, led the industry to an 11% annual increase instead of a 21% decrease. In the United Kingdom, it sold an estimated 677,000 copies and grossed about £24 million within two days, setting the record for the most copies sold during a weekend, and over 1 million copies and £35 million in nine days, becoming the country's fast-selling game. In Australia, it sold over 58,000 copies in its opening weekend, becoming the country's eleventh-best-selling game.</p>
+
+<p>Michael Pachter of <a href="https://en.wikipedia.org/wiki/Wedbush_Morgan">Wedbush Morgan</a> estimated the game had earned a <a href="https://en.wikipedia.org/wiki/Gross_profit">gross profit</a> of around US$285 million within three months, and would generate US$400 million in worldwide sales by the year's end. <i>San Andreas</i> was 2004's best-selling game, with 5.1 million copies sold in the United States and over 1.75 million in the United Kingdom. It was 2005's eighth-highest-grossing game in the United States. The game topped the charts upon release in Japan, selling over 227,000 units in its first week. It was the best-selling game in the United States by April 2008, with over 8.6 million units sold, the <a href="https://en.wikipedia.org/wiki/List_of_best-selling_PlayStation_2_video_games">best-selling PlayStation 2 game</a> with 17.33 million units sold by 2009. and one of the <a href="https://en.wikipedia.org/wiki/List_of_best-selling_Xbox_video_games">best-selling Xbox games</a> with 1.26 million units sold by 2007. Worldwide sales reached 12 million units by March 2005, 21.5 million by April 2008, and 27.5 million by 2011. It is among the <a href="https://en.wikipedia.org/wiki/Best-selling_games_of_all_time">best-selling games of all time</a>.</p>
+
+<h2>"Hot Coffee" controversy</h2>
+
+<p>The development team curtailed planned nudity and sexual content to meet the requirements for a "Mature" rating from the <a href="https://en.wikipedia.org/wiki/Entertainment_Software_Rating_Board">Entertainment Software Rating Board</a> (ESRB); rather than removing the content, they made it inaccessible to players. <a href="https://en.wikipedia.org/wiki/Video_game_modding">Modders</a> discovered the code on the PlayStation 2 release, and modder Patrick Wildenborg found how to enable the code after the Windows release. He released this modified code online under the name "Hot Coffee" after the euphemism used in the game, and it was downloaded over one million times within four weeks.</p>
+
+<p>The discovery of "Hot Coffee" resulted in legal backlash for Rockstar and Take-Two; both remained mostly silent on the matter.<sup>: 203–208 </sup> The ESRB re-rated the game "Adults Only" after an investigation, while the game was banned in Australia until the explicit content was removed. Rockstar and Take-Two received a warning from the <a href="https://en.wikipedia.org/wiki/Federal_Trade_Commission">Federal Trade Commission</a> for failing to disclose the extent of graphic content present, while a <a href="https://en.wikipedia.org/wiki/Class_action">class action</a> lawsuit alleged that the company had misled customers who believed the game's content fell along the lines of a "Mature" rating. As a result of "Hot Coffee", the ESRB announced fines of up to US$1 million for game developers who failed to disclose the extent of their graphic content.</p>
+
+<h2>Legacy</h2>
+
+<p>Critics agreed <i>San Andreas</i> was among the most significant titles in the <a href="https://en.wikipedia.org/wiki/Sixth_generation_of_video_game_consoles">sixth generation of console gaming</a> and among the <a href="https://en.wikipedia.org/wiki/Best_games_ever_made">best games ever made</a>. Rockstar established a new <a href="https://en.wikipedia.org/wiki/Fictional_universe">narrative continuity</a> for the series with <a href="https://en.wikipedia.org/wiki/Seventh-generation_consoles">seventh-generation consoles</a>, focusing more on realism and details. With <i><a href="https://en.wikipedia.org/wiki/Grand_Theft_Auto_IV">Grand Theft Auto IV</a></i> (2008), the team focused on increasing the amount and detail of buildings, removing dead spots and irrelevant spaces to allow "a more focused experience" than <i>San Andreas</i>. The focus on realism and depth was continued with <i><a href="https://en.wikipedia.org/wiki/Grand_Theft_Auto_V">Grand Theft Auto V</a></i>, with the development team re-designing Los Santos and excluding San Fierro and Las Venturas; Dan Houser felt that by incorporating three cities into <i>San Andreas</i>, the development team was limited in how effectively they could emulate Los Angeles. Garbut felt technical limitations prevented <i>San Andreas</i> from properly capturing Los Angeles, making it feel like a "backdrop or a game level with pedestrians randomly milling about" and effectively deeming it as a jumping-off point for the <a href="https://en.wikipedia.org/wiki/Development_of_Grand_Theft_Auto_V">development of <i>Grand Theft Auto V</i></a>.</p>
+
+<p>Several moments from the game became common <a href="https://en.wikipedia.org/wiki/Internet_meme">internet memes</a>, such as Big Smoke's extensive <a href="https://en.wikipedia.org/wiki/Fast_food">fast food</a> order in 2016 and one of CJ's first lines—"Ah shit, here we go again"—in April 2019. An early mission, "Wrong Side of the Tracks", became notable for its difficulty; Big Smoke's dialogue upon failing the mission—"All we had to do, was follow the damn train, CJ!"—was considered an iconic catchphrase and later referenced in <i>Grand Theft Auto V</i>. Modders have been known to frequently insert CJ into other games, such as <i><a href="https://en.wikipedia.org/wiki/Dark_Souls_(video_game)">Dark Souls</a></i> (2011), <i><a href="https://en.wikipedia.org/wiki/The_Legend_of_Zelda:_Breath_of_the_Wild">The Legend of Zelda: Breath of the Wild</a></i> (2017), and <i><a href="https://en.wikipedia.org/wiki/Street_Fighter_6">Street Fighter 6</a></i> (2023).</p>
+
+<h3>Ports</h3>
+
+<p><i>Grand Theft Auto: San Andreas</i> was released for Windows and the <a href="https://en.wikipedia.org/wiki/Xbox_(console)">Xbox</a> on 7 and 10 June 2005 in North America and Europe, respectively, supporting higher screen resolutions, draw distance, and more detailed textures. The Xbox version was released for the <a href="https://en.wikipedia.org/wiki/Xbox_360">Xbox 360</a> on 20 October 2008 as part of <a href="https://en.wikipedia.org/wiki/Xbox_Originals">Xbox Originals</a>, and the PlayStation 2 version for the <a href="https://en.wikipedia.org/wiki/PlayStation_3">PlayStation 3</a> on 11 December 2012 as part of <a href="https://en.wikipedia.org/wiki/PS2_Classics">PS2 Classics</a>. The Xbox Originals release was replaced with an enhanced version as part of the game's tenth anniversary on 26 October 2014, featuring higher resolution, enhanced draw distance, a new menu interface, and <a href="https://en.wikipedia.org/wiki/Achievement_(video_gaming)">achievements</a>; the PS2 Classics release was replaced with this enhanced version on 1 December 2015, and the PlayStation 2 version was released for the <a href="https://en.wikipedia.org/wiki/PlayStation_4">PlayStation 4</a> on 5 December.</p>
+
+<p><i>San Andreas</i> was bundled with predecessors <i>Grand Theft Auto III</i> and <i>Vice City</i> in a compilation titled <i><a href="https://en.wikipedia.org/wiki/Grand_Theft_Auto:_The_Trilogy">Grand Theft Auto: The Trilogy</a></i>, released in North America for the Xbox on 8 October 2005, PlayStation 2 on 4 December 2006, and <a href="https://en.wikipedia.org/wiki/Mac_OS_X">Mac OS X</a> on 12 November 2010. A <a href="https://en.wikipedia.org/wiki/Remastered">remastered</a> version of <i>The Trilogy</i> subtitled <i><a href="https://en.wikipedia.org/wiki/Grand_Theft_Auto:_The_Trilogy_–_The_Definitive_Edition">The Definitive Edition</a></i> was released for the <a href="https://en.wikipedia.org/wiki/Nintendo_Switch">Nintendo Switch</a>, PlayStation 4, <a href="https://en.wikipedia.org/wiki/PlayStation_5">PlayStation 5</a>, Windows, <a href="https://en.wikipedia.org/wiki/Xbox_One">Xbox One</a>, and <a href="https://en.wikipedia.org/wiki/Xbox_Series_X/S">Xbox Series X/S</a> on 11 November 2021, and for Android and iOS on 14 December 2023. Existing versions of the game were removed from digital retailers in preparation for <i>The Definitive Edition</i>, but later restored as a bundle on the Rockstar Store.</p>
+
+<p>A mobile port of <i>San Andreas</i>, developed by War Drum Studios, was released for <a href="https://en.wikipedia.org/wiki/IOS">iOS</a> devices on 12 December 2013, <a href="https://en.wikipedia.org/wiki/Android_(operating_system)">Android</a> on 19 December, <a href="https://en.wikipedia.org/wiki/Windows_Phone">Windows Phone</a> on 27 January 2014, and <a href="https://en.wikipedia.org/wiki/Fire_OS">Fire OS</a> on 15 May 2014. The port featured updated graphics, shadows, and character and vehicle models. In October 2021, <a href="https://en.wikipedia.org/wiki/Meta_Platforms">Meta Platforms</a> announced a <a href="https://en.wikipedia.org/wiki/Virtual_reality">virtual reality</a> (VR) version of the game was in development for the <a href="https://en.wikipedia.org/wiki/Quest_2">Quest 2</a> by Video Games Deluxe. Following the release of the <a href="https://en.wikipedia.org/wiki/Meta_Quest_3">Meta Quest 3</a> in October 2023, players questioned the status of the VR version and some suspected it may have been quietly cancelled. Meta said the port was "on hold indefinitely" in August 2024.</p>
+
+
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

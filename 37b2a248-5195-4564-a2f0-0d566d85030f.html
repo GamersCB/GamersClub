@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Dispatch</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('37b2a248-5195-4564-a2f0-0d566d85030f/7df2635f-0dd5-4a7b-ba2a-0c30ce2c482a.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="37b2a248-5195-4564-a2f0-0d566d85030f/00e6d1b0-aa9e-4de1-88ae-875f1e8a4750.png"/> Dispatch</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Detalles</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="37b2a248-5195-4564-a2f0-0d566d85030f/bc73b639-b2d4-450d-a4a6-282d463af23a.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Tiempo de juego</TD>
+								<TD>No Jugado</TD>
+							</TR>
+							<TR>
+								<TD>Última actividad</TD>
+								<TD><a href="#quicklink-Nunca">Nunca</a> </TD>
+							</TR>
+							<TR>
+								<TD>Añadido</TD>
+								<TD><a href="#quicklink-19/11/2025">19/11/2025</a> 13:02:21</TD>
+							</TR>
+							<TR>
+								<TD>Modificado</TD>
+								<TD><a href="#quicklink-19/11/2025">19/11/2025</a> 20:19:40</TD>
+							</TR>
+							<TR>
+								<TD>Estado de finalización</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Librería</TD>
+								<TD><a href="#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Fuente</TD>
+								<TD><a href="#quicklink-2TB DATOS">2TB DATOS</a></TD>
+							</TR>
+							<TR>
+								<TD>Plataforma</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Fecha de lanzamiento</TD>
+								<TD><a href="#quicklink-22/10/2025">22/10/2025</a> </TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Comunidad</TD>
+								<TD><a href="#quicklink-96">96</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de la Crítica</TD>
+								<TD><a href="#quicklink-89">89</a></TD>
+							</TR>
+							<TR>
+								<TD>Puntuación de usuario</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Género</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Acción">Acción</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Aventura">Aventura</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Casual">Casual</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Estrategia">Estrategia</a><br/><a href="default%20combobox%20quicklinks_genre_ascendente_name_ascendente.html#quicklink-Indie">Indie</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Desarrollador</TD>
+								<TD><a href="#quicklink-AdHoc Studio">AdHoc Studio</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Editor</TD>
+								<TD><a href="#quicklink-AdHoc Studio">AdHoc Studio</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Característica</TD>
+								<TD><a href="#quicklink-Alternativas De Color">Alternativas De Color</a><br/><a href="#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="#quicklink-Compat. Total Con Mando">Compat. Total Con Mando</a><br/><a href="#quicklink-Controles De Volumen Personalizados">Controles De Volumen Personalizados</a><br/><a href="#quicklink-Cromos De">Cromos De</a><br/><a href="#quicklink-Dificultad Ajustable">Dificultad Ajustable</a><br/><a href="#quicklink-Jugable Sin Eventos Rápidos">Jugable Sin Eventos Rápidos</a><br/><a href="#quicklink-Logros De">Logros De</a><br/><a href="#quicklink-Opción Solo Ratón">Opción Solo Ratón</a><br/><a href="#quicklink-Opciones De Subtítulos">Opciones De Subtítulos</a><br/><a href="#quicklink-Préstamo Familiar">Préstamo Familiar</a><br/><a href="#quicklink-Tamaño Del Texto Ajustable">Tamaño Del Texto Ajustable</a><br/><a href="#quicklink-Un Jugador">Un Jugador</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Enlaces</TD>
+								<TD><a href="https://steamcommunity.com/app/2592160" target="_blank">Punto de encuentro</a><br/><a href="https://steamcommunity.com/app/2592160/discussions/" target="_blank">Discusiones</a><br/><a href="https://steamcommunity.com/app/2592160/guides/" target="_blank">Guías</a><br/><a href="https://store.steampowered.com/news/?appids=2592160" target="_blank">Noticias</a><br/><a href="https://store.steampowered.com/app/2592160" target="_blank">Página de la tienda</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=2592160" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/2592160/achievements" target="_blank">Logros</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Acción">Acción</a><br/><a href="#quicklink-Ambientales">Ambientales</a><br/><a href="#quicklink-Apuntar y clic">Apuntar y clic</a><br/><a href="#quicklink-Aventura">Aventura</a><br/><a href="#quicklink-Banda sonora">Banda sonora</a><br/><a href="#quicklink-Buena trama">Buena trama</a><br/><a href="#quicklink-Cinematográficos">Cinematográficos</a><br/><a href="#quicklink-Comedia">Comedia</a><br/><a href="#quicklink-Cómics">Cómics</a><br/><a href="#quicklink-Contenido sexual">Contenido sexual</a><br/><a href="#quicklink-Desnudos">Desnudos</a><br/><a href="#quicklink-Divertidos">Divertidos</a><br/><a href="#quicklink-Elige tu propia aventura">Elige tu propia aventura</a><br/><a href="#quicklink-Episódico">Episódico</a><br/><a href="#quicklink-Estrategia">Estrategia</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Las elecciones importan">Las elecciones importan</a><br/><a href="#quicklink-Romance">Romance</a><br/><a href="#quicklink-Superhéroes">Superhéroes</a><br/><a href="#quicklink-Un jugador">Un jugador</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Descripci&#243;n</H3>
+				</div>
+				<div class="description">
+					<h2 class="bb_tag" >De los guionistas y directores de <i><strong>Tales from the Borderlands</strong></i> y <i><strong>The Wolf Among Us</strong></i>, <i><strong>Dispatch</strong></i> es una comedia de oficina sobre superhéroes ambientada en la Los Ángeles moderna.</h2><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/08bd8194caff314b3877e8a53cb01029.poster.avif?t=1763398023" width=676 height=226 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/08bd8194caff314b3877e8a53cb01029.webm?t=1763398023" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/08bd8194caff314b3877e8a53cb01029.mp4?t=1763398023" type="video/mp4"></video></span></p><p class="bb_paragraph" >Juegas como Robert Robertson, también conocido como Mecha Man, cuyo traje mecánico es destruido en una batalla contra su némesis, lo que lo obliga a aceptar un trabajo en un centro de despacho de superhéroes: no como héroe, sino como despachador. A cargo de rehabilitar a un grupo de ex-supervillanos, deberás gestionar tu equipo mientras navegas por las relaciones en la oficina y reconstruyes tu traje para tener una oportunidad de venganza.</p><p class="bb_paragraph" ></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/586d83627f93a9724013ba68b1f8b71e.poster.avif?t=1763398023" width=676 height=52 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/586d83627f93a9724013ba68b1f8b71e.webm?t=1763398023" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/586d83627f93a9724013ba68b1f8b71e.mp4?t=1763398023" type="video/mp4"></video></span></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/2f392a8c480bd1ae2342363aa9997653.poster.avif?t=1763398023" width=800 height=450 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/2f392a8c480bd1ae2342363aa9997653.webm?t=1763398023" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/2f392a8c480bd1ae2342363aa9997653.mp4?t=1763398023" type="video/mp4"></video></span></p><p class="bb_paragraph" >En <i>Dispatch</i>, cada decisión que tomes influye en la narrativa que se desarrolla. Desde las bromas en la sala de descanso hasta las situaciones de vida o muerte en el campo, tus elecciones afectan tus relaciones con los héroes, sus lealtades y el camino que toma tu propia historia.</p><p class="bb_paragraph" ></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/dceb7af16b92e4c3117aafbaa9b7bb1e.poster.avif?t=1763398023" width=676 height=52 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/dceb7af16b92e4c3117aafbaa9b7bb1e.webm?t=1763398023" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/dceb7af16b92e4c3117aafbaa9b7bb1e.mp4?t=1763398023" type="video/mp4"></video></span></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/b41e710d4ffd2988cf4b442825468221.poster.avif?t=1763398023" width=600 height=336 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/b41e710d4ffd2988cf4b442825468221.webm?t=1763398023" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/b41e710d4ffd2988cf4b442825468221.mp4?t=1763398023" type="video/mp4"></video></span></p><p class="bb_paragraph" >Utiliza el mapa estratégico para revisar las emergencias en curso y enviar a los héroes adecuados (o no tan adecuados) para encargarse de ellas. Equilibra los riesgos y las recompensas mientras tomas decisiones tácticas, sabiendo que cada elección puede tener consecuencias duraderas para tu equipo y la ciudad.</p><p class="bb_paragraph" ></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/99ae1052cfeb656ae47aa0e2dc0dea5a.poster.avif?t=1763398023" width=676 height=52 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/99ae1052cfeb656ae47aa0e2dc0dea5a.webm?t=1763398023" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/99ae1052cfeb656ae47aa0e2dc0dea5a.mp4?t=1763398023" type="video/mp4"></video></span></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/ef321860d8b0c1d8b02cbb91c12527e3.poster.avif?t=1763398023" width=800 height=450 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/ef321860d8b0c1d8b02cbb91c12527e3.webm?t=1763398023" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/ef321860d8b0c1d8b02cbb91c12527e3.mp4?t=1763398023" type="video/mp4"></video></span></p><p class="bb_paragraph" >Gestionar a los héroes a veces va más allá de sus poderes. Cada héroe tiene peculiaridades, defectos y problemas que deberás gestionar para mantener al equipo unido. Mejora sus habilidades y desbloquea poderes para aumentar su efectividad en el campo.</p><h2 class="bb_tag" >Combinando narrativa, estrategia y humor, <i>Dispatch</i> explora lo que significa ser un héroe, ya sea que lleves una capa o estés detrás de un escritorio.</h2><p class="bb_paragraph" ></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/95cbe9a2e0621fa0cf3fc2bbf49d68f7.poster.avif?t=1763398023" width=676 height=226 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/95cbe9a2e0621fa0cf3fc2bbf49d68f7.webm?t=1763398023" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/95cbe9a2e0621fa0cf3fc2bbf49d68f7.mp4?t=1763398023" type="video/mp4"></video></span></p><p class="bb_paragraph" ></p><p class="bb_paragraph" ><span class="bb_img_ctn"><video class="bb_img" autoplay muted loop playsinline poster="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/c98ce3cbd204205ce440b9dc641176b6.poster.avif?t=1763398023" width=676 height=52 ><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/c98ce3cbd204205ce440b9dc641176b6.webm?t=1763398023" type="video/webm; codecs=vp9"><source src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/c98ce3cbd204205ce440b9dc641176b6.mp4?t=1763398023" type="video/mp4"></video></span></p><p class="bb_paragraph" ><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2592160/extras/9f8915e3019e7b4bcab0dc59873cb9e6.avif?t=1763398023" width=678 height=682 /></span></p><h2 class="bb_tag" >Con un elenco estelar de todos los rincones del entretenimiento.</h2><ul class="bb_ul"><li><p class="bb_paragraph" ><strong>Aaron Paul</strong> (<i>Breaking Bad, Westworld, Black Mirror</i>)</p></li><li><p class="bb_paragraph" ><strong>Laura Bailey</strong> (<i>The Legend of Vox Machina, The Last of Us II, Marvel's Spider-Man</i>)</p></li><li><p class="bb_paragraph" ><strong>Erin Yvette</strong> (<i>Hades II, The Wolf Among Us, Armored Core VI: Fires of Rubicon</i>)</p></li><li><p class="bb_paragraph" ><strong>MoistCr1TiKaL</strong> (Charles White)</p></li><li><p class="bb_paragraph" ><strong>Jacksepticeye</strong> (<i>Sonic Prime, River City Girls 1 &amp; 2, Bendy and the Ink Machine)</i></p></li><li><p class="bb_paragraph" ><strong>Travis Willingham</strong> (<i>The Legend of Vox Machina, Critical Role, Lego Avengers</i>)</p></li><li><p class="bb_paragraph" ><strong>Alanah Pearce</strong> (<i>V/H/S Beyond, Cyberpunk 2077, Gears 5</i>)</p></li><li><p class="bb_paragraph" ><strong>Lance Cantstopolis</strong> (<i>Karate, Dancing, Actor</i>)</p></li><li><p class="bb_paragraph" ><strong>Joel Haver</strong> (<i>Filmmaker, Actor, YouTuber</i>)</p></li><li><p class="bb_paragraph" ><strong>THOT SQUAD (</strong>músico<strong>: </strong>Pound Cake, Hoes Depressed)</p></li><li><p class="bb_paragraph" ><strong>Yung Gravy </strong>(músico<strong>: </strong>Betty (Get Money), oops!)</p></li><li><p class="bb_paragraph" ><strong>Matthew Mercer</strong> (<i>Critical Role, Overwatch, Resident Evil 6</i>)</p></li></ul><ul class="bb_ul"><li><p class="bb_paragraph" >y <strong>Jeffrey Wright (American Fiction, The Batman, Casino Royale)</strong></p></li></ul><p class="bb_paragraph" ><strong></strong></p><p class="bb_paragraph" > </p><p class="bb_paragraph" ></p>
+				</div>
+			</div>
+		</div>
+ <audio id="background-audio" loop>
+  <source src="audio.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+<script>
+  const audio = document.getElementById('background-audio');
+  
+  // Restaurar estado del audio al cargar la página
+  window.addEventListener('load', () => {
+    const isPlaying = localStorage.getItem('audioPlaying') === 'true';
+    const currentTime = parseFloat(localStorage.getItem('audioTime')) || 0;
+    
+    if (isPlaying) {
+      audio.currentTime = currentTime;
+      audio.play().catch(err => console.log('Error al reproducir:', err));
+    }
+  });
+
+  // Guardar el estado del audio al cambiar de página
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('audioPlaying', !audio.paused);
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+</script>
+		<script src="lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>
