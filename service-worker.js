@@ -1,30 +1,20 @@
-// public/service-worker.js
+// Este es el script del Service Worker para las notificaciones push.
+// Será registrado por la aplicación cliente.
 
-console.log('Service Worker: Script loaded and running!'); // <-- NUEVO LOG AQUI
+// Escucha el evento 'push' del servicio push.
+self.addEventListener('push', function(event) {
+  const data = event.data ? event.data.json() : {};
+  const title = data.title || 'Notificación de Gamer Club';
+  const body = data.body || '¡Tienes un nuevo mensaje de Gamer Club!';
+  const url = data.url || '/'; // URL por defecto para abrir cuando se hace clic en la notificación
 
-self.addEventListener('install', (event) => {
-  console.log('Service Worker: Installed');
-  event.waitUntil(self.skipWaiting()); // Forzar la activación del nuevo Service Worker
-});
-
-self.addEventListener('activate', (event) => {
-  console.log('Service Worker: Activated');
-  event.waitUntil(self.clients.claim()); // Tomar control de las páginas existentes
-});
-
-self.addEventListener('push', (event) => {
-  console.log('Service Worker: Push received', event);
-  const data = event.data.json();
-  console.log('Push data:', data);
-
-  const title = data.title || 'Nueva Notificación';
   const options = {
-    body: data.body || 'Tienes una nueva actualización.',
-    icon: data.icon || '/images/web-icon.png', // Icono por defecto
-    badge: data.badge || '/images/web-icon.png', // Badge por defecto
+    body: body,
+    icon: '/images/web-icon.png', // Ruta a tu icono de la aplicación
+    badge: '/images/web-icon.png', // Ruta a un icono de insignia (solo Android)
     data: {
-      url: data.url || '/', // URL a abrir al hacer clic en la notificación
-    },
+      url: url // Datos personalizados para pasar al evento notificationclick
+    }
   };
 
   event.waitUntil(
@@ -32,13 +22,24 @@ self.addEventListener('push', (event) => {
   );
 });
 
-self.addEventListener('notificationclick', (event) => {
-  console.log('Service Worker: Notification clicked', event);
-  event.notification.close(); // Cerrar la notificación
+// Escucha el evento 'notificationclick'.
+self.addEventListener('notificationclick', function(event) {
+  event.notification.close(); // Cierra la notificación
 
   const urlToOpen = event.notification.data.url;
 
   event.waitUntil(
-    clients.openWindow(urlToOpen) // Abrir la URL asociada a la notificación
+    clients.openWindow(urlToOpen) // Abre la URL cuando se hace clic en la notificación
   );
+});
+
+// Opcional: Escucha los eventos 'install' y 'activate' para caché u otra configuración
+self.addEventListener('install', (event) => {
+  console.log('Service Worker instalado');
+  self.skipWaiting(); // Activa el nuevo service worker inmediatamente
+});
+
+self.addEventListener('activate', (event) => {
+  console.log('Service Worker activado');
+  event.waitUntil(clients.claim()); // Toma el control de todos los clientes inmediatamente
 });
