@@ -11924,6 +11924,26 @@
     "isEmulated": false
   },
   {
+    "title": " A Alis",
+    "platform": "Desconocida",
+    "genre": "Desconocido",
+    "releaseDate": "Fecha desconocida",
+    "rating": 0,
+    "price": 20,
+    "image": "data/images/white.svg",
+    "description": "Sin descripción.",
+    "isFavorite": false,
+    "sizeGB": 20,
+    "hardDriveSource": "",
+    "minimumRequirements": "",
+    "recommendedRequirements": "",
+    "trailerUrl": "",
+    "isPromotion": false,
+    "isEmulated": false,
+    "id": "a33ffaa5-51bf-44bd-a408-dec053ee17b0",
+    "createdAt": "2026-01-22T00:52:11.958Z"
+  },
+  {
     "id": "a391ce92-21fa-49cd-a81c-629ad46f70f4",
     "title": "Sleeping Dogs: Definitive Edition",
     "platform": "Xbox One, PC, macOS, PlayStation 4",
