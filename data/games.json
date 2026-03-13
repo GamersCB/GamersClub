@@ -77,8 +77,8 @@
     "image": "game-01a073eb-2f38-4f27-ab0a-69e4e57ae0f9.png",
     "description": "A new Creed rises over Japan. \nLive the intertwined stories of Naoe, an adept shinobi Assassin from Iga Province, and Yasuke, the powerful African samurai of historical legend. Against the backdrop of the turbulent late Sengoku period, this remarkable duo will discover their common destiny as they usher in a new era for Japan.",
     "sizeGB": 154,
-    "minimumRequirements": "",
-    "recommendedRequirements": "",
+    "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10/11Procesador: INTEL® Core TM i7 8700K AMD RYZEN 5 3600Memoria: 16 GB de RAMGráficos: NVIDIA® GEFORCE GTX 1650 4GB / AMD RX-5500 XT 8GB / INTEL® ARC TM A380 6GB (REBAR ON)\"DirectX: Versión 12Almacenamiento: 115 GB de espacio disponibleNotas adicionales: The game must be installed on a SSD.",
+    "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10/11Procesador: Intel® Core™ i5 11600k/AMD Ryzen™ 5 5600xMemoria: 16 GB de RAMGráficos: Nvidia® GeForce RTX™ 3060Ti 8GB/AMD Radeon™ RX 6700 XT 12GB/Intel® Arc™ B580 12GB (REBAR ON)DirectX: Versión 12Almacenamiento: 115 GB de espacio disponibleNotas adicionales: The game must be installed on a SSD.",
     "trailerUrl": "",
     "isFavorite": false,
     "price": 1600,
@@ -86,8 +86,9 @@
     "isPromotion": false,
     "createdAt": "2026-01-07T04:53:46.435Z",
     "id": "01a073eb-2f38-4f27-ab0a-69e4e57ae0f9",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "steamAppId": 3159330,
+    "imageBlob": {}
   },
   {
     "rawgId": 58890,
@@ -142,7 +143,7 @@
     "genre": "Action, RPG",
     "releaseDate": "2009-02-05",
     "rating": 4.27,
-    "image": "game-02b97848-e2dc-487a-94a5-287a86b499a7.png",
+    "image": "game-02b97848-e2dc-487a-94a5-287a86b499a7.jpeg",
     "description": "Demon’s Souls is an action RPG, the first installment in the Souls series, known mostly because of the Dark Souls trilogy. Demon’s Souls is also set in a grey-colored dark medieval-themed world that is attacked by the demon fog. You take on the role of a knight that entered the fog trying to save the kingdom from demons. He was eventually killed and reborn, and now needs to travel the entire kingdom to gain power and set the world free.\nYour character is fully customizable and can be upgraded with souls you get through battles. Demon’s Souls combat system is quite complicated as you can’t gain experience killing ordinary enemies to defeat the boss later. Here you need to work out unique tactics for every monster type. As a result, the gameplay is quite challenging with frequent deaths.\nHowever, there’s a way to simplify the game a little. Some of your actions, for example, killing or helping NPCs, affect the gameplay. This parameter is called tendency; when it’s white, the enemies are easier and the rewards are fewer. When it’s black, it produces the opposite effect.",
     "sizeGB": 4,
     "minimumRequirements": "",
@@ -150,12 +151,12 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 100,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:22.619Z",
     "id": "02b97848-e2dc-487a-94a5-287a86b499a7",
-    "imageBlob": {},
-    "isEmulated": true
+    "isEmulated": true,
+    "imageBlob": {}
   },
   {
     "rawgId": 23165,
@@ -199,8 +200,8 @@
     "createdAt": "2026-01-02T12:26:10.576Z",
     "id": "0460c1e1-c5f0-4212-b6e4-2f0cf8f4dc47",
     "steamAppId": 976310,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "0479f331-2fe2-4e92-8ae6-adbcd4a7d957",
@@ -375,13 +376,14 @@
     "isFavorite": false,
     "sizeGB": 8,
     "hardDriveSource": "4TB TANK",
-    "minimumRequirements": "",
-    "recommendedRequirements": "",
+    "minimumRequirements": "Mínimo:SO *: Windows Vista with SP3, SP2 or windows 7Procesador: Intel Core 2 Duo (or equivalent) running at 1.8 GHz or greater; AMD Athlon 64 X2 (or equivalent) running at 1.8 GHz or greaterMemoria: 1 GB de RAMGráficos: ATI Radeon HD 2600 Pro 256 MB; NVIDIA GeForce 7900 GS 256 MB cardsDirectX: Versión 9.0cAlmacenamiento: 7 GB de espacio disponibleTarjeta de sonido: Direct X 9.0c Compatible Sound Card Windows Experience Index: 4.5",
+    "recommendedRequirements": "Recomendado:SO *: Windows Vista with SP3, SP2 or windows 7Procesador: Intel Core 2 Quad 2.4 GHz Processor or equivalent; AMD Phenom II X3 Triple core 2.8 GHz or equivalentMemoria: 2 GB de RAMGráficos: ATI 3850 512 MB or greater; NVIDIA 8800 GTS 512 MB or greaterDirectX: Versión 11Almacenamiento: 7 GB de espacio disponible",
     "trailerUrl": "",
     "isPromotion": false,
     "isEmulated": false,
     "id": "0671822b-08cf-4d79-95eb-74ff3ad0d779",
     "createdAt": "2026-01-30T08:36:00.130Z",
+    "steamAppId": 1238040,
     "imageBlob": {}
   },
   {
@@ -624,8 +626,8 @@
     "image": "game-0916c074-5489-4e8a-aa62-521e3ae57e1f.png",
     "description": "Join Mario and friends on a new 2D side-scrolling adventure full of wonder! \nEvery course contains its very own Wonder Flower – collect one, and anything can happen. From moving pipes to tilting terrain, singing Piranha Plants to stampeding Bulrushes, skydiving to space walks, you never know what’ll happen next. You might even transform into something totally new!\nPick to play as Mario, Luigi, Peach and more! They all play in exactly the same way, so you can freely use your favourite character without having to worry.\nThe world of Super Mario Bros. Wonder is even better when enjoyed with others! Play together locally or online and help save the Flower Kingdom from Bowser as a team, or enjoy enhancements to solo play by connecting online.",
     "sizeGB": 3.5,
-    "minimumRequirements": "",
-    "recommendedRequirements": "",
+    "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO *: Windows® 7/Vista/XPProcesador: Intel® Core™ 2 Duo E6600 or AMD Phenom™ X3 8750 processor or betterMemoria: 4 GB de RAMGráficos: Video card must be 256 MB or more and should be a DirectX 9-compatible with support for Pixel Shader 3.0DirectX: Versión 9.0cAlmacenamiento: 2 GB de espacio disponible",
+    "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bits",
     "trailerUrl": "",
     "isFavorite": false,
     "price": 100,
@@ -633,8 +635,9 @@
     "isPromotion": false,
     "createdAt": "2026-01-01T22:40:05.429Z",
     "id": "0916c074-5489-4e8a-aa62-521e3ae57e1f",
-    "imageBlob": {},
-    "isEmulated": true
+    "isEmulated": true,
+    "steamAppId": 2281730,
+    "imageBlob": {}
   },
   {
     "id": "09488958-6b58-4e4f-85d6-093308850625",
@@ -656,8 +659,8 @@
     "image": "game-09488958-6b58-4e4f-85d6-093308850625.png",
     "createdAt": "2025-12-29T20:29:41.825Z",
     "steamAppId": 1392860,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 3842,
@@ -702,8 +705,8 @@
     "image": "game-0a4d9196-93ae-4d0a-aba1-14b1643392da.png",
     "createdAt": "2025-12-29T20:29:41.847Z",
     "steamAppId": 10090,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 984787,
@@ -793,8 +796,8 @@
     "isFavorite": false,
     "createdAt": "2026-01-02T22:35:53.734Z",
     "steamAppId": 3028330,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 992333,
@@ -854,13 +857,14 @@
     "isFavorite": false,
     "sizeGB": 13,
     "hardDriveSource": "4TB TANK",
-    "minimumRequirements": "",
-    "recommendedRequirements": "",
+    "minimumRequirements": "Mínimo:SO *: 64-bit Windows 7, 64-bit Windows 8 (8.1)Procesador: Intel CPU Core i5-2500K 3.3GHz / AMD A10-5800K APU (3.8GHz)Memoria: 6 GB de RAMGráficos: Nvidia GPU GeForce GTX 660 / AMD GPU Radeon HD 7870DirectX: Versión 11Almacenamiento: 50 GB de espacio disponible",
+    "recommendedRequirements": "Recomendado:SO: 64-bit Windows 10/11Procesador: Intel Core i5-7400 / Ryzen 5 1600Memoria: 8 GB de RAMGráficos: Nvidia GTX 1070 / Radeon RX 480DirectX: Versión 12Almacenamiento: 50 GB de espacio disponible",
     "trailerUrl": "",
     "isPromotion": false,
     "isEmulated": false,
     "id": "0c6fccea-aae7-4cc6-9598-5dc39730baf2",
     "createdAt": "2026-01-30T09:11:43.574Z",
+    "steamAppId": 292030,
     "imageBlob": {}
   },
   {
@@ -1030,18 +1034,19 @@
     "rating": 4.17,
     "price": 80,
     "image": "game-0e402310-a77e-49f3-a812-b8ee517d36cf.jpeg",
-    "imageBlob": {},
     "description": "Cría gatos para crear el ejército felino definitivo y envíalos a desafiantes aventuras. Elige habilidades, reúne objetos y manipula la genética de las generaciones en este juego roguelite estratégico por turnos de los creadores de «The Binding of Isaac» y «The End is Nigh».",
     "isFavorite": false,
     "sizeGB": 0,
     "hardDriveSource": "4TB TANK",
-    "minimumRequirements": "",
-    "recommendedRequirements": "",
+    "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 64-bitProcesador: 4 núcleos, desde 2014 o posteriorMemoria: 8 GB de RAMGráficos: 2GB VRAM, OpenGL 4.4 o posteriorAlmacenamiento: 6 GB de espacio disponibleNotas adicionales: El juego puede funcionar en sistemas con especificaciones inferiores, pero la resolución y la tasa de fotogramas se verán afectadas.",
+    "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bits",
     "trailerUrl": "",
     "isPromotion": false,
     "isEmulated": false,
     "id": "0e402310-a77e-49f3-a812-b8ee517d36cf",
-    "createdAt": "2026-02-28T02:36:47.486Z"
+    "createdAt": "2026-02-28T02:36:47.486Z",
+    "steamAppId": 686060,
+    "imageBlob": {}
   },
   {
     "id": "0f8cf4dc-76f1-4890-a24f-6ec1bd9580ca",
@@ -1109,8 +1114,8 @@
     "image": "game-0fb48db6-4342-4393-80f9-afb63be613c7.png",
     "createdAt": "2025-12-29T20:29:41.762Z",
     "steamAppId": 108600,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 868086,
@@ -1119,7 +1124,7 @@
     "genre": "Action, Adventure",
     "releaseDate": "2024-10-08",
     "rating": 4.49,
-    "image": "game-0fcaa1cc-145c-49e6-88be-6d329bae6a94.png",
+    "image": "game-0fcaa1cc-145c-49e6-88be-6d329bae6a94.jpeg",
     "description": "Having received a letter from his deceased wife,\nJames heads to where they shared so many memories,\nin the hope of seeing her one more time: Silent Hill.\nThere, by the lake, he finds a woman eerily similar to her...\n\"My name...is Maria,\" the woman smiles. Her face, her voice... She's just like her.\nExperience a master-class in psychological survival horror―lauded as the best in the series―on the latest hardware with chilling visuals and visceral sounds.",
     "sizeGB": 26,
     "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 x64Procesador: Intel Core i7-6700K | AMD Ryzen 5 3600Memoria: 16 GB de RAMGráficos: NVIDIA® GeForce® GTX 1070 Ti or AMD Radeon™ RX 5700 or Intel®  Arc™  A750DirectX: Versión 12Almacenamiento: 50 GB de espacio disponibleTarjeta de sonido: Windows Compatible Audio Device.Notas adicionales: Playing on minimum requirements should enable to play on Low/Medium quality settings in FullHD (1080p) in stable 30 FPS. SSD is recommended.",
@@ -1127,13 +1132,13 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 250,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:40:01.962Z",
     "id": "0fcaa1cc-145c-49e6-88be-6d329bae6a94",
     "steamAppId": 2124490,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 481913,
@@ -1145,8 +1150,8 @@
     "image": "game-0fe42525-4a07-459f-a683-db22f89069e7.png",
     "description": "A world unseen, where new sights rise with every stride. Enter a fascinating realm filled with the wonders and discoveries of ancient Chinese mythology!\nAs the Destined One, you shall venture through breathtaking landscapes in the classic tale of Journey to the West, creating a new epic of uncharted adventures.\nHeroic Monkey, might and fame, adversaries rise, to test his name. One of the major highlights of Journey to the West is its diverse cast of adversaries, each with unique strengths.\nAs the Destined One, you shall encounter powerful foes and worthy rivals throughout your journey. Fearlessly engage them in epic battles that know no surrender.\nSpells unbound, knowledge's flight, infinite abilities take their height. Spells, transformations, and magic vessels in all manifestations, complementary yet adversarial, have long been iconic combat elements in Chinese mythology.\nAs the Destined One, aside from mastering various staff techniques, you can also freely combine different spells, abilities, weapons, and equipment to find the winning formula that best suits your combat style.\nWithin beings of every kind lies the story of a life. Beneath the ferocity and craftiness of your foes lies an engaging tapestry of their origins, personalities, and motivations waiting to be revealed.\nAs the Destined One, you will uncover the stories behind a variety of characters, delving beyond your battles with them, to taste the love and hate, greed and fury they once had and still carry with them.",
     "sizeGB": 140,
-    "minimumRequirements": "",
-    "recommendedRequirements": "",
+    "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 64-bitProcesador: Intel Core i5-8400 / AMD Ryzen 5 1600Memoria: 16 GB de RAMGráficos: NVIDIA GeForce GTX 1060 6GB / AMD Radeon RX 580 8GBDirectX: Versión 11Almacenamiento: 130 GB de espacio disponibleTarjeta de sonido: Windows Compatible Audio DeviceNotas adicionales: HDD Supported, SSD Recommended. The above specifications were tested with DLSS/FSR/XeSS enabled.",
+    "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 64-bitProcesador: Intel Core i7-9700 / AMD Ryzen 5 5500Memoria: 16 GB de RAMGráficos: NVIDIA GeForce RTX 2060 / AMD Radeon RX 5700 XT / INTEL Arc A750DirectX: Versión 12Almacenamiento: 130 GB de espacio disponibleTarjeta de sonido: Windows Compatible Audio DeviceNotas adicionales: SSD Required. The above specifications were tested with DLSS/FSR/XeSS enabled.",
     "trailerUrl": "",
     "isFavorite": false,
     "price": 1600,
@@ -1154,8 +1159,9 @@
     "isPromotion": false,
     "createdAt": "2026-01-07T04:53:47.244Z",
     "id": "0fe42525-4a07-459f-a683-db22f89069e7",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "steamAppId": 2358720,
+    "imageBlob": {}
   },
   {
     "rawgId": 46889,
@@ -1234,18 +1240,19 @@
     "rating": 2.67,
     "price": 150,
     "image": "game-11472e8a-b048-4325-92ae-4d4e6fa7f87f.jpeg",
-    "imageBlob": {},
     "description": "Crisol is a survival horror adventure set in a twisted version of Spain. As a soldier captured by religious dogmatism, you must use your own blood as ammunition, without draining to the point of death. Explore the cursed island of Tormentosa, uncover dark secrets, and battle horrifying enemies.",
     "isFavorite": false,
     "sizeGB": 11.4,
-    "hardDriveSource": "4TB TANK",
-    "minimumRequirements": "",
-    "recommendedRequirements": "",
+    "hardDriveSource": "PROTOCOL",
+    "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 64-bitProcesador: Intel Core i7-8700K | AMD Ryzen 5 3600XMemoria: 16 GB de RAMGráficos: NVIDIA® GeForce® RTX 2060 or AMD Radeon™ RX 6600Almacenamiento: 18 GB de espacio disponible",
+    "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bits",
     "trailerUrl": "",
     "isPromotion": false,
     "isEmulated": false,
     "id": "11472e8a-b048-4325-92ae-4d4e6fa7f87f",
-    "createdAt": "2026-02-28T03:00:27.360Z"
+    "createdAt": "2026-02-28T03:00:27.360Z",
+    "steamAppId": 1790930,
+    "imageBlob": {}
   },
   {
     "id": "1198d691-08ec-45f0-8dd8-a988c399acae",
@@ -1267,8 +1274,8 @@
     "image": "game-1198d691-08ec-45f0-8dd8-a988c399acae.png",
     "createdAt": "2025-12-29T20:29:42.103Z",
     "steamAppId": 241930,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "11c4e911-519a-402b-8bb6-f7b1c861ebb2",
@@ -1313,8 +1320,8 @@
     "createdAt": "2026-01-02T12:26:22.556Z",
     "id": "11ed507c-d045-4220-ac4f-af8f44b625f5",
     "steamAppId": 3700,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "12483e56-d67e-432f-a035-4bfa42c0aeb8",
@@ -1417,8 +1424,8 @@
     "image": "game-12eaba6f-3050-4b8d-98b8-98db46dc1d9a.png",
     "description": "The Club is Yours in EA SPORTS FC™ 26.\nPlay your way with an overhauled gameplay experience powered by community feedback. The new Authentic Gameplay option delivers the most true-to-football experience ever in Career, while the Competitive Gameplay option — driven by refined fundamentals, added consistency, and enhanced responsiveness — is tailor-made for play in Football Ultimate Team™ and Clubs.\nPut your dream squad to the test in Football Ultimate Team™ with new Live Events and Tournament modes, as well as a refreshed Rivals and Champs experience.\nExperience Manager Career like never before with all-new Manager Live Challenges. Earn rewards throughout the new season by taking on a variety of real-world scenarios and alternative storylines — ranging from a few minutes of play to multiple seasons.\nArchetypes inspired by the greats of the game introduce new classes to Clubs and Player Career, bringing more individuality to your player. Develop your abilities by upgrading attributes and unlocking Archetype Perks to give your player a distinct feel on the pitch.\nExperience The World’s Game like never before in EA SPORTS FC™ 26, with match data from the world’s top leagues powering 20,000+ authentic players.\nThis game includes optional in-game purchases of virtual currency that can be used to acquire virtual in-game items, including a random selection of virtual in-game items.",
     "sizeGB": 59,
-    "minimumRequirements": "",
-    "recommendedRequirements": "",
+    "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10/11 - 64-Bit (Latest Update).Procesador: AMD Ryzen 5 1600 or Intel Core i5 6600kMemoria: 8 GB de RAMGráficos: AMD RX 570 or Nvidia GTX 1050 TiDirectX: Versión 12Red: Conexión de banda ancha a InternetAlmacenamiento: 100 GB de espacio disponibleTarjeta de sonido: DirectX: 12 Compatible video card or equivalent (feature level 12_0)",
+    "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10/11 - 64-Bit (Latest Update).Procesador: AMD Ryzen 7 2700X or Intel Core i7 6700Memoria: 12 GB de RAMGráficos: AMD RX 5600 XT or Nvidia GTX 1660DirectX: Versión 12Red: Conexión de banda ancha a InternetAlmacenamiento: 100 GB de espacio disponibleTarjeta de sonido: DirectX: 12 Compatible video card or equivalent (feature level 12_0)",
     "trailerUrl": "",
     "isFavorite": false,
     "price": 1600,
@@ -1426,8 +1433,9 @@
     "isPromotion": false,
     "createdAt": "2026-01-07T04:53:50.952Z",
     "id": "12eaba6f-3050-4b8d-98b8-98db46dc1d9a",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "steamAppId": 3405690,
+    "imageBlob": {}
   },
   {
     "title": "Carmageddon: Rogue Shift",
@@ -1437,18 +1445,19 @@
     "rating": 3.8,
     "price": 150,
     "image": "game-134edabc-a333-458c-9c55-1a1bc5412495.jpeg",
-    "imageBlob": {},
     "description": "Le légendaire Carmageddon revient en trombe, et est repensé pour une nouvelle ère de combat motorisé.\nL'INTERMINABLE NUIT\nNous sommes en 2050, et le monde que vous connaissiez n'est plus qu'un désert post-apocalyptique.\nDes hordes de créatures cauchemardesques, les Décimés, assiègent l'humanité. Chaque nuit, ils envahissent les rues, obligeant les survivants à se barricader dans les gratte-ciel où ils ont élu domicile.\nVotre seule échappatoire : le Carmageddon.\nCes courses mortelles promettent pouvoir, prestige et prix de valeur aux participants. Plus important encore, le champion gagne le droit de tenter le périlleux voyage qui mène au spatioport par-delà les montagnes. L'unique survivant, l'ultime espoir de fuir ce monde agonisant.\nAux côtés d'innombrables pilotes, vous rejoignez le Carmageddon. Vous ne disposez que d'un tas de ferraille, de carburant récupéré et d'une arme de fortune. Face à vous : des gangs rivaux comme les Autoscums et autres desperados, dans une lutte à mort. Chaque course devient l'occasion de gagner des composants et des améliorations, vous permettant de faire un pas de plus vers la grande évasion.\nQuand la nuit tombe, les Décimés envahissent les rues, et vous aussi.\nCONDUISEZ POUR SURVIVRE\nL'esprit originel de Carmageddon, où les véhicules sèment le chaos, a été sublimé et repensé. Nous avons conjugué passé et présent pour concevoir un combat motorisé viscéral, rapide et accessible.\n• 15 véhicules améliorables en traction avant, arrière ou intégrale permanente, disposant chacun d'un poids et d'une suspension uniques\n• Combat motorisé brutal : percutez, poussez et cognez vos rivaux\n• 13 classes d'armes : des fusils à pompe aux canons électriques, toutes entièrement améliorables\n• Plus de 80 avantages : créez des synergies dévastatrices pour dominer la course et semer la destruction sur votre passage\n• Météo dynamique et cycle jour-nuit : la pluie rend l'asphalte glissant, le brouillard dissimule les embuscades.\n• Événements d'élite et de boss : machines de guerre colossales, exécuteurs corrompus et hordes de zombies sans fin\n• Modèle de dégâts visuels poussé : pare-brise, capot, portières, pare-chocs et coffre se déforment, s'écrasent, se décollent et tombent.\nLA CAMPAGNE ROGUELITE\nChaque campagne offre un parcours unique à travers une carte générée aléatoirement.\nTriomphez lors d'événements et écrasez vos adversaires pour remporter des crédits. Les manœuvres, comme tuer des Décimés, les drifts, les sauts et les figures rapportent aussi des récompenses.\nFaites preuve de stratégie pour planifier votre itinéraire afin d'atteindre les boutiques. Dans ces havres de paix, vous pouvez réparer votre véhicule, changer d'armes ou installer l'un des plus de 80 avantages à débloquer.\nAdaptez-vous à la difficulté qui s'intensifie et dominez les événements d'élite et les boss.\nEntre parcours multiples, objectifs variés, conditions météo et horaires en perpétuel changement, aucune partie ne se ressemble.\nCependant, le Carmageddon ne se termine pas quand votre bolide finit en carcasse. Un autre pilote prendra le relais, et le défi reprendra de plus belle, dans une boucle roguelite typique. Gagnez des Bitcognes pour débloquer des bonus permanents et du nouveau contenu entre les parties sur le marché noir. Trouvez les synergies entre ces éléments pour créer la machine à tuer ultime : le Carmageddon est éternel.\nADVERSAIRES\nLe Carmageddon réunit un groupe hétéroclite de maraudeurs, parias et canailles. Certains préfèrent foncer en tête de peloton. D'autres vous poursuivront et tenteront de vous éjecter de la route. D'autres encore guetteront le moment de décharger leurs armes sur votre véhicule. Certains sont plus habiles ou mieux équipés que d'autres. Vous croiserez sans doute des noms connus parmi cette racaille.\nDes forces de police corrompues connues sous le nom d'exécuteurs imposent leurs règles brutales à ceux épargnés par la mutation. Ils vous forceront à quitter la route pour dépouiller votre véhicule de ses composants et munitions, si vous les laissez faire.\nChaque quartier de la ville est contrôlé par un adversaire particulièrement féroce, communément appelé le boss. Les boss conduisent les véhicules armés les plus imposants, les plus menaçants et les plus rapides qui soient. Le règlement du Carmageddon impose d'éliminer chacun d'entre eux pour accéder à l'étape suivante.\nChaque course mettra brutalement vos compétences à l'épreuve, vous obligeant à maîtriser conduite, attaques au corps-à-corps et à distance contre un éventail diversifié et imprévisible d'ennemis. Pour y parvenir, vous devez peaufiner votre véhicule, trouver des améliorations et des armes en synergie et surtout, être un as du volant.\nLES DÉCIMÉS\nLa Troisième Guerre mondiale et une série de catastrophes naturelles dévastatrices ont détruit la Terre. Au milieu du chaos, un complément alimentaire appelé MiVis fut introduit pour pallier les pénuries de nourriture, et devint omniprésent dans la vie quotidienne.\nCependant, la consommation prolongée de MiVis provoqua une horrible mutation cellulaire, transformant les gens en Décimés, d'hideuses créatures sans cervelle rongées par les effets secondaires du supplément.\nDésormais, ils forment une masse d'êtres inconscients et très agressifs qui menacent les survivants dès que le soleil commence à se coucher.\nUn Décimé isolé ne fait pas le poids face à votre char de guerre. Les choses se corsent quand d'autres Décimés pointent le bout de leur nez. Percutez en trombe ces nuées d'enveloppes humanoïdes qui grouillent sur le circuit, écartez les flots de Décimés comme un Moïse motorisé ! Mais gare à l'enlisement dans le raz-de-marée : une meute de Décimés cernera votre véhicule pour le fracasser à coups de moignons sanguinolents.\nSans compter les Décimés spéciaux, de monstrueuses supermutations des Décimés, déformés en créatures encore plus inhumaines.\nIls peuvent exploser, vous tirer dessus à distance, bondir sur votre véhicule, ou vous réserver des surprises encore plus horribles.\nIls représentent un danger réel et ont tendance à apparaître tard dans la nuit.\nEt puis, il y a l'abomination ultime. D'après les rumeurs, un monstre que peu ont aperçu garde l'unique col de montagne vers le salut et sera votre épreuve ultime.\n🚀 Ajoutez le jeu à votre liste de souhaits et rejoignez les meilleurs pilotes dans notre équipe Discord !",
     "isFavorite": false,
     "sizeGB": 22,
-    "hardDriveSource": "4TB TANK",
-    "minimumRequirements": "",
-    "recommendedRequirements": "",
+    "hardDriveSource": "PROTOCOL",
+    "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 64bitProcesador: Intel Core i7-6700 / AMD Ryzen 5 1600XMemoria: 8 GB de RAMGráficos: NVIDIA GeForce RTX 2060 6 GB / AMD Radeon RX 5600 XT 6 GB / Intel Arc A380 6 GBDirectX: Versión 12Almacenamiento: 35 GB de espacio disponible",
+    "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 11 64bitProcesador: Intel Core i7-12700K / AMD Ryzen 7 5800XMemoria: 16 GB de RAMGráficos: NVIDIA GeForce RTX 3070 Ti 8 GB / AMD Radeon RX 6700 XT 12 GBDirectX: Versión 12Almacenamiento: 50 GB de espacio disponible",
     "trailerUrl": "",
     "isPromotion": false,
     "isEmulated": false,
     "id": "134edabc-a333-458c-9c55-1a1bc5412495",
-    "createdAt": "2026-02-15T06:01:23.086Z"
+    "createdAt": "2026-02-15T06:01:23.086Z",
+    "steamAppId": 1712100,
+    "imageBlob": {}
   },
   {
     "rawgId": 3400,
@@ -1562,8 +1571,8 @@
     "image": "game-1535e302-781b-48e7-aa8b-04e9a5659eb3.png",
     "createdAt": "2025-12-29T20:29:41.770Z",
     "steamAppId": 42670,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "157a3569-fa75-40cf-924c-18ba99734ef2",
@@ -1608,8 +1617,8 @@
     "image": "game-15bfafe7-d88b-4d6e-971d-5fc36937e601.png",
     "createdAt": "2025-12-29T20:29:41.764Z",
     "steamAppId": 17410,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 638655,
@@ -1621,8 +1630,8 @@
     "image": "game-15eb465f-a24b-4433-aa09-ea8dabf3ea17.png",
     "description": "Welcome to GRID Legends: a high-stakes driving experience that combines thrilling unpredictable motorsport, incredible race variety, and an immersive driving story that puts you at the heart of the action.",
     "sizeGB": 41,
-    "minimumRequirements": "",
-    "recommendedRequirements": "",
+    "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: 64-bit Windows 10/11Procesador: Intel i3 2130, AMD FX4300Memoria: 8 GB de RAMGráficos: NVIDIA GTX 950, AMD RADEON RX 460DirectX: Versión 12Red: Conexión de banda ancha a InternetAlmacenamiento: 50 GB de espacio disponibleTarjeta de sonido: DirectX Compatible Soundcard",
+    "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: 64-bit Windows 10/11Procesador: Intel i5 8600k, AMD Ryzen 5 2600xMemoria: 16 GB de RAMGráficos: Nvidia GTX 1080, AMD RX590DirectX: Versión 12Red: Conexión de banda ancha a InternetAlmacenamiento: 50 GB de espacio disponibleTarjeta de sonido: DirectX Compatible Soundcard",
     "trailerUrl": "",
     "isFavorite": false,
     "price": 1600,
@@ -1630,8 +1639,9 @@
     "isPromotion": false,
     "createdAt": "2026-01-07T04:53:52.588Z",
     "id": "15eb465f-a24b-4433-aa09-ea8dabf3ea17",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "steamAppId": 1307710,
+    "imageBlob": {}
   },
   {
     "id": "160aa901-3622-4350-9f46-6b4d67cf0195",
@@ -1653,8 +1663,8 @@
     "image": "game-160aa901-3622-4350-9f46-6b4d67cf0195.png",
     "createdAt": "2025-12-29T20:29:41.963Z",
     "steamAppId": 234670,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 4000,
@@ -1767,8 +1777,8 @@
     "image": "game-176044bb-b17e-40d0-bf0b-e3841f5fddc8.png",
     "createdAt": "2025-12-29T20:29:41.764Z",
     "steamAppId": 2947440,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 776260,
@@ -1780,8 +1790,8 @@
     "image": "game-17cb5cf9-f1b9-4019-b290-af4d945e92a2.png",
     "description": "Enter the new era of Formula 1® in EA SPORTS™ F1® 22, the official video game of the 2022 FIA Formula One World Championship™. Take your seat for a new season as redesigned cars and overhauled rules redefine race day, test your skills around the new Miami International Autodrome, and get a taste of the glitz and glamour in F1® Life.\nRace the stunning, new cars of the Formula 1® 2022 season with the authentic lineup of all 20 drivers and 10 teams, and take control of your race experience with new immersive or cinematic race sequences. Create a team and take them to the front of the grid with new depth in the acclaimed My Team career mode, race head-to-head in split-screen or multiplayer, or change the pace by taking supercars from some of the sport’s biggest names to the track.",
     "sizeGB": 29,
-    "minimumRequirements": "",
-    "recommendedRequirements": "",
+    "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 64-bit Version 21H1 or newerProcesador: Intel Core i5-6400 | Core i5-9600k (VR) or AMD Ryzen 3 1200 | Ryzen 5 2600X (VR)Memoria: 8 GB de RAMGráficos: NVIDIA GTX 1060 (6GB) | GTX 1660Ti (VR) | RTX 2060 (RT) // AMD RX 570 (8GB) | RX 590 (VR) | 6700XT (RT) // Intel Arc A380 (VR/RT)DirectX: Versión 12Red: Conexión de banda ancha a InternetAlmacenamiento: 100 GB de espacio disponibleTarjeta de sonido: DirectX CompatibleCompatibilidad con RV: Meta Quest 3 + Link // Meta Quest 2 + Link // Oculus Rift S // HTC Cosmos // HTC Vive Pro // Valve Index // HP Reverb G2Notas adicionales: CPU: AVX2, 4 cores @ 2.2Ghz or greater // GPU: Shader Model 6.6 or newer // Network: 1Mbps up with < 60ms ping",
+    "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 64-bit Version 21H1 or newerProcesador: Intel Core i5-9600k or AMD Ryzen 5 2600XMemoria: 16 GB de RAMGráficos: NVIDIA RTX 2070 (+VR) | RTX 3070 (RT) // AMD RX 6600XT | RX 6700XT (VR) | RX 6800 (RT) // Intel Arc A580 (VR/RT)DirectX: Versión 12Red: Conexión de banda ancha a InternetAlmacenamiento: 100 GB de espacio disponibleTarjeta de sonido: DirectX CompatibleCompatibilidad con RV: Meta Quest 3 + Link // Meta Quest 2 + Link // Oculus Rift S // HTC Cosmos // HTC Vive Pro // Valve Index // HP Reverb G2Notas adicionales: CPU: AVX2, 4 cores @ 2.2Ghz or greater // GPU: Shader Model 6.6 or newer // Network: 3Mbps up with < 30ms ping",
     "trailerUrl": "",
     "isFavorite": false,
     "price": 180,
@@ -1789,8 +1799,9 @@
     "isPromotion": false,
     "createdAt": "2026-01-02T12:25:37.904Z",
     "id": "17cb5cf9-f1b9-4019-b290-af4d945e92a2",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "steamAppId": 3059520,
+    "imageBlob": {}
   },
   {
     "id": "1831609a-e09e-4b52-ad7c-9ff3b9f61672",
@@ -1829,13 +1840,13 @@
     "hardDriveSource": "1TB EXT",
     "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: OS 64-bit Windows 10Procesador: Intel CPU Core i5-2500K 3.3GHz / AMD CPU Phenom II X4 940Memoria: 8 GB de RAMGráficos: NVIDIA GeForce GTX 660 / Radeon HD 7870DirectX: Versión 12Almacenamiento: 60 GB de espacio disponible",
     "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: OS 64-bit Windows 10Procesador: Intel CPU Core i7 4790 4 GHzMemoria: 16 GB de RAMGráficos: Nvidia GPU GeForce GTX 1070 / AMD GPU Radeon RX Vega 56 8GBDirectX: Versión 12Almacenamiento: 60 GB de espacio disponible",
-    "trailerUrl": "https://steamcdn-a.akamaihd.net/steam/apps/256669006/movie480.mp4",
+    "trailerUrl": "https://www.youtube.com/watch?v=Z29ORu6_p34",
     "isPromotion": false,
     "image": "game-186ce8cf-ba3d-4c76-8aba-09a830d6e40c.png",
     "createdAt": "2025-12-29T20:29:42.004Z",
     "steamAppId": 1659040,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "18df5135-00db-401f-aa43-44088d442754",
@@ -1958,7 +1969,7 @@
     "genre": "Action, Adventure, RPG",
     "releaseDate": "2020-11-10",
     "rating": 3.69,
-    "image": "game-1a50fa00-2cde-43f6-afca-f1f8041e38cb.png",
+    "image": "game-1a50fa00-2cde-43f6-afca-f1f8041e38cb.jpeg",
     "description": "Become Eivor, a mighty Viking raider and lead your clan from the harsh shores of Norway to a new home amid the lush farmlands of ninth-century England. Explore a beautiful, mysterious open world where you'll face brutal enemies, raid fortresses, build your clan's new settlement, and forge alliances to win glory and earn a place in Valhalla.\nEngland in the age of the Vikings is a fractured nation of petty lords and warring kingdoms. Beneath the chaos lies a rich and untamed land waiting for a new conqueror. Will it be you?",
     "sizeGB": 68,
     "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 (versions 64 bits uniquement)Procesador: AMD Ryzen 3 1200 3.1 GHz / Intel Core i5-4460 3.2 GHzMemoria: 8 GB de RAMGráficos: AMD R9 380 /NVIDIA GeForce GTX 960DirectX: Versión 12Almacenamiento: 160 GB de espacio disponible",
@@ -1966,13 +1977,13 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 250,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:05.366Z",
     "id": "1a50fa00-2cde-43f6-afca-f1f8041e38cb",
     "steamAppId": 2208920,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "1ac63fef-f29f-4c87-830a-d48567d7f2e1",
@@ -2300,7 +2311,7 @@
     "genre": "Action, RPG",
     "releaseDate": "2016-04-11",
     "rating": 4.4,
-    "image": "game-1e78d2be-d5b4-46c4-9056-d47be7d4d8f4.png",
+    "image": "game-1e78d2be-d5b4-46c4-9056-d47be7d4d8f4.jpeg",
     "description": "Dark Souls III is the fourth installment in the Dark Souls series, now introducing the players to the world of Lothric, a kingdom which has suffered the fate similar to its counterparts from the previous games, descending from its height to utter darkness. A new tale of dark fantasy offers to create and guide the path of game’s protagonist, the Ashen One, through the dangers of the world before him.\nSharing many gameplay similarities with previous installments of the Souls series, Dark Souls III improves at what it is best. These features are the unforgiving difficulty and unique, overwhelming environments. Let alone the soundtracks, allowing players to travel through the familiar locations and encounter new obstacles alike, resulting in a great test of nerves, while also giving the fruit of resolving the secrets and echoes of the past of Dark Souls series.\nThe new changes to the systems of multiplayer, crafting and combat will offer new and experienced players to challenge themselves on the field of battle, and to enhance the playthrough with each consecutive New Game +, where the in-game cycle never indeed ends, allowing for a multitude of different playstyles, and showing different events based on player’s actions.",
     "sizeGB": 15,
     "minimumRequirements": "Mínimo:SO *: Windows 7 SP1 64bit, Windows 8.1 64bit Windows 10 64bitProcesador: Intel Core i3-2100 / AMD® FX-6300Memoria: 4 GB de RAMGráficos: NVIDIA® GeForce GTX 750 Ti / ATI Radeon HD 7950DirectX: Versión 11Red: Conexión de banda ancha a InternetAlmacenamiento: 25 GB de espacio disponibleTarjeta de sonido: DirectX 11 sound deviceNotas adicionales: Internet connection required for online play and product activation",
@@ -2308,13 +2319,13 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 150,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:06.604Z",
     "id": "1e78d2be-d5b4-46c4-9056-d47be7d4d8f4",
     "steamAppId": 374320,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 871148,
@@ -2382,8 +2393,8 @@
     "createdAt": "2026-01-02T09:41:48.330Z",
     "id": "1ebd6bd8-8812-44d8-8481-9e894177fdea",
     "steamAppId": 1173820,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "1fbcefd6-264c-436f-b258-10ff4cca5670",
@@ -2520,8 +2531,8 @@
     "image": "game-20bceb7a-6d98-4159-bdd8-7e0aeb34519d.png",
     "createdAt": "2025-12-29T20:29:41.723Z",
     "steamAppId": 245280,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 2805,
@@ -2740,17 +2751,17 @@
     "imageUrl": "https://placehold.co/300x400/cccccc/white?text=No+Image",
     "description": "<p class=\"bb_paragraph\" ><strong>¡Únete a más de 2 millones de jugadores que ya han comprado Ranch Simulator en Steam!</strong><br>El rancho familiar, que antaño fue el tesoro de tu abuelo, está en sus peores momentos y te toca a ti ponerle remedio a la situación. Esta ruinosa hacienda ubicada en un valle boscoso lejos de toda civilización pondrá a prueba tus habilidades mientras intentas convertirla en el rancho más próspero de la región… Tanto si juegas solo como en el multijugador cooperativo de hasta cuatro jugadores.</p><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" ><span class=\"bb_img_ctn\"><video class=\"bb_img\" autoplay muted loop playsinline poster=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1119730/extras/4b1588a54669a5351992ee069c9e0a21.poster.avif?t=1766408161\" width=616 height=200 ><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1119730/extras/4b1588a54669a5351992ee069c9e0a21.webm?t=1766408161\" type=\"video/webm; codecs=vp9\"><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1119730/extras/4b1588a54669a5351992ee069c9e0a21.mp4?t=1766408161\" type=\"video/mp4\"></video></span></p><h2 class=\"bb_tag\" >Reconstruye tu rancho</h2><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" >Los años no han pasado en balde por tu rancho familiar y costará tiempo y dinero recuperar su antigua gloria. Compra herramientas en la ferretería y hazte con una serie de vehículos que te ayudarán con la reconstrucción. Renueva la casa principal, decide qué ganado quieres criar y construye los graneros, los corrales y los gallineros que necesitarás para que estén a salvo.</p><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" ><span class=\"bb_img_ctn\"><video class=\"bb_img\" autoplay muted loop playsinline poster=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1119730/extras/d7bc586a7300e1e80d0fa8577fb86df9.poster.avif?t=1766408161\" width=616 height=200 ><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1119730/extras/d7bc586a7300e1e80d0fa8577fb86df9.webm?t=1766408161\" type=\"video/webm; codecs=vp9\"><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1119730/extras/d7bc586a7300e1e80d0fa8577fb86df9.mp4?t=1766408161\" type=\"video/mp4\"></video></span></p><h2 class=\"bb_tag\" >Cuida del ganado</h2><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" >Los grandes proyectos de construcción son una cosa, pero… ¿cómo vas a pagar por ellos? Eso dependerá de tus habilidades con el rancho. Supervisar una explotación rentable será el día a día. Una vez que has seleccionado el ganado y te has hecho cargo, la alimentación constante los mantendrá sanos. Una buena reproducción y el desarrollo de las crías te ayudará a aumentar las manadas y rebaños… Y cuanto más producto tengas para vender, más beneficio recibirás por todo ese trabajo duro.</p><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" >Amplía tu rancho cosechando cultivos, produciendo salchichas y queso, y hasta domando y vendiendo caballos.</p><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" ><span class=\"bb_img_ctn\"><video class=\"bb_img\" autoplay muted loop playsinline poster=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1119730/extras/57be219b571ec8f019ff9b29d2f3f336.poster.avif?t=1766408161\" width=616 height=200 ><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1119730/extras/57be219b571ec8f019ff9b29d2f3f336.webm?t=1766408161\" type=\"video/webm; codecs=vp9\"><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1119730/extras/57be219b571ec8f019ff9b29d2f3f336.mp4?t=1766408161\" type=\"video/mp4\"></video></span></p><h2 class=\"bb_tag\" >Sal a cazar</h2><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" >Hay un gran entorno de mundo abierto más allá de la comodidad de tu hacienda y está repleto de vida salvaje. Si quieres tomarte un descanso en la naturaleza, ¿por qué no coges tu viejo rifle y te adentras en el bosque para rastrear ciervos y cazar osos? Pero recuerda, la naturaleza tiene sus propias leyes y no eres el único cazador experimentado de la zona. A veces, una mano firme y unos ojos entrenados también serán fundamentales en el rancho para evitar que los lobos hambrientos conviertan tu sueño en una pesadilla.</p>",
     "isFavorite": false,
-    "sizeGB": 7,
+    "sizeGB": 7.1,
     "hardDriveSource": "2TB GASS",
     "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 (64-bit versions only)Procesador: Intel Core i5-3570K or AMD FX-8310Memoria: 8 GB de RAMGráficos: NVIDIA GeForce GTX 760 or AMD Radeon RX 470DirectX: Versión 12Almacenamiento: 15 GB de espacio disponible",
     "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 (64-bit versions only)Procesador: Intel Core i7-4790 or AMD Ryzen 3 3200GMemoria: 12 GB de RAMGráficos: NVIDIA GeForce GTX 1060 6GB / GTX 1660 Super or Radeon RX 590DirectX: Versión 12Almacenamiento: 15 GB de espacio disponible",
     "trailerUrl": "",
     "isPromotion": false,
-    "image": "game-23948faa-51e8-4914-92c7-2ba86ec1e3fe.png",
+    "image": "game-23948faa-51e8-4914-92c7-2ba86ec1e3fe.jpeg",
     "createdAt": "2025-12-29T20:29:41.768Z",
     "steamAppId": 1119730,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 898354,
@@ -2886,8 +2897,8 @@
     "createdAt": "2026-01-02T12:24:59.568Z",
     "id": "25fce034-d568-48fa-9f76-81f0923bb5fe",
     "steamAppId": 35140,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 499264,
@@ -3001,8 +3012,8 @@
     "image": "game-275553b8-51aa-4acf-8ccf-38b2220a8176.png",
     "createdAt": "2025-12-29T20:29:41.836Z",
     "steamAppId": 1332010,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "27ddbe62-9b2b-44ee-9624-e1724d8b04df",
@@ -3024,8 +3035,8 @@
     "image": "game-27ddbe62-9b2b-44ee-9624-e1724d8b04df.png",
     "createdAt": "2025-12-29T20:29:41.862Z",
     "steamAppId": 17470,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 259801,
@@ -3115,8 +3126,8 @@
     "image": "game-288c1455-dcfd-4e50-831e-c5b121de9361.png",
     "createdAt": "2025-12-29T20:29:41.766Z",
     "steamAppId": 349040,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 979342,
@@ -3138,8 +3149,8 @@
     "createdAt": "2026-01-04T05:27:12.246Z",
     "id": "28fe60a4-b362-4c89-9ea3-6632c091e0fc",
     "steamAppId": 12360,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 29231,
@@ -3207,8 +3218,8 @@
     "image": "game-2a4fed58-c236-4109-8843-f461dab92a41.png",
     "createdAt": "2025-12-29T20:29:41.852Z",
     "steamAppId": 220,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "2aa2f6c7-985f-4ede-988a-56a7d7745e98",
@@ -3335,12 +3346,12 @@
     "description": "<p class=\"bb_paragraph\" >Yakuza 0 Director's Cut es la edición definitiva de la aclamada precuela de la saga Yakuza.</p><p class=\"bb_paragraph\" >Ponte en la piel del yakuza Kazuma Kiryu y del gerente de cabaret Goro Majima y ábrete paso a puño limpio por las calles de los distritos de entretenimiento de Tokio y Osaka en este épico drama criminal en el que los destinos se entrelazan y nacen nuevas leyendas.</p><p class=\"bb_paragraph\" ><strong>■ APLASTA A TUS RIVALES CON ESTILO</strong></p><p class=\"bb_paragraph\" >Kiryu y Majima tienen tres estilos de lucha únicos cada uno, entre los cuales puedes alternar libremente para repartir leña a diestro y siniestro, ya sea con tus puños o con lo que tengas a mano. No habrá pelea que se te resista gracias a unos controles intuitivos y la posibilidad de perfeccionar tus habilidades al máximo.</p><p class=\"bb_paragraph\" ><strong>■ DESCUBRE LA DECADENCIA DEL JAPÓN DE 1988</strong></p><p class=\"bb_paragraph\" >Luchar no es la única forma de matar el tiempo en el Japón de 1988: discotecas, dardos, recreativos de SEGA, cabarets... En esta ciudad llena de neones puedes hacer de todo.</p><p class=\"bb_paragraph\" ><strong>■ DISFRUTA DEL CONTENIDO DE DIRECTOR'S CUT</strong></p><p class=\"bb_paragraph\" >Sumérgete en los momentos clave y en las historias de los personajes como nunca a través de las cinemáticas exclusivas de la versión Director's Cut. Además, en el modo multijugador en línea «Raid Luz Roja», podrás unir fuerzas con amigos y elegir entre 60 personajes jugables para enfrentarte a hordas de enemigos.<br><br>*Si tienes la versión digital de Yakuza 0, puedes obtener la versión digital de Yakuza 0 Director's Cut con descuento en su precio. </p><p class=\"bb_paragraph\" >*Yakuza 0 y Yakuza 0 Director's Cut tienen especificaciones diferentes y no se pueden transferir los datos guardados.</p>\n",
     "isFavorite": false,
     "sizeGB": 27,
-    "hardDriveSource": "6TB STORE",
+    "hardDriveSource": "4TB TANK",
     "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 11Procesador: Intel Core i3-8100,3.6GHz or AMD Ryzen 3 2300X,3.5GHzMemoria: 8 GB de RAMGráficos: NVIDIA GeForce GTX960,4GB or AMD Radeon RX460,4GB or Intel Arc A380,6GBDirectX: Versión 12Red: Conexión de banda ancha a InternetAlmacenamiento: 95 GB de espacio disponibleTarjeta de sonido: N/ACompatibilidad con RV: N/ANotas adicionales: Low 1080p@30FPS, requires a CPU with supports the AVX and SSE4.2 instruction set",
     "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO:  Windows 11Procesador: Intel Core i5-8600K,3.6GHz or AMD Ryzen 5 2500X,3.6GHzMemoria: 16 GB de RAMGráficos: NVIDIA GeForce GTX1070,8GB or AMD Radeon RX Vega 56,8GB or Intel Arc A750,8GBDirectX: Versión 12Red: Conexión de banda ancha a InternetAlmacenamiento: 95 GB de espacio disponibleTarjeta de sonido: N/ACompatibilidad con RV: N/ANotas adicionales: High 1080p@60FPS, requires a CPU with supports the AVX and SSE4.2 instruction set",
     "trailerUrl": "",
     "isPromotion": false,
-    "image": "game-2c129b69-d9b1-48ec-bdbb-b88041cbcc62.png",
+    "image": "game-2c129b69-d9b1-48ec-bdbb-b88041cbcc62.webp",
     "createdAt": "2025-12-29T20:29:42.146Z",
     "steamAppId": 2988580,
     "isEmulated": false,
@@ -3399,7 +3410,7 @@
     "genre": "Action, Adventure",
     "releaseDate": "2020-04-21",
     "rating": 4.8,
-    "image": "game-2cc49b3f-f1ae-4cb1-b6b2-3e390a4567c1.png",
+    "image": "game-2cc49b3f-f1ae-4cb1-b6b2-3e390a4567c1.jpeg",
     "description": "Esta Edición juego del año ahora incluye contenido adicional*:<br />\n<br />\n- Recuerdo y Reto de fuerza: nuevos modos de desafío de jefe<br />\n- Vestigios: deja mensajes y grabaciones de tus acciones para que otros jugadores las vean y califiquen<br />\n- 3 aspectos desbloqueables<br />\n<br />\nJuego del año - The Game Awards 2019<br />\nMejor juego de acción de 2019 - IGN<br />\nMás de 50 premios y nominaciones<br />\n<br />\nTraza tu propio camino hacia la venganza en la galardonada aventura de FromSoftware, creadores de la saga Dark Souls.<br />\n<br />\nEn Sekiro™: Shadows Die Twice encarnas al 'lobo manco', un guerrero desfigurado y caído en desgracia que ha sido rescatado al borde de la muerte. Tras jurar proteger a un joven señor descendiente de un antiguo linaje, te conviertes en el objetivo de despiadados enemigos, entre ellos el peligroso clan Ashina. Cuando el joven señor sea capturado, nada te detendrá en tu peligrosa aventura por restituir tu honor, ni siquiera la muerte.<br />\n<br />\nExplora el Japón de la era Sengoku de finales del siglo XVI, un brutal periodo de constante conflicto, mientras te enfrentas a inconmensurables enemigos en un mundo oscuro y tortuoso. Despliega un arsenal de instrumentos protésicos letales y poderosas habilidades ninja, al mismo tiempo que combinas el sigilo, la verticalidad y transversalidad, y los viscerales combates cara a cara en una sangrienta confrontación.<br />\n<br />\nVéngate. Restituye tu honor. Mata con ingenio.<br />\n<br />\n*Descarga necesaria.<br />\n<br />\nSe requiere conexión a Internet para un Multijugador asincrónico.\n",
     "sizeGB": 8.3,
     "minimumRequirements": "Mínimo:SO *: Windows 7 64-bit | Windows 8 64-bit | Windows 10 64-bitProcesador: Intel Core i3-2100 | AMD FX-6300Memoria: 4 GB de RAMGráficos: NVIDIA GeForce GTX 760 | AMD Radeon HD 7950DirectX: Versión 11Red: Conexión de banda ancha a InternetAlmacenamiento: 25 GB de espacio disponibleTarjeta de sonido: DirectX 11 Compatible",
@@ -3407,13 +3418,13 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 150,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:59.044Z",
     "id": "2cc49b3f-f1ae-4cb1-b6b2-3e390a4567c1",
     "steamAppId": 814380,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "2cc99b99-94d3-4e3e-ae68-6888a88a2158",
@@ -3724,13 +3735,14 @@
     "isFavorite": false,
     "sizeGB": 22,
     "hardDriveSource": "4TB TANK",
-    "minimumRequirements": "",
-    "recommendedRequirements": "",
+    "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10Procesador: Intel Core i5-7500 / AMD Ryzen 3 1200Memoria: 8 GB de RAMGráficos: GTX1060 (VRAM 6GB) / Radeon RX 580 (VRAM 4GB)DirectX: Versión 12Almacenamiento: 60 GB de espacio disponible",
+    "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10Procesador: Intel Core i7 8700 / AMD Ryzen 5 3600Memoria: 16 GB de RAMGráficos: RTX2070 / Radeon RX 5700XTDirectX: Versión 12Almacenamiento: 60 GB de espacio disponible",
     "trailerUrl": "",
     "isPromotion": false,
     "isEmulated": false,
     "id": "3075078d-4350-4d2b-b3c0-973f57d5cb02",
     "createdAt": "2026-01-21T23:16:48.604Z",
+    "steamAppId": 2492040,
     "imageBlob": {}
   },
   {
@@ -3776,8 +3788,8 @@
     "image": "game-311a03ea-14a2-4607-918c-82e93145ac95.png",
     "createdAt": "2025-12-29T20:29:41.834Z",
     "steamAppId": 203770,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 681398,
@@ -3838,13 +3850,13 @@
     "hardDriveSource": "1TB EXT",
     "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10Procesador: AMD Ryzen 5 3600 or similarMemoria: 16 GB de RAMGráficos: GTX 1660 or similarDirectX: Versión 11Almacenamiento: 80 GB de espacio disponible",
     "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 11Procesador: Intel Core i7-14700F or betterMemoria: 64 GB de RAMGráficos: RTX 4070 or betterDirectX: Versión 11Almacenamiento: 80 GB de espacio disponible",
-    "trailerUrl": "",
+    "trailerUrl": "https://www.youtube.com/watch?v=8iZJ7ZVYQ0o",
     "isPromotion": false,
     "image": "game-3129b94c-58ba-4053-b030-5ce6bd163a4d.png",
     "createdAt": "2025-12-29T20:29:42.197Z",
     "steamAppId": 3932890,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "3163998c-7afd-4869-ad34-9bbf83873b6a",
@@ -3875,7 +3887,7 @@
     "genre": "Action, Adventure, RPG",
     "releaseDate": "2025-07-23",
     "rating": 3.5,
-    "image": "game-322604dd-d1b6-4bd1-a425-6a06b6ecde00.png",
+    "image": "game-322604dd-d1b6-4bd1-a425-6a06b6ecde00.jpeg",
     "description": "Set in the chaotic final years of the Ming Dynasty, WUCHANG: Fallen Feathers is an exploration of the hauntingly beautiful landscapes of imperial China and the battle against mysterious forces that transform a grim reality to supernatural horror.",
     "sizeGB": 17,
     "minimumRequirements": "Mínimo:SO: Windows10 64bitProcesador: Intel Core i5-8400/AMD Ryzen 5 1600Memoria: 16 GB de RAMGráficos: NVIDIA GeForce GTX 1060 6GB/AMD Radeon RX 580 8GBDirectX: Versión 12Almacenamiento: 60 GB de espacio disponibleNotas adicionales: HDD Supported, SSD Recommended. The above specifications were tested with DLSS/FSR enabled.",
@@ -3883,13 +3895,13 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 250,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:40:17.394Z",
     "id": "322604dd-d1b6-4bd1-a425-6a06b6ecde00",
     "steamAppId": 2277560,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "3264fcde-1c7c-4722-b27f-c61242668c19",
@@ -3926,14 +3938,15 @@
     "isFavorite": false,
     "sizeGB": 39,
     "hardDriveSource": "2TB 4",
-    "minimumRequirements": "",
-    "recommendedRequirements": "",
+    "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 (x64) or Windows 11 (x64)Procesador: Intel i3 2100 (3.1GHz) / AMD FX 6300 (3.5Ghz)Memoria: 8 GB de RAMGráficos: NVIDIA GeForce GTX770 (4 GB) / AMD Radeon R9 270 (4 GB)DirectX: Versión 12Red: Conexión de banda ancha a InternetAlmacenamiento: 30 GB de espacio disponibleNotas adicionales: Please note that these informations aren't final and may be subject to change until the launch of the game.",
+    "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 (x64) or Windows 11 (x64)Procesador: Intel i5 6600k (3.5GHz) / AMD Ryzen 5 1600X (3.6Ghz)Memoria: 16 GB de RAMGráficos: NVIDIA GeForce GTX1660 Ti (6 GB) / AMD RX 5700XT (8 GB)DirectX: Versión 12Red: Conexión de banda ancha a InternetAlmacenamiento: 30 GB de espacio disponibleNotas adicionales: Please note that these informations aren't final and may be subject to change until the launch of the game.",
     "trailerUrl": "",
     "isPromotion": false,
     "id": "32ed5c10-491d-4a37-a345-658fe3b10c93",
     "createdAt": "2026-01-06T10:44:33.046Z",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "steamAppId": 2340870,
+    "imageBlob": {}
   },
   {
     "rawgId": 988673,
@@ -4024,8 +4037,8 @@
     "createdAt": "2026-01-04T05:28:45.376Z",
     "id": "33f73883-e846-47e5-9083-384ed8194238",
     "steamAppId": 2210,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "title": "Saints Row",
@@ -4039,13 +4052,14 @@
     "isFavorite": false,
     "sizeGB": 34,
     "hardDriveSource": "4TB TANK",
-    "minimumRequirements": "",
-    "recommendedRequirements": "",
+    "minimumRequirements": "Mínimo:SO: Windows 10 64bitProcesador: Intel Core i3-3240 / Ryzen 3 1200Memoria: 8192 MB de RAMGráficos: GeForce GTX 970 / AMD Radeon RX 480DirectX: Versión 11Almacenamiento: 50 GB de espacio disponible",
+    "recommendedRequirements": "Recomendado:SO: Windows 10 64bitProcesador: Intel Core i5 12600 / AMD Ryzen 7 5800XMemoria: 16 GB de RAMGráficos: GeForce RTX 3080TI / AMD Radeon RX 6800XTDirectX: Versión 12Almacenamiento: 50 GB de espacio disponible",
     "trailerUrl": "",
     "isPromotion": false,
     "isEmulated": false,
     "id": "3442a19c-f32c-49bc-9de0-62834a83cc6d",
     "createdAt": "2026-01-30T09:05:40.288Z",
+    "steamAppId": 742420,
     "imageBlob": {}
   },
   {
@@ -4068,8 +4082,8 @@
     "image": "game-346571da-3a49-4703-89f0-bd6784deb385.png",
     "createdAt": "2025-12-29T20:29:42.189Z",
     "steamAppId": 204100,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "34fcdf92-2aa3-4dbb-b664-b8b8cf919907",
@@ -4125,18 +4139,19 @@
     "rating": 4.19,
     "price": 120,
     "image": "game-35a94c8b-f469-4a57-a760-ecf68bf0dc00.jpeg",
-    "imageBlob": {},
     "description": "The original creators of Little Nightmares™ & Little Nightmares™ II have returned to take you on a more terrifying journey than ever before. In this co-op horror adventure game, you play as a brother & sister who go through hell to rescue their missing friends. Exploring by boat and on land, you must use your wits to survive, work together to escape the hellish island, and the dark secret that haunts you.",
     "isFavorite": false,
     "sizeGB": 8.4,
     "hardDriveSource": "6TB STORE",
-    "minimumRequirements": "",
-    "recommendedRequirements": "",
+    "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10/11Procesador: Ryzen 5 2400G / Core i5-9400FMemoria: 8 GB de RAMGráficos: GeForce GTX 1060 / Radeon RX 480DirectX: Versión 12Red: Conexión de banda ancha a InternetAlmacenamiento: 18 GB de espacio disponible",
+    "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10/11Procesador: Ryzen 5 3600X / Core i7-7700KTBDMemoria: 16 GB de RAMGráficos: GeForce RTX 2060 / Radeon RX 6600XTTBDDirectX: Versión 12Red: Conexión de banda ancha a InternetAlmacenamiento: 18 GB de espacio disponible",
     "trailerUrl": "",
     "isPromotion": false,
     "isEmulated": false,
     "id": "35a94c8b-f469-4a57-a760-ecf68bf0dc00",
-    "createdAt": "2026-02-28T03:10:20.026Z"
+    "createdAt": "2026-02-28T03:10:20.026Z",
+    "steamAppId": 2129530,
+    "imageBlob": {}
   },
   {
     "id": "364dc182-f4d2-436a-8f7c-8d994a481a97",
@@ -4169,18 +4184,19 @@
     "rating": 4.38,
     "price": 200,
     "image": "game-36521ef6-1a7d-4ea0-beab-d211bdad48d9.jpeg",
-    "imageBlob": {},
     "description": "Man cannot remake himself without suffering, for he is both the marble and the sculptor - Alexis Carrel\nThis is the story of Jan Dolski, a simple worker facing circumstances that lead him to a life-changing crossroads. Crash landing on a distant planet, stranded and alone, Jan finds himself in a daunting life and death situation. His only hope for survival is to bring helping hands on board. Not yet understanding the weight of his choice, Jan must create alternate versions of himself if he is to forge ahead: the alters.\nThe Alters is a game about life-changing moments. Those binary decisions that happen in nanoseconds, but have influence over your entire life. It is about looking into yourself, into your past, and discovering that you are who you are as a sum of those numerous choices. And when you do that a fundamental question arises: WHAT IF…?\nWhat If I altered my life? What if I took a different path? Who would I be? What would I say to a different me? What could I learn if I talked to my altered selves? What if I talk to my many selves at once?! What if…?\nForged in the spirit of meaningful entertainment: a unique philosophy of creation by the award-winning team, the makers of This War of Mine and Frostpunk.",
     "isFavorite": false,
     "sizeGB": 35.6,
     "hardDriveSource": "4TB TANK",
-    "minimumRequirements": "",
-    "recommendedRequirements": "",
+    "minimumRequirements": "Mínimo:SO: Windows 10 or later, 64-bitProcesador: AMD Ryzen 5 1600, Intel Core i7-6700Memoria: 16 GB de RAMGráficos: AMD Radeon RX 570, nVidia GeForce GTX 1060, Intel Arc A570. 6+ GB video memoryDirectX: Versión 12Almacenamiento: 50 GB de espacio disponibleNotas adicionales: SSD Disk",
+    "recommendedRequirements": "Recomendado:SO: Windows 10 or later, 64-bitProcesador: AMD Ryzen 7 5800X, Intel Core i7-8700KMemoria: 16 GB de RAMGráficos: AMD Radeon RX 6600 XT, nVidia GeForce RTX 2070, Intel Arc A770. 8+ GB video memoryDirectX: Versión 12Almacenamiento: 50 GB de espacio disponibleNotas adicionales: SSD Disk. Graphics (4K): AMD Radeon RX 6800 XT, nVidia GeForce RTX 3080. 10+ GB video memory",
     "trailerUrl": "",
     "isPromotion": false,
     "isEmulated": false,
     "id": "36521ef6-1a7d-4ea0-beab-d211bdad48d9",
-    "createdAt": "2026-02-15T05:54:51.220Z"
+    "createdAt": "2026-02-15T05:54:51.220Z",
+    "steamAppId": 1601570,
+    "imageBlob": {}
   },
   {
     "id": "36d71152-8acb-48b4-a849-afd920fc2935",
@@ -4706,8 +4722,8 @@
     "image": "game-3dfa5e07-3892-484b-9bf9-38eb4f5136c4.png",
     "createdAt": "2025-12-29T20:29:42.162Z",
     "steamAppId": 1057090,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "3e22e37b-fd37-4f39-8638-05b835ba1836",
@@ -4887,8 +4903,8 @@
     "image": "game-40ffea05-88e3-4d52-830e-e9afd26182b9.png",
     "createdAt": "2025-12-29T20:29:41.762Z",
     "steamAppId": 3237360,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "41086e29-3acd-4674-a062-6bdb016a13f2",
@@ -4989,18 +5005,19 @@
     "rating": 4.3,
     "price": 180,
     "image": "game-42626b65-6e5d-4b62-a797-06269a2bbb20.png",
-    "imageBlob": {},
     "description": "<h2 class=\"bb_tag\" >Explore la cuna del drift y sumérjase en la emblemática cultura automovilística de Japón.</h2><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" ><strong>JDM: Japanese Drift Master</strong> es un homenaje a Japón, a la cultura de las carreras callejeras japonesas y al drift. Es una experiencia narrativa de mundo abierto que combina las serpenteantes carreteras Tōge (montañosas), con estrechos caminos rurales y vastas autopistas que conducen a un moderno paisaje urbano. Con coches con licencia y robustas opciones de tuning, ¡es un paraíso del drifting hecho realidad!<br><span class=\"bb_img_ctn\"><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1153410/extras/01880f9a3c02c43b93b85dfd7359b491.avif?t=1765463285\" width=610 height=152 /></span></p><ul class=\"bb_ul\"><li><p class=\"bb_paragraph\" ><strong>Modelos de Conducción</strong></p></li></ul><p class=\"bb_paragraph\" >Diseñado principalmente para mandos, JDM cuenta con dos modelos de conducción para elegir: Arcade, adecuado para una experiencia más relajada y para principiantes del drift; y Simcade, donde todas las asistencias están desactivadas, ofreciendo control total sobre el coche a cambio de más requisitos de habilidad para gestionar el drifting. Los jugadores pueden cambiar entre ambos modelos en cualquier momento.</p><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" ><span class=\"bb_img_ctn\"><video class=\"bb_img\" autoplay muted loop playsinline poster=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1153410/extras/d5845ea8e0946f381088a6af8430410c.poster.avif?t=1765463285\" width=1170 height=510 ><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1153410/extras/d5845ea8e0946f381088a6af8430410c.webm?t=1765463285\" type=\"video/webm; codecs=vp9\"><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1153410/extras/d5845ea8e0946f381088a6af8430410c.mp4?t=1765463285\" type=\"video/mp4\"></video></span></p><ul class=\"bb_ul\"><li><p class=\"bb_paragraph\" ><strong>Mundo Abierto</strong></p></li></ul><p class=\"bb_paragraph\" >Sumérgete en la atmósfera de Japón con la prefectura ficticia de Guntama, creada mezclando localizaciones reales de todo el país. Con más de 250 km de carreteras principales visualmente impresionantes, circuitos de carreras independientes y eventos instanciados, ambientados en sinuosos puertos de montaña, zonas rurales y las bulliciosas calles de la ciudad, explorarás diversos paisajes que cuentan con tráfico, clima dinámico y sistemas de ciclo día-noche.</p><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" ><span class=\"bb_img_ctn\"><video class=\"bb_img\" autoplay muted loop playsinline poster=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1153410/extras/e75a5799300bcf2f77b21e283a0bc661.poster.avif?t=1765463285\" width=1170 height=510 ><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1153410/extras/e75a5799300bcf2f77b21e283a0bc661.webm?t=1765463285\" type=\"video/webm; codecs=vp9\"><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1153410/extras/e75a5799300bcf2f77b21e283a0bc661.mp4?t=1765463285\" type=\"video/mp4\"></video></span></p><p class=\"bb_paragraph\" > </p><ul class=\"bb_ul\"><li><p class=\"bb_paragraph\" ><strong>Coches con Licencia</strong></p></li></ul><p class=\"bb_paragraph\" >Siéntate al volante de legendarios coches Nissan, Honda, Subaru y Mazda. Tunealos mecánicamente con nuevas piezas y luego ajusta los detalles. Experimenta con las partes visuales: desde capós, pasando por luces, hasta el cambio completo de kits de carrocería. Ajusta la suspensión, la caída de las ruedas (camber), las relaciones de transmisión y más. Por último, pinta el coche como quieras usando una paleta de colores de elección libre. ¿Quieres luces de neón (underglow)? También están a tu disposición.</p><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" ><span class=\"bb_img_ctn\"><video class=\"bb_img\" autoplay muted loop playsinline poster=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1153410/extras/fd118425d6651ab943210da8d1c3f0ad.poster.avif?t=1765463285\" width=1170 height=510 ><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1153410/extras/fd118425d6651ab943210da8d1c3f0ad.webm?t=1765463285\" type=\"video/webm; codecs=vp9\"><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1153410/extras/fd118425d6651ab943210da8d1c3f0ad.mp4?t=1765463285\" type=\"video/mp4\"></video></span></p><ul class=\"bb_ul\"><li><p class=\"bb_paragraph\" ><strong>Campaña Narrativa</strong></p></li></ul><p class=\"bb_paragraph\" >Ponte en la piel de un extranjero decidido a dejar su huella en la escena del drifting japonés. Compite en más de 40 eventos narrativos y misiones secundarias adicionales contra los mejores drifters de la zona. Vive este viaje a través de páginas de manga dibujadas a mano, que añaden un toque artístico y único al juego.</p><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" ><span class=\"bb_img_ctn\"><video class=\"bb_img\" autoplay muted loop playsinline poster=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1153410/extras/d1d0eac16fa15ccbf2bc6a435ddae5ea.poster.avif?t=1765463285\" width=1170 height=510 ><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1153410/extras/d1d0eac16fa15ccbf2bc6a435ddae5ea.webm?t=1765463285\" type=\"video/webm; codecs=vp9\"><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1153410/extras/d1d0eac16fa15ccbf2bc6a435ddae5ea.mp4?t=1765463285\" type=\"video/mp4\"></video></span></p><ul class=\"bb_ul\"><li><p class=\"bb_paragraph\" ><strong>El Ronroneo del Audio</strong></p></li></ul><p class=\"bb_paragraph\" >Experimenta sonidos de coche auténticos, capturados mediante grabaciones originales y recreados con atención al detalle, haciendo que sientas que estás realmente al volante. Conduce por carreteras pintorescas mientras sintonizas estaciones de radio temáticas por género, incluyendo paisajes sonoros únicos de J-music, Phonk e incluso Eurobeat – ¡elige la banda sonora perfecta para tu viaje!</p><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" ><span class=\"bb_img_ctn\"><video class=\"bb_img\" autoplay muted loop playsinline poster=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1153410/extras/07819ac7a8bf5782fda5166554cf53b2.poster.avif?t=1765463285\" width=1170 height=510 ><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1153410/extras/07819ac7a8bf5782fda5166554cf53b2.webm?t=1765463285\" type=\"video/webm; codecs=vp9\"><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1153410/extras/07819ac7a8bf5782fda5166554cf53b2.mp4?t=1765463285\" type=\"video/mp4\"></video></span></p>",
     "isFavorite": false,
     "sizeGB": 9,
     "hardDriveSource": "4TB TANK",
-    "minimumRequirements": "",
-    "recommendedRequirements": "",
+    "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: 64-bit Windows 10/11Procesador: Intel i5-9400F or Ryzen 5 2600Memoria: 16 GB de RAMGráficos: Intel Arc A580 or GeForce GTX1660 or Radeon Rx590 8gbDirectX: Versión 12Almacenamiento: 18 GB de espacio disponibleNotas adicionales: Playing on minimum requirements should enable to play on Low quality settings in FullHD (1080p) in stable 60 FPS. SSD is recommended.",
+    "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: 64-bit Windows 10/11Procesador: Intel i7 11700k or Ryzen 5 7600Memoria: 32 GB de RAMGráficos: Intel Arc B580 or GeForce RTX3060Ti or AMD Radeon RX6700DirectX: Versión 12Almacenamiento: 18 GB de espacio disponibleNotas adicionales: Playing on recommended requirements should enable to play on High quality settings in 60 FPS in FullHD. SSD is recommended.",
     "trailerUrl": "https://www.youtube.com/watch?v=-iebhqKtmcg",
     "isPromotion": false,
     "isEmulated": false,
     "id": "42626b65-6e5d-4b62-a797-06269a2bbb20",
-    "createdAt": "2026-01-21T23:25:00.551Z"
+    "createdAt": "2026-01-21T23:25:00.551Z",
+    "steamAppId": 1153410,
+    "imageBlob": {}
   },
   {
     "rawgId": 274767,
@@ -5068,8 +5085,8 @@
     "image": "game-43219499-9943-432d-92ff-77a8a4eae0db.png",
     "createdAt": "2025-12-29T20:29:41.782Z",
     "steamAppId": 3929740,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 42060,
@@ -5312,13 +5329,14 @@
     "isFavorite": false,
     "sizeGB": 60,
     "hardDriveSource": "6TB STORE",
-    "minimumRequirements": "",
-    "recommendedRequirements": "",
+    "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows® 11Procesador: Intel Core i5-10400, AMD Ryzen 5 2600 6 núcleos y 12 hilos o superiorMemoria: 16 GB de RAMGráficos: NVIDIA GeForce GTX 1060 VRAM 6GB, AMD Radeon RX 5600 XT (Rev. 2.0) VRAM 6GBDirectX: Versión 12Red: Conexión de banda ancha a InternetAlmacenamiento: 125 GB de espacio disponibleTarjeta de sonido: 48 000 Hz, 16 bits, estéreoNotas adicionales: Se recomienda la configuración de memoria multicanal. Se requiere SSD. El rendimiento del juego puede verse afectado si el rendimiento de la unidad SSD es insuficiente. Se puede jugar a 1080p / 30fps utilizando la configuración gráfica predefinida “más ligera” (con reescalado). Compatible con generación de fotogramas. Nota: Cumple con los requisitos del sistema Windows® 11.",
+    "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows® 11Procesador: Intel Core i5-10600K, AMD Ryzen 5 5600X 6 núcleos y 12 hilos o superiorMemoria: 16 GB de RAMGráficos: NVIDIA GeForce RTX 3060 Ti VRAM 8GB, AMD Radeon RX 6700 XT VRAM 12GBDirectX: Versión 12Red: Conexión de banda ancha a InternetAlmacenamiento: 125 GB de espacio disponibleTarjeta de sonido: 48 000 Hz, 16 bits, estéreoNotas adicionales: Se recomienda la configuración de memoria multicanal. Se requiere SSD, se recomienda NVMe SSD. Se puede jugar a 1080p / 60fps utilizando la configuración gráfica predefinida “estándar” (con reescalado). Compatible con generación de fotogramas. Nota: Cumple con los requisitos del sistema Windows® 11.",
     "trailerUrl": "",
     "isPromotion": false,
     "isEmulated": false,
     "id": "467c5da1-5c4d-4f17-9f26-630c55c47555",
     "createdAt": "2026-01-30T08:50:49.770Z",
+    "steamAppId": 3681010,
     "imageBlob": {}
   },
   {
@@ -5397,20 +5415,21 @@
     "genre": "Action, Shooter",
     "releaseDate": "2023-10-13",
     "rating": 4.39,
-    "image": "game-476af296-3d01-4950-9fc6-511402e3248e.png",
+    "image": "game-476af296-3d01-4950-9fc6-511402e3248e.jpeg",
     "description": "sonido ambiente lleno de suspense y mejoras en la jugabilidad, sin perder ni un ápice de la escalofriante visión del juego original.<br><br>Isaac Clarke es un ingeniero cualquiera con la misión de reparar la descomunal nave extractora USG Ishimura, pero descubrirá que algo ha ido terriblemente mal. La tripulación de la nave ha sido asesinada y su querida compañera Nicole está perdida en algún lugar a bordo.<br><br>Sin nadie que lo acompañe y armado únicamente con sus herramientas y habilidades de ingeniería, Isaac tendrá que darse prisa para encontrar a Nicole mientras va desvelando el terrorífico misterio de lo sucedido a bordo del Ishimura. Atrapado con unas criaturas hostiles, los necromorfos, Isaac se enfrenta a una batalla por la supervivencia no solo contra los horrores de la nave, sino para evitar caer en la locura.<br><br><strong>SUMÉRGETE EN TERROR Y CIENCIA FICCIÓN DE NUEVA GENERACIÓN</strong><br><br><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1693980/extras/DS_GP_USP1_610px.gif?t=1702492799\" /><br><br>Vuelve un clásico del terror y la ciencia ficción, reconstruido desde cero con una fidelidad visual superior y sonido ambiente en 3D. Desde las detalladas estancias y lugares de trabajo de una tripulación masacrada, hasta los espeluznantes sonidos de una nave desolada, descubrirás un escenario impresionante de ciencia ficción cargado de tensión y momentos impredecibles.<br><br><strong>DESENTRAÑA LOS MISTERIOS DEL USG ISHIMURA</strong><br><br><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1693980/extras/DS_GP_USP2_610px.gif?t=1702492799\" /><br><br>Lo que comienza como una misión rutinaria de reparación para el ingeniero Isaac Clarke y la tripulación del USG Kellion se transforma rápidamente en una lucha por la supervivencia mientras van descubriendo la verdad sobre los horrores que esconde la nave. Con una experiencia narrativa ampliada, descubre los oscuros secretos que desencadenaron los eventos del USG Ishimura con los últimos registros de la malograda tripulación y tus encuentros con los escasos supervivientes.<br><br><strong>IMPROVISA PARA SOBREVIVIR</strong><br><br><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1693980/extras/USP3_ageGate_610px.gif?t=1702492799\" /><br><br>Enfréntate a la pesadilla a bordo del USG Ishimura con una mecánica estratégica que define todo un género. Adapta y mejora las herramientas de ingeniería de Isaac para idear nuevas formas de derrotar a tus enemigos con precisión.<br><br><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1693980/extras/Dead_Space_PC_Specs_610px_STEAM_updated.png?t=1702492799\" />",
     "sizeGB": 24,
-    "minimumRequirements": "",
-    "recommendedRequirements": "",
+    "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Window 10 64-bit +Procesador: Ryzen 5 2600x, Core i5 8600Memoria: 16 GB de RAMGráficos: AMD RX 5700, GTX 1070DirectX: Versión 12Red: Conexión de banda ancha a InternetAlmacenamiento: 50 GB de espacio disponibleNotas adicionales: 50GB SATA SSD",
+    "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Window 10 64-bit +Procesador: Ryzen 5 5600X,Core i5 11600KMemoria: 16 GB de RAMGráficos: Radeon RX 6700 XT, Geforce RTX 2070DirectX: Versión 12Red: Conexión de banda ancha a InternetAlmacenamiento: 50 GB de espacio disponibleNotas adicionales: 50GB SSD PCIe compatible",
     "trailerUrl": "",
     "isFavorite": false,
     "price": 250,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-07T04:53:48.712Z",
     "id": "476af296-3d01-4950-9fc6-511402e3248e",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "steamAppId": 1693980,
+    "imageBlob": {}
   },
   {
     "rawgId": 983414,
@@ -5557,7 +5576,7 @@
     "genre": "Action, RPG",
     "releaseDate": "2016-10-27",
     "rating": 4.45,
-    "image": "game-497e7cd6-a67e-4dc0-8123-7ec398893935.png",
+    "image": "game-497e7cd6-a67e-4dc0-8123-7ec398893935.jpeg",
     "description": "The Elder Scrolls V: Skyrim Special Edition is the 2016 reinstallment of the open world fantasy RPG, developed by Bethesda Game Studios. Following the original release of 2011, Special Edition focuses on reshaping every sword and ax, polishing every stone in the high castles and the suburbs of the low, overall bringing a renewed experience to its fans and newcomer players.\nAfter 5 years of the original’s glory, this collection of all the content, available with the game itself, offers to once again set foot on the snowy mountains of the Skyrim province of Tamriel. The magnificent open world, full of breathtaking environments and landscapes, welcomes all its players to embark on another journey. Explore the even more beautiful flora of Skyrim, fight the most dangerous fauna, and many more.\nThe Elder Scrolls V: Skyrim Special Edition now includes full support of community-made and developer-approved mods, allowing for even more exploration and experiments with the in-game contents. Continually expanding, the database of various new quests, characters, and locations not disappointing any player, while some modifications try to focus on enhancing the vanilla experience to the maximum.",
     "sizeGB": 18.3,
     "minimumRequirements": "Mínimo:SO *: Windows 7/8.1/10 (requiere versión de 64 bits)Procesador: Intel Core i5-750/AMD Phenom II X4-945Memoria: 8 GB de RAMGráficos: NVIDIA GTX 470 de 1 GB/AMD HD 7870 de 2 GBAlmacenamiento: 12 GB de espacio disponible",
@@ -5565,13 +5584,13 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 150,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:40:09.989Z",
     "id": "497e7cd6-a67e-4dc0-8123-7ec398893935",
     "steamAppId": 489830,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "498189c5-e1af-4bad-a9e9-f5bf456ea854",
@@ -5638,8 +5657,8 @@
     "image": "game-4aac74fa-1b9f-403c-90d1-89a082c7e62e.png",
     "createdAt": "2025-12-29T20:29:42.087Z",
     "steamAppId": 1622910,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "title": "Romeo is a Dead Man",
@@ -5649,18 +5668,19 @@
     "rating": 3.4,
     "price": 150,
     "image": "game-4aad6a73-a1a6-4700-b2fd-2b85a211a34e.jpeg",
-    "imageBlob": {},
     "description": "Romeo is a Dead Man is an action-adventure game. It was originally released in 2026. Romeo is a Dead Man is available on Xbox Series S/X, PlayStation 5 and PC. You can purchase the game on Steam. \n\n",
     "isFavorite": false,
     "sizeGB": 24.2,
-    "hardDriveSource": "4TB TANK",
-    "minimumRequirements": "",
-    "recommendedRequirements": "",
+    "hardDriveSource": "PROTOCOL",
+    "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows11Procesador: Intel Core i5-8400, AMD Ryzen 3 3100Memoria: 16 GB de RAMGráficos: Nvidia GeForce GTX 1080, AMD Radeon RX 5600 XTDirectX: Versión 12Almacenamiento: 60 GB de espacio disponibleCompatibilidad con RV: N/ANotas adicionales: N/A",
+    "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows11Procesador: Intel Core i7-10700F, AMD Ryzen 5 4500Memoria: 16 GB de RAMGráficos: NVIDIA GeForce RTX 3060Ti, AMD Radeon RX 7600DirectX: Versión 12Almacenamiento: 60 GB de espacio disponibleCompatibilidad con RV: N/ANotas adicionales: N/A",
     "trailerUrl": "",
     "isPromotion": false,
     "isEmulated": false,
     "id": "4aad6a73-a1a6-4700-b2fd-2b85a211a34e",
-    "createdAt": "2026-02-28T02:52:40.604Z"
+    "createdAt": "2026-02-28T02:52:40.604Z",
+    "steamAppId": 3050900,
+    "imageBlob": {}
   },
   {
     "id": "4b159f4a-538a-439c-8569-f2485421d08e",
@@ -5795,8 +5815,8 @@
     "image": "game-4d546322-6682-472e-a0b5-4338630a0ce6.png",
     "createdAt": "2025-12-29T20:29:41.752Z",
     "steamAppId": 605740,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "4dd8f919-d973-4e55-9105-294d46ac6dcb",
@@ -5875,8 +5895,8 @@
     "image": "game-4e93e4ba-573a-4c4c-94f9-c651306d70aa.png",
     "description": "Tom Clancy’s Ghost® Recon Breakpoint is a military shooter set in a diverse, hostile, and mysterious open world that you can play entirely solo or in four-player co-op. Injured, without support, and hunted down by ex-Ghosts, you must fight to survive while lost in Auroa. Choose the right alliances and decide how to take down your toughest enemy.\nKEY FEATURES\nDISCOVER A MYSTERIOUS AND DIVERSE ARCHIPELAGO\nExplore Auroa, home of the Silicon Valley giant Skell Technology, both on- and off-road, in the air, on land, and at sea. Immerse yourself in a mysterious place where the most architecturally advanced buildings meet the wildest and most untamed nature. From the highest fjords and snowy peaks to the deepest swamps, meet different factions – from Skellers to Homesteaders to Outcasts – that will impact your mission. What happened to Jace Skell? Who is pulling the strings? Find the truth and clear the plot!\nTAKE DOWN YOUR EX-BROTHER-IN-ARMS\nFace your toughest enemies, the Wolves, a lethal ex–US military unit gone rogue, ready to use the most effective killing machines to take you down. The Wolves used to be you. They have the same training and experience as you have. They have seized the archipelago of Auroa, taking control of the most important resources of the island: the drones. And they are led by your ex-brother-in-arms, Colonel Cole D. Walker, so you will have no choice but to confront your former teammate.\nLIVE THE LIFE OF A TRUE GHOST STRANDED BEHIND ENEMY LINES\nTest your survival skills and adapt to the varied terrains of Auroa. Steep slopes, accumulating injuries, and fatigue are the new challenges for you to tackle. Set up a camp with your teammates, manage your equipment, class, and weapons in your bivouac, and fine-tune your strategies. If you’re wounded in battle, you’ll have to crawl to the safety of cover to heal yourself, or if a teammate goes down, you’ll need to pick them up and carry them to a safe place before treating their injuries. Use new tools, like the mini drone, that will allow you to sync shot several targets, even in solo.\nCUSTOMIZE YOUR GHOST AND EXPERIENCE FULL FREEDOM OF APPROACH\nCreate your character and choose among thousands of customization combinations to create your perfect Ghost. Loot materials from the world, craft and upgrade your weapons with multiple attachment possibilities, and customize your gear in order to adapt your Ghost to any situation and to fit your playstyle. Experiment with a brand new class system to give you more chances to defeat your enemies. Do you want to play assault? You can go berserk. Do you want to play sniper? You can get special ammunition that gives you more range and accuracy. You can also play stealthy with the Panther class, and use a smoke bomb to get away from your enemies. Tom Clancy's Ghost Recon Breakpoint is all about your choice, your way to have fun.\nENJOY A TRUE SOCIAL EXPERIENCE WITH NEW SHARED PROGRESSION AND BEST-IN-CLASS ENDGAME CONTENT\nHowever you decide to play, in Tom Clancy’s Ghost Recon Breakpoint, you will always keep the same character: the same customization, the same skills, and the same weapons. You keep and improve your progression across both our PvE and PvP experiences. Tom Clancy’s Ghost Recon Breakpoint is also a truly social experience. Find your friends in the new Social HUB, play the campaign together, or enter a PvP arena to take on an intense 4v4 match. The adventure does not stop there! The game will be regularly updated and supported years after launch. New story arcs will keep expanding the story, new features will be continuously added, and new classes and gameplay possibilities will available to players, as well as events and a brand-new type of endgame content: Raids.",
     "sizeGB": 66.2,
-    "minimumRequirements": "",
-    "recommendedRequirements": "",
+    "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 (64-bit versions only)Procesador: AMD Ryzen 3 1200 @3.1 GHz, Intel Core i5 4460 @ 3.2 GHz,  or betterMemoria: 8 GB de RAMGráficos: AMD Radeon R9 280X or NVIDIA GeForce GTX 960 (4 GB VRAM with Shader Model 5.0 or better)DirectX: Versión 11Red: Conexión de banda ancha a InternetAlmacenamiento: 67 GB de espacio disponibleNotas adicionales: originally released for Windows 7, the game can be played on Windows 10 and Windows 11 OS",
+    "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 (64-bit versions only)Procesador: AMD Ryzen 5 1600 @3.2 GHz, Intel Core i7 6700K @4.0 GHz, or betterMemoria: 8 GB de RAMGráficos: AMD Radeon RX 480 or NVIDIA GeForce GTX 1060 (6 GB VRAM with Shader Model 5.0 or better)DirectX: Versión 11Red: Conexión de banda ancha a InternetAlmacenamiento: 67 GB de espacio disponibleNotas adicionales: originally released for Windows 7, the game can be played on Windows 10 and Windows 11 OS",
     "trailerUrl": "",
     "isFavorite": false,
     "price": 1600,
@@ -5884,8 +5904,9 @@
     "isPromotion": false,
     "createdAt": "2026-01-07T04:53:51.807Z",
     "id": "4e93e4ba-573a-4c4c-94f9-c651306d70aa",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "steamAppId": 2231380,
+    "imageBlob": {}
   },
   {
     "rawgId": 441738,
@@ -6146,7 +6167,7 @@
     "genre": "Action, RPG",
     "releaseDate": "2021-02-05",
     "rating": 4.06,
-    "image": "game-505bbd00-45a2-498b-beb7-8f091c1b925f.png",
+    "image": "game-505bbd00-45a2-498b-beb7-8f091c1b925f.jpeg",
     "description": "UNLEASH YOUR DARKNESS\nExperience the thrill of taking on hordes of fearsome yokai in a battle to the death in this brutal masocore Action RPG. Create your own original protagonist and embark on an adventure that will take you through devastated locales across Japan during the Sengoku period.\nMuch like the previous title which garnered much praise from fans and critics alike, Nioh 2 contains an original profound story surrounding military commanders from the Sengoku period. However, Nioh 2 goes above and beyond its predecessor by including the new Yokai Shift ability which allows the protagonist to utilize new powerful forms to defeat even the most formidable yokai in battle. New to Nioh 2, your enemies can now create a Dark Realm which raises the stakes of battle and creates new challenges for your protagonist to overcome. We hope you enjoy conquering fearsome monsters as you unleash your darkness in the world of Nioh 2.",
     "sizeGB": 30,
     "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows® 10 64bitProcesador: Intel Core i5 4460 or overMemoria: 6 GB de RAMGráficos: NVIDIA GeForce GTX 970 or over, VRAM 4GB or overDirectX: Versión 11Red: Conexión de banda ancha a InternetAlmacenamiento: 85 GB de espacio disponibleTarjeta de sonido: 16 bit stereo, 48KHz WAVE file can be played",
@@ -6154,13 +6175,13 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 200,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:07.476Z",
     "id": "505bbd00-45a2-498b-beb7-8f091c1b925f",
     "steamAppId": 1325200,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 965377,
@@ -6223,7 +6244,7 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 300,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:34.312Z",
     "id": "51243659-8547-4895-8f07-387afaa1f577",
@@ -6398,7 +6419,7 @@
     "genre": "Action, Adventure, Indie, Platformer",
     "releaseDate": "2025-09-04",
     "rating": 4.32,
-    "image": "game-525f2a87-cf3a-4a16-856c-bc59d3259fa7.png",
+    "image": "game-525f2a87-cf3a-4a16-856c-bc59d3259fa7.jpeg",
     "description": "Hollow Knight: Silksong is the epic sequel to Hollow Knight, the epic action-adventure of bugs and heroes. As the lethal hunter Hornet, journey to all-new lands, discover new powers, battle vast hordes of bugs and beasts and uncover ancient secrets tied to your nature and your past.",
     "sizeGB": 2,
     "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 version 21H1 (build 19043) or newerProcesador: Intel Core i3-3240, AMD FX-4300Memoria: 4 GB de RAMGráficos: GeForce GTX 560 Ti (1GB), Radeon HD 7750 (1GB)DirectX: Versión 10Almacenamiento: 8 GB de espacio disponible",
@@ -6406,13 +6427,13 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 120,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:39.251Z",
     "id": "525f2a87-cf3a-4a16-856c-bc59d3259fa7",
     "steamAppId": 1030300,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "52814122-bd41-476d-a71f-242ecd6301ea",
@@ -6426,16 +6447,16 @@
     "description": "Human: Fall Flat is a low-poly adventure game with platforming elements and physics-based puzzles. You play as Bob, a fully customizable character that travels from one dream to another. Bob has neither no background nor superpowers. His abilities don’t differ from yours: he can grab things, climb ledges and so on. \n\nEvery level consists of multiple puzzles that can be solved in different ways. You can push and pull carts, break walls and interact with everything else comparable to your own size. The game heavily focuses on physics. Puzzles’ solutions are intuitive and make you act like in real life. In their core levels are quite linear: you need to reach the door at another side of the location to get into the next dream. While at the first levels you need to find exits from tiny rooms, the further you go, the larger locations become. There is a lot of content in the game in general, and it clearly references the sandbox genre where you can do almost everything you want.",
     "isFavorite": false,
     "sizeGB": 1.5,
-    "hardDriveSource": "6TB STORE",
+    "hardDriveSource": "4TB TANK",
     "minimumRequirements": "Mínimo:SO *: Windows XP/Vista/7/8/8.1/10 x86 and x64Procesador: Intel Core2 Duo E6750 (2 * 2660) or equivalent | AMD Athlon 64 X2 Dual Core 6000+ (2 * 3000) or equivalentMemoria: 1024 MB de RAMGráficos: GeForce GT 740 (2048 MB) or equivalent | Radeon HD 5770 (1024 MB)Almacenamiento: 500 MB de espacio disponible",
     "recommendedRequirements": "Recomendado:SO *: Windows XP/Vista/7/8/8.1/10 x86 and x64Procesador: Intel Core2 Quad Q9300 (4 * 2500) or equivalent | AMD A10-5800K APU (4*3800) or equivalentMemoria: 2048 MB de RAMGráficos: GeForce GTX 460 (1024 MB) or equivalent | Radeon HD 7770 (1024 MB)Almacenamiento: 500 MB de espacio disponible",
     "trailerUrl": "https://steamcdn-a.akamaihd.net/steam/apps/256667420/movie480.mp4",
     "isPromotion": false,
-    "image": "game-52814122-bd41-476d-a71f-242ecd6301ea.png",
+    "image": "game-52814122-bd41-476d-a71f-242ecd6301ea.jpeg",
     "createdAt": "2025-12-29T20:29:41.981Z",
     "steamAppId": 477160,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "52adaa99-283a-4e33-9b00-d0f5b4ea7ff2",
@@ -6502,8 +6523,8 @@
     "createdAt": "2026-01-02T09:42:00.975Z",
     "id": "53aeeb2e-fa1f-4082-bbd2-dbdb0f93ba24",
     "steamAppId": 110800,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "53bef789-6b8d-4c02-8bf8-a3ec80b43fb5",
@@ -6538,8 +6559,8 @@
     "image": "game-54d0fffc-c608-494a-bcbb-9a6b840e508f.png",
     "description": "¡Celebra el décimo aniversario de Killer Instinct! La legendaria franquicia de juegos de lucha regresa con una nueva actualización por su aniversario que incluye un sistema de emparejamiento mejorado, mejoras de equilibrio y mucho más. <br />\n<br />\nVive la emoción de combatir con 29 personajes, cada cual con su propio estilo de combate, combos y remates únicos. Tanto si tienes experiencia como si acabas de empezar, te esperan montones de retos y recompensas en los modos de un jugador y multijugador en línea. ¡No dejes pasar esta oportunidad, únete al club de lucha definitivo y demuestra que puedes ganarlo todo en Killer Instinct!<br />\n<br />\nINCLUYE:<br />\n• ¡Lucha gratis! Juega a los distintos modos de lucha (entre los que se incluye el multijugador online) con un luchador gratis que rotará de forma semanal. ¡Actualiza a la Anniversary Edition y hazte con toda la colección al desbloquear los 29 luchadores, los trajes retro, los accesorios exclusivos y mucho más contenido de las temporadas 1, 2 y 3!<br />\n• 20 niveles repletos de destrucción<br />\n• Partidas competitivas en línea con una conectividad de última generación en los juegos de lucha.<br />\n• Pon a prueba tus habilidades de JcJ en línea y compite para entrar en el top 32 de las ligas clasificatorias mensuales.<br />\n• ¡En el completísimo tutorial del dojo, podrás aprender todas las mecánicas básicas de Killer Instinct, además de tener acceso al entrenamiento de Combo Breakers para dominar la habilidad a la perfección!<br />\n• Descubre el origen y las rivalidades de tus personajes favoritos en el modo Historia.<br />\n• ¡Salva el mundo en Shadow Lords, un revolucionario modo roguelike para un jugador! ¡Crea un equipo de luchadores y consigue poderosos guardianes ayudantes, artefactos y consumibles que te otorgarán habilidades y ventajas cruciales para detener la invasión de Gargos y su ejército de mimos!<br />\n• Bonificación gratis: ¡juega a Shadow Lords para desbloquear a Jago y jugar con él en cualquier modo para siempre!<br />\n• Enfréntate a una oleada infinita de luchadores en el modo Supervivencia con un nuevo añadido: ¡ahora podrás luchar contra enemigos controlados por la IA o Shadow Fighters, unos novedosos luchadores de IA que ponen en práctica las estrategias y el estilo de juego que han aprendido de jugadores reales!<br />\n• Opciones de asistencia de combo personalizadas<br />\n<br />\nFunciones de Steam:<br />\n• Multijugador en línea. Presta atención a la prueba de puntuación de rendimiento que se realiza de forma automática antes de tu primera partida.<br />\n• Logros de Steam<br />\n<br />\nCARACTERÍSTICAS ADICIONALES DE PC:<br />\n • Periféricos compatibles adicionales: teclado compatible con Windows, mando de Xbox One para Windows, mando de Xbox 360 para Windows y sticks de lucha de Xbox 360.",
     "sizeGB": 49,
-    "minimumRequirements": "",
-    "recommendedRequirements": "",
+    "minimumRequirements": "Mínimo:SO: Windows 10Procesador: Intel Core i5-750 @ 2.67 GHz or AMD Phenom II X4 965 @ 3.4 GHzMemoria: 4 GB de RAMGráficos: NVIDIA GeForce GTX 480 or AMD Radeon HD 5850DirectX: Versión 11Red: Conexión de banda ancha a InternetAlmacenamiento: 48 GB de espacio disponible",
+    "recommendedRequirements": "Recomendado:SO: Windows 11Procesador: Intel Core i5-4670K @ 3.4GHz or AMD FX-4300 @ 3.8 GHzMemoria: 8 GB de RAMGráficos: NVIDIA GeForce GTX 670 or AMD Radeon HD 7950DirectX: Versión 11Red: Conexión de banda ancha a InternetAlmacenamiento: 48 GB de espacio disponible",
     "trailerUrl": "",
     "isFavorite": false,
     "price": 1600,
@@ -6547,8 +6568,9 @@
     "isPromotion": false,
     "createdAt": "2026-01-07T04:53:53.354Z",
     "id": "54d0fffc-c608-494a-bcbb-9a6b840e508f",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "steamAppId": 577940,
+    "imageBlob": {}
   },
   {
     "rawgId": 996798,
@@ -6626,18 +6648,19 @@
     "rating": 4.1,
     "price": 200,
     "image": "game-55214beb-e2af-4ef6-bf65-142f34f7b020.jpeg",
-    "imageBlob": {},
     "description": "A Timeless Classic, Resurrected\nDiablo® II: Resurrected™ is a remastered version of the quintessential action RPG Diablo® II. Pursue the mysterious Dark Wanderer and fight the denizens of hell as you uncover the fate of the Prime Evils Diablo, Mephisto, and Baal, now in up to 4K (2160p) resolution on PC. Diablo II Resurrected features:\nRemastered graphics—monsters, heroes, items, spells, all resurrected.\nAn epic story told through five distinct acts.\nClassic gameplay—the same Diablo II you know and love, preserved.\nUpdated Battle.net support.\nPlanned support for cross-progression—take your progress wherever you play.\n… and much more!\nThe Lord of Destruction Returns\nDiablo II: Resurrected includes all content from both Diablo II and its epic expansion Diablo II: Lord of Destruction®. Battle your way through icy caverns, horrific tombs filled with undead abominations, and frozen wastelands to the frigid summit of Mount Arreat and stop Baal, the Lord of Destruction. Raise hell with two Lord of Destruction playable classes—the cunning Assassin, master of traps and shadow disciplines, and the savage Druid, a bold shapeshifter and summoner who commands primal elemental magic.",
     "isFavorite": false,
     "sizeGB": 21.8,
     "hardDriveSource": "6TB STORE",
-    "minimumRequirements": "",
-    "recommendedRequirements": "",
+    "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows® 10Procesador: Intel® Core i3-3250/AMD FX-4350Memoria: 8 GB de RAMGráficos: Nvidia GTX 660/AMD Radeon HD 7850Red: Conexión de banda ancha a InternetAlmacenamiento: 43 GB de espacio disponible",
+    "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows® 10Procesador: Intel® Core i5-9600k/AMD Ryzen 5 2600Memoria: 16 GB de RAMGráficos: Nvidia GTX 1060/AMD Radeon RX 5500 XTRed: Conexión de banda ancha a InternetAlmacenamiento: 43 GB de espacio disponible",
     "trailerUrl": "",
     "isPromotion": false,
     "isEmulated": false,
     "id": "55214beb-e2af-4ef6-bf65-142f34f7b020",
-    "createdAt": "2026-02-28T03:12:54.305Z"
+    "createdAt": "2026-02-28T03:12:54.305Z",
+    "steamAppId": 2536520,
+    "imageBlob": {}
   },
   {
     "rawgId": 961022,
@@ -6696,17 +6719,17 @@
     "imageUrl": "https://adjcsxaxthfglzwlcijy.supabase.co/storage/v1/object/public/game_images/game_covers/564a7278-06c7-44fc-83c5-a0413dd4925d.png",
     "description": "Enjoy the power to create and control people in a virtual world where there are no rules.\r\n\r\nExpress your creativity as you customize your Sims’ appearances and personalities, and build them the perfect homes. Develop your Sims’ relationships, pursue careers, and explore vibrant new worlds.",
     "isFavorite": false,
-    "sizeGB": 45,
+    "sizeGB": 43.9,
     "hardDriveSource": "2TB DATOS",
     "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: (64 bits) Windows 10Procesador: Intel Core i3-3220 a 3,3 GHz (2 núcleos, 4 hilos), AMD Ryzen 3 1200 a 3,1 GHz (4 núcleos) o superiorMemoria: 4 GB de RAMGráficos: 128 MB de memoria gráfica y compatibilidad con Pixel Shader 3.0 Tarjetas de vídeo compatibles: Tarjetas gráficas compatibles: NVIDIA GeForce 6600 o superior, ATI Radeon X1300 o superior, Intel GMA X4500 o superiorDirectX: Versión 11Red: Conexión de banda ancha a InternetAlmacenamiento: 26 GB de espacio disponible",
     "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 de 64 bitsProcesador: Intel Core i5 (4 núcleos) o AMD Ryzen 5 o superiorMemoria: 8 GB de RAMGráficos: 1 GB de RAM de vídeo, NVIDIA GTX 650, AMD Radeon HD 7750 o superiorDirectX: Versión 11Red: Conexión de banda ancha a InternetAlmacenamiento: 51 GB de espacio disponible",
     "trailerUrl": "",
     "isPromotion": false,
-    "image": "game-564a7278-06c7-44fc-83c5-a0413dd4925d.png",
+    "image": "game-564a7278-06c7-44fc-83c5-a0413dd4925d.jpeg",
     "createdAt": "2025-12-29T20:29:41.918Z",
     "steamAppId": 1222670,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "5659f6fd-0a44-4f69-a449-0c7f8bfad04e",
@@ -6738,7 +6761,7 @@
     "genre": "Action, Adventure, Racing",
     "releaseDate": "2025-04-03",
     "rating": 3.86,
-    "image": "game-575d8c5f-3755-436c-a340-cd44ce918b41.png",
+    "image": "game-575d8c5f-3755-436c-a340-cd44ce918b41.jpeg",
     "description": "<h2 class=\"bb_tag\">Te damos la bienvenida a Los Santos</h2><p class=\"bb_paragraph\">Cuando un joven estafador callejero, un ladrón de bancos retirado y un psicópata aterrador se ven involucrados con lo peor y más desquiciado del mundo criminal, el gobierno de los EE. UU. y la industria del espectáculo, deberán llevar a cabo una serie de peligrosos golpes para sobrevivir en una ciudad implacable en la que no pueden confiar en nadie. Y mucho menos los unos en los otros.</p><p class=\"bb_paragraph\">Los jugadores actuales de PC pueden transferir su progreso del Modo Historia de GTAV y sus personajes y progreso de GTA Online mediante una tranferencia única desde la versión original de GTAV a GTAV Enhanced. </p><h2 class=\"bb_tag\">Gráficos impresionantes</h2><p class=\"bb_paragraph\">Niveles de fidelidad y rendimiento mejorados, con nuevos modos de gráficos que ofrecen funciones de trazado de rayos, tales como oclusión ambiental e iluminación global, sombras y reflejos con trazado de rayos, compatibilidad con AMD FSR y NVIDIA DLSS, y mucho más*.</p><h2 class=\"bb_tag\">Carga más rápida</h2><p class=\"bb_paragraph\">Entra en la acción rápidamente, ya que el mundo de Los Santos y el condado de Blaine ahora se carga más rápido que nunca mediante SSD y DirectStorage en dispositivos compatibles.</p><h2 class=\"bb_tag\">Controles inmersivos</h2><p class=\"bb_paragraph\">Experimenta nuevos niveles de reacción con la resistencia dinámica gracias a los gatillos adaptativos del mando inalámbrico DualSense™: siente desde el daño direccional hasta los efectos atmosféricos, los baches de las carreteras, las explosiones y mucho más*.</p><h2 class=\"bb_tag\">Audio 3D</h2><p class=\"bb_paragraph\">Audio mejorado con soporte para Dolby Atmos y mayor fidelidad de voz, cinemáticas y música*. Oye los sonidos del mundo con una precisión milimétrica, desde la aceleración de un supercoche robado hasta los disparos de un tiroteo cercano, el estruendo de un helicóptero sobre tu cabeza y mucho más.</p><h2 class=\"bb_tag\">Grand Theft Auto Online</h2><p class=\"bb_paragraph\">Disfruta de la experiencia de GTA Online, un universo dinámico y en constante evolución para hasta 30 jugadores, donde podrás pasar de ser un estafador callejero a convertirte en el capo de tu propio imperio criminal.</p><p class=\"bb_paragraph\">Disfruta de nuevas mejoras para vehículos de alto rendimiento y del creador de profesiones. Además, podrás acceder a todas las actualizaciones, expansiones y contenidos de GTA Online publicados desde el lanzamiento, tanto en solitario como con tus amigos. Lleva a cabo elaborados golpes cooperativos, participa en carreras acrobáticas llenas de adrenalina, compite en Modos Adversario especiales o pasa el tiempo en espacios sociales como clubes nocturnos, salones recreativos, fiestas en áticos, reuniones automovilísticas y mucho más.</p><h2 class=\"bb_tag\">Contenido exclusivo</h2><p class=\"bb_paragraph\">Visita Hao's Special Works en el Car Meet de LS, donde encontrarás nuevas mejoras para vehículos de élite y modificaciones exclusivas. Después, participa con estos vehículos de alto rendimiento en nuevas carreras, contrarrelojes y mucho más.</p><h2 class=\"bb_tag\">Nuevo creador de profesiones</h2><p class=\"bb_paragraph\">Ponte en marcha en GTA Online con las herramientas del oficio. Accede rápidamente a uno de los cuatro negocios (Motero, Ejecutivo, Propietario de un club nocturno o Traficante de armas) y elige entre una selección de propiedades, potentes vehículos y armamento para poner en marcha tu negocio.</p><h2 class=\"bb_tag\">Nuevo diseño del menú</h2><p class=\"bb_paragraph\">Accede al instante a todo lo que te ofrece GTA Online directamente desde el menú principal, incluidas las actualizaciones más recientes y populares.</p><h2 class=\"bb_tag\">Accede a todas las actualizaciones actuales y previas</h2><p class=\"bb_paragraph\">Sumérgete en más de 40 actualizaciones masivas y las que vendrán, que incluyen desde dirigir una instalación de operaciones encubiertas en Agents of Sabotage, rastrear y atrapar a los más buscados del sur de San Andreas en Bottom Dollar Bounties, desenmascarar a policías corruptos y cárteles de asesinos en Asalto a Cluckin' Bell, hasta robar los vehículos más codiciados de Los Santos en The Chop Shop. Todo esto y más disponible junto con una amplia variedad de carreras, modos, actividades y espacios sociales para disfrutar solo o con amigos, que incluyen clubes nocturnos, salones recreativos, fiestas en áticos, encuentros automovilísticos y mucho más.</p>",
     "sizeGB": 40,
     "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 (latest service pack)Procesador: Intel® Core™ i7-4770 | AMD FX™-9590Memoria: 8 GB de RAMGráficos: NVIDIA GeForce® GTX 1630 (4GB VRAM) | AMD Radeon™ RX 6400 (4GB VRAM)Almacenamiento: 105 GB de espacio disponibleTarjeta de sonido: DirectX 10 CompatibleNotas adicionales: SSD Required  |  Over time downloadable content and programming changes will change the system requirements for this game. Please refer to your hardware manufacturer and  for current compatibility information. Some system components such as mobile chipsets, integrated, and AGP graphics cards may be incompatible. Unlisted specifications may not be supported by publisher.  Other requirements: Installation and online play requires log-in to Rockstar Games account (minimum age varies) network; internet connection required for activation, online play, and periodic entitlement verification; software installations required including Rockstar Games Launcher, DirectX, Chromium, and Microsoft Visual C++ 2008 sp1 Redistributable Package, and authentication and verification software that recognizes certain hardware attributes for entitlement, digital rights management, anti-cheat and moderation software, system, and other support purposes.  *Compatible PC and/or device required. 3D Audio via Windows Spatial Sound compatible audio systems",
@@ -6746,13 +6769,13 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 200,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:37.241Z",
     "id": "575d8c5f-3755-436c-a340-cd44ce918b41",
     "steamAppId": 3240220,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "576c952b-d5fd-4cff-89f9-6fce97ea2e5a",
@@ -6774,8 +6797,8 @@
     "image": "game-576c952b-d5fd-4cff-89f9-6fce97ea2e5a.png",
     "createdAt": "2025-12-29T20:29:41.696Z",
     "steamAppId": 47920,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "578c9dc9-8c7e-4ade-ae53-6b3af0f19c98",
@@ -6797,8 +6820,8 @@
     "image": "game-578c9dc9-8c7e-4ade-ae53-6b3af0f19c98.png",
     "createdAt": "2025-12-29T20:29:42.114Z",
     "steamAppId": 7940,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "5792bdda-ce77-46ab-a319-3044f1aac132",
@@ -6820,8 +6843,8 @@
     "image": "game-5792bdda-ce77-46ab-a319-3044f1aac132.png",
     "createdAt": "2025-12-29T20:29:41.918Z",
     "steamAppId": 2290180,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 42895,
@@ -6853,7 +6876,7 @@
     "genre": "Action",
     "releaseDate": "2018-10-26",
     "rating": 4.59,
-    "image": "game-583ad4ed-3cf8-4d96-b353-821334688e90.png",
+    "image": "game-583ad4ed-3cf8-4d96-b353-821334688e90.jpeg",
     "description": "America, 1899. The end of the wild west era has begun as lawmen hunt down the last remaining outlaw gangs. Those who will not surrender or succumb are killed. \nAfter a robbery goes badly wrong in the western town of Blackwater, Arthur Morgan and the Van der Linde gang are forced to flee. With federal agents and the best bounty hunters in the nation massing on their heels, the gang must rob, steal and fight their way across the rugged heartland of America in order to survive. As deepening internal divisions threaten to tear the gang apart, Arthur must make a choice between his own ideals and loyalty to the gang who raised him.\nFrom the creators of Grand Theft Auto V and Red Dead Redemption, Red Dead Redemption 2 is an epic tale of life in America at the dawn of the modern age.",
     "sizeGB": 90,
     "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 - 64-bitProcesador: Intel® Core™ i5-2500K / AMD FX-6300Memoria: 8 GB de RAMGráficos: Nvidia GeForce GTX 770 2GB / AMD Radeon R9 280 3GBRed: Conexión de banda ancha a InternetAlmacenamiento: 150 GB de espacio disponibleTarjeta de sonido: Direct X Compatible",
@@ -6861,13 +6884,13 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 280,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:56.681Z",
     "id": "583ad4ed-3cf8-4d96-b353-821334688e90",
     "steamAppId": 1174180,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 9810,
@@ -6889,8 +6912,8 @@
     "createdAt": "2026-01-02T12:24:44.115Z",
     "id": "5851b315-eb76-4215-81a4-5690c7b72642",
     "steamAppId": 346110,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "58acd1c8-76e8-4f73-9ae2-1bc0afc25c15",
@@ -7030,6 +7053,27 @@
     "isEmulated": false
   },
   {
+    "title": "Europa Universalis IV",
+    "platform": "Linux, macOS, PC",
+    "genre": "Strategy",
+    "releaseDate": "2013-08-12",
+    "rating": 4.23,
+    "price": 120,
+    "image": "game-59c6e81b-7d8e-4120-8ece-ee074ac81c70.jpeg",
+    "imageBlob": {},
+    "description": "Europa Universalis IV is a global strategy game developed by Paradox Interactive. It is the fifth game in the series, not counting the add-ons.\nGameplay\nThe game can take place at any time starting from the late Middle Age to the Napolean Wars era. The player can control any country there is in the game. It is possible to choose any starting date from November 11th, 1444 to January 1st, 1821.\nThe player controls every aspect of life in his country. Diplomacy, religion (with each religion having its own development system), trading, science, and exploring the new lands (such as the Americas, Africa, and Australia). The player also has the country's military under their control. Every aspect of that time's society falls totally under the control of the player. You can build a new colonial superpower, become a dictator, establish a total dictatorship, or create a prosperous, democratic trade empire. \nThere is no clear objective in the game. Instead, it is set by the player. However, the developers try to guide the player into playing certain scenarios by using the in-game achievement system. For example, one of the game's achievements is to unite Italy.\nIt is also possible to transfer the progress from another game made by Paradox Interactive, Crusader Kings 2, to Europa Universalis IV.",
+    "isFavorite": false,
+    "sizeGB": 6.1,
+    "hardDriveSource": "4TB TANK",
+    "minimumRequirements": "",
+    "recommendedRequirements": "",
+    "trailerUrl": "",
+    "isPromotion": false,
+    "isEmulated": false,
+    "id": "59c6e81b-7d8e-4120-8ece-ee074ac81c70",
+    "createdAt": "2026-03-13T04:52:10.719Z"
+  },
+  {
     "id": "59d68590-5548-4075-9f8d-93b026262918",
     "title": "Deus Ex: Mankind Divided",
     "platform": "Linux, PC, Xbox One, macOS, PlayStation 4",
@@ -7072,8 +7116,8 @@
     "image": "game-5b16da7a-ccb4-4b6a-a7aa-742a51406c8c.png",
     "createdAt": "2025-12-29T20:29:41.875Z",
     "steamAppId": 2909400,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "title": "Coreborn",
@@ -7164,6 +7208,27 @@
     "steamAppId": 200260,
     "imageBlob": {},
     "isEmulated": false
+  },
+  {
+    "title": "Kingdoms of Amalur: Re-Reckoning - SWITCH",
+    "platform": "Xbox One, PlayStation 4, Nintendo Switch, PC",
+    "genre": "Action, Adventure, RPG",
+    "releaseDate": "2020-09-08",
+    "rating": 3.4,
+    "price": 150,
+    "image": "game-5d192115-fed7-4739-9a07-871baa982cb0.jpeg",
+    "imageBlob": {},
+    "description": "The hit RPG returns! From the minds of the bestselling author R.A. Salvatore, Spawn creator Todd McFarlane, and Elder Scrolls IV: Oblivion lead designer Ken Rolston, comes Kingdoms of Amalur: Re-Reckoning. Remastered with stunning visuals and refined gameplay Re-Reckoning delivers intense, customizable RPG combat inside a sprawling game world.",
+    "isFavorite": false,
+    "sizeGB": 12.3,
+    "hardDriveSource": "4TB TANK",
+    "minimumRequirements": "",
+    "recommendedRequirements": "",
+    "trailerUrl": "",
+    "isPromotion": false,
+    "isEmulated": true,
+    "id": "5d192115-fed7-4739-9a07-871baa982cb0",
+    "createdAt": "2026-03-13T04:49:48.126Z"
   },
   {
     "title": "The Outer Worlds: Spacer's Choice Edition",
@@ -7286,7 +7351,7 @@
     "genre": "Action, Indie",
     "releaseDate": "2025-03-27",
     "rating": 4,
-    "image": "game-5eed97fa-bf30-411f-ae2e-94ba2ff13328.png",
+    "image": "game-5eed97fa-bf30-411f-ae2e-94ba2ff13328.jpeg",
     "description": "AI LIMIT is a hardcore action role-playing game created by PalmPioneer's SENSE GAMES studio. It has a rich world of exploration and a thrilling battle experience. In the game, the player will control the heroine Arrisa, relying on his ability and will to save the future world full of threats and mysteries.",
     "sizeGB": 10,
     "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 64-bitProcesador: Intel Core i5-8400 / AMD Ryzen 5 1600Memoria: 12 GB de RAMGráficos: NVIDIA GeForce GTX 1060 6GB / AMD Radeon RX 580 8GBDirectX: Versión 11Almacenamiento: 30 GB de espacio disponibleTarjeta de sonido: Windows Compatible Audio DeviceNotas adicionales: HDD Supported, SSD Recommended.",
@@ -7294,13 +7359,13 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 150,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:09.374Z",
     "id": "5eed97fa-bf30-411f-ae2e-94ba2ff13328",
     "steamAppId": 2407270,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 39465,
@@ -7743,7 +7808,7 @@
     "genre": "Action, Shooter, Arcade",
     "releaseDate": "2023-07-21",
     "rating": 3.71,
-    "image": "game-6495456a-986a-4587-8c46-732a848a6901.png",
+    "image": "game-6495456a-986a-4587-8c46-732a848a6901.jpeg",
     "description": "Remnant II pits survivors of humanity against new deadly creatures and god-like bosses across terrifying worlds. Play solo or co-op with two other friends to explore the depths of the unknown to stop an evil from destroying reality itself.",
     "sizeGB": 64.5,
     "minimumRequirements": "Mínimo:SO: Win 10Procesador: Intel Core i5-7600  / AMD Ryzen 5 2600Memoria: 16 GB de RAMGráficos: GeForce GTX 1650  / AMD Radeon RX 590Almacenamiento: 80 GB de espacio disponible",
@@ -7751,13 +7816,13 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 250,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:57.529Z",
     "id": "6495456a-986a-4587-8c46-732a848a6901",
     "steamAppId": 1282100,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 379536,
@@ -7871,8 +7936,8 @@
     "image": "game-65d448f9-efb3-45e6-ba55-80c9a80673c5.png",
     "createdAt": "2025-12-29T20:29:41.907Z",
     "steamAppId": 424840,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 961596,
@@ -8586,23 +8651,23 @@
     "title": "Granblue Fantasy Versus: Rising",
     "platform": "PC, PlayStation 4, PlayStation 5",
     "genre": "Action, Fighting",
-    "releaseDate": "Fecha desconocida",
+    "releaseDate": "2026-02-05",
     "rating": 4,
     "price": 150,
     "imageUrl": "https://adjcsxaxthfglzwlcijy.supabase.co/storage/v1/object/public/game_images/game_covers/6e5d64ab-252d-4b67-a425-6baeaecfe19e.png",
     "description": "Standard Edition\n■Content\n・Granblue Fantasy Versus: Rising Game\nGranblue Special Item Set: GBVSR Pack is not included in the Steam version of Granblue Fantasy Versus: Rising Standard Edition.\nDeluxe Edition\n■Content\n・Granblue Fantasy Versus: Rising Game\n・4 Color Variants for the 28 Base Characters\n・3 Weapon Skins for the 28 Base Characters\n・Deluxe Character Pass Part 1\n- 6 DLC Characters and Premium Avatars\n- 4 Color Variants for the 6 DLC Characters\n- 3 Weapon Skins for the 6 DLC Characters\n- Costume \"Guider to the Eternal Edge\" (Gran)\n- Costume \"Guider to the Eternal Edge\" (Djeeta)\n- Premium Avatar \"Vikala (Yin)\"\nIncludes content that may have already been purchased.\nContains content that can be purchased separately or may be included in other products.\nThis set includes some content that can be obtained separately in the in-game Rupie Shop.\nGranblue Special Item Set: GBVSR Pack and early access are not included in the Steam version of Grandblue Fantasy Versus: Rising Deluxe Edition.\nFree Edition\n■Content\n・Granblue Fantasy Versus: Rising Game\nOnline play is available across all editions, and you will be able to transfer your save data if you upgrade to another edition.\nSome features are unavailable in the Free Edition.\nAbout the GameThe latest installment in the GBVS series is taking the genre to new heights! Rise to glory in the definitive fighting game experience for beginners and veterans alike.\nIt's a Party! Claim Your Crown in Grand Bruise Legends!\nNeed a break from matches? Take a breather and experience a one-of-a-kind island lobby filled with fun attractions. You can even go head-to-head with other players online in a variety of obstacle courses and survival games in an all-new party mode, Grand Bruise Legends!\n(Avatar, character, and mode availability is limited in the Free Edition.)\nStay Focused on the Battle, Not the Controls\nNewcomers can fully enjoy the intensity and thrills of one-on-one combat without needing to memorize complicated controls—simple inputs can be used to perform skills with the press of a single button!\nA Captivating Story Campaign Awaits\nEmbark on a journey through the vast skies of Granblue Fantasy and immerse yourself in an epic adventure while mastering the fundamentals of gameplay. As you take on more quests in this action RPG-inspired experience, you'll continue to grow stronger.\nPersonalize the Experience On Every Level\nExpress yourself and show some love for your favorite Granblue characters through a variety of character colors, weapon skins, lobby avatars, and even a selectable partner character to cheer you on and give you advice!\nGet Creative with the Digital Figure Studio\nThe only limit is your imagination—construct original dioramas from a massive collection of high-quality 3D models from the Granblue Fantasy Versus series!",
     "isFavorite": false,
-    "sizeGB": 12.8,
+    "sizeGB": 15.7,
     "hardDriveSource": "6TB STORE",
     "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 11 (64-bit OS required)Procesador: AMD FX-4350, 4.2 GHz / Intel Core i5-3470, 3.20 GHzMemoria: 4 GB de RAMGráficos: Radeon HD 6870, 1 GB / GeForce GTX 650 Ti, 1 GBDirectX: Versión 11Red: Conexión de banda ancha a InternetAlmacenamiento: 20 GB de espacio disponibleTarjeta de sonido: DirectX compatible soundcard or onboard chipset",
     "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bits",
     "trailerUrl": "",
     "isPromotion": false,
-    "image": "game-6e5d64ab-252d-4b67-a425-6baeaecfe19e.png",
+    "image": "game-6e5d64ab-252d-4b67-a425-6baeaecfe19e.jpeg",
     "createdAt": "2025-12-29T20:29:41.863Z",
     "steamAppId": 2157560,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "6e70a77f-7188-4a40-b91d-54d87a83ff77",
@@ -9100,13 +9165,13 @@
     "hardDriveSource": "1TB EXT",
     "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO *: Windows 7/8/10 (64-Bit-Versionen)Procesador: Intel Core i5-2400/AMD FX-8320 oder besserMemoria: 8 GB de RAMGráficos: NVIDIA GTX 660 2GB/AMD Radeon HD 7970 3 GB oder besserAlmacenamiento: 60 GB de espacio disponible",
     "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 (64-Bit-Versionen)Procesador: Intel Core i7-4770/AMD FX-8350 oder besserMemoria: 16 GB de RAMGráficos: NVIDIA GTX 1060 6GB/AMD Radeon RX 480 8 GB oder besserAlmacenamiento: 60 GB de espacio disponible",
-    "trailerUrl": "https://steamcdn-a.akamaihd.net/steam/apps/256675427/movie480.mp4",
+    "trailerUrl": "https://www.youtube.com/watch?v=l1jyUAtxh-8",
     "isPromotion": false,
     "image": "game-7605e326-1bf1-411a-9e30-7d25e0e0b1c3.png",
     "createdAt": "2025-12-29T20:29:41.971Z",
     "steamAppId": 403640,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "765b12ab-7ead-454e-adf0-e87dbbfabcb0",
@@ -9266,8 +9331,8 @@
     "image": "game-77e50c61-492d-417d-92c7-14c999b24a32.png",
     "createdAt": "2025-12-29T20:29:42.104Z",
     "steamAppId": 1326470,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "7828b638-9936-4e54-a0ac-d702447a267f",
@@ -9462,17 +9527,17 @@
     "imageUrl": "https://adjcsxaxthfglzwlcijy.supabase.co/storage/v1/object/public/game_images/game_covers/7a9951f8-0e85-4eb2-b341-83729ff67cb9.jpeg",
     "description": "GET READY FOR THE NEXT CHAPTER IN THE LEGENDARY FIGHTING GAME FRANCHISE, TEKKEN 8.\r\n• 32 FIGHTERS FOR A NEW GENERATION\r\nCompletely redesigned character visuals. Elaborate, highly-detailed models built from the ground and high-fidelity graphics break the limits of new-generation hardware by adding a new weight and atmosphere to TEKKEN’s signature battles. Vivid environments and destructible stages combine to create an overwhelming sense of immersion, creating the ultimate play experience.\r\n• NEW GAME, NEW RIVALRY\r\nFist Meets Fate in TEKKEN 8. Holding a record for the longest-running video game storyline, the TEKKEN series begins a new chapter as TEKKEN 8 continues the tragic saga of the Mishima and Kazama bloodlines, and their world-shaking father-and-son grudge matches starting from 6 months after the closure of the last match. The story of Jin Kazama's growth and determination marks a new chapter in the timeless saga.\r\n• THRILLING OVER-THE-TOP BATTLES EMBODYING AGGRESSIVENESS & DESTRUCTION\r\nThe new battle system, Heat, dials up the aggressive nature of battles, while maintaining the play feel and tactics unique to the TEKKEN series. The intensity of battles is greatly enhanced by the destructable stages. Unleashing super move-like Rage Arts is sure to enthrall both players and spectators alike. All of these hard-hitting mechanics come together to make TEKKEN 8 the most exciting installment in the series to date!\r\n• ENJOY YOUR TEKKEN LIFE!\r\nIn the new single-player mode Arcade Quest, craft your own unique avatar and embark on your new TEKKEN life. Battle your way through a variety of rivals across multiple arcades as the story unfolds, all while mastering the basics and practical skills in TEKKEN 8. Unlock a variety of customization items for characters and avatars as you progress.",
     "isFavorite": false,
-    "sizeGB": 85,
+    "sizeGB": 88.1,
     "hardDriveSource": "1TB EXT",
     "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 64-BitProcesador: Intel Core i5-6600K/AMD Ryzen 5 1600Memoria: 8 GB de RAMGráficos: Nvidia GeForce GTX 1050Ti/AMD Radeon R9 380XDirectX: Versión 12Red: Conexión de banda ancha a InternetAlmacenamiento: 100 GB de espacio disponibleTarjeta de sonido: DirectX compatible soundcard/Onboard chipsetNotas adicionales: *\"FPS (frame rate/second): Stable over 60\" is guaranteed and selected under the graphic settings by default when the game is launched for the first time.*Frame rate may drop when other applications are running in the background.*Please note that minimum and recommended specifications are subjected to changes without notice.",
     "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 64-BitProcesador: Intel Core i7-7700K/AMD Ryzen 5 2600Memoria: 16 GB de RAMGráficos: Nvidia GeForce RTX 2070/AMD Radeon RX 5700 XTDirectX: Versión 12Red: Conexión de banda ancha a InternetAlmacenamiento: 100 GB de espacio disponibleTarjeta de sonido: DirectX compatible soundcard/Onboard chipsetNotas adicionales: *\"FPS (frame rate/second): Stable over 60\" is guaranteed and selected under the graphic settings by default when the game is launched for the first time.*Frame rate may drop when other applications are running in the background.*Please note that minimum and recommended specifications are subjected to changes without notice.",
     "trailerUrl": "",
     "isPromotion": false,
-    "image": "game-7a9951f8-0e85-4eb2-b341-83729ff67cb9.png",
+    "image": "game-7a9951f8-0e85-4eb2-b341-83729ff67cb9.jpeg",
     "createdAt": "2025-12-29T20:29:41.989Z",
     "steamAppId": 1778820,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 3371,
@@ -9481,7 +9546,7 @@
     "genre": "Action, RPG",
     "releaseDate": "2015-04-01",
     "rating": 4.15,
-    "image": "game-7aa85839-95bd-45cd-87a6-247ecfbf7b1a.png",
+    "image": "game-7aa85839-95bd-45cd-87a6-247ecfbf7b1a.jpeg",
     "description": "New take in the Souls series. This time players are offered to overcome the immense difficulties in the kingdom of Drangleic. On the way to becoming human again, the hero must obtain a few greater souls. Gamers will experience player versus environment as well as player versus player gameplay using dedicated server technology. Invite your friends, fight your foes and survive your way through harsh medieval fantasy land. \nThe game shares with the first installment in the series the engine and game universe but is not connected in terms of story. Known for its difficulty the game offers players unbeatable challenge. Bad play is severely punished by the game: each time player dies game protagonist loses a bit of maximum health just like in Demon’s Souls.\nScholar of the First Sin bundles all previous DLCs for Dark Souls II as well as visual upgrades, new features and content.",
     "sizeGB": 7,
     "minimumRequirements": "Mínimo:SO *: Windows 7 SP1 64bit, Windows 8.1 64bitProcesador: AMD® A8 3870 3,6 Ghz or Intel® Core ™ i3 2100 3.1GhzMemoria: 4 GB de RAMGráficos: NVIDIA® GeForce  GTX 465 / ATI Radeon TM HD 6870DirectX: Versión 11Red: Conexión de banda ancha a InternetAlmacenamiento: 23 GB de espacio disponibleTarjeta de sonido: DirectX 11 sound device",
@@ -9489,13 +9554,13 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 120,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:20.481Z",
     "id": "7aa85839-95bd-45cd-87a6-247ecfbf7b1a",
     "steamAppId": 335300,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 982400,
@@ -9540,8 +9605,8 @@
     "createdAt": "2026-01-04T05:28:24.331Z",
     "id": "7b2a503c-bc1e-46de-9b58-f9630d71dbbc",
     "steamAppId": 414700,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 604051,
@@ -10239,13 +10304,13 @@
     "hardDriveSource": "1TB EXT",
     "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 64-bitProcesador: Dual Core 2.4 GHzMemoria: 8 GB de RAMGráficos: GeForce GTX 950, Radeon R7 360, or Intel HD Graphics 630Almacenamiento: 10 GB de espacio disponible",
     "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 64-bitProcesador: Quad Core 2.4ghzMemoria: 16 GB de RAMGráficos: GeForce RTX 2060, Radeon RX 5600 XT, or Intel Arc A580Almacenamiento: 10 GB de espacio disponible",
-    "trailerUrl": "",
+    "trailerUrl": "https://www.youtube.com/watch?v=591V2E3l2p0",
     "isPromotion": false,
     "image": "game-85796517-056b-4450-9256-65af71a4858a.png",
     "createdAt": "2025-12-29T20:29:41.941Z",
     "steamAppId": 1145350,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 401,
@@ -10254,7 +10319,7 @@
     "genre": "Action, RPG",
     "releaseDate": "2017-02-07",
     "rating": 3.81,
-    "image": "game-869a21dc-ab7c-445b-a9d4-6ab819259d2e.png",
+    "image": "game-869a21dc-ab7c-445b-a9d4-6ab819259d2e.jpeg",
     "description": "Dead or alive\nA game of insane complexity in the best traditions of the Dark Souls series, the games of which set the standard of quality in the genre. The game was developed by the Japanese studio Team Ninja for the Sony PlayStation 4 console and PC in 2017. The development team previously released projects such as Ninja Gaiden and Dead or Alive. The version of the game for the PC contains all the additional content that came out on the console.\nThe setting\nThe game takes place in the seventeenth century Japan, in the fictionalized version of the Sengoku period, when the country was engulfed in the flames of civil war. The player takes control of the An Anglo-Irish sailor named William, who sets out in pursuit of the villain in the country of the rising sun and finds himself entangled in the mystical and political upheavals that pervaded all of Japan. Despite the fantasy elements, the plot uses real prototypes of historical events and personalities.\nKey features\nThe controls are quite simple: two types of attack, block and dodge are available. The gameplay is modified by role-playing elements: for example, at the start of the game, it is necessary to choose which weapon in William will be predefined. This helps to determine which skills to develop, with further completion. Like Dark Souls, enemies are reborn after each interaction with the local analog of bonfires - Shrines.",
     "sizeGB": 20,
     "minimumRequirements": "",
@@ -10262,12 +10327,12 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 150,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:50.523Z",
     "id": "869a21dc-ab7c-445b-a9d4-6ab819259d2e",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "87376be2-5fe2-4228-8cf6-a43139d02a41",
@@ -10702,7 +10767,7 @@
     "genre": "Action, Indie, Platformer",
     "releaseDate": "2017-02-23",
     "rating": 4.4,
-    "image": "game-8b1a6c1d-07ce-41b0-9a34-d5e353b691dc.png",
+    "image": "game-8b1a6c1d-07ce-41b0-9a34-d5e353b691dc.jpeg",
     "description": "Hollow Knight is a Metroidvania-type game developed by an indie studio named Team Cherry.\nMost of the game's story is told through the in-world items, tablets, and thoughts of other characters. Many plot aspects are told to the player indirectly or through the secret areas that provide a bit of lore in addition to an upgrade. At the beginning of the game, the player visits a town of Dirtmouth. A town built above the ruins of Hallownest. The players descend down into the ruins to find some answers to his questions.\nThe game revolves mainly around the exploration of the in-game world, which requires the players to have some platforming skills. The players have to find secrets that are scattered around the level and battle their enemies. There is a certain degree of backtracking in the game as some areas are locked until the player defeats a certain boss or picks up a specific item. Each area changes as the plot advances so it may be surprising to come back in a certain area. \nThe Protagonist uses a nail which serves as a replacement for a sword. Players can attack in four directions. The nail is upgradable.",
     "sizeGB": 3,
     "minimumRequirements": "",
@@ -10710,12 +10775,12 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 100,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:38.344Z",
     "id": "8b1a6c1d-07ce-41b0-9a34-d5e353b691dc",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 983210,
@@ -10724,7 +10789,7 @@
     "genre": "RPG",
     "releaseDate": "2025-04-24",
     "rating": 4.51,
-    "image": "game-8b786d9d-3c62-4b50-a666-7883b06a0f8a.png",
+    "image": "game-8b786d9d-3c62-4b50-a666-7883b06a0f8a.jpeg",
     "description": "Once a year, the Paintress wakes and paints upon her monolith. Paints her cursed number. And everyone of that age turns to smoke and fades away. Year by year, that number ticks down and more of us are erased. Tomorrow she’ll wake and paint “33.” And tomorrow we depart on our final mission - Destroy the Paintress, so she can never paint death again.\nWe are Expedition 33.",
     "sizeGB": 36,
     "minimumRequirements": "",
@@ -10732,7 +10797,7 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 250,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:15.423Z",
     "id": "8b786d9d-3c62-4b50-a666-7883b06a0f8a",
@@ -10904,19 +10969,19 @@
     "releaseDate": "2021-09-27",
     "rating": 3.37,
     "price": 200,
-    "image": "game-8ebc76d4-1ea3-4693-bb8c-c980a3c92599.png",
+    "image": "game-8ebc76d4-1ea3-4693-bb8c-c980a3c92599.jpeg",
     "description": "HyperMotion integrates advanced full-team mocap data and machine learning to heighten gameplay in every match in FIFA 22, harnessing the power of next generation consoles to deliver the most realistic, responsive and fluid gameplay experience we’ve ever built. FIFA 22 brings a new season of innovation across every mode in the game; enjoy more consistency between the posts with a goalkeeper rewrite that brings more composure to the most important position on the pitch, live out your football dreams as you create and manage your custom club to glory in Career Mode, get rewarded for your flair with restyled gameplay in VOLTA FOOTBALL, welcome back football’s most memorable players as FIFA Ultimate Team™ Heroes, and feel the atmosphere of your next big game with the most immersive matchday experience ever seen in EA SPORTS FIFA.",
     "isFavorite": false,
     "sizeGB": 40,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "minimumRequirements": "",
     "recommendedRequirements": "",
     "trailerUrl": "",
     "isPromotion": false,
     "id": "8ebc76d4-1ea3-4693-bb8c-c980a3c92599",
     "createdAt": "2026-01-05T13:26:56.629Z",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "8ec75f35-c953-4e16-b283-203370128666",
@@ -11191,6 +11256,27 @@
     "steamAppId": 1222690,
     "imageBlob": {},
     "isEmulated": false
+  },
+  {
+    "title": "Total War: ATTILA",
+    "platform": "PC, Linux, macOS",
+    "genre": "Strategy",
+    "releaseDate": "2015-02-16",
+    "rating": 3.88,
+    "price": 150,
+    "image": "game-936984bd-fabc-44c3-8581-a23baf9ca286.jpeg",
+    "imageBlob": {},
+    "description": "Against a darkening background of famine, disease and war, a new power is rising in the great steppes of the East. With a million horsemen at his back, the ultimate warrior king approaches, and his sights are set on Rome…\nThe next instalment in the multi award-winning PC series that combines turn-based strategy with real-time tactics, Total War: ATTILA casts players back to 395 AD. A time of apocalyptic turmoil at the very dawn of the Dark Ages.\nHow far will you go to survive? Will you sweep oppression from the world and carve out a barbarian or Eastern kingdom of your own? Or will you brace against the coming storm as the last remnants of the Roman Empire, in the ultimate survival-strategy challenge?\nThe Scourge of God is coming. Your world will burn.\nApocalyptic destruction mechanics\nWield the ferocious power of fire in battle to set buildings ablaze and terrify defenders, or wipe entire cities and regions from the face of the campaign map with the new raze mechanic.\nLegendary start position\nPlaying as the Western Roman Empire you will begin with vast territories under your control, but weakened by political in-fighting and threatened on all sides by enemies, your dominance will quickly become a struggle to survive.\nOverhauled game mechanics\nImproved core gameplay and UI through the latest optimised and modified Total War game mechanics, including politics, family tree, civic management and technological progression.\nIncredible period detail\nWith new period-specific technologies, arms and armaments, religion, cultures and social upheaval, Total War: ATTILA delivers an authentic experience of this ominous chapter of our history.\nOutstanding visual fidelity\nImprovements and optimisations to both campaign and battle visuals create a chilling vision of a looming apocalypse and the ruin of the civilized world. With breath-taking scale, atmosphere and improved graphical performance, witness the end of days and the rise of a legend.",
+    "isFavorite": false,
+    "sizeGB": 8.6,
+    "hardDriveSource": "2TB DATOS",
+    "minimumRequirements": "",
+    "recommendedRequirements": "",
+    "trailerUrl": "",
+    "isPromotion": false,
+    "isEmulated": false,
+    "id": "936984bd-fabc-44c3-8581-a23baf9ca286",
+    "createdAt": "2026-03-13T04:42:37.228Z"
   },
   {
     "rawgId": 865079,
@@ -11577,7 +11663,7 @@
     "genre": "Action, RPG",
     "releaseDate": "2022-02-25",
     "rating": 4.39,
-    "image": "game-99fb3b61-0e56-438b-a29e-f190678ae301.png",
+    "image": "game-99fb3b61-0e56-438b-a29e-f190678ae301.jpeg",
     "description": "The Golden Order has been broken.\nRise, Tarnished, and be guided by grace to brandish the power of the Elden Ring and become an Elden Lord in the Lands Between.\nIn the Lands Between ruled by Queen Marika the Eternal, the Elden Ring, the source of the Erdtree, has been shattered.\nMarika's offspring, demigods all, claimed the shards of the Elden Ring known as the Great Runes, and the mad taint of their newfound strength triggered a war: The Shattering. A war that meant abandonment by the Greater Will.\nAnd now the guidance of grace will be brought to the Tarnished who were spurned by the grace of gold and exiled from the Lands Between. Ye dead who yet live, your grace long lost, follow the path to the Lands Between beyond the foggy sea to stand before the Elden Ring.",
     "sizeGB": 48,
     "minimumRequirements": "",
@@ -11585,12 +11671,12 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 250,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:25.633Z",
     "id": "99fb3b61-0e56-438b-a29e-f190678ae301",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "9a26bbe0-412f-4464-9646-031efc14926a",
@@ -11680,8 +11766,8 @@
     "image": "game-9aac4edc-f761-4465-a9f8-e4aa4a6c6d67.png",
     "createdAt": "2025-12-29T20:29:42.106Z",
     "steamAppId": 860510,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 960873,
@@ -11702,8 +11788,8 @@
     "isPromotion": false,
     "createdAt": "2026-01-07T04:53:54.145Z",
     "id": "9ad56b40-9a7f-48fc-8781-06f8a3e7ddc5",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "title": "Saints Row: Gat Out of Hell",
@@ -11807,12 +11893,12 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 250,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:41.025Z",
     "id": "9ce3f4fe-abd7-4e27-b9e6-98187665a0fb",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "9d08ecab-27d3-457f-85e8-37d24bcbd238",
@@ -12043,7 +12129,7 @@
     "genre": "Action, Shooter, Adventure",
     "releaseDate": "2021-10-07",
     "rating": 3.36,
-    "image": "game-a0a7da29-fd18-4269-aba2-5f74e54e2c42.png",
+    "image": "game-a0a7da29-fd18-4269-aba2-5f74e54e2c42.jpeg",
     "description": "Welcome to Yara, a tropical paradise frozen in time. As the dictator of Yara, Anton Castillo is intent on restoring his nation back to its former glory by any means, with his son, Diego, following in his bloody footsteps. Their oppressive rule has ignited a revolution.\nJOIN THE REVOLUTION\nPlay as Dani Rojas, a local Yaran, and become a guerrilla fighter to liberate your nation.\nYARA TORN APART\nFight against Anton's troops in the largest Far Cry playground to date across jungles, beaches, and Esperanza, the capital city of Yara.\nGUERRILLA FIREPOWER\nEmploy makeshift weapons, vehicles, and animal companions to burn Anton's ruthless regime to the ground.",
     "sizeGB": 45,
     "minimumRequirements": "",
@@ -12051,7 +12137,7 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 250,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:28.550Z",
     "id": "a0a7da29-fd18-4269-aba2-5f74e54e2c42",
@@ -12492,8 +12578,8 @@
     "image": "game-a7e31a64-f9c9-460a-a412-e4e400e836bb.jpeg",
     "description": "La segunda entrega de la saga RPG del cazador de monstruos profesional Geralt de Rivia, The Witcher 2: Assassins of Kings, narra una historia madura que te hará reflexionar, para producir uno de los juegos de rol más elaborados y singulares jamás publicados en PC.<br><br>Ha llegado una época de caos sin precedentes. Fuerzas poderosas se enfrentan entre bastidores en una lucha por el poder y la influencia. Los Reinos del Norte se movilizan para la guerra. Pero los ejércitos desplegados no son suficientes para detener una sanguinaria conspiración...<h2 class=\"bb_tag\" >CARACTERÍSTICAS PRINCIPALES</h2><strong>UNA HISTORIA NO LINEAL, MADURA E INMERSIVA</strong><br><ul class=\"bb_ul\"><li>Sumérgete una enorme historia no lineal repleta de emociones y ambientada en un mundo de fantasía sin igual.<br></li><li>Embárcate en una aventura compleja y extensa en la que cada decisión puede provocar consecuencias nefastas.<br></li><li>Disfruta de más de 40 horas de juego basado en la narrativa, con 4 comienzos distintos y 16 finales diferentes.</li></ul><span class=\"bb_img_ctn\"><video class=\"bb_img\" autoplay muted loop playsinline poster=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/20920/extras/4e9a12c6295620fa38cca6b9cb4f1280.poster.avif?t=1761657279\" width=600 height=338 ><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/20920/extras/4e9a12c6295620fa38cca6b9cb4f1280.webm?t=1761657279\" type=\"video/webm; codecs=vp9\"><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/20920/extras/4e9a12c6295620fa38cca6b9cb4f1280.mp4?t=1761657279\" type=\"video/mp4\"></video></span><br><br><strong>COMBATE TÁCTICO ESPECTACULAR Y BRUTAL</strong><br><ul class=\"bb_ul\"><li>Lucha usando un sistema de combate que combina como ninguno la acción dinámica con las mecánicas plenamente desarrolladas de un RPG.<br></li><li>Utiliza una gran variedad de armas de brujo, entre las que se incluyen opciones para combate cuerpo a cuerpo y a distancia.<br></li><li>Prepárate para la batalla usando un gran abanico de opciones tácticas: elaborar pociones, tender trampas y señuelos, lanzar hechizos mágicos y acercarte sigilosamente a los enemigos.</li></ul><span class=\"bb_img_ctn\"><video class=\"bb_img\" autoplay muted loop playsinline poster=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/20920/extras/034583ba40dc5b0478c14314b2a1cb4a.poster.avif?t=1761657279\" width=600 height=338 ><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/20920/extras/034583ba40dc5b0478c14314b2a1cb4a.webm?t=1761657279\" type=\"video/webm; codecs=vp9\"><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/20920/extras/034583ba40dc5b0478c14314b2a1cb4a.mp4?t=1761657279\" type=\"video/mp4\"></video></span><br><br><strong>UN MUNDO DE JUEGO INMENSO, CONSISTENTE Y REALISTA</strong><br><ul class=\"bb_ul\"><li>Descubre un mundo de juego enorme y rico, donde los sucesos siniestros determinan las vidas de poblaciones enteras y los monstruos sedientos de sangre arrasan todo a su paso.<br></li><li>Explora numerosos y variados lugares: desde bulliciosos puestos comerciales, pasando por ajetreadas ciudades mineras, hasta imponentes castillos y fortalezas; y descubre las historias que tienen que contarte y los secretos que ocultan.</li></ul><span class=\"bb_img_ctn\"><video class=\"bb_img\" autoplay muted loop playsinline poster=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/20920/extras/a6ed1b1e17944551618d33859aaac525.poster.avif?t=1761657279\" width=600 height=338 ><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/20920/extras/a6ed1b1e17944551618d33859aaac525.webm?t=1761657279\" type=\"video/webm; codecs=vp9\"><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/20920/extras/a6ed1b1e17944551618d33859aaac525.mp4?t=1761657279\" type=\"video/mp4\"></video></span><br><br><strong>TECNOLOGÍA INNOVADORA</strong><br><ul class=\"bb_ul\"><li>Experimenta un mundo vivo, que incluye preciosos gráficos y utiliza mecánicas de juego sofisticadas, que han sido posibles gracias a REDengine, la tecnología propia de CD PROJEKT RED.</li></ul><h2 class=\"bb_tag\" >ACERCA DE THE WITCHER 2 ENHANCED EDITION</h2>La Enhanced Edition incluye montones de contenidos nuevos y emocionantes.<br><ul class=\"bb_ul\"><li>Horas adicionales de juego: nuevas aventuras ambientadas en lugares nunca antes vistos, que amplían la historia y dan a conocer a nuevos personajes, misterios y monstruos.<br></li><li>Introducción y cinemáticas del juego nuevas: animaciones y secuencias totalmente nuevas, incluida una nueva cinemática prerrenderizada por el ganador del BAFTA y nominado a un premio de la Academia Tomasz Bagiński.<br></li><li>Todos los DLC y mejoras introducidos en la versión 2.0 del juego, incluyendo:<br><ul class=\"bb_ul\"><li>Modo Arena — un modo arcade que permite a los jugadores luchar contra oleadas interminables de enemigos y poner a prueba sus habilidades de combate.<br></li><li>Un nuevo y extenso sistema de tutoriales que sumerge de forma gradual y fluida a los jugadores en el mundo del juego y las aventuras de Geralt.<br></li><li>Modo Oscuro — un nivel de dificultad diseñado para los jugadores expertos, con objetos exclusivos de temática siniestra. En este nivel de dificultad se pone un mayor énfasis en la preparación de la batalla, las maniobras defensivas y los ataques oportunistas.</li></ul></li></ul><br>The Witcher 2 Enhanced Edition incluye los siguientes artículos adicionales:<br><ul class=\"bb_ul\"><li>Banda sonora oficial en formato MP3<br></li><li>Un mapa del mundo del juego<br></li><li>Una guía de misiones para roleros tanto novatos como veteranos<br></li><li>Manual del juego<br></li><li>Cómic digital «Reasons of State» (Razones de estado).</li></ul>",
     "isFavorite": false,
-    "sizeGB": 30,
-    "hardDriveSource": "2 TB DATOS",
+    "sizeGB": 20.8,
+    "hardDriveSource": "2TB DATOS",
     "minimumRequirements": "",
     "recommendedRequirements": "",
     "trailerUrl": "",
@@ -12514,17 +12600,17 @@
     "imageUrl": "https://adjcsxaxthfglzwlcijy.supabase.co/storage/v1/object/public/game_images/game_covers/a8172175-a9ac-4466-966f-a3217be43cd1.png",
     "description": "Welcome to the Living Lands, a mysterious island filled with adventure and danger.\nSet in the fictional world of Eora that was first introduced to players in the Pillars of Eternity franchise, Avowed is a first-person fantasy action RPG from the award-winning team at Obsidian Entertainment.\nYou are the envoy of Aedyr, a distant land, sent to investigate rumors of a spreading plague throughout the Living Lands - an island full of mysteries and secrets, danger and adventure, and choices and consequences, and untamed wilderness. You discover a personal connection to the Living Lands and an ancient secret that threatens to destroy everything. Can you save this unknown frontier and your soul from the forces threatening to tear them asunder?",
     "isFavorite": false,
-    "sizeGB": 51,
+    "sizeGB": 47.7,
     "hardDriveSource": "2TB 3",
     "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10/11 with updatesProcesador: AMD Ryzen 5 2600 / Intel i5-8400Memoria: 16 GB de RAMGráficos: AMD RX 5700 / Nvidia GTX 1070 / Intel Arc A580DirectX: Versión 12Almacenamiento: 75 GB de espacio disponible",
     "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10/11 with updatesProcesador: AMD Ryzen 5 5600X / Intel i7-10700KMemoria: 16 GB de RAMGráficos: Graphics: AMD RX 6800 XT / Nvidia RTX 3080DirectX: Versión 12Almacenamiento: 75 GB de espacio disponible",
     "trailerUrl": "",
     "isPromotion": false,
-    "image": "game-a8172175-a9ac-4466-966f-a3217be43cd1.png",
+    "image": "game-a8172175-a9ac-4466-966f-a3217be43cd1.jpeg",
     "createdAt": "2025-12-29T20:29:42.014Z",
     "steamAppId": 2457220,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 985578,
@@ -12646,7 +12732,7 @@
     "genre": "Adventure, Family",
     "releaseDate": "2025-04-25",
     "rating": 3.66,
-    "image": "game-a9acc536-f091-4ba2-a511-775f7d157dcd.png",
+    "image": "game-a9acc536-f091-4ba2-a511-775f7d157dcd.jpeg",
     "description": "Ride into a desperate, dog-eat-dog world in the definitive Days Gone experience, remastered for the PlayStation5 console.\n<br>\n<br>Fight to survive an environment ravaged by a deadly pandemic as former outlaw biker, Deacon St. John. Risk the threats of the Broken Road on the back of your trusty Drifter bike as you face terrifying hordes of relentless feral Freakers – as well as dangerous gangs of humans.",
     "sizeGB": 25,
     "minimumRequirements": "",
@@ -12654,7 +12740,7 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 200,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:21.484Z",
     "id": "a9acc536-f091-4ba2-a511-775f7d157dcd",
@@ -12736,7 +12822,7 @@
     "genre": "Adventure, RPG",
     "releaseDate": "2020-03-31",
     "rating": 4.75,
-    "image": "game-ab72b2ef-338e-4524-b048-a9979ff64b37.png",
+    "image": "game-ab72b2ef-338e-4524-b048-a9979ff64b37.jpeg",
     "description": "Wear the mask.  Reveal your truth.\nPrepare for an all-new RPG experience in Persona®5 Royal based in the universe of the award-winning series, Persona®! Don the mask of Joker and join the Phantom Thieves of Hearts. Break free from the chains of modern society and stage grand heists to infiltrate the minds of the corrupt and make them change their ways! Persona®5 Royal is packed with new characters, story depth, new locations to explore, & a new grappling hook mechanic for access to new areas. With a new semester at Shujin Academy, get ready to strengthen your abilities in the metaverse and in your daily life. Persona®5 Royal presents a unique visual style and award nominated composer Shoji Meguro returns with an all-new soundtrack. Explore Tokyo, unlock new Personas, customize your own personal Thieves Den, discover a never-before-seen story arc, cutscenes, alternate endings, and more!",
     "sizeGB": 18,
     "minimumRequirements": "",
@@ -12744,12 +12830,12 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 180,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:51.359Z",
     "id": "ab72b2ef-338e-4524-b048-a9979ff64b37",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 1002694,
@@ -12919,7 +13005,7 @@
     "description": "¡Disfruta de Sonic como nunca antes!<br><br>¡Dos mundos chocan en la nueva y vertiginosa aventura de Sonic the Hedgehog! Lucha contra hordas de poderosos enemigos mientras exploras un mundo impresionante lleno de acción, aventura y misterios. Alcanza nuevas alturas y experimenta la emoción y la libertad a todo ritmo en las zonas abiertas de las cinco enormes Starfall Islands. Disfruta de la aventura y aprovecha el poder de los ancestros para detener a estos nuevos y misteriosos enemigos. ¡Bienvenidos a la evolución de los juegos de Sonic! <br><br><strong>Prueba las nuevas plataformas de las zonas abiertas</strong> <br>Corre a través de cinco enormes islas en las que encontrarás frondosos bosques, enormes cascadas y calurosos desiertos. Cada una de ellas con sus propios desafíos únicos de acción sobre plataformas y sus secretos ocultos por descubrir. <br> <br><strong>Libertad a una velocidad inigualable</strong><br>Elige tu propio camino y descubre misiones secundarias y puzles, escala estructuras enormes, ve de pesca y encuentra una o dos caras amigas en tus aventuras... <br> <br><strong>Ponte a prueba en el ciberespacio</strong><br>Desbloquea el ciberespacio, con las icónicas plataformas en 3D a velocidades supersónicas y una gran variedad de desafíos que pondrán a prueba tus habilidades. <br><br><strong>Combate cibernético</strong><br>Starfall Islands es el hogar de unas extrañas criaturas desconocidas hasta ahora para Sonic. Usa el nuevo sistema de combate y las mejoras del recuadro de habilidades para luchar estratégicamente, combinando movimientos como esquivar, bloquear, contraatacar, combos y el novedoso cibergiro para acabar con enemigos misteriosos y titanes colosales. <br> <br><strong>Una nueva aventura llena de misterios e intrigas</strong><br>Conviértete en Sonic y viaja para desvelar los misterios de una antigua civilización amenazada por hordas de robots.<h2 class=\"bb_tag\" >Instala el &quot;&quot;Cofre del aventurero&quot;&quot; antes de comenzar una nueva partida. Ten en cuenta que el contenido descargable no se validará si se instala después de completar la zona del tutorial.<br>Asegúrate de tener instalado el parche más reciente antes de instalar el contenido descargable.</h2>",
     "isFavorite": false,
     "sizeGB": 13,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "minimumRequirements": "",
     "recommendedRequirements": "",
     "trailerUrl": "",
@@ -13059,8 +13145,8 @@
     "image": "game-af57495a-4bab-4205-810c-497730c085cb.png",
     "createdAt": "2025-12-29T20:29:41.807Z",
     "steamAppId": 387290,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 368952,
@@ -13260,8 +13346,8 @@
     "isPromotion": false,
     "createdAt": "2026-01-02T12:24:53.052Z",
     "id": "b20b3465-c9f1-43e9-ba5a-cd65b9de094a",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 28202,
@@ -13618,8 +13704,8 @@
     "isPromotion": false,
     "createdAt": "2026-01-02T09:42:30.110Z",
     "id": "b7a406dc-b0a2-469f-9a64-842033096a8e",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 647660,
@@ -13628,7 +13714,7 @@
     "genre": "Strategy, Simulation",
     "releaseDate": "2024-09-20",
     "rating": 4.17,
-    "image": "game-b80d8149-8032-419f-b162-56ba7841c70d.png",
+    "image": "game-b80d8149-8032-419f-b162-56ba7841c70d.jpeg",
     "description": "Discover a city-survival game set 30 years after an apocalyptic blizzard ravaged Earth, transforming our world into a harsh, icy wasteland. In Frostpunk 2, you must face a new deadly threat that appears on the horizon – human nature and its unsatiated thirst for power.",
     "sizeGB": 9.5,
     "minimumRequirements": "",
@@ -13636,12 +13722,12 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 150,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:35.047Z",
     "id": "b80d8149-8032-419f-b162-56ba7841c70d",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 4546,
@@ -13807,7 +13893,7 @@
     "genre": "Action, RPG",
     "releaseDate": "2018-05-23",
     "rating": 4.47,
-    "image": "game-bbee3c01-f1e4-4c75-8689-5fd397bf52c5.png",
+    "image": "game-bbee3c01-f1e4-4c75-8689-5fd397bf52c5.jpeg",
     "description": "Then, there was fire. Re-experience the critically acclaimed, genre-defining game that started it all. Beautifully remastered, return to Lordran in stunning high-definition detail running at 60fps.\nDark Souls Remastered includes the main game plus the Artorias of the Abyss DLC.\nKey features:\n• Deep and Dark Universe\n• Each End is a New Beginning\n• Gameplay Richness and Possibilities\n• Sense of Learning, Mastering and Accomplishment\n• The Way of the Multiplayer (up to 6 players with dedicated servers)",
     "sizeGB": 4,
     "minimumRequirements": "",
@@ -13815,12 +13901,12 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 100,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:19.069Z",
     "id": "bbee3c01-f1e4-4c75-8689-5fd397bf52c5",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 3498,
@@ -14085,13 +14171,13 @@
     "hardDriveSource": "1TB EXT",
     "minimumRequirements": "Mínimo:SO *: Vista SP2 / Windows 7.1 SP1 / Windows 8.1 (64-bit Operating System Required)Procesador: Intel Core i5-2500k, 3.3GHz / AMD Phenom II X6 1075T 3GHzMemoria: 8 GB de RAMGráficos: NVIDIA GeForce GTX 670 (2GB) / AMD Radeon HD 7870 (2GB)Almacenamiento: 54 GB de espacio disponible",
     "recommendedRequirements": "Recomendado:SO *: Vista SP2 / Windows 7.1 SP1 / Windows 8.1 (64-bit Operating System Required)Procesador: Intel Core i7-3770, 3.4 GHz / AMD FX-8350, 4.0 GHzMemoria: 8 GB de RAMGráficos: NVIDIA GeForce GTX 780 (3GB) / AMD R9 290 (4GB)Almacenamiento: 54 GB de espacio disponible",
-    "trailerUrl": "https://steamcdn-a.akamaihd.net/steam/apps/256668226/movie480.mp4",
+    "trailerUrl": "https://www.youtube.com/watch?v=GXr5sZs9vJE",
     "isPromotion": false,
     "image": "game-c076aef7-9276-4133-8c01-bbb24c9e0e0b.png",
     "createdAt": "2025-12-29T20:29:42.063Z",
     "steamAppId": 225540,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "c118e17d-a4a7-414e-935d-4955e74c799a",
@@ -14345,7 +14431,7 @@
     "genre": "Action, RPG",
     "releaseDate": "2025-05-30",
     "rating": 3.89,
-    "image": "game-c4e515c1-fbd5-4090-a0bb-7a66960e6dd6.png",
+    "image": "game-c4e515c1-fbd5-4090-a0bb-7a66960e6dd6.jpeg",
     "description": "Elden Ring Nightreign is a roguelike action role-playing game developed by FromSoftware and published by Bandai Namco Entertainment.\nThe game is a spin-off to Elden Ring, using many of its features and gameplay elements, and focuses on roguelike and cooperative mechanics. Set in an alternate past of Elden Ring's setting, players control Nightfarers on a quest to dispel the reign of night.",
     "sizeGB": 20,
     "minimumRequirements": "",
@@ -14353,12 +14439,12 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 180,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:26.686Z",
     "id": "c4e515c1-fbd5-4090-a0bb-7a66960e6dd6",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 5505,
@@ -14389,20 +14475,20 @@
     "genre": "Action, Adventure",
     "releaseDate": "2025-09-04",
     "rating": 3.91,
-    "image": "game-c4fb69e0-e1c6-4077-b45b-03b885486ea3.png",
+    "image": "game-c4fb69e0-e1c6-4077-b45b-03b885486ea3.jpeg",
     "description": "Cronos: The New Dawn is a pulse-pounding, third-person survival horror game where time is your deadliest weapon — and your worst enemy. Survive a brutal future, dive back in time, and stop nightmarish creatures from merging into unstoppable abominations.",
-    "sizeGB": 23,
+    "sizeGB": 23.6,
     "minimumRequirements": "",
     "recommendedRequirements": "",
     "trailerUrl": "",
     "isFavorite": false,
     "price": 200,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:17.986Z",
     "id": "c4fb69e0-e1c6-4077-b45b-03b885486ea3",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 972044,
@@ -15110,16 +15196,16 @@
     "description": "MindsEye is a story-driven, action-adventure thriller, set in a fictional near-future Americana. Featuring best-in-class cinematics, high octane driving, and explosive combat from legendary game director Leslie Benzies.",
     "isFavorite": false,
     "sizeGB": 30,
-    "hardDriveSource": "6TB STORE",
+    "hardDriveSource": "4TB TANK",
     "minimumRequirements": "Mínimo:SO: Windows 10/11 64 Bit with latest updatesProcesador: Intel Core i5-12400F / AMD Ryzen 5 5600XMemoria: 16 GB de RAMGráficos: 6GB VRAM, Nvidia GeForce RTX 2060 / AMD Radeon RX 5600 XTDirectX: Versión 12Almacenamiento: 70 GB de espacio disponibleNotas adicionales: SSD required",
     "recommendedRequirements": "Recomendado:SO: Windows 10/11 64 Bit with latest updatesProcesador: Intel Core i7-13700K / AMD Ryzen 7 7800X3DMemoria: 16 GB de RAMGráficos: 8GB VRAM, Nvidia GeForce RTX 4070 / AMD Radeon RX 6800 XTDirectX: Versión 12Almacenamiento: 70 GB de espacio disponibleNotas adicionales: SSD required",
     "trailerUrl": "",
     "isPromotion": false,
-    "image": "game-cdcfa3ed-7a3d-4b89-9cbd-075694a392ab.png",
+    "image": "game-cdcfa3ed-7a3d-4b89-9cbd-075694a392ab.jpeg",
     "createdAt": "2025-12-29T20:29:41.877Z",
     "steamAppId": 3265250,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "ce714193-90aa-4641-9462-2d531f2d28de",
@@ -15244,12 +15330,12 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 80,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:49.797Z",
     "id": "d0b43f38-015c-467e-9573-fed041036999",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 4513,
@@ -15668,13 +15754,13 @@
     "hardDriveSource": "1TB EXT",
     "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO *: 64-bit Windows 7 / Windows 10Procesador: Intel Core i5-750, 2.66 GHz / AMD Phenom II X4 965, 3.4 GHz or AMD Ryzen™ 3 1200, 3.1 GHzMemoria: 4 GB de RAMGráficos: NVIDIA® GeForce™ GTX 670 or NVIDIA® GeForce™ GTX 1050 / AMD® Radeon™ HD 7950 or AMD® Radeon™ R9 270DirectX: Versión 11Red: Conexión de banda ancha a InternetAlmacenamiento: 52 GB de espacio disponible",
     "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO *: 64-bit Windows 7 / Windows 10Procesador: Intel Core i3-2100, 3.10 GHz / AMD FX-6300, 3.5 GHz or AMD Ryzen™ 5 1400, 3.2 GHzMemoria: 8 GB de RAMGráficos: NVIDIA® GeForce™ GTX 780 or NVIDIA® GeForce™ GTX 1060-6GB / AMD® Radeon™ R9 290 or RX 570DirectX: Versión 11Red: Conexión de banda ancha a InternetAlmacenamiento: 60 GB de espacio disponible",
-    "trailerUrl": "https://steamcdn-a.akamaihd.net/steam/apps/256697684/movie480.mp4",
+    "trailerUrl": "https://www.youtube.com/watch?v=9hklKfEEsxc",
     "isPromotion": false,
     "image": "game-d4d4821e-44fe-460b-88e7-5474aa8ff514.png",
     "createdAt": "2025-12-29T20:29:42.089Z",
     "steamAppId": 627270,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "d542697b-9c37-45e0-ab76-0024c42aa664",
@@ -16045,7 +16131,7 @@
     "genre": "Action, Shooter",
     "releaseDate": "2010-05-18",
     "rating": 4.42,
-    "image": "game-d9600ce4-b1fd-4be4-8664-9968c7e90cbd.png",
+    "image": "game-d9600ce4-b1fd-4be4-8664-9968c7e90cbd.jpeg",
     "description": "Red Dead Redemption is a third-person open-world adventure game which implements the Wild West at its best: it is very much GTA-clone but in bizarre stylistics and the very beginning of the twentieth century. This is the second title of a franchise, being preceded by Red Dead Revolver and followed by Red Dead Redemption 2 coming out in late 2018. \nWe play as John Marston who gradually takes down and take out criminals and those, who crosses his path. Among the combat mechanics, the most interesting one is \"Dead Eye\" — it allows one to point multiple targets out in slow motion and then shoot them simultaneously. \nThe game features 16-players multiplayer and cooperative and also has zombie DLC — Undead Nightmare. Additional content adds two modes to the original game: undead overrun in which you have to survive an infinite amount of zombie waves, and Land Grab in which player has to defend the particular piece of land to gain control of it.",
     "sizeGB": 10,
     "minimumRequirements": "",
@@ -16053,12 +16139,12 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 130,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:53.948Z",
     "id": "d9600ce4-b1fd-4be4-8664-9968c7e90cbd",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "d98db98b-31dc-4d3b-a9f0-24dba81a8eb7",
@@ -16125,6 +16211,27 @@
     "id": "da854c7f-d2cc-4789-8960-6851d7309fed",
     "imageBlob": {},
     "isEmulated": false
+  },
+  {
+    "title": "Rayman: 30th Anniversary Edition",
+    "platform": "PC",
+    "genre": "Action, Adventure, Arcade, Platformer",
+    "releaseDate": "2026-02-13",
+    "rating": 4,
+    "price": 80,
+    "image": "game-dac10fe8-0ffe-4dd0-a301-113ab396134f.jpeg",
+    "imageBlob": {},
+    "description": "<h2 class=\"bb_tag\">LA AVENTURA QUE DIO ORIGEN A TODO</h2><p class=\"bb_paragraph\"><span class=\"bb_img_ctn\"><img src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4094670/extras/5f8cce40e81fdcc1371ca6e2c5ec0aca.poster.avif?t=1772730813\"></span>Da puñetazos al estilo de Rayman y planea con el pelo por mundos llenos de color; desde el Bosque de los Sueños con los viajes inolvidables en mosquito hasta el caos musical de la Tierra de las Bandas Musicales. Rescata a los Electoons y salva al mundo de Mr. Dark en una aventura clásica de plataformas con un estilo artístico único que sigue siendo tan mágico como lo era en los 90.</p><p class=\"bb_paragraph\"></p><h2 class=\"bb_tag\">LA EDICIÓN DEFINITIVA</h2><p class=\"bb_paragraph\"><span class=\"bb_img_ctn\"><img src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4094670/extras/30cd2a54a587356b438340cd2c7b8955.poster.avif?t=1772730813\"></span>Juega a la aventura clásica en cinco versiones (MS-DOS, PlayStation®, Atari Jaguar, Game Boy Color y Game Boy Advance) con una banda sonora rediseñada, inmersiva y mejorada, además de 120 niveles adicionales de Rayman's New Levels, Rayman 60 Levels y Rayman By His Fans. Y, por primera vez en la historia, prueba el prototipo de SNES que se creía perdido, de forma que puedas disfrutar de la innovadora jugabilidad de Rayman cuando empezó a tomar forma.</p><p class=\"bb_paragraph\"></p><h2 class=\"bb_tag\">DOCUMENTAL EXCLUSIVO</h2><p class=\"bb_paragraph\"><span class=\"bb_img_ctn\"><img src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4094670/extras/fb964214ffeaa37b1f28d98bcf5c2b17.poster.avif?t=1772730813\"></span>Descubre la historia jamás contada sobre la creación de Rayman en un documental interactivo con más de 50 minutos de entrevistas nuevas con los desarrolladores originales. Echa un vistazo a arte conceptual, bocetos iniciales y documentos de diseño inéditos que ofrecen la perspectiva de la creación del héroe sin extremidades.</p><p class=\"bb_paragraph\"></p><h2 class=\"bb_tag\">UN CLÁSICO PARA TODO EL MUNDO</h2><p class=\"bb_paragraph\"><span class=\"bb_img_ctn\"><img src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4094670/extras/354ca21b2892fbbfb84ec35fd5462856.poster.avif?t=1772730813\"></span>Redescubre la jugabilidad del clásico de culto o afronta las nuevas características diseñadas para mantenerte en alerta, que incluyen una función de rebobinado, varios espacios de guardado y opciones de accesibilidad, como vidas infinitas o desbloqueos de niveles instantáneos.</p>",
+    "isFavorite": false,
+    "sizeGB": 2.6,
+    "hardDriveSource": "2TB 3",
+    "minimumRequirements": "",
+    "recommendedRequirements": "",
+    "trailerUrl": "",
+    "isPromotion": false,
+    "isEmulated": false,
+    "id": "dac10fe8-0ffe-4dd0-a301-113ab396134f",
+    "createdAt": "2026-03-13T04:46:46.539Z"
   },
   {
     "title": "Saints Row IV",
@@ -16296,7 +16403,7 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 250,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:58.322Z",
     "id": "ddaaab20-c7a6-475c-b790-33f4c8b48bcd",
@@ -16446,7 +16553,7 @@
     "genre": "Action, Shooter, Adventure",
     "releaseDate": "2022-09-02",
     "rating": 4.66,
-    "image": "game-e2d4ec0e-b1c4-4e8c-b15e-aaf16de36deb.png",
+    "image": "game-e2d4ec0e-b1c4-4e8c-b15e-aaf16de36deb.jpeg",
     "description": "Revisit the game that set a new bar for single-player narrative storytelling with The Last of Us™ and explore a ravaged and hardened world, where every action has a brutal consequence for Joel and Ellie.\nExperience the emotional storytelling and unforgettable characters in The Last of Us™, winner of over 200 Game of the Year awards.\nIn a ravaged civilization, where infected and hardened survivors run rampant, Joel, a weary protagonist, is hired to smuggle 14-year-old Ellie out of a military quarantine zone. However, what starts as a small job soon transforms into a brutal cross-country journey.",
     "sizeGB": 45,
     "minimumRequirements": "",
@@ -16454,7 +16561,7 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 250,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:08.550Z",
     "id": "e2d4ec0e-b1c4-4e8c-b15e-aaf16de36deb",
@@ -17515,7 +17622,7 @@
     "genre": "Action, RPG",
     "releaseDate": "2023-10-13",
     "rating": 3.32,
-    "image": "game-f2ba5fc7-c107-439c-a7b4-b6437775f8e0.png",
+    "image": "game-f2ba5fc7-c107-439c-a7b4-b6437775f8e0.jpeg",
     "description": "The Lords of the Fallen introduces an all-new, epic RPG adventure in a vast, interconnected world more than five times larger than the original game.\nAfter an age of the cruellest tyranny, the demon God, Adyr, was finally defeated. But Gods… do not fall forever. Now, aeons later, Adyr’s resurrection draws nigh. As one of the fabled Dark Crusaders, journey through both the realms of the living and the dead in this expansive RPG experience, featuring colossal boss battles, fast challenging combat, thrilling character encounters, and deep, immersive storytelling. Will your legend be one of light… or one of darkness?\nDare to Hope.\nExplore A Vast, Interconnected Worlds\nJourney across two expansive, parallel worlds in your epic quest to overthrow Adyr. While the living realm presents its own brutal challenges, untold terrors lurk in the nightmarish realm of the dead.\nDefine Your Own Legend\nFully customise your character’s appearance from a wide array of visual options, before selecting one of nine character classes. Whichever starting path you take, develop your character to your own playstyle by upgrading stats, weapons, armour and spells.\nMaster Fast, Challenging Fluid Tactical Combat\nOnly those that master the deep, tactical combat can hope to survive. Choose from 100s of uniquely brutal weapons, or forgo metal for magic with devastating attacks of the arcane.\nUnite or Fight in Online Multiplayer\nExperience the expansive, single player campaign alone, or invite a second player to join your adventure in uninterrupted, online co-op. But be warned - heroes from other realms can, and will invade.\nWield a Device of Ungodly Power\nYour lantern possesses the ungodly power to cross between worlds. Use this dark art to reach forgotten places, unearth fabled treasures, and even manipulate the very soul of your foe.\nRise from Death\nFall in the world of the living, and rise again… in the world of the dead. You now have one final chance to return to your living state, as all manner of hellish creature descends upon you.\nKey Features:\nEmbark upon two vast, parallel worlds - that of the living… and the dead\nMaster a fast, fluid and challenging combat system\nWield devastating magic attacks and character buffs\nInvite a second player to join your campaign in uninterrupted, online multiplayer\nEncounter a wide array of characters, eager to offer a dubious hand…\nFully customise your own unique character\nChoose from 9 starting character classes, including Knight, Rogue and Fire Apprentice",
     "sizeGB": 23.4,
     "minimumRequirements": "",
@@ -17523,12 +17630,12 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 250,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:42.361Z",
     "id": "f2ba5fc7-c107-439c-a7b4-b6437775f8e0",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 881537,
@@ -18138,7 +18245,7 @@
     "genre": "Action, RPG",
     "releaseDate": "2015-05-18",
     "rating": 4.64,
-    "image": "game-fb141747-ce13-48e2-8c8d-1f2db8ff5fae.png",
+    "image": "game-fb141747-ce13-48e2-8c8d-1f2db8ff5fae.jpeg",
     "description": "The third game in a series, it holds nothing back from the player. Open world adventures of the renowned monster slayer Geralt of Rivia are now even on a larger scale. Following the source material more accurately, this time Geralt is trying to find the child of the prophecy, Ciri while making a quick coin from various contracts on the side. Great attention to the world building above all creates an immersive story, where your decisions will shape the world around you.\nCD Project Red are infamous for the amount of work they put into their games, and it shows, because aside from classic third-person action RPG base game they provided 2 massive DLCs with unique questlines and 16 smaller DLCs, containing extra quests and items.\nPlayers praise the game for its atmosphere and a wide open world that finds the balance between fantasy elements and realistic and believable mechanics, and the game deserved numerous awards for every aspect of the game, from music to direction.",
     "sizeGB": 38.6,
     "minimumRequirements": "",
@@ -18146,12 +18253,12 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 250,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:40:15.936Z",
     "id": "fb141747-ce13-48e2-8c8d-1f2db8ff5fae",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 801638,
@@ -18314,7 +18421,7 @@
     "genre": "Action",
     "releaseDate": "2018-04-20",
     "rating": 4.36,
-    "image": "game-fcc8dd13-fcce-4df2-bb26-badd245578b3.png",
+    "image": "game-fcc8dd13-fcce-4df2-bb26-badd245578b3.jpeg",
     "description": "<strong>Entra en los dominios nórdicos</strong><br>Kratos ha dejado atrás su venganza contra los dioses del Olimpo y vive ahora como un hombre en los dominios de los dioses y monstruos nórdicos. En este mundo cruel e implacable debe luchar para sobrevivir… y enseñar a su hijo a hacerlo también. <br><br><strong>Aprovecha una segunda oportunidad </strong><br>Kratos vuelve a ser padre. Como progenitor y protector de Atreus, un hijo decidido a ganarse el respeto del padre, Kratos debe sobrevivir en un mundo muy peligroso dominando y controlando la ira que tanto lo ha caracterizado. <br><br><strong>Viaja a un mundo oscuro y elemental de criaturas temibles</strong><br>Este entorno inequívocamente nuevo, con su propio panteón de criaturas, monstruos y dioses, nos lleva desde las columnas de mármol del fastuoso Olimpo hasta los bosques agrestes, las montañas y las cuevas de la tradición nórdica anterior a los vikingos. <br><br><strong>Lucha en combates físicos y viscerales </strong><br>Con una cámara al hombro que acerca al jugador a la acción más que antes, las peleas de God of War™ son un reflejo del panteón de criaturas nórdicas que encontrará Kratos: grandiosas, duras y extenuantes. La nueva arma principal y las nuevas habilidades mantienen el espíritu que define la saga God of War y presentan una visión del conflicto que renueva el género.<h2 class=\"bb_tag\">CARACTERÍSTICAS DE PC</h2><br><strong>Gráficos de alta fidelidad</strong><br>Gráficos alucinantes mejorados en PC. Disfruta de una auténtica resolución 4K en dispositivos compatibles, [MU1] con frecuencias de fotogramas desbloqueadas para un rendimiento máximo. Modifica los ajustes con una gran variedad de opciones y configuraciones gráficas, como el sombreado de mayor resolución, reflejos de espacios en pantalla mejorados, la incorporación de GTAO y SSDO, y mucho más.<br><br><strong>Compatibilidad con NVIDIA® DLSS y Reflex</strong><br>Conjunción de calidad y rendimiento. Aprovecha la potencia de la IA del supermuestreo de aprendizaje profundo (DLSS) de NVIDIA para mejorar la frecuencia de fotogramas y generar imágenes nítidas llenas de belleza en una selección de GPU de NVIDIA. Usa la tecnología NVIDIA Reflex de baja latencia para reaccionar más rápidamente y asestar combos más fuertes con las mecánicas de respuesta que tanto ansías en las GPU de GeForce.<br><br><strong>Personalización de los controles</strong><br>Juega a tu manera. Gracias a la compatibilidad con los mandos inalámbricos DUALSHOCK®4 y DUALSENSE®, una gran variedad de mandos diferentes y la plena capacidad de personalizar las asignaciones para teclado y ratón, podrás modificar cada acción según tu estilo de juego.<br><br><strong>Compatibilidad ultrapanorámica<strong><br>Sumérgete en el juego como nunca antes. Aventúrate por los reinos nórdicos y disfruta de vistas increíbles en pantallas anchas panorámicas. Compatible con pantallas ultrapanorámicas de 21:9, God of War™ ofrece una experiencia de calidad cinematográfica que amplía la visión original sin cortes.</strong></strong>",
     "sizeGB": 28,
     "minimumRequirements": "",
@@ -18322,12 +18429,12 @@
     "trailerUrl": "",
     "isFavorite": false,
     "price": 200,
-    "hardDriveSource": "4TB TANK",
+    "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
     "createdAt": "2026-01-01T22:39:36.031Z",
     "id": "fcc8dd13-fcce-4df2-bb26-badd245578b3",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "fcf389c4-a4b6-464d-aead-d895bc75c250",
@@ -18458,8 +18565,8 @@
     "isPromotion": false,
     "image": "game-fd902cbd-67d4-480c-99ce-f828ef12bff3.png",
     "createdAt": "2025-12-29T20:29:42.097Z",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 988615,
@@ -18556,18 +18663,18 @@
     "rating": 4.37,
     "price": 150,
     "image": "game-fdec24c4-5854-406f-a0c9-dcadbd7d663f.jpeg",
-    "imageBlob": {},
     "description": "Disco Elysium is a groundbreaking blend of hardboiled cop show and isometric RPG. Solve a massive, open ended case in a unique urban fantasy setting. Kick in doors, interrogate suspects, or just get lost exploring the gorgeously rendered city of Revachol and unraveling its mysteries. Tough choices need to be made. What kind of cop you are — is up to you.\nYou play a disgraced lieutenant detective in Revachol West, a shore town where corruption’s out of control, murders go unsolved, and the kids just wanna dance. Kick in doors, interrogate suspects, or get lost exploring a gorgeously rendered city and unraveling its mysteries. All the while, tensions rise around you as Revachol threatens to explode.\nDisco Elysium’s completely original skill system makes your innermost feelings, doubts, and memories an integral part of every conversation. Level up your rational faculties, sharpen your wits, or give in to your basest instincts. What kind of cop you are is up to you.",
     "isFavorite": false,
     "sizeGB": 8,
-    "hardDriveSource": "",
+    "hardDriveSource": "4TB TANK",
     "minimumRequirements": "",
     "recommendedRequirements": "",
     "trailerUrl": "",
     "isPromotion": false,
     "isEmulated": false,
     "id": "fdec24c4-5854-406f-a0c9-dcadbd7d663f",
-    "createdAt": "2026-02-15T05:57:11.582Z"
+    "createdAt": "2026-02-15T05:57:11.582Z",
+    "imageBlob": {}
   },
   {
     "title": "Xenoblade Chronicles: Definitive Edition",
@@ -18605,12 +18712,12 @@
     "hardDriveSource": "1TB EXT",
     "minimumRequirements": "",
     "recommendedRequirements": "",
-    "trailerUrl": "",
+    "trailerUrl": "https://www.youtube.com/watch?v=J5XS2F2m3Nc",
     "isPromotion": false,
     "image": "game-feaef385-6220-4f2e-9171-85a4739c81eb.png",
     "createdAt": "2025-12-29T20:29:42.203Z",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 1004514,
