@@ -467,7 +467,7 @@
     "description": "Total War: THREE KINGDOMS es la primera serie de videojuegos de estrategia ganadora de varios premios que recrea conflictos épicos de la antigua China. Al combinar una apasionante campaña por turnos de construcción de imperios, gobierno y conquistas con batallas increíbles a tiempo real, Total War: THREE KINGDOMS redefine la serie en una época de héroes y leyendas.<br><br><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/779340/extras/01.jpg?t=1699976365\" /><br><br><strong>China en el año 190 d. C.</strong><br><br>Bienvenidos a una nueva era de conquistas legendarias.<br><br>Esta preciosa aunque fracturada tierra reclama un nuevo emperador y una nueva forma de vida. Unifica China bajo tu mandato, forja la próxima gran dinastía y construye un legado que perdure a lo largo de los siglos.<br><br>Elige entre un elenco de 12 legendarios señores de la guerra y conquista el reino. Recluta personajes heroicos para que ayuden a tu causa y domina a tus enemigos en los frentes militar, tecnológico, político y económico.<br><br>¿Entablarás amistades poderosas, formarás alianzas fraternales y te ganarás el respeto de tus numerosos enemigos? ¿O preferirías cometer actos de traición sin piedad y convertirte en un maestro de la gran intriga política?<br><br>Tu leyenda aún no está escrita, pero hay algo que sí es seguro: la gloriosa conquista te espera.<h2 class=\"bb_tag\"><strong>LA ANTIGUA CHINA RECREADA</strong></h2><br><br><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/779340/extras/02.jpg?t=1699976365\" /><br><br>Descubre la China de los Tres Reinos, una tierra de impresionante belleza natural. Lucha a lo largo de frondosos subtrópicos, áridos desiertos y montañas nevadas. Maravíllate ante lugares legendarios como la Gran Muralla de China y el río Yangtsé. Explora a lo largo y ancho de la antigua China a medida que restauras la armonía de su asediado paisaje.<h2 class=\"bb_tag\"><strong>LAS MAYORES LEYENDAS DE CHINA</strong></h2><br><br><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/779340/extras/03.jpg?t=1699976365\" /><br><br>Forja un nuevo imperio como uno de los 12 legendarios señores de la guerra basados en el Romance de los Tres Reinos, la célebre novela histórica de China. Comandantes sin igual, poderosos guerreros e ilustres hombres de Estado; todos estos personajes tienen un estilo de juego y unos objetivos únicos. Recluta un elenco épico de héroes secundarios para dirigir tus ejércitos, gobernar tus provincias y fortalecer tu imperio en expansión. Los personajes son el núcleo del juego y el futuro de China será moldeado por sus campeones.<h2 class=\"bb_tag\"><strong>SISTEMA GUANXI</strong></h2><br><br><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/779340/extras/04.jpg?t=1699976365\" /><br><br>Basado en el guanxi, un concepto Chino de interrelaciones dinámicas, Total War: THREE KINGDOMS adopta un enfoque de cambio de paradigma respecto a los personajes, mediante icónicos y descomunales héroes y sus relaciones, las cuales definen el futuro de la antigua China. Cada uno de estos personajes se diseña con personalidades, motivaciones y gustos y aversiones únicos. Además, también se relacionan profundamente entre ellos de manera positiva y negativa, lo que determinará cómo se desarrolla tu historia.<h2 class=\"bb_tag\"><strong>PUREZA ARTÍSTICA</strong></h2><br><br><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/779340/extras/05.jpg?t=1699976365\" /><br><br>A través de increíbles efectos visuales y llamativos combates Wushu, THREE KINGDOMS representa el arte de la guerra. Además, la excelente interfaz, las animadas vistas y el diseño inspirado en China hacen que esta representación de su antigua época sea un espectáculo visual.<h2 class=\"bb_tag\"><strong>LA ARMONÍA EN TIEMPO REAL Y POR TURNOS</strong></h2><br><br><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/779340/extras/06.jpg?t=1699976365\" /><br><br>La campaña por turnos y las batallas en tiempo real de Total War: THREE KINGDOMS están más interconectadas que nunca. Ahora, las acciones en la batalla tienen muchas más consecuencias, ya que afectan a tu relación con los héroes, así como a las amistades y rivalidades que estos desarrollan con otros personajes. En un mundo en el que los aliados poderosos son una de las claves del éxito, esto añade un elemento totalmente nuevo a la hora de alzarse con la victoria.",
     "isFavorite": false,
     "sizeGB": 17,
-    "hardDriveSource": "2TB GASS",
+    "hardDriveSource": "4TB TANK",
     "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO *: Windows 7 64 BitProcesador: Intel Core 2 Duo 3.00GhzMemoria: 4 GB de RAMGráficos: GTX 650 Ti 1GB|HD 7850 1GB|Intel UHD Graphics 620DirectX: Versión 11Almacenamiento: 60 GB de espacio disponibleNotas adicionales: 6GB Memory if using integrated GPU.",
     "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 64 BitProcesador: Intel i5-6600 | Ryzen 5 2600XMemoria: 8 GB de RAMGráficos: GTX 970 | R9 Fury X 4GB VRAMDirectX: Versión 11Almacenamiento: 60 GB de espacio disponibleNotas adicionales: Microsoft no longer supports Windows 10 or older versions.",
     "trailerUrl": "https://steamcdn-a.akamaihd.net/steam/apps/256705566/movie480.mp4",
@@ -475,8 +475,8 @@
     "image": "game-072ac984-afe3-49f5-b35e-fc4c8fd2d016.png",
     "createdAt": "2025-12-29T20:29:41.793Z",
     "steamAppId": 779340,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "072fef84-fe86-40ce-99a2-bc2cc6014519",
@@ -798,6 +798,27 @@
     "steamAppId": 3028330,
     "isEmulated": false,
     "imageBlob": {}
+  },
+  {
+    "title": "Star Wars Outlaws --HYPERVISOR--",
+    "platform": "PC",
+    "genre": "Accion",
+    "releaseDate": "2024-11-21",
+    "rating": 3.8,
+    "price": 400,
+    "image": "game-0b341629-2e13-4b01-898a-e61a314c44d3.jpeg",
+    "imageBlob": {},
+    "description": "<p class=\"bb_paragraph\">Disfruta del primer juego de acción y aventuras en mundo abierto de Star Wars™ y explora distintos lugares por toda la galaxia, tanto nuevos como emblemáticos. Arriésgalo todo como la buscavidas Kay Vess, una sinvergüenza que anhela la libertad y comenzar una vida nueva. Pelea, roba y engaña a todos los sindicatos del crimen de la galaxia, y acaba en la lista de los más buscados de la galaxia.</p><p class=\"bb_paragraph\">La galaxia está llena de posibilidades para todos aquellos que se arriesgan.</p><p class=\"bb_paragraph\"></p><h2 class=\"bb_tag\">DESCUBRE UNA GALAXIA DE OPORTUNIDADES</h2><p></p><p class=\"bb_paragraph\"><span class=\"bb_img_ctn\"><img src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2842040/extras/fc4055235a963e9c7873c116826db8cc.poster.avif?t=1773407100\"></span></p><p class=\"bb_paragraph\">Explora lugares únicos, con ciudades y cantinas bulliciosas. Recorre enormes paisajes en tu speeder. Cada ubicación trae nuevas aventuras, desafíos únicos y recompensas atractivas, si te atreves a arriesgarte…</p><p class=\"bb_paragraph\"></p><h2 class=\"bb_tag\">VIVE LA HISTORIA ORIGINAL DE UNA BUSCAVIDAS</h2><p></p><p class=\"bb_paragraph\"><span class=\"bb_img_ctn\"><img src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2842040/extras/4fa5d348ae7b33ded2b7ee3711c5b691.poster.avif?t=1773407100\"></span></p><p class=\"bb_paragraph\">Vive la arriesgada vida de una forajida. Dale la vuelta a cualquier situación con la ayuda de Nix, lucha con tu bláster, derrota a enemigos con sigilo y artilugios o encuentra el momento adecuado para distraerlos y ganar ventaja.</p><p class=\"bb_paragraph\"></p><h2 class=\"bb_tag\">EMBÁRCATE EN MISIONES ARRIESGADAS</h2><p></p><p class=\"bb_paragraph\"><span class=\"bb_img_ctn\"><img src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2842040/extras/51571da466a8923f9c9f1c2cd0f429f5.poster.avif?t=1773407100\"></span></p><p class=\"bb_paragraph\">Embárcate en misiones arriesgadas de los sindicatos del crimen de toda la galaxia, pero con grandes recompensas. Roba objetos valiosos, infíltrate en ubicaciones secretas y engaña a tus enemigos jugando como una de las forajidas más buscadas de la galaxia. Todas las elecciones que tomes influirán en tu reputación.</p><p class=\"bb_paragraph\"></p><h2 class=\"bb_tag\">ENTRA EN LA CABINA DEL PILOTO</h2><p></p><p class=\"bb_paragraph\"><span class=\"bb_img_ctn\"><img src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2842040/extras/320a569272ad21a01f465c0429438a00.poster.avif?t=1773407100\"></span></p><p class=\"bb_paragraph\">Pilota tu nave, la Cazaestelas, en emocionantes combates espaciales contra el Imperio y otros enemigos. Encuentra el momento oportuno para perseguir, evadir y atacar, y así conseguir ventaja.</p><p class=\"bb_paragraph\">Las ofertas, el contenido y las fechas pueden cambiar en el futuro.</p>",
+    "isFavorite": false,
+    "sizeGB": 42,
+    "hardDriveSource": "2TB 4",
+    "minimumRequirements": "",
+    "recommendedRequirements": "",
+    "trailerUrl": "",
+    "isPromotion": false,
+    "isEmulated": false,
+    "id": "0b341629-2e13-4b01-898a-e61a314c44d3",
+    "createdAt": "2026-04-01T19:37:31.366Z"
   },
   {
     "rawgId": 992333,
@@ -1356,7 +1377,7 @@
     "description": "<p class=\"bb_paragraph\">Prepárate para el regreso de la legendaria franquicia con Tony Hawk's™ Pro Skater™ 3 + 4. Todo lo que te flipaba en su día ha vuelto, pero con más skaters, parques nuevos, trucos aún más bestiales, una banda sonora que hará temblar tus altavoces y un montón de contenido nuevo.</p><ul class=\"bb_ul\"><li><p class=\"bb_paragraph\">Reúne a la tropa para probar el Multijugador online* multiplataforma, para hasta 8 skaters y en modos de juego nuevos y clásicos.</p></li><li><p class=\"bb_paragraph\">Atrévete con los parques nuevos o dalo todo en los clásicos de Tony Hawk's™ Pro Skater™ 3 y Tony Hawk's™ Pro Skater™ 4, recreados fielmente en una impresionante resolución 4K**, con objetivos simplificados y un formato épico de 2 minutos.</p></li><li><p class=\"bb_paragraph\">Demuestra que tienes estilo con los modos ampliados Crea un skater y Crear parque, además de la opción de crear objetivos personalizados para compartir con tus amigos por primera vez.</p></li><li><p class=\"bb_paragraph\">Pétalo más que nunca con objetivos más exigentes y el modo Nueva partida+ mejorado.</p></li><li><p class=\"bb_paragraph\">Tanto si estás empezando como si ya dominas la materia, con los sencillos y suaves controles de Tony Hawk's™ Pro Skater™ 1 + 2 te deslizarás como los verdaderos profesionales.</p></li></ul><p class=\"bb_paragraph\">Corre a avisar a tus colegas y desempolva esa tabla porque el skate vuelve más fuerte que nunca.</p>",
     "isFavorite": false,
     "sizeGB": 33,
-    "hardDriveSource": "2TB GASS",
+    "hardDriveSource": "4TB TANK",
     "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows® 10 64 Bit (última actualización)Procesador: AMD FX 6300 / Intel® Core™ i3-4340Memoria: 8 GB de RAMGráficos: AMD HD 7950 / NVIDIA® GTX 660DirectX: Versión 11Red: Conexión de banda ancha a InternetAlmacenamiento: 55 GB de espacio disponibleNotas adicionales: Compatibilidad con pantallas panorámicas 21:9 / Controles reasignables / Velocidad de fotogramas sin límite / G-Sync / Compatibilidad con Freesync",
     "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows® 10 64 Bit (última actualización) o Windows® 11 64 Bit (última actualización)Procesador: AMD Ryzen™ 5 1600X / Intel® Core™ i5-2500KMemoria: 12 GB de RAMGráficos: AMD Radeon™ R9 390 / NVIDIA® GTX 970DirectX: Versión 11Red: Conexión de banda ancha a InternetAlmacenamiento: 55 GB de espacio disponibleNotas adicionales: Compatibilidad con pantallas panorámicas 21:9 / Controles reasignables / Velocidad de fotogramas sin límite / G-Sync / Compatibilidad con Freesync",
     "trailerUrl": "",
@@ -1364,8 +1385,8 @@
     "image": "game-12483e56-d67e-432f-a035-4bfa42c0aeb8.png",
     "createdAt": "2025-12-29T20:29:41.821Z",
     "steamAppId": 2545710,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "12568306-094a-401f-b038-720dc439b0b2",
@@ -3526,15 +3547,15 @@
     "description": "Tom Clancy's H.A.W.X. is primed to revolutionize the way we think about combat in the sky. Cutting-edge technology, devastating firepower, and intense dogfights award this new title a deserving place in the prestigious Tom Clancy Franchise. Soon, flying at Mach 3 becomes a right, not a privilege.",
     "isFavorite": false,
     "sizeGB": 6.1,
-    "hardDriveSource": "2TB GASS",
+    "hardDriveSource": "4TB TANK",
     "minimumRequirements": "",
     "recommendedRequirements": "",
     "trailerUrl": "",
     "isPromotion": false,
     "image": "game-2da31ffd-346d-4398-8f73-7248a38431b8.png",
     "createdAt": "2025-12-29T20:29:41.796Z",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "2daa1c73-b31d-4af8-a75c-5bb63d9de759",
@@ -5140,7 +5161,7 @@
     "description": "This is the sequel to Ubisoft's original Splinter Cell stealth action hit. The developers set out to take the light-and-shadow-based gameplay from the original and upgrade everything about it. Lead character Sam Fisher has an all-new set of moves at his disposal, including being able to climb higher after a split jump and a SWAT move across open doorways, and weapons have secondary functions. There are also plenty of new gadgets, including new vision modes, sonar devices, motion sensors, and secondary fire modes for his weapons. But the biggest upgrade comes in the form of a multiplayer mode that divides players into two teams: spies and mercenaries, each with specific gear, abilities and parameters.",
     "isFavorite": false,
     "sizeGB": 2,
-    "hardDriveSource": "2TB GASS",
+    "hardDriveSource": "4TB TANK",
     "minimumRequirements": "Mínimo:SO *: Originally released for Windows 7, the game can be played on Windows 10 and Windows 11 OSProcesador:  Intel Pentium III or AMD Athlon, 1.4 GHz (Pentium IV or Athlon 2.2 GHz recommended)Memoria: 256 MB de RAMGráficos: 64 MB DirectX 8.1 compliant graphics card (128 MB recommended)DirectX: Versión 8.1Almacenamiento: 5 GB de espacio disponibleTarjeta de sonido: DirectX 8.1 compliant sound card (EAX 2.0 or higher recommended)",
     "recommendedRequirements": "",
     "trailerUrl": "",
@@ -5255,7 +5276,7 @@
     "description": "CUANDO TE VEAS SUPERADO EN NÚMERO, RECUERDA QUE SOLO LOS MUERTOS JUEGAN LIMPIO.<br />\n<br />\nNo hay nada justo ni honroso en un combate. Solo hay victorias y derrotas, vivos y muertos. Y a los Ghosts no les preocupan las posibilidades. Hacen lo que está en su mano para superar y eliminar al enemigo. Para ganar una batalla desigual, la clave está en usar la tecnología más innovadora.<br />\n<br />\nEn Ghost Recon Future Soldier te unirás a una élite de soldados de operaciones especiales altamente entrenados.<br />\nMarcar y eliminar: usa la función de marcado sobre el terreno o con drones para coordinar ataques sincronizados.<br />\nQue no te vean: aprovecha el sistema de cobertura y cambia entre coberturas dinámicas para sorprender, flanquear y eliminar al enemigo.",
     "isFavorite": false,
     "sizeGB": 11,
-    "hardDriveSource": "2TB GASS",
+    "hardDriveSource": "4TB TANK",
     "minimumRequirements": "Mínimo:SO: Versión de 32 o 64 bits de Windows Vista® (con Service Pack 2) o Windows 7® (con Service Pack 1) Procesador: Intel Pentium D a 3.0 GHz o AMD Athlon64 X2 4400+ a 2.2 GHzMemoria: 2 GB de RAM para Windows Vista o Windows 7Gráficos: Gráfica basada en nVidia GeForce 8600 GTS/AMD Radeon HD 4650 con 512 MB de VRAM, compatible con DirectX y con soporte para Shader 4.0Versión de DirectX®: 11Disco Duro: 25 GB de espacio libreSonido: Dispositivo compatible con DirectX 11",
     "recommendedRequirements": "Recomendado:SO: Versión de 32 o 64 bits de Windows Vista® (con Service Pack 2) o Windows 7® (con Service Pack 1)Procesador: Intel Core2 Quad Q9450 / AMD Phenom II X4 940 o superiorMemoria: 3 GB de RAM para Windows Vista® y 7®Gráficos: Gráfica basada en nVidia GeForce GTX 460 o AMD/ATi HD 5850 o superior con 1 GB de VRAM, compatible con DirectX y con soporte para Shader 4.0Versión de DirectX®: 11Disco Duro: 25 GB de espacio libre Sonido: Dispositivo compatible con DirectX 11",
     "trailerUrl": "",
@@ -5263,8 +5284,8 @@
     "image": "game-45493caa-05ad-4c75-903c-bdb535581af8.png",
     "createdAt": "2025-12-29T20:29:41.782Z",
     "steamAppId": 212630,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "459851b6-1279-46c4-8095-3b7fb19db0b8",
@@ -5790,6 +5811,48 @@
     "steamAppId": 1089130,
     "imageBlob": {},
     "isEmulated": false
+  },
+  {
+    "title": "Crimson Desert - - HYPERVISOR--",
+    "platform": "PlayStation 5, Xbox Series S/X, PC, Xbox One, PlayStation 4",
+    "genre": "Action, RPG",
+    "releaseDate": "2026-03-19",
+    "rating": 3.64,
+    "price": 400,
+    "image": "game-4bbd7003-0821-4d1e-af8b-560334d69a13.jpeg",
+    "description": "Crimson Desert is an open-world action-adventure set in the beautiful yet brutal continent of Pywel. Discover adventure, uncover wonders, and experience thrilling action as you witness the saga surrounding Kliff, leader of the Greymanes, whose mission takes him on an incredible journey.\nFrom the snow-blasted mountains of Kweiden to the verdant expanses of Akapen and the towering ridges scattering the Crimson Desert, this land is a testament to nature's grandeur. Yet, amidst this beauty, the continent stands locked in war as factions vie for unprecedented power.\nDiscover adventure, explore exciting locations, and fight thrilling battles as you travel across an incredible open world filled with wonder and mystery.\nJoin Kliff, captain of the Greymanes, and his comrades as they embark on a relentless journey to defend Pywel and fulfill their mission. Along your perilous path stands both dependable allies and countless foes who will stop at nothing to see your downfall. Face trials to uncover the truth of the catastrophe looming over Pywel and restore peace to the continent.",
+    "isFavorite": false,
+    "sizeGB": 70,
+    "hardDriveSource": "PROTOCOL",
+    "minimumRequirements": "",
+    "recommendedRequirements": "",
+    "trailerUrl": "",
+    "isPromotion": false,
+    "isEmulated": false,
+    "id": "4bbd7003-0821-4d1e-af8b-560334d69a13",
+    "createdAt": "2026-03-31T04:30:00.733Z",
+    "imageBlob": {}
+  },
+  {
+    "title": "Spyro Reignited Trilogy - -SWITCH--",
+    "platform": "SWITCH",
+    "genre": "Desconocido",
+    "releaseDate": "2018-11-13",
+    "rating": 4,
+    "price": 120,
+    "image": "game-4bc8f259-a2be-468e-86ed-00d488e44f51.jpeg",
+    "description": "Sin descripción.",
+    "isFavorite": false,
+    "sizeGB": 7,
+    "hardDriveSource": "4TB TANK",
+    "minimumRequirements": "",
+    "recommendedRequirements": "",
+    "trailerUrl": "",
+    "isPromotion": false,
+    "isEmulated": true,
+    "id": "4bc8f259-a2be-468e-86ed-00d488e44f51",
+    "createdAt": "2026-03-31T04:47:35.492Z",
+    "imageBlob": {}
   },
   {
     "id": "4bf562f5-feff-4ed9-9e63-f0e3df158a72",
@@ -6533,7 +6596,7 @@
     "description": "<strong>Una Experiencia de Supervivencia Vampírica</strong><br><br>Despierta siendo un vampiro debilitado tras siglos de letargo. Parte de cacería en busca de sangre para recuperar tu fuerza, a la par vez que te escondes de la abrasadora luz solar. Reconstruye tu castillo y transforma a humanos en tus leales sirvientes en una misión para alzar tu imperio vampírico. Haz aliados o enemigos jugando en linea o juega sólo, desafiando a soldados sagrados y batallando en la guerra de un mundo sumido en conflicto.<br><br>¿Serás tú quien se alce como el próximo Drácula?<h2 class=\"bb_tag\">Un mundo abierto de estilo Gótico </h2><br>Explora un vasto mundo a rebosar de horrores mitólogicos y peligro.Viaja a través de exhuberantes bosques, grandes campos rurales y oscuras cavernas para descubrir valiosos recursos, haciendo tanto amigos, como enemigos en el camino. Adentrate en este mundo junto a tus camaradas vampíricos o sé el cazador solitario mientras saqueas aldeas, asaltas a bandidos y te adentras en los dominios de bestias sobrenaturales.<br><br><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1604030/extras/OpenWorld01_1.gif?t=1724999307\" /><h2 class=\"bb_tag\">Teme la luz - Regenta la noche </h2><br>Permanece en las sombras durante el día, o la abrasadora luz del sol te reducirá a cenizas. Merodea durante la noche y acecha a tus víctimas en la oscuridad. Como vampiro, debes saciar tu sed de sangre mientras planeas que estrategias llevar a cabo durante el día o la noche.<br><br><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1604030/extras/FearTheLightRuleTheNight_1.gif?t=1724999307\" /><h2 class=\"bb_tag\">Alza tu castillo</h2> <br>Recolecta recursos y descubre técnicas ancestrales para obtener poderes oscuros. Usa los conocimientos adquiridos para construir un castillo donde poder atesorar tu botín y alzar tu ejército de las tinieblas. Personaliza tu dominio, exhibe tu estilo vampírico y asegúrate de crear ataúdes para el reposo de tus sirvientes y amigos. Fortalece tu castillo y proteje tus preciados tesoros de vampiros rivales.<br><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1604030/extras/RaiseYourCastle_1.gif?t=1724999307\" /><h2 class=\"bb_tag\">Compite o Coopera </h2><br>Viaja en solitario o explora el mundo junto a tus amigos. Luchar codo con codo junto a otros vampiros te dará la ventaja para conquistar las mayores amenazas de Vardorant. Asedia los castillos de otros jugadores o toma el camino diplomático en un juego de sangre, poder y traición. Compite o coopera- La elección está en tus manos.<br><br><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1604030/extras/CompeteOrCooperate_1.gif?t=1724999307\" /><h2 class=\"bb_tag\">Domina a tu Vampiro</h2><br>Aprende y domina un arsenal de armas mortíferas y poderes impíos. En V Rising apuntas tus &quot;skill-shots&quot; con el cursor del ratón y esquivas proyectiles usando precisos controles WASD, sin movimiento por click. Personaliza tu vapiro a la medida de tu estilo de juego al combinar armas con una variedad de hechizos obtenidos al derrotar poderosos enemigos. Domina tus habilidades y desata tus poderes malignos.<br><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1604030/extras/MasterYourVampire_1.gif?t=1724999307\" />",
     "isFavorite": false,
     "sizeGB": 3,
-    "hardDriveSource": "2TB GASS",
+    "hardDriveSource": "4TB TANK",
     "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 64 bitProcesador: Intel Core i5-6600, 3.3 GHz o AMD Ryzen 5 1500X, 3.5 GHzMemoria: 12 GB de RAMGráficos: NVIDIA GeForce GTX 750 Ti (Maxwell o más reciente), 2 GB o AMD Radeon R7 360, 2 GBDirectX: Versión 11Red: Conexión de banda ancha a InternetAlmacenamiento: 19 GB de espacio disponibleNotas adicionales: Los requerimientos mínimos del sistema pueden cambiar en el futuro.",
     "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 64 bitProcesador: Intel Core i5-11600K, 3.9 GHz o AMD Ryzen 5 5600X, 3.7 GHzMemoria: 12 GB de RAMGráficos: NVIDIA GeForce GTX 1070, 8 GB o AMD Radeon RX 590, 8 GBDirectX: Versión 11Red: Conexión de banda ancha a InternetAlmacenamiento: 19 GB de espacio disponibleNotas adicionales: Los requerimientos recomendados del sistema pueden cambiar en el futuro.",
     "trailerUrl": "",
@@ -6541,8 +6604,8 @@
     "image": "game-52adaa99-283a-4e33-9b00-d0f5b4ea7ff2.png",
     "createdAt": "2025-12-29T20:29:41.796Z",
     "steamAppId": 1604030,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 292842,
@@ -6691,7 +6754,7 @@
     "description": "Sin descripción.",
     "isFavorite": false,
     "sizeGB": 0.4,
-    "hardDriveSource": "2TB GASS",
+    "hardDriveSource": "4TB TANK",
     "minimumRequirements": "Mínimo:SO *: Windows 7Procesador: Intel Core i5 2500 or AMD FX-4350Memoria: 8 GB de RAMGráficos: Nvidia GTX 660Ti or AMD R9 270 with 2+ GB of VRAMDirectX: Versión 11Red: Conexión de banda ancha a InternetAlmacenamiento: 10 GB de espacio disponibleNotas adicionales: SSD strongly recommended",
     "recommendedRequirements": "Recomendado:SO: Windows 10Procesador: Intel Core i5 6500 or AMD Ryzen 3 1200Gráficos: Nvidia GTX 1060 or AMD RX 480 with 4+ GB of VRAMDirectX: Versión 11Red: Conexión de banda ancha a InternetAlmacenamiento: 10 GB de espacio disponibleNotas adicionales: SSD strongly recommended",
     "trailerUrl": "",
@@ -6699,8 +6762,8 @@
     "image": "game-55000ce0-ca3a-45af-9db8-0ebc705104ff.png",
     "createdAt": "2025-12-29T20:29:41.782Z",
     "steamAppId": 1974050,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 430,
@@ -6966,7 +7029,7 @@
     "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 - 64-bitProcesador: Intel® Core™ i5-2500K / AMD FX-6300Memoria: 8 GB de RAMGráficos: Nvidia GeForce GTX 770 2GB / AMD Radeon R9 280 3GBRed: Conexión de banda ancha a InternetAlmacenamiento: 150 GB de espacio disponibleTarjeta de sonido: Direct X Compatible",
     "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 - 64-bitProcesador: Intel® Core™ i7-4770K / AMD Ryzen 5 1500XMemoria: 12 GB de RAMGráficos: Nvidia GeForce GTX 1060 6GB / AMD Radeon RX 480 4GBRed: Conexión de banda ancha a InternetAlmacenamiento: 150 GB de espacio disponibleTarjeta de sonido: Direct X Compatible",
     "trailerUrl": "",
-    "isFavorite": true,
+    "isFavorite": false,
     "price": 280,
     "hardDriveSource": "PROTOCOL",
     "isPromotion": false,
@@ -7179,6 +7242,27 @@
     "steamAppId": 337000,
     "imageBlob": {},
     "isEmulated": false
+  },
+  {
+    "title": "Total War: PHARAOH DYNASTIES",
+    "platform": "PC",
+    "genre": "Action, Strategy",
+    "releaseDate": "2024-07-24",
+    "rating": 0,
+    "price": 180,
+    "image": "game-5a1e1043-3c18-491e-b59d-542f10d45c02.jpeg",
+    "imageBlob": {},
+    "description": "Spanning the ancient world from the Aegean to Mesopotamia and down to Ancient Egypt, Dynasties almost doubles the size of PHARAOH’s campaign map by adding 168 new settlements, new historical landmarks, new victory objectives and more. To traverse this vastly expanded sandbox new Sea Travel Lanes have been added that speed up the fleets carrying your armies, enabling you to raid and invade further and faster. Dive into four new playable factions: Babylon, the Assyrians of Hanigalbat , Mycenae and Troy. With Mycenae and Troy based in the Aegean opposite Babylon and the Assyrians of Hanigalbat in Mesopotamia, these major factions arrive alongside 25 additional minor factions available for you to lead through the cataclysmic events of the Bronze Age collapse. Start a family tree with the new Dynasty system. Reign over the tides of mortality and succession, navigating strategic marriages, heroic deaths on the battlefield, assassinations, and the looming mortality of old age to leave behind a legacy that will last the ages.Wage war with over 150 new and reworked units including cavalry, camel riders and faction specific units such as the Guards of Troy. Challenge yourself with new battle mechanics such as the Lethality modifier which makes both receiving or unleashing a charge or a volley of missiles deadlier and more decisive in the heat of battle. You will need to own Total War: PHARAOH to play Total War: PHARAOH Dynasties.",
+    "isFavorite": false,
+    "sizeGB": 24,
+    "hardDriveSource": "2TB 4",
+    "minimumRequirements": "",
+    "recommendedRequirements": "",
+    "trailerUrl": "",
+    "isPromotion": false,
+    "isEmulated": false,
+    "id": "5a1e1043-3c18-491e-b59d-542f10d45c02",
+    "createdAt": "2026-03-31T04:42:20.151Z"
   },
   {
     "id": "5b16da7a-ccb4-4b6a-a7aa-742a51406c8c",
@@ -9018,7 +9102,7 @@
     "description": "<p class=\"bb_paragraph\">Una investigación sobre la muerte de su hija conduce de forma inesperada al ex agente Sam Fisher a descubrir que ha sido traicionado por su antigua agencia, Third Echelon. Ahora, como renegado, Fisher se encuentra a sí mismo en un carrera contrarreloj para desbaratar un mortífero complot terrorista que amenaza a millones de personas. </p><p class=\"bb_paragraph\">Uniendo las mejoras de un modo de juego revolucionario con una explosiva historia sin ningún tipo de restricciones, Tom Clancy’s Splinter Cell Conviction te arma hasta los dientes con un arsenal de alta tecnología y con habilidades letales de un operativo de élite a la vez que te invita a entrar en el peligroso mundo donde la justicia se basa en tus propias reglas.</p><ul class=\"bb_ul\"><li><p class=\"bb_paragraph\"><strong>NUEVO NIVEL DE ACCIÓN PARA SPLINTER CELL</strong> Un completo arsenal de vanguardia te permite flanquear enemigos con el sistema Last Known Position™, marcar y eliminar enemigos usando la característica Mark and Execute™, y mucho más.</p></li><li><p class=\"bb_paragraph\"><strong>EXPERIENCIA BLOCKBUSTER</strong> Una forma única de narrar los acontecimientos te mantendrá con los pies sobre tu asiento al tiempo que discurres por el explosivo mundo de un agente renegado donde la confianza es un imposible y la justicia requiere que vayas por encima de la ley.</p></li><li><p class=\"bb_paragraph\"><strong>IMPRESIONANTES EFECTOS VISUALES</strong> Un nuevo y revolucionario repertorio gráfico te ofrece una experiencia de juego totalmente transparente que te mantendrá completamente absorto en la historia de Sam Fisher.</p><p class=\"bb_paragraph\"></p></li></ul>",
     "isFavorite": false,
     "sizeGB": 8,
-    "hardDriveSource": "2TB GASS",
+    "hardDriveSource": "4TB TANK",
     "minimumRequirements": "Mínimo:SO: Windows XP / Windows Vista / Windows 7Procesador: Intel Core2 Duo a 1.8 GHz o AMD Athlon X2 64 a 2.4 GHzMemoria: 1.5 GB de RAM (XP) / 2 GB de RAM (Vista / Windows 7)Gráficos: Tarjeta con 256 MB compatible con DirectX 9.0c (512 MB recomendado) (ver lista de soportadas*)DirectX®: DirectX 9.0cDisco Duro: 10 GB de espacio libreSonido: Compatible con DirectX 9.0cPeriféricos soportados: Ratón, teclado, auriculares, gamepads de 12 botones con mandos analógicosConexión a internet: Banda ancha*Tarjetas gráficas soportadas en el momento del lanzamiento:nVidia familias GeForce 7800 / 7900 / 8 / 9 / GTXATI familias Radeon X1800 / X1900 / HD 2000 / HD 4000 / HD 5000ATI HD 3000 NO soportada en el momento del lanzamientoLas versiones portátiles de estas tarjetas pueden funcionar pero NO están soportadas. Estos chipsets son los únicos que ejecutarán el juego",
     "recommendedRequirements": "",
     "trailerUrl": "",
@@ -9026,8 +9110,8 @@
     "image": "game-736c81b3-2bec-477a-9209-0e6851cf75b9.png",
     "createdAt": "2025-12-29T20:29:41.788Z",
     "steamAppId": 33220,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "73a387bc-b83c-47d0-bd3a-f6bc6f77a5d1",
@@ -9714,6 +9798,27 @@
     "steamAppId": 1489970,
     "imageBlob": {},
     "isEmulated": false
+  },
+  {
+    "title": "New Super Lucky's Tale",
+    "platform": "PlayStation 4, Xbox One, Nintendo Switch, PC",
+    "genre": "Action, Adventure, Platformer",
+    "releaseDate": "2019-11-08",
+    "rating": 3.67,
+    "price": 100,
+    "image": "game-7b9c94a2-1b9c-48ec-9338-fb1a401beefe.jpeg",
+    "imageBlob": {},
+    "description": "Join Lucky on his thrilling journey through the Book of Ages, a magical artifact that opens doors to amazing worlds. Meet new friends, explore exciting lands, and recover the missing pages from the evil sorcerer Jinx and his villainous family, the dreaded Kitty Litter.\n\n• Featuring a huge variety of gameplay, from expansive 3D hubs, to story-based adventure levels, 2D side-scrolling challenges, rewarding mini-games, mind-bending puzzles, and thrilling boss battles.\n\n• Thousands of collectibles to gather, tons of rewarding secrets to discover, a cast of memorable characters, and an entire wardrobe of costumes for the stylish adventurer.\n\n• Designed to delight and challenge players of all ages and skill levels. \n\n• A complete re-imagining of the original Super Lucky's Tale, featuring redesigned and new levels, a fully rotatable camera, tighter movement control, and major overhauls to nearly every other aspect, including the story, cinematics, music, and more.\n\nJump, burrow, and tail swipe your way to victory in this love letter to classic 3D platformers!",
+    "isFavorite": false,
+    "sizeGB": 5,
+    "hardDriveSource": "4TB 1",
+    "minimumRequirements": "",
+    "recommendedRequirements": "",
+    "trailerUrl": "",
+    "isPromotion": false,
+    "isEmulated": false,
+    "id": "7b9c94a2-1b9c-48ec-9338-fb1a401beefe",
+    "createdAt": "2026-03-31T04:44:45.580Z"
   },
   {
     "id": "7c15460f-7a54-46b5-8f2e-93198f87acc1",
@@ -10485,6 +10590,27 @@
     "id": "8771cbef-7648-486f-9632-8037e0b24cef",
     "imageBlob": {},
     "isEmulated": false
+  },
+  {
+    "title": "Total War: ROME II - Emperor Edition",
+    "platform": "macOS, PC",
+    "genre": "Strategy",
+    "releaseDate": "2013-09-02",
+    "rating": 4,
+    "price": 150,
+    "image": "game-877453ca-5a1a-48ee-a3bf-62b43fcd92b3.jpeg",
+    "imageBlob": {},
+    "description": "Total War: ROME II - Emperor Edition is a strategy game developed by Creative Assembly. It is the eighth game in the Total War series and is both a sequel and a remaster to Rome: Total War.\nPlot\nThe game does not feature a specific story mode, yet it offers a set of historical campaigns for the players to go through. Most of such campaigns revolve around the reign of Caesar and his military campaigns. \nGameplay\nIn Total War: ROME II, the players control armies of the Roman Empire era. It is completely up to the player how to form an army and its navy. \nThe formations of armies and navies have changeable stances on the game world's map. These stances define what distance can the army traverse in one turn and the time required for the troops to prepare an ambush. \nAt the beginning of each scenario, the players pick a faction to play as. Each faction has a specific amount of power called “Imperium.” It specifies how many armies can a faction have and can be gained by conquering nearby lands and getting gold. After forming an army, it is up to the player to assign a general to it. Upon doing that, the general will recruit the soldiers for his army. Both armies and generals can be leveled up which unlocks new skills and traits.\nEmperor Edition features\nEmperor Edition was available as a bundle in retail stores. 22000 bundles were released. This edition features a unique box, playing dice, the map of Roman Empire, a map pack, and a Legendary Edition of the game.",
+    "isFavorite": false,
+    "sizeGB": 10,
+    "hardDriveSource": "2TB 4",
+    "minimumRequirements": "",
+    "recommendedRequirements": "",
+    "trailerUrl": "",
+    "isPromotion": false,
+    "isEmulated": false,
+    "id": "877453ca-5a1a-48ee-a3bf-62b43fcd92b3",
+    "createdAt": "2026-03-31T04:39:38.275Z"
   },
   {
     "rawgId": 304953,
@@ -12114,8 +12240,8 @@
     "isPromotion": false,
     "id": "9fe8ea8b-78ba-4f35-87b4-1722809082cc",
     "createdAt": "2026-01-06T10:59:28.553Z",
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "rawgId": 476122,
@@ -12843,7 +12969,7 @@
     "description": "Mysterious alien invaders are swarming through unstable wormholes, threatening our great planet for reasons beyond human understanding! But do we sit back and wait? HELL NO! We FIGHT!Join Girl, a member of the Planetary Alien Neutralization & Tactical Strike Unit (P.A.N.T.S.U.), on the frontlines of Earth's survival! Her mission? Defend the power generator—the beating heart of humanity’s last, greatest hope: THE SUPERWEAPON!She stands alone atop her turret, the last line of defense against the alien horde. No backup. No retreat. Just firepower, grit, and the promise of a well-earned plate of 'omurice' awaiting her return.Upgrade your turret!Build frontline generators!Charge the superweapon!Blast alien scum back to whatever hell they crawled out of!Strap in, lock on, and blast away! Our on-rails turret platform provides unparalleled versatility and top-tier alien-annihilating firepower—so even the greenest recruit can rack up confirmed kills!The battlefield is always changing, and so are you! Every mission completed, every alien fried means more resources to upgrade your defenses, power generation, and devastating firepower! Perform well, and you’ll earn the best tech humanity has to offer!Your uniform is battle-tested, stress-resistant, and strategically disposable! Under extreme conditions, it will self-disintegrate to ensure maximum survivability and maneuverability. Who needs dignity when you can have victory?Earn your stripes! High-ranking troopers are rewarded with fresh underwear, elite accessories, and upgraded turret systems! Fight harder, score higher, and earn the best gear—because winners don’t wear rags!",
     "isFavorite": false,
     "sizeGB": 0.4,
-    "hardDriveSource": "2TB DATOS",
+    "hardDriveSource": "4TB TANK",
     "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 or 11Procesador: Intel Core i7-6700KMemoria: 8 GB de RAMGráficos: NVIDIA GeForce GTX 1070Almacenamiento: 2 GB de espacio disponible",
     "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10 or 11Procesador: Intel Core i5-10400 / AMD Ryzen 5 3600Memoria: 16 GB de RAMGráficos: NVIDIA GeForce RTX 2060/ AMD Radeon RX 5700Almacenamiento: 2 GB de espacio disponible",
     "trailerUrl": "",
@@ -14118,7 +14244,7 @@
     "minimumRequirements": "",
     "recommendedRequirements": "",
     "trailerUrl": "",
-    "isFavorite": true,
+    "isFavorite": false,
     "price": 200,
     "hardDriveSource": "4TB 1",
     "isPromotion": false,
@@ -14809,7 +14935,7 @@
     "description": "Don't Starve Together es la expansión multijugador independiente del juego de supervivencia en la naturaleza sin límites Don't Starve. <br />\n<br />\nEntra en un extraño e inexplorado mundo lleno de criaturas extrañas, peligros y sorpresas. Reúne recursos para fabricar objetos y estructuras que se adapten a tu estilo de supervivencia. Juega a tu manera a medida que descubres los misterios de esta extraña tierra. <br />\n<br />\nCoopera con tus amigos en una partida privada o atrévete con extraños en línea. Colabora con otros jugadores para sobrevivir en un mundo inhóspito o explora por tu cuenta. <br />\n<br />\nHaz lo que haga falta, pero sobre todo, no te mueras de hambre en Don't Starve.",
     "isFavorite": false,
     "sizeGB": 2.4,
-    "hardDriveSource": "2TB GASS",
+    "hardDriveSource": "4TB TANK",
     "minimumRequirements": "Mínimo:SO *: Windows Vista/Windows 7/Windows 8Procesador: 1.7+ GHz or betterMemoria: 1 GB de RAMGráficos: Radeon HD5450 or better; 256 MB or higherDirectX: Versión 9.0cRed: Conexión de banda ancha a InternetAlmacenamiento: 3 GB de espacio disponibleTarjeta de sonido: 100% DirectX9.0c compatible sound card and drivers",
     "recommendedRequirements": "",
     "trailerUrl": "https://steamcdn-a.akamaihd.net/steam/apps/256672773/movie480.mp4",
@@ -14817,8 +14943,8 @@
     "image": "game-c88597a4-8be4-42a8-8958-d72638b9cb0c.png",
     "createdAt": "2025-12-29T20:29:41.723Z",
     "steamAppId": 322330,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "c910d416-4f67-4ee7-bba4-957c5ed59118",
@@ -15900,7 +16026,7 @@
     "description": "Tom Clancy's Rainbow Six® Vegas 2 – la secuela de disparos en primera persona ganadora de premios - regresa a la ciudad del pecado. Tom Clancy’s Rainbow Six® Vegas 2 es tu última oportunidad de rescatar la ciudad más sexy de Estados unidos de una escalada de ataques terroristas que te obligarán a embarcarte en una pelea llena de acción de principio a fin. Los mejores están de vuelta y esta vez, el ganador se lo lleva todo.<br>                    <ul class=\"bb_ul\"><li><strong>Ubisoft Montreal Regresa</strong> – Rainbow Six Vegas 2 está de vuelta en las manos del estudio de Ubisoft Montreal, creadores de aclamado ganador de premios Rainbow Six Vegas, para asegurarse de que esta historia en Las Vegas sea halgo que nunca olvides.<br>                    </li><li><strong>Más Vegas</strong> – La Ciudad del Pecado está de vuelta y ahora más grande. Explora lugares totalmente nuevos de Las vegas mientras el ambiente cambia entre noche, día, lluvia, polvo, etc.; creando una experiencia visual retadora que te quitará el aliento.<br>                    </li><li><strong>Inteligencia Artificial Mejorada</strong> – la inteligencia artificial es un mayor reto ahora. En esta ocasión, los terroristas están equipados con visión térmica, visión nocturna y escudos – sin mencionar un sinnúmero de reacciones diferentes – asegurando con todo esto que tengas una nueva experiencia de juego cada vez que entres a la batalla. Conforme progreses en el juego, tendrás que utilizar más y más tus habilidades y herramientas tecnológicas para lograr los objetivos. Estrategias tácticas, escaneo térmico, saltos, rapel, etc., ya no serán opcionales sino necesarios.<br>                    </li><li><strong>Nuevas Armas Y Armadura</strong> – deshazte de los terroristas más fácilmente utilizando 11 nuevas armas, nuevo camuflaje, ropa y accesorios que te permitirán elegir cómo te ves dentro de cada nivel.</li></ul>",
     "isFavorite": false,
     "sizeGB": 4,
-    "hardDriveSource": "2TB GASS",
+    "hardDriveSource": "4TB TANK",
     "minimumRequirements": "Mínimo: SO: Windows® XP / Vista (sólo)Procesador: Pentium 4 o AMD Athlon 3000 a 3 GHz (Pentium 4 o AMD Athlon 3500 a 3.5 GHz recomendado) Memoria: 1 GB de RAMGráficos: Gráfica con 128 MB, compatible con DirectX 9.0c y con soporte para Shader 3.0 (256 MB recomendados) (ver lista de soportadas*) Sonido: Dispositivo de sonido compatible con DirectX 9.0c (para el sonido Dolby Digital es necesaria nVidia nForce u otra placa base / dispositivo de sonido que contenga el codificador de contenido interactivo de Dolby Digital).DirectX: DirectX 9.0cDisco Duro: 7 GB de espacio libre Periféricos Soportados: Teclado y ratón compatible con Windows, controlador de Xbox 360 para Windows  Multijugador: Conexión de Internet de banda ancha con 128 kbps de velocidad de subida o más rápida.  *Gráficas Soportadas: Familias ATI RADEON X1600-1950 / HD 2000 / 3000, familias nVidia GeForce 6600-6800 / 7 / 8. Las versiones para portátiles de estas gráficas no están completamente soportadas. Estos chipsets son los únicos que harán funcionar este juego.  ",
     "recommendedRequirements": "",
     "trailerUrl": "",
@@ -17840,7 +17966,7 @@
     "description": "<h2 class=\"bb_tag\"><strong>¡Bienvenidos al festival de las carreras explosivas, TRAIL OUT!</strong></h2><br>¡Te espera una carrera loca en diferentes partes del mundo, tu objetivo es vivir hasta la meta y llevarte la gran copa del festival! Coches que explotan, conductores que vuelan y gritan, la emoción de los fanáticos y la destrucción alrededor de toda la pista: ¡Todo te está esperando aquí! Revive el cuento del chofer Mihalych, un cuento sencilla en que intentarás llevarte la copa principal del festival al derrotar todos los jefes en batallas únicas.<h2 class=\"bb_tag\"><strong>Que te espera:</strong></h2><br><ul class=\"bb_ul\"><li> Hasta 50 coches en diferentes clases, diferentes épocas y diferentes condiciones<br></li><li> 50 pistas diferentes, desde pistas en ciudades grandes con mucha destrucción, arenas derby y pistas peligrosas con cruces por el medio<br></li><li> 8 modos diferentes que incluyen varios modos de carrera, derbys, trucos y modos de juego que no son tradicional<br></li><li> Corriendo en Unreal Engine 4, proporcionando gráficos y física modernos y personalizables<br></li><li> Sistema de duelo jefe: derrótalos en su propio territorio en una carrera y luego en un derby con varios peligros<br></li><li> Construye coches desde cero en el chatarrería y mejóralos hasta perfección.<br></li><li> Adquiere fanáticos durante las carreras y haciendo desafíos para desbloquear coches adicionales<br></li><li> Un cuento simplista con Mihalych, el personaje principal, con escenas dentro del juego<br></li><li> Juega con hasta 4 amigos en pantalla dividida<br></li><li> Sonido con licencia de Adrenalina<br></li><li> Actualizaciones del juego que proporcionarán contenido adicional sobre tiempo</li></ul><h2 class=\"bb_tag\"><strong>Modos de juego:</strong></h2><br><ul class=\"bb_ul\"><li> Cruz - Corre en pistas en las que a mitad de camino puedes encontrarte con oponentes que vienen en contrario.<br></li><li> Rush - Corre en pistas más grandes donde tienes que luchar para llegar a la meta.<br></li><li> Derby Classic - Derby clásico de destrucción - El último vivo gana<br></li><li> Derby Domination - Lucha contra oponentes para ganar puntos donde el ganador es el que tiene la puntuación más alta<br></li><li> Cazador - Destruye tantos coches como puedas, superando la puntuación más alta de tu oponente<br></li><li> Sin Tiempo - Conduce en una sección difícil a tiempo con vehículos especiales<br></li><li> Trucos - Varios minijuegos, como bolos, dardos<br></li><li> Escape - Cscapa del avión armado que destruye a cualquiera en el último lugar<br><br>Derrota a los jefes de la Lista Negra en un duelo para subir en la Lista Negra. Derrótalos en:<br></li><li> Atrápame - Una carrera especial en pistas del territorio local del miembro<br></li><li> Derby Duel: Un derby de destrucción uno contra uno, pero advertimos: ¡Han traído refuerzos!</li></ul><h2 class=\"bb_tag\"><strong>Sobre el juego:</strong></h2><br><ul class=\"bb_ul\"><li> Dañar el automóvil a una chatarra incomprensible, con la posibilidad de perder las ruedas, salir volando por la ventana e incluso explotar<br></li><li> Construye coches desde cero a partir de piezas en el chatarrería, recopila licencias de los jefes a medida que avanzas tu carrera<br></li><li> Actualizaciones de coches, carrocería, motor, llantas, nitro, pintura, matrículas y más<br></li><li> Puedes cambiar la apariencia de Mihalych y mejora su garaje durante su viaje<br></li><li> Ponga sus registros en una tabla de clasificación mundial, como tiempos de vuelta, objetos destruidos y más<br></li><li> Juega con hasta cuatro jugadores en pantalla dividida en la misma computadora o a través de Steam juntos</li></ul><br><strong>¡Te esperamos en los caminos del Festival de TRAIL OUT! ¡Este será tu último festival!</strong>",
     "isFavorite": false,
     "sizeGB": 11,
-    "hardDriveSource": "2TB GASS",
+    "hardDriveSource": "4TB TANK",
     "minimumRequirements": "Mínimo:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 10Procesador: Intel Core i7 4790Memoria: 16 GB de RAMGráficos: GTX 1060DirectX: Versión 11Almacenamiento: 27 GB de espacio disponibleNotas adicionales: This config will run the game on 720p 60 fps.",
     "recommendedRequirements": "Recomendado:Requiere un procesador y un sistema operativo de 64 bitsSO: Windows 11Procesador: Intel Core i7 4790Memoria: 32 GB de RAMGráficos: GTX 1070DirectX: Versión 12Almacenamiento: 27 GB de espacio disponibleNotas adicionales: This config will run the game on 1080p 60 fps.",
     "trailerUrl": "",
@@ -17848,8 +17974,8 @@
     "image": "game-f36480fb-2281-4842-87b6-6ab8d682ace2.png",
     "createdAt": "2025-12-29T20:29:41.800Z",
     "steamAppId": 1664220,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "f46d6985-d222-44cc-8c59-a5acdee49167",
@@ -17863,7 +17989,7 @@
     "description": "<strong>La saga de éxito Tom Clancy's Splinter Cell® toma un rumbo completamente nuevo.</strong><br>Encarna a un agente doble en la esperadísima secuela del Juego del Año 2005, Tom Clancy's Splinter Cell Double Agent™. Adopta el papel simultáneo de agente secreto y terrorista sin escrúpulos, donde las decisiones que tomes sobre a quién traicionar y a quién proteger afectarán al resultado del juego.<br>Siente la tensión brutal y los dilemas desgarradores de la vida en tu papel de agente doble. Miente, mata, sabotea, traiciona. Todo para proteger al inocente. ¿Hasta dónde llegarás para ganarte la confianza del enemigo? En la piel del agente secreto Sam Fisher, deberás infiltrarte en un despiadado grupo terrorista y destruirlo desde el interior. Mide al detalle las consecuencias de tus acciones: si matas a demasiados terroristas quedarás al descubierto y, si dudas, morirán millones de personas. Haz lo que sea necesario para completar tu misión, pero sal de allí con vida. <br><ul class=\"bb_ul\"><li><strong>Sistema de juego como agente doble y argumento ramificado</strong> - Juega a dos bandas y decide entre oponerte a la Agencia Nacional de Seguridad (NSA) o a los objetivos terroristas. Tú eliges a quién apoyar y a quién debilitar. Tus acciones afectan a la historia y al sistema de juego, lo que produce finales sorprendentemente diferentes<br></li><li><strong>Armas y artilugios mejorables</strong> - A medida que progreses en el juego tendrás acceso a prototipos de armas y artilugios como la visión nocturna mejorada, en función de tus elecciones y habilidades secretas<br></li><li><strong>Auténticas tácticas de agente doble</strong> - Utiliza tácticas realistas basadas en testimonios de agentes secretos reales para sabotear los planes del enemigo<br></li><li><strong>No quedes al descubierto</strong> - Roba, destruye, mata y burla a las autoridades. Haz lo que sea necesario para dejar tu impronta y ganarte la confianza de los terroristas<br></li><li><strong>Un mundo de espionaje internacional</strong> - Viaja desde Shanghai y Cozumel a los Estados Unidos, donde las ciudades de Nueva York y Los Angeles están sometidas a amenazas terroristas<br></li><li><strong>Nuevas situaciones extremas</strong> - Lleva a cabo tus misiones buceando entre témpanos de hielo, en una tormenta de arena cegadora, o incluso cubierto de polvo y humo </li></ul><br>Por favor, ten en cuenta que a partir del 19 de Noviembre 2018 este juego no soportará los servicios Online. El modo Multijugador / Cooperativo será inaccesible.",
     "isFavorite": false,
     "sizeGB": 3.8,
-    "hardDriveSource": "2TB GASS",
+    "hardDriveSource": "4TB TANK",
     "minimumRequirements": "Mínimo: SO: Microsoft Windows® XPProcesador: Pentium 4 a 3 GHz AMD Athlon 3000 (Pentium 4 a 3.5 GHz o Athlon 3500 recomendado) - Juego optimizado para equipos con procesador dual core. Memoria: 1 GB de RAM (1.5 GB recomendados) Gráficos: Gráfica con 128 MB, compatible con DirectX 9.0c y con soporte para Shader 3.0 (256 MB recomendados) (ver lista de soportadas*) Sonido: Dispositivo de sonido compatible con DirectX 9.0c (EAX recomendado) - Solución de audio para PC con Dolby Digital Live necesaria para el sonido Dolby Digital. Versión de DirectX: DirectX® 9.0c o posteriorDisco Duro: 8 GB de espacio libreMultijugador: Conexión de banda con 128 kbps de subida o más rápida *Gráficas soportadas en el momento del lanzamiento: Modo para un jugador: ATI X1300 / X1600 / X1800 / X1900, nVidia 6200 / 6600 / 6800 / 7300 / 7600 / 7800 / 7900 | Multijugador: ATI X1600 / X1800 / X1900, nVidia 6600 / 6800 /7300 / 7600 / 7800 / 7900Nota: Las versiones para portátiles de estas tarjetas podrían funcionar pero NO son soportadas. Estos chipsets son los únicos que arrancarán este juego. Para una lista actualizada sobre los requisitos mínimos, por favor, visita el FAQ sobre el juego en: .",
     "recommendedRequirements": "",
     "trailerUrl": "",
@@ -17871,8 +17997,8 @@
     "image": "game-f46d6985-d222-44cc-8c59-a5acdee49167.png",
     "createdAt": "2025-12-29T20:29:41.789Z",
     "steamAppId": 13580,
-    "imageBlob": {},
-    "isEmulated": false
+    "isEmulated": false,
+    "imageBlob": {}
   },
   {
     "id": "f486a78c-5535-47ed-aed3-49b982a1f3e2",
