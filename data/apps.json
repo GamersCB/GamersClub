@@ -1,0 +1,27 @@
+[
+  {
+    "name": "NVIDIA GeForce Graphics Drivers",
+    "downloadUrl": "https://www.techpowerup.com/download/nvidia-geforce-graphics-drivers/",
+    "sizeMB": 900,
+    "image": "app-9f067763-dccf-4b03-94fd-b7a5d1763c62.jpeg",
+    "id": "9f067763-dccf-4b03-94fd-b7a5d1763c62",
+    "createdAt": "2026-04-02T07:40:13.869Z"
+  },
+  {
+    "name": "7-Zip",
+    "downloadUrl": "https://www.mediafire.com/file/1enz1cdlyji0zxa/7-Zip+v.16.00+Final.7z/file",
+    "sizeMB": 2.6,
+    "image": "app-afe382ef-bb64-4c5b-9e15-2394c0221822.png",
+    "id": "afe382ef-bb64-4c5b-9e15-2394c0221822",
+    "createdAt": "2026-04-02T07:34:18.748Z"
+  },
+  {
+    "name": "Nvidea Profile Inspector",
+    "downloadUrl": "https://www.mediafire.com/file/0vf6tnf65stizj5/nvidiaProfileInspector-2.4.0.31.zip/file",
+    "image": "app-f916f8e1-1f13-4c45-b19f-6a0d54b60195.jpeg",
+    "id": "f916f8e1-1f13-4c45-b19f-6a0d54b60195",
+    "createdAt": "2026-04-02T07:02:41.361Z",
+    "sizeGB": 0.01,
+    "sizeMB": 1
+  }
+]
