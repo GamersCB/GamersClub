@@ -2,5 +2,7 @@
   "whatsappPhoneNumber": "+5356614779",
   "showNotificationToggle": false,
   "selectedBackgroundAnimationId": "iridescence",
-  "exportDate": "2026-04-02T07:40:49.016Z"
+  "exportDate": "2026-04-15T08:31:55.641Z",
+  "globalDarkBackgroundImage": "bg-dark.jpeg",
+  "globalLightBackgroundImage": "bg-light.jpeg"
 }
