@@ -1,0 +1,59 @@
+[
+  {
+    "name": "Display Driver Uninstaller (DDU) ",
+    "downloadUrl": "https://www.mediafire.com/file/z9ryiv7bh3xnvaf/DDU_v18.0.2.8.rar/file",
+    "sizeMB": 0,
+    "image": "app-3a1e22a4-757e-4173-87b0-4eb07b1193ca.png",
+    "id": "3a1e22a4-757e-4173-87b0-4eb07b1193ca",
+    "createdAt": "2026-04-03T12:03:13.030Z"
+  },
+  {
+    "name": "AMD Radeon Graphics Drivers ",
+    "downloadUrl": "https://www.techpowerup.com/download/amd-radeon-graphics-drivers/",
+    "sizeMB": 1600,
+    "image": "app-4bfbed78-4074-4738-91ab-f0a15b1b87cb.png",
+    "id": "4bfbed78-4074-4738-91ab-f0a15b1b87cb",
+    "createdAt": "2026-04-03T11:59:37.092Z"
+  },
+  {
+    "name": "TechPowerUp GPU-Z",
+    "downloadUrl": "https://www.techpowerup.com/download/techpowerup-gpu-z/",
+    "sizeMB": 11,
+    "image": "app-9835ef36-ffa9-4995-8b7f-bd4c7cdcf147.png",
+    "id": "9835ef36-ffa9-4995-8b7f-bd4c7cdcf147",
+    "createdAt": "2026-04-03T12:05:16.825Z"
+  },
+  {
+    "name": "NVIDIA GeForce Graphics Drivers",
+    "downloadUrl": "https://www.techpowerup.com/download/nvidia-geforce-graphics-drivers/",
+    "sizeMB": 900,
+    "image": "app-9f067763-dccf-4b03-94fd-b7a5d1763c62.png",
+    "id": "9f067763-dccf-4b03-94fd-b7a5d1763c62",
+    "createdAt": "2026-04-02T07:40:13.869Z"
+  },
+  {
+    "name": "7-Zip",
+    "downloadUrl": "https://www.mediafire.com/file/1enz1cdlyji0zxa/7-Zip+v.16.00+Final.7z/file",
+    "sizeMB": 2.6,
+    "image": "app-afe382ef-bb64-4c5b-9e15-2394c0221822.png",
+    "id": "afe382ef-bb64-4c5b-9e15-2394c0221822",
+    "createdAt": "2026-04-02T07:34:18.748Z"
+  },
+  {
+    "name": "Intel Graphics Drivers ",
+    "downloadUrl": "https://www.techpowerup.com/download/intel-graphics-drivers/",
+    "sizeMB": 1000,
+    "image": "app-f770770e-9437-463a-8bf5-92de954a6128.png",
+    "id": "f770770e-9437-463a-8bf5-92de954a6128",
+    "createdAt": "2026-04-03T12:00:14.033Z"
+  },
+  {
+    "name": "Nvidea Profile Inspector",
+    "downloadUrl": "https://www.mediafire.com/file/0vf6tnf65stizj5/nvidiaProfileInspector-2.4.0.31.zip/file",
+    "image": "app-f916f8e1-1f13-4c45-b19f-6a0d54b60195.png",
+    "id": "f916f8e1-1f13-4c45-b19f-6a0d54b60195",
+    "createdAt": "2026-04-02T07:02:41.361Z",
+    "sizeGB": 0.01,
+    "sizeMB": 1
+  }
+]
